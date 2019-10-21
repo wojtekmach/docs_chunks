@@ -20,7 +20,7 @@ Attach chunks for the `sets` module:
     #=> Writing /Users/wojtek/.asdf/installs/erlang/22.1.3/lib/stdlib-3.10/ebin/sets.beam
 
 Note your OTP installation likely does not have documentation XMLs and in that case clone
-erlang/otp repository and pass that as the given OTP path.
+https://github.com/erlang/otp repository and pass that as the given OTP path.
 
 Now `iex> h` works:
 
