@@ -99,6 +99,7 @@ docs_v1_function(Name, Arity, <<"">>) ->
 docs_v1_function(Name, Arity, DocString) ->
     % TODO fill these in
     Anno = 0,
+    % TODO get signature from abstract code
     Signature = [list_to_binary(atom_to_list(Name) ++ "/" ++ integer_to_list(Arity))],
     Metadata = #{},
     {{function, Name, Arity}, Anno, Signature, #{<<"en">> => DocString}, Metadata}.
@@ -117,13 +118,19 @@ xpath_to_integer(XPath, Doc) ->
     % end.
 
 textify(Term) ->
-    erlang:list_to_binary(do_textify(Term)).
+    iolist_to_binary(do_textify(Term)).
 
 do_textify(List) when is_list(List) ->
     lists:join("", lists:map(fun do_textify/1, List));
+do_textify(#xmlElement{name=p, content=Content}) ->
+    [do_textify(Content), "\n\n"];
+do_textify(#xmlElement{name=pre, content=Content}) ->
+    ["```\n", do_textify(Content), "\n```\n\n"];
+do_textify(#xmlElement{name=c, content=Content}) ->
+    ["`", do_textify(Content), "`"];
 do_textify(#xmlElement{content=Content}) ->
     do_textify(Content);
 do_textify(#xmlAttribute{value=Value}) ->
-    Value;
+    unicode:characters_to_binary(Value);
 do_textify(#xmlText{value=Value}) ->
     unicode:characters_to_binary(Value).
