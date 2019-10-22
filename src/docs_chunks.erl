@@ -57,6 +57,17 @@ otp_xml_extract_function(Doc, XMLPath) ->
         false ->
             Arity = xpath_to_integer("//@arity", Doc),
             DocString = xpath_to_binary("//desc", Doc),
+
+            % case Name of
+            %     take ->
+            %         'Elixir.IO':inspect(xmerl_xpath:string("//desc", Doc)),
+            %         'Elixir.IO':inspect(DocString),
+            %         ok;
+
+            %     _ ->
+            %         ok
+            % end,
+
             docs_v1_function(Name, Arity, DocString)
     end.
 
@@ -134,7 +145,10 @@ do_to_markdown(#xmlElement{name=pre, content=Content}) ->
 do_to_markdown(#xmlElement{name=c, content=Content}) ->
     code_inline(Content);
 do_to_markdown(#xmlElement{name=code, content=Content}) ->
-    code_inline(Content);
+    case is_otp_xml(Content) of
+        true -> code_block(Content);
+        false -> code_inline(Content)
+    end;
 do_to_markdown(#xmlElement{name=item, content=Content}) ->
     ["  * ", do_to_markdown(Content)];
 do_to_markdown(#xmlElement{content=Content}) ->
@@ -142,10 +156,12 @@ do_to_markdown(#xmlElement{content=Content}) ->
 do_to_markdown(#xmlAttribute{value=Value}) ->
     to_binary(Value);
 do_to_markdown(#xmlText{value=Value}) ->
-    re:replace(to_binary(Value), "\s+", " ", [global]).
+    clean_whitespace(Value).
+
+clean_whitespace(Value) ->
+    re:replace(unicode:characters_to_binary(Value), "\\s+", " ", [global]).
 
 code_block(List) when is_list(List) ->
-    % 'Elixir.IO':inspect(List),
     [
      "\n```\n",
      trim_leading(lists:join("", lists:map(fun code_block/1, List)), "\n"),
@@ -154,6 +170,8 @@ code_block(List) when is_list(List) ->
 code_block(#xmlText{value=Value}) ->
     to_binary(Value);
 code_block(#xmlElement{name=input, content=[#xmlText{value=Value}]}) ->
+    to_binary(Value);
+code_block(#xmlElement{name=anno, content=[#xmlText{value=Value}]}) ->
     to_binary(Value).
 
 code_inline(List) when is_list(List) ->
@@ -167,4 +185,12 @@ to_binary(String) ->
     unicode:characters_to_binary(String).
 
 trim_leading(String, Trim) ->
-    re:replace(iolist_to_binary(String), "^" ++ Trim, "", [global]).
+      re:replace(unicode:characters_to_binary(String), "^" ++ Trim, "", [global]).
+
+is_otp_xml(List) when is_list(List) ->
+    lists:any(fun
+                  (#xmlText{parents=Parents}) ->
+                      proplists:get_value(erlref, Parents) /= undefined;
+                  (_) ->
+                      false
+              end, List).

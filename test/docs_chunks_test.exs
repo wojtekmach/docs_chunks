@@ -19,7 +19,7 @@ defmodule DocsChunksTest do
     IEx.Helpers.h(:docs_chunks.edoc_to_chunk())
   end
 
-  @module :beam_lib
+  @module :maps
 
   test "otp" do
     chunk =
@@ -29,6 +29,6 @@ defmodule DocsChunksTest do
     assert {:docs_v1, _, _, _, _, _, _} = Code.fetch_docs(@module)
 
     require IEx.Helpers
-    IEx.Helpers.h(@module)
+    IEx.Helpers.h(@module.take / 2)
   end
 end
