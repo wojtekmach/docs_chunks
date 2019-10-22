@@ -10,7 +10,15 @@
     ].
 
 %% @doc Fetch edoc docs from a given `ErlPath' and convert it to docs chunk.
+%%
 %% http://erlang.org/eeps/eep-0048.html
+%%
+%% Examples:
+%%
+%% ```
+%% %% docs_chunks:edoc_to_chunk("src/foo.erl").
+%% #=> {docs_v1, ..., erlang, <<"text/markdown">>", ..., ..., ..., ...}
+%% '''
 edoc_to_chunk(ErlPath) ->
     {_Module, Doc} = edoc:get_doc(ErlPath),
     DocString = xpath_to_binary("//module/description/fullDescription", Doc),
@@ -27,7 +35,7 @@ edoc_extract_function(Doc) ->
     DocString = xpath_to_binary("//description/fullDescription", Doc),
     docs_v1_function(Name, Arity, DocString).
 
-%% @doc Extract XML docs from `XMLPath' in `OTPRootDir' and convert it to docs chunk.
+% %% @doc Extract XML docs from `XMLPath' in `OTPRootDir' and convert it to docs chunk.
 otp_xml_to_chunk(OTPRootDir, XMLPath) ->
     Doc = load_otp_xml(OTPRootDir, filename:join([OTPRootDir, XMLPath])),
     DocString = xpath_to_binary("//description", Doc),
@@ -58,12 +66,13 @@ otp_xml_extract_function(Doc, XMLPath) ->
 %
 % so pretty important function! Need to gracefully handle this.
 warn_unparsable(Doc, XMLPath) ->
-    Head = textify(xmerl_xpath:string("//name[1]/text()", Doc)),
+    Head = to_markdown(xmerl_xpath:string("//name[1]/text()", Doc)),
     io:fwrite("~s: cannot parse ~s~n", [XMLPath, Head]).
 
 
 load_otp_xml(OTPRootDir, XMLPath) ->
-    Options = [{space, normalize},
+    Options = [
+               % {space, normalize},
                {fetch_path, [OTPRootDir ++ "/lib/erl_docgen/priv/dtd",
                              OTPRootDir ++ "/lib/erl_docgen/priv/dtd_html_entities" ]}],
     XMLPath2 = filename:join([OTPRootDir, XMLPath]),
@@ -85,7 +94,7 @@ docs_v1(DocString, Docs) ->
     % TODO fill these in
     Anno = 0,
     BeamLanguage = erlang,
-    Format = <<"text/plain">>,
+    Format = <<"text/markdown">>,
     Metadata = #{},
     {docs_v1, Anno, BeamLanguage, Format, #{<<"en">> => DocString}, Metadata, Docs}.
 
@@ -105,32 +114,57 @@ docs_v1_function(Name, Arity, DocString) ->
     {{function, Name, Arity}, Anno, Signature, #{<<"en">> => DocString}, Metadata}.
 
 xpath_to_binary(XPath, Doc) ->
-    textify(xmerl_xpath:string(XPath, Doc)).
+    to_markdown(xmerl_xpath:string(XPath, Doc)).
 
 xpath_to_atom(XPath, Doc) ->
-    binary_to_atom(textify(xmerl_xpath:string(XPath, Doc)), utf8).
+    binary_to_atom(to_markdown(xmerl_xpath:string(XPath, Doc)), utf8).
 
 xpath_to_integer(XPath, Doc) ->
-    binary_to_integer(textify(xmerl_xpath:string(XPath, Doc))).
-    % case textify(xmerl_xpath:string(XPath, Doc)) of
-    %     <<"">> -> nil;
-    %     Binary -> binary_to_integer(Binary)
-    % end.
+    binary_to_integer(to_markdown(xmerl_xpath:string(XPath, Doc))).
 
-textify(Term) ->
-    iolist_to_binary(do_textify(Term)).
+to_markdown(Term) ->
+    iolist_to_binary(do_to_markdown(Term)).
 
-do_textify(List) when is_list(List) ->
-    lists:join("", lists:map(fun do_textify/1, List));
-do_textify(#xmlElement{name=p, content=Content}) ->
-    [do_textify(Content), "\n\n"];
-do_textify(#xmlElement{name=pre, content=Content}) ->
-    ["```\n", do_textify(Content), "\n```\n\n"];
-do_textify(#xmlElement{name=c, content=Content}) ->
-    ["`", do_textify(Content), "`"];
-do_textify(#xmlElement{content=Content}) ->
-    do_textify(Content);
-do_textify(#xmlAttribute{value=Value}) ->
-    unicode:characters_to_binary(Value);
-do_textify(#xmlText{value=Value}) ->
-    unicode:characters_to_binary(Value).
+do_to_markdown(List) when is_list(List) ->
+    lists:join("", lists:map(fun do_to_markdown/1, List));
+do_to_markdown(#xmlElement{name=p, content=Content}) ->
+    [do_to_markdown(Content), "\n\n"];
+do_to_markdown(#xmlElement{name=pre, content=Content}) ->
+    code_block(Content);
+do_to_markdown(#xmlElement{name=c, content=Content}) ->
+    code_inline(Content);
+do_to_markdown(#xmlElement{name=code, content=Content}) ->
+    code_inline(Content);
+do_to_markdown(#xmlElement{name=item, content=Content}) ->
+    ["  * ", do_to_markdown(Content)];
+do_to_markdown(#xmlElement{content=Content}) ->
+    do_to_markdown(Content);
+do_to_markdown(#xmlAttribute{value=Value}) ->
+    to_binary(Value);
+do_to_markdown(#xmlText{value=Value}) ->
+    re:replace(to_binary(Value), "\s+", " ", [global]).
+
+code_block(List) when is_list(List) ->
+    % 'Elixir.IO':inspect(List),
+    [
+     "\n```\n",
+     trim_leading(lists:join("", lists:map(fun code_block/1, List)), "\n"),
+     "\n```\n"
+    ];
+code_block(#xmlText{value=Value}) ->
+    to_binary(Value);
+code_block(#xmlElement{name=input, content=[#xmlText{value=Value}]}) ->
+    to_binary(Value).
+
+code_inline(List) when is_list(List) ->
+    lists:join("", lists:map(fun code_inline/1, List));
+code_inline(#xmlElement{name=anno, content=[#xmlText{} = XmlText]}) ->
+    code_inline(XmlText);
+code_inline(#xmlText{value=Value}) ->
+    ["`", to_binary(Value), "`"].
+
+to_binary(String) ->
+    unicode:characters_to_binary(String).
+
+trim_leading(String, Trim) ->
+    re:replace(iolist_to_binary(String), "^" ++ Trim, "", [global]).
