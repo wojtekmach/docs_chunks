@@ -25,7 +25,8 @@ defmodule DocsChunks.MixProject do
 
   defp aliases() do
     [
-      docs: "cmd ex_doc docs_chunks #{@version} _build/dev/lib/docs_chunks/ebin --main docs_chunks --output docs"
+      docs:
+        "cmd ex_doc docs_chunks #{@version} _build/dev/lib/docs_chunks/ebin --main docs_chunks --output docs"
     ]
   end
 end

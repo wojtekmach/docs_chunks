@@ -73,7 +73,8 @@ load_otp_xml(OTPRootDir, XMLPath) ->
 %% @doc Append given `Chunk' to `BeamPath'.
 write_chunk(BeamPath, Chunk) ->
     {ok, _Module, Chunks} = beam_lib:all_chunks(BeamPath),
-    {ok, Binary} = beam_lib:build_module(Chunks ++ [{"Docs", term_to_binary(Chunk)}]),
+    NewChunks = lists:keystore("Docs", 1, Chunks, {"Docs", term_to_binary(Chunk)}),
+    {ok, Binary} = beam_lib:build_module(NewChunks),
     file:write_file(BeamPath, Binary).
 
 %%
