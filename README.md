@@ -1,6 +1,6 @@
 # docs_chunks
 
-A tool to extract EDoc or OTP XML documentation and attach it as Docs chunk.
+An **experimental** tool to extract EDoc or OTP XML documentation and attach it as Docs chunk.
 
 ## Usage
 
