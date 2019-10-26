@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="hex_core v0.6.1">
+    <title>hex_repo — hex_core v0.6.1</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-3e29812628.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="hex_core.html" class="sidebar-projectName">
+hex_core      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.6.1
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">hex_core v0.6.1</small>
+hex_repo      </h1>
+
+
+        <section id="moduledoc">
+<p>Hex Repo API</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_names/1">get_names/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Gets names resource from the repository.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_package/2">get_package/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Gets package resource from the repository.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_tarball/3">get_tarball/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Gets tarball from the repository.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_versions/1">get_versions/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Gets versions resource from the repository.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="get_names/1">
+  <div class="detail-header">
+    <a href="#get_names/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_names/1</h1>
+  </div>
+  <section class="docstring">
+<p> Gets names resource from the repository.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_repo</span><span class="p">:</span><span class="nf">get_names</span><span class="p" data-group-id="9201177101-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="9201177101-2">(</span><span class="p" data-group-id="9201177101-2">)</span><span class="p" data-group-id="9201177101-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="9201177101-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9201177101-4">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="9201177101-5">[</span><span class="w">
+          </span><span class="p" data-group-id="9201177101-6">#{</span><span class="ss">name</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;package1&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9201177101-6">}</span><span class="p">,</span><span class="w">
+          </span><span class="p" data-group-id="9201177101-7">#{</span><span class="ss">name</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;package2&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9201177101-7">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="9201177101-5">]</span><span class="p" data-group-id="9201177101-4">}</span><span class="p" data-group-id="9201177101-3">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_package/2">
+  <div class="detail-header">
+    <a href="#get_package/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_package/2</h1>
+  </div>
+  <section class="docstring">
+<p> Gets package resource from the repository.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_repo</span><span class="p">:</span><span class="nf">get_package</span><span class="p" data-group-id="3963082060-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="3963082060-2">(</span><span class="p" data-group-id="3963082060-2">)</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;package1&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="3963082060-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="3963082060-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3963082060-4">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="3963082060-5">{</span><span class="w">
+          </span><span class="p" data-group-id="3963082060-6">#{</span><span class="ss">checksum</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="ss">version</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;0.5.0&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">dependencies</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="3963082060-7">[</span><span class="p" data-group-id="3963082060-7">]</span><span class="p" data-group-id="3963082060-6">}</span><span class="p">,</span><span class="w">
+          </span><span class="p" data-group-id="3963082060-8">#{</span><span class="ss">checksum</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="ss">version</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;1.0.0&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">dependencies</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="3963082060-9">[</span><span class="w">
+              </span><span class="p" data-group-id="3963082060-10">#{</span><span class="ss">package</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;package2&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">optional</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w"> </span><span class="ss">requirement</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;~&gt; 0.1&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="3963082060-10">}</span><span class="w">
+          </span><span class="p" data-group-id="3963082060-9">]</span><span class="p" data-group-id="3963082060-8">}</span><span class="p">,</span><span class="w">
+      </span><span class="p">]</span><span class="p" data-group-id="3963082060-5">}</span><span class="p" data-group-id="3963082060-4">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_tarball/3">
+  <div class="detail-header">
+    <a href="#get_tarball/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_tarball/3</h1>
+  </div>
+  <section class="docstring">
+<p> Gets tarball from the repository.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="9135704718-1">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9135704718-2">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">_</span><span class="p">,</span><span class="w"> </span><span class="n">Tarball</span><span class="p" data-group-id="9135704718-2">}</span><span class="p" data-group-id="9135704718-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">hex_repo</span><span class="p">:</span><span class="nf">get_tarball</span><span class="p" data-group-id="9135704718-3">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;package1&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;1.0.0&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="9135704718-4">(</span><span class="p" data-group-id="9135704718-4">)</span><span class="p" data-group-id="9135704718-3">)</span><span class="p">,</span><span class="w">
+  </span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="9135704718-5">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9135704718-6">#{</span><span class="ss">metadata</span><span class="w"> </span><span class="p">:=</span><span class="w"> </span><span class="n">Metadata</span><span class="p" data-group-id="9135704718-6">}</span><span class="p" data-group-id="9135704718-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">hex_tarball</span><span class="p">:</span><span class="nf">unpack</span><span class="p" data-group-id="9135704718-7">(</span><span class="n">Tarball</span><span class="p">,</span><span class="w"> </span><span class="nb">memory</span><span class="p" data-group-id="9135704718-7">)</span><span class="p">.</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_versions/1">
+  <div class="detail-header">
+    <a href="#get_versions/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_versions/1</h1>
+  </div>
+  <section class="docstring">
+<p> Gets versions resource from the repository.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_repo</span><span class="p">:</span><span class="nf">get_versions</span><span class="p" data-group-id="8283881787-1">(</span><span class="n">Config</span><span class="p" data-group-id="8283881787-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="8283881787-2">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8283881787-3">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="8283881787-4">[</span><span class="w">
+          </span><span class="p" data-group-id="8283881787-5">#{</span><span class="ss">name</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;package1&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">retired</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="8283881787-6">[</span><span class="p" data-group-id="8283881787-6">]</span><span class="p">,</span><span class="w">
+            </span><span class="ss">versions</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="8283881787-7">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;1.0.0&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="8283881787-7">]</span><span class="p" data-group-id="8283881787-5">}</span><span class="p">,</span><span class="w">
+          </span><span class="p" data-group-id="8283881787-8">#{</span><span class="ss">name</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;package2&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">retired</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="8283881787-9">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;0.5.0&gt;&gt;&quot;</span><span class="p" data-group-id="8283881787-9">]</span><span class="p">,</span><span class="w">
+            </span><span class="ss">versions</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="8283881787-10">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;0.5.0&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;1.0.0&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="8283881787-10">]</span><span class="p" data-group-id="8283881787-8">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="8283881787-4">]</span><span class="p" data-group-id="8283881787-3">}</span><span class="p" data-group-id="8283881787-2">}</span></code></pre>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

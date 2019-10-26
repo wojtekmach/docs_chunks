@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="hex_core v0.6.1">
+    <title>hex_registry — hex_core v0.6.1</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-3e29812628.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="hex_core.html" class="sidebar-projectName">
+hex_core      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.6.1
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">hex_core v0.6.1</small>
+hex_registry      </h1>
+
+
+        <section id="moduledoc">
+<p>Hex Registry API</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode_and_verify_signed/2">decode_and_verify_signed/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Decode message created with <a href="#sign_protobuf/2"><code class="inline">sign_protobuf/2</code></a> and verify it against public key.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode_names/2">decode_names/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Decode message created with <a href="#encode_names/1"><code class="inline">encode_names/1</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode_package/3">decode_package/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Decode message created with <a href="#encode_package/1"><code class="inline">encode_package/1</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode_signed/1">decode_signed/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Decode message created with <a href="#sign_protobuf/2"><code class="inline">sign_protobuf/2</code></a> without verification.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode_versions/2">decode_versions/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Decode message created with <a href="#encode_versions/1"><code class="inline">encode_versions/1</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode_names/1">encode_names/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Encode Names message.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode_package/1">encode_package/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Encode Package message.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode_versions/1">encode_versions/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Encode Versions message.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sign/2">sign/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Signs binary with given private key.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sign_protobuf/2">sign_protobuf/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Encode Signed message.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#verify/3">verify/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Verifies binary against signature and a public key.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="decode_and_verify_signed/2">
+  <div class="detail-header">
+    <a href="#decode_and_verify_signed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode_and_verify_signed/2</h1>
+      <div class="specs">
+          <pre>decode_and_verify_signed(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), public_key()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Decode message created with <a href="#sign_protobuf/2"><code class="inline">sign_protobuf/2</code></a> and verify it against public key.</p>
+  </section>
+</section>
+<section class="detail" id="decode_names/2">
+  <div class="detail-header">
+    <a href="#decode_names/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode_names/2</h1>
+  </div>
+  <section class="docstring">
+<p> Decode message created with <a href="#encode_names/1"><code class="inline">encode_names/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="decode_package/3">
+  <div class="detail-header">
+    <a href="#decode_package/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode_package/3</h1>
+  </div>
+  <section class="docstring">
+<p> Decode message created with <a href="#encode_package/1"><code class="inline">encode_package/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="decode_signed/1">
+  <div class="detail-header">
+    <a href="#decode_signed/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode_signed/1</h1>
+  </div>
+  <section class="docstring">
+<p> Decode message created with <a href="#sign_protobuf/2"><code class="inline">sign_protobuf/2</code></a> without verification.</p>
+  </section>
+</section>
+<section class="detail" id="decode_versions/2">
+  <div class="detail-header">
+    <a href="#decode_versions/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode_versions/2</h1>
+  </div>
+  <section class="docstring">
+<p> Decode message created with <a href="#encode_versions/1"><code class="inline">encode_versions/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="encode_names/1">
+  <div class="detail-header">
+    <a href="#encode_names/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">encode_names/1</h1>
+  </div>
+  <section class="docstring">
+<p> Encode Names message.</p>
+  </section>
+</section>
+<section class="detail" id="encode_package/1">
+  <div class="detail-header">
+    <a href="#encode_package/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">encode_package/1</h1>
+  </div>
+  <section class="docstring">
+<p> Encode Package message.</p>
+  </section>
+</section>
+<section class="detail" id="encode_versions/1">
+  <div class="detail-header">
+    <a href="#encode_versions/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">encode_versions/1</h1>
+  </div>
+  <section class="docstring">
+<p> Encode Versions message.</p>
+  </section>
+</section>
+<section class="detail" id="sign/2">
+  <div class="detail-header">
+    <a href="#sign/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sign/2</h1>
+      <div class="specs">
+          <pre>sign(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), private_key()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Signs binary with given private key.</p>
+  </section>
+</section>
+<section class="detail" id="sign_protobuf/2">
+  <div class="detail-header">
+    <a href="#sign_protobuf/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sign_protobuf/2</h1>
+  </div>
+  <section class="docstring">
+<p> Encode Signed message.</p>
+  </section>
+</section>
+<section class="detail" id="verify/3">
+  <div class="detail-header">
+    <a href="#verify/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">verify/3</h1>
+      <div class="specs">
+          <pre>verify(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), public_key()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Verifies binary against signature and a public key.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
