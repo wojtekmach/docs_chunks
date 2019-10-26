@@ -61,7 +61,7 @@
 %% '''
 -spec edoc_to_chunk(string()) -> docs_v1().
 edoc_to_chunk(ErlPath) ->
-    {_Module, Doc} = edoc:get_doc(ErlPath),
+    {_Module, Doc} = edoc:get_doc(ErlPath, [{preprocess, true}]),
     DocString = xpath_to_binary("//module/description/fullDescription", Doc),
     Docs = edoc_extract_docs(Doc),
     docs_v1(DocString, Docs).
@@ -74,6 +74,7 @@ edoc_extract_function(Doc) ->
     Name = xpath_to_atom("./@name", Doc),
     Arity = xpath_to_integer("./@arity", Doc),
     DocString = xpath_to_binary("./description/fullDescription", Doc),
+    % 'Elixir.IO':inspect({Name, Arity, DocString}),
     docs_v1_function(Name, Arity, DocString).
 
 % %% @doc Extract XML docs from `XMLPath' in `OTPRootDir' and convert it to docs chunk.
