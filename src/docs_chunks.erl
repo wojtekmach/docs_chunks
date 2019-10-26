@@ -3,6 +3,46 @@
 -include_lib("xmerl/include/xmerl.hrl").
 -export([edoc_to_chunk/1, otp_xml_to_chunk/2, write_chunk/2, '__info__'/1]).
 
+-record(docs_v1, {anno,
+                  beam_language,
+                  format,
+                  module_doc,
+                  metadata,
+                  docs}).
+
+-record(docs_v1_entry, {kind_name_arity,
+                        anno,
+                        signature,
+                        doc,
+                        metadata}).
+
+-type docs_v1() :: #docs_v1{anno :: erl_anno:anno(),
+                            beam_language :: beam_language(),
+                            format :: mime_type(),
+                            module_doc :: doc(),
+                            metadata :: metadata(),
+                            docs :: [docs_v1_entry()]}.
+
+-type docs_v1_entry() :: #docs_v1_entry{kind_name_arity :: {atom(), atom(), arity()},
+                                        anno :: erl_anno:anno(),
+                                        signature :: signature(),
+                                        doc :: doc(),
+                                        metadata :: metadata()}.
+
+-type beam_language() :: atom().
+
+-type mime_type() :: binary().
+
+-type doc() :: #{doc_language() => doc_string()} | none | hidden.
+
+-type doc_language() :: binary().
+
+-type doc_string() :: binary().
+
+-type metadata() :: map().
+
+-type signature() :: [binary()].
+
 %% TODO: hack to get ExDoc to not crash.
 '__info__'(compile) ->
     [
@@ -19,6 +59,7 @@
 %% %% docs_chunks:edoc_to_chunk("src/foo.erl").
 %% #=> {docs_v1, ..., erlang, <<"text/markdown">>", ..., ..., ..., ...}
 %% '''
+-spec edoc_to_chunk(string()) -> docs_v1().
 edoc_to_chunk(ErlPath) ->
     {_Module, Doc} = edoc:get_doc(ErlPath),
     DocString = xpath_to_binary("//module/description/fullDescription", Doc),
@@ -30,9 +71,9 @@ edoc_extract_docs(Doc) ->
     [edoc_extract_function(Doc1) || Doc1 <- xmerl_xpath:string("//module/functions/function", Doc)].
 
 edoc_extract_function(Doc) ->
-    Name = xpath_to_atom("//@name", Doc),
-    Arity = xpath_to_integer("//@arity", Doc),
-    DocString = xpath_to_binary("//description/fullDescription", Doc),
+    Name = xpath_to_atom("./@name", Doc),
+    Arity = xpath_to_integer("./@arity", Doc),
+    DocString = xpath_to_binary("./description/fullDescription", Doc),
     docs_v1_function(Name, Arity, DocString).
 
 % %% @doc Extract XML docs from `XMLPath' in `OTPRootDir' and convert it to docs chunk.
@@ -44,19 +85,20 @@ otp_xml_to_chunk(OTPRootDir, XMLPath) ->
 
 % TODO: extract types and callbacks too
 otp_xml_extract_docs(Doc, XMLPath) ->
-    List = [otp_xml_extract_function(Doc1, XMLPath) || Doc1 <- xmerl_xpath:string("//funcs/func", Doc)],
+    List = [otp_xml_extract_function(Doc1, XMLPath) || Doc1 <- xmerl_xpath:string("./funcs/func", Doc)],
     lists:filter(fun(Elem) -> Elem /= skip end, List).
 
 otp_xml_extract_function(Doc, XMLPath) ->
-    Name = xpath_to_atom("//@name", Doc),
+    % 'Elixir.IO':inspect(xmerl_xpath:string("./name/@name", Doc)),
+    Name = xpath_to_atom("./name/@name", Doc),
 
     case Name == '' of
         true ->
             warn_unparsable(Doc, XMLPath),
             skip;
         false ->
-            Arity = xpath_to_integer("//@arity", Doc),
-            DocString = xpath_to_binary("//desc", Doc),
+            Arity = xpath_to_integer("./name/@arity", Doc),
+            DocString = xpath_to_binary("./desc", Doc),
 
             % case Name of
             %     take ->

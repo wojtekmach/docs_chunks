@@ -26,13 +26,13 @@ defmodule DocsChunks.MixProject do
   defp aliases() do
     [
       docs: [
-        "escript.install --force",
-        "docs_chunks -project",
+        "escript.build",
+        "cmd ./docs_chunks -project",
         "cmd ex_doc docs_chunks #{@version} _build/dev/lib/docs_chunks/ebin --main docs_chunks --output docs/docs_chunks"
       ],
       otp: [
-        "escript.install --force",
-        "cmd docs_chunks -otp-xml-stdlib ~/src/otp"
+        "escript.build",
+        "cmd ./docs_chunks -otp-xml-stdlib ~/src/otp"
       ],
       otp_docs: [
         "otp",
