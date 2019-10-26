@@ -64,7 +64,9 @@ edoc_to_chunk(ErlPath) ->
     {_Module, Doc} = edoc:get_doc(ErlPath, [{preprocess, true}]),
     DocString = xpath_to_binary("//module/description/fullDescription", Doc),
     Docs = edoc_extract_docs(Doc),
-    docs_v1(DocString, Docs).
+    Chunk = docs_v1(DocString, Docs),
+    % 'Elixir.IO':inspect(Chunk),
+    Chunk.
 
 % TODO: extract types and callbacks too
 edoc_extract_docs(Doc) ->
@@ -73,8 +75,14 @@ edoc_extract_docs(Doc) ->
 edoc_extract_function(Doc) ->
     Name = xpath_to_atom("./@name", Doc),
     Arity = xpath_to_integer("./@arity", Doc),
-    DocString = xpath_to_binary("./description/fullDescription", Doc),
-    % 'Elixir.IO':inspect({Name, Arity, DocString}),
+    DocString =
+        case xmerl_xpath:string("./equiv", Doc) of
+            [Equiv] ->
+                iolist_to_binary(["Equivalent to ", xpath_to_binary("./expr", Equiv), "."]);
+
+            [] ->
+                xpath_to_binary("./description/fullDescription", Doc)
+        end,
     docs_v1_function(Name, Arity, DocString).
 
 % %% @doc Extract XML docs from `XMLPath' in `OTPRootDir' and convert it to docs chunk.
@@ -184,6 +192,8 @@ do_to_markdown(#xmlElement{name=p, content=Content}) ->
 do_to_markdown(#xmlElement{name=pre, content=Content}) ->
     code_block(Content);
 do_to_markdown(#xmlElement{name=c, content=Content}) ->
+    code_inline(Content);
+do_to_markdown(#xmlElement{name=expr, content=Content}) ->
     code_inline(Content);
 do_to_markdown(#xmlElement{name=code, content=Content}) ->
     case is_otp_xml(Content) of
