@@ -8,7 +8,7 @@
     <meta name="project" content="telemetry v0.4.0">
     <title>telemetry — telemetry v0.4.0</title>
     <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-26bdd1908a.js"></script>
+    <script src="dist/sidebar_items-d1a4a97956.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
   </head>
@@ -70,7 +70,7 @@ telemetry      </h1>
 
         <section id="moduledoc">
 <p><code class="inline">telemetry</code> allows you to invoke certain functions whenever a particular event is emitted.</p>
-<p> For more information see the documentation for <a href="#attach/4"><code class="inline">attach/4</code></a>, <a href="#attach_many/4"><code class="inline">attach_many/4</code></a> and <code class="inline">execute/2</code>.</p>
+<p> For more information see the documentation for <a href="#attach/4"><code class="inline">attach/4</code></a>, <a href="#attach_many/4"><code class="inline">attach_many/4</code></a> and <a href="#execute/2"><code class="inline">execute/2</code></a>.</p>
         </section>
 
         <section id="summary" class="details-list">
@@ -102,6 +102,12 @@ telemetry      </h1>
     <a href="#detach/1">detach/1</a>
   </div>
     <div class="summary-synopsis"><p>Removes the existing handler.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#execute/2">execute/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <code class="inline">telemetry:execute(EventName, Measurements, #{})</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -187,6 +193,22 @@ when handlerId: handler_id(),
   <section class="docstring">
 <p>Removes the existing handler.</p>
 <p> If the handler with given ID doesn&#39;t exist, <code class="inline">{error, not_found}</code> is returned.</p>
+  </section>
+</section>
+<section class="detail" id="execute/2">
+  <div class="detail-header">
+    <a href="#execute/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">execute/2</h1>
+      <div class="specs">
+          <pre>execute(eventName, measurements) :: :ok
+when eventName: event_name(), measurements: event_measurements() | event_value()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <code class="inline">telemetry:execute(EventName, Measurements, #{})</code>.</p>
   </section>
 </section>
 <section class="detail" id="execute/3">
