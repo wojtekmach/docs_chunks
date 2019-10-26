@@ -150,14 +150,8 @@ docs_v1(DocString, Docs) ->
     BeamLanguage = erlang,
     Format = <<"text/markdown">>,
     Metadata = #{},
-    {docs_v1, Anno, BeamLanguage, Format, #{<<"en">> => DocString}, Metadata, Docs}.
-
-docs_v1_function(Name, Arity, <<"">>) ->
-    % TODO fill these in
-    Anno = 0,
-    Signature = [],
-    Metadata = #{},
-    {{function, Name, Arity}, Anno, Signature, none, Metadata};
+    Doc = doc_string_to_doc(DocString),
+    {docs_v1, Anno, BeamLanguage, Format, Doc, Metadata, Docs}.
 
 docs_v1_function(Name, Arity, DocString) ->
     % TODO fill these in
@@ -165,7 +159,12 @@ docs_v1_function(Name, Arity, DocString) ->
     % TODO get signature from abstract code
     Signature = [list_to_binary(atom_to_list(Name) ++ "/" ++ integer_to_list(Arity))],
     Metadata = #{},
-    {{function, Name, Arity}, Anno, Signature, #{<<"en">> => DocString}, Metadata}.
+    Doc = doc_string_to_doc(DocString),
+    {{function, Name, Arity}, Anno, Signature, Doc, Metadata}.
+
+%% TODO: why 'hidden' and not 'none'?
+doc_string_to_doc(<<"">>) -> hidden;
+doc_string_to_doc(DocString) when is_binary(DocString) -> #{<<"en">> => DocString}.
 
 xpath_to_binary(XPath, Doc) ->
     to_markdown(xmerl_xpath:string(XPath, Doc)).
