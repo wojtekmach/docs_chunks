@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>file_sorter — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+file_sorter      </h1>
+
+
+        <section id="moduledoc">
+<p> This module contains functions for sorting terms on files, merging already sorted files, and checking files for sortedness. Chunks containing binary terms are read from a sequence of files, sorted internally in memory and written on temporary files, which are merged producing one sorted file as output. Merging is provided as an optimization; it is faster when the files are already sorted, but it always works to sort instead of merge.</p>
+<p> On a file, a term is represented by a header and a binary. Two options define the format of terms on files:</p>
+<p>  <code class="inline">{header, HeaderLength}</code>   *  <code class="inline">HeaderLength</code> determines the number of bytes preceding each binary and containing the length of the binary in bytes. Defaults to 4. The order of the header bytes is defined as follows: if <code class="inline">B</code> is a binary containing a header only, size <code class="inline">Size</code> of the binary is calculated as <code class="inline">&lt;&lt;Size:HeaderLength/unit:8&gt;&gt; = B</code>.</p>
+<p>  <code class="inline">{format, Format}</code>   *  Option <code class="inline">Format</code> determines the function that is applied to binaries to create the terms to be sorted. Defaults to <code class="inline">binary_term</code>, which is equivalent to <code class="inline">fun binary_to_term/1</code>. Value <code class="inline">binary</code> is equivalent to <code class="inline">fun(X) -&gt; X end</code>, which means that the binaries are sorted as they are. This is the fastest format. If <code class="inline">Format</code> is <code class="inline">term</code>, <code class="inline">io:read/2</code> is called to read terms. In that case, only the default value of option <code class="inline">header</code> is allowed.</p>
+<p> Option <code class="inline">format</code> also determines what is written to the sorted output file: if <code class="inline">Format</code> is <code class="inline">term</code>, then <code class="inline">io:format/3</code> is called to write each term, otherwise the binary prefixed by a header is written. Notice that the binary written is the same binary that was read; the results of applying function <code class="inline">Format</code> are thrown away when the terms have been sorted. Reading and writing terms using the <code class="inline">io</code> module is much slower than reading and writing binaries.</p>
+<p>   Other options are:</p>
+<p>  <code class="inline">{order, Order}</code>   *  The default is to sort terms in ascending order, but that can be changed by value <code class="inline">descending</code> or by specifying an ordering function <code class="inline">Fun</code>. An ordering function is antisymmetric, transitive, and total. <code class="inline">Fun(A, B)</code> is to return <code class="inline">true</code> if <code class="inline">A</code> comes before <code class="inline">B</code> in the ordering, otherwise <code class="inline">false</code>. An example of a typical ordering function is less than or equal to, <code class="inline">=&lt;/2</code>. Using an ordering function slows down the sort considerably. Functions <code class="inline">keysort</code>, <code class="inline">keymerge</code> and <code class="inline">keycheck</code> do not accept ordering functions.</p>
+<p>  <code class="inline">{unique, boolean()}</code>   *  When sorting or merging files, only the first of a sequence of terms that compare equal (<code class="inline">==</code>) is output if this option is set to <code class="inline">true</code>. Defaults to <code class="inline">false</code>, which implies that all terms that compare equal are output. When checking files for sortedness, a check that no pair of consecutive terms compares equal is done if this option is set to <code class="inline">true</code>.</p>
+<p>  <code class="inline">{tmpdir, TempDirectory}</code>   *  The directory where temporary files are put can be chosen explicitly. The default, implied by value <code class="inline">&quot;&quot;</code>, is to put temporary files on the same directory as the sorted output file. If output is a function (see below), the directory returned by <code class="inline">file:get_cwd()</code> is used instead. The names of temporary files are derived from the Erlang nodename (<code class="inline">node()</code>), the process identifier of the current Erlang emulator (<code class="inline">os:getpid()</code>), and a unique integer (<code class="inline">erlang:unique_integer([positive])</code>). A typical name is <code class="inline">fs_mynode@myhost_1763_4711.17</code>, where <code class="inline">17</code> is a sequence number. Existing files are overwritten. Temporary files are deleted unless some uncaught <code class="inline">EXIT</code> signal occurs.</p>
+<p>  <code class="inline">{compressed, boolean()}</code>   *  Temporary files and the output file can be compressed. Defaults <code class="inline">false</code>, which implies that written files are not compressed. Regardless of the value of option <code class="inline">compressed</code>, compressed files can always be read. Notice that reading and writing compressed files are significantly slower than reading and writing uncompressed files.</p>
+<p>  <code class="inline">{size, Size}</code>   <em>  By default about 512</em>1024 bytes read from files are sorted internally. This option is rarely needed.</p>
+<p>  <code class="inline">{no_files, NoFiles}</code>   *  By default 16 files are merged at a time. This option is rarely needed.</p>
+<p>   As an alternative to sorting files, a function of one argument can be specified as input. When called with argument <code class="inline">read</code>, the function is assumed to return either of the following:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="ss">end_of_input</span><span class="err">`</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="3490352350-1">{</span><span class="ss">end_of_input</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="p" data-group-id="3490352350-1">}</span><span class="p">}</span><span class="err">`</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">no</span><span class="w"> </span><span class="ss">more</span><span class="w"> </span><span class="nf">input</span><span class="w"> </span><span class="p" data-group-id="3490352350-2">(</span><span class="err">`</span><span class="n">Value</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">explained</span><span class="w"> </span><span class="ss">below</span><span class="p" data-group-id="3490352350-2">)</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="3490352350-3">{</span><span class="n">Objects</span><span class="p">,</span><span class="w"> </span><span class="n">Fun</span><span class="p" data-group-id="3490352350-3">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="err">`</span><span class="n">Objects</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">binaries</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">terms</span><span class="w"> </span><span class="ss">depending</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">format</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">Fun</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">new</span><span class="w"> </span><span class="ss">input</span><span class="w"> </span><span class="ss">function</span><span class="p">.</span></code></pre>
+<p>   Any other value is immediately returned as value of the current call to <code class="inline">sort</code> or <code class="inline">keysort</code>. Each input function is called exactly once. If an error occurs, the last function is called with argument <code class="inline">close</code>, the reply of which is ignored.</p>
+<p> A function of one argument can be specified as output. The results of sorting or merging the input is collected in a non-empty sequence of variable length lists of binaries or terms depending on the format. The output function is called with one list at a time, and is assumed to return a new output function. Any other return value is immediately returned as value of the current call to the sort or merge function. Each output function is called exactly once. When some output function has been applied to all of the results or an error occurs, the last function is called with argument <code class="inline">close</code>, and the reply is returned as value of the current call to the sort or merge function.</p>
+<p> If a function is specified as input and the last input function returns <code class="inline">{end_of_input, Value}</code>, the function specified as output is called with argument <code class="inline">{value, Value}</code>. This makes it easy to initiate the sequence of output functions with a value calculated by the input functions.</p>
+<p> As an example, consider sorting the terms on a disk log file. A function that reads chunks from the disk log and returns a list of binaries is used as input. The results are collected in a list of terms.</p>
+<pre><code class="nohighlight makeup erlang"><span class="nf">sort</span><span class="p" data-group-id="2309706868-1">(</span><span class="n">Log</span><span class="p" data-group-id="2309706868-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+    </span><span class="p" data-group-id="2309706868-2">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p">_</span><span class="p" data-group-id="2309706868-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">disk_log</span><span class="p">:</span><span class="nf">open</span><span class="p" data-group-id="2309706868-3">(</span><span class="p" data-group-id="2309706868-4">[</span><span class="p" data-group-id="2309706868-5">{</span><span class="ss">name</span><span class="p">,</span><span class="n">Log</span><span class="p" data-group-id="2309706868-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2309706868-6">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">read_only</span><span class="p" data-group-id="2309706868-6">}</span><span class="p" data-group-id="2309706868-4">]</span><span class="p" data-group-id="2309706868-3">)</span><span class="p">,</span><span class="w">
+    </span><span class="n">Input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">input</span><span class="p" data-group-id="2309706868-7">(</span><span class="n">Log</span><span class="p">,</span><span class="w"> </span><span class="ss">start</span><span class="p" data-group-id="2309706868-7">)</span><span class="p">,</span><span class="w">
+    </span><span class="n">Output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">output</span><span class="p" data-group-id="2309706868-8">(</span><span class="p" data-group-id="2309706868-9">[</span><span class="p" data-group-id="2309706868-9">]</span><span class="p" data-group-id="2309706868-8">)</span><span class="p">,</span><span class="w">
+    </span><span class="n">Reply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">file_sorter</span><span class="p">:</span><span class="nf">sort</span><span class="p" data-group-id="2309706868-10">(</span><span class="n">Input</span><span class="p">,</span><span class="w"> </span><span class="n">Output</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2309706868-11">{</span><span class="ss">format</span><span class="p">,</span><span class="ss">term</span><span class="p" data-group-id="2309706868-11">}</span><span class="p" data-group-id="2309706868-10">)</span><span class="p">,</span><span class="w">
+    </span><span class="ss">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">disk_log</span><span class="p">:</span><span class="nf">close</span><span class="p" data-group-id="2309706868-12">(</span><span class="n">Log</span><span class="p" data-group-id="2309706868-12">)</span><span class="p">,</span><span class="w">
+    </span><span class="n">Reply</span><span class="p">.</span><span class="w">
+
+</span><span class="nf">input</span><span class="p" data-group-id="2309706868-13">(</span><span class="n">Log</span><span class="p">,</span><span class="w"> </span><span class="n">Cont</span><span class="p" data-group-id="2309706868-13">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+    </span><span class="nf">fun</span><span class="p" data-group-id="2309706868-14">(</span><span class="ss">close</span><span class="p" data-group-id="2309706868-14">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+            </span><span class="ss">ok</span><span class="p">;</span><span class="w">
+       </span><span class="p" data-group-id="2309706868-15">(</span><span class="ss">read</span><span class="p" data-group-id="2309706868-15">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+            </span><span class="k">case</span><span class="w"> </span><span class="nc">disk_log</span><span class="p">:</span><span class="nf">chunk</span><span class="p" data-group-id="2309706868-16">(</span><span class="n">Log</span><span class="p">,</span><span class="w"> </span><span class="n">Cont</span><span class="p" data-group-id="2309706868-16">)</span><span class="w"> </span><span class="k">of</span><span class="w">
+                </span><span class="p" data-group-id="2309706868-17">{</span><span class="ss">error</span><span class="p">,</span><span class="w"> </span><span class="n">Reason</span><span class="p" data-group-id="2309706868-17">}</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+                    </span><span class="p" data-group-id="2309706868-18">{</span><span class="ss">error</span><span class="p">,</span><span class="w"> </span><span class="n">Reason</span><span class="p" data-group-id="2309706868-18">}</span><span class="p">;</span><span class="w">
+                </span><span class="p" data-group-id="2309706868-19">{</span><span class="n">Cont2</span><span class="p">,</span><span class="w"> </span><span class="n">Terms</span><span class="p" data-group-id="2309706868-19">}</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+                    </span><span class="p" data-group-id="2309706868-20">{</span><span class="n">Terms</span><span class="p">,</span><span class="w"> </span><span class="nf">input</span><span class="p" data-group-id="2309706868-21">(</span><span class="n">Log</span><span class="p">,</span><span class="w"> </span><span class="n">Cont2</span><span class="p" data-group-id="2309706868-21">)</span><span class="p" data-group-id="2309706868-20">}</span><span class="p">;</span><span class="w">
+                </span><span class="p" data-group-id="2309706868-22">{</span><span class="n">Cont2</span><span class="p">,</span><span class="w"> </span><span class="n">Terms</span><span class="p">,</span><span class="w"> </span><span class="p">_</span><span class="n">Badbytes</span><span class="p" data-group-id="2309706868-22">}</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+                    </span><span class="p" data-group-id="2309706868-23">{</span><span class="n">Terms</span><span class="p">,</span><span class="w"> </span><span class="nf">input</span><span class="p" data-group-id="2309706868-24">(</span><span class="n">Log</span><span class="p">,</span><span class="w"> </span><span class="n">Cont2</span><span class="p" data-group-id="2309706868-24">)</span><span class="p" data-group-id="2309706868-23">}</span><span class="p">;</span><span class="w">
+                </span><span class="ss">eof</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+                    </span><span class="ss">end_of_input</span><span class="w">
+            </span><span class="k">end</span><span class="w">
+    </span><span class="k">end</span><span class="p">.</span><span class="w">
+
+</span><span class="nf">output</span><span class="p" data-group-id="2309706868-25">(</span><span class="n">L</span><span class="p" data-group-id="2309706868-25">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+    </span><span class="nf">fun</span><span class="p" data-group-id="2309706868-26">(</span><span class="ss">close</span><span class="p" data-group-id="2309706868-26">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+            </span><span class="nc">lists</span><span class="p">:</span><span class="nf">append</span><span class="p" data-group-id="2309706868-27">(</span><span class="nc">lists</span><span class="p">:</span><span class="nf">reverse</span><span class="p" data-group-id="2309706868-28">(</span><span class="n">L</span><span class="p" data-group-id="2309706868-28">)</span><span class="p" data-group-id="2309706868-27">)</span><span class="p">;</span><span class="w">
+       </span><span class="p" data-group-id="2309706868-29">(</span><span class="n">Terms</span><span class="p" data-group-id="2309706868-29">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+            </span><span class="nf">output</span><span class="p" data-group-id="2309706868-30">(</span><span class="p" data-group-id="2309706868-31">[</span><span class="n">Terms</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="n">L</span><span class="p" data-group-id="2309706868-31">]</span><span class="p" data-group-id="2309706868-30">)</span><span class="w">
+    </span><span class="k">end</span><span class="p">.</span></code></pre>
+<p> For more examples of functions as input and output, see the end of the <code class="inline">file_sorter</code> module; the <code class="inline">term</code> format is implemented with functions.</p>
+<p> The possible values of <code class="inline">Reason</code> returned when an error occurs are:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="ss">bad_object</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="2901740587-1">{</span><span class="ss">bad_object</span><span class="p">,</span><span class="w"> </span><span class="n">FileName</span><span class="p" data-group-id="2901740587-1">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Applying</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">format</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="ss">failed</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">some</span><span class="w"> </span><span class="ss">binary</span><span class="p">,</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="nf">key</span><span class="p" data-group-id="2901740587-2">(</span><span class="ss">s</span><span class="p" data-group-id="2901740587-2">)</span><span class="w"> </span><span class="ss">could</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">extracted</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">some</span><span class="w"> </span><span class="ss">term</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="2901740587-3">{</span><span class="ss">bad_term</span><span class="p">,</span><span class="w"> </span><span class="n">FileName</span><span class="p" data-group-id="2901740587-3">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">`</span><span class="nc">io</span><span class="p">:</span><span class="ss">read</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="w"> </span><span class="ss">failed</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">read</span><span class="w"> </span><span class="ss">some</span><span class="w"> </span><span class="ss">term</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="2901740587-4">{</span><span class="ss">file_error</span><span class="p">,</span><span class="w"> </span><span class="n">FileName</span><span class="p">,</span><span class="w"> </span><span class="nc">file</span><span class="p">:</span><span class="nf">posix</span><span class="p" data-group-id="2901740587-5">(</span><span class="p" data-group-id="2901740587-5">)</span><span class="p" data-group-id="2901740587-4">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">For</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">explanation</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="err">`</span><span class="nc">file</span><span class="p">:</span><span class="nf">posix</span><span class="p" data-group-id="2901740587-6">(</span><span class="p" data-group-id="2901740587-6">)</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">see</span><span class="w"> </span><span class="err">`</span><span class="nf">file</span><span class="p" data-group-id="2901740587-7">(</span><span class="mi">3</span><span class="p" data-group-id="2901740587-7">)</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="2901740587-8">{</span><span class="ss">premature_eof</span><span class="p">,</span><span class="w"> </span><span class="n">FileName</span><span class="p" data-group-id="2901740587-8">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">End</span><span class="o">-</span><span class="k">of</span><span class="o">-</span><span class="ss">file</span><span class="w"> </span><span class="ss">was</span><span class="w"> </span><span class="ss">encountered</span><span class="w"> </span><span class="ss">inside</span><span class="w"> </span><span class="ss">some</span><span class="w"> </span><span class="ss">binary</span><span class="w"> </span><span class="ss">term</span><span class="p">.</span></code></pre>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#checkcheck/12">checkcheck/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Checks files for sortedness. If a file is not sorted, the first out-of-order element is returned. The first term on a file has position 1.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keycheckkeycheck/23">keycheckkeycheck/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Checks files for sortedness. If a file is not sorted, the first out-of-order element is returned. The first term on a file has position 1.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keymergekeymerge/34">keymergekeymerge/34</a>
+  </div>
+    <div class="summary-synopsis"><p> Merges tuples on files. Each input file is assumed to be sorted on key(s).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keysort/2">keysort/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Sorts tuples on files.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keysortkeysort/34">keysortkeysort/34</a>
+  </div>
+    <div class="summary-synopsis"><p> Sorts tuples on files. The sort is performed on the element(s) mentioned in <code class="inline">KeyPos</code>. If two tuples compare equal (<code class="inline">==</code>) on one element, the next element according to <code class="inline">KeyPos</code> is compared. The sort is stable.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mergemerge/23">mergemerge/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Merges terms on files. Each input file is assumed to be sorted.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sort/1">sort/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Sorts terms on files.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sortsort/23">sortsort/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Sorts terms on files.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="checkcheck/12">
+  <div class="detail-header">
+    <a href="#checkcheck/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">checkcheck/12</h1>
+  </div>
+  <section class="docstring">
+<p> Checks files for sortedness. If a file is not sorted, the first out-of-order element is returned. The first term on a file has position 1.</p>
+<p> <code class="inline">check(FileName)</code> is equivalent to <code class="inline">check([FileName], [])</code>.</p>
+  </section>
+</section>
+<section class="detail" id="keycheckkeycheck/23">
+  <div class="detail-header">
+    <a href="#keycheckkeycheck/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keycheckkeycheck/23</h1>
+  </div>
+  <section class="docstring">
+<p> Checks files for sortedness. If a file is not sorted, the first out-of-order element is returned. The first term on a file has position 1.</p>
+<p> <code class="inline">keycheck(KeyPos, FileName)</code> is equivalent to <code class="inline">keycheck(KeyPos, [FileName], [])</code>.</p>
+  </section>
+</section>
+<section class="detail" id="keymergekeymerge/34">
+  <div class="detail-header">
+    <a href="#keymergekeymerge/34" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keymergekeymerge/34</h1>
+  </div>
+  <section class="docstring">
+<p> Merges tuples on files. Each input file is assumed to be sorted on key(s).</p>
+<p> <code class="inline">keymerge(KeyPos, FileNames, Output)</code> is equivalent to <code class="inline">keymerge(KeyPos, FileNames, Output, [])</code>.</p>
+  </section>
+</section>
+<section class="detail" id="keysort/2">
+  <div class="detail-header">
+    <a href="#keysort/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keysort/2</h1>
+      <div class="specs">
+          <pre>keysort(keyPos, fileName) :: reply
+when keyPos: key_pos(),
+     fileName: file_name(),
+     reply: :ok | {:error, reason()} | input_reply() | output_reply()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Sorts tuples on files.</p>
+<p> <code class="inline">keysort(N, FileName)</code> is equivalent to <code class="inline">keysort(N, [FileName], FileName)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="keysortkeysort/34">
+  <div class="detail-header">
+    <a href="#keysortkeysort/34" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keysortkeysort/34</h1>
+  </div>
+  <section class="docstring">
+<p> Sorts tuples on files. The sort is performed on the element(s) mentioned in <code class="inline">KeyPos</code>. If two tuples compare equal (<code class="inline">==</code>) on one element, the next element according to <code class="inline">KeyPos</code> is compared. The sort is stable.</p>
+<p> <code class="inline">keysort(N, Input, Output)</code> is equivalent to <code class="inline">keysort(N, Input, Output, [])</code>.</p>
+  </section>
+</section>
+<section class="detail" id="mergemerge/23">
+  <div class="detail-header">
+    <a href="#mergemerge/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mergemerge/23</h1>
+  </div>
+  <section class="docstring">
+<p> Merges terms on files. Each input file is assumed to be sorted.</p>
+<p> <code class="inline">merge(FileNames, Output)</code> is equivalent to <code class="inline">merge(FileNames, Output, [])</code>.</p>
+  </section>
+</section>
+<section class="detail" id="sort/1">
+  <div class="detail-header">
+    <a href="#sort/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sort/1</h1>
+      <div class="specs">
+          <pre>sort(fileName) :: reply
+when fileName: file_name(),
+     reply: :ok | {:error, reason()} | input_reply() | output_reply()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Sorts terms on files.</p>
+<p> <code class="inline">sort(FileName)</code> is equivalent to <code class="inline">sort([FileName], FileName)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="sortsort/23">
+  <div class="detail-header">
+    <a href="#sortsort/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sortsort/23</h1>
+  </div>
+  <section class="docstring">
+<p> Sorts terms on files.</p>
+<p> <code class="inline">sort(Input, Output)</code> is equivalent to <code class="inline">sort(Input, Output, [])</code>.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

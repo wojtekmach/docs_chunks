@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>supervisor_bridge — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+supervisor_bridge <small>behaviour</small>      </h1>
+
+
+        <section id="moduledoc">
+<p> This behavior module provides a supervisor bridge, a process that connects a subsystem not designed according to the OTP design principles to a supervision tree. The supervisor bridge sits between a supervisor and the subsystem. It behaves like a real supervisor to its own supervisor, but has a different interface than a real supervisor to the subsystem. For more information, see  Supervisor Behaviour in OTP Design Principles. </p>
+<p> A supervisor bridge assumes the functions for starting and stopping the subsystem to be located in a callback module exporting a predefined set of functions.</p>
+<p> The <code class="inline">sys(3)</code> module can be used for debugging a supervisor bridge.</p>
+<p> Unless otherwise stated, all functions in this module fail if the specified supervisor bridge does not exist or if bad arguments are specified.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_linkstart_link/23">start_linkstart_link/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Creates a supervisor bridge process, linked to the calling process, which calls <code class="inline">Module``:init/1</code> to start the subsystem. To ensure a synchronized startup procedure, this function does not return until <code class="inline">Module``:init/1</code> has returned.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="start_linkstart_link/23">
+  <div class="detail-header">
+    <a href="#start_linkstart_link/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_linkstart_link/23</h1>
+  </div>
+  <section class="docstring">
+<p> Creates a supervisor bridge process, linked to the calling process, which calls <code class="inline">Module``:init/1</code> to start the subsystem. To ensure a synchronized startup procedure, this function does not return until <code class="inline">Module``:init/1</code> has returned.</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="err">`</span><span class="n">SupBridgeName</span><span class="err">`</span><span class="err">`</span><span class="o">=</span><span class="p" data-group-id="6575465692-1">{</span><span class="ss">local</span><span class="p">,</span><span class="err">`</span><span class="err">`</span><span class="n">Name</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="6575465692-1">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">supervisor</span><span class="w"> </span><span class="ss">bridge</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">registered</span><span class="w"> </span><span class="ss">locally</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="err">`</span><span class="n">Name</span><span class="err">`</span><span class="w"> </span><span class="ss">using</span><span class="w"> </span><span class="err">`</span><span class="nb">register</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="err">`</span><span class="n">SupBridgeName</span><span class="err">`</span><span class="err">`</span><span class="o">=</span><span class="p" data-group-id="6575465692-2">{</span><span class="ss">global</span><span class="p">,</span><span class="err">`</span><span class="err">`</span><span class="n">Name</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="6575465692-2">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">supervisor</span><span class="w"> </span><span class="ss">bridge</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">registered</span><span class="w"> </span><span class="ss">globally</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="err">`</span><span class="n">Name</span><span class="err">`</span><span class="w"> </span><span class="ss">using</span><span class="w">  </span><span class="err">`</span><span class="nc">global</span><span class="p">:</span><span class="ss">register_name</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="err">`</span><span class="n">SupBridgeName</span><span class="err">`</span><span class="err">`</span><span class="o">=</span><span class="p" data-group-id="6575465692-3">{</span><span class="ss">via</span><span class="p">,</span><span class="err">`</span><span class="err">`</span><span class="n">Module</span><span class="err">`</span><span class="err">`</span><span class="p">,</span><span class="err">`</span><span class="err">`</span><span class="n">Name</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="6575465692-3">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">supervisor</span><span class="w"> </span><span class="ss">bridge</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">registered</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="err">`</span><span class="n">Name</span><span class="err">`</span><span class="w"> </span><span class="ss">using</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">registry</span><span class="w"> </span><span class="ss">represented</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="n">Module</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="p" data-group-id="6575465692-4">[</span><span class="err">`</span><span class="n">Module</span><span class="err">`</span><span class="p" data-group-id="6575465692-4">]</span><span class="p" data-group-id="6575465692-5">(</span><span class="nc">https</span><span class="p">:</span><span class="o">/</span><span class="o">/</span><span class="ss">hexdocs</span><span class="p">.</span><span class="ss">pm</span><span class="o">/</span><span class="ss">elixir</span><span class="o">/</span><span class="n">Module</span><span class="p">.</span><span class="ss">html</span><span class="p" data-group-id="6575465692-5">)</span><span class="w"> </span><span class="ss">callback</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">export</span><span class="w"> </span><span class="ss">functions</span><span class="w"> </span><span class="err">`</span><span class="ss">register_name</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="ss">unregister_name</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p" data-group-id="6575465692-6">[</span><span class="err">`</span><span class="nb">send</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="p" data-group-id="6575465692-6">]</span><span class="p" data-group-id="6575465692-7">(</span><span class="nc">https</span><span class="p">:</span><span class="o">/</span><span class="o">/</span><span class="ss">hexdocs</span><span class="p">.</span><span class="ss">pm</span><span class="o">/</span><span class="ss">elixir</span><span class="o">/</span><span class="n">Kernel</span><span class="p">.</span><span class="ss">html</span><span class="p">#</span><span class="nb">send</span><span class="o">/</span><span class="mi">2</span><span class="p" data-group-id="6575465692-7">)</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">behave</span><span class="w"> </span><span class="ss">like</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">corresponding</span><span class="w"> </span><span class="ss">functions</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="err">`</span><span class="ss">global</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">Thus</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="6575465692-8">{</span><span class="ss">via</span><span class="p">,</span><span class="ss">global</span><span class="p">,</span><span class="n">GlobalName</span><span class="p" data-group-id="6575465692-8">}</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">valid</span><span class="w"> </span><span class="ss">reference</span><span class="p">.</span></code></pre>
+<p>   If no name is provided, the supervisor bridge is not registered.</p>
+<p> <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> is the name of the callback module.</p>
+<p> <code class="inline">Args</code> is an arbitrary term that is passed as the argument to <code class="inline">Module``:init/1</code>.</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">supervisor</span><span class="w"> </span><span class="ss">bridge</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">subsystem</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">successfully</span><span class="w"> </span><span class="ss">started</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="ss">returns</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="0257373832-1">{</span><span class="ss">ok</span><span class="p">,</span><span class="err">`</span><span class="err">`</span><span class="n">Pid</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0257373832-1">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="err">`</span><span class="n">Pid</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">pid</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">supervisor</span><span class="w"> </span><span class="ss">bridge</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">already</span><span class="w"> </span><span class="ss">exists</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">specified</span><span class="w"> </span><span class="err">`</span><span class="n">SupBridgeName</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="ss">returns</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="0257373832-2">{</span><span class="ss">error</span><span class="p">,</span><span class="p" data-group-id="0257373832-3">{</span><span class="ss">already_started</span><span class="p">,</span><span class="err">`</span><span class="err">`</span><span class="n">Pid</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0257373832-3">}</span><span class="p" data-group-id="0257373832-2">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="err">`</span><span class="n">Pid</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">pid</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">process</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="err">`</span><span class="n">Module</span><span class="err">`</span><span class="err">`</span><span class="p">:</span><span class="ss">init</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="w"> </span><span class="ss">returns</span><span class="w"> </span><span class="err">`</span><span class="ss">ignore</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="ss">returns</span><span class="w"> </span><span class="err">`</span><span class="ss">ignore</span><span class="err">`</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">well</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">supervisor</span><span class="w"> </span><span class="ss">bridge</span><span class="w"> </span><span class="ss">terminates</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">reason</span><span class="w"> </span><span class="err">`</span><span class="ss">normal</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="err">`</span><span class="n">Module</span><span class="err">`</span><span class="err">`</span><span class="p">:</span><span class="ss">init</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="w"> </span><span class="ss">fails</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">returns</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">error</span><span class="w"> </span><span class="ss">tuple</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">incorrect</span><span class="w"> </span><span class="ss">value</span><span class="p">,</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="ss">returns</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="0257373832-4">{</span><span class="ss">error</span><span class="p">,</span><span class="err">`</span><span class="err">`</span><span class="n">Error</span><span class="err">`</span><span class="err">`</span><span class="ss">r</span><span class="p" data-group-id="0257373832-4">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="err">`</span><span class="n">Error</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">term</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">information</span><span class="w"> </span><span class="ss">about</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">error</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">supervisor</span><span class="w"> </span><span class="ss">bridge</span><span class="w"> </span><span class="ss">terminates</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">reason</span><span class="w"> </span><span class="err">`</span><span class="n">Error</span><span class="err">`</span><span class="p">.</span></code></pre>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

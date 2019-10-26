@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>sets — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+sets      </h1>
+
+
+        <section id="moduledoc">
+<p> Sets are collections of elements with no duplicate elements. The representation of a set is undefined.</p>
+<p> This module provides the same interface as the <code class="inline">ordsets(3)</code> module but with an undefined representation. One difference is that while this module considers two elements as different if they do not match (<code class="inline">=:=</code>), <code class="inline">ordsets</code> considers two elements as different if and only if they do not compare equal (<code class="inline">==</code>).</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_element/2">add_element/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a new set formed from <code class="inline">Set1</code> with <code class="inline">Element</code> inserted.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_element/2">del_element/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">Set1</code>, but with <code class="inline">Element</code> removed.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#filter/2">filter/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Filters elements in <code class="inline">Set1</code> with boolean function <code class="inline">Pred</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fold/3">fold/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Folds <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> over every element in <a href="https://hexdocs.pm/elixir/Set.html"><code class="inline">Set</code></a> and returns the final value of the accumulator. The evaluation order is undefined.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#from_list/1">from_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a set of the elements in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#intersection/1">intersection/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the intersection of the non-empty list of sets.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#intersection/2">intersection/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the intersection of <code class="inline">Set1</code> and <code class="inline">Set2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_disjoint/2">is_disjoint/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Set1</code> and <code class="inline">Set2</code> are disjoint (have no elements in common), otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_element/2">is_element/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Element</code> is an element of <a href="https://hexdocs.pm/elixir/Set.html"><code class="inline">Set</code></a>, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_empty/1">is_empty/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <a href="https://hexdocs.pm/elixir/Set.html"><code class="inline">Set</code></a> is an empty set, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_set/1">is_set/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <a href="https://hexdocs.pm/elixir/Set.html"><code class="inline">Set</code></a> is a set of elements, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_subset/2">is_subset/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> when every element of <code class="inline">Set1</code> is also a member of <code class="inline">Set2</code>, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/0">new/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a new empty set.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#size/1">size/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the number of elements in <a href="https://hexdocs.pm/elixir/Set.html"><code class="inline">Set</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#subtract/2">subtract/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns only the elements of <code class="inline">Set1</code> that are not also elements of <code class="inline">Set2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_list/1">to_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the elements of <a href="https://hexdocs.pm/elixir/Set.html"><code class="inline">Set</code></a> as a list. The order of the returned elements is undefined.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#union/1">union/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the merged (union) set of the list of sets.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#union/2">union/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the merged (union) set of <code class="inline">Set1</code> and <code class="inline">Set2</code>.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="add_element/2">
+  <div class="detail-header">
+    <a href="#add_element/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_element/2</h1>
+      <div class="specs">
+          <pre>add_element(element, set1) :: set2
+when set1: set(element), set2: set(element), element: var</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a new set formed from <code class="inline">Set1</code> with <code class="inline">Element</code> inserted.</p>
+  </section>
+</section>
+<section class="detail" id="del_element/2">
+  <div class="detail-header">
+    <a href="#del_element/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_element/2</h1>
+      <div class="specs">
+          <pre>del_element(element, set1) :: set2
+when set1: set(element), set2: set(element), element: var</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">Set1</code>, but with <code class="inline">Element</code> removed.</p>
+  </section>
+</section>
+<section class="detail" id="filter/2">
+  <div class="detail-header">
+    <a href="#filter/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">filter/2</h1>
+      <div class="specs">
+          <pre>filter(pred, set1) :: set2
+when pred: (element -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), set1: set(element), set2: set(element)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Filters elements in <code class="inline">Set1</code> with boolean function <code class="inline">Pred</code>.</p>
+  </section>
+</section>
+<section class="detail" id="fold/3">
+  <div class="detail-header">
+    <a href="#fold/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fold/3</h1>
+      <div class="specs">
+          <pre>fold(function, acc0, set) :: acc1
+when function: (element, accIn -> accOut),
+     set: set(element),
+     acc0: acc,
+     acc1: acc,
+     accIn: acc,
+     accOut: acc</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Folds <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> over every element in <a href="https://hexdocs.pm/elixir/Set.html"><code class="inline">Set</code></a> and returns the final value of the accumulator. The evaluation order is undefined.</p>
+  </section>
+</section>
+<section class="detail" id="from_list/1">
+  <div class="detail-header">
+    <a href="#from_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_list/1</h1>
+      <div class="specs">
+          <pre>from_list(list) :: set when list: [element], set: set(element)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a set of the elements in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="intersection/1">
+  <div class="detail-header">
+    <a href="#intersection/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">intersection/1</h1>
+      <div class="specs">
+          <pre>intersection(setList) :: set
+when setList: [set(element), ...], set: set(element)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the intersection of the non-empty list of sets.</p>
+  </section>
+</section>
+<section class="detail" id="intersection/2">
+  <div class="detail-header">
+    <a href="#intersection/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">intersection/2</h1>
+      <div class="specs">
+          <pre>intersection(set1, set2) :: set3
+when set1: set(element), set2: set(element), set3: set(element)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the intersection of <code class="inline">Set1</code> and <code class="inline">Set2</code>.</p>
+  </section>
+</section>
+<section class="detail" id="is_disjoint/2">
+  <div class="detail-header">
+    <a href="#is_disjoint/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_disjoint/2</h1>
+      <div class="specs">
+          <pre>is_disjoint(set1, set2) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when set1: set(element), set2: set(element)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Set1</code> and <code class="inline">Set2</code> are disjoint (have no elements in common), otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="is_element/2">
+  <div class="detail-header">
+    <a href="#is_element/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_element/2</h1>
+      <div class="specs">
+          <pre>is_element(element, set) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when set: set(element), element: var</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Element</code> is an element of <a href="https://hexdocs.pm/elixir/Set.html"><code class="inline">Set</code></a>, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="is_empty/1">
+  <div class="detail-header">
+    <a href="#is_empty/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_empty/1</h1>
+      <div class="specs">
+          <pre>is_empty(set) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when set: set()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <a href="https://hexdocs.pm/elixir/Set.html"><code class="inline">Set</code></a> is an empty set, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="is_set/1">
+  <div class="detail-header">
+    <a href="#is_set/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_set/1</h1>
+      <div class="specs">
+          <pre>is_set(set) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when set: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <a href="https://hexdocs.pm/elixir/Set.html"><code class="inline">Set</code></a> is a set of elements, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="is_subset/2">
+  <div class="detail-header">
+    <a href="#is_subset/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_subset/2</h1>
+      <div class="specs">
+          <pre>is_subset(set1, set2) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when set1: set(element), set2: set(element)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> when every element of <code class="inline">Set1</code> is also a member of <code class="inline">Set2</code>, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="new/0">
+  <div class="detail-header">
+    <a href="#new/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new/0</h1>
+      <div class="specs">
+          <pre>new() :: set()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a new empty set.</p>
+  </section>
+</section>
+<section class="detail" id="size/1">
+  <div class="detail-header">
+    <a href="#size/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">size/1</h1>
+      <div class="specs">
+          <pre>size(set) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when set: set()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the number of elements in <a href="https://hexdocs.pm/elixir/Set.html"><code class="inline">Set</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="subtract/2">
+  <div class="detail-header">
+    <a href="#subtract/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">subtract/2</h1>
+      <div class="specs">
+          <pre>subtract(set1, set2) :: set3
+when set1: set(element), set2: set(element), set3: set(element)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns only the elements of <code class="inline">Set1</code> that are not also elements of <code class="inline">Set2</code>.</p>
+  </section>
+</section>
+<section class="detail" id="to_list/1">
+  <div class="detail-header">
+    <a href="#to_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_list/1</h1>
+      <div class="specs">
+          <pre>to_list(set) :: list when set: set(element), list: [element]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the elements of <a href="https://hexdocs.pm/elixir/Set.html"><code class="inline">Set</code></a> as a list. The order of the returned elements is undefined.</p>
+  </section>
+</section>
+<section class="detail" id="union/1">
+  <div class="detail-header">
+    <a href="#union/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">union/1</h1>
+      <div class="specs">
+          <pre>union(setList) :: set when setList: [set(element)], set: set(element)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the merged (union) set of the list of sets.</p>
+  </section>
+</section>
+<section class="detail" id="union/2">
+  <div class="detail-header">
+    <a href="#union/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">union/2</h1>
+      <div class="specs">
+          <pre>union(set1, set2) :: set3
+when set1: set(element), set2: set(element), set3: set(element)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the merged (union) set of <code class="inline">Set1</code> and <code class="inline">Set2</code>.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

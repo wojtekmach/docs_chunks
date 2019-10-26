@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>rand — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+rand      </h1>
+
+
+        <section id="moduledoc">
+<p>  This module provides a pseudo random number generator. The module contains a number of algorithms. The uniform distribution algorithms are based on the  Xoroshiro and Xorshift algorithms  by Sebastiano Vigna. The normal distribution algorithm uses the  Ziggurat Method by Marsaglia and Tsang  on top of the uniform distribution algorithm. </p>
+<p>  For most algorithms, jump functions are provided for generating non-overlapping sequences for parallel computations. The jump functions perform calculations equivalent to perform a large number of repeated calls for calculating new states. </p>
+<p> The following algorithms are provided:</p>
+<p>  <code class="inline">exsss</code>   <em>  Xorshift116*</em>, 58 bits precision and period of 2^116-1</p>
+<p> Jump function: equivalent to 2^64 calls</p>
+<p>  This is the Xorshift116 generator combined with the StarStar scrambler from the 2018 paper by David Blackman and Sebastiano Vigna:  Scrambled Linear Pseudorandom Number Generators  </p>
+<p>  The generator does not need 58-bit rotates so it is faster than the Xoroshiro116 generator, and when combined with the StarStar scrambler it does not have any weak low bits like <code class="inline">exrop</code> (Xoroshiro116+). </p>
+<p>  Alas, this combination is about 10% slower than <code class="inline">exrop</code>, but is despite that the default algorithm thanks to its statistical qualities. </p>
+<p>  <code class="inline">exro928ss</code>   <em>  Xoroshiro928*</em>, 58 bits precision and a period of 2^928-1</p>
+<p> Jump function: equivalent to 2^512 calls</p>
+<p>  This is a 58 bit version of Xoroshiro1024**, from the 2018 paper by David Blackman and Sebastiano Vigna:  Scrambled Linear Pseudorandom Number Generators  that on a 64 bit Erlang system executes only about 40% slower than the default <code class="inline">exsss</code> algorithm but with much longer period and better statistical properties, and on the flip side a larger state. </p>
+<p>  Many thanks to Sebastiano Vigna for his help with the 58 bit adaption. </p>
+<p>  <code class="inline">exrop</code>   *  Xoroshiro116+, 58 bits precision and period of 2^116-1</p>
+<p> Jump function: equivalent to 2^64 calls</p>
+<p>  <code class="inline">exs1024s</code>   <em>  Xorshift1024</em>, 64 bits precision and a period of 2^1024-1</p>
+<p> Jump function: equivalent to 2^512 calls</p>
+<p>  <code class="inline">exsp</code>   *  Xorshift116+, 58 bits precision and period of 2^116-1</p>
+<p> Jump function: equivalent to 2^64 calls</p>
+<p>  This is a corrected version of the previous default algorithm, that now has been superseded by Xoroshiro116+ (<code class="inline">exrop</code>). Since there is no native 58 bit rotate instruction this algorithm executes a little (say &lt; 15%) faster than <code class="inline">exrop</code>. See the algorithms&#39; homepage. </p>
+<pre><code class="nohighlight makeup erlang"><span class="n">The</span><span class="w"> </span><span class="ss">default</span><span class="w"> </span><span class="ss">algorithm</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="err">`</span><span class="ss">exsss</span><span class="err">`</span><span class="w"> </span><span class="p" data-group-id="9403690015-1">(</span><span class="n">Xorshift116</span><span class="o">*</span><span class="o">*</span><span class="p" data-group-id="9403690015-1">)</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">specific</span><span class="w"> </span><span class="ss">algorithm</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">required</span><span class="p">,</span><span class="w"> </span><span class="ss">ensure</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">always</span><span class="w"> </span><span class="ss">use</span><span class="w">  </span><span class="p" data-group-id="9403690015-2">[</span><span class="err">`</span><span class="ss">seed</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="9403690015-2">]</span><span class="p" data-group-id="9403690015-3">(</span><span class="p">#</span><span class="ss">seed</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="9403690015-3">)</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">initialize</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">state</span><span class="p">.</span><span class="w"> </span></code></pre>
+<p>  Undocumented (old) algorithms are deprecated but still implemented so old code relying on them will produce the same pseudo random sequences as before. </p>
+<p>   There were a number of problems in the implementation of the now undocumented algorithms, which is why they are deprecated. The new algorithms are a bit slower but do not have these problems: </p>
+<p>  Uniform integer ranges had a skew in the probability distribution that was not noticable for small ranges but for large ranges less than the generator&#39;s precision the probability to produce a low number could be twice the probability for a high. </p>
+<p>  Uniform integer ranges larger than or equal to the generator&#39;s precision used a floating point fallback that only calculated with 52 bits which is smaller than the requested range and therefore were not all numbers in the requested range even possible to produce. </p>
+<p>  Uniform floats had a non-uniform density so small values i.e less than 0.5 had got smaller intervals decreasing as the generated value approached 0.0 although still uniformly distributed for sufficiently large subranges. The new algorithms produces uniformly distributed floats on the form N * 2.0^(-53) hence equally spaced. </p>
+<p>  Every time a random number is requested, a state is used to calculate it and a new state is produced. The state can either be implicit or be an explicit argument and return value.</p>
+<p> The functions with implicit state use the process dictionary variable <code class="inline">rand_seed</code> to remember the current state.</p>
+<p> If a process calls <a href="#uniform/0"><code class="inline">uniform/0</code></a>, <a href="#uniform/1"><code class="inline">uniform/1</code></a> or <a href="#uniform_real/0"><code class="inline">uniform_real/0</code></a> without setting a seed first, <a href="#seed/1"><code class="inline">seed/1</code></a> is called automatically with the default algorithm and creates a non-constant seed.</p>
+<p> The functions with explicit state never use the process dictionary.</p>
+<p> Examples:</p>
+<p> Simple use; creates and seeds the default algorithm with a non-constant seed if not already done:</p>
+<pre><code class="nohighlight makeup erlang"><span class="n">R0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="9298347898-1">(</span><span class="p" data-group-id="9298347898-1">)</span><span class="p">,</span><span class="w">
+</span><span class="n">R1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="9298347898-2">(</span><span class="p" data-group-id="9298347898-2">)</span><span class="p">,</span></code></pre>
+<p> Use a specified algorithm:</p>
+<pre><code class="nohighlight makeup erlang"><span class="p">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">seed</span><span class="p" data-group-id="7188392787-1">(</span><span class="ss">exs928ss</span><span class="p" data-group-id="7188392787-1">)</span><span class="p">,</span><span class="w">
+</span><span class="n">R2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="7188392787-2">(</span><span class="p" data-group-id="7188392787-2">)</span><span class="p">,</span></code></pre>
+<p> Use a specified algorithm with a constant seed:</p>
+<pre><code class="nohighlight makeup erlang"><span class="p">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">seed</span><span class="p" data-group-id="1726517682-1">(</span><span class="ss">exs928ss</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1726517682-2">{</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="mi">123534</span><span class="p">,</span><span class="w"> </span><span class="mi">345345</span><span class="p" data-group-id="1726517682-2">}</span><span class="p" data-group-id="1726517682-1">)</span><span class="p">,</span><span class="w">
+</span><span class="n">R3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="1726517682-3">(</span><span class="p" data-group-id="1726517682-3">)</span><span class="p">,</span></code></pre>
+<p> Use the functional API with a non-constant seed:</p>
+<pre><code class="nohighlight makeup erlang"><span class="n">S0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">seed_s</span><span class="p" data-group-id="1299411156-1">(</span><span class="ss">exsss</span><span class="p" data-group-id="1299411156-1">)</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="1299411156-2">{</span><span class="n">R4</span><span class="p">,</span><span class="w"> </span><span class="n">S1</span><span class="p" data-group-id="1299411156-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform_s</span><span class="p" data-group-id="1299411156-3">(</span><span class="n">S0</span><span class="p" data-group-id="1299411156-3">)</span><span class="p">,</span></code></pre>
+<p> Textbook basic form Box-Muller standard normal deviate</p>
+<pre><code class="nohighlight makeup erlang"><span class="n">R5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform_real</span><span class="p" data-group-id="2439866932-1">(</span><span class="p" data-group-id="2439866932-1">)</span><span class="p">,</span><span class="w">
+</span><span class="n">R6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="2439866932-2">(</span><span class="p" data-group-id="2439866932-2">)</span><span class="p">,</span><span class="w">
+</span><span class="n">SND0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">math</span><span class="p">:</span><span class="nf">sqrt</span><span class="p" data-group-id="2439866932-3">(</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nc">math</span><span class="p">:</span><span class="nf">log</span><span class="p" data-group-id="2439866932-4">(</span><span class="n">R5</span><span class="p" data-group-id="2439866932-4">)</span><span class="p" data-group-id="2439866932-3">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nc">math</span><span class="p">:</span><span class="nf">cos</span><span class="p" data-group-id="2439866932-5">(</span><span class="nc">math</span><span class="p">:</span><span class="nf">pi</span><span class="p" data-group-id="2439866932-6">(</span><span class="p" data-group-id="2439866932-6">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">R6</span><span class="p" data-group-id="2439866932-5">)</span></code></pre>
+<p> Create a standard normal deviate:</p>
+<pre><code class="nohighlight makeup erlang"><span class="p" data-group-id="2101645289-1">{</span><span class="n">SND1</span><span class="p">,</span><span class="w"> </span><span class="n">S2</span><span class="p" data-group-id="2101645289-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">normal_s</span><span class="p" data-group-id="2101645289-2">(</span><span class="n">S1</span><span class="p" data-group-id="2101645289-2">)</span><span class="p">,</span></code></pre>
+<p> Create a normal deviate with mean -3 and variance 0.5:</p>
+<pre><code class="nohighlight makeup erlang"><span class="p" data-group-id="1330521248-1">{</span><span class="n">ND0</span><span class="p">,</span><span class="w"> </span><span class="n">S3</span><span class="p" data-group-id="1330521248-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">normal_s</span><span class="p" data-group-id="1330521248-2">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">S2</span><span class="p" data-group-id="1330521248-2">)</span><span class="p">,</span></code></pre>
+<p>  The builtin random number generator algorithms are not cryptographically strong. If a cryptographically strong random number generator is needed, use something like <code class="inline">crypto:rand_seed/0</code>. </p>
+<p>   For all these generators except <code class="inline">exro928ss</code> and <code class="inline">exsss</code> the lowest bit(s) has got a slightly less random behaviour than all other bits. 1 bit for <code class="inline">exrop</code> (and <code class="inline">exsp</code>), and 3 bits for <code class="inline">exs1024s</code>. See for example the explanation in the  Xoroshiro128+  generator source code: </p>
+<pre><code class="nohighlight makeup erlang"><span class="n">Beside</span><span class="w"> </span><span class="ss">passing</span><span class="w"> </span><span class="n">BigCrush</span><span class="p">,</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">generator</span><span class="w"> </span><span class="ss">passes</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="n">PractRand</span><span class="w"> </span><span class="ss">test</span><span class="w"> </span><span class="ss">suite</span><span class="w">
+</span><span class="ss">up</span><span class="w"> </span><span class="nf">to</span><span class="w"> </span><span class="p" data-group-id="3915250232-1">(</span><span class="ow">and</span><span class="w"> </span><span class="ss">included</span><span class="p" data-group-id="3915250232-1">)</span><span class="w"> </span><span class="mi">16</span><span class="n">TB</span><span class="p">,</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">exception</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">binary</span><span class="w"> </span><span class="ss">rank</span><span class="w"> </span><span class="ss">tests</span><span class="p">,</span><span class="w">
+</span><span class="ss">which</span><span class="w"> </span><span class="ss">fail</span><span class="w"> </span><span class="ss">due</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">lowest</span><span class="w"> </span><span class="ss">bit</span><span class="w"> </span><span class="ss">being</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="n">LFSR</span><span class="p">;</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">other</span><span class="w"> </span><span class="ss">bits</span><span class="w"> </span><span class="ss">pass</span><span class="w"> </span><span class="ss">all</span><span class="w">
+</span><span class="ss">tests</span><span class="p">.</span><span class="w"> </span><span class="n">We</span><span class="w"> </span><span class="ss">suggest</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">use</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">sign</span><span class="w"> </span><span class="ss">test</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">extract</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">random</span><span class="w"> </span><span class="n">Boolean</span><span class="w"> </span><span class="ss">value</span><span class="p">.</span></code></pre>
+<p>  If this is a problem; to generate a boolean with these algorithms use something like this: </p>
+<pre><code class="nohighlight makeup erlang"><span class="p" data-group-id="3350642498-1">(</span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="3350642498-2">(</span><span class="mi">16</span><span class="p" data-group-id="3350642498-2">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p" data-group-id="3350642498-1">)</span></code></pre>
+<p>  And for a general range, with <code class="inline">N = 1</code> for <code class="inline">exrop</code>, and <code class="inline">N = 3</code> for <code class="inline">exs1024s</code>: </p>
+<pre><code class="nohighlight makeup erlang"><span class="p" data-group-id="3679625922-1">(</span><span class="p" data-group-id="3679625922-2">(</span><span class="p" data-group-id="3679625922-3">(</span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="3679625922-4">(</span><span class="n">Range</span><span class="w"> </span><span class="ow">bsl</span><span class="w"> </span><span class="n">N</span><span class="p" data-group-id="3679625922-4">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3679625922-3">)</span><span class="w"> </span><span class="ow">bsr</span><span class="w"> </span><span class="n">N</span><span class="p" data-group-id="3679625922-2">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3679625922-1">)</span></code></pre>
+<p>  The floating point generating functions in this module waste the lowest bits when converting from an integer so they avoid this snag. </p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#export_seed/0">export_seed/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the random number state in an external format. To be used with <a href="#seed/1"><code class="inline">seed/1</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#export_seed_s/1">export_seed_s/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the random number generator state in an external format. To be used with <a href="#seed/1"><code class="inline">seed/1</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#jump/0">jump/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the state after performing jump calculation to the state in the process dictionary.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#jump/1">jump/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the state after performing jump calculation to the given state. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#normal/0">normal/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a standard normal deviate float (that is, the mean is 0 and the standard deviation is 1) and updates the state in the process dictionary.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#normal/2">normal/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a normal N(Mean, Variance) deviate float and updates the state in the process dictionary.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#normal_s/1">normal_s/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns, for a specified state, a standard normal deviate float (that is, the mean is 0 and the standard deviation is 1) and a new state.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#normal_s/3">normal_s/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns, for a specified state, a normal N(Mean, Variance) deviate float and a new state.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#seed/1">seed/1</a>
+  </div>
+    <div class="summary-synopsis"><p>   Seeds random number generation with the specifed algorithm and time-dependent data if <code class="inline">AlgOrStateOrExpState</code> is an algorithm. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#seed/2">seed/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Seeds random number generation with the specified algorithm and integers in the process dictionary and returns the state.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#seed_s/1">seed_s/1</a>
+  </div>
+    <div class="summary-synopsis"><p>  Seeds random number generation with the specifed algorithm and time-dependent data if <code class="inline">AlgOrStateOrExpState</code> is an algorithm. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#seed_s/2">seed_s/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Seeds random number generation with the specified algorithm and integers and returns the state.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#uniform/0">uniform/0</a>
+  </div>
+    <div class="summary-synopsis"><p>  Returns a random float uniformly distributed in the value range <code class="inline">0.0 =&lt; ``X`` ``&lt; 1.0</code> and updates the state in the process dictionary. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#uniform/1">uniform/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns, for a specified integer <code class="inline">N`` &gt;= 1</code>, a random integer uniformly distributed in the value range <code class="inline">1 =&lt; ``X`` =``&lt; ``N</code> and updates the state in the process dictionary.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#uniform_real/0">uniform_real/0</a>
+  </div>
+    <div class="summary-synopsis"><p>  Returns a random float uniformly distributed in the value range <code class="inline">DBL_MIN =&lt; ``X`` ``&lt; 1.0</code> and updates the state in the process dictionary. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#uniform_real_s/1">uniform_real_s/1</a>
+  </div>
+    <div class="summary-synopsis"><p>  Returns, for a specified state, a random float uniformly distributed in the value range <code class="inline">DBL_MIN =&lt; ``X`` ``&lt; 1.0</code> and updates the state in the process dictionary. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#uniform_s/1">uniform_s/1</a>
+  </div>
+    <div class="summary-synopsis"><p>  Returns, for a specified state, random float uniformly distributed in the value range <code class="inline">0.0 =&lt; ``X`` ``&lt; 1.0</code> and a new state. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#uniform_s/2">uniform_s/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns, for a specified integer <code class="inline">N`` &gt;= 1</code> and a state, a random integer uniformly distributed in the value range <code class="inline">1 =&lt; ``X`` =``&lt; ``N</code> and a new state.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="export_seed/0">
+  <div class="detail-header">
+    <a href="#export_seed/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">export_seed/0</h1>
+      <div class="specs">
+          <pre>export_seed() :: :undefined | export_state()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the random number state in an external format. To be used with <a href="#seed/1"><code class="inline">seed/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="export_seed_s/1">
+  <div class="detail-header">
+    <a href="#export_seed_s/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">export_seed_s/1</h1>
+      <div class="specs">
+          <pre>export_seed_s(state :: state()) :: export_state()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the random number generator state in an external format. To be used with <a href="#seed/1"><code class="inline">seed/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="jump/0">
+  <div class="detail-header">
+    <a href="#jump/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">jump/0</h1>
+      <div class="specs">
+          <pre>jump() :: newState :: state()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the state after performing jump calculation to the state in the process dictionary.</p>
+<p> This function generates a <code class="inline">not_implemented</code> error exception when the jump function is not implemented for the algorithm specified in the state in the process dictionary.</p>
+  </section>
+</section>
+<section class="detail" id="jump/1">
+  <div class="detail-header">
+    <a href="#jump/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">jump/1</h1>
+      <div class="specs">
+          <pre>jump(state()) :: newState :: state()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the state after performing jump calculation to the given state. </p>
+<p> This function generates a <code class="inline">not_implemented</code> error exception when the jump function is not implemented for the algorithm specified in the state.</p>
+  </section>
+</section>
+<section class="detail" id="normal/0">
+  <div class="detail-header">
+    <a href="#normal/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">normal/0</h1>
+      <div class="specs">
+          <pre>normal() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a standard normal deviate float (that is, the mean is 0 and the standard deviation is 1) and updates the state in the process dictionary.</p>
+  </section>
+</section>
+<section class="detail" id="normal/2">
+  <div class="detail-header">
+    <a href="#normal/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">normal/2</h1>
+      <div class="specs">
+          <pre>normal(mean :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(), variance :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a normal N(Mean, Variance) deviate float and updates the state in the process dictionary.</p>
+  </section>
+</section>
+<section class="detail" id="normal_s/1">
+  <div class="detail-header">
+    <a href="#normal_s/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">normal_s/1</h1>
+      <div class="specs">
+          <pre>normal_s(state :: state()) :: {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), newState :: state()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns, for a specified state, a standard normal deviate float (that is, the mean is 0 and the standard deviation is 1) and a new state.</p>
+  </section>
+</section>
+<section class="detail" id="normal_s/3">
+  <div class="detail-header">
+    <a href="#normal_s/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">normal_s/3</h1>
+      <div class="specs">
+          <pre>normal_s(mean :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(), variance :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(), state()) ::
+  {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), newS :: state()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns, for a specified state, a normal N(Mean, Variance) deviate float and a new state.</p>
+  </section>
+</section>
+<section class="detail" id="seed/1">
+  <div class="detail-header">
+    <a href="#seed/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">seed/1</h1>
+      <div class="specs">
+          <pre>seed(algOrStateOrExpState :: builtin_alg() | state() | export_state()) ::
+  state()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>   Seeds random number generation with the specifed algorithm and time-dependent data if <code class="inline">AlgOrStateOrExpState</code> is an algorithm. </p>
+<p> Otherwise recreates the exported seed in the process dictionary, and returns the state. See also <a href="#export_seed/0"><code class="inline">export_seed/0</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="seed/2">
+  <div class="detail-header">
+    <a href="#seed/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">seed/2</h1>
+      <div class="specs">
+          <pre>seed(alg :: builtin_alg(), seed :: seed()) :: state()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Seeds random number generation with the specified algorithm and integers in the process dictionary and returns the state.</p>
+  </section>
+</section>
+<section class="detail" id="seed_s/1">
+  <div class="detail-header">
+    <a href="#seed_s/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">seed_s/1</h1>
+      <div class="specs">
+          <pre>seed_s(algOrStateOrExpState :: builtin_alg() | state() | export_state()) ::
+  state()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Seeds random number generation with the specifed algorithm and time-dependent data if <code class="inline">AlgOrStateOrExpState</code> is an algorithm. </p>
+<p> Otherwise recreates the exported seed and returns the state. See also  <a href="#export_seed/0"><code class="inline">export_seed/0</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="seed_s/2">
+  <div class="detail-header">
+    <a href="#seed_s/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">seed_s/2</h1>
+      <div class="specs">
+          <pre>seed_s(alg :: builtin_alg(), seed :: seed()) :: state()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Seeds random number generation with the specified algorithm and integers and returns the state.</p>
+  </section>
+</section>
+<section class="detail" id="uniform/0">
+  <div class="detail-header">
+    <a href="#uniform/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">uniform/0</h1>
+      <div class="specs">
+          <pre>uniform() :: x :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Returns a random float uniformly distributed in the value range <code class="inline">0.0 =&lt; ``X`` ``&lt; 1.0</code> and updates the state in the process dictionary. </p>
+<p>  The generated numbers are on the form N * 2.0^(-53), that is; equally spaced in the interval. </p>
+<p>   This function may return exactly <code class="inline">0.0</code> which can be fatal for certain applications. If that is undesired you can use <code class="inline">(1.0 - rand:uniform())</code> to get the interval <code class="inline">0.0 &lt; ``X`` =``&lt; 1.0</code>, or instead use <a href="#uniform_real/0"><code class="inline">uniform_real/0</code></a>. </p>
+<p>  If neither endpoint is desired you can test and re-try like this: </p>
+<pre><code class="nohighlight makeup erlang"><span class="nf">my_uniform</span><span class="p" data-group-id="4631606102-1">(</span><span class="p" data-group-id="4631606102-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+    </span><span class="k">case</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="4631606102-2">(</span><span class="p" data-group-id="4631606102-2">)</span><span class="w"> </span><span class="k">of</span><span class="w">
+        </span><span class="mf">0.0</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nf">my_uniform</span><span class="p" data-group-id="4631606102-3">(</span><span class="p" data-group-id="4631606102-3">)</span><span class="p">;</span><span class="w">
+    </span><span class="n">X</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">X</span><span class="w">
+    </span><span class="k">end</span><span class="w">
+</span><span class="k">end</span><span class="p">.</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="uniform/1">
+  <div class="detail-header">
+    <a href="#uniform/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">uniform/1</h1>
+      <div class="specs">
+          <pre>uniform(n :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()) :: x :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns, for a specified integer <code class="inline">N`` &gt;= 1</code>, a random integer uniformly distributed in the value range <code class="inline">1 =&lt; ``X`` =``&lt; ``N</code> and updates the state in the process dictionary.</p>
+  </section>
+</section>
+<section class="detail" id="uniform_real/0">
+  <div class="detail-header">
+    <a href="#uniform_real/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">uniform_real/0</h1>
+      <div class="specs">
+          <pre>uniform_real() :: x :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Returns a random float uniformly distributed in the value range <code class="inline">DBL_MIN =&lt; ``X`` ``&lt; 1.0</code> and updates the state in the process dictionary. </p>
+<p>  Conceptually, a random real number <code class="inline">R</code> is generated from the interval <code class="inline">0 =&lt; R &lt; 1</code> and then the closest rounded down normalized number in the IEEE 754 Double precision format is returned. </p>
+<p>   The generated numbers from this function has got better granularity for small numbers than the regular <a href="#uniform/0"><code class="inline">uniform/0</code></a> because all bits in the mantissa are random. This property, in combination with the fact that exactly zero is never returned is useful for algoritms doing for example <code class="inline">1.0 / ``X</code> or <code class="inline">math:log(``X``)</code>. </p>
+<p>   See <a href="#uniform_real_s/1"><code class="inline">uniform_real_s/1</code></a> for more explanation. </p>
+  </section>
+</section>
+<section class="detail" id="uniform_real_s/1">
+  <div class="detail-header">
+    <a href="#uniform_real_s/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">uniform_real_s/1</h1>
+      <div class="specs">
+          <pre>uniform_real_s(state :: state()) :: {x :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), newState :: state()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Returns, for a specified state, a random float uniformly distributed in the value range <code class="inline">DBL_MIN =&lt; ``X`` ``&lt; 1.0</code> and updates the state in the process dictionary. </p>
+<p>  Conceptually, a random real number <code class="inline">R</code> is generated from the interval <code class="inline">0 =&lt; R &lt; 1</code> and then the closest rounded down normalized number in the IEEE 754 Double precision format is returned. </p>
+<p>   The generated numbers from this function has got better granularity for small numbers than the regular <a href="#uniform_s/1"><code class="inline">uniform_s/1</code></a> because all bits in the mantissa are random. This property, in combination with the fact that exactly zero is never returned is useful for algoritms doing for example <code class="inline">1.0 / ``X</code> or <code class="inline">math:log(``X``)</code>. </p>
+<p>   The concept implicates that the probability to get exactly zero is extremely low; so low that this function is in fact guaranteed to never return zero. The smallest number that it might return is <code class="inline">DBL_MIN</code>, which is 2.0^(-1022). </p>
+<p>  The value range stated at the top of this function description is technically correct, but <code class="inline">0.0 =&lt; ``X`` ``&lt; 1.0</code> is a better description of the generated numbers&#39; statistical distribution. Except that exactly 0.0 is never returned, which is not possible to observe statistically. </p>
+<p>  For example; for all sub ranges <code class="inline">N*2.0^(-53) =&lt; X &lt; (N+1)*2.0^(-53)</code> where <code class="inline">0 =&lt; integer(N) &lt; 2.0^53</code> the probability is the same. Compare that with the form of the numbers generated by <a href="#uniform_s/1"><code class="inline">uniform_s/1</code></a>. </p>
+<p>  Having to generate extra random bits for small numbers costs a little performance. This function is about 20% slower than the regular <a href="#uniform_s/1"><code class="inline">uniform_s/1</code></a> </p>
+  </section>
+</section>
+<section class="detail" id="uniform_s/1">
+  <div class="detail-header">
+    <a href="#uniform_s/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">uniform_s/1</h1>
+      <div class="specs">
+          <pre>uniform_s(state :: state()) :: {x :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), newState :: state()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Returns, for a specified state, random float uniformly distributed in the value range <code class="inline">0.0 =&lt; ``X`` ``&lt; 1.0</code> and a new state. </p>
+<p>  The generated numbers are on the form N * 2.0^(-53), that is; equally spaced in the interval. </p>
+<p>   This function may return exactly <code class="inline">0.0</code> which can be fatal for certain applications. If that is undesired you can use <code class="inline">(1.0 - rand:uniform(State))</code> to get the interval <code class="inline">0.0 &lt; ``X`` =``&lt; 1.0</code>, or instead use <a href="#uniform_real_s/1"><code class="inline">uniform_real_s/1</code></a>. </p>
+<p>  If neither endpoint is desired you can test and re-try like this: </p>
+<pre><code class="nohighlight makeup erlang"><span class="nf">my_uniform</span><span class="p" data-group-id="2385309659-1">(</span><span class="n">State</span><span class="p" data-group-id="2385309659-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+    </span><span class="k">case</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="2385309659-2">(</span><span class="n">State</span><span class="p" data-group-id="2385309659-2">)</span><span class="w"> </span><span class="k">of</span><span class="w">
+        </span><span class="p" data-group-id="2385309659-3">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">NewState</span><span class="p" data-group-id="2385309659-3">}</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nf">my_uniform</span><span class="p" data-group-id="2385309659-4">(</span><span class="n">NewState</span><span class="p" data-group-id="2385309659-4">)</span><span class="p">;</span><span class="w">
+    </span><span class="n">Result</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Result</span><span class="w">
+    </span><span class="k">end</span><span class="w">
+</span><span class="k">end</span><span class="p">.</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="uniform_s/2">
+  <div class="detail-header">
+    <a href="#uniform_s/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">uniform_s/2</h1>
+      <div class="specs">
+          <pre>uniform_s(n :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), state :: state()) ::
+  {x :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), newState :: state()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns, for a specified integer <code class="inline">N`` &gt;= 1</code> and a state, a random integer uniformly distributed in the value range <code class="inline">1 =&lt; ``X`` =``&lt; ``N</code> and a new state.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

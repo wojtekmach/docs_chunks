@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>array — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+array      </h1>
+
+
+        <section id="moduledoc">
+<p> Functional, extendible arrays. Arrays can have fixed size, or can grow automatically as needed. A default value is used for entries that have not been explicitly set.</p>
+<p> Arrays uses zero-based indexing. This is a deliberate design choice and differs from other Erlang data structures, for example, tuples.</p>
+<p> Unless specified by the user when the array is created, the default value is the atom <code class="inline">undefined</code>. There is no difference between an unset entry and an entry that has been explicitly set to the same value as the default one (compare <a href="#reset/2"><code class="inline">reset/2</code></a>). If you need to differentiate between unset and set entries, ensure that the default value cannot be confused with the values of set entries.</p>
+<p> The array never shrinks automatically. If an index <code class="inline">I</code> has been used to set an entry successfully, all indices in the range [0,<code class="inline">I</code>] stay accessible unless the array size is explicitly changed by calling <a href="#resize/2"><code class="inline">resize/2</code></a>.</p>
+<p> Examples:</p>
+<p> Create a fixed-size array with entries 0-9 set to <code class="inline">undefined</code>:</p>
+<pre><code class="nohighlight makeup erlang"><span class="n">A0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="8513350742-1">(</span><span class="mi">10</span><span class="p" data-group-id="8513350742-1">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">size</span><span class="p" data-group-id="8513350742-2">(</span><span class="n">A0</span><span class="p" data-group-id="8513350742-2">)</span><span class="p">.</span></code></pre>
+<p> Create an extendible array and set entry 17 to <code class="inline">true</code>, causing the array to grow automatically:</p>
+<pre><code class="nohighlight makeup erlang"><span class="n">A1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">set</span><span class="p" data-group-id="6063793265-1">(</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="6063793265-2">(</span><span class="p" data-group-id="6063793265-2">)</span><span class="p" data-group-id="6063793265-1">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">size</span><span class="p" data-group-id="6063793265-3">(</span><span class="n">A1</span><span class="p" data-group-id="6063793265-3">)</span><span class="p">.</span></code></pre>
+<p> Read back a stored value:</p>
+<pre><code class="nohighlight makeup erlang"><span class="ss">true</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="9380052433-1">(</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="n">A1</span><span class="p" data-group-id="9380052433-1">)</span><span class="p">.</span></code></pre>
+<p> Accessing an unset entry returns default value:</p>
+<pre><code class="nohighlight makeup erlang"><span class="ss">undefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="6357094399-1">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">A1</span><span class="p" data-group-id="6357094399-1">)</span></code></pre>
+<p> Accessing an entry beyond the last set entry also returns the default value, if the array does not have fixed size:</p>
+<pre><code class="nohighlight makeup erlang"><span class="ss">undefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="6232307962-1">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="n">A1</span><span class="p" data-group-id="6232307962-1">)</span><span class="p">.</span></code></pre>
+<p> &quot;Sparse&quot; functions ignore default-valued entries:</p>
+<pre><code class="nohighlight makeup erlang"><span class="n">A2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">set</span><span class="p" data-group-id="7140893327-1">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="ss">false</span><span class="p">,</span><span class="w"> </span><span class="n">A1</span><span class="p" data-group-id="7140893327-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="7140893327-2">[</span><span class="p" data-group-id="7140893327-3">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="ss">false</span><span class="p" data-group-id="7140893327-3">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7140893327-4">{</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="ss">true</span><span class="p" data-group-id="7140893327-4">}</span><span class="p" data-group-id="7140893327-2">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">sparse_to_orddict</span><span class="p" data-group-id="7140893327-5">(</span><span class="n">A2</span><span class="p" data-group-id="7140893327-5">)</span><span class="p">.</span></code></pre>
+<p> An extendible array can be made fixed-size later:</p>
+<pre><code class="nohighlight makeup erlang"><span class="n">A3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">fix</span><span class="p" data-group-id="7713393100-1">(</span><span class="n">A2</span><span class="p" data-group-id="7713393100-1">)</span><span class="p">.</span></code></pre>
+<p> A fixed-size array does not grow automatically and does not allow accesses beyond the last set entry:</p>
+<pre><code class="nohighlight makeup erlang"><span class="p" data-group-id="7879869391-1">{</span><span class="ss">&#39;EXIT&#39;</span><span class="p">,</span><span class="p" data-group-id="7879869391-2">{</span><span class="ss">badarg</span><span class="p">,</span><span class="p">_</span><span class="p" data-group-id="7879869391-2">}</span><span class="p" data-group-id="7879869391-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7879869391-3">(</span><span class="k">catch</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">set</span><span class="p" data-group-id="7879869391-4">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w"> </span><span class="n">A3</span><span class="p" data-group-id="7879869391-4">)</span><span class="p" data-group-id="7879869391-3">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="7879869391-5">{</span><span class="ss">&#39;EXIT&#39;</span><span class="p">,</span><span class="p" data-group-id="7879869391-6">{</span><span class="ss">badarg</span><span class="p">,</span><span class="p">_</span><span class="p" data-group-id="7879869391-6">}</span><span class="p" data-group-id="7879869391-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7879869391-7">(</span><span class="k">catch</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="7879869391-8">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="n">A3</span><span class="p" data-group-id="7879869391-8">)</span><span class="p" data-group-id="7879869391-7">)</span><span class="p">.</span></code></pre>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#default/1">default/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Gets the value used for uninitialized entries.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fix/1">fix/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Fixes the array size. This prevents it from growing automatically upon insertion.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#foldl/3">foldl/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Folds the array elements using the specified function and initial accumulator value. The elements are visited in order from the lowest index to the highest. If <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is not a function, the call fails with reason <code class="inline">badarg</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#foldr/3">foldr/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Folds the array elements right-to-left using the specified function and initial accumulator value. The elements are visited in order from the highest index to the lowest. If <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is not a function, the call fails with reason <code class="inline">badarg</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#from_list/1">from_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Equivalent to <code class="inline">from_list(``List``, undefined)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#from_list/2">from_list/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts a list to an extendible array. <code class="inline">Default</code> is used as the value for uninitialized entries of the array. If <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> is not a proper list, the call fails with reason <code class="inline">badarg</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#from_orddict/1">from_orddict/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Equivalent to <code class="inline">from_orddict(``Orddict``, undefined)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#from_orddict/2">from_orddict/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts an ordered list of pairs <code class="inline">{Index, ``Value``}</code> to a corresponding extendible array. <code class="inline">Default</code> is used as the value for uninitialized entries of the array. If <code class="inline">Orddict</code> is not a proper, ordered list of pairs whose first elements are non-negative integers, the call fails with reason <code class="inline">badarg</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get/2">get/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Gets the value of entry <code class="inline">I</code>. If <code class="inline">I</code> is not a non-negative integer, or if the array has fixed size and <code class="inline">I</code> is larger than the maximum index, the call fails with reason <code class="inline">badarg</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_array/1">is_array/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">X</code> is an array, otherwise <code class="inline">false</code>. Notice that the check is only shallow, as there is no guarantee that <code class="inline">X</code> is a well-formed array representation even if this function returns <code class="inline">true</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_fix/1">is_fix/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Checks if the array has fixed size. Returns <code class="inline">true</code> if the array is fixed, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#map/2">map/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Maps the specified function onto each array element. The elements are visited in order from the lowest index to the highest. If <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is not a function, the call fails with reason <code class="inline">badarg</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/0">new/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Creates a new, extendible array with initial size zero.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/1">new/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Creates a new array according to the specified otions. By default, the array is extendible and has initial size zero. Array indices start at <code class="inline">0</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/2">new/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Creates a new array according to the specified size and options. If <code class="inline">Size</code> is not a non-negative integer, the call fails with reason <code class="inline">badarg</code>. By default, the array has fixed size. Notice that any size specifications in <code class="inline">Options</code> override parameter <code class="inline">Size</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#relax/1">relax/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Makes the array resizable. (Reverses the effects of <a href="#fix/1"><code class="inline">fix/1</code></a>.)</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reset/2">reset/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Resets entry <code class="inline">I</code> to the default value for the array. If the value of entry <code class="inline">I</code> is the default value, the array is returned unchanged. Reset never changes the array size. Shrinking can be done explicitly by calling <a href="#resize/2"><code class="inline">resize/2</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resize/1">resize/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Changes the array size to that reported by <a href="#sparse_size/1"><code class="inline">sparse_size/1</code></a>. If the specified array has fixed size, also the resulting array has fixed size.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resize/2">resize/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Change the array size. If <code class="inline">Size</code> is not a non-negative integer, the call fails with reason <code class="inline">badarg</code>. If the specified array has fixed size, also the resulting array has fixed size.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set/3">set/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Sets entry <code class="inline">I</code> of the array to <code class="inline">Value</code>. If <code class="inline">I</code> is not a non-negative integer, or if the array has fixed size and <code class="inline">I</code> is larger than the maximum index, the call fails with reason <code class="inline">badarg</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#size/1">size/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Gets the number of entries in the array. Entries are numbered from <code class="inline">0</code> to <code class="inline">size(``Array``)-1</code>. Hence, this is also the index of the first entry that is guaranteed to not have been previously set.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sparse_foldl/3">sparse_foldl/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Folds the array elements using the specified function and initial accumulator value, skipping default-valued entries. The elements are visited in order from the lowest index to the highest. If <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is not a function, the call fails with reason <code class="inline">badarg</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sparse_foldr/3">sparse_foldr/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Folds the array elements right-to-left using the specified function and initial accumulator value, skipping default-valued entries. The elements are visited in order from the highest index to the lowest. If <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is not a function, the call fails with reason <code class="inline">badarg</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sparse_map/2">sparse_map/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Maps the specified function onto each array element, skipping default-valued entries. The elements are visited in order from the lowest index to the highest. If <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is not a function, the call fails with reason <code class="inline">badarg</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sparse_size/1">sparse_size/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Gets the number of entries in the array up until the last non-default-valued entry. That is, returns <code class="inline">I+1</code> if <code class="inline">I</code> is the last non-default-valued entry in the array, or zero if no such entry exists.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sparse_to_list/1">sparse_to_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts the array to a list, skipping default-valued entries.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sparse_to_orddict/1">sparse_to_orddict/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts the array to an ordered list of pairs <code class="inline">{Index, ``Value``}</code>, skipping default-valued entries.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_list/1">to_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts the array to a list.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_orddict/1">to_orddict/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts the array to an ordered list of pairs <code class="inline">{Index, ``Value``}</code>.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="default/1">
+  <div class="detail-header">
+    <a href="#default/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">default/1</h1>
+      <div class="specs">
+          <pre>default(array :: array(type)) :: value :: type</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Gets the value used for uninitialized entries.</p>
+<p> See also <a href="#new/2"><code class="inline">new/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="fix/1">
+  <div class="detail-header">
+    <a href="#fix/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fix/1</h1>
+      <div class="specs">
+          <pre>fix(array :: array(type)) :: array(type)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Fixes the array size. This prevents it from growing automatically upon insertion.</p>
+<p> See also <a href="#set/3"><code class="inline">set/3</code></a> and <a href="#relax/1"><code class="inline">relax/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="foldl/3">
+  <div class="detail-header">
+    <a href="#foldl/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">foldl/3</h1>
+      <div class="specs">
+          <pre>foldl(function, initialAcc :: a, array :: array(type)) :: b
+when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Folds the array elements using the specified function and initial accumulator value. The elements are visited in order from the lowest index to the highest. If <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is not a function, the call fails with reason <code class="inline">badarg</code>.</p>
+<p> See also <a href="#foldr/3"><code class="inline">foldr/3</code></a>, <a href="#map/2"><code class="inline">map/2</code></a>, <a href="#sparse_foldl/3"><code class="inline">sparse_foldl/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="foldr/3">
+  <div class="detail-header">
+    <a href="#foldr/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">foldr/3</h1>
+      <div class="specs">
+          <pre>foldr(function, initialAcc :: a, array :: array(type)) :: b
+when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Folds the array elements right-to-left using the specified function and initial accumulator value. The elements are visited in order from the highest index to the lowest. If <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is not a function, the call fails with reason <code class="inline">badarg</code>.</p>
+<p> See also <a href="#foldl/3"><code class="inline">foldl/3</code></a>, <a href="#map/2"><code class="inline">map/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="from_list/1">
+  <div class="detail-header">
+    <a href="#from_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_list/1</h1>
+      <div class="specs">
+          <pre>from_list(list :: [value :: type]) :: array(type)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Equivalent to <code class="inline">from_list(``List``, undefined)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="from_list/2">
+  <div class="detail-header">
+    <a href="#from_list/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_list/2</h1>
+      <div class="specs">
+          <pre>from_list(list :: [value :: type], default :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: array(type)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts a list to an extendible array. <code class="inline">Default</code> is used as the value for uninitialized entries of the array. If <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> is not a proper list, the call fails with reason <code class="inline">badarg</code>.</p>
+<p> See also <a href="#new/2"><code class="inline">new/2</code></a>, <a href="#to_list/1"><code class="inline">to_list/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="from_orddict/1">
+  <div class="detail-header">
+    <a href="#from_orddict/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_orddict/1</h1>
+      <div class="specs">
+          <pre>from_orddict(orddict :: indx_pairs(value :: type)) :: array(type)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Equivalent to <code class="inline">from_orddict(``Orddict``, undefined)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="from_orddict/2">
+  <div class="detail-header">
+    <a href="#from_orddict/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_orddict/2</h1>
+      <div class="specs">
+          <pre>from_orddict(orddict :: indx_pairs(value :: type), default :: type) ::
+  array(type)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts an ordered list of pairs <code class="inline">{Index, ``Value``}</code> to a corresponding extendible array. <code class="inline">Default</code> is used as the value for uninitialized entries of the array. If <code class="inline">Orddict</code> is not a proper, ordered list of pairs whose first elements are non-negative integers, the call fails with reason <code class="inline">badarg</code>.</p>
+<p> See also <a href="#new/2"><code class="inline">new/2</code></a>, <a href="#to_orddict/1"><code class="inline">to_orddict/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="get/2">
+  <div class="detail-header">
+    <a href="#get/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get/2</h1>
+      <div class="specs">
+          <pre>get(i :: array_indx(), array :: array(type)) :: value :: type</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Gets the value of entry <code class="inline">I</code>. If <code class="inline">I</code> is not a non-negative integer, or if the array has fixed size and <code class="inline">I</code> is larger than the maximum index, the call fails with reason <code class="inline">badarg</code>.</p>
+<p> If the array does not have fixed size, the default value for any index <code class="inline">I</code> greater than <code class="inline">size(``Array``)-1</code> is returned.</p>
+<p> See also <a href="#set/3"><code class="inline">set/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="is_array/1">
+  <div class="detail-header">
+    <a href="#is_array/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_array/1</h1>
+      <div class="specs">
+          <pre>is_array(x :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">X</code> is an array, otherwise <code class="inline">false</code>. Notice that the check is only shallow, as there is no guarantee that <code class="inline">X</code> is a well-formed array representation even if this function returns <code class="inline">true</code>.</p>
+  </section>
+</section>
+<section class="detail" id="is_fix/1">
+  <div class="detail-header">
+    <a href="#is_fix/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_fix/1</h1>
+      <div class="specs">
+          <pre>is_fix(array :: array()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Checks if the array has fixed size. Returns <code class="inline">true</code> if the array is fixed, otherwise <code class="inline">false</code>.</p>
+<p> See also <a href="#fix/1"><code class="inline">fix/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="map/2">
+  <div class="detail-header">
+    <a href="#map/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">map/2</h1>
+      <div class="specs">
+          <pre>map(function, array :: array(type1)) :: array(type2)
+when function: (index :: array_indx(), type1 -> type2)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Maps the specified function onto each array element. The elements are visited in order from the lowest index to the highest. If <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is not a function, the call fails with reason <code class="inline">badarg</code>.</p>
+<p> See also <a href="#foldl/3"><code class="inline">foldl/3</code></a>, <a href="#foldr/3"><code class="inline">foldr/3</code></a>, <a href="#sparse_map/2"><code class="inline">sparse_map/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="new/0">
+  <div class="detail-header">
+    <a href="#new/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new/0</h1>
+      <div class="specs">
+          <pre>new() :: array()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Creates a new, extendible array with initial size zero.</p>
+<p> See also <a href="#new/1"><code class="inline">new/1</code></a>, <a href="#new/2"><code class="inline">new/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="new/1">
+  <div class="detail-header">
+    <a href="#new/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new/1</h1>
+      <div class="specs">
+          <pre>new(options :: array_opts()) :: array()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Creates a new array according to the specified otions. By default, the array is extendible and has initial size zero. Array indices start at <code class="inline">0</code>.</p>
+<p> <code class="inline">Options</code> is a single term or a list of terms, selected from the following:</p>
+<p>  <code class="inline">N::integer() &gt;= 0</code> or <code class="inline">{size, N::integer() &gt;= 0}</code>    * Specifies the initial array size; this also implies <code class="inline">{fixed, true}</code>. If <code class="inline">N</code> is not a non-negative integer, the call fails with reason <code class="inline">badarg</code>.</p>
+<p> <code class="inline">fixed</code> or <code class="inline">{fixed, true}</code>   * Creates a fixed-size array. See also <a href="#fix/1"><code class="inline">fix/1</code></a>.</p>
+<p> <code class="inline">{fixed, false}</code>   * Creates an extendible (non-fixed-size) array.</p>
+<p> <code class="inline">{default, Value}</code>   * Sets the default value for the array to <code class="inline">Value</code>.</p>
+<p>   Options are processed in the order they occur in the list, that is, later options have higher precedence.</p>
+<p> The default value is used as the value of uninitialized entries, and cannot be changed once the array has been created.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="nc">array</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="8246954756-1">(</span><span class="mi">100</span><span class="p" data-group-id="8246954756-1">)</span></code></pre>
+<p> creates a fixed-size array of size 100.</p>
+<pre><code class="nohighlight makeup erlang"><span class="nc">array</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="5669117153-1">(</span><span class="p" data-group-id="5669117153-2">{</span><span class="ss">default</span><span class="p">,</span><span class="mi">0</span><span class="p" data-group-id="5669117153-2">}</span><span class="p" data-group-id="5669117153-1">)</span></code></pre>
+<p> creates an empty, extendible array whose default value is <code class="inline">0</code>. </p>
+<pre><code class="nohighlight makeup erlang"><span class="nc">array</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="9455231792-1">(</span><span class="p" data-group-id="9455231792-2">[</span><span class="p" data-group-id="9455231792-3">{</span><span class="nb">size</span><span class="p">,</span><span class="mi">10</span><span class="p" data-group-id="9455231792-3">}</span><span class="p">,</span><span class="p" data-group-id="9455231792-4">{</span><span class="ss">fixed</span><span class="p">,</span><span class="ss">false</span><span class="p" data-group-id="9455231792-4">}</span><span class="p">,</span><span class="p" data-group-id="9455231792-5">{</span><span class="ss">default</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p" data-group-id="9455231792-5">}</span><span class="p" data-group-id="9455231792-2">]</span><span class="p" data-group-id="9455231792-1">)</span></code></pre>
+<p> creates an extendible array with initial size 10 whose default value is <code class="inline">-1</code>.</p>
+<p> See also <a href="#fix/1"><code class="inline">fix/1</code></a>, <a href="#from_list/2"><code class="inline">from_list/2</code></a>, <a href="#get/2"><code class="inline">get/2</code></a>, <a href="#new/0"><code class="inline">new/0</code></a>, <a href="#new/2"><code class="inline">new/2</code></a>, <a href="#set/3"><code class="inline">set/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="new/2">
+  <div class="detail-header">
+    <a href="#new/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new/2</h1>
+      <div class="specs">
+          <pre>new(size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), options :: array_opts()) :: array()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Creates a new array according to the specified size and options. If <code class="inline">Size</code> is not a non-negative integer, the call fails with reason <code class="inline">badarg</code>. By default, the array has fixed size. Notice that any size specifications in <code class="inline">Options</code> override parameter <code class="inline">Size</code>.</p>
+<p> If <code class="inline">Options</code> is a list, this is equivalent to <code class="inline">new([{size, ``Size``} | ``Options``]</code>, otherwise it is equivalent to `new([{size, <code class="inline">Size</code>} |</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">      </span><span class="p" data-group-id="0308382475-1">[</span><span class="err">`</span><span class="err">`</span><span class="n">Options</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0308382475-1">]</span><span class="p">]</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">However</span><span class="p">,</span><span class="w"> </span><span class="ss">using</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="ss">directly</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">more</span><span class="w"> </span><span class="ss">efficient</span><span class="p">.</span></code></pre>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="nc">array</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="2904002429-1">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2904002429-2">{</span><span class="ss">default</span><span class="p">,</span><span class="mi">0</span><span class="p" data-group-id="2904002429-2">}</span><span class="p" data-group-id="2904002429-1">)</span></code></pre>
+<p> creates a fixed-size array of size 100, whose default value is <code class="inline">0</code>.</p>
+<p> See also <a href="#new/1"><code class="inline">new/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="relax/1">
+  <div class="detail-header">
+    <a href="#relax/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">relax/1</h1>
+      <div class="specs">
+          <pre>relax(array :: array(type)) :: array(type)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Makes the array resizable. (Reverses the effects of <a href="#fix/1"><code class="inline">fix/1</code></a>.)</p>
+<p> See also <a href="#fix/1"><code class="inline">fix/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="reset/2">
+  <div class="detail-header">
+    <a href="#reset/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reset/2</h1>
+      <div class="specs">
+          <pre>reset(i :: array_indx(), array :: array(type)) :: array(type)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Resets entry <code class="inline">I</code> to the default value for the array. If the value of entry <code class="inline">I</code> is the default value, the array is returned unchanged. Reset never changes the array size. Shrinking can be done explicitly by calling <a href="#resize/2"><code class="inline">resize/2</code></a>.</p>
+<p> If <code class="inline">I</code> is not a non-negative integer, or if the array has fixed size and <code class="inline">I</code> is larger than the maximum index, the call fails with reason <code class="inline">badarg</code>; compare <a href="#set/3"><code class="inline">set/3</code></a></p>
+<p> See also <a href="#new/2"><code class="inline">new/2</code></a>, <a href="#set/3"><code class="inline">set/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="resize/1">
+  <div class="detail-header">
+    <a href="#resize/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resize/1</h1>
+      <div class="specs">
+          <pre>resize(array :: array(type)) :: array(type)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Changes the array size to that reported by <a href="#sparse_size/1"><code class="inline">sparse_size/1</code></a>. If the specified array has fixed size, also the resulting array has fixed size.</p>
+<p> See also <a href="#resize/2"><code class="inline">resize/2</code></a>, <a href="#sparse_size/1"><code class="inline">sparse_size/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="resize/2">
+  <div class="detail-header">
+    <a href="#resize/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resize/2</h1>
+      <div class="specs">
+          <pre>resize(size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), array :: array(type)) :: array(type)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Change the array size. If <code class="inline">Size</code> is not a non-negative integer, the call fails with reason <code class="inline">badarg</code>. If the specified array has fixed size, also the resulting array has fixed size.</p>
+  </section>
+</section>
+<section class="detail" id="set/3">
+  <div class="detail-header">
+    <a href="#set/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set/3</h1>
+      <div class="specs">
+          <pre>set(i :: array_indx(), value :: type, array :: array(type)) :: array(type)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Sets entry <code class="inline">I</code> of the array to <code class="inline">Value</code>. If <code class="inline">I</code> is not a non-negative integer, or if the array has fixed size and <code class="inline">I</code> is larger than the maximum index, the call fails with reason <code class="inline">badarg</code>.</p>
+<p> If the array does not have fixed size, and <code class="inline">I</code> is greater than <code class="inline">size(``Array``)-1</code>, the array grows to size <code class="inline">I``+1</code>.</p>
+<p> See also <a href="#get/2"><code class="inline">get/2</code></a>, <a href="#reset/2"><code class="inline">reset/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="size/1">
+  <div class="detail-header">
+    <a href="#size/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">size/1</h1>
+      <div class="specs">
+          <pre>size(array :: array()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Gets the number of entries in the array. Entries are numbered from <code class="inline">0</code> to <code class="inline">size(``Array``)-1</code>. Hence, this is also the index of the first entry that is guaranteed to not have been previously set.</p>
+<p> See also <a href="#set/3"><code class="inline">set/3</code></a>, <a href="#sparse_size/1"><code class="inline">sparse_size/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="sparse_foldl/3">
+  <div class="detail-header">
+    <a href="#sparse_foldl/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sparse_foldl/3</h1>
+      <div class="specs">
+          <pre>sparse_foldl(function, initialAcc :: a, array :: array(type)) :: b
+when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Folds the array elements using the specified function and initial accumulator value, skipping default-valued entries. The elements are visited in order from the lowest index to the highest. If <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is not a function, the call fails with reason <code class="inline">badarg</code>.</p>
+<p> See also <a href="#foldl/3"><code class="inline">foldl/3</code></a>, <a href="#sparse_foldr/3"><code class="inline">sparse_foldr/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="sparse_foldr/3">
+  <div class="detail-header">
+    <a href="#sparse_foldr/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sparse_foldr/3</h1>
+      <div class="specs">
+          <pre>sparse_foldr(function, initialAcc :: a, array :: array(type)) :: b
+when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Folds the array elements right-to-left using the specified function and initial accumulator value, skipping default-valued entries. The elements are visited in order from the highest index to the lowest. If <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is not a function, the call fails with reason <code class="inline">badarg</code>.</p>
+<p> See also <a href="#foldr/3"><code class="inline">foldr/3</code></a>, <a href="#sparse_foldl/3"><code class="inline">sparse_foldl/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="sparse_map/2">
+  <div class="detail-header">
+    <a href="#sparse_map/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sparse_map/2</h1>
+      <div class="specs">
+          <pre>sparse_map(function, array :: array(type1)) :: array(type2)
+when function: (index :: array_indx(), type1 -> type2)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Maps the specified function onto each array element, skipping default-valued entries. The elements are visited in order from the lowest index to the highest. If <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is not a function, the call fails with reason <code class="inline">badarg</code>.</p>
+<p> See also <a href="#map/2"><code class="inline">map/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="sparse_size/1">
+  <div class="detail-header">
+    <a href="#sparse_size/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sparse_size/1</h1>
+      <div class="specs">
+          <pre>sparse_size(array :: array()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Gets the number of entries in the array up until the last non-default-valued entry. That is, returns <code class="inline">I+1</code> if <code class="inline">I</code> is the last non-default-valued entry in the array, or zero if no such entry exists.</p>
+<p> See also <a href="#resize/1"><code class="inline">resize/1</code></a>, <a href="#size/1"><code class="inline">size/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="sparse_to_list/1">
+  <div class="detail-header">
+    <a href="#sparse_to_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sparse_to_list/1</h1>
+      <div class="specs">
+          <pre>sparse_to_list(array :: array(type)) :: [value :: type]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts the array to a list, skipping default-valued entries.</p>
+<p> See also <a href="#to_list/1"><code class="inline">to_list/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="sparse_to_orddict/1">
+  <div class="detail-header">
+    <a href="#sparse_to_orddict/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sparse_to_orddict/1</h1>
+      <div class="specs">
+          <pre>sparse_to_orddict(array :: array(type)) :: indx_pairs(value :: type)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts the array to an ordered list of pairs <code class="inline">{Index, ``Value``}</code>, skipping default-valued entries.</p>
+<p> See also <a href="#to_orddict/1"><code class="inline">to_orddict/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="to_list/1">
+  <div class="detail-header">
+    <a href="#to_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_list/1</h1>
+      <div class="specs">
+          <pre>to_list(array :: array(type)) :: [value :: type]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts the array to a list.</p>
+<p> See also <a href="#from_list/2"><code class="inline">from_list/2</code></a>, <a href="#sparse_to_list/1"><code class="inline">sparse_to_list/1</code></a>. </p>
+  </section>
+</section>
+<section class="detail" id="to_orddict/1">
+  <div class="detail-header">
+    <a href="#to_orddict/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_orddict/1</h1>
+      <div class="specs">
+          <pre>to_orddict(array :: array(type)) :: indx_pairs(value :: type)</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts the array to an ordered list of pairs <code class="inline">{Index, ``Value``}</code>.</p>
+<p> See also <a href="#from_orddict/2"><code class="inline">from_orddict/2</code></a>, <a href="#sparse_to_orddict/1"><code class="inline">sparse_to_orddict/1</code></a>. </p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

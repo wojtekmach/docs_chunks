@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>erl_lint — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+erl_lint      </h1>
+
+
+        <section id="moduledoc">
+<p> This module is used to check Erlang code for illegal syntax and other bugs. It also warns against coding practices that are not recommended.</p>
+<p> The errors detected include:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="n">Redefined</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">undefined</span><span class="w"> </span><span class="ss">functions</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Unbound</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">unsafe</span><span class="w"> </span><span class="ss">variables</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Illegal</span><span class="w"> </span><span class="ss">record</span><span class="w"> </span><span class="ss">use</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="ss">warnings</span><span class="w"> </span><span class="ss">detected</span><span class="w"> </span><span class="nc">include</span><span class="p">:</span><span class="w">
+
+</span><span class="o">*</span><span class="w"> </span><span class="n">Unused</span><span class="w"> </span><span class="ss">functions</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">imports</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Unused</span><span class="w"> </span><span class="ss">variables</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Variables</span><span class="w"> </span><span class="ss">imported</span><span class="w"> </span><span class="ss">into</span><span class="w"> </span><span class="ss">matches</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Variables</span><span class="w"> </span><span class="ss">exported</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="err">`</span><span class="k">if</span><span class="err">`</span><span class="o">/</span><span class="err">`</span><span class="k">case</span><span class="err">`</span><span class="o">/</span><span class="err">`</span><span class="k">receive</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Variables</span><span class="w"> </span><span class="ss">shadowed</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">funs</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">list</span><span class="w"> </span><span class="ss">comprehensions</span><span class="w">  </span><span class="n">Some</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">warnings</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">optional</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">turned</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="ss">specifying</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">appropriate</span><span class="w"> </span><span class="ss">option</span><span class="p">,</span><span class="w"> </span><span class="ss">described</span><span class="w"> </span><span class="ss">below</span><span class="p">.</span></code></pre>
+<p> The functions in this module are invoked automatically by the Erlang compiler. There is no reason to invoke these functions separately unless you have written your own Erlang compiler.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#format_error/1">format_error/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Takes an <code class="inline">ErrorDescriptor</code> and returns a string that describes the error or warning. This function is usually called implicitly when processing an <code class="inline">ErrorInfo</code> structure (see section Error Information).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_guard_test/1">is_guard_test/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Tests if <code class="inline">Expr</code> is a legal guard test. <code class="inline">Expr</code> is an Erlang term representing the abstract form for the expression.  <code class="inline">erl_parse:parse_exprs(Tokens)</code> can be used to generate a list of <code class="inline">Expr</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#modulemodulemodule/123">modulemodulemodule/123</a>
+  </div>
+    <div class="summary-synopsis"><p> Checks all the forms in a module for errors. It returns</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="format_error/1">
+  <div class="detail-header">
+    <a href="#format_error/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">format_error/1</h1>
+      <div class="specs">
+          <pre>format_error(errorDescriptor) :: <a href=":io_lib.html#t:chars/0">:io_lib.chars</a>()
+when errorDescriptor: error_description()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Takes an <code class="inline">ErrorDescriptor</code> and returns a string that describes the error or warning. This function is usually called implicitly when processing an <code class="inline">ErrorInfo</code> structure (see section Error Information).</p>
+  </section>
+</section>
+<section class="detail" id="is_guard_test/1">
+  <div class="detail-header">
+    <a href="#is_guard_test/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_guard_test/1</h1>
+      <div class="specs">
+          <pre>is_guard_test(expr) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when expr: <a href=":erl_parse.html#t:abstract_expr/0">:erl_parse.abstract_expr</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Tests if <code class="inline">Expr</code> is a legal guard test. <code class="inline">Expr</code> is an Erlang term representing the abstract form for the expression.  <code class="inline">erl_parse:parse_exprs(Tokens)</code> can be used to generate a list of <code class="inline">Expr</code>.</p>
+  </section>
+</section>
+<section class="detail" id="modulemodulemodule/123">
+  <div class="detail-header">
+    <a href="#modulemodulemodule/123" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">modulemodulemodule/123</h1>
+  </div>
+  <section class="docstring">
+<p> Checks all the forms in a module for errors. It returns:</p>
+<p>  <code class="inline">{ok,``Warnings``}</code>   *  There are no errors in the module.</p>
+<p>  <code class="inline">{error,``Errors``,``Warnings``}</code>   *  There are errors in the module.</p>
+<p>   As this module is of interest only to the maintainers of the compiler, and to avoid the same description in two places, the elements of <code class="inline">Options</code> that control the warnings are only described in the  <code class="inline">compile(3)</code> module.</p>
+<p> <code class="inline">AbsForms</code> of a module, which comes from a file that is read through <code class="inline">epp</code>, the Erlang preprocessor, can come from many files. This means that any references to errors must include the filename, see the  <code class="inline">epp(3)</code> module or parser (see the <code class="inline">erl_parse(3)</code> module). The returned errors and warnings have the following format:</p>
+<pre><code class="nohighlight makeup erlang"><span class="p" data-group-id="1762241066-1">[</span><span class="p" data-group-id="1762241066-2">{</span><span class="n">FileName2</span><span class="p">,</span><span class="p" data-group-id="1762241066-3">[</span><span class="n">ErrorInfo</span><span class="p" data-group-id="1762241066-3">]</span><span class="p" data-group-id="1762241066-2">}</span><span class="p" data-group-id="1762241066-1">]</span></code></pre>
+<p> The errors and warnings are listed in the order in which they are encountered in the forms. The errors from one file can therefore be split into different entries in the list of errors.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

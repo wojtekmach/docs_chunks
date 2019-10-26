@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>lists — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+lists      </h1>
+
+
+        <section id="moduledoc">
+<p> This module contains functions for list processing.</p>
+<p> Unless otherwise stated, all functions assume that position numbering starts at 1. That is, the first element of a list is at position 1.</p>
+<p> Two terms <code class="inline">T1</code> and <code class="inline">T2</code> compare equal if <code class="inline">T1 == T2</code> evaluates to <code class="inline">true</code>. They match if <code class="inline">T1 =:= T2</code> evaluates to <code class="inline">true</code>.</p>
+<p> Whenever an ordering function <code class="inline">F</code> is expected as argument, it is assumed that the following properties hold of <code class="inline">F</code> for all x, y, and z:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">x</span><span class="w"> </span><span class="err">`</span><span class="n">F</span><span class="err">`</span><span class="w"> </span><span class="ss">y</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">y</span><span class="w"> </span><span class="err">`</span><span class="n">F</span><span class="err">`</span><span class="w"> </span><span class="ss">x</span><span class="p">,</span><span class="w"> </span><span class="ss">then</span><span class="w"> </span><span class="ss">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">y</span><span class="w"> </span><span class="p" data-group-id="7231578178-1">(</span><span class="err">`</span><span class="n">F</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">antisymmetric</span><span class="p" data-group-id="7231578178-1">)</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">x</span><span class="w"> </span><span class="err">`</span><span class="n">F</span><span class="err">`</span><span class="w"> </span><span class="ss">y</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">y</span><span class="w"> </span><span class="err">`</span><span class="n">F</span><span class="err">`</span><span class="w"> </span><span class="ss">z</span><span class="p">,</span><span class="w"> </span><span class="ss">then</span><span class="w"> </span><span class="ss">x</span><span class="w"> </span><span class="err">`</span><span class="n">F</span><span class="err">`</span><span class="w"> </span><span class="nf">z</span><span class="w"> </span><span class="p" data-group-id="7231578178-2">(</span><span class="err">`</span><span class="n">F</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">transitive</span><span class="p" data-group-id="7231578178-2">)</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w"> </span><span class="ss">x</span><span class="w"> </span><span class="err">`</span><span class="n">F</span><span class="err">`</span><span class="w"> </span><span class="ss">y</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">y</span><span class="w"> </span><span class="err">`</span><span class="n">F</span><span class="err">`</span><span class="w"> </span><span class="nf">x</span><span class="w"> </span><span class="p" data-group-id="7231578178-3">(</span><span class="err">`</span><span class="n">F</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">total</span><span class="p" data-group-id="7231578178-3">)</span><span class="p">.</span></code></pre>
+<p>   An example of a typical ordering function is less than or equal to: <code class="inline">=&lt;/2</code>.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#all/2">all/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">true</code> for all elements <code class="inline">Elem</code> in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#any/2">any/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">true</code> for at least one element <code class="inline">Elem</code> in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#append/1">append/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list in which all the sublists of <code class="inline">ListOfLists</code> have been appended.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#append/2">append/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a new list <code class="inline">List3</code>, which is made from the elements of <code class="inline">List1</code> followed by the elements of <code class="inline">List2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#concat/1">concat/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Concatenates the text representation of the elements of <code class="inline">Things</code>. The elements of <code class="inline">Things</code> can be atoms, integers, floats, or strings.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete/2">delete/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a copy of <code class="inline">List1</code> where the first element matching <code class="inline">Elem</code> is deleted, if there is such an element.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#droplast/1">droplast/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Drops the last element of a <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>. The list is to be non-empty, otherwise the function crashes with a <code class="inline">function_clause</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#dropwhile/2">dropwhile/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Drops elements <code class="inline">Elem</code> from <code class="inline">List1</code> while <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">true</code> and returns the remaining list.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#duplicate/2">duplicate/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list containing <code class="inline">N</code> copies of term <code class="inline">Elem</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#filter/2">filter/2</a>
+  </div>
+    <div class="summary-synopsis"><p> <code class="inline">List2</code> is a list of all elements <code class="inline">Elem</code> in <code class="inline">List1</code> for which <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">true</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#filtermap/2">filtermap/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Calls <code class="inline">Fun``(``Elem``)</code> on successive elements <code class="inline">Elem</code> of <code class="inline">List1</code>. <code class="inline">Fun``/1</code> must return either a Boolean or a tuple <code class="inline">{true, ``Value``}</code>. The function returns the list of elements for which <code class="inline">Fun</code> returns a new value, where a value of <code class="inline">true</code> is synonymous with <code class="inline">{true, ``Elem``}</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatlength/1">flatlength/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Equivalent to <code class="inline">length(flatten(``DeepList``))</code>, but more efficient.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatmap/2">flatmap/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Takes a function from <code class="inline">A</code>s to lists of <code class="inline">B</code>s, and a list of <code class="inline">A</code>s (<code class="inline">List1</code>) and produces a list of <code class="inline">B</code>s by applying the function to every element in <code class="inline">List1</code> and appending the resulting lists.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten/1">flatten/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a flattened version of <code class="inline">DeepList</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flatten/2">flatten/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a flattened version of <code class="inline">DeepList</code> with tail <code class="inline">Tail</code> appended.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#foldl/3">foldl/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Calls <code class="inline">Fun``(``Elem``, ``AccIn``)</code> on successive elements <code class="inline">A</code> of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>, starting with <code class="inline">AccIn`` == ``Acc0</code>. <code class="inline">Fun``/2</code> must return a new accumulator, which is passed to the next call. The function returns the final value of the accumulator. <code class="inline">Acc0</code> is returned if the list is empty.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#foldr/3">foldr/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Like <a href="#foldl/3"><code class="inline">foldl/3</code></a>, but the list is traversed from right to left.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#foreach/2">foreach/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Calls <code class="inline">Fun``(``Elem``)</code> for each element <code class="inline">Elem</code> in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>. This function is used for its side effects and the evaluation order is defined to be the same as the order of the elements in the list.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#join/2">join/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Inserts <code class="inline">Sep</code> between each element in <code class="inline">List1</code>. Has no effect on the empty list and on a singleton list. For example</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keydelete/3">keydelete/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a copy of <code class="inline">TupleList1</code> where the first occurrence of a tuple whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code> is deleted, if there is such a tuple.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keyfind/3">keyfind/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Searches the list of tuples <code class="inline">TupleList</code> for a tuple whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code>. Returns <a href="https://hexdocs.pm/elixir/Tuple.html"><code class="inline">Tuple</code></a> if such a tuple is found, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keymap/3">keymap/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of tuples where, for each tuple in <code class="inline">TupleList1</code>, the <code class="inline">N</code>th element <code class="inline">Term1</code> of the tuple has been replaced with the result of calling <code class="inline">Fun``(``Term1``)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keymember/3">keymember/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if there is a tuple in <code class="inline">TupleList</code> whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code>, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keymerge/3">keymerge/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sorted list formed by merging <code class="inline">TupleList1</code> and <code class="inline">TupleList2</code>. The merge is performed on the <code class="inline">N</code>th element of each tuple. Both <code class="inline">TupleList1</code> and <code class="inline">TupleList2</code> must be key-sorted before evaluating this function. When two tuples compare equal, the tuple from <code class="inline">TupleList1</code> is picked before the tuple from <code class="inline">TupleList2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keyreplace/4">keyreplace/4</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a copy of <code class="inline">TupleList1</code> where the first occurrence of a <code class="inline">T</code> tuple whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code> is replaced with <code class="inline">NewTuple</code>, if there is such a tuple <code class="inline">T</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keysearch/3">keysearch/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Searches the list of tuples <code class="inline">TupleList</code> for a tuple whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code>. Returns <code class="inline">{value, ``Tuple``}</code> if such a tuple is found, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keysort/2">keysort/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list containing the sorted elements of list <code class="inline">TupleList1</code>. Sorting is performed on the <code class="inline">N</code>th element of the tuples. The sort is stable.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keystore/4">keystore/4</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a copy of <code class="inline">TupleList1</code> where the first occurrence of a tuple <code class="inline">T</code> whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code> is replaced with <code class="inline">NewTuple</code>, if there is such a tuple <code class="inline">T</code>. If there is no such tuple <code class="inline">T</code>, a copy of <code class="inline">TupleList1</code> where [<code class="inline">NewTuple</code>] has been appended to the end is returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#keytake/3">keytake/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Searches the list of tuples <code class="inline">TupleList1</code> for a tuple whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code>. Returns <code class="inline">{value, ``Tuple``, ``TupleList2``}</code> if such a tuple is found, otherwise <code class="inline">false</code>. <code class="inline">TupleList2</code> is a copy of <code class="inline">TupleList1</code> where the first occurrence of <a href="https://hexdocs.pm/elixir/Tuple.html"><code class="inline">Tuple</code></a> has been removed.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#last/1">last/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the last element in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#map/2">map/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Takes a function from <code class="inline">A</code>s to <code class="inline">B</code>s, and a list of <code class="inline">A</code>s and produces a list of <code class="inline">B</code>s by applying the function to every element in the list. This function is used to obtain the return values. The evaluation order depends on the implementation.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mapfoldl/3">mapfoldl/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Combines the operations of <a href="#map/2"><code class="inline">map/2</code></a> and <a href="#foldl/3"><code class="inline">foldl/3</code></a> into one pass.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mapfoldr/3">mapfoldr/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Combines the operations of <a href="#map/2"><code class="inline">map/2</code></a> and <a href="#foldr/3"><code class="inline">foldr/3</code></a> into one pass.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#max/1">max/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the first element of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> that compares greater than or equal to all other elements of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#member/2">member/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Elem</code> matches some element of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#merge/1">merge/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sorted list formed by merging all the sublists of <code class="inline">ListOfLists</code>. All sublists must be sorted before evaluating this function. When two elements compare equal, the element from the sublist with the lowest position in <code class="inline">ListOfLists</code> is picked before the other element.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#merge/2">merge/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sorted list formed by merging <code class="inline">List1</code> and <code class="inline">List2</code>. Both <code class="inline">List1</code> and <code class="inline">List2</code> must be sorted before evaluating this function. When two elements compare equal, the element from <code class="inline">List1</code> is picked before the element from <code class="inline">List2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#merge/3">merge/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sorted list formed by merging <code class="inline">List1</code> and <code class="inline">List2</code>. Both <code class="inline">List1</code> and <code class="inline">List2</code> must be sorted according to the ordering function <code class="inline">Fun</code> before evaluating this function. <code class="inline">Fun``(``A``, ``B``)</code> is to return <code class="inline">true</code> if <code class="inline">A</code> compares less than or equal to <code class="inline">B</code> in the ordering, otherwise <code class="inline">false</code>. When two elements compare equal, the element from <code class="inline">List1</code> is picked before the element from <code class="inline">List2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#merge3/3">merge3/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sorted list formed by merging <code class="inline">List1</code>, <code class="inline">List2</code>, and <code class="inline">List3</code>. All of <code class="inline">List1</code>, <code class="inline">List2</code>, and <code class="inline">List3</code> must be sorted before evaluating this function. When two elements compare equal, the element from <code class="inline">List1</code>, if there is such an element, is picked before the other element, otherwise the element from <code class="inline">List2</code> is picked before the element from <code class="inline">List3</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#min/1">min/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the first element of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> that compares less than or equal to all other elements of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#nth/2">nth/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the <code class="inline">N</code>th element of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#nthtail/2">nthtail/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the <code class="inline">N</code>th tail of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>, that is, the sublist of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> starting at <code class="inline">N``+1</code> and continuing up to the end of the list.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#partition/2">partition/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Partitions <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> into two lists, where the first list contains all elements for which <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">true</code>, and the second list contains all elements for which <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#prefix/2">prefix/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">List1</code> is a prefix of <code class="inline">List2</code>, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reverse/1">reverse/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list with the elements in <code class="inline">List1</code> in reverse order.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reverse/2">reverse/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list with the elements in <code class="inline">List1</code> in reverse order, with tail <code class="inline">Tail</code> appended.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#search/2">search/2</a>
+  </div>
+    <div class="summary-synopsis"><p> If there is a <code class="inline">Value</code> in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> such that <code class="inline">Pred``(``Value``)</code> returns <code class="inline">true</code>, returns <code class="inline">{value, ``Value``}</code> for the first such <code class="inline">Value</code>, otherwise returns <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#seqseq/23">seqseq/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a sequence of integers that starts with <code class="inline">From</code> and contains the successive results of adding <code class="inline">Incr</code> to the previous element, until <code class="inline">To</code> is reached or passed (in the latter case, <code class="inline">To</code> is not an element of the sequence). <code class="inline">Incr</code> defaults to 1.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sort/1">sort/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list containing the sorted elements of <code class="inline">List1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sort/2">sort/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list containing the sorted elements of <code class="inline">List1</code>, according to the ordering function <code class="inline">Fun</code>. <code class="inline">Fun``(``A``, ``B``)</code> is to return <code class="inline">true</code> if <code class="inline">A</code> compares less than or equal to <code class="inline">B</code> in the ordering, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#split/2">split/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Splits <code class="inline">List1</code> into <code class="inline">List2</code> and <code class="inline">List3</code>. <code class="inline">List2</code> contains the first <code class="inline">N</code> elements and <code class="inline">List3</code> the remaining elements (the <code class="inline">N</code>th tail).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#splitwith/2">splitwith/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Partitions <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> into two lists according to <code class="inline">Pred</code>. <a href="#splitwith/2"><code class="inline">splitwith/2</code></a> behaves as if it is defined as follows</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sublist/2">sublist/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sublist of <code class="inline">List1</code> starting at position 1 and with (maximum) <code class="inline">Len</code> elements. It is not an error for <code class="inline">Len</code> to exceed the length of the list, in that case the whole list is returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sublist/3">sublist/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sublist of <code class="inline">List1</code> starting at <code class="inline">Start</code> and with (maximum) <code class="inline">Len</code> elements. It is not an error for <code class="inline">Start``+``Len</code> to exceed the length of the list.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#subtract/2">subtract/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a new list <code class="inline">List3</code> that is a copy of <code class="inline">List1</code>, subjected to the following procedure: for each element in <code class="inline">List2</code>, its first occurrence in <code class="inline">List1</code> is deleted.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#suffix/2">suffix/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">List1</code> is a suffix of <code class="inline">List2</code>, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sum/1">sum/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sum of the elements in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#takewhile/2">takewhile/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Takes elements <code class="inline">Elem</code> from <code class="inline">List1</code> while <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">true</code>, that is, the function returns the longest prefix of the list for which all elements satisfy the predicate.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ukeymerge/3">ukeymerge/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sorted list formed by merging <code class="inline">TupleList1</code> and <code class="inline">TupleList2</code>. The merge is performed on the <code class="inline">N</code>th element of each tuple. Both <code class="inline">TupleList1</code> and <code class="inline">TupleList2</code> must be key-sorted without duplicates before evaluating this function. When two tuples compare equal, the tuple from <code class="inline">TupleList1</code> is picked and the one from <code class="inline">TupleList2</code> is deleted.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ukeysort/2">ukeysort/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list containing the sorted elements of list <code class="inline">TupleList1</code> where all except the first tuple of the tuples comparing equal have been deleted. Sorting is performed on the <code class="inline">N</code>th element of the tuples.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#umerge/1">umerge/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sorted list formed by merging all the sublists of <code class="inline">ListOfLists</code>. All sublists must be sorted and contain no duplicates before evaluating this function. When two elements compare equal, the element from the sublist with the lowest position in <code class="inline">ListOfLists</code> is picked and the other is deleted.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#umerge/2">umerge/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sorted list formed by merging <code class="inline">List1</code> and <code class="inline">List2</code>. Both <code class="inline">List1</code> and <code class="inline">List2</code> must be sorted and contain no duplicates before evaluating this function. When two elements compare equal, the element from <code class="inline">List1</code> is picked and the one from <code class="inline">List2</code> is deleted.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#umerge/3">umerge/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sorted list formed by merging <code class="inline">List1</code> and <code class="inline">List2</code>. Both <code class="inline">List1</code> and <code class="inline">List2</code> must be sorted according to the ordering function <code class="inline">Fun</code> and contain no duplicates before evaluating this function. <code class="inline">Fun``(``A``, ``B``)</code> is to return <code class="inline">true</code> if <code class="inline">A</code> compares less than or equal to <code class="inline">B</code> in the ordering, otherwise <code class="inline">false</code>. When two elements compare equal, the element from <code class="inline">List1</code> is picked and the one from <code class="inline">List2</code> is deleted.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#umerge3/3">umerge3/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the sorted list formed by merging <code class="inline">List1</code>, <code class="inline">List2</code>, and <code class="inline">List3</code>. All of <code class="inline">List1</code>, <code class="inline">List2</code>, and <code class="inline">List3</code> must be sorted and contain no duplicates before evaluating this function. When two elements compare equal, the element from <code class="inline">List1</code> is picked if there is such an element, otherwise the element from <code class="inline">List2</code> is picked, and the other is deleted.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unzip/1">unzip/1</a>
+  </div>
+    <div class="summary-synopsis"><p> &quot;Unzips&quot; a list of two-tuples into two lists, where the first list contains the first element of each tuple, and the second list contains the second element of each tuple.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unzip3/1">unzip3/1</a>
+  </div>
+    <div class="summary-synopsis"><p> &quot;Unzips&quot; a list of three-tuples into three lists, where the first list contains the first element of each tuple, the second list contains the second element of each tuple, and the third list contains the third element of each tuple.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#usort/1">usort/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list containing the sorted elements of <code class="inline">List1</code> where all except the first element of the elements comparing equal have been deleted.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#usort/2">usort/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list containing the sorted elements of <code class="inline">List1</code> where all except the first element of the elements comparing equal according to the ordering function <code class="inline">Fun</code> have been deleted. <code class="inline">Fun``(A, B)</code> is to return <code class="inline">true</code> if <code class="inline">A</code> compares less than or equal to <code class="inline">B</code> in the ordering, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#zip/2">zip/2</a>
+  </div>
+    <div class="summary-synopsis"><p> &quot;Zips&quot; two lists of equal length into one list of two-tuples, where the first element of each tuple is taken from the first list and the second element is taken from the corresponding element in the second list.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#zip3/3">zip3/3</a>
+  </div>
+    <div class="summary-synopsis"><p> &quot;Zips&quot; three lists of equal length into one list of three-tuples, where the first element of each tuple is taken from the first list, the second element is taken from the corresponding element in the second list, and the third element is taken from the corresponding element in the third list.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#zipwith/3">zipwith/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Combines the elements of two lists of equal length into one list. For each pair <code class="inline">X``, ``Y</code> of list elements from the two lists, the element in the result list is <code class="inline">Combine``(``X``, ``Y``)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#zipwith3/4">zipwith3/4</a>
+  </div>
+    <div class="summary-synopsis"><p> Combines the elements of three lists of equal length into one list. For each triple <code class="inline">X``, ``Y``, ``Z</code> of list elements from the three lists, the element in the result list is <code class="inline">Combine``(``X``, ``Y``, ``Z``)</code>.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="all/2">
+  <div class="detail-header">
+    <a href="#all/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">all/2</h1>
+      <div class="specs">
+          <pre>all(pred, list) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+when pred: (elem :: t -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), list: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">true</code> for all elements <code class="inline">Elem</code> in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="any/2">
+  <div class="detail-header">
+    <a href="#any/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">any/2</h1>
+      <div class="specs">
+          <pre>any(pred, list) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+when pred: (elem :: t -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), list: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">true</code> for at least one element <code class="inline">Elem</code> in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="append/1">
+  <div class="detail-header">
+    <a href="#append/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">append/1</h1>
+      <div class="specs">
+          <pre>append(listOfLists) :: list1
+when listOfLists: [list], list: [t], list1: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list in which all the sublists of <code class="inline">ListOfLists</code> have been appended.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">append</span><span class="p" data-group-id="1182061080-1">(</span><span class="p" data-group-id="1182061080-2">[</span><span class="p" data-group-id="1182061080-3">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="1182061080-3">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1182061080-4">[</span><span class="ss">a</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p" data-group-id="1182061080-4">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1182061080-5">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="1182061080-5">]</span><span class="p" data-group-id="1182061080-2">]</span><span class="p" data-group-id="1182061080-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="1182061080-6">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="ss">a</span><span class="p">,</span><span class="ss">b</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p" data-group-id="1182061080-6">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="append/2">
+  <div class="detail-header">
+    <a href="#append/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">append/2</h1>
+      <div class="specs">
+          <pre>append(list1, list2) :: list3
+when list1: [t], list2: [t], list3: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a new list <code class="inline">List3</code>, which is made from the elements of <code class="inline">List1</code> followed by the elements of <code class="inline">List2</code>.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">append</span><span class="p" data-group-id="3063100280-1">(</span><span class="s">&quot;abc&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;def&quot;</span><span class="p" data-group-id="3063100280-1">)</span><span class="p">.</span><span class="w">
+</span><span class="s">&quot;abcdef&quot;</span></code></pre>
+<p> <code class="inline">lists:append(A, B)</code> is equivalent to <code class="inline">A ++ B</code>.</p>
+  </section>
+</section>
+<section class="detail" id="concat/1">
+  <div class="detail-header">
+    <a href="#concat/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">concat/1</h1>
+      <div class="specs">
+          <pre>concat(things) :: string()
+when things: [thing], thing: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>() | string()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Concatenates the text representation of the elements of <code class="inline">Things</code>. The elements of <code class="inline">Things</code> can be atoms, integers, floats, or strings.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">concat</span><span class="p" data-group-id="9931449242-1">(</span><span class="p" data-group-id="9931449242-2">[</span><span class="ss">doc</span><span class="p">,</span><span class="w"> </span><span class="ss">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="ss">file</span><span class="p">,</span><span class="w"> </span><span class="ss">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="9931449242-2">]</span><span class="p" data-group-id="9931449242-1">)</span><span class="p">.</span><span class="w">
+</span><span class="s">&quot;doc/file.3&quot;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="delete/2">
+  <div class="detail-header">
+    <a href="#delete/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete/2</h1>
+      <div class="specs">
+          <pre>delete(elem, list1) :: list2 when elem: t, list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a copy of <code class="inline">List1</code> where the first element matching <code class="inline">Elem</code> is deleted, if there is such an element.</p>
+  </section>
+</section>
+<section class="detail" id="droplast/1">
+  <div class="detail-header">
+    <a href="#droplast/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">droplast/1</h1>
+      <div class="specs">
+          <pre>droplast(list) :: initList when list: [t, ...], initList: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Drops the last element of a <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>. The list is to be non-empty, otherwise the function crashes with a <code class="inline">function_clause</code>.</p>
+  </section>
+</section>
+<section class="detail" id="dropwhile/2">
+  <div class="detail-header">
+    <a href="#dropwhile/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">dropwhile/2</h1>
+      <div class="specs">
+          <pre>dropwhile(pred, list1) :: list2
+when pred: (elem :: t -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Drops elements <code class="inline">Elem</code> from <code class="inline">List1</code> while <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">true</code> and returns the remaining list.</p>
+  </section>
+</section>
+<section class="detail" id="duplicate/2">
+  <div class="detail-header">
+    <a href="#duplicate/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">duplicate/2</h1>
+      <div class="specs">
+          <pre>duplicate(n, elem) :: list
+when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), elem: t, list: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list containing <code class="inline">N</code> copies of term <code class="inline">Elem</code>.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">duplicate</span><span class="p" data-group-id="1072294241-1">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="ss">xx</span><span class="p" data-group-id="1072294241-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="1072294241-2">[</span><span class="ss">xx</span><span class="p">,</span><span class="ss">xx</span><span class="p">,</span><span class="ss">xx</span><span class="p">,</span><span class="ss">xx</span><span class="p">,</span><span class="ss">xx</span><span class="p" data-group-id="1072294241-2">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="filter/2">
+  <div class="detail-header">
+    <a href="#filter/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">filter/2</h1>
+      <div class="specs">
+          <pre>filter(pred, list1) :: list2
+when pred: (elem :: t -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> <code class="inline">List2</code> is a list of all elements <code class="inline">Elem</code> in <code class="inline">List1</code> for which <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">true</code>.</p>
+  </section>
+</section>
+<section class="detail" id="filtermap/2">
+  <div class="detail-header">
+    <a href="#filtermap/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">filtermap/2</h1>
+      <div class="specs">
+          <pre>filtermap(fun, list1) :: list2
+when fun: (elem -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | {true, value}),
+     list1: [elem],
+     list2: [elem | value],
+     elem: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     value: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Calls <code class="inline">Fun``(``Elem``)</code> on successive elements <code class="inline">Elem</code> of <code class="inline">List1</code>. <code class="inline">Fun``/1</code> must return either a Boolean or a tuple <code class="inline">{true, ``Value``}</code>. The function returns the list of elements for which <code class="inline">Fun</code> returns a new value, where a value of <code class="inline">true</code> is synonymous with <code class="inline">{true, ``Elem``}</code>.</p>
+<p> That is, <code class="inline">filtermap</code> behaves as if it had been defined as follows:</p>
+<pre><code class="nohighlight makeup erlang"><span class="nf">filtermap</span><span class="p" data-group-id="3911274323-1">(</span><span class="n">Fun</span><span class="p">,</span><span class="w"> </span><span class="n">List1</span><span class="p" data-group-id="3911274323-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+    </span><span class="nc">lists</span><span class="p">:</span><span class="nf">foldr</span><span class="p" data-group-id="3911274323-2">(</span><span class="nf">fun</span><span class="p" data-group-id="3911274323-3">(</span><span class="n">Elem</span><span class="p">,</span><span class="w"> </span><span class="n">Acc</span><span class="p" data-group-id="3911274323-3">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+                       </span><span class="k">case</span><span class="w"> </span><span class="n">Fun</span><span class="p" data-group-id="3911274323-4">(</span><span class="n">Elem</span><span class="p" data-group-id="3911274323-4">)</span><span class="w"> </span><span class="k">of</span><span class="w">
+                           </span><span class="ss">false</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Acc</span><span class="p">;</span><span class="w">
+                           </span><span class="ss">true</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="p" data-group-id="3911274323-5">[</span><span class="n">Elem</span><span class="p">|</span><span class="n">Acc</span><span class="p" data-group-id="3911274323-5">]</span><span class="p">;</span><span class="w">
+                           </span><span class="p" data-group-id="3911274323-6">{</span><span class="ss">true</span><span class="p">,</span><span class="n">Value</span><span class="p" data-group-id="3911274323-6">}</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="p" data-group-id="3911274323-7">[</span><span class="n">Value</span><span class="p">|</span><span class="n">Acc</span><span class="p" data-group-id="3911274323-7">]</span><span class="w">
+                       </span><span class="k">end</span><span class="w">
+                </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3911274323-8">[</span><span class="p" data-group-id="3911274323-8">]</span><span class="p">,</span><span class="w"> </span><span class="n">List1</span><span class="p" data-group-id="3911274323-2">)</span><span class="p">.</span></code></pre>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">filtermap</span><span class="p" data-group-id="4754614378-1">(</span><span class="nf">fun</span><span class="p" data-group-id="4754614378-2">(</span><span class="n">X</span><span class="p" data-group-id="4754614378-2">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="ow">rem</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="p" data-group-id="4754614378-3">{</span><span class="ss">true</span><span class="p">,</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="ow">div</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="4754614378-3">}</span><span class="p">;</span><span class="w"> </span><span class="p">_</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="ss">false</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4754614378-4">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="4754614378-4">]</span><span class="p" data-group-id="4754614378-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="4754614378-5">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="4754614378-5">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="flatlength/1">
+  <div class="detail-header">
+    <a href="#flatlength/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatlength/1</h1>
+      <div class="specs">
+          <pre>flatlength(deepList) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when deepList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>() | deepList]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Equivalent to <code class="inline">length(flatten(``DeepList``))</code>, but more efficient.</p>
+  </section>
+</section>
+<section class="detail" id="flatmap/2">
+  <div class="detail-header">
+    <a href="#flatmap/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatmap/2</h1>
+      <div class="specs">
+          <pre>flatmap(fun, list1) :: list2
+when fun: (a -> [b]), list1: [a], list2: [b], a: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), b: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Takes a function from <code class="inline">A</code>s to lists of <code class="inline">B</code>s, and a list of <code class="inline">A</code>s (<code class="inline">List1</code>) and produces a list of <code class="inline">B</code>s by applying the function to every element in <code class="inline">List1</code> and appending the resulting lists.</p>
+<p> That is, <code class="inline">flatmap</code> behaves as if it had been defined as follows:</p>
+<pre><code class="nohighlight makeup erlang"><span class="nf">flatmap</span><span class="p" data-group-id="4384047548-1">(</span><span class="n">Fun</span><span class="p">,</span><span class="w"> </span><span class="n">List1</span><span class="p" data-group-id="4384047548-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+    </span><span class="nf">append</span><span class="p" data-group-id="4384047548-2">(</span><span class="nf">map</span><span class="p" data-group-id="4384047548-3">(</span><span class="n">Fun</span><span class="p">,</span><span class="w"> </span><span class="n">List1</span><span class="p" data-group-id="4384047548-3">)</span><span class="p" data-group-id="4384047548-2">)</span><span class="p">.</span></code></pre>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">flatmap</span><span class="p" data-group-id="4229059257-1">(</span><span class="nf">fun</span><span class="p" data-group-id="4229059257-2">(</span><span class="n">X</span><span class="p" data-group-id="4229059257-2">)</span><span class="p">-&gt;</span><span class="p" data-group-id="4229059257-3">[</span><span class="n">X</span><span class="p">,</span><span class="n">X</span><span class="p" data-group-id="4229059257-3">]</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4229059257-4">[</span><span class="ss">a</span><span class="p">,</span><span class="ss">b</span><span class="p">,</span><span class="ss">c</span><span class="p" data-group-id="4229059257-4">]</span><span class="p" data-group-id="4229059257-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="4229059257-5">[</span><span class="ss">a</span><span class="p">,</span><span class="ss">a</span><span class="p">,</span><span class="ss">b</span><span class="p">,</span><span class="ss">b</span><span class="p">,</span><span class="ss">c</span><span class="p">,</span><span class="ss">c</span><span class="p" data-group-id="4229059257-5">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="flatten/1">
+  <div class="detail-header">
+    <a href="#flatten/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten/1</h1>
+      <div class="specs">
+          <pre>flatten(deepList) :: list when deepList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>() | deepList], list: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a flattened version of <code class="inline">DeepList</code>.</p>
+  </section>
+</section>
+<section class="detail" id="flatten/2">
+  <div class="detail-header">
+    <a href="#flatten/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flatten/2</h1>
+      <div class="specs">
+          <pre>flatten(deepList, tail) :: list
+when deepList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>() | deepList], tail: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()], list: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a flattened version of <code class="inline">DeepList</code> with tail <code class="inline">Tail</code> appended.</p>
+  </section>
+</section>
+<section class="detail" id="foldl/3">
+  <div class="detail-header">
+    <a href="#foldl/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">foldl/3</h1>
+      <div class="specs">
+          <pre>foldl(fun, acc0, list) :: acc1
+when fun: (elem :: t, accIn -> accOut),
+     acc0: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     acc1: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accIn: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accOut: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     list: [t],
+     t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Calls <code class="inline">Fun``(``Elem``, ``AccIn``)</code> on successive elements <code class="inline">A</code> of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>, starting with <code class="inline">AccIn`` == ``Acc0</code>. <code class="inline">Fun``/2</code> must return a new accumulator, which is passed to the next call. The function returns the final value of the accumulator. <code class="inline">Acc0</code> is returned if the list is empty.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">foldl</span><span class="p" data-group-id="6620751070-1">(</span><span class="nf">fun</span><span class="p" data-group-id="6620751070-2">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Sum</span><span class="p" data-group-id="6620751070-2">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Sum</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6620751070-3">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="6620751070-3">]</span><span class="p" data-group-id="6620751070-1">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">15</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">foldl</span><span class="p" data-group-id="6620751070-4">(</span><span class="nf">fun</span><span class="p" data-group-id="6620751070-5">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Prod</span><span class="p" data-group-id="6620751070-5">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Prod</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6620751070-6">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="6620751070-6">]</span><span class="p" data-group-id="6620751070-4">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">120</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="foldr/3">
+  <div class="detail-header">
+    <a href="#foldr/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">foldr/3</h1>
+      <div class="specs">
+          <pre>foldr(fun, acc0, list) :: acc1
+when fun: (elem :: t, accIn -> accOut),
+     acc0: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     acc1: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accIn: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accOut: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     list: [t],
+     t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Like <a href="#foldl/3"><code class="inline">foldl/3</code></a>, but the list is traversed from right to left.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fun</span><span class="p" data-group-id="7257008591-1">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">AccIn</span><span class="p" data-group-id="7257008591-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">format</span><span class="p" data-group-id="7257008591-2">(</span><span class="s">&quot;</span><span class="si">~p</span><span class="s"> &quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7257008591-3">[</span><span class="n">A</span><span class="p" data-group-id="7257008591-3">]</span><span class="p" data-group-id="7257008591-2">)</span><span class="p">,</span><span class="w"> </span><span class="n">AccIn</span><span class="w"> </span><span class="k">end</span><span class="p">.</span><span class="w">
+</span><span class="p">#</span><span class="n">Fun</span><span class="o">&lt;</span><span class="ss">erl_eval</span><span class="p">.</span><span class="mf">12.2225172</span><span class="o">&gt;</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">foldl</span><span class="p" data-group-id="7257008591-4">(</span><span class="n">P</span><span class="p">,</span><span class="w"> </span><span class="ss">void</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7257008591-5">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="7257008591-5">]</span><span class="p" data-group-id="7257008591-4">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="ss">void</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">foldr</span><span class="p" data-group-id="7257008591-6">(</span><span class="n">P</span><span class="p">,</span><span class="w"> </span><span class="ss">void</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7257008591-7">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="7257008591-7">]</span><span class="p" data-group-id="7257008591-6">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="ss">void</span></code></pre>
+<p> <a href="#foldl/3"><code class="inline">foldl/3</code></a> is tail recursive and is usually preferred to <a href="#foldr/3"><code class="inline">foldr/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="foreach/2">
+  <div class="detail-header">
+    <a href="#foreach/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">foreach/2</h1>
+      <div class="specs">
+          <pre>foreach(fun, list) :: :ok
+when fun: (elem :: t -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()), list: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Calls <code class="inline">Fun``(``Elem``)</code> for each element <code class="inline">Elem</code> in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>. This function is used for its side effects and the evaluation order is defined to be the same as the order of the elements in the list.</p>
+  </section>
+</section>
+<section class="detail" id="join/2">
+  <div class="detail-header">
+    <a href="#join/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">join/2</h1>
+      <div class="specs">
+          <pre>join(sep, list1) :: list2 when sep: t, list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Inserts <code class="inline">Sep</code> between each element in <code class="inline">List1</code>. Has no effect on the empty list and on a singleton list. For example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">join</span><span class="p" data-group-id="6744560224-1">(</span><span class="ss">x</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6744560224-2">[</span><span class="ss">a</span><span class="p">,</span><span class="ss">b</span><span class="p">,</span><span class="ss">c</span><span class="p" data-group-id="6744560224-2">]</span><span class="p" data-group-id="6744560224-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="6744560224-3">[</span><span class="ss">a</span><span class="p">,</span><span class="ss">x</span><span class="p">,</span><span class="ss">b</span><span class="p">,</span><span class="ss">x</span><span class="p">,</span><span class="ss">c</span><span class="p" data-group-id="6744560224-3">]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">join</span><span class="p" data-group-id="6744560224-4">(</span><span class="ss">x</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6744560224-5">[</span><span class="ss">a</span><span class="p" data-group-id="6744560224-5">]</span><span class="p" data-group-id="6744560224-4">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="6744560224-6">[</span><span class="ss">a</span><span class="p" data-group-id="6744560224-6">]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">join</span><span class="p" data-group-id="6744560224-7">(</span><span class="ss">x</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6744560224-8">[</span><span class="p" data-group-id="6744560224-8">]</span><span class="p" data-group-id="6744560224-7">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="6744560224-9">[</span><span class="p" data-group-id="6744560224-9">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="keydelete/3">
+  <div class="detail-header">
+    <a href="#keydelete/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keydelete/3</h1>
+      <div class="specs">
+          <pre>keydelete(key, n, tupleList1) :: tupleList2
+when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+     tupleList1: [tuple],
+     tupleList2: [tuple],
+     tuple: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a copy of <code class="inline">TupleList1</code> where the first occurrence of a tuple whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code> is deleted, if there is such a tuple.</p>
+  </section>
+</section>
+<section class="detail" id="keyfind/3">
+  <div class="detail-header">
+    <a href="#keyfind/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keyfind/3</h1>
+      <div class="specs">
+          <pre>keyfind(key, n, tupleList) :: tuple | false
+when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), tupleList: [tuple], tuple: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Searches the list of tuples <code class="inline">TupleList</code> for a tuple whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code>. Returns <a href="https://hexdocs.pm/elixir/Tuple.html"><code class="inline">Tuple</code></a> if such a tuple is found, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="keymap/3">
+  <div class="detail-header">
+    <a href="#keymap/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keymap/3</h1>
+      <div class="specs">
+          <pre>keymap(fun, n, tupleList1) :: tupleList2
+when fun: (term1 :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>() -> term2 :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()),
+     n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+     tupleList1: [tuple],
+     tupleList2: [tuple],
+     tuple: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of tuples where, for each tuple in <code class="inline">TupleList1</code>, the <code class="inline">N</code>th element <code class="inline">Term1</code> of the tuple has been replaced with the result of calling <code class="inline">Fun``(``Term1``)</code>.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fun</span><span class="p" data-group-id="6059670558-1">(</span><span class="n">Atom</span><span class="p" data-group-id="6059670558-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nf">atom_to_list</span><span class="p" data-group-id="6059670558-2">(</span><span class="n">Atom</span><span class="p" data-group-id="6059670558-2">)</span><span class="w"> </span><span class="k">end</span><span class="p">.</span><span class="w">
+</span><span class="p">#</span><span class="n">Fun</span><span class="o">&lt;</span><span class="ss">erl_eval</span><span class="p">.</span><span class="mf">6.10732646</span><span class="o">&gt;</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">keymap</span><span class="p" data-group-id="6059670558-3">(</span><span class="n">Fun</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6059670558-4">[</span><span class="p" data-group-id="6059670558-5">{</span><span class="ss">name</span><span class="p">,</span><span class="ss">jane</span><span class="p">,</span><span class="mi">22</span><span class="p" data-group-id="6059670558-5">}</span><span class="p">,</span><span class="p" data-group-id="6059670558-6">{</span><span class="ss">name</span><span class="p">,</span><span class="ss">lizzie</span><span class="p">,</span><span class="mi">20</span><span class="p" data-group-id="6059670558-6">}</span><span class="p">,</span><span class="p" data-group-id="6059670558-7">{</span><span class="ss">name</span><span class="p">,</span><span class="ss">lydia</span><span class="p">,</span><span class="mi">15</span><span class="p" data-group-id="6059670558-7">}</span><span class="p" data-group-id="6059670558-4">]</span><span class="p" data-group-id="6059670558-3">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="6059670558-8">[</span><span class="p" data-group-id="6059670558-9">{</span><span class="ss">name</span><span class="p">,</span><span class="s">&quot;jane&quot;</span><span class="p">,</span><span class="mi">22</span><span class="p" data-group-id="6059670558-9">}</span><span class="p">,</span><span class="p" data-group-id="6059670558-10">{</span><span class="ss">name</span><span class="p">,</span><span class="s">&quot;lizzie&quot;</span><span class="p">,</span><span class="mi">20</span><span class="p" data-group-id="6059670558-10">}</span><span class="p">,</span><span class="p" data-group-id="6059670558-11">{</span><span class="ss">name</span><span class="p">,</span><span class="s">&quot;lydia&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p" data-group-id="6059670558-11">}</span><span class="p" data-group-id="6059670558-8">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="keymember/3">
+  <div class="detail-header">
+    <a href="#keymember/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keymember/3</h1>
+      <div class="specs">
+          <pre>keymember(key, n, tupleList) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), tupleList: [tuple], tuple: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if there is a tuple in <code class="inline">TupleList</code> whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code>, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="keymerge/3">
+  <div class="detail-header">
+    <a href="#keymerge/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keymerge/3</h1>
+      <div class="specs">
+          <pre>keymerge(n, tupleList1, tupleList2) :: tupleList3
+when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+     tupleList1: [t1],
+     tupleList2: [t2],
+     tupleList3: [t1 | t2],
+     t1: tuple,
+     t2: tuple,
+     tuple: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sorted list formed by merging <code class="inline">TupleList1</code> and <code class="inline">TupleList2</code>. The merge is performed on the <code class="inline">N</code>th element of each tuple. Both <code class="inline">TupleList1</code> and <code class="inline">TupleList2</code> must be key-sorted before evaluating this function. When two tuples compare equal, the tuple from <code class="inline">TupleList1</code> is picked before the tuple from <code class="inline">TupleList2</code>.</p>
+  </section>
+</section>
+<section class="detail" id="keyreplace/4">
+  <div class="detail-header">
+    <a href="#keyreplace/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keyreplace/4</h1>
+      <div class="specs">
+          <pre>keyreplace(key, n, tupleList1, newTuple) :: tupleList2
+when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+     tupleList1: [tuple],
+     tupleList2: [tuple],
+     newTuple: tuple,
+     tuple: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a copy of <code class="inline">TupleList1</code> where the first occurrence of a <code class="inline">T</code> tuple whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code> is replaced with <code class="inline">NewTuple</code>, if there is such a tuple <code class="inline">T</code>.</p>
+  </section>
+</section>
+<section class="detail" id="keysearch/3">
+  <div class="detail-header">
+    <a href="#keysearch/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keysearch/3</h1>
+      <div class="specs">
+          <pre>keysearch(key, n, tupleList) :: {:value, tuple} | false
+when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), tupleList: [tuple], tuple: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Searches the list of tuples <code class="inline">TupleList</code> for a tuple whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code>. Returns <code class="inline">{value, ``Tuple``}</code> if such a tuple is found, otherwise <code class="inline">false</code>.</p>
+<p>  This function is retained for backward compatibility. Function <a href="#keyfind/3"><code class="inline">keyfind/3</code></a> is usually more convenient.</p>
+  </section>
+</section>
+<section class="detail" id="keysort/2">
+  <div class="detail-header">
+    <a href="#keysort/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keysort/2</h1>
+      <div class="specs">
+          <pre>keysort(n, tupleList1) :: tupleList2
+when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), tupleList1: [tuple], tupleList2: [tuple], tuple: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list containing the sorted elements of list <code class="inline">TupleList1</code>. Sorting is performed on the <code class="inline">N</code>th element of the tuples. The sort is stable.</p>
+  </section>
+</section>
+<section class="detail" id="keystore/4">
+  <div class="detail-header">
+    <a href="#keystore/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keystore/4</h1>
+      <div class="specs">
+          <pre>keystore(key, n, tupleList1, newTuple) :: tupleList2
+when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+     tupleList1: [tuple],
+     tupleList2: [tuple, ...],
+     newTuple: tuple,
+     tuple: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a copy of <code class="inline">TupleList1</code> where the first occurrence of a tuple <code class="inline">T</code> whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code> is replaced with <code class="inline">NewTuple</code>, if there is such a tuple <code class="inline">T</code>. If there is no such tuple <code class="inline">T</code>, a copy of <code class="inline">TupleList1</code> where [<code class="inline">NewTuple</code>] has been appended to the end is returned.</p>
+  </section>
+</section>
+<section class="detail" id="keytake/3">
+  <div class="detail-header">
+    <a href="#keytake/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">keytake/3</h1>
+      <div class="specs">
+          <pre>keytake(key, n, tupleList1) :: {:value, tuple, tupleList2} | false
+when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+     tupleList1: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()],
+     tupleList2: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()],
+     tuple: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Searches the list of tuples <code class="inline">TupleList1</code> for a tuple whose <code class="inline">N</code>th element compares equal to <code class="inline">Key</code>. Returns <code class="inline">{value, ``Tuple``, ``TupleList2``}</code> if such a tuple is found, otherwise <code class="inline">false</code>. <code class="inline">TupleList2</code> is a copy of <code class="inline">TupleList1</code> where the first occurrence of <a href="https://hexdocs.pm/elixir/Tuple.html"><code class="inline">Tuple</code></a> has been removed.</p>
+  </section>
+</section>
+<section class="detail" id="last/1">
+  <div class="detail-header">
+    <a href="#last/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">last/1</h1>
+      <div class="specs">
+          <pre>last(list) :: last when list: [t, ...], last: t, t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the last element in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="map/2">
+  <div class="detail-header">
+    <a href="#map/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">map/2</h1>
+      <div class="specs">
+          <pre>map(fun, list1) :: list2
+when fun: (a -> b), list1: [a], list2: [b], a: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), b: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Takes a function from <code class="inline">A</code>s to <code class="inline">B</code>s, and a list of <code class="inline">A</code>s and produces a list of <code class="inline">B</code>s by applying the function to every element in the list. This function is used to obtain the return values. The evaluation order depends on the implementation.</p>
+  </section>
+</section>
+<section class="detail" id="mapfoldl/3">
+  <div class="detail-header">
+    <a href="#mapfoldl/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mapfoldl/3</h1>
+      <div class="specs">
+          <pre>mapfoldl(fun, acc0, list1) :: {list2, acc1}
+when fun: (a, accIn -> {b, accOut}),
+     acc0: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     acc1: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accIn: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accOut: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     list1: [a],
+     list2: [b],
+     a: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     b: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Combines the operations of <a href="#map/2"><code class="inline">map/2</code></a> and <a href="#foldl/3"><code class="inline">foldl/3</code></a> into one pass.</p>
+<p> Example:</p>
+<p> Summing the elements in a list and double them at the same time:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">mapfoldl</span><span class="p" data-group-id="4965980666-1">(</span><span class="nf">fun</span><span class="p" data-group-id="4965980666-2">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Sum</span><span class="p" data-group-id="4965980666-2">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="p" data-group-id="4965980666-3">{</span><span class="mi">2</span><span class="o">*</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">X</span><span class="o">+</span><span class="n">Sum</span><span class="p" data-group-id="4965980666-3">}</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w">
+</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4965980666-4">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="4965980666-4">]</span><span class="p" data-group-id="4965980666-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="4965980666-5">{</span><span class="p" data-group-id="4965980666-6">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p" data-group-id="4965980666-6">]</span><span class="p">,</span><span class="mi">15</span><span class="p" data-group-id="4965980666-5">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="mapfoldr/3">
+  <div class="detail-header">
+    <a href="#mapfoldr/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mapfoldr/3</h1>
+      <div class="specs">
+          <pre>mapfoldr(fun, acc0, list1) :: {list2, acc1}
+when fun: (a, accIn -> {b, accOut}),
+     acc0: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     acc1: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accIn: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accOut: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     list1: [a],
+     list2: [b],
+     a: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     b: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Combines the operations of <a href="#map/2"><code class="inline">map/2</code></a> and <a href="#foldr/3"><code class="inline">foldr/3</code></a> into one pass.</p>
+  </section>
+</section>
+<section class="detail" id="max/1">
+  <div class="detail-header">
+    <a href="#max/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">max/1</h1>
+      <div class="specs">
+          <pre>max(list) :: max when list: [t, ...], max: t, t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the first element of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> that compares greater than or equal to all other elements of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="member/2">
+  <div class="detail-header">
+    <a href="#member/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">member/2</h1>
+      <div class="specs">
+          <pre>member(elem, list) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when elem: t, list: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Elem</code> matches some element of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="merge/1">
+  <div class="detail-header">
+    <a href="#merge/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">merge/1</h1>
+      <div class="specs">
+          <pre>merge(listOfLists) :: list1
+when listOfLists: [list], list: [t], list1: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sorted list formed by merging all the sublists of <code class="inline">ListOfLists</code>. All sublists must be sorted before evaluating this function. When two elements compare equal, the element from the sublist with the lowest position in <code class="inline">ListOfLists</code> is picked before the other element.</p>
+  </section>
+</section>
+<section class="detail" id="merge/2">
+  <div class="detail-header">
+    <a href="#merge/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">merge/2</h1>
+      <div class="specs">
+          <pre>merge(list1, list2) :: list3
+when list1: [x], list2: [y], list3: [x | y], x: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), y: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sorted list formed by merging <code class="inline">List1</code> and <code class="inline">List2</code>. Both <code class="inline">List1</code> and <code class="inline">List2</code> must be sorted before evaluating this function. When two elements compare equal, the element from <code class="inline">List1</code> is picked before the element from <code class="inline">List2</code>.</p>
+  </section>
+</section>
+<section class="detail" id="merge/3">
+  <div class="detail-header">
+    <a href="#merge/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">merge/3</h1>
+      <div class="specs">
+          <pre>merge(fun, list1, list2) :: list3
+when fun: (a, b -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()),
+     list1: [a],
+     list2: [b],
+     list3: [a | b],
+     a: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     b: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sorted list formed by merging <code class="inline">List1</code> and <code class="inline">List2</code>. Both <code class="inline">List1</code> and <code class="inline">List2</code> must be sorted according to the ordering function <code class="inline">Fun</code> before evaluating this function. <code class="inline">Fun``(``A``, ``B``)</code> is to return <code class="inline">true</code> if <code class="inline">A</code> compares less than or equal to <code class="inline">B</code> in the ordering, otherwise <code class="inline">false</code>. When two elements compare equal, the element from <code class="inline">List1</code> is picked before the element from <code class="inline">List2</code>.</p>
+  </section>
+</section>
+<section class="detail" id="merge3/3">
+  <div class="detail-header">
+    <a href="#merge3/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">merge3/3</h1>
+      <div class="specs">
+          <pre>merge3(list1, list2, list3) :: list4
+when list1: [x],
+     list2: [y],
+     list3: [z],
+     list4: [x | y | z],
+     x: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     y: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     z: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sorted list formed by merging <code class="inline">List1</code>, <code class="inline">List2</code>, and <code class="inline">List3</code>. All of <code class="inline">List1</code>, <code class="inline">List2</code>, and <code class="inline">List3</code> must be sorted before evaluating this function. When two elements compare equal, the element from <code class="inline">List1</code>, if there is such an element, is picked before the other element, otherwise the element from <code class="inline">List2</code> is picked before the element from <code class="inline">List3</code>.</p>
+  </section>
+</section>
+<section class="detail" id="min/1">
+  <div class="detail-header">
+    <a href="#min/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">min/1</h1>
+      <div class="specs">
+          <pre>min(list) :: min when list: [t, ...], min: t, t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the first element of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> that compares less than or equal to all other elements of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="nth/2">
+  <div class="detail-header">
+    <a href="#nth/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">nth/2</h1>
+      <div class="specs">
+          <pre>nth(n, list) :: elem when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), list: [t, ...], elem: t, t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the <code class="inline">N</code>th element of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">nth</span><span class="p" data-group-id="3555753368-1">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3555753368-2">[</span><span class="ss">a</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">,</span><span class="w"> </span><span class="ss">d</span><span class="p">,</span><span class="w"> </span><span class="ss">e</span><span class="p" data-group-id="3555753368-2">]</span><span class="p" data-group-id="3555753368-1">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">c</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="nthtail/2">
+  <div class="detail-header">
+    <a href="#nthtail/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">nthtail/2</h1>
+      <div class="specs">
+          <pre>nthtail(n, list) :: tail
+when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), list: [t, ...], tail: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the <code class="inline">N</code>th tail of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>, that is, the sublist of <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> starting at <code class="inline">N``+1</code> and continuing up to the end of the list.</p>
+<p> Example</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">nthtail</span><span class="p" data-group-id="4334494433-1">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4334494433-2">[</span><span class="ss">a</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">,</span><span class="w"> </span><span class="ss">d</span><span class="p">,</span><span class="w"> </span><span class="ss">e</span><span class="p" data-group-id="4334494433-2">]</span><span class="p" data-group-id="4334494433-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="4334494433-3">[</span><span class="ss">d</span><span class="p">,</span><span class="ss">e</span><span class="p" data-group-id="4334494433-3">]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">tl</span><span class="p" data-group-id="4334494433-4">(</span><span class="nf">tl</span><span class="p" data-group-id="4334494433-5">(</span><span class="nf">tl</span><span class="p" data-group-id="4334494433-6">(</span><span class="p" data-group-id="4334494433-7">[</span><span class="ss">a</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">,</span><span class="w"> </span><span class="ss">d</span><span class="p">,</span><span class="w"> </span><span class="ss">e</span><span class="p" data-group-id="4334494433-7">]</span><span class="p" data-group-id="4334494433-6">)</span><span class="p" data-group-id="4334494433-5">)</span><span class="p" data-group-id="4334494433-4">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="4334494433-8">[</span><span class="ss">d</span><span class="p">,</span><span class="ss">e</span><span class="p" data-group-id="4334494433-8">]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">nthtail</span><span class="p" data-group-id="4334494433-9">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4334494433-10">[</span><span class="ss">a</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">,</span><span class="w"> </span><span class="ss">d</span><span class="p">,</span><span class="w"> </span><span class="ss">e</span><span class="p" data-group-id="4334494433-10">]</span><span class="p" data-group-id="4334494433-9">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="4334494433-11">[</span><span class="ss">a</span><span class="p">,</span><span class="ss">b</span><span class="p">,</span><span class="ss">c</span><span class="p">,</span><span class="ss">d</span><span class="p">,</span><span class="ss">e</span><span class="p" data-group-id="4334494433-11">]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">nthtail</span><span class="p" data-group-id="4334494433-12">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4334494433-13">[</span><span class="ss">a</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">,</span><span class="w"> </span><span class="ss">d</span><span class="p">,</span><span class="w"> </span><span class="ss">e</span><span class="p" data-group-id="4334494433-13">]</span><span class="p" data-group-id="4334494433-12">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="4334494433-14">[</span><span class="p" data-group-id="4334494433-14">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="partition/2">
+  <div class="detail-header">
+    <a href="#partition/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">partition/2</h1>
+      <div class="specs">
+          <pre>partition(pred, list) :: {satisfying, notSatisfying}
+when pred: (elem :: t -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()),
+     list: [t],
+     satisfying: [t],
+     notSatisfying: [t],
+     t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Partitions <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> into two lists, where the first list contains all elements for which <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">true</code>, and the second list contains all elements for which <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">false</code>.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">partition</span><span class="p" data-group-id="0793619675-1">(</span><span class="nf">fun</span><span class="p" data-group-id="0793619675-2">(</span><span class="n">A</span><span class="p" data-group-id="0793619675-2">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="ow">rem</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0793619675-3">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p" data-group-id="0793619675-3">]</span><span class="p" data-group-id="0793619675-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="0793619675-4">{</span><span class="p" data-group-id="0793619675-5">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p" data-group-id="0793619675-5">]</span><span class="p">,</span><span class="p" data-group-id="0793619675-6">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p" data-group-id="0793619675-6">]</span><span class="p" data-group-id="0793619675-4">}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">partition</span><span class="p" data-group-id="0793619675-7">(</span><span class="nf">fun</span><span class="p" data-group-id="0793619675-8">(</span><span class="n">A</span><span class="p" data-group-id="0793619675-8">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nf">is_atom</span><span class="p" data-group-id="0793619675-9">(</span><span class="n">A</span><span class="p" data-group-id="0793619675-9">)</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0793619675-10">[</span><span class="ss">a</span><span class="p">,</span><span class="ss">b</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="ss">c</span><span class="p">,</span><span class="ss">d</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="ss">e</span><span class="p" data-group-id="0793619675-10">]</span><span class="p" data-group-id="0793619675-7">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="0793619675-11">{</span><span class="p" data-group-id="0793619675-12">[</span><span class="ss">a</span><span class="p">,</span><span class="ss">b</span><span class="p">,</span><span class="ss">c</span><span class="p">,</span><span class="ss">d</span><span class="p">,</span><span class="ss">e</span><span class="p" data-group-id="0793619675-12">]</span><span class="p">,</span><span class="p" data-group-id="0793619675-13">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="0793619675-13">]</span><span class="p" data-group-id="0793619675-11">}</span></code></pre>
+<p> For a different way to partition a list, see <a href="#splitwith/2"><code class="inline">splitwith/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="prefix/2">
+  <div class="detail-header">
+    <a href="#prefix/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">prefix/2</h1>
+      <div class="specs">
+          <pre>prefix(list1, list2) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">List1</code> is a prefix of <code class="inline">List2</code>, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="reverse/1">
+  <div class="detail-header">
+    <a href="#reverse/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reverse/1</h1>
+      <div class="specs">
+          <pre>reverse(list1) :: list2 when list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list with the elements in <code class="inline">List1</code> in reverse order.</p>
+  </section>
+</section>
+<section class="detail" id="reverse/2">
+  <div class="detail-header">
+    <a href="#reverse/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reverse/2</h1>
+      <div class="specs">
+          <pre>reverse(list1, tail) :: list2
+when list1: [t], tail: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list with the elements in <code class="inline">List1</code> in reverse order, with tail <code class="inline">Tail</code> appended.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">reverse</span><span class="p" data-group-id="0066540925-1">(</span><span class="p" data-group-id="0066540925-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="0066540925-2">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0066540925-3">[</span><span class="ss">a</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p" data-group-id="0066540925-3">]</span><span class="p" data-group-id="0066540925-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="0066540925-4">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="ss">a</span><span class="p">,</span><span class="ss">b</span><span class="p">,</span><span class="ss">c</span><span class="p" data-group-id="0066540925-4">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="search/2">
+  <div class="detail-header">
+    <a href="#search/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">search/2</h1>
+      <div class="specs">
+          <pre>search(pred, list) :: {:value, value} | false
+when pred: (t -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), list: [t], value: t</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> If there is a <code class="inline">Value</code> in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> such that <code class="inline">Pred``(``Value``)</code> returns <code class="inline">true</code>, returns <code class="inline">{value, ``Value``}</code> for the first such <code class="inline">Value</code>, otherwise returns <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="seqseq/23">
+  <div class="detail-header">
+    <a href="#seqseq/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">seqseq/23</h1>
+  </div>
+  <section class="docstring">
+<p> Returns a sequence of integers that starts with <code class="inline">From</code> and contains the successive results of adding <code class="inline">Incr</code> to the previous element, until <code class="inline">To</code> is reached or passed (in the latter case, <code class="inline">To</code> is not an element of the sequence). <code class="inline">Incr</code> defaults to 1.</p>
+<p> Failures:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="err">`</span><span class="n">To</span><span class="err">`</span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="o">&lt;</span><span class="w">
+      </span><span class="err">`</span><span class="err">`</span><span class="n">From</span><span class="err">`</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">Incr</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">Incr</span><span class="err">`</span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="err">`</span><span class="n">To</span><span class="err">`</span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="o">&gt;</span><span class="w">
+          </span><span class="err">`</span><span class="err">`</span><span class="n">From</span><span class="err">`</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">Incr</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">Incr</span><span class="err">`</span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="err">`</span><span class="n">Incr</span><span class="err">`</span><span class="err">`</span><span class="w"> </span><span class="o">=:=</span><span class="w"> </span><span class="mi">0</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">From</span><span class="err">`</span><span class="err">`</span><span class="w"> </span><span class="o">=/=</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">To</span><span class="err">`</span><span class="p">.</span></code></pre>
+<p>   The following equalities hold for all sequences:</p>
+<pre><code class="nohighlight makeup erlang"><span class="nf">length</span><span class="p" data-group-id="5659937524-1">(</span><span class="nc">lists</span><span class="p">:</span><span class="nf">seq</span><span class="p" data-group-id="5659937524-2">(</span><span class="n">From</span><span class="p">,</span><span class="w"> </span><span class="n">To</span><span class="p" data-group-id="5659937524-2">)</span><span class="p" data-group-id="5659937524-1">)</span><span class="w"> </span><span class="o">=:=</span><span class="w"> </span><span class="n">To</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">From</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="nf">length</span><span class="p" data-group-id="5659937524-3">(</span><span class="nc">lists</span><span class="p">:</span><span class="nf">seq</span><span class="p" data-group-id="5659937524-4">(</span><span class="n">From</span><span class="p">,</span><span class="w"> </span><span class="n">To</span><span class="p">,</span><span class="w"> </span><span class="n">Incr</span><span class="p" data-group-id="5659937524-4">)</span><span class="p" data-group-id="5659937524-3">)</span><span class="w"> </span><span class="o">=:=</span><span class="w"> </span><span class="p" data-group-id="5659937524-5">(</span><span class="n">To</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">From</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Incr</span><span class="p" data-group-id="5659937524-5">)</span><span class="w"> </span><span class="ow">div</span><span class="w"> </span><span class="n">Incr</span></code></pre>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">seq</span><span class="p" data-group-id="5176325216-1">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="5176325216-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="5176325216-2">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p" data-group-id="5176325216-2">]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">seq</span><span class="p" data-group-id="5176325216-3">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="5176325216-3">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="5176325216-4">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">19</span><span class="p" data-group-id="5176325216-4">]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">seq</span><span class="p" data-group-id="5176325216-5">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="5176325216-5">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="5176325216-6">[</span><span class="p" data-group-id="5176325216-6">]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">seq</span><span class="p" data-group-id="5176325216-7">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="5176325216-7">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="5176325216-8">[</span><span class="p" data-group-id="5176325216-8">]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">seq</span><span class="p" data-group-id="5176325216-9">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="5176325216-9">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="5176325216-10">[</span><span class="mi">1</span><span class="p" data-group-id="5176325216-10">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="sort/1">
+  <div class="detail-header">
+    <a href="#sort/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sort/1</h1>
+      <div class="specs">
+          <pre>sort(list1) :: list2 when list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list containing the sorted elements of <code class="inline">List1</code>.</p>
+  </section>
+</section>
+<section class="detail" id="sort/2">
+  <div class="detail-header">
+    <a href="#sort/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sort/2</h1>
+      <div class="specs">
+          <pre>sort(fun, list1) :: list2
+when fun: (a :: t, b :: t -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list containing the sorted elements of <code class="inline">List1</code>, according to the ordering function <code class="inline">Fun</code>. <code class="inline">Fun``(``A``, ``B``)</code> is to return <code class="inline">true</code> if <code class="inline">A</code> compares less than or equal to <code class="inline">B</code> in the ordering, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="split/2">
+  <div class="detail-header">
+    <a href="#split/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">split/2</h1>
+      <div class="specs">
+          <pre>split(n, list1) :: {list2, list3}
+when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), list1: [t], list2: [t], list3: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Splits <code class="inline">List1</code> into <code class="inline">List2</code> and <code class="inline">List3</code>. <code class="inline">List2</code> contains the first <code class="inline">N</code> elements and <code class="inline">List3</code> the remaining elements (the <code class="inline">N</code>th tail).</p>
+  </section>
+</section>
+<section class="detail" id="splitwith/2">
+  <div class="detail-header">
+    <a href="#splitwith/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">splitwith/2</h1>
+      <div class="specs">
+          <pre>splitwith(pred, list) :: {list1, list2}
+when pred: (t -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), list: [t], list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Partitions <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> into two lists according to <code class="inline">Pred</code>. <a href="#splitwith/2"><code class="inline">splitwith/2</code></a> behaves as if it is defined as follows:</p>
+<pre><code class="nohighlight makeup erlang"><span class="nf">splitwith</span><span class="p" data-group-id="0245888083-1">(</span><span class="n">Pred</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="p" data-group-id="0245888083-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+    </span><span class="p" data-group-id="0245888083-2">{</span><span class="nf">takewhile</span><span class="p" data-group-id="0245888083-3">(</span><span class="n">Pred</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="p" data-group-id="0245888083-3">)</span><span class="p">,</span><span class="w"> </span><span class="nf">dropwhile</span><span class="p" data-group-id="0245888083-4">(</span><span class="n">Pred</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="p" data-group-id="0245888083-4">)</span><span class="p" data-group-id="0245888083-2">}</span><span class="p">.</span></code></pre>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">splitwith</span><span class="p" data-group-id="3766119419-1">(</span><span class="nf">fun</span><span class="p" data-group-id="3766119419-2">(</span><span class="n">A</span><span class="p" data-group-id="3766119419-2">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="ow">rem</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3766119419-3">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p" data-group-id="3766119419-3">]</span><span class="p" data-group-id="3766119419-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="3766119419-4">{</span><span class="p" data-group-id="3766119419-5">[</span><span class="mi">1</span><span class="p" data-group-id="3766119419-5">]</span><span class="p">,</span><span class="p" data-group-id="3766119419-6">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p" data-group-id="3766119419-6">]</span><span class="p" data-group-id="3766119419-4">}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">splitwith</span><span class="p" data-group-id="3766119419-7">(</span><span class="nf">fun</span><span class="p" data-group-id="3766119419-8">(</span><span class="n">A</span><span class="p" data-group-id="3766119419-8">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nf">is_atom</span><span class="p" data-group-id="3766119419-9">(</span><span class="n">A</span><span class="p" data-group-id="3766119419-9">)</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3766119419-10">[</span><span class="ss">a</span><span class="p">,</span><span class="ss">b</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="ss">c</span><span class="p">,</span><span class="ss">d</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="ss">e</span><span class="p" data-group-id="3766119419-10">]</span><span class="p" data-group-id="3766119419-7">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="3766119419-11">{</span><span class="p" data-group-id="3766119419-12">[</span><span class="ss">a</span><span class="p">,</span><span class="ss">b</span><span class="p" data-group-id="3766119419-12">]</span><span class="p">,</span><span class="p" data-group-id="3766119419-13">[</span><span class="mi">1</span><span class="p">,</span><span class="ss">c</span><span class="p">,</span><span class="ss">d</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="ss">e</span><span class="p" data-group-id="3766119419-13">]</span><span class="p" data-group-id="3766119419-11">}</span></code></pre>
+<p> For a different way to partition a list, see <a href="#partition/2"><code class="inline">partition/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="sublist/2">
+  <div class="detail-header">
+    <a href="#sublist/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sublist/2</h1>
+      <div class="specs">
+          <pre>sublist(list1, len) :: list2
+when list1: [t], list2: [t], len: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sublist of <code class="inline">List1</code> starting at position 1 and with (maximum) <code class="inline">Len</code> elements. It is not an error for <code class="inline">Len</code> to exceed the length of the list, in that case the whole list is returned.</p>
+  </section>
+</section>
+<section class="detail" id="sublist/3">
+  <div class="detail-header">
+    <a href="#sublist/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sublist/3</h1>
+      <div class="specs">
+          <pre>sublist(list1, start, len) :: list2
+when list1: [t],
+     list2: [t],
+     start: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+     len: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+     t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sublist of <code class="inline">List1</code> starting at <code class="inline">Start</code> and with (maximum) <code class="inline">Len</code> elements. It is not an error for <code class="inline">Start``+``Len</code> to exceed the length of the list.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">sublist</span><span class="p" data-group-id="1823521643-1">(</span><span class="p" data-group-id="1823521643-2">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="1823521643-2">]</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="1823521643-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="1823521643-3">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="1823521643-3">]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">sublist</span><span class="p" data-group-id="1823521643-4">(</span><span class="p" data-group-id="1823521643-5">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="1823521643-5">]</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="1823521643-4">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="1823521643-6">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="1823521643-6">]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">sublist</span><span class="p" data-group-id="1823521643-7">(</span><span class="p" data-group-id="1823521643-8">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="1823521643-8">]</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="1823521643-7">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="1823521643-9">[</span><span class="p" data-group-id="1823521643-9">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="subtract/2">
+  <div class="detail-header">
+    <a href="#subtract/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">subtract/2</h1>
+      <div class="specs">
+          <pre>subtract(list1, list2) :: list3
+when list1: [t], list2: [t], list3: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a new list <code class="inline">List3</code> that is a copy of <code class="inline">List1</code>, subjected to the following procedure: for each element in <code class="inline">List2</code>, its first occurrence in <code class="inline">List1</code> is deleted.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">subtract</span><span class="p" data-group-id="9994900808-1">(</span><span class="s">&quot;123212&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;212&quot;</span><span class="p" data-group-id="9994900808-1">)</span><span class="p">.</span><span class="w">
+</span><span class="s">&quot;312&quot;</span><span class="p">.</span></code></pre>
+<p> <code class="inline">lists:subtract(A, B)</code> is equivalent to <code class="inline">A -- B</code>.</p>
+  </section>
+</section>
+<section class="detail" id="suffix/2">
+  <div class="detail-header">
+    <a href="#suffix/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">suffix/2</h1>
+      <div class="specs">
+          <pre>suffix(list1, list2) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">List1</code> is a suffix of <code class="inline">List2</code>, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="sum/1">
+  <div class="detail-header">
+    <a href="#sum/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sum/1</h1>
+      <div class="specs">
+          <pre>sum(list) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>() when list: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sum of the elements in <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="takewhile/2">
+  <div class="detail-header">
+    <a href="#takewhile/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">takewhile/2</h1>
+      <div class="specs">
+          <pre>takewhile(pred, list1) :: list2
+when pred: (elem :: t -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Takes elements <code class="inline">Elem</code> from <code class="inline">List1</code> while <code class="inline">Pred``(``Elem``)</code> returns <code class="inline">true</code>, that is, the function returns the longest prefix of the list for which all elements satisfy the predicate.</p>
+  </section>
+</section>
+<section class="detail" id="ukeymerge/3">
+  <div class="detail-header">
+    <a href="#ukeymerge/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ukeymerge/3</h1>
+      <div class="specs">
+          <pre>ukeymerge(n, tupleList1, tupleList2) :: tupleList3
+when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+     tupleList1: [t1],
+     tupleList2: [t2],
+     tupleList3: [t1 | t2],
+     t1: tuple,
+     t2: tuple,
+     tuple: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sorted list formed by merging <code class="inline">TupleList1</code> and <code class="inline">TupleList2</code>. The merge is performed on the <code class="inline">N</code>th element of each tuple. Both <code class="inline">TupleList1</code> and <code class="inline">TupleList2</code> must be key-sorted without duplicates before evaluating this function. When two tuples compare equal, the tuple from <code class="inline">TupleList1</code> is picked and the one from <code class="inline">TupleList2</code> is deleted.</p>
+  </section>
+</section>
+<section class="detail" id="ukeysort/2">
+  <div class="detail-header">
+    <a href="#ukeysort/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ukeysort/2</h1>
+      <div class="specs">
+          <pre>ukeysort(n, tupleList1) :: tupleList2
+when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), tupleList1: [tuple], tupleList2: [tuple], tuple: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list containing the sorted elements of list <code class="inline">TupleList1</code> where all except the first tuple of the tuples comparing equal have been deleted. Sorting is performed on the <code class="inline">N</code>th element of the tuples.</p>
+  </section>
+</section>
+<section class="detail" id="umerge/1">
+  <div class="detail-header">
+    <a href="#umerge/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">umerge/1</h1>
+      <div class="specs">
+          <pre>umerge(listOfLists) :: list1
+when listOfLists: [list], list: [t], list1: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sorted list formed by merging all the sublists of <code class="inline">ListOfLists</code>. All sublists must be sorted and contain no duplicates before evaluating this function. When two elements compare equal, the element from the sublist with the lowest position in <code class="inline">ListOfLists</code> is picked and the other is deleted.</p>
+  </section>
+</section>
+<section class="detail" id="umerge/2">
+  <div class="detail-header">
+    <a href="#umerge/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">umerge/2</h1>
+      <div class="specs">
+          <pre>umerge(list1, list2) :: list3
+when list1: [x], list2: [y], list3: [x | y], x: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), y: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sorted list formed by merging <code class="inline">List1</code> and <code class="inline">List2</code>. Both <code class="inline">List1</code> and <code class="inline">List2</code> must be sorted and contain no duplicates before evaluating this function. When two elements compare equal, the element from <code class="inline">List1</code> is picked and the one from <code class="inline">List2</code> is deleted.</p>
+  </section>
+</section>
+<section class="detail" id="umerge/3">
+  <div class="detail-header">
+    <a href="#umerge/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">umerge/3</h1>
+      <div class="specs">
+          <pre>umerge(fun, list1, list2) :: list3
+when fun: (a, b -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()),
+     list1: [a],
+     list2: [b],
+     list3: [a | b],
+     a: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     b: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sorted list formed by merging <code class="inline">List1</code> and <code class="inline">List2</code>. Both <code class="inline">List1</code> and <code class="inline">List2</code> must be sorted according to the ordering function <code class="inline">Fun</code> and contain no duplicates before evaluating this function. <code class="inline">Fun``(``A``, ``B``)</code> is to return <code class="inline">true</code> if <code class="inline">A</code> compares less than or equal to <code class="inline">B</code> in the ordering, otherwise <code class="inline">false</code>. When two elements compare equal, the element from <code class="inline">List1</code> is picked and the one from <code class="inline">List2</code> is deleted.</p>
+  </section>
+</section>
+<section class="detail" id="umerge3/3">
+  <div class="detail-header">
+    <a href="#umerge3/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">umerge3/3</h1>
+      <div class="specs">
+          <pre>umerge3(list1, list2, list3) :: list4
+when list1: [x],
+     list2: [y],
+     list3: [z],
+     list4: [x | y | z],
+     x: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     y: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     z: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the sorted list formed by merging <code class="inline">List1</code>, <code class="inline">List2</code>, and <code class="inline">List3</code>. All of <code class="inline">List1</code>, <code class="inline">List2</code>, and <code class="inline">List3</code> must be sorted and contain no duplicates before evaluating this function. When two elements compare equal, the element from <code class="inline">List1</code> is picked if there is such an element, otherwise the element from <code class="inline">List2</code> is picked, and the other is deleted.</p>
+  </section>
+</section>
+<section class="detail" id="unzip/1">
+  <div class="detail-header">
+    <a href="#unzip/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unzip/1</h1>
+      <div class="specs">
+          <pre>unzip(list1) :: {list2, list3}
+when list1: [{a, b}], list2: [a], list3: [b], a: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), b: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> &quot;Unzips&quot; a list of two-tuples into two lists, where the first list contains the first element of each tuple, and the second list contains the second element of each tuple.</p>
+  </section>
+</section>
+<section class="detail" id="unzip3/1">
+  <div class="detail-header">
+    <a href="#unzip3/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unzip3/1</h1>
+      <div class="specs">
+          <pre>unzip3(list1) :: {list2, list3, list4}
+when list1: [{a, b, c}],
+     list2: [a],
+     list3: [b],
+     list4: [c],
+     a: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     b: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     c: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> &quot;Unzips&quot; a list of three-tuples into three lists, where the first list contains the first element of each tuple, the second list contains the second element of each tuple, and the third list contains the third element of each tuple.</p>
+  </section>
+</section>
+<section class="detail" id="usort/1">
+  <div class="detail-header">
+    <a href="#usort/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">usort/1</h1>
+      <div class="specs">
+          <pre>usort(list1) :: list2 when list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list containing the sorted elements of <code class="inline">List1</code> where all except the first element of the elements comparing equal have been deleted.</p>
+  </section>
+</section>
+<section class="detail" id="usort/2">
+  <div class="detail-header">
+    <a href="#usort/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">usort/2</h1>
+      <div class="specs">
+          <pre>usort(fun, list1) :: list2
+when fun: (t, t -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), list1: [t], list2: [t], t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list containing the sorted elements of <code class="inline">List1</code> where all except the first element of the elements comparing equal according to the ordering function <code class="inline">Fun</code> have been deleted. <code class="inline">Fun``(A, B)</code> is to return <code class="inline">true</code> if <code class="inline">A</code> compares less than or equal to <code class="inline">B</code> in the ordering, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="zip/2">
+  <div class="detail-header">
+    <a href="#zip/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">zip/2</h1>
+      <div class="specs">
+          <pre>zip(list1, list2) :: list3
+when list1: [a], list2: [b], list3: [{a, b}], a: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), b: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> &quot;Zips&quot; two lists of equal length into one list of two-tuples, where the first element of each tuple is taken from the first list and the second element is taken from the corresponding element in the second list.</p>
+  </section>
+</section>
+<section class="detail" id="zip3/3">
+  <div class="detail-header">
+    <a href="#zip3/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">zip3/3</h1>
+      <div class="specs">
+          <pre>zip3(list1, list2, list3) :: list4
+when list1: [a],
+     list2: [b],
+     list3: [c],
+     list4: [{a, b, c}],
+     a: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     b: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     c: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> &quot;Zips&quot; three lists of equal length into one list of three-tuples, where the first element of each tuple is taken from the first list, the second element is taken from the corresponding element in the second list, and the third element is taken from the corresponding element in the third list.</p>
+  </section>
+</section>
+<section class="detail" id="zipwith/3">
+  <div class="detail-header">
+    <a href="#zipwith/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">zipwith/3</h1>
+      <div class="specs">
+          <pre>zipwith(combine, list1, list2) :: list3
+when combine: (x, y -> t),
+     list1: [x],
+     list2: [y],
+     list3: [t],
+     x: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     y: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Combines the elements of two lists of equal length into one list. For each pair <code class="inline">X``, ``Y</code> of list elements from the two lists, the element in the result list is <code class="inline">Combine``(``X``, ``Y``)</code>.</p>
+<p> <code class="inline">zipwith(fun(X, Y) -&gt; {X,Y} end, List1, List2)</code> is equivalent to <code class="inline">zip(List1, List2)</code>.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">zipwith</span><span class="p" data-group-id="8449348422-1">(</span><span class="nf">fun</span><span class="p" data-group-id="8449348422-2">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p" data-group-id="8449348422-2">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">X</span><span class="o">+</span><span class="n">Y</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8449348422-3">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="8449348422-3">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8449348422-4">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p" data-group-id="8449348422-4">]</span><span class="p" data-group-id="8449348422-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="8449348422-5">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="8449348422-5">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="zipwith3/4">
+  <div class="detail-header">
+    <a href="#zipwith3/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">zipwith3/4</h1>
+      <div class="specs">
+          <pre>zipwith3(combine, list1, list2, list3) :: list4
+when combine: (x, y, z -> t),
+     list1: [x],
+     list2: [y],
+     list3: [z],
+     list4: [t],
+     x: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     y: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     z: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     t: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Combines the elements of three lists of equal length into one list. For each triple <code class="inline">X``, ``Y``, ``Z</code> of list elements from the three lists, the element in the result list is <code class="inline">Combine``(``X``, ``Y``, ``Z``)</code>.</p>
+<p> <code class="inline">zipwith3(fun(X, Y, Z) -&gt; {X,Y,Z} end, List1, List2, List3)</code> is equivalent to <code class="inline">zip3(List1, List2, List3)</code>.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">zipwith3</span><span class="p" data-group-id="5893517370-1">(</span><span class="nf">fun</span><span class="p" data-group-id="5893517370-2">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">Z</span><span class="p" data-group-id="5893517370-2">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">X</span><span class="o">+</span><span class="n">Y</span><span class="o">+</span><span class="n">Z</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5893517370-3">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="5893517370-3">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5893517370-4">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p" data-group-id="5893517370-4">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5893517370-5">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="5893517370-5">]</span><span class="p" data-group-id="5893517370-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="5893517370-6">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">18</span><span class="p" data-group-id="5893517370-6">]</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">zipwith3</span><span class="p" data-group-id="5893517370-7">(</span><span class="nf">fun</span><span class="p" data-group-id="5893517370-8">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">Z</span><span class="p" data-group-id="5893517370-8">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="p" data-group-id="5893517370-9">[</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p" data-group-id="5893517370-9">]</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5893517370-10">[</span><span class="ss">a</span><span class="p">,</span><span class="ss">b</span><span class="p">,</span><span class="ss">c</span><span class="p" data-group-id="5893517370-10">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5893517370-11">[</span><span class="ss">x</span><span class="p">,</span><span class="ss">y</span><span class="p">,</span><span class="ss">z</span><span class="p" data-group-id="5893517370-11">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5893517370-12">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="5893517370-12">]</span><span class="p" data-group-id="5893517370-7">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="5893517370-13">[</span><span class="p" data-group-id="5893517370-14">[</span><span class="ss">a</span><span class="p">,</span><span class="ss">x</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="5893517370-14">]</span><span class="p">,</span><span class="p" data-group-id="5893517370-15">[</span><span class="ss">b</span><span class="p">,</span><span class="ss">y</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="5893517370-15">]</span><span class="p">,</span><span class="p" data-group-id="5893517370-16">[</span><span class="ss">c</span><span class="p">,</span><span class="ss">z</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="5893517370-16">]</span><span class="p" data-group-id="5893517370-13">]</span></code></pre>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

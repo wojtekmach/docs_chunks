@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>gen_statem — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+gen_statem <small>behaviour</small>      </h1>
+
+
+        <section id="moduledoc">
+<p>  <code class="inline">gen_statem</code> provides a generic state machine behaviour that for new code replaces its predecessor <code class="inline">gen_fsm</code> since Erlang/OTP 20.0. The <code class="inline">gen_fsm</code> behaviour remains in OTP &quot;as is&quot;. </p>
+<p>   If you are new to <code class="inline">gen_statem</code> and want an overview of concepts and operation the section  <code class="inline">gen_statem</code> Behaviour  located in the User&#39;s Guide  OTP Design Principles  is recommended to read before this reference manual, possibly after the Description section you are reading here. </p>
+<p>   This reference manual contains type descriptions generated from types in the <code class="inline">gen_statem</code> source code, so they are correct. However, the generated descriptions also reflect the type hierarchy, which sometimes makes it hard to get a good overview. If so, see the section  <code class="inline">gen_statem</code> Behaviour  in the  OTP Design Principles  User&#39;s Guide. </p>
+<pre><code class="nohighlight makeup erlang"><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="ss">behavior</span><span class="w"> </span><span class="ss">appeared</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="n">Erlang</span><span class="o">/</span><span class="n">OTP</span><span class="w"> </span><span class="mf">19.0</span><span class="p">.</span><span class="w">   </span><span class="o">*</span><span class="w">  </span><span class="n">In</span><span class="w"> </span><span class="n">OTP</span><span class="w"> </span><span class="mf">19.1</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">backwards</span><span class="w"> </span><span class="ss">incompatible</span><span class="w"> </span><span class="ss">change</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">return</span><span class="w"> </span><span class="ss">tuple</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="err">`</span><span class="n">Module</span><span class="p">:</span><span class="ss">init</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="w"> </span><span class="ss">was</span><span class="w"> </span><span class="ss">made</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">mandatory</span><span class="w"> </span><span class="ss">callback</span><span class="w"> </span><span class="ss">function</span><span class="w">  </span><span class="err">`</span><span class="n">Module</span><span class="p">:</span><span class="ss">callback_mode</span><span class="o">/</span><span class="mi">0</span><span class="err">`</span><span class="w">  </span><span class="ss">was</span><span class="w"> </span><span class="ss">introduced</span><span class="p">.</span><span class="w">    </span><span class="o">*</span><span class="w">  </span><span class="n">In</span><span class="w"> </span><span class="n">OTP</span><span class="w"> </span><span class="mf">20.0</span><span class="w">  </span><span class="ss">generic</span><span class="w"> </span><span class="ss">time</span><span class="o">-</span><span class="ss">outs</span><span class="w">  </span><span class="ss">were</span><span class="w"> </span><span class="ss">added</span><span class="p">.</span><span class="w">    </span><span class="o">*</span><span class="w">  </span><span class="n">In</span><span class="w"> </span><span class="n">OTP</span><span class="w"> </span><span class="mf">22.1</span><span class="w"> </span><span class="ss">time</span><span class="o">-</span><span class="ss">out</span><span class="w"> </span><span class="ss">content</span><span class="w">  </span><span class="err">`</span><span class="ss">update</span><span class="err">`</span><span class="w">  </span><span class="ow">and</span><span class="w"> </span><span class="ss">explicit</span><span class="w"> </span><span class="ss">time</span><span class="o">-</span><span class="ss">out</span><span class="w">  </span><span class="err">`</span><span class="ss">cancel</span><span class="err">`</span><span class="w">  </span><span class="ss">were</span><span class="w"> </span><span class="ss">added</span><span class="p">.</span><span class="w">     </span><span class="err">`</span><span class="ss">gen_statem</span><span class="err">`</span><span class="w"> </span><span class="ss">has</span><span class="w"> </span><span class="ss">got</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">same</span><span class="w"> </span><span class="ss">features</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_fsm</span><span class="err">`</span><span class="w"> </span><span class="ss">had</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">adds</span><span class="w"> </span><span class="ss">some</span><span class="w"> </span><span class="ss">really</span><span class="w"> </span><span class="nc">useful</span><span class="p">:</span><span class="w"> 
+
+</span><span class="o">*</span><span class="w"> </span><span class="n">Co</span><span class="o">-</span><span class="ss">located</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="ss">code</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Arbitrary</span><span class="w"> </span><span class="ss">term</span><span class="w"> </span><span class="ss">state</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="ss">postponing</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Self</span><span class="o">-</span><span class="ss">generated</span><span class="w"> </span><span class="ss">events</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="ss">time</span><span class="o">-</span><span class="ss">out</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Multiple</span><span class="w"> </span><span class="ss">generic</span><span class="w"> </span><span class="ss">named</span><span class="w"> </span><span class="ss">time</span><span class="o">-</span><span class="ss">outs</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Absolute</span><span class="w"> </span><span class="ss">time</span><span class="o">-</span><span class="ss">out</span><span class="w"> </span><span class="ss">time</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Automatic</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="ss">enter</span><span class="w"> </span><span class="ss">calls</span><span class="w">   </span><span class="o">*</span><span class="w">  </span><span class="n">Reply</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">other</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="ss">than</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">request</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="ss">sys</span><span class="err">`</span><span class="w"> </span><span class="ss">traceable</span><span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="n">Multiple</span><span class="w"> </span><span class="err">`</span><span class="ss">sys</span><span class="err">`</span><span class="w"> </span><span class="ss">traceable</span><span class="w"> </span><span class="ss">replies</span><span class="w">   </span><span class="n">Two</span><span class="w"> </span><span class="ss">callback</span><span class="w"> </span><span class="ss">modes</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="nc">supported</span><span class="p">:</span><span class="w"> 
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">One</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">finite</span><span class="o">-</span><span class="ss">state</span><span class="w"> </span><span class="nf">machines</span><span class="w"> </span><span class="p" data-group-id="8913387207-1">(</span><span class="err">`</span><span class="ss">gen_fsm</span><span class="err">`</span><span class="w"> </span><span class="ss">like</span><span class="p" data-group-id="8913387207-1">)</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">requires</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">atom</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">uses</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">name</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">current</span><span class="w"> </span><span class="ss">callback</span><span class="w"> </span><span class="ss">function</span><span class="w"> 
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">One</span><span class="w"> </span><span class="ss">without</span><span class="w"> </span><span class="ss">restriction</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="ss">data</span><span class="w"> </span><span class="ss">type</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">uses</span><span class="w"> </span><span class="ss">one</span><span class="w"> </span><span class="ss">callback</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">states</span><span class="w"> 
+
+</span><span class="n">The</span><span class="w"> </span><span class="ss">callback</span><span class="w"> </span><span class="nf">model</span><span class="p" data-group-id="8913387207-2">(</span><span class="ss">s</span><span class="p" data-group-id="8913387207-2">)</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_statem</span><span class="err">`</span><span class="w"> </span><span class="ss">differs</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">one</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_fsm</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">but</span><span class="w"> </span><span class="ss">it</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">still</span><span class="w"> </span><span class="ss">fairly</span><span class="w"> </span><span class="ss">easy</span><span class="w"> </span><span class="ss">to</span><span class="w">  </span><span class="ss">rewrite</span><span class="w"> </span><span class="ss">from</span><span class="w">  </span><span class="err">`</span><span class="ss">gen_fsm</span><span class="err">`</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_statem</span><span class="err">`</span><span class="p">.</span><span class="w"> </span></code></pre>
+<p>  A generic state machine process (<code class="inline">gen_statem</code>) implemented using this module has a standard set of interface functions and includes functionality for tracing and error reporting. It also fits into an OTP supervision tree. For more information, see OTP Design Principles. </p>
+<p>  A <code class="inline">gen_statem</code> assumes all specific parts to be located in a callback module exporting a predefined set of functions. The relationship between the behavior functions and the callback functions is as follows:</p>
+<pre><code class="nohighlight makeup erlang"><span class="ss">gen_statem</span><span class="w"> </span><span class="ss">module</span><span class="w">            </span><span class="n">Callback</span><span class="w"> </span><span class="ss">module</span><span class="w">
+</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">-</span><span class="w">            </span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">-</span><span class="w">
+</span><span class="nc">gen_statem</span><span class="p">:</span><span class="ss">start</span><span class="w">
+</span><span class="nc">gen_statem</span><span class="p">:</span><span class="ss">start_link</span><span class="w"> </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Module</span><span class="p">:</span><span class="ss">init</span><span class="o">/</span><span class="mi">1</span><span class="w">
+
+</span><span class="n">Server</span><span class="w"> </span><span class="ss">start</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">code</span><span class="w"> </span><span class="ss">change</span><span class="w">
+                      </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Module</span><span class="p">:</span><span class="ss">callback_mode</span><span class="o">/</span><span class="mi">0</span><span class="w">
+
+</span><span class="nc">gen_statem</span><span class="p">:</span><span class="ss">stop</span><span class="w">       </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Module</span><span class="p">:</span><span class="ss">terminate</span><span class="o">/</span><span class="mi">3</span><span class="w">
+
+</span><span class="nc">gen_statem</span><span class="p">:</span><span class="ss">call</span><span class="w">
+</span><span class="nc">gen_statem</span><span class="p">:</span><span class="ss">cast</span><span class="w">
+</span><span class="nc">erlang</span><span class="p">:</span><span class="nb">send</span><span class="w">
+</span><span class="nc">erlang</span><span class="p">:</span><span class="ss">&#39;!&#39;</span><span class="w">            </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Module</span><span class="p">:</span><span class="n">StateName</span><span class="o">/</span><span class="mi">3</span><span class="w">
+                             </span><span class="n">Module</span><span class="p">:</span><span class="ss">handle_event</span><span class="o">/</span><span class="mi">4</span><span class="w">
+
+</span><span class="o">-</span><span class="w">                     </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Module</span><span class="p">:</span><span class="ss">terminate</span><span class="o">/</span><span class="mi">3</span><span class="w">
+
+</span><span class="o">-</span><span class="w">                     </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Module</span><span class="p">:</span><span class="ss">code_change</span><span class="o">/</span><span class="mi">4</span></code></pre>
+<p>  Events are of different types, so the callback functions can know the origin of an event and how to respond. </p>
+<p>  If a callback function fails or returns a bad value, the <code class="inline">gen_statem</code> terminates, unless otherwise stated. However, an exception of class <code class="inline">throw</code> is not regarded as an error but as a valid return from all callback functions. </p>
+<p>   The state callback for a specific state in a <code class="inline">gen_statem</code> is the callback function that is called for all events in this state. It is selected depending on which callback mode that the callback module defines with the callback function <code class="inline">Module:callback_mode/0</code>. </p>
+<p>  When the callback mode is <code class="inline">state_functions</code>, the state must be an atom and is used as the state callback name; see <code class="inline">Module:StateName/3</code>. This co-locates all code for a specific state in one function as the <code class="inline">gen_statem</code> engine branches depending on state name. Note the fact that the callback function <code class="inline">Module:terminate/3</code> makes the state name <code class="inline">terminate</code> unusable in this mode. </p>
+<p>  When the callback mode is <code class="inline">handle_event_function</code>, the state can be any term and the state callback name is <code class="inline">Module:handle_event/4</code>. This makes it easy to branch depending on state or event as you desire. Be careful about which events you handle in which states so that you do not accidentally postpone an event forever creating an infinite busy loop. </p>
+<p>  When <code class="inline">gen_statem</code> receives a process message it is converted into an event and the state callback is called with the event as two arguments: type and content. When the state callback has processed the event it returns to <code class="inline">gen_statem</code> which does a state transition. If this state transition is to a different state, that is: <code class="inline">NextState =/= State</code>, it is a state change. </p>
+<p>  The state callback may return transition actions for <code class="inline">gen_statem</code> to execute during the state transition, for example to reply to a <code class="inline">gen_statem:call/2,3</code>. </p>
+<p>  One of the possible transition actions is to postpone the current event. Then it is not retried in the current state. The <code class="inline">gen_statem</code> engine keeps a queue of events divided into the postponed events and the events still to process. After a state change the queue restarts with the postponed events. </p>
+<p>  The <code class="inline">gen_statem</code> event queue model is sufficient to emulate the normal process message queue with selective receive. Postponing an event corresponds to not matching it in a receive statement, and changing states corresponds to entering a new receive statement. </p>
+<p>  The state callback can insert events using the transition actions <code class="inline">next_event</code> and such an event is inserted in the event queue as the next to call the state callback with. That is, as if it is the oldest incoming event. A dedicated <code class="inline">event_type()</code> <code class="inline">internal</code> can be used for such events making them impossible to mistake for external events. </p>
+<p>  Inserting an event replaces the trick of calling your own state handling functions that you often would have to resort to in, for example, <code class="inline">gen_fsm</code> to force processing an inserted event before others. </p>
+<p>  The <code class="inline">gen_statem</code> engine can automatically make a specialized call to the state callback whenever a new state is entered; see <code class="inline">state_enter()</code>. This is for writing code common to all state entries. Another way to do it is to explicitly insert an event at the state transition, and/or to use a dedicated state transition function, but that is something you will have to remember at every state transition to the state(s) that need it. </p>
+<p>  If you in <code class="inline">gen_statem</code>, for example, postpone an event in one state and then call another state callback of yours, you have not done a state change and hence the postponed event is not retried, which is logical but can be confusing. </p>
+<p>   For the details of a state transition, see type <code class="inline">transition_option()</code>. </p>
+<p>  A <code class="inline">gen_statem</code> handles system messages as described in <code class="inline">sys</code>. The <code class="inline">sys</code> module can be used for debugging a <code class="inline">gen_statem</code>. </p>
+<p>  Notice that a <code class="inline">gen_statem</code> does not trap exit signals automatically, this must be explicitly initiated in the callback module (by calling <code class="inline">process_flag(trap_exit, true)</code>. </p>
+<p>  Unless otherwise stated, all functions in this module fail if the specified <code class="inline">gen_statem</code> does not exist or if bad arguments are specified. </p>
+<p>  The <code class="inline">gen_statem</code> process can go into hibernation; see <code class="inline">proc_lib:hibernate/3</code>. It is done when a state callback or <code class="inline">Module:init/1</code> specifies <code class="inline">hibernate</code> in the returned <code class="inline">Actions</code> list. This feature can be useful to reclaim process heap memory while the server is expected to be idle for a long time. However, use this feature with care, as hibernation can be too costly to use after every event; see <code class="inline">erlang:hibernate/3</code>. </p>
+<p>  There is also a server start option  <code class="inline">{hibernate_after, Timeout}</code>  for <code class="inline">start/3,4</code>, <code class="inline">start_link/3,4</code> or <a href="#enter_loop/4"><code class="inline">enter_loop/4,5,6</code></a>, that may be used to automatically hibernate the server. </p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#callcall/23">callcall/23</a>
+  </div>
+    <div class="summary-synopsis"><p>  Makes a synchronous call to the <code class="inline">gen_statem</code> <code class="inline">ServerRef</code> by sending a request and waiting until its reply arrives. The <code class="inline">gen_statem</code> calls the state callback with <code class="inline">event_type()</code> <code class="inline">{call,From}</code> and event content <code class="inline">Request</code>. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cast/2">cast/2</a>
+  </div>
+    <div class="summary-synopsis"><p>  Sends an asynchronous event to the <code class="inline">gen_statem</code> <code class="inline">ServerRef</code> and returns <code class="inline">ok</code> immediately, ignoring if the destination node or <code class="inline">gen_statem</code> does not exist. The <code class="inline">gen_statem</code> calls the state callback with <code class="inline">event_type()</code> <code class="inline">cast</code> and event content <code class="inline">Msg</code>. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#enter_loop/4">enter_loop/4</a>
+  </div>
+    <div class="summary-synopsis"><p>  The same as <a href="#enter_loop/6"><code class="inline">enter_loop/6</code></a> with <code class="inline">Actions = []</code> except that no <code class="inline">server_name()</code> must have been registered. This creates an anonymous server. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#enter_loop/5">enter_loop/5</a>
+  </div>
+    <div class="summary-synopsis"><p>  If <code class="inline">Server_or_Actions</code> is a <code class="inline">list()</code>, the same as <a href="#enter_loop/6"><code class="inline">enter_loop/6</code></a> except that no <code class="inline">server_name()</code> must have been registered and <code class="inline">Actions = ``Server_or_Actions</code>. This creates an anonymous server. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#enter_loop/6">enter_loop/6</a>
+  </div>
+    <div class="summary-synopsis"><p>  Makes the calling process become a <code class="inline">gen_statem</code>. Does not return, instead the calling process enters the <code class="inline">gen_statem</code> receive loop and becomes a <code class="inline">gen_statem</code> server. The process must have been started using one of the start functions in <code class="inline">proc_lib</code>. The user is responsible for any initialization of the process, including registering a name for it. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#replyreply/12">replyreply/12</a>
+  </div>
+    <div class="summary-synopsis"><p>  This function can be used by a <code class="inline">gen_statem</code> to explicitly send a reply to a process that waits in <code class="inline">call/2</code> when the reply cannot be defined in the return value of a state callback. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_linkstart_link/34">start_linkstart_link/34</a>
+  </div>
+    <div class="summary-synopsis"><p>  Creates a <code class="inline">gen_statem</code> process according to OTP design principles (using <code class="inline">proc_lib</code> primitives) that is linked to the calling process. This is essential when the <code class="inline">gen_statem</code> must be part of a supervision tree so it gets linked to its supervisor. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#startstart/34">startstart/34</a>
+  </div>
+    <div class="summary-synopsis"><p>  Creates a standalone <code class="inline">gen_statem</code> process according to OTP design principles (using <code class="inline">proc_lib</code> primitives). As it does not get linked to the calling process, this start function cannot be used by a supervisor to start a child. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/1">stop/1</a>
+  </div>
+    <div class="summary-synopsis"><p>  The same as <code class="inline">stop(``ServerRef``, normal, infinity)</code>. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/3">stop/3</a>
+  </div>
+    <div class="summary-synopsis"><p>  Orders the <code class="inline">gen_statem</code> <code class="inline">ServerRef</code> to exit with the specified <code class="inline">Reason</code> and waits for it to terminate. The <code class="inline">gen_statem</code> calls <code class="inline">Module:terminate/3</code> before exiting. </p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="callcall/23">
+  <div class="detail-header">
+    <a href="#callcall/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">callcall/23</h1>
+  </div>
+  <section class="docstring">
+<p>  Makes a synchronous call to the <code class="inline">gen_statem</code> <code class="inline">ServerRef</code> by sending a request and waiting until its reply arrives. The <code class="inline">gen_statem</code> calls the state callback with <code class="inline">event_type()</code> <code class="inline">{call,From}</code> and event content <code class="inline">Request</code>. </p>
+<p>  A <code class="inline">Reply</code> is generated when a state callback returns with <code class="inline">{reply,From,``Reply``}</code> as one <code class="inline">action()</code>, and that <code class="inline">Reply</code> becomes the return value of this function. </p>
+<p>  <code class="inline">Timeout</code> is an integer &gt; 0, which specifies how many milliseconds to wait for a reply, or the atom <code class="inline">infinity</code> to wait indefinitely, which is the default. If no reply is received within the specified time, the function call fails. </p>
+<p>   For <code class="inline">Timeout`` ``&lt; infinity</code>, to avoid getting a late reply in the caller&#39;s inbox if the caller should catch exceptions, this function spawns a proxy process that does the call. A late reply gets delivered to the dead proxy process, hence gets discarded. This is less efficient than using <code class="inline">Timeout`` == infinity</code>. </p>
+<p>   <code class="inline">Timeout</code> can also be a tuple <code class="inline">{clean_timeout,``T``}</code> or <code class="inline">{dirty_timeout,``T``}</code>, where <code class="inline">T</code> is the time-out time. <code class="inline">{clean_timeout,``T``}</code> works like just <code class="inline">T</code> described in the note above and uses a proxy process while <code class="inline">{dirty_timeout,``T``}</code> bypasses the proxy process which is more lightweight. </p>
+<p>   If you combine catching exceptions from this function with <code class="inline">{dirty_timeout,``T``}</code> to avoid that the calling process dies when the call times out, you will have to be prepared to handle a late reply. Note that there is an odd chance to get a late reply even with <code class="inline">{dirty_timeout,infinity}</code> or <code class="inline">infinity</code> for example in the event of network problems. So why not just let the calling process die by not catching the exception? </p>
+<p>   The call can also fail, for example, if the <code class="inline">gen_statem</code> dies before or during this function call. </p>
+  </section>
+</section>
+<section class="detail" id="cast/2">
+  <div class="detail-header">
+    <a href="#cast/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cast/2</h1>
+      <div class="specs">
+          <pre>cast(serverRef :: server_ref(), msg :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: :ok</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Sends an asynchronous event to the <code class="inline">gen_statem</code> <code class="inline">ServerRef</code> and returns <code class="inline">ok</code> immediately, ignoring if the destination node or <code class="inline">gen_statem</code> does not exist. The <code class="inline">gen_statem</code> calls the state callback with <code class="inline">event_type()</code> <code class="inline">cast</code> and event content <code class="inline">Msg</code>. </p>
+  </section>
+</section>
+<section class="detail" id="enter_loop/4">
+  <div class="detail-header">
+    <a href="#enter_loop/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">enter_loop/4</h1>
+      <div class="specs">
+          <pre>enter_loop(
+  module :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+  opts :: [enter_loop_opt()],
+  state :: state(),
+  data :: data()
+) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  The same as <a href="#enter_loop/6"><code class="inline">enter_loop/6</code></a> with <code class="inline">Actions = []</code> except that no <code class="inline">server_name()</code> must have been registered. This creates an anonymous server. </p>
+  </section>
+</section>
+<section class="detail" id="enter_loop/5">
+  <div class="detail-header">
+    <a href="#enter_loop/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">enter_loop/5</h1>
+      <div class="specs">
+          <pre>enter_loop(
+  module :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+  opts :: [enter_loop_opt()],
+  state :: state(),
+  data :: data(),
+  server_or_Actions :: server_name() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>() | [action()]
+) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  If <code class="inline">Server_or_Actions</code> is a <code class="inline">list()</code>, the same as <a href="#enter_loop/6"><code class="inline">enter_loop/6</code></a> except that no <code class="inline">server_name()</code> must have been registered and <code class="inline">Actions = ``Server_or_Actions</code>. This creates an anonymous server. </p>
+<p>  Otherwise the same as <a href="#enter_loop/6"><code class="inline">enter_loop/6</code></a> with <code class="inline">Server = ``Server_or_Actions</code> and <code class="inline">Actions = []</code>. </p>
+  </section>
+</section>
+<section class="detail" id="enter_loop/6">
+  <div class="detail-header">
+    <a href="#enter_loop/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">enter_loop/6</h1>
+      <div class="specs">
+          <pre>enter_loop(
+  module :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+  opts :: [enter_loop_opt()],
+  state :: state(),
+  data :: data(),
+  server :: server_name() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(),
+  actions :: [action()] | action()
+) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Makes the calling process become a <code class="inline">gen_statem</code>. Does not return, instead the calling process enters the <code class="inline">gen_statem</code> receive loop and becomes a <code class="inline">gen_statem</code> server. The process must have been started using one of the start functions in <code class="inline">proc_lib</code>. The user is responsible for any initialization of the process, including registering a name for it. </p>
+<p>  This function is useful when a more complex initialization procedure is needed than the <code class="inline">gen_statem</code> behavior provides. </p>
+<p>  <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a>, <code class="inline">Opts</code> have the same meaning as when calling <code class="inline">start[_link]/3,4</code>. </p>
+<p>  If <code class="inline">Server</code> is <code class="inline">self()</code> an anonymous server is created just as when using <code class="inline">start[_link]/3</code>. If <code class="inline">Server</code> is a <code class="inline">server_name()</code> a named server is created just as when using <code class="inline">start[_link]/4</code>. However, the <code class="inline">server_name()</code> name must have been registered accordingly before this function is called. </p>
+<p>  <code class="inline">State</code>, <code class="inline">Data</code>, and <code class="inline">Actions</code> have the same meanings as in the return value of <code class="inline">Module:init/1</code>. Also, the callback module does not need to export a <code class="inline">Module:init/1</code> function. </p>
+<p>  The function fails if the calling process was not started by a <code class="inline">proc_lib</code> start function, or if it is not registered according to <code class="inline">server_name()</code>. </p>
+  </section>
+</section>
+<section class="detail" id="replyreply/12">
+  <div class="detail-header">
+    <a href="#replyreply/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">replyreply/12</h1>
+  </div>
+  <section class="docstring">
+<p>  This function can be used by a <code class="inline">gen_statem</code> to explicitly send a reply to a process that waits in <code class="inline">call/2</code> when the reply cannot be defined in the return value of a state callback. </p>
+<p>  <code class="inline">From</code> must be the term from argument <code class="inline">{call,``From``}</code> to the state callback. A reply or multiple replies canalso be sent using one or several <code class="inline">reply_action()</code>s from a state callback. </p>
+<p>   A reply sent with this function is not visible in <code class="inline">sys</code> debug output. </p>
+  </section>
+</section>
+<section class="detail" id="start_linkstart_link/34">
+  <div class="detail-header">
+    <a href="#start_linkstart_link/34" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_linkstart_link/34</h1>
+  </div>
+  <section class="docstring">
+<p>  Creates a <code class="inline">gen_statem</code> process according to OTP design principles (using <code class="inline">proc_lib</code> primitives) that is linked to the calling process. This is essential when the <code class="inline">gen_statem</code> must be part of a supervision tree so it gets linked to its supervisor. </p>
+<p>  The <code class="inline">gen_statem</code> process calls <code class="inline">Module:init/1</code> to initialize the server. To ensure a synchronized startup procedure, <code class="inline">start_link/3,4</code> does not return until <code class="inline">Module:init/1</code> has returned. </p>
+<p>  <code class="inline">ServerName</code> specifies the <code class="inline">server_name()</code> to register for the <code class="inline">gen_statem</code>. If the <code class="inline">gen_statem</code> is started with <code class="inline">start_link/3</code>, no <code class="inline">ServerName</code> is provided and the <code class="inline">gen_statem</code> is not registered. </p>
+<p> <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> is the name of the callback module.</p>
+<p>  <code class="inline">Args</code> is an arbitrary term that is passed as the argument to <code class="inline">Module:init/1</code>. </p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">   </span><span class="n">If</span><span class="w"> </span><span class="ss">option</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="9677101544-1">{</span><span class="ss">timeout</span><span class="p">,</span><span class="n">Time</span><span class="p" data-group-id="9677101544-1">}</span><span class="err">`</span><span class="w">  </span><span class="ss">is</span><span class="w"> </span><span class="ss">present</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="err">`</span><span class="n">Opts</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_statem</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">allowed</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">spend</span><span class="w"> </span><span class="p" data-group-id="9677101544-2">[</span><span class="err">`</span><span class="n">Time</span><span class="err">`</span><span class="p" data-group-id="9677101544-2">]</span><span class="p" data-group-id="9677101544-3">(</span><span class="nc">https</span><span class="p">:</span><span class="o">/</span><span class="o">/</span><span class="ss">hexdocs</span><span class="p">.</span><span class="ss">pm</span><span class="o">/</span><span class="ss">elixir</span><span class="o">/</span><span class="n">Time</span><span class="p">.</span><span class="ss">html</span><span class="p" data-group-id="9677101544-3">)</span><span class="w"> </span><span class="ss">milliseconds</span><span class="w"> </span><span class="ss">initializing</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">it</span><span class="w"> </span><span class="ss">terminates</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">start</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="ss">returns</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="9677101544-4">{</span><span class="ss">error</span><span class="p">,</span><span class="ss">timeout</span><span class="p" data-group-id="9677101544-4">}</span><span class="err">`</span><span class="p">.</span><span class="w"> 
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="ss">option</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="9677101544-5">{</span><span class="ss">hibernate_after</span><span class="p">,</span><span class="n">HibernateAfterTimeout</span><span class="p" data-group-id="9677101544-5">}</span><span class="err">`</span><span class="w">  </span><span class="ss">is</span><span class="w"> </span><span class="ss">present</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_statem</span><span class="err">`</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">awaits</span><span class="w"> </span><span class="ss">any</span><span class="w"> </span><span class="ss">message</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="err">`</span><span class="n">HibernateAfterTimeout</span><span class="err">`</span><span class="w"> </span><span class="ss">milliseconds</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">no</span><span class="w"> </span><span class="ss">message</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">received</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">goes</span><span class="w"> </span><span class="ss">into</span><span class="w"> </span><span class="ss">hibernation</span><span class="w"> </span><span class="nf">automatically</span><span class="w"> </span><span class="p" data-group-id="9677101544-6">(</span><span class="ss">by</span><span class="w"> </span><span class="ss">calling</span><span class="w"> </span><span class="err">`</span><span class="nc">proc_lib</span><span class="p">:</span><span class="ss">hibernate</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="p" data-group-id="9677101544-6">)</span><span class="p">.</span><span class="w"> 
+
+</span><span class="o">*</span><span class="w">   </span><span class="n">If</span><span class="w"> </span><span class="ss">option</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="9677101544-7">{</span><span class="ss">debug</span><span class="p">,</span><span class="n">Dbgs</span><span class="p" data-group-id="9677101544-7">}</span><span class="err">`</span><span class="w">  </span><span class="ss">is</span><span class="w"> </span><span class="ss">present</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="err">`</span><span class="n">Opts</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">debugging</span><span class="w"> </span><span class="ss">through</span><span class="w"> </span><span class="err">`</span><span class="ss">sys</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">activated</span><span class="p">.</span><span class="w"> 
+
+</span><span class="o">*</span><span class="w">   </span><span class="n">If</span><span class="w"> </span><span class="ss">option</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="9677101544-8">{</span><span class="nb">spawn_opt</span><span class="p">,</span><span class="n">SpawnOpts</span><span class="p" data-group-id="9677101544-8">}</span><span class="err">`</span><span class="w">  </span><span class="ss">is</span><span class="w"> </span><span class="ss">present</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="err">`</span><span class="n">Opts</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">SpawnOpts</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">passed</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">option</span><span class="w"> </span><span class="ss">list</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="nc">erlang</span><span class="p">:</span><span class="nb">spawn_opt</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">used</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="nb">spawn</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_statem</span><span class="err">`</span><span class="w"> </span><span class="ss">process</span><span class="p">.</span><span class="w"> 
+
+ </span><span class="n">Using</span><span class="w"> </span><span class="nb">spawn</span><span class="w"> </span><span class="ss">option</span><span class="w"> </span><span class="err">`</span><span class="nb">monitor</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">allowed</span><span class="p">,</span><span class="w"> </span><span class="ss">it</span><span class="w"> </span><span class="ss">causes</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">fail</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">reason</span><span class="w"> </span><span class="err">`</span><span class="ss">badarg</span><span class="err">`</span><span class="p">.</span><span class="w"> </span></code></pre>
+<p>   If the <code class="inline">gen_statem</code> is successfully created and initialized, this function returns <code class="inline">{ok,Pid}</code>, where <code class="inline">Pid</code> is the <code class="inline">pid()</code> of the <code class="inline">gen_statem</code>. If a process with the specified <code class="inline">ServerName</code> exists already, this function returns <code class="inline">{error,{already_started,Pid}}</code>, where <code class="inline">Pid</code> is the <code class="inline">pid()</code> of that process. </p>
+<p>  If <code class="inline">Module:init/1</code> fails with <code class="inline">Reason</code>, this function returns <code class="inline">{error,Reason}</code>. If <code class="inline">Module:init/1</code> returns <code class="inline">{stop,Reason}</code> or <code class="inline">ignore</code>, the process is terminated and this function returns <code class="inline">{error,Reason}</code> or <code class="inline">ignore</code>, respectively. </p>
+  </section>
+</section>
+<section class="detail" id="startstart/34">
+  <div class="detail-header">
+    <a href="#startstart/34" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">startstart/34</h1>
+  </div>
+  <section class="docstring">
+<p>  Creates a standalone <code class="inline">gen_statem</code> process according to OTP design principles (using <code class="inline">proc_lib</code> primitives). As it does not get linked to the calling process, this start function cannot be used by a supervisor to start a child. </p>
+<p>  For a description of arguments and return values, see <code class="inline">start_link/3,4</code>. </p>
+  </section>
+</section>
+<section class="detail" id="stop/1">
+  <div class="detail-header">
+    <a href="#stop/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/1</h1>
+      <div class="specs">
+          <pre>stop(serverRef :: server_ref()) :: :ok</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  The same as <code class="inline">stop(``ServerRef``, normal, infinity)</code>. </p>
+  </section>
+</section>
+<section class="detail" id="stop/3">
+  <div class="detail-header">
+    <a href="#stop/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/3</h1>
+      <div class="specs">
+          <pre>stop(serverRef :: server_ref(), reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), timeout :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">timeout</a>()) :: :ok</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Orders the <code class="inline">gen_statem</code> <code class="inline">ServerRef</code> to exit with the specified <code class="inline">Reason</code> and waits for it to terminate. The <code class="inline">gen_statem</code> calls <code class="inline">Module:terminate/3</code> before exiting. </p>
+<p>  This function returns <code class="inline">ok</code> if the server terminates with the expected reason. Any other reason than <code class="inline">normal</code>, <code class="inline">shutdown</code>, or <code class="inline">{shutdown,Term}</code> causes an error report to be issued through <code class="inline">logger(3)</code>. The default <code class="inline">Reason</code> is <code class="inline">normal</code>. </p>
+<p>  <code class="inline">Timeout</code> is an integer &gt; 0, which specifies how many milliseconds to wait for the server to terminate, or the atom <code class="inline">infinity</code> to wait indefinitely. Defaults to <code class="inline">infinity</code>. If the server does not terminate within the specified time, a <code class="inline">timeout</code> exception is raised. </p>
+<p>  If the process does not exist, a <code class="inline">noproc</code> exception is raised. </p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

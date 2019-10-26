@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>erl_parse — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+erl_parse      </h1>
+
+
+        <section id="moduledoc">
+<p> This module is the basic Erlang parser that converts tokens into the abstract form of either forms (that is, top-level constructs), expressions, or terms. The Abstract Format is described in the ERTS User&#39;s Guide. Notice that a token list must end with the dot token to be acceptable to the parse functions (see the  <code class="inline">erl_scan(3)</code>) module.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#abstract/1">abstract/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts the Erlang data structure <code class="inline">Data</code> into an abstract form of type <code class="inline">AbsTerm</code>. This function is the inverse of <a href="#normalise/1"><code class="inline">normalise/1</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#abstract/2">abstract/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts the Erlang data structure <code class="inline">Data</code> into an abstract form of type <code class="inline">AbsTerm</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#anno_from_term/1">anno_from_term/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Assumes that <code class="inline">Term</code> is a term with the same structure as a <code class="inline">erl_parse</code> tree, but with terms, say <code class="inline">T</code>, where a <code class="inline">erl_parse</code> tree has collections of annotations. Returns a <code class="inline">erl_parse</code> tree where each term <code class="inline">T</code> is replaced by the value returned by  <code class="inline">erl_anno:from_term(T)</code>. The term <code class="inline">Term</code> is traversed in a depth-first, left-to-right fashion.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#anno_to_term/1">anno_to_term/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a term where each collection of annotations <code class="inline">Anno</code> of the nodes of the <code class="inline">erl_parse</code> tree <code class="inline">Abstr</code> is replaced by the term returned by  <code class="inline">erl_anno:to_term(Anno)</code>. The <code class="inline">erl_parse</code> tree is traversed in a depth-first, left-to-right fashion.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fold_anno/3">fold_anno/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Updates an accumulator by applying <code class="inline">Fun</code> on each collection of annotations of the <code class="inline">erl_parse</code> tree <code class="inline">Abstr</code>. The first call to <code class="inline">Fun</code> has <code class="inline">AccIn</code> as argument, the returned accumulator <code class="inline">AccOut</code> is passed to the next call, and so on. The final value of the accumulator is returned. The <code class="inline">erl_parse</code> tree is traversed in a depth-first, left-to-right fashion.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#map_anno/2">map_anno/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Modifies the <code class="inline">erl_parse</code> tree <code class="inline">Abstr</code> by applying <code class="inline">Fun</code> on each collection of annotations of the nodes of the <code class="inline">erl_parse</code> tree. The <code class="inline">erl_parse</code> tree is traversed in a depth-first, left-to-right fashion.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mapfold_anno/3">mapfold_anno/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Modifies the <code class="inline">erl_parse</code> tree <code class="inline">Abstr</code> by applying <code class="inline">Fun</code> on each collection of annotations of the nodes of the <code class="inline">erl_parse</code> tree, while at the same time updating an accumulator. The first call to <code class="inline">Fun</code> has <code class="inline">AccIn</code> as second argument, the returned accumulator <code class="inline">AccOut</code> is passed to the next call, and so on. The modified <code class="inline">erl_parse</code> tree and the final value of the accumulator are returned. The <code class="inline">erl_parse</code> tree is traversed in a depth-first, left-to-right fashion.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new_anno/1">new_anno/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Assumes that <code class="inline">Term</code> is a term with the same structure as a <code class="inline">erl_parse</code> tree, but with locations where a <code class="inline">erl_parse</code> tree has collections of annotations. Returns a <code class="inline">erl_parse</code> tree where each location <code class="inline">L</code> is replaced by the value returned by <code class="inline">erl_anno:new(L)</code>. The term <code class="inline">Term</code> is traversed in a depth-first, left-to-right fashion.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#normalise/1">normalise/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts the abstract form <code class="inline">AbsTerm</code> of a term into a conventional Erlang data structure (that is, the term itself). This function is the inverse of <a href="#abstract/1"><code class="inline">abstract/1</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_exprs/1">parse_exprs/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Parses <code class="inline">Tokens</code> as if it was a list of expressions. Returns one of the following</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_form/1">parse_form/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Parses <code class="inline">Tokens</code> as if it was a form. Returns one of the following</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_term/1">parse_term/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Parses <code class="inline">Tokens</code> as if it was a term. Returns one of the following</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tokenstokens/12">tokenstokens/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Generates a list of tokens representing the abstract form <code class="inline">AbsTerm</code> of an expression. Optionally, <code class="inline">MoreTokens</code> is appended.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="abstract/1">
+  <div class="detail-header">
+    <a href="#abstract/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">abstract/1</h1>
+      <div class="specs">
+          <pre>abstract(data) :: absTerm when data: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), absTerm: abstract_expr()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts the Erlang data structure <code class="inline">Data</code> into an abstract form of type <code class="inline">AbsTerm</code>. This function is the inverse of <a href="#normalise/1"><code class="inline">normalise/1</code></a>.</p>
+<p> <code class="inline">erl_parse:abstract(T)</code> is equivalent to <code class="inline">erl_parse:abstract(T, 0)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="abstract/2">
+  <div class="detail-header">
+    <a href="#abstract/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">abstract/2</h1>
+      <div class="specs">
+          <pre>abstract(data, options) :: absTerm
+when data: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     options: line | [option],
+     option: {:line, line} | {:encoding, encoding},
+     encoding: :latin1 | :unicode | :utf8 | :none | encoding_func(),
+     line: <a href=":erl_anno.html#t:line/0">:erl_anno.line</a>(),
+     absTerm: abstract_expr()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts the Erlang data structure <code class="inline">Data</code> into an abstract form of type <code class="inline">AbsTerm</code>.</p>
+<p> Option <code class="inline">Line</code> is the line to be assigned to each node of <code class="inline">AbsTerm</code>.</p>
+<p> Option <code class="inline">Encoding</code> is used for selecting which integer lists to be considered as strings. The default is to use the encoding returned by function  <code class="inline">epp:default_encoding/0</code>. Value <code class="inline">none</code> means that no integer lists are considered as strings. <code class="inline">encoding_func()</code> is called with one integer of a list at a time; if it returns <code class="inline">true</code> for every integer, the list is considered a string.</p>
+  </section>
+</section>
+<section class="detail" id="anno_from_term/1">
+  <div class="detail-header">
+    <a href="#anno_from_term/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">anno_from_term/1</h1>
+      <div class="specs">
+          <pre>anno_from_term(term) :: erl_parse_tree() | form_info() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Assumes that <code class="inline">Term</code> is a term with the same structure as a <code class="inline">erl_parse</code> tree, but with terms, say <code class="inline">T</code>, where a <code class="inline">erl_parse</code> tree has collections of annotations. Returns a <code class="inline">erl_parse</code> tree where each term <code class="inline">T</code> is replaced by the value returned by  <code class="inline">erl_anno:from_term(T)</code>. The term <code class="inline">Term</code> is traversed in a depth-first, left-to-right fashion.</p>
+  </section>
+</section>
+<section class="detail" id="anno_to_term/1">
+  <div class="detail-header">
+    <a href="#anno_to_term/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">anno_to_term/1</h1>
+      <div class="specs">
+          <pre>anno_to_term(abstr) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>() when abstr: erl_parse_tree() | form_info()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a term where each collection of annotations <code class="inline">Anno</code> of the nodes of the <code class="inline">erl_parse</code> tree <code class="inline">Abstr</code> is replaced by the term returned by  <code class="inline">erl_anno:to_term(Anno)</code>. The <code class="inline">erl_parse</code> tree is traversed in a depth-first, left-to-right fashion.</p>
+  </section>
+</section>
+<section class="detail" id="fold_anno/3">
+  <div class="detail-header">
+    <a href="#fold_anno/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fold_anno/3</h1>
+      <div class="specs">
+          <pre>fold_anno(fun, acc0, abstr) :: acc1
+when fun: (anno, accIn -> accOut),
+     anno: <a href=":erl_anno.html#t:anno/0">:erl_anno.anno</a>(),
+     acc0: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     acc1: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accIn: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accOut: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     abstr: erl_parse_tree() | form_info()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Updates an accumulator by applying <code class="inline">Fun</code> on each collection of annotations of the <code class="inline">erl_parse</code> tree <code class="inline">Abstr</code>. The first call to <code class="inline">Fun</code> has <code class="inline">AccIn</code> as argument, the returned accumulator <code class="inline">AccOut</code> is passed to the next call, and so on. The final value of the accumulator is returned. The <code class="inline">erl_parse</code> tree is traversed in a depth-first, left-to-right fashion.</p>
+  </section>
+</section>
+<section class="detail" id="map_anno/2">
+  <div class="detail-header">
+    <a href="#map_anno/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">map_anno/2</h1>
+      <div class="specs">
+          <pre>map_anno(fun, abstr) :: newAbstr
+when fun: (anno -> newAnno),
+     anno: <a href=":erl_anno.html#t:anno/0">:erl_anno.anno</a>(),
+     newAnno: <a href=":erl_anno.html#t:anno/0">:erl_anno.anno</a>(),
+     abstr: erl_parse_tree() | form_info(),
+     newAbstr: erl_parse_tree() | form_info()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Modifies the <code class="inline">erl_parse</code> tree <code class="inline">Abstr</code> by applying <code class="inline">Fun</code> on each collection of annotations of the nodes of the <code class="inline">erl_parse</code> tree. The <code class="inline">erl_parse</code> tree is traversed in a depth-first, left-to-right fashion.</p>
+  </section>
+</section>
+<section class="detail" id="mapfold_anno/3">
+  <div class="detail-header">
+    <a href="#mapfold_anno/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mapfold_anno/3</h1>
+      <div class="specs">
+          <pre>mapfold_anno(fun, acc0, abstr) :: {newAbstr, acc1}
+when fun: (anno, accIn -> {newAnno, accOut}),
+     anno: <a href=":erl_anno.html#t:anno/0">:erl_anno.anno</a>(),
+     newAnno: <a href=":erl_anno.html#t:anno/0">:erl_anno.anno</a>(),
+     acc0: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     acc1: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accIn: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accOut: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     abstr: erl_parse_tree() | form_info(),
+     newAbstr: erl_parse_tree() | form_info()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Modifies the <code class="inline">erl_parse</code> tree <code class="inline">Abstr</code> by applying <code class="inline">Fun</code> on each collection of annotations of the nodes of the <code class="inline">erl_parse</code> tree, while at the same time updating an accumulator. The first call to <code class="inline">Fun</code> has <code class="inline">AccIn</code> as second argument, the returned accumulator <code class="inline">AccOut</code> is passed to the next call, and so on. The modified <code class="inline">erl_parse</code> tree and the final value of the accumulator are returned. The <code class="inline">erl_parse</code> tree is traversed in a depth-first, left-to-right fashion.</p>
+  </section>
+</section>
+<section class="detail" id="new_anno/1">
+  <div class="detail-header">
+    <a href="#new_anno/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new_anno/1</h1>
+      <div class="specs">
+          <pre>new_anno(term) :: abstr
+when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), abstr: erl_parse_tree() | form_info()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Assumes that <code class="inline">Term</code> is a term with the same structure as a <code class="inline">erl_parse</code> tree, but with locations where a <code class="inline">erl_parse</code> tree has collections of annotations. Returns a <code class="inline">erl_parse</code> tree where each location <code class="inline">L</code> is replaced by the value returned by <code class="inline">erl_anno:new(L)</code>. The term <code class="inline">Term</code> is traversed in a depth-first, left-to-right fashion.</p>
+  </section>
+</section>
+<section class="detail" id="normalise/1">
+  <div class="detail-header">
+    <a href="#normalise/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">normalise/1</h1>
+      <div class="specs">
+          <pre>normalise(absTerm) :: data when absTerm: abstract_expr(), data: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts the abstract form <code class="inline">AbsTerm</code> of a term into a conventional Erlang data structure (that is, the term itself). This function is the inverse of <a href="#abstract/1"><code class="inline">abstract/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="parse_exprs/1">
+  <div class="detail-header">
+    <a href="#parse_exprs/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_exprs/1</h1>
+      <div class="specs">
+          <pre>parse_exprs(tokens) :: {:ok, exprList} | {:error, errorInfo}
+when tokens: [token()], exprList: [abstract_expr()], errorInfo: error_info()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Parses <code class="inline">Tokens</code> as if it was a list of expressions. Returns one of the following:</p>
+<p>  <code class="inline">{ok, ``ExprList``}</code>   *  The parsing was successful. <code class="inline">ExprList</code> is a list of the abstract forms of the parsed expressions.</p>
+<p>  <code class="inline">{error, ``ErrorInfo``}</code>   *  An error occurred.</p>
+  </section>
+</section>
+<section class="detail" id="parse_form/1">
+  <div class="detail-header">
+    <a href="#parse_form/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_form/1</h1>
+      <div class="specs">
+          <pre>parse_form(tokens) :: {:ok, absForm} | {:error, errorInfo}
+when tokens: [token()], absForm: abstract_form(), errorInfo: error_info()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Parses <code class="inline">Tokens</code> as if it was a form. Returns one of the following:</p>
+<p>  <code class="inline">{ok, ``AbsForm``}</code>   *  The parsing was successful. <code class="inline">AbsForm</code> is the abstract form of the parsed form.</p>
+<p>  <code class="inline">{error, ``ErrorInfo``}</code>   *  An error occurred.</p>
+  </section>
+</section>
+<section class="detail" id="parse_term/1">
+  <div class="detail-header">
+    <a href="#parse_term/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_term/1</h1>
+      <div class="specs">
+          <pre>parse_term(tokens) :: {:ok, term} | {:error, errorInfo}
+when tokens: [token()], term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), errorInfo: error_info()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Parses <code class="inline">Tokens</code> as if it was a term. Returns one of the following:</p>
+<p>  <code class="inline">{ok, ``Term``}</code>   *  The parsing was successful. <code class="inline">Term</code> is the Erlang term corresponding to the token list.</p>
+<p>  <code class="inline">{error, ``ErrorInfo``}</code>   *  An error occurred.</p>
+  </section>
+</section>
+<section class="detail" id="tokenstokens/12">
+  <div class="detail-header">
+    <a href="#tokenstokens/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">tokenstokens/12</h1>
+  </div>
+  <section class="docstring">
+<p> Generates a list of tokens representing the abstract form <code class="inline">AbsTerm</code> of an expression. Optionally, <code class="inline">MoreTokens</code> is appended.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

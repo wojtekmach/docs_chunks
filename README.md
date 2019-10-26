@@ -72,7 +72,7 @@ Since we have docs chunks attached to beam files we can use ExDoc:
     mix escript.install hex ex_doc
     ex_doc docs_chunks "0.1.0" _build/dev/lib/docs_chunks/ebin --main docs_chunks
 
-If everything went well you should see docs like these: [wojtekmach.github.io/docs_chunks](http://wojtekmach.github.io/docs_chunks).
+If everything went well you should see docs like these: [wojtekmach.github.io/docs_chunks/docs_chunks](http://wojtekmach.github.io/docs_chunks/docs_chunks).
 
 ## License
 

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>erl_anno — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+erl_anno      </h1>
+
+
+        <section id="moduledoc">
+<p> This module provides an abstract type that is used by the Erlang Compiler and its helper modules for holding data such as column, line number, and text. The data type is a collection of annotations as described in the following.</p>
+<p> The Erlang Token Scanner returns tokens with a subset of the following annotations, depending on the options:</p>
+<p>  <code class="inline">column</code>   * The column where the token begins.</p>
+<p> <code class="inline">location</code>   * The line and column where the token begins, or just the line if the column is unknown.</p>
+<p> <code class="inline">text</code>   * The token&#39;s text.</p>
+<p>  From this, the following annotation is derived:</p>
+<p>  <code class="inline">line</code>   * The line where the token begins.</p>
+<p>  This module also supports the following annotations, which are used by various modules:</p>
+<p>  <code class="inline">file</code>   * A filename.</p>
+<p> <code class="inline">generated</code>   * A Boolean indicating if the abstract code is compiler-generated. The Erlang Compiler does not emit warnings for such code.</p>
+<p> <code class="inline">record</code>   * A Boolean indicating if the origin of the abstract code is a record. Used by Dialyzer to assign types to tuple elements.</p>
+<p>   The functions <code class="inline">column()</code>, <code class="inline">end_location()</code>, <code class="inline">line()</code>, <code class="inline">location()</code>, and <code class="inline">text()</code> in the <code class="inline">erl_scan</code> module can be used for inspecting annotations in tokens.</p>
+<p> The functions  <code class="inline">anno_from_term()</code>,  <code class="inline">anno_to_term()</code>, <code class="inline">fold_anno()</code>, <code class="inline">map_anno()</code>,  <code class="inline">mapfold_anno()</code>, and <code class="inline">new_anno()</code>, in the <code class="inline">erl_parse</code> module can be used for manipulating annotations in abstract code.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#column/1">column/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the column of the annotations Anno.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#end_location/1">end_location/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the end location of the text of the annotations Anno. If there is no text, <code class="inline">undefined</code> is returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#file/1">file/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the filename of the annotations Anno. If there is no filename, <code class="inline">undefined</code> is returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#from_term/1">from_term/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns annotations with representation Term.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#generated/1">generated/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if annotations Anno is marked as generated. The default is to return <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_anno/1">is_anno/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if Term is a collection of annotations, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#line/1">line/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the line of the annotations Anno.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#location/1">location/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the location of the annotations Anno.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/1">new/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Creates a new collection of annotations given a location.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_file/2">set_file/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Modifies the filename of the annotations Anno.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_generated/2">set_generated/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Modifies the generated marker of the annotations Anno. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_line/2">set_line/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Modifies the line of the annotations Anno.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_location/2">set_location/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Modifies the location of the annotations Anno.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_record/2">set_record/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Modifies the record marker of the annotations Anno.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_text/2">set_text/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Modifies the text of the annotations Anno.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#text/1">text/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the text of the annotations Anno. If there is no text, <code class="inline">undefined</code> is returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_term/1">to_term/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the term representing the annotations Anno.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="column/1">
+  <div class="detail-header">
+    <a href="#column/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">column/1</h1>
+      <div class="specs">
+          <pre>column(anno) :: column() | :undefined when anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the column of the annotations Anno.</p>
+  </section>
+</section>
+<section class="detail" id="end_location/1">
+  <div class="detail-header">
+    <a href="#end_location/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">end_location/1</h1>
+      <div class="specs">
+          <pre>end_location(anno) :: location() | :undefined when anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the end location of the text of the annotations Anno. If there is no text, <code class="inline">undefined</code> is returned.</p>
+  </section>
+</section>
+<section class="detail" id="file/1">
+  <div class="detail-header">
+    <a href="#file/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">file/1</h1>
+      <div class="specs">
+          <pre>file(anno) :: filename() | :undefined when anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the filename of the annotations Anno. If there is no filename, <code class="inline">undefined</code> is returned.</p>
+  </section>
+</section>
+<section class="detail" id="from_term/1">
+  <div class="detail-header">
+    <a href="#from_term/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_term/1</h1>
+      <div class="specs">
+          <pre>from_term(term) :: anno when term: anno_term(), anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns annotations with representation Term.</p>
+<p> See also to_term().</p>
+  </section>
+</section>
+<section class="detail" id="generated/1">
+  <div class="detail-header">
+    <a href="#generated/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">generated/1</h1>
+      <div class="specs">
+          <pre>generated(anno) :: generated() when anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if annotations Anno is marked as generated. The default is to return <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="is_anno/1">
+  <div class="detail-header">
+    <a href="#is_anno/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_anno/1</h1>
+      <div class="specs">
+          <pre>is_anno(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if Term is a collection of annotations, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="line/1">
+  <div class="detail-header">
+    <a href="#line/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">line/1</h1>
+      <div class="specs">
+          <pre>line(anno) :: line() when anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the line of the annotations Anno.</p>
+  </section>
+</section>
+<section class="detail" id="location/1">
+  <div class="detail-header">
+    <a href="#location/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">location/1</h1>
+      <div class="specs">
+          <pre>location(anno) :: location() when anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the location of the annotations Anno.</p>
+  </section>
+</section>
+<section class="detail" id="new/1">
+  <div class="detail-header">
+    <a href="#new/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new/1</h1>
+      <div class="specs">
+          <pre>new(location) :: anno() when location: location()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Creates a new collection of annotations given a location.</p>
+  </section>
+</section>
+<section class="detail" id="set_file/2">
+  <div class="detail-header">
+    <a href="#set_file/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_file/2</h1>
+      <div class="specs">
+          <pre>set_file(file, anno) :: anno when file: filename(), anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Modifies the filename of the annotations Anno.</p>
+  </section>
+</section>
+<section class="detail" id="set_generated/2">
+  <div class="detail-header">
+    <a href="#set_generated/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_generated/2</h1>
+      <div class="specs">
+          <pre>set_generated(generated, anno) :: anno when generated: generated(), anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Modifies the generated marker of the annotations Anno. </p>
+  </section>
+</section>
+<section class="detail" id="set_line/2">
+  <div class="detail-header">
+    <a href="#set_line/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_line/2</h1>
+      <div class="specs">
+          <pre>set_line(line, anno) :: anno when line: line(), anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Modifies the line of the annotations Anno.</p>
+  </section>
+</section>
+<section class="detail" id="set_location/2">
+  <div class="detail-header">
+    <a href="#set_location/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_location/2</h1>
+      <div class="specs">
+          <pre>set_location(location, anno) :: anno when location: location(), anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Modifies the location of the annotations Anno.</p>
+  </section>
+</section>
+<section class="detail" id="set_record/2">
+  <div class="detail-header">
+    <a href="#set_record/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_record/2</h1>
+      <div class="specs">
+          <pre>set_record(record, anno) :: anno when record: record(), anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Modifies the record marker of the annotations Anno.</p>
+  </section>
+</section>
+<section class="detail" id="set_text/2">
+  <div class="detail-header">
+    <a href="#set_text/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_text/2</h1>
+      <div class="specs">
+          <pre>set_text(text, anno) :: anno when text: text(), anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Modifies the text of the annotations Anno.</p>
+  </section>
+</section>
+<section class="detail" id="text/1">
+  <div class="detail-header">
+    <a href="#text/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">text/1</h1>
+      <div class="specs">
+          <pre>text(anno) :: text() | :undefined when anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the text of the annotations Anno. If there is no text, <code class="inline">undefined</code> is returned.</p>
+  </section>
+</section>
+<section class="detail" id="to_term/1">
+  <div class="detail-header">
+    <a href="#to_term/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_term/1</h1>
+      <div class="specs">
+          <pre>to_term(anno) :: anno_term() when anno: anno()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the term representing the annotations Anno.</p>
+<p> See also from_term().</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

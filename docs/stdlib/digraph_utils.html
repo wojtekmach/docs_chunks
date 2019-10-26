@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>digraph_utils — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+digraph_utils      </h1>
+
+
+        <section id="moduledoc">
+<p> This module provides algorithms based on depth-first traversal of directed graphs. For basic functions on directed graphs, see the <code class="inline">digraph(3)</code> module.</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">directed</span><span class="w"> </span><span class="nf">graph</span><span class="w"> </span><span class="p" data-group-id="4882370705-1">(</span><span class="ow">or</span><span class="w"> </span><span class="ss">just</span><span class="w"> </span><span class="s">&quot;digraph&quot;</span><span class="p" data-group-id="4882370705-1">)</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="nf">pair</span><span class="w"> </span><span class="p" data-group-id="4882370705-2">(</span><span class="n">V</span><span class="p">,</span><span class="err"> </span><span class="n">E</span><span class="p" data-group-id="4882370705-2">)</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">finite</span><span class="w"> </span><span class="ss">set</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">finite</span><span class="w"> </span><span class="ss">set</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">directed</span><span class="w"> </span><span class="nf">edges</span><span class="w"> </span><span class="p" data-group-id="4882370705-3">(</span><span class="ow">or</span><span class="w"> </span><span class="ss">just</span><span class="w"> </span><span class="s">&quot;edges&quot;</span><span class="p" data-group-id="4882370705-3">)</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">set</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">subset</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">V</span><span class="err"> </span><span class="err">×</span><span class="err"> </span><span class="n">V</span><span class="w"> </span><span class="p" data-group-id="4882370705-4">(</span><span class="ss">the</span><span class="w"> </span><span class="n">Cartesian</span><span class="w"> </span><span class="ss">product</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">itself</span><span class="p" data-group-id="4882370705-4">)</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">Digraphs</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">annotated</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">more</span><span class="w"> </span><span class="ss">information</span><span class="p">.</span><span class="w"> </span><span class="n">Such</span><span class="w"> </span><span class="ss">information</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">attached</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">digraph</span><span class="p">.</span><span class="w"> </span><span class="n">An</span><span class="w"> </span><span class="ss">annotated</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">called</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">labeled</span><span class="w"> </span><span class="ss">digraph</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">information</span><span class="w"> </span><span class="ss">attached</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">edge</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">called</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">label</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">An</span><span class="w"> </span><span class="ss">edge</span><span class="w"> </span><span class="ss">e</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="p" data-group-id="4882370705-5">(</span><span class="ss">v</span><span class="p">,</span><span class="err"> </span><span class="ss">w</span><span class="p" data-group-id="4882370705-5">)</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">said</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">emanate</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">v</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">incident</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">w</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">edge</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">emanating</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">v</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">incident</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="ss">w</span><span class="p">,</span><span class="w"> </span><span class="ss">then</span><span class="w"> </span><span class="ss">w</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">said</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">an</span><span class="w">  </span><span class="ss">out</span><span class="o">-</span><span class="ss">neighbor</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">v</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">v</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">said</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">in</span><span class="o">-</span><span class="ss">neighbor</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">w</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="4882370705-6">[</span><span class="mi">1</span><span class="p" data-group-id="4882370705-6">]</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="4882370705-7">[</span><span class="ss">k</span><span class="p" data-group-id="4882370705-7">]</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="nf">digraph</span><span class="w"> </span><span class="p" data-group-id="4882370705-8">(</span><span class="n">V</span><span class="p">,</span><span class="err"> </span><span class="n">E</span><span class="p" data-group-id="4882370705-8">)</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">non</span><span class="o">-</span><span class="ss">empty</span><span class="w"> </span><span class="ss">sequence</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="4882370705-9">[</span><span class="mi">1</span><span class="p" data-group-id="4882370705-9">]</span><span class="p">,</span><span class="err"> </span><span class="ss">v</span><span class="p" data-group-id="4882370705-10">[</span><span class="mi">2</span><span class="p" data-group-id="4882370705-10">]</span><span class="p">,</span><span class="err"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="err"> </span><span class="ss">v</span><span class="p" data-group-id="4882370705-11">[</span><span class="ss">k</span><span class="p" data-group-id="4882370705-11">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="ss">such</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="nf">edge</span><span class="w"> </span><span class="p" data-group-id="4882370705-12">(</span><span class="ss">v</span><span class="p" data-group-id="4882370705-13">[</span><span class="ss">i</span><span class="p" data-group-id="4882370705-13">]</span><span class="p">,</span><span class="ss">v</span><span class="p" data-group-id="4882370705-14">[</span><span class="ss">i</span><span class="o">+</span><span class="mi">1</span><span class="p" data-group-id="4882370705-14">]</span><span class="p" data-group-id="4882370705-12">)</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="mi">1</span><span class="err"> </span><span class="o">&lt;</span><span class="o">=</span><span class="err"> </span><span class="ss">i</span><span class="err"> </span><span class="o">&lt;</span><span class="err"> </span><span class="ss">k</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="nb">length</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">k</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">Path</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">cycle</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="nb">length</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">zero</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="4882370705-15">[</span><span class="mi">1</span><span class="p" data-group-id="4882370705-15">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="4882370705-16">[</span><span class="ss">k</span><span class="p" data-group-id="4882370705-16">]</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">loop</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">cycle</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">length</span><span class="w"> </span><span class="ss">one</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">An</span><span class="w"> </span><span class="ss">acyclic</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">without</span><span class="w"> </span><span class="ss">cycles</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">depth</span><span class="o">-</span><span class="ss">first</span><span class="w"> </span><span class="ss">traversal</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">directed</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">viewed</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">visits</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">digraph</span><span class="p">.</span><span class="w"> </span><span class="n">Initially</span><span class="p">,</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">marked</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">unvisited</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">traversal</span><span class="w"> </span><span class="ss">starts</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">arbitrarily</span><span class="w"> </span><span class="ss">chosen</span><span class="w"> </span><span class="ss">vertex</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">marked</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">visited</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">follows</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">edge</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">unmarked</span><span class="w"> </span><span class="ss">vertex</span><span class="p">,</span><span class="w"> </span><span class="ss">marking</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">vertex</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">search</span><span class="w"> </span><span class="ss">then</span><span class="w"> </span><span class="ss">proceeds</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">same</span><span class="w"> </span><span class="ss">fashion</span><span class="p">,</span><span class="w"> </span><span class="ss">until</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">no</span><span class="w"> </span><span class="ss">edge</span><span class="w"> </span><span class="ss">leading</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">unvisited</span><span class="w"> </span><span class="ss">vertex</span><span class="p">.</span><span class="w"> </span><span class="n">At</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">point</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">backtracks</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">traversal</span><span class="w"> </span><span class="ss">continues</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">long</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">unexamined</span><span class="w"> </span><span class="ss">edges</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">unvisited</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ss">remain</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">first</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">have</span><span class="w"> </span><span class="ss">been</span><span class="w"> </span><span class="ss">examined</span><span class="p">,</span><span class="w"> </span><span class="ss">some</span><span class="w"> </span><span class="ss">so</span><span class="w"> </span><span class="ss">far</span><span class="w"> </span><span class="ss">unvisited</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">chosen</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">repeated</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">partial</span><span class="w"> </span><span class="ss">ordering</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">set</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">transitive</span><span class="p">,</span><span class="w"> </span><span class="ss">antisymmetric</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">reflexive</span><span class="w"> </span><span class="ss">relation</span><span class="w"> </span><span class="ss">between</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">objects</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="ss">problem</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">topological</span><span class="w"> </span><span class="ss">sorting</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">find</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">total</span><span class="w"> </span><span class="ss">ordering</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">superset</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">partial</span><span class="w"> </span><span class="ss">ordering</span><span class="p">.</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="n">G</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="p" data-group-id="4882370705-17">(</span><span class="n">V</span><span class="p">,</span><span class="err"> </span><span class="n">E</span><span class="p" data-group-id="4882370705-17">)</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">equivalent</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">relation</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="p" data-group-id="4882370705-18">(</span><span class="ss">we</span><span class="w"> </span><span class="ss">neglect</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">version</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">directed</span><span class="w"> </span><span class="ss">graphs</span><span class="w"> </span><span class="ss">provided</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="ss">digraph</span><span class="err">`</span><span class="w"> </span><span class="ss">module</span><span class="w"> </span><span class="ss">allows</span><span class="w"> </span><span class="ss">multiple</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="ss">between</span><span class="w"> </span><span class="ss">vertices</span><span class="p" data-group-id="4882370705-18">)</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">has</span><span class="w"> </span><span class="ss">no</span><span class="w"> </span><span class="ss">cycles</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">length</span><span class="w"> </span><span class="ss">two</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">more</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">reflexive</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">transitive</span><span class="w"> </span><span class="ss">closure</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">partial</span><span class="w"> </span><span class="ss">ordering</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">subgraph</span><span class="w"> </span><span class="n">G</span><span class="ss">&#39; of G is a digraph whose vertices and edges form subsets of the vertices and edges of G.
+
+*  G&#39;</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">maximal</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">respect</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">property</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">other</span><span class="w"> </span><span class="ss">subgraphs</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">include</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">G</span><span class="err">&#39;</span><span class="w"> </span><span class="ss">do</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">have</span><span class="w"> </span><span class="ss">property</span><span class="w"> </span><span class="n">P</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">strongly</span><span class="w"> </span><span class="ss">connected</span><span class="w"> </span><span class="ss">component</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">maximal</span><span class="w"> </span><span class="ss">subgraph</span><span class="w"> </span><span class="ss">such</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="ss">between</span><span class="w"> </span><span class="ss">each</span><span class="w"> </span><span class="ss">pair</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">vertices</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">connected</span><span class="w"> </span><span class="ss">component</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">maximal</span><span class="w"> </span><span class="ss">subgraph</span><span class="w"> </span><span class="ss">such</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="ss">between</span><span class="w"> </span><span class="ss">each</span><span class="w"> </span><span class="ss">pair</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">vertices</span><span class="p">,</span><span class="w"> </span><span class="ss">considering</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="ss">undirected</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">An</span><span class="w"> </span><span class="ss">arborescence</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">acyclic</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">root</span><span class="p">,</span><span class="w"> </span><span class="ss">such</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">unique</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">every</span><span class="w"> </span><span class="ss">other</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">G</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">tree</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">acyclic</span><span class="w"> </span><span class="ss">non</span><span class="o">-</span><span class="ss">empty</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">such</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">unique</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="ss">between</span><span class="w"> </span><span class="ss">every</span><span class="w"> </span><span class="ss">pair</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">vertices</span><span class="p">,</span><span class="w"> </span><span class="ss">considering</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="ss">undirected</span><span class="p">.</span></code></pre>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#arborescence_root/1">arborescence_root/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">{yes, ``Root``}</code> if <code class="inline">Root</code> is the root of the arborescence <code class="inline">Digraph</code>, otherwise <code class="inline">no</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#components/1">components/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of connected components.. Each component is represented by its vertices. The order of the vertices and the order of the components are arbitrary. Each vertex of digraph <code class="inline">Digraph</code> occurs in exactly one component.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#condensation/1">condensation/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Creates a digraph where the vertices are the strongly connected components of <code class="inline">Digraph</code> as returned by  <a href="#strong_components/1"><code class="inline">strong_components/1</code></a>. If X and Y are two different strongly connected components, and vertices x and y exist in X and Y, respectively, such that there is an edge emanating from x and incident on y, then an edge emanating from X and incident on Y is created.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cyclic_strong_components/1">cyclic_strong_components/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of strongly connected components. Each strongly component is represented by its vertices. The order of the vertices and the order of the components are arbitrary. Only vertices that are included in some cycle in <code class="inline">Digraph</code> are returned, otherwise the returned list is equal to that returned by  <a href="#strong_components/1"><code class="inline">strong_components/1</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_acyclic/1">is_acyclic/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if and only if digraph <code class="inline">Digraph</code> is acyclic.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_arborescence/1">is_arborescence/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if and only if digraph <code class="inline">Digraph</code> is an arborescence.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_tree/1">is_tree/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if and only if digraph <code class="inline">Digraph</code> is a tree.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#loop_vertices/1">loop_vertices/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of all vertices of <code class="inline">Digraph</code> that are included in some loop.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#postorder/1">postorder/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns all vertices of digraph <code class="inline">Digraph</code>. The order is given by a depth-first traversal of the digraph, collecting visited vertices in postorder. More precisely, the vertices visited while searching from an arbitrarily chosen vertex are collected in postorder, and all those collected vertices are placed before the subsequently visited vertices.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#preorder/1">preorder/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns all vertices of digraph <code class="inline">Digraph</code>. The order is given by a depth-first traversal of the digraph, collecting visited vertices in preorder.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reachable/2">reachable/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns an unsorted list of digraph vertices such that for each vertex in the list, there is a path in <code class="inline">Digraph</code> from some vertex of <code class="inline">Vertices</code> to the vertex. In particular, as paths can have length zero, the vertices of <code class="inline">Vertices</code> are included in the returned list.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reachable_neighbours/2">reachable_neighbours/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns an unsorted list of digraph vertices such that for each vertex in the list, there is a path in <code class="inline">Digraph</code> of length one or more from some vertex of <code class="inline">Vertices</code> to the vertex. As a consequence, only those vertices of <code class="inline">Vertices</code> that are included in some cycle are returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reaching/2">reaching/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns an unsorted list of digraph vertices such that for each vertex in the list, there is a path from the vertex to some vertex of <code class="inline">Vertices</code>. In particular, as paths can have length zero, the vertices of <code class="inline">Vertices</code> are included in the returned list.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reaching_neighbours/2">reaching_neighbours/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns an unsorted list of digraph vertices such that for each vertex in the list, there is a path of length one or more from the vertex to some vertex of <code class="inline">Vertices</code>. Therefore only those vertices of <code class="inline">Vertices</code> that are included in some cycle are returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#strong_components/1">strong_components/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of strongly connected components. Each strongly component is represented by its vertices. The order of the vertices and the order of the components are arbitrary. Each vertex of digraph <code class="inline">Digraph</code> occurs in exactly one strong component. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#subgraphsubgraph/23">subgraphsubgraph/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Creates a maximal subgraph of <code class="inline">Digraph</code> having as vertices those vertices of <code class="inline">Digraph</code> that are mentioned in <code class="inline">Vertices</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#topsort/1">topsort/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a topological ordering of the vertices of digraph <code class="inline">Digraph</code> if such an ordering exists, otherwise <code class="inline">false</code>. For each vertex in the returned list, no out-neighbors occur earlier in the list.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="arborescence_root/1">
+  <div class="detail-header">
+    <a href="#arborescence_root/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">arborescence_root/1</h1>
+      <div class="specs">
+          <pre>arborescence_root(digraph) :: :no | {:yes, root}
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(), root: <a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">{yes, ``Root``}</code> if <code class="inline">Root</code> is the root of the arborescence <code class="inline">Digraph</code>, otherwise <code class="inline">no</code>.</p>
+  </section>
+</section>
+<section class="detail" id="components/1">
+  <div class="detail-header">
+    <a href="#components/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">components/1</h1>
+      <div class="specs">
+          <pre>components(digraph) :: [component]
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(), component: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of connected components.. Each component is represented by its vertices. The order of the vertices and the order of the components are arbitrary. Each vertex of digraph <code class="inline">Digraph</code> occurs in exactly one component.</p>
+  </section>
+</section>
+<section class="detail" id="condensation/1">
+  <div class="detail-header">
+    <a href="#condensation/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">condensation/1</h1>
+      <div class="specs">
+          <pre>condensation(digraph) :: condensedDigraph
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(), condensedDigraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Creates a digraph where the vertices are the strongly connected components of <code class="inline">Digraph</code> as returned by  <a href="#strong_components/1"><code class="inline">strong_components/1</code></a>. If X and Y are two different strongly connected components, and vertices x and y exist in X and Y, respectively, such that there is an edge emanating from x and incident on y, then an edge emanating from X and incident on Y is created.</p>
+<p> The created digraph has the same type as <code class="inline">Digraph</code>. All vertices and edges have the default label <code class="inline">[]</code>.</p>
+<p> Each cycle is included in some strongly connected component, which implies that a topological ordering of the created digraph always exists.</p>
+  </section>
+</section>
+<section class="detail" id="cyclic_strong_components/1">
+  <div class="detail-header">
+    <a href="#cyclic_strong_components/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cyclic_strong_components/1</h1>
+      <div class="specs">
+          <pre>cyclic_strong_components(digraph) :: [strongComponent]
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(), strongComponent: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of strongly connected components. Each strongly component is represented by its vertices. The order of the vertices and the order of the components are arbitrary. Only vertices that are included in some cycle in <code class="inline">Digraph</code> are returned, otherwise the returned list is equal to that returned by  <a href="#strong_components/1"><code class="inline">strong_components/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="is_acyclic/1">
+  <div class="detail-header">
+    <a href="#is_acyclic/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_acyclic/1</h1>
+      <div class="specs">
+          <pre>is_acyclic(digraph) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if and only if digraph <code class="inline">Digraph</code> is acyclic.</p>
+  </section>
+</section>
+<section class="detail" id="is_arborescence/1">
+  <div class="detail-header">
+    <a href="#is_arborescence/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_arborescence/1</h1>
+      <div class="specs">
+          <pre>is_arborescence(digraph) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if and only if digraph <code class="inline">Digraph</code> is an arborescence.</p>
+  </section>
+</section>
+<section class="detail" id="is_tree/1">
+  <div class="detail-header">
+    <a href="#is_tree/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_tree/1</h1>
+      <div class="specs">
+          <pre>is_tree(digraph) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if and only if digraph <code class="inline">Digraph</code> is a tree.</p>
+  </section>
+</section>
+<section class="detail" id="loop_vertices/1">
+  <div class="detail-header">
+    <a href="#loop_vertices/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">loop_vertices/1</h1>
+      <div class="specs">
+          <pre>loop_vertices(digraph) :: vertices
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(), vertices: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of all vertices of <code class="inline">Digraph</code> that are included in some loop.</p>
+  </section>
+</section>
+<section class="detail" id="postorder/1">
+  <div class="detail-header">
+    <a href="#postorder/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">postorder/1</h1>
+      <div class="specs">
+          <pre>postorder(digraph) :: vertices
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(), vertices: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns all vertices of digraph <code class="inline">Digraph</code>. The order is given by a depth-first traversal of the digraph, collecting visited vertices in postorder. More precisely, the vertices visited while searching from an arbitrarily chosen vertex are collected in postorder, and all those collected vertices are placed before the subsequently visited vertices.</p>
+  </section>
+</section>
+<section class="detail" id="preorder/1">
+  <div class="detail-header">
+    <a href="#preorder/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">preorder/1</h1>
+      <div class="specs">
+          <pre>preorder(digraph) :: vertices
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(), vertices: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns all vertices of digraph <code class="inline">Digraph</code>. The order is given by a depth-first traversal of the digraph, collecting visited vertices in preorder.</p>
+  </section>
+</section>
+<section class="detail" id="reachable/2">
+  <div class="detail-header">
+    <a href="#reachable/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reachable/2</h1>
+      <div class="specs">
+          <pre>reachable(vertices, digraph) :: reachable
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(),
+     vertices: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()],
+     reachable: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns an unsorted list of digraph vertices such that for each vertex in the list, there is a path in <code class="inline">Digraph</code> from some vertex of <code class="inline">Vertices</code> to the vertex. In particular, as paths can have length zero, the vertices of <code class="inline">Vertices</code> are included in the returned list.</p>
+  </section>
+</section>
+<section class="detail" id="reachable_neighbours/2">
+  <div class="detail-header">
+    <a href="#reachable_neighbours/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reachable_neighbours/2</h1>
+      <div class="specs">
+          <pre>reachable_neighbours(vertices, digraph) :: reachable
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(),
+     vertices: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()],
+     reachable: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns an unsorted list of digraph vertices such that for each vertex in the list, there is a path in <code class="inline">Digraph</code> of length one or more from some vertex of <code class="inline">Vertices</code> to the vertex. As a consequence, only those vertices of <code class="inline">Vertices</code> that are included in some cycle are returned.</p>
+  </section>
+</section>
+<section class="detail" id="reaching/2">
+  <div class="detail-header">
+    <a href="#reaching/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reaching/2</h1>
+      <div class="specs">
+          <pre>reaching(vertices, digraph) :: reaching
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(),
+     vertices: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()],
+     reaching: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns an unsorted list of digraph vertices such that for each vertex in the list, there is a path from the vertex to some vertex of <code class="inline">Vertices</code>. In particular, as paths can have length zero, the vertices of <code class="inline">Vertices</code> are included in the returned list.</p>
+  </section>
+</section>
+<section class="detail" id="reaching_neighbours/2">
+  <div class="detail-header">
+    <a href="#reaching_neighbours/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reaching_neighbours/2</h1>
+      <div class="specs">
+          <pre>reaching_neighbours(vertices, digraph) :: reaching
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(),
+     vertices: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()],
+     reaching: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns an unsorted list of digraph vertices such that for each vertex in the list, there is a path of length one or more from the vertex to some vertex of <code class="inline">Vertices</code>. Therefore only those vertices of <code class="inline">Vertices</code> that are included in some cycle are returned.</p>
+  </section>
+</section>
+<section class="detail" id="strong_components/1">
+  <div class="detail-header">
+    <a href="#strong_components/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">strong_components/1</h1>
+      <div class="specs">
+          <pre>strong_components(digraph) :: [strongComponent]
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(), strongComponent: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of strongly connected components. Each strongly component is represented by its vertices. The order of the vertices and the order of the components are arbitrary. Each vertex of digraph <code class="inline">Digraph</code> occurs in exactly one strong component. </p>
+  </section>
+</section>
+<section class="detail" id="subgraphsubgraph/23">
+  <div class="detail-header">
+    <a href="#subgraphsubgraph/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">subgraphsubgraph/23</h1>
+  </div>
+  <section class="docstring">
+<p> Creates a maximal subgraph of <code class="inline">Digraph</code> having as vertices those vertices of <code class="inline">Digraph</code> that are mentioned in <code class="inline">Vertices</code>.</p>
+<p> If the value of option <code class="inline">type</code> is <code class="inline">inherit</code>, which is the default, the type of <code class="inline">Digraph</code> is used for the subgraph as well. Otherwise the option value of <code class="inline">type</code> is used as argument to <code class="inline">digraph:new/1</code>.</p>
+<p> If the value of option <code class="inline">keep_labels</code> is <code class="inline">true</code>, which is the default, the labels of vertices and edges of <code class="inline">Digraph</code> are used for the subgraph as well. If the value is <code class="inline">false</code>, default label <code class="inline">[]</code> is used for the vertices and edges of the subgroup.</p>
+<p> <code class="inline">subgraph(``Digraph``, ``Vertices``)</code> is equivalent to <code class="inline">subgraph(``Digraph``, ``Vertices``, [])</code>.</p>
+<p> If any of the arguments are invalid, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="topsort/1">
+  <div class="detail-header">
+    <a href="#topsort/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">topsort/1</h1>
+      <div class="specs">
+          <pre>topsort(digraph) :: vertices | false
+when digraph: <a href=":digraph.html#t:graph/0">:digraph.graph</a>(), vertices: [<a href=":digraph.html#t:vertex/0">:digraph.vertex</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a topological ordering of the vertices of digraph <code class="inline">Digraph</code> if such an ordering exists, otherwise <code class="inline">false</code>. For each vertex in the returned list, no out-neighbors occur earlier in the list.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>win32reg — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+win32reg      </h1>
+
+
+        <section id="moduledoc">
+<p> This module provides read and write access to the registry on Windows. It is essentially a port driver wrapped around the Win32 API calls for accessing the registry.</p>
+<p> The registry is a hierarchical database, used to store various system and software information in Windows. It contains installation data, and is updated by installers and system programs. The Erlang installer updates the registry by adding data that Erlang needs.</p>
+<p> The registry contains keys and values. Keys are like the directories in a file system, they form a hierarchy. Values are like files, they have a name and a value, and also a type.</p>
+<p> Paths to keys are left to right, with subkeys to the right and backslash between keys. (Remember that backslashes must be doubled in Erlang strings.) Case is preserved but not significant.</p>
+<p> For example, <code class="inline">&quot;\\hkey_local_machine\\software\\Ericsson\\Erlang\\5.0&quot;</code> is the key for the installation data for the latest Erlang release.</p>
+<p> There are six entry points in the Windows registry, top-level keys. They can be abbreviated in this module as follows:</p>
+<pre><code class="nohighlight makeup erlang"><span class="n">Abbreviation</span><span class="w">     </span><span class="n">Registry</span><span class="w"> </span><span class="ss">key</span><span class="w">
+</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="w">     </span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="w">
+</span><span class="ss">hkcr</span><span class="w">             </span><span class="n">HKEY_CLASSES_ROOT</span><span class="w">
+</span><span class="ss">current_user</span><span class="w">     </span><span class="n">HKEY_CURRENT_USER</span><span class="w">
+</span><span class="ss">hkcu</span><span class="w">             </span><span class="n">HKEY_CURRENT_USER</span><span class="w">
+</span><span class="ss">local_machine</span><span class="w">    </span><span class="n">HKEY_LOCAL_MACHINE</span><span class="w">
+</span><span class="ss">hklm</span><span class="w">             </span><span class="n">HKEY_LOCAL_MACHINE</span><span class="w">
+</span><span class="ss">users</span><span class="w">            </span><span class="n">HKEY_USERS</span><span class="w">
+</span><span class="ss">hku</span><span class="w">              </span><span class="n">HKEY_USERS</span><span class="w">
+</span><span class="ss">current_config</span><span class="w">   </span><span class="n">HKEY_CURRENT_CONFIG</span><span class="w">
+</span><span class="ss">hkcc</span><span class="w">             </span><span class="n">HKEY_CURRENT_CONFIG</span><span class="w">
+</span><span class="ss">dyn_data</span><span class="w">         </span><span class="n">HKEY_DYN_DATA</span><span class="w">
+</span><span class="ss">hkdd</span><span class="w">             </span><span class="n">HKEY_DYN_DATA</span></code></pre>
+<p> The key above can be written as <code class="inline">&quot;\\hklm\\software\\ericsson\\erlang\\5.0&quot;</code>.</p>
+<p> This module uses a current key. It works much like the current directory. From the current key, values can be fetched, subkeys can be listed, and so on.</p>
+<p> Under a key, any number of named values can be stored. They have names, types, and data.</p>
+<p> <code class="inline">win32reg</code> supports storing of the following types:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">REG_DWORD</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">integer</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">REG_SZ</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">string</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">REG_BINARY</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">binary</span><span class="w">  </span><span class="n">Other</span><span class="w"> </span><span class="ss">types</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">read</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">returned</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">binaries</span><span class="p">.</span></code></pre>
+<p> There is also a &quot;default&quot; value, which has the empty string as name. It is read and written with the atom <code class="inline">default</code> instead of the name.</p>
+<p> Some registry values are stored as strings with references to environment variables, for example, <code class="inline">%SystemRoot%Windows</code>. <code class="inline">SystemRoot</code> is an environment variable, and is to be replaced with its value. Function <a href="#expand/1"><code class="inline">expand/1</code></a> is provided so that environment variables surrounded by <code class="inline">%</code> can be expanded to their values.</p>
+<p> For more information on the Windows registry, see consult the Win32 Programmer&#39;s Reference.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#change_key/2">change_key/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Changes the current key to another key. Works like <code class="inline">cd</code>. The key can be specified as a relative path or as an absolute path, starting with <code class="inline">\.</code></p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#change_key_create/2">change_key_create/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Creates a key, or just changes to it, if it is already there. Works like a combination of <code class="inline">mkdir</code> and <code class="inline">cd</code>. Calls the Win32 API function <code class="inline">RegCreateKeyEx()</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#close/1">close/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Closes the registry. After that, the <code class="inline">RegHandle</code> cannot be used.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#current_key/1">current_key/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the path to the current key. This is the equivalent of <code class="inline">pwd</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_key/1">delete_key/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes the current key, if it is valid. Calls the Win32 API function <code class="inline">RegDeleteKey()</code>. Notice that this call does not change the current key (unlike  <a href="#change_key_create/2"><code class="inline">change_key_create/2</code></a>). This means that after the call, the current key is invalid.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_value/2">delete_value/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes a named value on the current key. The atom <code class="inline">default</code> is used for the default value.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expand/1">expand/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Expands a string containing environment variables between percent characters. Anything between two <code class="inline">%</code> is taken for an environment variable, and is replaced by the value. Two consecutive <code class="inline">%</code> are replaced by one <code class="inline">%</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#format_error/1">format_error/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts a POSIX error code to a string (by calling <code class="inline">erl_posix_msg:message/1</code>).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#open/1">open/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Opens the registry for reading or writing. The current key is the root (<code class="inline">HKEY_CLASSES_ROOT</code>). Flag <code class="inline">read</code> in the mode list can be omitted.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_value/3">set_value/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Sets the named (or default) value to <code class="inline">value</code>. Calls the Win32 API function <code class="inline">RegSetValueEx()</code>. The value can be of three types, and the corresponding registry type is used. The supported types are the following</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sub_keys/1">sub_keys/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of subkeys to the current key. Calls the Win32 API function <code class="inline">EnumRegKeysEx()</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#value/2">value/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Retrieves the named value (or default) on the current key. Registry values of type <code class="inline">REG_SZ</code> are returned as strings. Type <code class="inline">REG_DWORD</code> values are returned as integers. All other types are returned as binaries.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#values/1">values/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Retrieves a list of all values on the current key. The values have types corresponding to the registry types, see <a href="#value/2"><code class="inline">value/2</code></a>. Calls the Win32 API function <code class="inline">EnumRegValuesEx()</code>.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="change_key/2">
+  <div class="detail-header">
+    <a href="#change_key/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">change_key/2</h1>
+      <div class="specs">
+          <pre>change_key(regHandle, key) :: returnValue
+when regHandle: reg_handle(),
+     key: string(),
+     returnValue: :ok | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Changes the current key to another key. Works like <code class="inline">cd</code>. The key can be specified as a relative path or as an absolute path, starting with <code class="inline">\.</code></p>
+  </section>
+</section>
+<section class="detail" id="change_key_create/2">
+  <div class="detail-header">
+    <a href="#change_key_create/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">change_key_create/2</h1>
+      <div class="specs">
+          <pre>change_key_create(regHandle, key) :: returnValue
+when regHandle: reg_handle(),
+     key: string(),
+     returnValue: :ok | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Creates a key, or just changes to it, if it is already there. Works like a combination of <code class="inline">mkdir</code> and <code class="inline">cd</code>. Calls the Win32 API function <code class="inline">RegCreateKeyEx()</code>.</p>
+<p> The registry must have been opened in write mode.</p>
+  </section>
+</section>
+<section class="detail" id="close/1">
+  <div class="detail-header">
+    <a href="#close/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">close/1</h1>
+      <div class="specs">
+          <pre>close(regHandle) :: :ok when regHandle: reg_handle()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Closes the registry. After that, the <code class="inline">RegHandle</code> cannot be used.</p>
+  </section>
+</section>
+<section class="detail" id="current_key/1">
+  <div class="detail-header">
+    <a href="#current_key/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">current_key/1</h1>
+      <div class="specs">
+          <pre>current_key(regHandle) :: returnValue
+when regHandle: reg_handle(), returnValue: {:ok, string()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the path to the current key. This is the equivalent of <code class="inline">pwd</code>.</p>
+<p> Notice that the current key is stored in the driver, and can be invalid (for example, if the key has been removed).</p>
+  </section>
+</section>
+<section class="detail" id="delete_key/1">
+  <div class="detail-header">
+    <a href="#delete_key/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_key/1</h1>
+      <div class="specs">
+          <pre>delete_key(regHandle) :: returnValue
+when regHandle: reg_handle(), returnValue: :ok | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes the current key, if it is valid. Calls the Win32 API function <code class="inline">RegDeleteKey()</code>. Notice that this call does not change the current key (unlike  <a href="#change_key_create/2"><code class="inline">change_key_create/2</code></a>). This means that after the call, the current key is invalid.</p>
+  </section>
+</section>
+<section class="detail" id="delete_value/2">
+  <div class="detail-header">
+    <a href="#delete_value/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_value/2</h1>
+      <div class="specs">
+          <pre>delete_value(regHandle, name) :: returnValue
+when regHandle: reg_handle(),
+     name: name(),
+     returnValue: :ok | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes a named value on the current key. The atom <code class="inline">default</code> is used for the default value.</p>
+<p> The registry must have been opened in write mode.</p>
+  </section>
+</section>
+<section class="detail" id="expand/1">
+  <div class="detail-header">
+    <a href="#expand/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">expand/1</h1>
+      <div class="specs">
+          <pre>expand(string) :: expandedString when string: string(), expandedString: string()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Expands a string containing environment variables between percent characters. Anything between two <code class="inline">%</code> is taken for an environment variable, and is replaced by the value. Two consecutive <code class="inline">%</code> are replaced by one <code class="inline">%</code>.</p>
+<p> A variable name that is not in the environment results in an error.</p>
+  </section>
+</section>
+<section class="detail" id="format_error/1">
+  <div class="detail-header">
+    <a href="#format_error/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">format_error/1</h1>
+      <div class="specs">
+          <pre>format_error(errorId) :: errorString
+when errorId: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), errorString: string()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts a POSIX error code to a string (by calling <code class="inline">erl_posix_msg:message/1</code>).</p>
+  </section>
+</section>
+<section class="detail" id="open/1">
+  <div class="detail-header">
+    <a href="#open/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">open/1</h1>
+      <div class="specs">
+          <pre>open(openModeList) :: returnValue
+when openModeList: [openMode],
+     openMode: :read | :write,
+     returnValue: {:ok, regHandle} | {:error, errorId :: :enotsup},
+     regHandle: reg_handle()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Opens the registry for reading or writing. The current key is the root (<code class="inline">HKEY_CLASSES_ROOT</code>). Flag <code class="inline">read</code> in the mode list can be omitted.</p>
+<p> Use <a href="#change_key/2"><code class="inline">change_key/2</code></a> with an absolute path after <code class="inline">open</code>.</p>
+  </section>
+</section>
+<section class="detail" id="set_value/3">
+  <div class="detail-header">
+    <a href="#set_value/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_value/3</h1>
+      <div class="specs">
+          <pre>set_value(regHandle, name, value) :: returnValue
+when regHandle: reg_handle(),
+     name: name(),
+     value: value(),
+     returnValue: :ok | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Sets the named (or default) value to <code class="inline">value</code>. Calls the Win32 API function <code class="inline">RegSetValueEx()</code>. The value can be of three types, and the corresponding registry type is used. The supported types are the following:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">REG_DWORD</span><span class="err">`</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">integers</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">REG_SZ</span><span class="err">`</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">strings</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">REG_BINARY</span><span class="err">`</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">binaries</span><span class="w">  </span><span class="n">Other</span><span class="w"> </span><span class="ss">types</span><span class="w"> </span><span class="ss">cannot</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">added</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">changed</span><span class="p">.</span></code></pre>
+<p> The registry must have been opened in write mode.</p>
+  </section>
+</section>
+<section class="detail" id="sub_keys/1">
+  <div class="detail-header">
+    <a href="#sub_keys/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sub_keys/1</h1>
+      <div class="specs">
+          <pre>sub_keys(regHandle) :: returnValue
+when regHandle: reg_handle(),
+     returnValue: {:ok, [subKey]} | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()},
+     subKey: string()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of subkeys to the current key. Calls the Win32 API function <code class="inline">EnumRegKeysEx()</code>.</p>
+<p> Avoid calling this on the root keys, as it can be slow.</p>
+  </section>
+</section>
+<section class="detail" id="value/2">
+  <div class="detail-header">
+    <a href="#value/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">value/2</h1>
+      <div class="specs">
+          <pre>value(regHandle, name) :: returnValue
+when regHandle: reg_handle(),
+     name: name(),
+     returnValue: {:ok, value :: value()} | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Retrieves the named value (or default) on the current key. Registry values of type <code class="inline">REG_SZ</code> are returned as strings. Type <code class="inline">REG_DWORD</code> values are returned as integers. All other types are returned as binaries.</p>
+  </section>
+</section>
+<section class="detail" id="values/1">
+  <div class="detail-header">
+    <a href="#values/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">values/1</h1>
+      <div class="specs">
+          <pre>values(regHandle) :: returnValue
+when regHandle: reg_handle(),
+     returnValue: {:ok, [valuePair]} | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()},
+     valuePair: {name :: name(), value :: value()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Retrieves a list of all values on the current key. The values have types corresponding to the registry types, see <a href="#value/2"><code class="inline">value/2</code></a>. Calls the Win32 API function <code class="inline">EnumRegValuesEx()</code>.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

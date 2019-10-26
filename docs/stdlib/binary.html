@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>binary — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+binary      </h1>
+
+
+        <section id="moduledoc">
+<p> This module contains functions for manipulating byte-oriented binaries. Although the majority of functions could be provided using bit-syntax, the functions in this library are highly optimized and are expected to either execute faster or consume less memory, or both, than a counterpart written in pure Erlang.</p>
+<p> The module is provided according to Erlang Enhancement Proposal (EEP) 31.</p>
+<p>  The library handles byte-oriented data. For bitstrings that are not binaries (does not contain whole octets of bits) a <code class="inline">badarg</code> exception is thrown from any of the functions in this module.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#at/2">at/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the byte at position <code class="inline">Pos</code> (zero-based) in binary <code class="inline">Subject</code> as an integer. If <code class="inline">Pos</code> &gt;= <code class="inline">byte_size(``Subject``)</code>, a <code class="inline">badarg</code> exception is raised.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bin_to_list/1">bin_to_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as <code class="inline">bin_to_list(``Subject``, {0,byte_size(``Subject``)})</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bin_to_list/2">bin_to_list/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts <code class="inline">Subject</code> to a list of <code class="inline">byte()</code>s, each representing the value of one byte. <code class="inline">part()</code> denotes which part of the <code class="inline">binary()</code> to convert.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bin_to_list/3">bin_to_list/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as<code class="inline">bin_to_list(``Subject``, {``Pos``, ``Len``})</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#compile_pattern/1">compile_pattern/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Builds an internal structure representing a compilation of a search pattern, later to be used in functions <a href="#match/3"><code class="inline">match/3</code></a>, <a href="#matches/3"><code class="inline">matches/3</code></a>, <a href="#split/3"><code class="inline">split/3</code></a>, or <a href="#replace/4"><code class="inline">replace/4</code></a>. The <code class="inline">cp()</code> returned is guaranteed to be a <code class="inline">tuple()</code> to allow programs to distinguish it from non-precompiled search patterns.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#copy/1">copy/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as <code class="inline">copy(``Subject``, 1)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#copy/2">copy/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Creates a binary with the content of <code class="inline">Subject</code> duplicated <code class="inline">N</code> times.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode_unsigned/1">decode_unsigned/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as <code class="inline">decode_unsigned(``Subject``, big)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#decode_unsigned/2">decode_unsigned/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts the binary digit representation, in big endian or little endian, of a positive integer in <code class="inline">Subject</code> to an Erlang <code class="inline">integer()</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode_unsigned/1">encode_unsigned/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as <code class="inline">encode_unsigned(``Unsigned``, big)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encode_unsigned/2">encode_unsigned/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts a positive integer to the smallest possible representation in a binary digit representation, either big endian or little endian.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#first/1">first/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the first byte of binary <code class="inline">Subject</code> as an integer. If the size of <code class="inline">Subject</code> is zero, a <code class="inline">badarg</code> exception is raised.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#last/1">last/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the last byte of binary <code class="inline">Subject</code> as an integer. If the size of <code class="inline">Subject</code> is zero, a <code class="inline">badarg</code> exception is raised.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_to_bin/1">list_to_bin/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Works exactly as <code class="inline">erlang:list_to_binary/1</code>, added for completeness.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#longest_common_prefix/1">longest_common_prefix/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the length of the longest common prefix of the binaries in list <code class="inline">Binaries</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#longest_common_suffix/1">longest_common_suffix/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the length of the longest common suffix of the binaries in list <code class="inline">Binaries</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#match/2">match/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as <code class="inline">match(``Subject``, ``Pattern``, [])</code>. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#match/3">match/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Searches for the first occurrence of <code class="inline">Pattern</code> in <code class="inline">Subject</code> and returns the position and length.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#matches/2">matches/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as <code class="inline">matches(``Subject``, ``Pattern``, [])</code>. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#matches/3">matches/3</a>
+  </div>
+    <div class="summary-synopsis"><p> As <a href="#match/2"><code class="inline">match/2</code></a>, but <code class="inline">Subject</code> is searched until exhausted and a list of all non-overlapping parts matching <code class="inline">Pattern</code> is returned (in order).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#part/2">part/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Extracts the part of binary <code class="inline">Subject</code> described by <code class="inline">PosLen</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#part/3">part/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as <code class="inline">part(``Subject``, {``Pos``, ``Len``})</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#referenced_byte_size/1">referenced_byte_size/1</a>
+  </div>
+    <div class="summary-synopsis"><p> If a binary references a larger binary (often described as being a subbinary), it can be useful to get the size of the referenced binary. This function can be used in a program to trigger the use of <a href="#copy/1"><code class="inline">copy/1</code></a>. By copying a binary, one can dereference the original, possibly large, binary that a smaller binary is a reference to.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#replace/3">replace/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as <code class="inline">replace(``Subject``, ``Pattern``, ``Replacement``,[])</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#replace/4">replace/4</a>
+  </div>
+    <div class="summary-synopsis"><p> Constructs a new binary by replacing the parts in <code class="inline">Subject</code> matching <code class="inline">Pattern</code> with the content of <code class="inline">Replacement</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#split/2">split/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as <code class="inline">split(``Subject``, ``Pattern``, [])</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#split/3">split/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Splits <code class="inline">Subject</code> into a list of binaries based on <code class="inline">Pattern</code>. If option <code class="inline">global</code> is not specified, only the first occurrence of <code class="inline">Pattern</code> in <code class="inline">Subject</code> gives rise to a split.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="at/2">
+  <div class="detail-header">
+    <a href="#at/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">at/2</h1>
+      <div class="specs">
+          <pre>at(subject, pos) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">byte</a>() when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), pos: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the byte at position <code class="inline">Pos</code> (zero-based) in binary <code class="inline">Subject</code> as an integer. If <code class="inline">Pos</code> &gt;= <code class="inline">byte_size(``Subject``)</code>, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="bin_to_list/1">
+  <div class="detail-header">
+    <a href="#bin_to_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bin_to_list/1</h1>
+      <div class="specs">
+          <pre>bin_to_list(subject) :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">byte</a>()] when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as <code class="inline">bin_to_list(``Subject``, {0,byte_size(``Subject``)})</code>.</p>
+  </section>
+</section>
+<section class="detail" id="bin_to_list/2">
+  <div class="detail-header">
+    <a href="#bin_to_list/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bin_to_list/2</h1>
+      <div class="specs">
+          <pre>bin_to_list(subject, posLen) :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">byte</a>()] when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), posLen: part()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts <code class="inline">Subject</code> to a list of <code class="inline">byte()</code>s, each representing the value of one byte. <code class="inline">part()</code> denotes which part of the <code class="inline">binary()</code> to convert.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">bin_to_list</span><span class="p" data-group-id="4250380284-1">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;erlang&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4250380284-2">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="4250380284-2">}</span><span class="p" data-group-id="4250380284-1">)</span><span class="p">.</span><span class="w">
+</span><span class="s">&quot;rla&quot;</span><span class="w">
+</span><span class="c1">%% or [114,108,97] in list notation.</span></code></pre>
+<p> If <code class="inline">PosLen</code> in any way references outside the binary, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="bin_to_list/3">
+  <div class="detail-header">
+    <a href="#bin_to_list/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bin_to_list/3</h1>
+      <div class="specs">
+          <pre>bin_to_list(subject, pos, len) :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">byte</a>()]
+when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), pos: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), len: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as<code class="inline">bin_to_list(``Subject``, {``Pos``, ``Len``})</code>.</p>
+  </section>
+</section>
+<section class="detail" id="compile_pattern/1">
+  <div class="detail-header">
+    <a href="#compile_pattern/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">compile_pattern/1</h1>
+      <div class="specs">
+          <pre>compile_pattern(pattern) :: cp() when pattern: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Builds an internal structure representing a compilation of a search pattern, later to be used in functions <a href="#match/3"><code class="inline">match/3</code></a>, <a href="#matches/3"><code class="inline">matches/3</code></a>, <a href="#split/3"><code class="inline">split/3</code></a>, or <a href="#replace/4"><code class="inline">replace/4</code></a>. The <code class="inline">cp()</code> returned is guaranteed to be a <code class="inline">tuple()</code> to allow programs to distinguish it from non-precompiled search patterns.</p>
+<p> When a list of binaries is specified, it denotes a set of alternative binaries to search for. For example, if <code class="inline">[&lt;&lt;&quot;functional&quot;&gt;&gt;,&lt;&lt;&quot;programming&quot;&gt;&gt;]</code> is specified as <code class="inline">Pattern</code>, this means either <code class="inline">&lt;&lt;&quot;functional&quot;&gt;&gt;</code> or <code class="inline">&lt;&lt;&quot;programming&quot;&gt;&gt;</code>&quot;. The pattern is a set of alternatives; when only a single binary is specified, the set has only one element. The order of alternatives in a pattern is not significant.</p>
+<p> The list of binaries used for search alternatives must be flat and proper.</p>
+<p> If <code class="inline">Pattern</code> is not a binary or a flat proper list of binaries with length &gt; 0, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="copy/1">
+  <div class="detail-header">
+    <a href="#copy/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">copy/1</h1>
+      <div class="specs">
+          <pre>copy(subject) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as <code class="inline">copy(``Subject``, 1)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="copy/2">
+  <div class="detail-header">
+    <a href="#copy/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">copy/2</h1>
+      <div class="specs">
+          <pre>copy(subject, n) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Creates a binary with the content of <code class="inline">Subject</code> duplicated <code class="inline">N</code> times.</p>
+<p> This function always creates a new binary, even if <code class="inline">N`` = 1</code>. By using <a href="#copy/1"><code class="inline">copy/1</code></a> on a binary referencing a larger binary, one can free up the larger binary for garbage collection.</p>
+<p>  By deliberately copying a single binary to avoid referencing a larger binary, one can, instead of freeing up the larger binary for later garbage collection, create much more binary data than needed. Sharing binary data is usually good. Only in special cases, when small parts reference large binaries and the large binaries are no longer used in any process, deliberate copying can be a good idea.</p>
+<p>  If <code class="inline">N</code> &lt; <code class="inline">0</code>, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="decode_unsigned/1">
+  <div class="detail-header">
+    <a href="#decode_unsigned/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode_unsigned/1</h1>
+      <div class="specs">
+          <pre>decode_unsigned(subject) :: unsigned
+when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), unsigned: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as <code class="inline">decode_unsigned(``Subject``, big)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="decode_unsigned/2">
+  <div class="detail-header">
+    <a href="#decode_unsigned/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">decode_unsigned/2</h1>
+      <div class="specs">
+          <pre>decode_unsigned(subject, endianness) :: unsigned
+when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), endianness: :big | :little, unsigned: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts the binary digit representation, in big endian or little endian, of a positive integer in <code class="inline">Subject</code> to an Erlang <code class="inline">integer()</code>.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">decode_unsigned</span><span class="p" data-group-id="8670525490-1">(</span><span class="p">&lt;&lt;</span><span class="mi">169</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">199</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="ss">big</span><span class="p" data-group-id="8670525490-1">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">11111111</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="encode_unsigned/1">
+  <div class="detail-header">
+    <a href="#encode_unsigned/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">encode_unsigned/1</h1>
+      <div class="specs">
+          <pre>encode_unsigned(unsigned) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() when unsigned: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as <code class="inline">encode_unsigned(``Unsigned``, big)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="encode_unsigned/2">
+  <div class="detail-header">
+    <a href="#encode_unsigned/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">encode_unsigned/2</h1>
+      <div class="specs">
+          <pre>encode_unsigned(unsigned, endianness) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()
+when unsigned: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), endianness: :big | :little</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts a positive integer to the smallest possible representation in a binary digit representation, either big endian or little endian.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">encode_unsigned</span><span class="p" data-group-id="2764856491-1">(</span><span class="mi">11111111</span><span class="p">,</span><span class="w"> </span><span class="ss">big</span><span class="p" data-group-id="2764856491-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="mi">169</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">199</span><span class="p">&gt;&gt;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="first/1">
+  <div class="detail-header">
+    <a href="#first/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">first/1</h1>
+      <div class="specs">
+          <pre>first(subject) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">byte</a>() when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the first byte of binary <code class="inline">Subject</code> as an integer. If the size of <code class="inline">Subject</code> is zero, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="last/1">
+  <div class="detail-header">
+    <a href="#last/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">last/1</h1>
+      <div class="specs">
+          <pre>last(subject) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">byte</a>() when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the last byte of binary <code class="inline">Subject</code> as an integer. If the size of <code class="inline">Subject</code> is zero, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="list_to_bin/1">
+  <div class="detail-header">
+    <a href="#list_to_bin/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_to_bin/1</h1>
+      <div class="specs">
+          <pre>list_to_bin(byteList) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() when byteList: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">iodata</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Works exactly as <code class="inline">erlang:list_to_binary/1</code>, added for completeness.</p>
+  </section>
+</section>
+<section class="detail" id="longest_common_prefix/1">
+  <div class="detail-header">
+    <a href="#longest_common_prefix/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">longest_common_prefix/1</h1>
+      <div class="specs">
+          <pre>longest_common_prefix(binaries) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when binaries: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the length of the longest common prefix of the binaries in list <code class="inline">Binaries</code>.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">longest_common_prefix</span><span class="p" data-group-id="0443277879-1">(</span><span class="p" data-group-id="0443277879-2">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;erlang&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;ergonomy&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0443277879-2">]</span><span class="p" data-group-id="0443277879-1">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">2</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">longest_common_prefix</span><span class="p" data-group-id="0443277879-3">(</span><span class="p" data-group-id="0443277879-4">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;erlang&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;perl&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0443277879-4">]</span><span class="p" data-group-id="0443277879-3">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">0</span></code></pre>
+<p> If <code class="inline">Binaries</code> is not a flat list of binaries, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="longest_common_suffix/1">
+  <div class="detail-header">
+    <a href="#longest_common_suffix/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">longest_common_suffix/1</h1>
+      <div class="specs">
+          <pre>longest_common_suffix(binaries) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when binaries: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the length of the longest common suffix of the binaries in list <code class="inline">Binaries</code>.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">longest_common_suffix</span><span class="p" data-group-id="4858715125-1">(</span><span class="p" data-group-id="4858715125-2">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;erlang&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;fang&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="4858715125-2">]</span><span class="p" data-group-id="4858715125-1">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">3</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">longest_common_suffix</span><span class="p" data-group-id="4858715125-3">(</span><span class="p" data-group-id="4858715125-4">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;erlang&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;perl&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="4858715125-4">]</span><span class="p" data-group-id="4858715125-3">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">0</span></code></pre>
+<p> If <code class="inline">Binaries</code> is not a flat list of binaries, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="match/2">
+  <div class="detail-header">
+    <a href="#match/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">match/2</h1>
+      <div class="specs">
+          <pre>match(subject, pattern) :: found | :nomatch
+when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), pattern: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()] | cp(), found: part()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as <code class="inline">match(``Subject``, ``Pattern``, [])</code>. </p>
+  </section>
+</section>
+<section class="detail" id="match/3">
+  <div class="detail-header">
+    <a href="#match/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">match/3</h1>
+      <div class="specs">
+          <pre>match(subject, pattern, options) :: found | :nomatch
+when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+     pattern: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()] | cp(),
+     found: part(),
+     options: [option],
+     option: {:scope, part()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Searches for the first occurrence of <code class="inline">Pattern</code> in <code class="inline">Subject</code> and returns the position and length.</p>
+<p> The function returns <code class="inline">{Pos, Length}</code> for the binary in <code class="inline">Pattern</code>, starting at the lowest position in <code class="inline">Subject</code>.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">match</span><span class="p" data-group-id="2843915491-1">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;abcde&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2843915491-2">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;bcde&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;cd&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="2843915491-2">]</span><span class="p">,</span><span class="p" data-group-id="2843915491-3">[</span><span class="p" data-group-id="2843915491-3">]</span><span class="p" data-group-id="2843915491-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="2843915491-4">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="2843915491-4">}</span></code></pre>
+<p> Even though <code class="inline">&lt;&lt;&quot;cd&quot;&gt;&gt;</code> ends before <code class="inline">&lt;&lt;&quot;bcde&quot;&gt;&gt;</code>, <code class="inline">&lt;&lt;&quot;bcde&quot;&gt;&gt;</code> begins first and is therefore the first match. If two overlapping matches begin at the same position, the longest is returned.</p>
+<p> Summary of the options:</p>
+<p>  {scope, {Start, Length}}   * Only the specified part is searched. Return values still have offsets from the beginning of <code class="inline">Subject</code>. A negative <code class="inline">Length</code> is allowed as described in section Data Types in this manual.</p>
+<p>  If none of the strings in <code class="inline">Pattern</code> is found, the atom <code class="inline">nomatch</code> is returned.</p>
+<p> For a description of <code class="inline">Pattern</code>, see function <a href="#compile_pattern/1"><code class="inline">compile_pattern/1</code></a>. </p>
+<p> If <code class="inline">{scope, {Start,Length}}</code> is specified in the options such that <code class="inline">Start</code> &gt; size of <code class="inline">Subject</code>, <code class="inline">Start</code> + <code class="inline">Length</code> &lt; 0 or <code class="inline">Start</code> + <code class="inline">Length</code> &gt; size of <code class="inline">Subject</code>, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="matches/2">
+  <div class="detail-header">
+    <a href="#matches/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">matches/2</h1>
+      <div class="specs">
+          <pre>matches(subject, pattern) :: found
+when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), pattern: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()] | cp(), found: [part()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as <code class="inline">matches(``Subject``, ``Pattern``, [])</code>. </p>
+  </section>
+</section>
+<section class="detail" id="matches/3">
+  <div class="detail-header">
+    <a href="#matches/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">matches/3</h1>
+      <div class="specs">
+          <pre>matches(subject, pattern, options) :: found
+when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+     pattern: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()] | cp(),
+     found: [part()],
+     options: [option],
+     option: {:scope, part()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> As <a href="#match/2"><code class="inline">match/2</code></a>, but <code class="inline">Subject</code> is searched until exhausted and a list of all non-overlapping parts matching <code class="inline">Pattern</code> is returned (in order).</p>
+<p> The first and longest match is preferred to a shorter, which is illustrated by the following example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">matches</span><span class="p" data-group-id="4467566902-1">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;abcde&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+                  </span><span class="p" data-group-id="4467566902-2">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;bcde&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;bc&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;de&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="4467566902-2">]</span><span class="p">,</span><span class="p" data-group-id="4467566902-3">[</span><span class="p" data-group-id="4467566902-3">]</span><span class="p" data-group-id="4467566902-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="4467566902-4">[</span><span class="p" data-group-id="4467566902-5">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="4467566902-5">}</span><span class="p" data-group-id="4467566902-4">]</span></code></pre>
+<p> The result shows that &lt;&lt;&quot;bcde&quot;&gt;&gt; is selected instead of the shorter match &lt;&lt;&quot;bc&quot;&gt;&gt; (which would have given raise to one more match, &lt;&lt;&quot;de&quot;&gt;&gt;). This corresponds to the behavior of POSIX regular expressions (and programs like awk), but is not consistent with alternative matches in <code class="inline">re</code> (and Perl), where instead lexical ordering in the search pattern selects which string matches.</p>
+<p> If none of the strings in a pattern is found, an empty list is returned.</p>
+<p> For a description of <code class="inline">Pattern</code>, see <a href="#compile_pattern/1"><code class="inline">compile_pattern/1</code></a>. For a description of available options, see <a href="#match/3"><code class="inline">match/3</code></a>.</p>
+<p> If <code class="inline">{scope, {``Start``,``Length``}}</code> is specified in the options such that <code class="inline">Start</code> &gt; size of <code class="inline">Subject</code>, <code class="inline">Start`` + ``Length</code> &lt; 0 or <code class="inline">Start`` + ``Length</code> is &gt; size of <code class="inline">Subject</code>, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="part/2">
+  <div class="detail-header">
+    <a href="#part/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">part/2</h1>
+      <div class="specs">
+          <pre>part(subject, posLen) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), posLen: part()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Extracts the part of binary <code class="inline">Subject</code> described by <code class="inline">PosLen</code>.</p>
+<p> A negative length can be used to extract bytes at the end of a binary:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Bin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">&gt;&gt;</span><span class="p">.</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">part</span><span class="p" data-group-id="9364215405-1">(</span><span class="n">Bin</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9364215405-2">{</span><span class="nf">byte_size</span><span class="p" data-group-id="9364215405-3">(</span><span class="n">Bin</span><span class="p" data-group-id="9364215405-3">)</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span><span class="p" data-group-id="9364215405-2">}</span><span class="p" data-group-id="9364215405-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">&gt;&gt;</span></code></pre>
+<p>  part/2 and part/3 are also available in the <code class="inline">erlang</code> module under the names <code class="inline">binary_part/2</code> and <a href="https://hexdocs.pm/elixir/Kernel.html#binary_part/3"><code class="inline">binary_part/3</code></a>. Those BIFs are allowed in guard tests.</p>
+<p>  If <code class="inline">PosLen</code> in any way references outside the binary, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="part/3">
+  <div class="detail-header">
+    <a href="#part/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">part/3</h1>
+      <div class="specs">
+          <pre>part(subject, pos, len) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()
+when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), pos: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), len: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as <code class="inline">part(``Subject``, {``Pos``, ``Len``})</code>.</p>
+  </section>
+</section>
+<section class="detail" id="referenced_byte_size/1">
+  <div class="detail-header">
+    <a href="#referenced_byte_size/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">referenced_byte_size/1</h1>
+      <div class="specs">
+          <pre>referenced_byte_size(binary) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when binary: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> If a binary references a larger binary (often described as being a subbinary), it can be useful to get the size of the referenced binary. This function can be used in a program to trigger the use of <a href="#copy/1"><code class="inline">copy/1</code></a>. By copying a binary, one can dereference the original, possibly large, binary that a smaller binary is a reference to.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="nf">store</span><span class="p" data-group-id="1720262365-1">(</span><span class="n">Binary</span><span class="p">,</span><span class="w"> </span><span class="n">GBSet</span><span class="p" data-group-id="1720262365-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+  </span><span class="n">NewBin</span><span class="w"> </span><span class="o">=</span><span class="w">
+      </span><span class="k">case</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">referenced_byte_size</span><span class="p" data-group-id="1720262365-2">(</span><span class="n">Binary</span><span class="p" data-group-id="1720262365-2">)</span><span class="w"> </span><span class="k">of</span><span class="w">
+          </span><span class="n">Large</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">Large</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">byte_size</span><span class="p" data-group-id="1720262365-3">(</span><span class="n">Binary</span><span class="p" data-group-id="1720262365-3">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+             </span><span class="nc">binary</span><span class="p">:</span><span class="nf">copy</span><span class="p" data-group-id="1720262365-4">(</span><span class="n">Binary</span><span class="p" data-group-id="1720262365-4">)</span><span class="p">;</span><span class="w">
+          </span><span class="p">_</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+             </span><span class="n">Binary</span><span class="w">
+      </span><span class="k">end</span><span class="p">,</span><span class="w">
+  </span><span class="nc">gb_sets</span><span class="p">:</span><span class="nf">insert</span><span class="p" data-group-id="1720262365-5">(</span><span class="n">NewBin</span><span class="p">,</span><span class="n">GBSet</span><span class="p" data-group-id="1720262365-5">)</span><span class="p">.</span></code></pre>
+<p> In this example, we chose to copy the binary content before inserting it in <code class="inline">gb_sets:set()</code> if it references a binary more than twice the data size we want to keep. Of course, different rules apply when copying to different programs.</p>
+<p> Binary sharing occurs whenever binaries are taken apart. This is the fundamental reason why binaries are fast, decomposition can always be done with O(1) complexity. In rare circumstances this data sharing is however undesirable, why this function together with <a href="#copy/1"><code class="inline">copy/1</code></a> can be useful when optimizing for memory use.</p>
+<p> Example of binary sharing:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">copy</span><span class="p" data-group-id="8802960455-1">(</span><span class="p">&lt;&lt;</span><span class="mi">1</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p" data-group-id="8802960455-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">byte_size</span><span class="p" data-group-id="8802960455-2">(</span><span class="n">A</span><span class="p" data-group-id="8802960455-2">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">100</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">referenced_byte_size</span><span class="p" data-group-id="8802960455-3">(</span><span class="n">A</span><span class="p" data-group-id="8802960455-3">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">100</span><span class="w">
+</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="n">B</span><span class="p">:</span><span class="mi">10</span><span class="o">/</span><span class="ss">binary</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">:</span><span class="mi">90</span><span class="o">/</span><span class="ss">binary</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="w">
+</span><span class="mi">5</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="8802960455-4">{</span><span class="nf">byte_size</span><span class="p" data-group-id="8802960455-5">(</span><span class="n">B</span><span class="p" data-group-id="8802960455-5">)</span><span class="p">,</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">referenced_byte_size</span><span class="p" data-group-id="8802960455-6">(</span><span class="n">B</span><span class="p" data-group-id="8802960455-6">)</span><span class="p" data-group-id="8802960455-4">}</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="8802960455-7">{</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p" data-group-id="8802960455-7">}</span><span class="w">
+</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="8802960455-8">{</span><span class="nf">byte_size</span><span class="p" data-group-id="8802960455-9">(</span><span class="n">C</span><span class="p" data-group-id="8802960455-9">)</span><span class="p">,</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">referenced_byte_size</span><span class="p" data-group-id="8802960455-10">(</span><span class="n">C</span><span class="p" data-group-id="8802960455-10">)</span><span class="p" data-group-id="8802960455-8">}</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="8802960455-11">{</span><span class="mi">90</span><span class="p">,</span><span class="mi">100</span><span class="p" data-group-id="8802960455-11">}</span></code></pre>
+<p> In the above example, the small binary <code class="inline">B</code> was copied while the larger binary <code class="inline">C</code> references binary <code class="inline">A</code>.</p>
+<p>  Binary data is shared among processes. If another process still references the larger binary, copying the part this process uses only consumes more memory and does not free up the larger binary for garbage collection. Use this kind of intrusive functions with extreme care and only if a real problem is detected.</p>
+  </section>
+</section>
+<section class="detail" id="replace/3">
+  <div class="detail-header">
+    <a href="#replace/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">replace/3</h1>
+      <div class="specs">
+          <pre>replace(subject, pattern, replacement) :: result
+when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+     pattern: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()] | cp(),
+     replacement: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+     result: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as <code class="inline">replace(``Subject``, ``Pattern``, ``Replacement``,[])</code>.</p>
+  </section>
+</section>
+<section class="detail" id="replace/4">
+  <div class="detail-header">
+    <a href="#replace/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">replace/4</h1>
+      <div class="specs">
+          <pre>replace(subject, pattern, replacement, options) :: result
+when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+     pattern: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()] | cp(),
+     replacement: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+     options: [option],
+     option: :global | {:scope, part()} | {:insert_replaced, insPos},
+     insPos: onePos | [onePos],
+     onePos: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+     result: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Constructs a new binary by replacing the parts in <code class="inline">Subject</code> matching <code class="inline">Pattern</code> with the content of <code class="inline">Replacement</code>.</p>
+<p> If the matching subpart of <code class="inline">Subject</code> giving raise to the replacement is to be inserted in the result, option <code class="inline">{insert_replaced, ``InsPos``}</code> inserts the matching part into <code class="inline">Replacement</code> at the specified position (or positions) before inserting <code class="inline">Replacement</code> into <code class="inline">Subject</code>.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">replace</span><span class="p" data-group-id="9363166965-1">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;abcde&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;b&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;[]&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9363166965-2">[</span><span class="p" data-group-id="9363166965-3">{</span><span class="ss">insert_replaced</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="9363166965-3">}</span><span class="p" data-group-id="9363166965-2">]</span><span class="p" data-group-id="9363166965-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="s">&quot;a[b]cde&quot;</span><span class="p">&gt;&gt;</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">replace</span><span class="p" data-group-id="9363166965-4">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;abcde&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="9363166965-5">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;b&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;d&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9363166965-5">]</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;[]&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="9363166965-6">[</span><span class="ss">global</span><span class="p">,</span><span class="p" data-group-id="9363166965-7">{</span><span class="ss">insert_replaced</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="9363166965-7">}</span><span class="p" data-group-id="9363166965-6">]</span><span class="p" data-group-id="9363166965-4">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="s">&quot;a[b]c[d]e&quot;</span><span class="p">&gt;&gt;</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">replace</span><span class="p" data-group-id="9363166965-8">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;abcde&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="9363166965-9">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;b&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;d&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9363166965-9">]</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;[]&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="9363166965-10">[</span><span class="ss">global</span><span class="p">,</span><span class="p" data-group-id="9363166965-11">{</span><span class="ss">insert_replaced</span><span class="p">,</span><span class="p" data-group-id="9363166965-12">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="9363166965-12">]</span><span class="p" data-group-id="9363166965-11">}</span><span class="p" data-group-id="9363166965-10">]</span><span class="p" data-group-id="9363166965-8">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="s">&quot;a[bb]c[dd]e&quot;</span><span class="p">&gt;&gt;</span><span class="w">
+</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">replace</span><span class="p" data-group-id="9363166965-13">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;abcde&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="9363166965-14">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;b&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;d&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9363166965-14">]</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;[-]&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="9363166965-15">[</span><span class="ss">global</span><span class="p">,</span><span class="p" data-group-id="9363166965-16">{</span><span class="ss">insert_replaced</span><span class="p">,</span><span class="p" data-group-id="9363166965-17">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="9363166965-17">]</span><span class="p" data-group-id="9363166965-16">}</span><span class="p" data-group-id="9363166965-15">]</span><span class="p" data-group-id="9363166965-13">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="s">&quot;a[b-b]c[d-d]e&quot;</span><span class="p">&gt;&gt;</span></code></pre>
+<p> If any position specified in <code class="inline">InsPos</code> &gt; size of the replacement binary, a <code class="inline">badarg</code> exception is raised.</p>
+<p> Options <code class="inline">global</code> and <code class="inline">{scope, part()}</code> work as for <a href="#split/3"><code class="inline">split/3</code></a>. The return type is always a <code class="inline">binary()</code>.</p>
+<p> For a description of <code class="inline">Pattern</code>, see <a href="#compile_pattern/1"><code class="inline">compile_pattern/1</code></a>. </p>
+  </section>
+</section>
+<section class="detail" id="split/2">
+  <div class="detail-header">
+    <a href="#split/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">split/2</h1>
+      <div class="specs">
+          <pre>split(subject, pattern) :: parts
+when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), pattern: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()] | cp(), parts: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as <code class="inline">split(``Subject``, ``Pattern``, [])</code>.</p>
+  </section>
+</section>
+<section class="detail" id="split/3">
+  <div class="detail-header">
+    <a href="#split/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">split/3</h1>
+      <div class="specs">
+          <pre>split(subject, pattern, options) :: parts
+when subject: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+     pattern: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()] | cp(),
+     options: [option],
+     option: {:scope, part()} | :trim | :global | :trim_all,
+     parts: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Splits <code class="inline">Subject</code> into a list of binaries based on <code class="inline">Pattern</code>. If option <code class="inline">global</code> is not specified, only the first occurrence of <code class="inline">Pattern</code> in <code class="inline">Subject</code> gives rise to a split.</p>
+<p> The parts of <code class="inline">Pattern</code> found in <code class="inline">Subject</code> are not included in the result.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">split</span><span class="p" data-group-id="3300563696-1">(</span><span class="p">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3300563696-2">[</span><span class="p">&lt;&lt;</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="mi">2</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="3300563696-2">]</span><span class="p">,</span><span class="p" data-group-id="3300563696-3">[</span><span class="p" data-group-id="3300563696-3">]</span><span class="p" data-group-id="3300563696-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="3300563696-4">[</span><span class="p">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">4</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="3300563696-4">]</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">split</span><span class="p" data-group-id="3300563696-5">(</span><span class="p">&lt;&lt;</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">9</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3300563696-6">[</span><span class="p">&lt;&lt;</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="3300563696-6">]</span><span class="p">,</span><span class="p" data-group-id="3300563696-7">[</span><span class="ss">global</span><span class="p" data-group-id="3300563696-7">]</span><span class="p" data-group-id="3300563696-5">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="3300563696-8">[</span><span class="p">&lt;&lt;</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="mi">4</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="mi">9</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="3300563696-8">]</span></code></pre>
+<p> Summary of options:</p>
+<p>  {scope, part()}   * Works as in <a href="#match/3"><code class="inline">match/3</code></a> and <a href="#matches/3"><code class="inline">matches/3</code></a>. Notice that this only defines the scope of the search for matching strings, it does not cut the binary before splitting. The bytes before and after the scope are kept in the result. See the example below.</p>
+<p> trim   * Removes trailing empty parts of the result (as does <code class="inline">trim</code> in <code class="inline">re:split/3</code>.</p>
+<p> trim_all   * Removes all empty parts of the result.</p>
+<p> global   * Repeats the split until <code class="inline">Subject</code> is exhausted. Conceptually option <code class="inline">global</code> makes split work on the positions returned by <a href="#matches/3"><code class="inline">matches/3</code></a>, while it normally works on the position returned by <a href="#match/3"><code class="inline">match/3</code></a>.</p>
+<p>  Example of the difference between a scope and taking the binary apart before splitting:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">split</span><span class="p" data-group-id="1994627505-1">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;banana&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1994627505-2">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;a&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="1994627505-2">]</span><span class="p">,</span><span class="p" data-group-id="1994627505-3">[</span><span class="p" data-group-id="1994627505-4">{</span><span class="ss">scope</span><span class="p">,</span><span class="p" data-group-id="1994627505-5">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="1994627505-5">}</span><span class="p" data-group-id="1994627505-4">}</span><span class="p" data-group-id="1994627505-3">]</span><span class="p" data-group-id="1994627505-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="1994627505-6">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;ban&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;na&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="1994627505-6">]</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">binary</span><span class="p">:</span><span class="nf">split</span><span class="p" data-group-id="1994627505-7">(</span><span class="nc">binary</span><span class="p">:</span><span class="nf">part</span><span class="p" data-group-id="1994627505-8">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;banana&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="1994627505-9">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="1994627505-9">}</span><span class="p" data-group-id="1994627505-8">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1994627505-10">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;a&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="1994627505-10">]</span><span class="p">,</span><span class="p" data-group-id="1994627505-11">[</span><span class="p" data-group-id="1994627505-11">]</span><span class="p" data-group-id="1994627505-7">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="1994627505-12">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;n&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;n&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="1994627505-12">]</span></code></pre>
+<p> The return type is always a list of binaries that are all referencing <code class="inline">Subject</code>. This means that the data in <code class="inline">Subject</code> is not copied to new binaries, and that <code class="inline">Subject</code> cannot be garbage collected until the results of the split are no longer referenced.</p>
+<p> For a description of <code class="inline">Pattern</code>, see <a href="#compile_pattern/1"><code class="inline">compile_pattern/1</code></a>. </p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

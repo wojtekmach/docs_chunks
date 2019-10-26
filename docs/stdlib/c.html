@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>c — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+c      </h1>
+
+
+        <section id="moduledoc">
+<p> This module enables users to enter the short form of some commonly used commands.</p>
+<p>  These functions are intended for interactive use in the Erlang shell only. The module prefix can be omitted.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bt/1">bt/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Stack backtrace for a process. Equivalent to <code class="inline">erlang:process_display(``Pid``, backtrace)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ccc/123">ccc/123</a>
+  </div>
+    <div class="summary-synopsis"><p> Compiles and then purges and loads the code for a module. <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> can be either a module name or a source file path, with or without <code class="inline">.erl</code> extension. <code class="inline">Options</code> defaults to <code class="inline">[]</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cd/1">cd/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Changes working directory to <code class="inline">Dir</code>, which can be a relative name, and then prints the name of the new working directory.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#erlangrc/1">erlangrc/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Search <code class="inline">PathList</code> and load <code class="inline">.erlang</code> resource file if found.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#flush/0">flush/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Flushes any messages sent to the shell.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#help/0">help/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Displays help information: all valid shell internal commands, and commands in this module.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#i/3">i/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Displays information about a process, Equivalent to <code class="inline">process_info(pid(``X``, ``Y``, ``Z``))</code>, but location transparent.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ini/0">ini/0</a>
+  </div>
+    <div class="summary-synopsis"><p> <code class="inline">i/0</code> displays system information, listing information about all processes. <code class="inline">ni/0</code> does the same, but for all nodes the network.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#l/1">l/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Purges and loads, or reloads, a module by calling <code class="inline">code:purge(``Module``)</code> followed by <code class="inline">code:load_file(``Module``)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lm/0">lm/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Reloads all currently loaded modules that have changed on disk (see <code class="inline">mm()</code>). Returns the list of results from calling <code class="inline">l(M)</code> for each such <code class="inline">M</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ls/0">ls/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Lists files in the current directory.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ls/1">ls/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Lists files in directory <code class="inline">Dir</code> or, if <code class="inline">Dir</code> is a file, only lists it.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#m/0">m/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Displays information about the loaded modules, including the files from which they have been loaded.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#m/1">m/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Displays information about <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#memory/0">memory/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Memory allocation information. Equivalent to <code class="inline">erlang:memory/0</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#memorymemory/11">memorymemory/11</a>
+  </div>
+    <div class="summary-synopsis"><p> Memory allocation information. Equivalent to <code class="inline">erlang:memory/1</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mm/0">mm/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Lists all modified modules. Shorthand for <code class="inline">code:modified_modules/0</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ncnc/12">ncnc/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Compiles and then loads the code for a file on all nodes. <code class="inline">Options</code> defaults to <code class="inline">[]</code>. Compilation is equivalent to</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#nl/1">nl/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Loads <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> on all nodes.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pid/3">pid/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts <code class="inline">X</code>, <code class="inline">Y</code>, <code class="inline">Z</code> to pid <code class="inline">&lt;X.Y.Z&gt;</code>. This function is only to be used when debugging.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pwd/0">pwd/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Prints the name of the working directory.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#q/0">q/0</a>
+  </div>
+    <div class="summary-synopsis"><p> This function is shorthand for <code class="inline">init:stop()</code>, that is, it causes the node to stop in a controlled fashion.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#regsnregs/0">regsnregs/0</a>
+  </div>
+    <div class="summary-synopsis"><p> <code class="inline">regs/0</code> displays information about all registered processes. <code class="inline">nregs/0</code> does the same, but for all nodes in the network.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#uptime/0">uptime/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Prints the node uptime (as specified by <code class="inline">erlang:statistics(wall_clock)</code>) in human-readable form.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="bt/1">
+  <div class="detail-header">
+    <a href="#bt/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bt/1</h1>
+      <div class="specs">
+          <pre>bt(pid) :: :ok | :undefined when pid: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Stack backtrace for a process. Equivalent to <code class="inline">erlang:process_display(``Pid``, backtrace)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="ccc/123">
+  <div class="detail-header">
+    <a href="#ccc/123" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ccc/123</h1>
+  </div>
+  <section class="docstring">
+<p> Compiles and then purges and loads the code for a module. <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> can be either a module name or a source file path, with or without <code class="inline">.erl</code> extension. <code class="inline">Options</code> defaults to <code class="inline">[]</code>.</p>
+<p> If <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> is an atom and is not the path of a source file, then the code path is searched to locate the object file for the module and extract its original compiler options and source path. If the source file is not found in the original location, <code class="inline">filelib:find_source/1</code> is used to search for it relative to the directory of the object file.</p>
+<p> The source file is compiled with the the original options appended to the given <code class="inline">Options</code>, the output replacing the old object file if and only if compilation succeeds. A function <code class="inline">Filter</code> can be specified for removing elements from from the original compiler options before the new options are added.</p>
+<p> Notice that purging the code means that any processes lingering in old code for the module are killed without warning. For more information, see <code class="inline">code/3</code>.</p>
+  </section>
+</section>
+<section class="detail" id="cd/1">
+  <div class="detail-header">
+    <a href="#cd/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cd/1</h1>
+      <div class="specs">
+          <pre>cd(dir) :: :ok when dir: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Changes working directory to <code class="inline">Dir</code>, which can be a relative name, and then prints the name of the new working directory.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">cd</span><span class="p" data-group-id="6462721816-1">(</span><span class="s">&quot;../erlang&quot;</span><span class="p" data-group-id="6462721816-1">)</span><span class="p">.</span><span class="w">
+</span><span class="o">/</span><span class="ss">home</span><span class="o">/</span><span class="ss">ron</span><span class="o">/</span><span class="ss">erlang</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="erlangrc/1">
+  <div class="detail-header">
+    <a href="#erlangrc/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">erlangrc/1</h1>
+      <div class="specs">
+          <pre>erlangrc(pathList) :: {:ok, <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+when pathList: [dir :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Search <code class="inline">PathList</code> and load <code class="inline">.erlang</code> resource file if found.</p>
+  </section>
+</section>
+<section class="detail" id="flush/0">
+  <div class="detail-header">
+    <a href="#flush/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">flush/0</h1>
+      <div class="specs">
+          <pre>flush() :: :ok</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Flushes any messages sent to the shell.</p>
+  </section>
+</section>
+<section class="detail" id="help/0">
+  <div class="detail-header">
+    <a href="#help/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">help/0</h1>
+      <div class="specs">
+          <pre>help() :: :ok</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Displays help information: all valid shell internal commands, and commands in this module.</p>
+  </section>
+</section>
+<section class="detail" id="i/3">
+  <div class="detail-header">
+    <a href="#i/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">i/3</h1>
+      <div class="specs">
+          <pre>i(x, y, z) :: [{<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}]
+when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), y: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), z: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Displays information about a process, Equivalent to <code class="inline">process_info(pid(``X``, ``Y``, ``Z``))</code>, but location transparent.</p>
+  </section>
+</section>
+<section class="detail" id="ini/0">
+  <div class="detail-header">
+    <a href="#ini/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ini/0</h1>
+  </div>
+  <section class="docstring">
+<p> <code class="inline">i/0</code> displays system information, listing information about all processes. <code class="inline">ni/0</code> does the same, but for all nodes the network.</p>
+  </section>
+</section>
+<section class="detail" id="l/1">
+  <div class="detail-header">
+    <a href="#l/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">l/1</h1>
+      <div class="specs">
+          <pre>l(module) :: <a href="http://www.erlang.org/doc/man/code.html#type-load_ret">:code.load_ret</a>() when module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Purges and loads, or reloads, a module by calling <code class="inline">code:purge(``Module``)</code> followed by <code class="inline">code:load_file(``Module``)</code>.</p>
+<p> Notice that purging the code means that any processes lingering in old code for the module are killed without warning. For more information, see <code class="inline">code/3</code>.</p>
+  </section>
+</section>
+<section class="detail" id="lm/0">
+  <div class="detail-header">
+    <a href="#lm/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lm/0</h1>
+      <div class="specs">
+          <pre>lm() :: [<a href="http://www.erlang.org/doc/man/code.html#type-load_ret">:code.load_ret</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Reloads all currently loaded modules that have changed on disk (see <code class="inline">mm()</code>). Returns the list of results from calling <code class="inline">l(M)</code> for each such <code class="inline">M</code>.</p>
+  </section>
+</section>
+<section class="detail" id="ls/0">
+  <div class="detail-header">
+    <a href="#ls/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ls/0</h1>
+      <div class="specs">
+          <pre>ls() :: :ok</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Lists files in the current directory.</p>
+  </section>
+</section>
+<section class="detail" id="ls/1">
+  <div class="detail-header">
+    <a href="#ls/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ls/1</h1>
+      <div class="specs">
+          <pre>ls(dir) :: :ok when dir: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Lists files in directory <code class="inline">Dir</code> or, if <code class="inline">Dir</code> is a file, only lists it.</p>
+  </section>
+</section>
+<section class="detail" id="m/0">
+  <div class="detail-header">
+    <a href="#m/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">m/0</h1>
+      <div class="specs">
+          <pre>m() :: :ok</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Displays information about the loaded modules, including the files from which they have been loaded.</p>
+  </section>
+</section>
+<section class="detail" id="m/1">
+  <div class="detail-header">
+    <a href="#m/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">m/1</h1>
+      <div class="specs">
+          <pre>m(module) :: :ok when module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Displays information about <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="memory/0">
+  <div class="detail-header">
+    <a href="#memory/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">memory/0</h1>
+      <div class="specs">
+          <pre>memory() :: [{type, size}] when type: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), size: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Memory allocation information. Equivalent to <code class="inline">erlang:memory/0</code>.</p>
+  </section>
+</section>
+<section class="detail" id="memorymemory/11">
+  <div class="detail-header">
+    <a href="#memorymemory/11" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">memorymemory/11</h1>
+  </div>
+  <section class="docstring">
+<p> Memory allocation information. Equivalent to <code class="inline">erlang:memory/1</code>.</p>
+  </section>
+</section>
+<section class="detail" id="mm/0">
+  <div class="detail-header">
+    <a href="#mm/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mm/0</h1>
+      <div class="specs">
+          <pre>mm() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Lists all modified modules. Shorthand for <code class="inline">code:modified_modules/0</code>.</p>
+  </section>
+</section>
+<section class="detail" id="ncnc/12">
+  <div class="detail-header">
+    <a href="#ncnc/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ncnc/12</h1>
+  </div>
+  <section class="docstring">
+<p> Compiles and then loads the code for a file on all nodes. <code class="inline">Options</code> defaults to <code class="inline">[]</code>. Compilation is equivalent to:</p>
+<pre><code class="nohighlight makeup erlang"><span class="nc">compile</span><span class="p">:</span><span class="nf">file</span><span class="p" data-group-id="3474645594-1">(</span><span class="n">File</span><span class="p">,</span><span class="w"> </span><span class="n">Options</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p" data-group-id="3474645594-2">[</span><span class="ss">report_errors</span><span class="p">,</span><span class="w"> </span><span class="ss">report_warnings</span><span class="p" data-group-id="3474645594-2">]</span><span class="p" data-group-id="3474645594-1">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="nl/1">
+  <div class="detail-header">
+    <a href="#nl/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">nl/1</h1>
+      <div class="specs">
+          <pre>nl(module) :: :abcast | :error when module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Loads <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> on all nodes.</p>
+  </section>
+</section>
+<section class="detail" id="pid/3">
+  <div class="detail-header">
+    <a href="#pid/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pid/3</h1>
+      <div class="specs">
+          <pre>pid(x, y, z) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()
+when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), y: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), z: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts <code class="inline">X</code>, <code class="inline">Y</code>, <code class="inline">Z</code> to pid <code class="inline">&lt;X.Y.Z&gt;</code>. This function is only to be used when debugging.</p>
+  </section>
+</section>
+<section class="detail" id="pwd/0">
+  <div class="detail-header">
+    <a href="#pwd/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pwd/0</h1>
+      <div class="specs">
+          <pre>pwd() :: :ok</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Prints the name of the working directory.</p>
+  </section>
+</section>
+<section class="detail" id="q/0">
+  <div class="detail-header">
+    <a href="#q/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">q/0</h1>
+      <div class="specs">
+          <pre>q() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> This function is shorthand for <code class="inline">init:stop()</code>, that is, it causes the node to stop in a controlled fashion.</p>
+  </section>
+</section>
+<section class="detail" id="regsnregs/0">
+  <div class="detail-header">
+    <a href="#regsnregs/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">regsnregs/0</h1>
+  </div>
+  <section class="docstring">
+<p> <code class="inline">regs/0</code> displays information about all registered processes. <code class="inline">nregs/0</code> does the same, but for all nodes in the network.</p>
+  </section>
+</section>
+<section class="detail" id="uptime/0">
+  <div class="detail-header">
+    <a href="#uptime/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">uptime/0</h1>
+      <div class="specs">
+          <pre>uptime() :: :ok</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Prints the node uptime (as specified by <code class="inline">erlang:statistics(wall_clock)</code>) in human-readable form.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

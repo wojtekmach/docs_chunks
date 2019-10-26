@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>API Reference — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+  <small class="app-vsn">stdlib v22.1.4</small>
+  API Reference
+</h1>
+
+  <section class="details-list">
+    <h2 id="modules" class="section-heading">
+  <a href="#modules" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Modules
+</h2>
+
+    <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="array.html">array</a>
+  </div>
+    <div class="summary-synopsis"><p> Functional, extendible arrays. Arrays can have fixed size, or can grow automatically as needed. A default value is used for entries that have not been explicitly set.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="base64.html">base64</a>
+  </div>
+    <div class="summary-synopsis"><p> Provides base64 encode and decode, see RFC 2045.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="beam_lib.html">beam_lib</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides an interface to files created by the BEAM Compiler (&quot;BEAM files&quot;). The format used, a variant of &quot;EA IFF 1985&quot; Standard for Interchange Format Files, divides data into chunks.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="binary.html">binary</a>
+  </div>
+    <div class="summary-synopsis"><p> This module contains functions for manipulating byte-oriented binaries. Although the majority of functions could be provided using bit-syntax, the functions in this library are highly optimized and are expected to either execute faster or consume less memory, or both, than a counterpart written in pure Erlang.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="c.html">c</a>
+  </div>
+    <div class="summary-synopsis"><p> This module enables users to enter the short form of some commonly used commands.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="calendar.html">calendar</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides computation of local and universal time, day of the week, and many time conversion functions.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="dets.html">dets</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides a term storage on file. The stored terms, in this module called objects, are tuples such that one element is defined to be the key. A Dets table is a collection of objects with the key at the same position stored on a file.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="dict.html">dict</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides a <code class="inline">Key</code>-<code class="inline">Value</code> dictionary. The representation of a dictionary is not defined.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="digraph.html">digraph</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides a version of labeled directed graphs (&quot;digraphs&quot;).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="digraph_utils.html">digraph_utils</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides algorithms based on depth-first traversal of directed graphs. For basic functions on directed graphs, see the <code class="inline">digraph(3)</code> module.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="epp.html">epp</a>
+  </div>
+    <div class="summary-synopsis"><p> The Erlang code preprocessor includes functions that are used by the <code class="inline">compile</code> module to preprocess macros and include files before the parsing takes place.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="erl_anno.html">erl_anno</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides an abstract type that is used by the Erlang Compiler and its helper modules for holding data such as column, line number, and text. The data type is a collection of annotations as described in the following.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="erl_eval.html">erl_eval</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides an interpreter for Erlang expressions. The expressions are in the abstract syntax as returned by <code class="inline">erl_parse</code>, the Erlang parser, or <code class="inline">io</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="erl_expand_records.html">erl_expand_records</a>
+  </div>
+    <div class="summary-synopsis"><p> This module expands records in a module.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="erl_internal.html">erl_internal</a>
+  </div>
+    <div class="summary-synopsis"><p> This module defines Erlang BIFs, guard tests, and operators. This module is only of interest to programmers who manipulate Erlang code.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="erl_lint.html">erl_lint</a>
+  </div>
+    <div class="summary-synopsis"><p> This module is used to check Erlang code for illegal syntax and other bugs. It also warns against coding practices that are not recommended.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="erl_parse.html">erl_parse</a>
+  </div>
+    <div class="summary-synopsis"><p> This module is the basic Erlang parser that converts tokens into the abstract form of either forms (that is, top-level constructs), expressions, or terms. The Abstract Format is described in the ERTS User&#39;s Guide. Notice that a token list must end with the dot token to be acceptable to the parse functions (see the  <code class="inline">erl_scan(3)</code>) module.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="erl_pp.html">erl_pp</a>
+  </div>
+    <div class="summary-synopsis"><p> The functions in this module are used to generate aesthetically attractive representations of abstract forms, which are suitable for printing. All functions return (possibly deep) lists of characters and generate an error if the form is wrong.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="erl_scan.html">erl_scan</a>
+  </div>
+    <div class="summary-synopsis"><p> This module contains functions for tokenizing (scanning) characters into Erlang tokens.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="erl_tar.html">erl_tar</a>
+  </div>
+    <div class="summary-synopsis"><p> This module archives and extract files to and from a tar file. This module supports reading most common tar formats, namely v7, STAR, USTAR, and PAX, as well as some of GNU tar&#39;s extensions to the USTAR format (sparse files most notably). It produces tar archives in USTAR format, unless the files being archived require PAX format due to restrictions in USTAR (such as unicode metadata, filename length, and more). As such, <code class="inline">erl_tar</code> supports tar archives produced by most all modern tar utilities, and produces tarballs which should be similarly portable.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ets.html">ets</a>
+  </div>
+    <div class="summary-synopsis"><p> This module is an interface to the Erlang built-in term storage BIFs. These provide the ability to store very large quantities of data in an Erlang runtime system, and to have constant access time to the data. (In the case of <code class="inline">ordered_set</code>, see below, access time is proportional to the logarithm of the number of stored objects.)</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="file_sorter.html">file_sorter</a>
+  </div>
+    <div class="summary-synopsis"><p> This module contains functions for sorting terms on files, merging already sorted files, and checking files for sortedness. Chunks containing binary terms are read from a sequence of files, sorted internally in memory and written on temporary files, which are merged producing one sorted file as output. Merging is provided as an optimization; it is faster when the files are already sorted, but it always works to sort instead of merge.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="filelib.html">filelib</a>
+  </div>
+    <div class="summary-synopsis"><p> This module contains utilities on a higher level than the <code class="inline">file</code> module.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="filename.html">filename</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides functions for analyzing and manipulating filenames. These functions are designed so that the Erlang code can work on many different platforms with different filename formats. With filename is meant all strings that can be used to denote a file. The filename can be a short relative name like <code class="inline">foo.erl</code>, a long absolute name including a drive designator, a directory name like <code class="inline">D:\usr/local\bin\erl/lib\tools\foo.erl</code>, or any variations in between.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="gb_sets.html">gb_sets</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides ordered sets using Prof. Arne Andersson&#39;s General Balanced Trees. Ordered sets can be much more efficient than using ordered lists, for larger sets, but depends on the application.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="gb_trees.html">gb_trees</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides Prof. Arne Andersson&#39;s General Balanced Trees. These have no storage overhead compared to unbalanced binary trees, and their performance is better than AVL trees.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="gen_event.html">gen_event</a>
+  </div>
+    <div class="summary-synopsis"><p> This behavior module provides event handling functionality. It consists of a generic event manager process with any number of event handlers that are added and deleted dynamically.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="gen_fsm.html">gen_fsm</a>
+  </div>
+    <div class="summary-synopsis"><p>  Deprecated and replaced by <code class="inline">gen_statem</code> </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="gen_server.html">gen_server</a>
+  </div>
+    <div class="summary-synopsis"><p> This behavior module provides the server of a client-server relation. A generic server process (<code class="inline">gen_server</code>) implemented using this module has a standard set of interface functions and includes functionality for tracing and error reporting. It also fits into an OTP supervision tree. For more information, see section  gen_server Behaviour in OTP Design Principles.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="gen_statem.html">gen_statem</a>
+  </div>
+    <div class="summary-synopsis"><p>  <code class="inline">gen_statem</code> provides a generic state machine behaviour that for new code replaces its predecessor <code class="inline">gen_fsm</code> since Erlang/OTP 20.0. The <code class="inline">gen_fsm</code> behaviour remains in OTP &quot;as is&quot;. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="io.html">io</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides an interface to standard Erlang I/O servers. The output functions all return <code class="inline">ok</code> if they are successful, or exit if they are not.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="io_lib.html">io_lib</a>
+  </div>
+    <div class="summary-synopsis"><p> This module contains functions for converting to and from strings (lists of characters). They are used for implementing the functions in the <code class="inline">io</code> module. There is no guarantee that the character lists returned from some of the functions are flat, they can be deep lists. Function <code class="inline">lists:flatten/1</code> can be used for flattening deep lists.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="lists.html">lists</a>
+  </div>
+    <div class="summary-synopsis"><p> This module contains functions for list processing.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="log_mf_h.html">log_mf_h</a>
+  </div>
+    <div class="summary-synopsis"><p> This module is a <code class="inline">gen_event</code> handler module that can be installed in any <code class="inline">gen_event</code> process. It logs onto disk all events that are sent to an event manager. Each event is written as a binary, which makes the logging very fast. However, a tool such as the Report Browser (<code class="inline">rb(3)</code>) must be used to read the files. The events are written to multiple files. When all files have been used, the first one is reused and overwritten. The directory location, the number of files, and the size of each file are configurable. The directory will include one file called <code class="inline">index</code>, and report files <code class="inline">1, 2, ...</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="maps.html">maps</a>
+  </div>
+    <div class="summary-synopsis"><p> This module contains functions for maps processing.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="math.html">math</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides an interface to a number of mathematical functions.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ms_transform.html">ms_transform</a>
+  </div>
+    <div class="summary-synopsis"><p>  This module provides the parse transformation that makes calls to <code class="inline">ets</code> and <code class="inline">dbg:fun2ms/1</code> translate into literal match specifications. It also provides the back end for the same functions when called from the Erlang shell.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="orddict.html">orddict</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides a <code class="inline">Key</code>-<code class="inline">Value</code> dictionary. An <code class="inline">orddict</code> is a representation of a dictionary, where a list of pairs is used to store the keys and values. The list is ordered after the keys in the Erlang term order.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="ordsets.html">ordsets</a>
+  </div>
+    <div class="summary-synopsis"><p> Sets are collections of elements with no duplicate elements. An <code class="inline">ordset</code> is a representation of a set, where an ordered list is used to store the elements of the set. An ordered list is more efficient than an unordered list. Elements are ordered according to the Erlang term order.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="pool.html">pool</a>
+  </div>
+    <div class="summary-synopsis"><p> This module can be used to run a set of Erlang nodes as a pool of computational processors. It is organized as a master and a set of slave nodes and includes the following features</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="proc_lib.html">proc_lib</a>
+  </div>
+    <div class="summary-synopsis"><p> This module is used to start processes adhering to the  OTP Design Principles. Specifically, the functions in this module are used by the OTP standard behaviors (for example, <code class="inline">gen_server</code> and <code class="inline">gen_statem</code>) when starting new processes. The functions can also be used to start special processes, user-defined processes that comply to the OTP design principles. For an example, see section  sys and proc_lib in OTP Design Principles.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="proplists.html">proplists</a>
+  </div>
+    <div class="summary-synopsis"><p> Property lists are ordinary lists containing entries in the form of either tuples, whose first elements are keys used for lookup and insertion, or atoms, which work as shorthand for tuples <code class="inline">{Atom, true}</code>. (Other terms are allowed in the lists, but are ignored by this module.) If there is more than one entry in a list for a certain key, the first occurrence normally overrides any later (irrespective of the arity of the tuples).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="qlc.html">qlc</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides a query interface to Mnesia, ETS, Dets, and other data structures that provide an iterator style traversal of objects.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="queue.html">queue</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides (double-ended) FIFO queues in an efficient manner.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="rand.html">rand</a>
+  </div>
+    <div class="summary-synopsis"><p>  This module provides a pseudo random number generator. The module contains a number of algorithms. The uniform distribution algorithms are based on the  Xoroshiro and Xorshift algorithms  by Sebastiano Vigna. The normal distribution algorithm uses the  Ziggurat Method by Marsaglia and Tsang  on top of the uniform distribution algorithm. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="random.html">random</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides a random number generator. The method is attributed to B.A. Wichmann and I.D. Hill in &#39;An efficient and portable pseudo-random number generator&#39;, Journal of Applied Statistics. AS183. 1982. Also Byte March 1987.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="re.html">re</a>
+  </div>
+    <div class="summary-synopsis"><p> This module contains regular expression matching functions for strings and binaries.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="sets.html">sets</a>
+  </div>
+    <div class="summary-synopsis"><p> Sets are collections of elements with no duplicate elements. The representation of a set is undefined.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="shell.html">shell</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides an Erlang shell.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="shell_default.html">shell_default</a>
+  </div>
+    <div class="summary-synopsis"><p> The functions in this module are called when no module name is specified in a shell command.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="slave.html">slave</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides functions for starting Erlang slave nodes. All slave nodes that are started by a master terminate automatically when the master terminates. All terminal output produced at the slave is sent back to the master node. File I/O is done through the master.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="sofs.html">sofs</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides operations on finite sets and relations represented as sets. Intuitively, a set is a collection of elements; every element belongs to the set, and the set contains every element.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="string.html">string</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides functions for string processing.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="supervisor.html">supervisor</a>
+  </div>
+    <div class="summary-synopsis"><p> This behavior module provides a supervisor, a process that supervises other processes called child processes. A child process can either be another supervisor or a worker process. Worker processes are normally implemented using one of the <code class="inline">gen_event</code>, <code class="inline">gen_server</code>, or <code class="inline">gen_statem</code> behaviors. A supervisor implemented using this module has a standard set of interface functions and include functionality for tracing and error reporting. Supervisors are used to build a hierarchical process structure called a supervision tree, a nice way to structure a fault-tolerant application. For more information, see  Supervisor Behaviour in OTP Design Principles.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="supervisor_bridge.html">supervisor_bridge</a>
+  </div>
+    <div class="summary-synopsis"><p> This behavior module provides a supervisor bridge, a process that connects a subsystem not designed according to the OTP design principles to a supervision tree. The supervisor bridge sits between a supervisor and the subsystem. It behaves like a real supervisor to its own supervisor, but has a different interface than a real supervisor to the subsystem. For more information, see  Supervisor Behaviour in OTP Design Principles. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="sys.html">sys</a>
+  </div>
+    <div class="summary-synopsis"><p> This module contains functions for sending system messages used by programs, and messages used for debugging purposes.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="timer.html">timer</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides useful functions related to time. Unless otherwise stated, time is always measured in milliseconds. All timer functions return immediately, regardless of work done by another process.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="unicode.html">unicode</a>
+  </div>
+    <div class="summary-synopsis"><p> This module contains functions for converting between different character representations. It converts between ISO Latin-1 characters and Unicode characters, but it can also convert between different Unicode encodings (like UTF-8, UTF-16, and UTF-32).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="uri_string.html">uri_string</a>
+  </div>
+    <div class="summary-synopsis"><p> This module contains functions for parsing and handling URIs (RFC 3986) and form-urlencoded query strings (HTML 5.2). </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="win32reg.html">win32reg</a>
+  </div>
+    <div class="summary-synopsis"><p> This module provides read and write access to the registry on Windows. It is essentially a port driver wrapped around the Win32 API calls for accessing the registry.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="zip.html">zip</a>
+  </div>
+    <div class="summary-synopsis"><p> This module archives and extracts files to and from a zip archive. The zip format is specified by the &quot;ZIP Appnote.txt&quot; file, available on the PKWARE web site www.pkware.com.</p></div>
+</div>
+    </div>
+  </section>
+
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>gen_event — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+gen_event <small>behaviour</small>      </h1>
+
+
+        <section id="moduledoc">
+<p> This behavior module provides event handling functionality. It consists of a generic event manager process with any number of event handlers that are added and deleted dynamically.</p>
+<p> An event manager implemented using this module has a standard set of interface functions and includes functionality for tracing and error reporting. It also fits into an OTP supervision tree. For more information, see OTP Design Principles. </p>
+<p> Each event handler is implemented as a callback module exporting a predefined set of functions. The relationship between the behavior functions and the callback functions is as follows:</p>
+<pre><code class="nohighlight makeup erlang"><span class="ss">gen_event</span><span class="w"> </span><span class="ss">module</span><span class="w">                   </span><span class="n">Callback</span><span class="w"> </span><span class="ss">module</span><span class="w">
+</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="w">                   </span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">-</span><span class="w">
+</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">start</span><span class="w">
+</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">start_link</span><span class="w">       </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="o">-</span><span class="w">
+
+</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">add_handler</span><span class="w">
+</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">add_sup_handler</span><span class="w">  </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">init</span><span class="o">/</span><span class="mi">1</span><span class="w">
+
+</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">notify</span><span class="w">
+</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">sync_notify</span><span class="w">      </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">handle_event</span><span class="o">/</span><span class="mi">2</span><span class="w">
+
+</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">call</span><span class="w">             </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">handle_call</span><span class="o">/</span><span class="mi">2</span><span class="w">
+
+</span><span class="o">-</span><span class="w">                          </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">handle_info</span><span class="o">/</span><span class="mi">2</span><span class="w">
+
+</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">delete_handler</span><span class="w">   </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">terminate</span><span class="o">/</span><span class="mi">2</span><span class="w">
+
+</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">swap_handler</span><span class="w">
+</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">swap_sup_handler</span><span class="w"> </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module1</span><span class="p">:</span><span class="ss">terminate</span><span class="o">/</span><span class="mi">2</span><span class="w">
+                                   </span><span class="n">Module2</span><span class="p">:</span><span class="ss">init</span><span class="o">/</span><span class="mi">1</span><span class="w">
+
+</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">which_handlers</span><span class="w">   </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="o">-</span><span class="w">
+
+</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">stop</span><span class="w">             </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">terminate</span><span class="o">/</span><span class="mi">2</span><span class="w">
+
+</span><span class="o">-</span><span class="w">                          </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">code_change</span><span class="o">/</span><span class="mi">3</span></code></pre>
+<p> As each event handler is one callback module, an event manager has many callback modules that are added and deleted dynamically. <code class="inline">gen_event</code> is therefore more tolerant of callback module errors than the other behaviors. If a callback function for an installed event handler fails with <code class="inline">Reason</code>, or returns a bad value <code class="inline">Term</code>, the event manager does not fail. It deletes the event handler by calling callback function <code class="inline">Module:terminate/2</code>, giving as argument <code class="inline">{error,{&#39;EXIT&#39;,Reason}}</code> or <code class="inline">{error,Term}</code>, respectively. No other event handler is affected.</p>
+<p> A <code class="inline">gen_event</code> process handles system messages as described in <code class="inline">sys(3)</code>. The <code class="inline">sys</code> module can be used for debugging an event manager.</p>
+<p> Notice that an event manager does trap exit signals automatically.</p>
+<p> The <code class="inline">gen_event</code> process can go into hibernation (see  <code class="inline">erlang:hibernate/3</code>) if a callback function in a handler module specifies <code class="inline">hibernate</code> in its return value. This can be useful if the server is expected to be idle for a long time. However, use this feature with care, as hibernation implies at least two garbage collections (when hibernating and shortly after waking up) and is not something you want to do between each event handled by a busy event manager.</p>
+<p> Notice that when multiple event handlers are invoked, it is sufficient that one single event handler returns a <code class="inline">hibernate</code> request for the whole event manager to go into hibernation.</p>
+<p> Unless otherwise stated, all functions in this module fail if the specified event manager does not exist or if bad arguments are specified.</p>
+        </section>
+
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

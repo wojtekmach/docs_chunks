@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>digraph — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+digraph      </h1>
+
+
+        <section id="moduledoc">
+<p> This module provides a version of labeled directed graphs (&quot;digraphs&quot;).</p>
+<p> The digraphs managed by this module are stored in ETS tables. That implies the following:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="n">Only</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">created</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">allowed</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">update</span><span class="w"> </span><span class="ss">it</span><span class="p">.</span></code></pre>
+<ul>
+<li><p>Digraphs will not be garbage collected. The ETS tables used for a digraph will only be deleted when <a href="#delete/1"><code class="inline">delete/1</code></a> is called or the process that created the digraph terminates.</p>
+</li>
+<li><p>A digraph is a mutable data structure.</p>
+<p>What makes the graphs provided here non-proper directed graphs is that multiple edges between vertices are allowed. However, the customary definition of directed graphs is used here.</p>
+<ul>
+<li>A directed graph (or just &quot;digraph&quot;) is a pair (V, E) of a finite set V of vertices and a finite set E of directed edges (or just &quot;edges&quot;). The set of edges E is a subset of V × V (the Cartesian product of V with itself).
+</li>
+</ul>
+</li>
+</ul>
+<p> In this module, V is allowed to be empty. The so obtained unique digraph is called the empty digraph. Both vertices and edges are represented by unique Erlang terms.</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">Digraphs</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">annotated</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">more</span><span class="w"> </span><span class="ss">information</span><span class="p">.</span><span class="w"> </span><span class="n">Such</span><span class="w"> </span><span class="ss">information</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">attached</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">digraph</span><span class="p">.</span><span class="w"> </span><span class="n">An</span><span class="w"> </span><span class="ss">annotated</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">called</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">labeled</span><span class="w"> </span><span class="ss">digraph</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">information</span><span class="w"> </span><span class="ss">attached</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">edge</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">called</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">label</span><span class="p">.</span><span class="w"> </span><span class="n">Labels</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="n">Erlang</span><span class="w"> </span><span class="ss">terms</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">An</span><span class="w"> </span><span class="ss">edge</span><span class="w"> </span><span class="ss">e</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="p" data-group-id="2946049968-1">(</span><span class="ss">v</span><span class="p">,</span><span class="err"> </span><span class="ss">w</span><span class="p" data-group-id="2946049968-1">)</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">said</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">emanate</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">v</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">incident</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">w</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="ss">out</span><span class="o">-</span><span class="ss">degree</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="ss">emanating</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">vertex</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="ss">in</span><span class="o">-</span><span class="ss">degree</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="ss">incident</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">vertex</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">edge</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">emanating</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">v</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">incident</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="ss">w</span><span class="p">,</span><span class="w"> </span><span class="ss">then</span><span class="w"> </span><span class="ss">w</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">said</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">an</span><span class="w">  </span><span class="ss">out</span><span class="o">-</span><span class="ss">neighbor</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">v</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">v</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">said</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">in</span><span class="o">-</span><span class="ss">neighbor</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">w</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-2">[</span><span class="mi">1</span><span class="p" data-group-id="2946049968-2">]</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-3">[</span><span class="ss">k</span><span class="p" data-group-id="2946049968-3">]</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="nf">digraph</span><span class="w"> </span><span class="p" data-group-id="2946049968-4">(</span><span class="n">V</span><span class="p">,</span><span class="err"> </span><span class="n">E</span><span class="p" data-group-id="2946049968-4">)</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">non</span><span class="o">-</span><span class="ss">empty</span><span class="w"> </span><span class="ss">sequence</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-5">[</span><span class="mi">1</span><span class="p" data-group-id="2946049968-5">]</span><span class="p">,</span><span class="err"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-6">[</span><span class="mi">2</span><span class="p" data-group-id="2946049968-6">]</span><span class="p">,</span><span class="err"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="err"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-7">[</span><span class="ss">k</span><span class="p" data-group-id="2946049968-7">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="ss">such</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="nf">edge</span><span class="w"> </span><span class="p" data-group-id="2946049968-8">(</span><span class="ss">v</span><span class="p" data-group-id="2946049968-9">[</span><span class="ss">i</span><span class="p" data-group-id="2946049968-9">]</span><span class="p">,</span><span class="ss">v</span><span class="p" data-group-id="2946049968-10">[</span><span class="ss">i</span><span class="o">+</span><span class="mi">1</span><span class="p" data-group-id="2946049968-10">]</span><span class="p" data-group-id="2946049968-8">)</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="mi">1</span><span class="err"> </span><span class="o">&lt;</span><span class="o">=</span><span class="err"> </span><span class="ss">i</span><span class="err"> </span><span class="o">&lt;</span><span class="err"> </span><span class="ss">k</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="nb">length</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">k</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">Path</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">simple</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">distinct</span><span class="p">,</span><span class="w"> </span><span class="ss">except</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">first</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">last</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">same</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">Path</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">cycle</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="nb">length</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">zero</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-11">[</span><span class="mi">1</span><span class="p" data-group-id="2946049968-11">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-12">[</span><span class="ss">k</span><span class="p" data-group-id="2946049968-12">]</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">loop</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">cycle</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">length</span><span class="w"> </span><span class="ss">one</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">simple</span><span class="w"> </span><span class="ss">cycle</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">both</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">cycle</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">simple</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">An</span><span class="w"> </span><span class="ss">acyclic</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">without</span><span class="w"> </span><span class="ss">cycles</span><span class="p">.</span></code></pre>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_edgeadd_edgeadd_edge/345">add_edgeadd_edgeadd_edge/345</a>
+  </div>
+    <div class="summary-synopsis"><p> <code class="inline">add_edge/5</code> creates (or modifies) edge <code class="inline">E</code> of digraph <code class="inline">G</code>, using <code class="inline">Label</code> as the (new) label of the edge. The edge is emanating from <code class="inline">V1</code> and incident on <code class="inline">V2</code>. Returns <code class="inline">E</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_vertexadd_vertexadd_vertex/123">add_vertexadd_vertexadd_vertex/123</a>
+  </div>
+    <div class="summary-synopsis"><p> <code class="inline">add_vertex/3</code> creates (or modifies) vertex <code class="inline">V</code> of digraph <code class="inline">G</code>, using <code class="inline">Label</code> as the (new) label of the vertex. Returns <code class="inline">V</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_edge/2">del_edge/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes edge <code class="inline">E</code> from digraph <code class="inline">G</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_edges/2">del_edges/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes the edges in list <code class="inline">Edges</code> from digraph <code class="inline">G</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_path/3">del_path/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes edges from digraph <code class="inline">G</code> until there are no paths from vertex <code class="inline">V1</code> to vertex <code class="inline">V2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_vertex/2">del_vertex/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes vertex <code class="inline">V</code> from digraph <code class="inline">G</code>. Any edges emanating from <code class="inline">V</code> or incident on <code class="inline">V</code> are also deleted.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#del_vertices/2">del_vertices/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes the vertices in list <code class="inline">Vertices</code> from digraph <code class="inline">G</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete/1">delete/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes digraph <code class="inline">G</code>. This call is important as digraphs are implemented with ETS. There is no garbage collection of ETS tables. However, the digraph is deleted if the process that created the digraph terminates.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#edge/2">edge/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">{``E``,`` ``V1``,`` ``V2``,`` ``Label``}</code>, where <code class="inline">Label</code> is the label of edge <code class="inline">E</code> emanating from <code class="inline">V1</code> and incident on <code class="inline">V2</code> of digraph <code class="inline">G</code>. If no edge <code class="inline">E</code> of digraph <code class="inline">G</code> exists, <code class="inline">false</code> is returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#edges/1">edges/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of all edges of digraph <code class="inline">G</code>, in some unspecified order.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#edges/2">edges/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of all edges emanating from or incident on<code class="inline">V</code> of digraph <code class="inline">G</code>, in some unspecified order.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_cycle/2">get_cycle/2</a>
+  </div>
+    <div class="summary-synopsis"><p> If a simple cycle of length two or more exists through vertex <code class="inline">V</code>, the cycle is returned as a list <code class="inline">[``V``,`` ...,`` ``V``]</code> of vertices. If a loop through <code class="inline">V</code> exists, the loop is returned as a list <code class="inline">[``V``]</code>. If no cycles through <code class="inline">V</code> exist, <code class="inline">false</code> is returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_path/3">get_path/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Tries to find a simple path from vertex <code class="inline">V1</code> to vertex <code class="inline">V2</code> of digraph <code class="inline">G</code>. Returns the path as a list <code class="inline">[``V1``,`` ...,`` ``V2``]</code> of vertices, or <code class="inline">false</code> if no simple path from <code class="inline">V1</code> to <code class="inline">V2</code> of length one or more exists.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_short_cycle/2">get_short_cycle/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Tries to find an as short as possible simple cycle through vertex <code class="inline">V</code> of digraph <code class="inline">G</code>. Returns the cycle as a list <code class="inline">[``V``,`` ...,`` ``V``]</code> of vertices, or <code class="inline">false</code> if no simple cycle through <code class="inline">V</code> exists. Notice that a loop through <code class="inline">V</code> is returned as list <code class="inline">[``V``,`` ``V``]</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_short_path/3">get_short_path/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Tries to find an as short as possible simple path from vertex <code class="inline">V1</code> to vertex <code class="inline">V2</code> of digraph <code class="inline">G</code>. Returns the path as a list <code class="inline">[``V1``,`` ...,`` ``V2``]</code> of vertices, or <code class="inline">false</code> if no simple path from <code class="inline">V1</code> to <code class="inline">V2</code> of length one or more exists.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#in_degree/2">in_degree/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the in-degree of vertex <code class="inline">V</code> of digraph <code class="inline">G</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#in_edges/2">in_edges/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of all edges incident on <code class="inline">V</code> of digraph <code class="inline">G</code>, in some unspecified order.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#in_neighbours/2">in_neighbours/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of all in-neighbors of <code class="inline">V</code> of digraph <code class="inline">G</code>, in some unspecified order.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#info/1">info/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of <code class="inline">{Tag, Value}</code> pairs describing digraph <code class="inline">G</code>. The following pairs are returned</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/0">new/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Equivalent to <code class="inline">new([])</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/1">new/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns an empty digraph with properties according to the options in <code class="inline">Type</code></p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#no_edges/1">no_edges/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the number of edges of digraph <code class="inline">G</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#no_vertices/1">no_vertices/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the number of vertices of digraph <code class="inline">G</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#out_degree/2">out_degree/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the out-degree of vertex <code class="inline">V</code> of digraph <code class="inline">G</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#out_edges/2">out_edges/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of all edges emanating from <code class="inline">V</code> of digraph <code class="inline">G</code>, in some unspecified order.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#out_neighbours/2">out_neighbours/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of all out-neighbors of <code class="inline">V</code> of digraph <code class="inline">G</code>, in some unspecified order.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#vertex/2">vertex/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">{``V``,`` ``Label``}</code>, where <code class="inline">Label</code> is the label of the vertex <code class="inline">V</code> of digraph <code class="inline">G</code>, or <code class="inline">false</code> if no vertex <code class="inline">V</code> of digraph <code class="inline">G</code> exists.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#vertices/1">vertices/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of all vertices of digraph <code class="inline">G</code>, in some unspecified order.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="add_edgeadd_edgeadd_edge/345">
+  <div class="detail-header">
+    <a href="#add_edgeadd_edgeadd_edge/345" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_edgeadd_edgeadd_edge/345</h1>
+  </div>
+  <section class="docstring">
+<p> <code class="inline">add_edge/5</code> creates (or modifies) edge <code class="inline">E</code> of digraph <code class="inline">G</code>, using <code class="inline">Label</code> as the (new) label of the edge. The edge is emanating from <code class="inline">V1</code> and incident on <code class="inline">V2</code>. Returns <code class="inline">E</code>.</p>
+<p> <code class="inline">add_edge(``G``,`` ``V1``,`` ``V2``,`` ``Label``)</code> is equivalent to <code class="inline">add_edge(``G``,`` ``E``,`` ``V1``,`` ``V2``,`` ``Label``)</code>, where <code class="inline">E</code> is a created edge. The created edge is represented by term <code class="inline">[&#39;$e&#39; | N]</code>, where <code class="inline">N</code> is an integer &gt;= 0.</p>
+<p> <code class="inline">add_edge(``G``,`` ``V1``,`` ``V2``)</code> is equivalent to <code class="inline">add_edge(``G``,`` ``V1``,`` ``V2``,`` [])</code>. </p>
+<p> If the edge would create a cycle in an acyclic digraph, <code class="inline">{error, {bad_edge, ``Path``}}</code> is returned. If <code class="inline">G</code> already has an edge with value <code class="inline">E</code> connecting a different pair of vertices, <code class="inline">{error, {bad_edge, [``V1``,`` ``V2``]}}</code> is returned. If either of <code class="inline">V1</code> or <code class="inline">V2</code> is not a vertex of digraph <code class="inline">G</code>, <code class="inline">{error, {bad_vertex,</code>V<code class="inline">}}</code> is returned, V = <code class="inline">V1</code> or V = <code class="inline">V2</code>.</p>
+  </section>
+</section>
+<section class="detail" id="add_vertexadd_vertexadd_vertex/123">
+  <div class="detail-header">
+    <a href="#add_vertexadd_vertexadd_vertex/123" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_vertexadd_vertexadd_vertex/123</h1>
+  </div>
+  <section class="docstring">
+<p> <code class="inline">add_vertex/3</code> creates (or modifies) vertex <code class="inline">V</code> of digraph <code class="inline">G</code>, using <code class="inline">Label</code> as the (new) label of the vertex. Returns <code class="inline">V</code>.</p>
+<p> <code class="inline">add_vertex(``G``,`` ``V``)</code> is equivalent to <code class="inline">add_vertex(``G``,`` ``V``,`` [])</code>. </p>
+<p> <code class="inline">add_vertex/1</code> creates a vertex using the empty list as label, and returns the created vertex. The created vertex is represented by term <code class="inline">[&#39;$v&#39; | N]</code>, where <code class="inline">N</code> is an integer &gt;= 0.</p>
+  </section>
+</section>
+<section class="detail" id="del_edge/2">
+  <div class="detail-header">
+    <a href="#del_edge/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_edge/2</h1>
+      <div class="specs">
+          <pre>del_edge(g, e) :: true when g: graph(), e: edge()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes edge <code class="inline">E</code> from digraph <code class="inline">G</code>.</p>
+  </section>
+</section>
+<section class="detail" id="del_edges/2">
+  <div class="detail-header">
+    <a href="#del_edges/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_edges/2</h1>
+      <div class="specs">
+          <pre>del_edges(g, edges) :: true when g: graph(), edges: [edge()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes the edges in list <code class="inline">Edges</code> from digraph <code class="inline">G</code>.</p>
+  </section>
+</section>
+<section class="detail" id="del_path/3">
+  <div class="detail-header">
+    <a href="#del_path/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_path/3</h1>
+      <div class="specs">
+          <pre>del_path(g, v1, v2) :: true when g: graph(), v1: vertex(), v2: vertex()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes edges from digraph <code class="inline">G</code> until there are no paths from vertex <code class="inline">V1</code> to vertex <code class="inline">V2</code>.</p>
+<p> A sketch of the procedure employed:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">Find</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">arbitrary</span><span class="w"> </span><span class="ss">simple</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2156693405-1">[</span><span class="mi">1</span><span class="p" data-group-id="2156693405-1">]</span><span class="p">,</span><span class="err"> </span><span class="ss">v</span><span class="p" data-group-id="2156693405-2">[</span><span class="mi">2</span><span class="p" data-group-id="2156693405-2">]</span><span class="p">,</span><span class="err"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="err"> </span><span class="ss">v</span><span class="p" data-group-id="2156693405-3">[</span><span class="ss">k</span><span class="p" data-group-id="2156693405-3">]</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="err">`</span><span class="n">V1</span><span class="err">`</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="n">V2</span><span class="err">`</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="err">`</span><span class="n">G</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">Remove</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="err">`</span><span class="n">G</span><span class="err">`</span><span class="w"> </span><span class="ss">emanating</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2156693405-4">[</span><span class="ss">i</span><span class="p" data-group-id="2156693405-4">]</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">incident</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2156693405-5">[</span><span class="ss">i</span><span class="o">+</span><span class="mi">1</span><span class="p" data-group-id="2156693405-5">]</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="mi">1</span><span class="err"> </span><span class="o">&lt;</span><span class="o">=</span><span class="err"> </span><span class="ss">i</span><span class="err"> </span><span class="o">&lt;</span><span class="err"> </span><span class="nf">k</span><span class="w"> </span><span class="p" data-group-id="2156693405-6">(</span><span class="ss">including</span><span class="w"> </span><span class="ss">multiple</span><span class="w"> </span><span class="ss">edges</span><span class="p" data-group-id="2156693405-6">)</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">Repeat</span><span class="w"> </span><span class="ss">until</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">no</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="ss">between</span><span class="w"> </span><span class="err">`</span><span class="n">V1</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">V2</span><span class="err">`</span><span class="p">.</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="del_vertex/2">
+  <div class="detail-header">
+    <a href="#del_vertex/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_vertex/2</h1>
+      <div class="specs">
+          <pre>del_vertex(g, v) :: true when g: graph(), v: vertex()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes vertex <code class="inline">V</code> from digraph <code class="inline">G</code>. Any edges emanating from <code class="inline">V</code> or incident on <code class="inline">V</code> are also deleted.</p>
+  </section>
+</section>
+<section class="detail" id="del_vertices/2">
+  <div class="detail-header">
+    <a href="#del_vertices/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">del_vertices/2</h1>
+      <div class="specs">
+          <pre>del_vertices(g, vertices) :: true when g: graph(), vertices: [vertex()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes the vertices in list <code class="inline">Vertices</code> from digraph <code class="inline">G</code>.</p>
+  </section>
+</section>
+<section class="detail" id="delete/1">
+  <div class="detail-header">
+    <a href="#delete/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete/1</h1>
+      <div class="specs">
+          <pre>delete(g) :: true when g: graph()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes digraph <code class="inline">G</code>. This call is important as digraphs are implemented with ETS. There is no garbage collection of ETS tables. However, the digraph is deleted if the process that created the digraph terminates.</p>
+  </section>
+</section>
+<section class="detail" id="edge/2">
+  <div class="detail-header">
+    <a href="#edge/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">edge/2</h1>
+      <div class="specs">
+          <pre>edge(g, e) :: {e, v1, v2, label} | false
+when g: graph(), e: edge(), v1: vertex(), v2: vertex(), label: label()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">{``E``,`` ``V1``,`` ``V2``,`` ``Label``}</code>, where <code class="inline">Label</code> is the label of edge <code class="inline">E</code> emanating from <code class="inline">V1</code> and incident on <code class="inline">V2</code> of digraph <code class="inline">G</code>. If no edge <code class="inline">E</code> of digraph <code class="inline">G</code> exists, <code class="inline">false</code> is returned.</p>
+  </section>
+</section>
+<section class="detail" id="edges/1">
+  <div class="detail-header">
+    <a href="#edges/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">edges/1</h1>
+      <div class="specs">
+          <pre>edges(g) :: edges when g: graph(), edges: [edge()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of all edges of digraph <code class="inline">G</code>, in some unspecified order.</p>
+  </section>
+</section>
+<section class="detail" id="edges/2">
+  <div class="detail-header">
+    <a href="#edges/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">edges/2</h1>
+      <div class="specs">
+          <pre>edges(g, v) :: edges when g: graph(), v: vertex(), edges: [edge()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of all edges emanating from or incident on<code class="inline">V</code> of digraph <code class="inline">G</code>, in some unspecified order.</p>
+  </section>
+</section>
+<section class="detail" id="get_cycle/2">
+  <div class="detail-header">
+    <a href="#get_cycle/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_cycle/2</h1>
+      <div class="specs">
+          <pre>get_cycle(g, v) :: vertices | false
+when g: graph(), v: vertex(), vertices: [vertex(), ...]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> If a simple cycle of length two or more exists through vertex <code class="inline">V</code>, the cycle is returned as a list <code class="inline">[``V``,`` ...,`` ``V``]</code> of vertices. If a loop through <code class="inline">V</code> exists, the loop is returned as a list <code class="inline">[``V``]</code>. If no cycles through <code class="inline">V</code> exist, <code class="inline">false</code> is returned.</p>
+<p> <a href="#get_path/3"><code class="inline">get_path/3</code></a> is used for finding a simple cycle through <code class="inline">V</code>.</p>
+  </section>
+</section>
+<section class="detail" id="get_path/3">
+  <div class="detail-header">
+    <a href="#get_path/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_path/3</h1>
+      <div class="specs">
+          <pre>get_path(g, v1, v2) :: vertices | false
+when g: graph(), v1: vertex(), v2: vertex(), vertices: [vertex(), ...]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Tries to find a simple path from vertex <code class="inline">V1</code> to vertex <code class="inline">V2</code> of digraph <code class="inline">G</code>. Returns the path as a list <code class="inline">[``V1``,`` ...,`` ``V2``]</code> of vertices, or <code class="inline">false</code> if no simple path from <code class="inline">V1</code> to <code class="inline">V2</code> of length one or more exists.</p>
+<p> Digraph <code class="inline">G</code> is traversed in a depth-first manner, and the first found path is returned.</p>
+  </section>
+</section>
+<section class="detail" id="get_short_cycle/2">
+  <div class="detail-header">
+    <a href="#get_short_cycle/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_short_cycle/2</h1>
+      <div class="specs">
+          <pre>get_short_cycle(g, v) :: vertices | false
+when g: graph(), v: vertex(), vertices: [vertex(), ...]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Tries to find an as short as possible simple cycle through vertex <code class="inline">V</code> of digraph <code class="inline">G</code>. Returns the cycle as a list <code class="inline">[``V``,`` ...,`` ``V``]</code> of vertices, or <code class="inline">false</code> if no simple cycle through <code class="inline">V</code> exists. Notice that a loop through <code class="inline">V</code> is returned as list <code class="inline">[``V``,`` ``V``]</code>.</p>
+<p> <a href="#get_short_path/3"><code class="inline">get_short_path/3</code></a> is used for finding a simple cycle through <code class="inline">V</code>.</p>
+  </section>
+</section>
+<section class="detail" id="get_short_path/3">
+  <div class="detail-header">
+    <a href="#get_short_path/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_short_path/3</h1>
+      <div class="specs">
+          <pre>get_short_path(g, v1, v2) :: vertices | false
+when g: graph(), v1: vertex(), v2: vertex(), vertices: [vertex(), ...]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Tries to find an as short as possible simple path from vertex <code class="inline">V1</code> to vertex <code class="inline">V2</code> of digraph <code class="inline">G</code>. Returns the path as a list <code class="inline">[``V1``,`` ...,`` ``V2``]</code> of vertices, or <code class="inline">false</code> if no simple path from <code class="inline">V1</code> to <code class="inline">V2</code> of length one or more exists.</p>
+<p> Digraph <code class="inline">G</code> is traversed in a breadth-first manner, and the first found path is returned.</p>
+  </section>
+</section>
+<section class="detail" id="in_degree/2">
+  <div class="detail-header">
+    <a href="#in_degree/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">in_degree/2</h1>
+      <div class="specs">
+          <pre>in_degree(g, v) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when g: graph(), v: vertex()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the in-degree of vertex <code class="inline">V</code> of digraph <code class="inline">G</code>.</p>
+  </section>
+</section>
+<section class="detail" id="in_edges/2">
+  <div class="detail-header">
+    <a href="#in_edges/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">in_edges/2</h1>
+      <div class="specs">
+          <pre>in_edges(g, v) :: edges when g: graph(), v: vertex(), edges: [edge()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of all edges incident on <code class="inline">V</code> of digraph <code class="inline">G</code>, in some unspecified order.</p>
+  </section>
+</section>
+<section class="detail" id="in_neighbours/2">
+  <div class="detail-header">
+    <a href="#in_neighbours/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">in_neighbours/2</h1>
+      <div class="specs">
+          <pre>in_neighbours(g, v) :: vertex when g: graph(), v: vertex(), vertex: [vertex()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of all in-neighbors of <code class="inline">V</code> of digraph <code class="inline">G</code>, in some unspecified order.</p>
+  </section>
+</section>
+<section class="detail" id="info/1">
+  <div class="detail-header">
+    <a href="#info/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">info/1</h1>
+      <div class="specs">
+          <pre>info(g) :: infoList
+when g: graph(),
+     infoList: [
+       cyclicity: cyclicity :: d_cyclicity(),
+       memory: noWords :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+       protection: protection :: d_protection()
+     ]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of <code class="inline">{Tag, Value}</code> pairs describing digraph <code class="inline">G</code>. The following pairs are returned:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="8317702959-1">{</span><span class="ss">cyclicity</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">Cyclicity</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="8317702959-1">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="err">`</span><span class="n">Cyclicity</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="err">`</span><span class="ss">cyclic</span><span class="err">`</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">`</span><span class="ss">acyclic</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">according</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">options</span><span class="w"> </span><span class="ss">given</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="ss">new</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="8317702959-2">{</span><span class="nb">memory</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">NoWords</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="8317702959-2">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="err">`</span><span class="n">NoWords</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">words</span><span class="w"> </span><span class="ss">allocated</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="n">ETS</span><span class="w"> </span><span class="ss">tables</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="8317702959-3">{</span><span class="ss">protection</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">Protection</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="8317702959-3">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="err">`</span><span class="n">Protection</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="err">`</span><span class="ss">protected</span><span class="err">`</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">`</span><span class="ss">private</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">according</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">options</span><span class="w"> </span><span class="ss">given</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="ss">new</span><span class="err">`</span><span class="p">.</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="new/0">
+  <div class="detail-header">
+    <a href="#new/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new/0</h1>
+      <div class="specs">
+          <pre>new() :: graph()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Equivalent to <code class="inline">new([])</code>.</p>
+  </section>
+</section>
+<section class="detail" id="new/1">
+  <div class="detail-header">
+    <a href="#new/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new/1</h1>
+      <div class="specs">
+          <pre>new(type) :: graph() when type: [d_type()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns an empty digraph with properties according to the options in <code class="inline">Type</code>:</p>
+<p>  <code class="inline">cyclic</code>   * Allows cycles in the digraph (default).</p>
+<p> <code class="inline">acyclic</code>   * The digraph is to be kept acyclic.</p>
+<p> <code class="inline">protected</code>   * Other processes can read the digraph (default).</p>
+<p> <code class="inline">private</code>   * The digraph can be read and modified by the creating process only.</p>
+<p>  If an unrecognized type option <code class="inline">T</code> is specified or <code class="inline">Type</code> is not a proper list, a <code class="inline">badarg</code> exception is raised.</p>
+  </section>
+</section>
+<section class="detail" id="no_edges/1">
+  <div class="detail-header">
+    <a href="#no_edges/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">no_edges/1</h1>
+      <div class="specs">
+          <pre>no_edges(g) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when g: graph()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the number of edges of digraph <code class="inline">G</code>.</p>
+  </section>
+</section>
+<section class="detail" id="no_vertices/1">
+  <div class="detail-header">
+    <a href="#no_vertices/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">no_vertices/1</h1>
+      <div class="specs">
+          <pre>no_vertices(g) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when g: graph()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the number of vertices of digraph <code class="inline">G</code>.</p>
+  </section>
+</section>
+<section class="detail" id="out_degree/2">
+  <div class="detail-header">
+    <a href="#out_degree/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">out_degree/2</h1>
+      <div class="specs">
+          <pre>out_degree(g, v) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when g: graph(), v: vertex()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the out-degree of vertex <code class="inline">V</code> of digraph <code class="inline">G</code>.</p>
+  </section>
+</section>
+<section class="detail" id="out_edges/2">
+  <div class="detail-header">
+    <a href="#out_edges/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">out_edges/2</h1>
+      <div class="specs">
+          <pre>out_edges(g, v) :: edges when g: graph(), v: vertex(), edges: [edge()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of all edges emanating from <code class="inline">V</code> of digraph <code class="inline">G</code>, in some unspecified order.</p>
+  </section>
+</section>
+<section class="detail" id="out_neighbours/2">
+  <div class="detail-header">
+    <a href="#out_neighbours/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">out_neighbours/2</h1>
+      <div class="specs">
+          <pre>out_neighbours(g, v) :: vertices
+when g: graph(), v: vertex(), vertices: [vertex()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of all out-neighbors of <code class="inline">V</code> of digraph <code class="inline">G</code>, in some unspecified order.</p>
+  </section>
+</section>
+<section class="detail" id="vertex/2">
+  <div class="detail-header">
+    <a href="#vertex/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">vertex/2</h1>
+      <div class="specs">
+          <pre>vertex(g, v) :: {v, label} | false when g: graph(), v: vertex(), label: label()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">{``V``,`` ``Label``}</code>, where <code class="inline">Label</code> is the label of the vertex <code class="inline">V</code> of digraph <code class="inline">G</code>, or <code class="inline">false</code> if no vertex <code class="inline">V</code> of digraph <code class="inline">G</code> exists.</p>
+  </section>
+</section>
+<section class="detail" id="vertices/1">
+  <div class="detail-header">
+    <a href="#vertices/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">vertices/1</h1>
+      <div class="specs">
+          <pre>vertices(g) :: vertices when g: graph(), vertices: [vertex()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of all vertices of digraph <code class="inline">G</code>, in some unspecified order.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

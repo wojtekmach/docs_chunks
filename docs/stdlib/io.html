@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>io — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+io      </h1>
+
+
+        <section id="moduledoc">
+<p> This module provides an interface to standard Erlang I/O servers. The output functions all return <code class="inline">ok</code> if they are successful, or exit if they are not.</p>
+<p> All functions in this module have an optional parameter <code class="inline">IoDevice</code>. If included, it must be the pid of a process that handles the I/O protocols. Normally, it is the <code class="inline">IoDevice</code> returned by <code class="inline">file:open/2</code>.</p>
+<p> For a description of the I/O protocols, see section The Erlang I/O Protocol in the User&#39;s Guide.</p>
+<p>  As from Erlang/OTP R13A, data supplied to function <code class="inline">put_chars/2</code> is to be in the  <code class="inline">unicode:chardata()</code> format. This means that programs supplying binaries to this function must convert them to UTF-8 before trying to output the data on an I/O device.</p>
+<p> If an I/O device is set in binary mode, functions <code class="inline">get_chars/2,3</code> and <code class="inline">get_line/1,2</code> can return binaries instead of lists. The binaries are, as from Erlang/OTP R13A, encoded in UTF-8.</p>
+<p> To work with binaries in ISO Latin-1 encoding, use the <code class="inline">file</code> module instead.</p>
+<p> For conversion functions between character encodings, see the <code class="inline">unicode</code> module.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#columnscolumns/1">columnscolumns/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Retrieves the number of columns of the <code class="inline">IoDevice</code> (that is, the width of a terminal). The function succeeds for terminal devices and returns <code class="inline">{error, enotsup}</code> for all other I/O devices.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#formatformatformatfwritefwritefwrite/123123">formatformatformatfwritefwritefwrite/123123</a>
+  </div>
+    <div class="summary-synopsis"><p> Writes the items in <code class="inline">Data</code> (<code class="inline">[]</code>) on the standard output (<code class="inline">IoDevice</code>) in accordance with <code class="inline">Format</code>. <code class="inline">Format</code> contains plain characters that are copied to the output device, and control sequences for formatting, see below. If <code class="inline">Format</code> is an atom or a binary, it is first converted to a list with the aid of <code class="inline">atom_to_list/1</code> or <code class="inline">binary_to_list/1</code>. Example</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#freadfread/23">freadfread/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Reads characters from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>. Interprets the characters in accordance with <code class="inline">Format</code>. <code class="inline">Format</code> contains control sequences that directs the interpretation of the input.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_charsget_chars/23">get_charsget_chars/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Reads <code class="inline">Count</code> characters from standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_lineget_line/12">get_lineget_line/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Reads a line from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#getoptsgetopts/1">getoptsgetopts/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Requests all available options and their current values for a specific I/O device, for example</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#nlnl/1">nlnl/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Writes new line to the standard output (<code class="inline">IoDevice</code>).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_erl_exprsparse_erl_exprsparse_erl_exprsparse_erl_exprs/1234">parse_erl_exprsparse_erl_exprsparse_erl_exprsparse_erl_exprs/1234</a>
+  </div>
+    <div class="summary-synopsis"><p> Reads data from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>. Starts reading at location <code class="inline">StartLocation</code> (<code class="inline">1</code>). Argument <code class="inline">Options</code> is passed on as argument <code class="inline">Options</code> of function  <code class="inline">erl_scan:tokens/4</code>. The data is tokenized and parsed as if it was a sequence of Erlang expressions until a final dot (<code class="inline">.</code>) is reached.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_erl_formparse_erl_formparse_erl_formparse_erl_form/1234">parse_erl_formparse_erl_formparse_erl_formparse_erl_form/1234</a>
+  </div>
+    <div class="summary-synopsis"><p> Reads data from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>. Starts reading at location <code class="inline">StartLocation</code> (<code class="inline">1</code>). Argument <code class="inline">Options</code> is passed on as argument <code class="inline">Options</code> of function  <code class="inline">erl_scan:tokens/4</code>. The data is tokenized and parsed as if it was an Erlang form (one of the valid Erlang expressions in an Erlang source file) until a final dot (<code class="inline">.</code>) is reached.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#printable_range/0">printable_range/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the user-requested range of printable Unicode characters.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#put_charsput_chars/12">put_charsput_chars/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Writes the characters of <code class="inline">CharData</code> to the I/O server (<code class="inline">IoDevice</code>).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#readread/12">readread/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Reads a term <code class="inline">Term</code> from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#readread/34">readread/34</a>
+  </div>
+    <div class="summary-synopsis"><p> Reads a term <code class="inline">Term</code> from <code class="inline">IoDevice</code>, prompting it with <code class="inline">Prompt</code>. Reading starts at location <code class="inline">StartLocation</code>. Argument <code class="inline">Options</code> is passed on as argument <code class="inline">Options</code> of function  <code class="inline">erl_scan:tokens/4</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rowsrows/1">rowsrows/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Retrieves the number of rows of <code class="inline">IoDevice</code> (that is, the height of a terminal). The function only succeeds for terminal devices, for all other I/O devices the function returns <code class="inline">{error, enotsup}</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#scan_erl_exprsscan_erl_exprsscan_erl_exprsscan_erl_exprs/1234">scan_erl_exprsscan_erl_exprsscan_erl_exprsscan_erl_exprs/1234</a>
+  </div>
+    <div class="summary-synopsis"><p> Reads data from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>. Reading starts at location <code class="inline">StartLocation</code> (<code class="inline">1</code>). Argument <code class="inline">Options</code> is passed on as argument <code class="inline">Options</code> of function  <code class="inline">erl_scan:tokens/4</code>. The data is tokenized as if it were a sequence of Erlang expressions until a final dot (<code class="inline">.</code>) is reached. This token is also returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#scan_erl_formscan_erl_formscan_erl_formscan_erl_form/1234">scan_erl_formscan_erl_formscan_erl_formscan_erl_form/1234</a>
+  </div>
+    <div class="summary-synopsis"><p> Reads data from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>. Starts reading at location <code class="inline">StartLocation</code> (<code class="inline">1</code>). Argument <code class="inline">Options</code> is passed on as argument <code class="inline">Options</code> of function  <code class="inline">erl_scan:tokens/4</code>. The data is tokenized as if it was an Erlang form (one of the valid Erlang expressions in an Erlang source file) until a final dot (<code class="inline">.</code>) is reached. This last token is also returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#setoptssetopts/12">setoptssetopts/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Set options for the standard I/O device (<code class="inline">IoDevice</code>).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#writewrite/12">writewrite/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Writes term <code class="inline">Term</code> to the standard output (<code class="inline">IoDevice</code>).</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="columnscolumns/1">
+  <div class="detail-header">
+    <a href="#columnscolumns/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">columnscolumns/1</h1>
+  </div>
+  <section class="docstring">
+<p> Retrieves the number of columns of the <code class="inline">IoDevice</code> (that is, the width of a terminal). The function succeeds for terminal devices and returns <code class="inline">{error, enotsup}</code> for all other I/O devices.</p>
+  </section>
+</section>
+<section class="detail" id="formatformatformatfwritefwritefwrite/123123">
+  <div class="detail-header">
+    <a href="#formatformatformatfwritefwritefwrite/123123" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">formatformatformatfwritefwritefwrite/123123</h1>
+  </div>
+  <section class="docstring">
+<p> Writes the items in <code class="inline">Data</code> (<code class="inline">[]</code>) on the standard output (<code class="inline">IoDevice</code>) in accordance with <code class="inline">Format</code>. <code class="inline">Format</code> contains plain characters that are copied to the output device, and control sequences for formatting, see below. If <code class="inline">Format</code> is an atom or a binary, it is first converted to a list with the aid of <code class="inline">atom_to_list/1</code> or <code class="inline">binary_to_list/1</code>. Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="5895064331-1">(</span><span class="s">&quot;Hello world!</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5895064331-2">[</span><span class="p" data-group-id="5895064331-2">]</span><span class="p" data-group-id="5895064331-1">)</span><span class="p">.</span><span class="w">
+</span><span class="n">Hello</span><span class="w"> </span><span class="ss">world</span><span class="o">!</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p> The general format of a control sequence is <code class="inline">~F.P.PadModC</code>.</p>
+<p> The character <code class="inline">C</code> determines the type of control sequence to be used. It is the only required field. All of <code class="inline">F</code>, <code class="inline">P</code>, <code class="inline">Pad</code>, and <code class="inline">Mod</code> are optional. For example, to use a <code class="inline">#</code> for <code class="inline">Pad</code> but use the default values for <code class="inline">F</code> and <code class="inline">P</code>, you can write <code class="inline">~..#C</code>.</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="n">F</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="ss">field</span><span class="w"> </span><span class="ss">width</span><span class="err">`</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">printed</span><span class="w"> </span><span class="ss">argument</span><span class="p">.</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="ss">negative</span><span class="w"> </span><span class="ss">value</span><span class="w"> </span><span class="ss">means</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">argument</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">left</span><span class="o">-</span><span class="ss">justified</span><span class="w"> </span><span class="ss">within</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">field</span><span class="p">,</span><span class="w"> </span><span class="ss">otherwise</span><span class="w"> </span><span class="ss">right</span><span class="o">-</span><span class="ss">justified</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">no</span><span class="w"> </span><span class="ss">field</span><span class="w"> </span><span class="ss">width</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">specified</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">required</span><span class="w"> </span><span class="ss">print</span><span class="w"> </span><span class="ss">width</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">used</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">field</span><span class="w"> </span><span class="ss">width</span><span class="w"> </span><span class="ss">specified</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">too</span><span class="w"> </span><span class="ss">small</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">whole</span><span class="w"> </span><span class="ss">field</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">filled</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="err">`</span><span class="o">*</span><span class="err">`</span><span class="w"> </span><span class="ss">characters</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="n">P</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="ss">precision</span><span class="err">`</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">printed</span><span class="w"> </span><span class="ss">argument</span><span class="p">.</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="ss">default</span><span class="w"> </span><span class="ss">value</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">used</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">no</span><span class="w"> </span><span class="ss">precision</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">specified</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">interpretation</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">precision</span><span class="w"> </span><span class="ss">depends</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">control</span><span class="w"> </span><span class="ss">sequences</span><span class="p">.</span><span class="w"> </span><span class="n">Unless</span><span class="w"> </span><span class="ss">otherwise</span><span class="w"> </span><span class="ss">specified</span><span class="p">,</span><span class="w"> </span><span class="ss">argument</span><span class="w"> </span><span class="err">`</span><span class="ss">within</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">used</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">determine</span><span class="w"> </span><span class="ss">print</span><span class="w"> </span><span class="ss">width</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="n">Pad</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">padding</span><span class="w"> </span><span class="ss">character</span><span class="p">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">character</span><span class="w"> </span><span class="ss">used</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">pad</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">printed</span><span class="w"> </span><span class="ss">representation</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">argument</span><span class="w"> </span><span class="ss">so</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">it</span><span class="w"> </span><span class="ss">conforms</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">specified</span><span class="w"> </span><span class="ss">field</span><span class="w"> </span><span class="ss">width</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">precision</span><span class="p">.</span><span class="w"> </span><span class="n">Only</span><span class="w"> </span><span class="ss">one</span><span class="w"> </span><span class="ss">padding</span><span class="w"> </span><span class="ss">character</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">specified</span><span class="w"> </span><span class="ow">and</span><span class="p">,</span><span class="w"> </span><span class="ss">whenever</span><span class="w"> </span><span class="ss">applicable</span><span class="p">,</span><span class="w"> </span><span class="ss">it</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">used</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">both</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">field</span><span class="w"> </span><span class="ss">width</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">precision</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">default</span><span class="w"> </span><span class="ss">padding</span><span class="w"> </span><span class="ss">character</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="err">`</span><span class="ss">&#39; &#39;</span><span class="err">`</span><span class="w"> </span><span class="p" data-group-id="5707214902-1">(</span><span class="ss">space</span><span class="p" data-group-id="5707214902-1">)</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="n">Mod</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">control</span><span class="w"> </span><span class="ss">sequence</span><span class="w"> </span><span class="ss">modifier</span><span class="p">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">one</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">more</span><span class="w"> </span><span class="ss">characters</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">change</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">interpretation</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="err">`</span><span class="n">Data</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">current</span><span class="w"> </span><span class="ss">modifiers</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="err">`</span><span class="ss">t</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="n">Unicode</span><span class="w"> </span><span class="ss">translation</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="ss">l</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">stopping</span><span class="w"> </span><span class="err">`</span><span class="ss">p</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">P</span><span class="err">`</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">detecting</span><span class="w"> </span><span class="ss">printable</span><span class="w"> </span><span class="ss">characters</span><span class="p">.</span></code></pre>
+<p>   If <code class="inline">F</code>, <code class="inline">P</code>, or <code class="inline">Pad</code> is a <code class="inline">*</code> character, the next argument in <code class="inline">Data</code> is used as the value. For example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="4131511600-1">(</span><span class="s">&quot;~*.*.0f</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="4131511600-2">[</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14159265</span><span class="p" data-group-id="4131511600-2">]</span><span class="p" data-group-id="4131511600-1">)</span><span class="p">.</span><span class="w">
+</span><span class="mf">003.14159</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p> To use a literal <code class="inline">*</code> character as <code class="inline">Pad</code>, it must be passed as an argument:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="2974743664-1">(</span><span class="s">&quot;~*.*.*f</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="2974743664-2">[</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="sc">$*</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14159265</span><span class="p" data-group-id="2974743664-2">]</span><span class="p" data-group-id="2974743664-1">)</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="o">*</span><span class="mf">3.14159</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p> Available control sequences:</p>
+<p>  <code class="inline">~</code>   *  Character <code class="inline">~</code> is written.</p>
+<p>  <code class="inline">c</code>   *  The argument is a number that is interpreted as an ASCII code. The precision is the number of times the character is printed and defaults to the field width, which in turn defaults to 1. Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="3469807884-1">(</span><span class="s">&quot;|~10.5c|</span><span class="si">~-</span><span class="s">10.5c|~5c|</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3469807884-2">[</span><span class="sc">$a</span><span class="p">,</span><span class="w"> </span><span class="sc">$b</span><span class="p">,</span><span class="w"> </span><span class="sc">$c</span><span class="p" data-group-id="3469807884-2">]</span><span class="p" data-group-id="3469807884-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p">|</span><span class="w">     </span><span class="ss">aaaaa</span><span class="p">|</span><span class="ss">bbbbb</span><span class="w">     </span><span class="p">|</span><span class="ss">ccccc</span><span class="p">|</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p> If the Unicode translation modifier (<code class="inline">t</code>) is in effect, the integer argument can be any number representing a valid Unicode codepoint, otherwise it is to be an integer less than or equal to 255, otherwise it is masked with 16#FF:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="7642391702-1">(</span><span class="s">&quot;~tc</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="7642391702-2">[</span><span class="mi">1024</span><span class="p" data-group-id="7642391702-2">]</span><span class="p" data-group-id="7642391702-1">)</span><span class="p">.</span><span class="w">
+</span><span class="err">\</span><span class="ss">x</span><span class="p" data-group-id="7642391702-3">{</span><span class="mi">400</span><span class="p" data-group-id="7642391702-3">}</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="7642391702-4">(</span><span class="s">&quot;~c</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="7642391702-5">[</span><span class="mi">1024</span><span class="p" data-group-id="7642391702-5">]</span><span class="p" data-group-id="7642391702-4">)</span><span class="p">.</span><span class="w">
+</span><span class="err">^</span><span class="p">@</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p>  <code class="inline">f</code>   *  The argument is a float that is written as <code class="inline">[-]ddd.ddd</code>, where the precision is the number of digits after the decimal point. The default precision is 6 and it cannot be &lt; 1.</p>
+<p>  <code class="inline">e</code>   *  The argument is a float that is written as <code class="inline">[-]d.ddde+-ddd</code>, where the precision is the number of digits written. The default precision is 6 and it cannot be &lt; 2.</p>
+<p>  <code class="inline">g</code>   *  The argument is a float that is written as <code class="inline">f</code>, if it is &gt;= 0.1 and &lt; 10000.0. Otherwise, it is written in the <code class="inline">e</code> format. The precision is the number of significant digits. It defaults to 6 and is not to be &lt; 2. If the absolute value of the float does not allow it to be written in the <code class="inline">f</code> format with the desired number of significant digits, it is also written in the <code class="inline">e</code> format.</p>
+<p>  <code class="inline">s</code>   *  Prints the argument with the string syntax. The argument is, if no Unicode translation modifier is present, an <code class="inline">iolist()</code>, a <code class="inline">binary()</code>, or an <code class="inline">atom()</code>. If the Unicode translation modifier (<code class="inline">t</code>) is in effect, the argument is <code class="inline">unicode:chardata()</code>, meaning that binaries are in UTF-8. The characters are printed without quotes. The string is first truncated by the specified precision and then padded and justified to the specified field width. The default precision is the field width. </p>
+<p> This format can be used for printing any object and truncating the output so it fits a specified field:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="4655753392-1">(</span><span class="s">&quot;|</span><span class="si">~10w</span><span class="s">|</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4655753392-2">[</span><span class="p" data-group-id="4655753392-3">{</span><span class="ss">hey</span><span class="p">,</span><span class="w"> </span><span class="ss">hey</span><span class="p">,</span><span class="w"> </span><span class="ss">hey</span><span class="p" data-group-id="4655753392-3">}</span><span class="p" data-group-id="4655753392-2">]</span><span class="p" data-group-id="4655753392-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p">|</span><span class="o">*</span><span class="o">*</span><span class="o">*</span><span class="o">*</span><span class="o">*</span><span class="o">*</span><span class="o">*</span><span class="o">*</span><span class="o">*</span><span class="o">*</span><span class="p">|</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="4655753392-4">(</span><span class="s">&quot;|</span><span class="si">~10s</span><span class="s">|</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4655753392-5">[</span><span class="nc">io_lib</span><span class="p">:</span><span class="nf">write</span><span class="p" data-group-id="4655753392-6">(</span><span class="p" data-group-id="4655753392-7">{</span><span class="ss">hey</span><span class="p">,</span><span class="w"> </span><span class="ss">hey</span><span class="p">,</span><span class="w"> </span><span class="ss">hey</span><span class="p" data-group-id="4655753392-7">}</span><span class="p" data-group-id="4655753392-6">)</span><span class="p" data-group-id="4655753392-5">]</span><span class="p" data-group-id="4655753392-4">)</span><span class="p">.</span><span class="w">
+</span><span class="p">|</span><span class="p" data-group-id="4655753392-8">{</span><span class="ss">hey</span><span class="p">,</span><span class="ss">hey</span><span class="p">,</span><span class="ss">h</span><span class="p">|</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="4655753392-9">(</span><span class="s">&quot;|</span><span class="si">~-</span><span class="s">10.8s|</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4655753392-10">[</span><span class="nc">io_lib</span><span class="p">:</span><span class="nf">write</span><span class="p" data-group-id="4655753392-11">(</span><span class="p" data-group-id="4655753392-12">{</span><span class="ss">hey</span><span class="p">,</span><span class="w"> </span><span class="ss">hey</span><span class="p">,</span><span class="w"> </span><span class="ss">hey</span><span class="p" data-group-id="4655753392-12">}</span><span class="p" data-group-id="4655753392-11">)</span><span class="p" data-group-id="4655753392-10">]</span><span class="p" data-group-id="4655753392-9">)</span><span class="p">.</span><span class="w">
+</span><span class="p">|</span><span class="p" data-group-id="4655753392-13">{</span><span class="ss">hey</span><span class="p">,</span><span class="ss">hey</span><span class="w">  </span><span class="p">|</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p> A list with integers &gt; 255 is considered an error if the Unicode translation modifier is not specified:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="7521486110-1">(</span><span class="s">&quot;~ts</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="7521486110-2">[</span><span class="p" data-group-id="7521486110-3">[</span><span class="mi">1024</span><span class="p" data-group-id="7521486110-3">]</span><span class="p" data-group-id="7521486110-2">]</span><span class="p" data-group-id="7521486110-1">)</span><span class="p">.</span><span class="w">
+</span><span class="err">\</span><span class="ss">x</span><span class="p" data-group-id="7521486110-4">{</span><span class="mi">400</span><span class="p" data-group-id="7521486110-4">}</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">5</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="7521486110-5">(</span><span class="s">&quot;</span><span class="si">~s</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="7521486110-6">[</span><span class="p" data-group-id="7521486110-7">[</span><span class="mi">1024</span><span class="p" data-group-id="7521486110-7">]</span><span class="p" data-group-id="7521486110-6">]</span><span class="p" data-group-id="7521486110-5">)</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="o">*</span><span class="w"> </span><span class="ss">exception</span><span class="w"> </span><span class="nc">error</span><span class="p">:</span><span class="w"> </span><span class="ss">bad</span><span class="w"> </span><span class="ss">argument</span><span class="w">
+     </span><span class="ss">in</span><span class="w"> </span><span class="ss">function</span><span class="w">  </span><span class="nc">io</span><span class="p">:</span><span class="ss">format</span><span class="o">/</span><span class="mi">3</span><span class="w">
+        </span><span class="ss">called</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">format</span><span class="p" data-group-id="7521486110-8">(</span><span class="o">&lt;</span><span class="mf">0.53</span><span class="p">.</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">~s</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="7521486110-9">[</span><span class="p" data-group-id="7521486110-10">[</span><span class="mi">1024</span><span class="p" data-group-id="7521486110-10">]</span><span class="p" data-group-id="7521486110-9">]</span><span class="p" data-group-id="7521486110-8">)</span></code></pre>
+<p>  <code class="inline">w</code>   *  Writes data with the standard syntax. This is used to output Erlang terms. Atoms are printed within quotes if they contain embedded non-printable characters. Atom characters &gt; 255 are escaped unless the Unicode translation modifier (<code class="inline">t</code>) is used. Floats are printed accurately as the shortest, correctly rounded string.</p>
+<p>  <code class="inline">p</code>   *  Writes the data with standard syntax in the same way as <code class="inline">~w</code>, but breaks terms whose printed representation is longer than one line into many lines and indents each line sensibly. Left-justification is not supported. It also tries to detect flat lists of printable characters and output these as strings. For example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7039895144-1">[</span><span class="p" data-group-id="7039895144-2">{</span><span class="ss">attributes</span><span class="p">,</span><span class="p" data-group-id="7039895144-3">[</span><span class="p" data-group-id="7039895144-4">[</span><span class="p" data-group-id="7039895144-5">{</span><span class="ss">id</span><span class="p">,</span><span class="ss">age</span><span class="p">,</span><span class="mf">1.50000</span><span class="p" data-group-id="7039895144-5">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-6">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">explicit</span><span class="p" data-group-id="7039895144-6">}</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="7039895144-7">{</span><span class="ss">typename</span><span class="p">,</span><span class="s">&quot;INTEGER&quot;</span><span class="p" data-group-id="7039895144-7">}</span><span class="p" data-group-id="7039895144-4">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7039895144-8">[</span><span class="p" data-group-id="7039895144-9">{</span><span class="ss">id</span><span class="p">,</span><span class="ss">cho</span><span class="p" data-group-id="7039895144-9">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-10">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">explicit</span><span class="p" data-group-id="7039895144-10">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-11">{</span><span class="ss">typename</span><span class="p">,</span><span class="ss">&#39;Cho&#39;</span><span class="p" data-group-id="7039895144-11">}</span><span class="p" data-group-id="7039895144-8">]</span><span class="p" data-group-id="7039895144-3">]</span><span class="p" data-group-id="7039895144-2">}</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="7039895144-12">{</span><span class="ss">typename</span><span class="p">,</span><span class="ss">&#39;Person&#39;</span><span class="p" data-group-id="7039895144-12">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-13">{</span><span class="ss">tag</span><span class="p">,</span><span class="p" data-group-id="7039895144-14">{</span><span class="ss">&#39;PRIVATE&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="7039895144-14">}</span><span class="p" data-group-id="7039895144-13">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-15">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">implicit</span><span class="p" data-group-id="7039895144-15">}</span><span class="p" data-group-id="7039895144-1">]</span><span class="p">.</span><span class="w">
+</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="7039895144-16">(</span><span class="s">&quot;</span><span class="si">~w</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7039895144-17">[</span><span class="n">T</span><span class="p" data-group-id="7039895144-17">]</span><span class="p" data-group-id="7039895144-16">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="7039895144-18">[</span><span class="p" data-group-id="7039895144-19">{</span><span class="ss">attributes</span><span class="p">,</span><span class="p" data-group-id="7039895144-20">[</span><span class="p" data-group-id="7039895144-21">[</span><span class="p" data-group-id="7039895144-22">{</span><span class="ss">id</span><span class="p">,</span><span class="ss">age</span><span class="p">,</span><span class="mf">1.5</span><span class="p" data-group-id="7039895144-22">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-23">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">explicit</span><span class="p" data-group-id="7039895144-23">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-24">{</span><span class="ss">typename</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="7039895144-25">[</span><span class="mi">73</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="mi">71</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="mi">82</span><span class="p" data-group-id="7039895144-25">]</span><span class="p" data-group-id="7039895144-24">}</span><span class="p" data-group-id="7039895144-21">]</span><span class="p">,</span><span class="p" data-group-id="7039895144-26">[</span><span class="p" data-group-id="7039895144-27">{</span><span class="ss">id</span><span class="p">,</span><span class="ss">cho</span><span class="p" data-group-id="7039895144-27">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-28">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">explicit</span><span class="p" data-group-id="7039895144-28">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-29">{</span><span class="ss">typena</span><span class="w">
+</span><span class="ss">me</span><span class="p">,</span><span class="ss">&#39;Cho&#39;</span><span class="p" data-group-id="7039895144-29">}</span><span class="p" data-group-id="7039895144-26">]</span><span class="p" data-group-id="7039895144-20">]</span><span class="p" data-group-id="7039895144-19">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-30">{</span><span class="ss">typename</span><span class="p">,</span><span class="ss">&#39;Person&#39;</span><span class="p" data-group-id="7039895144-30">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-31">{</span><span class="ss">tag</span><span class="p">,</span><span class="p" data-group-id="7039895144-32">{</span><span class="ss">&#39;PRIVATE&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="7039895144-32">}</span><span class="p" data-group-id="7039895144-31">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-33">{</span><span class="ss">mode</span><span class="w">
+</span><span class="p">,</span><span class="ss">implicit</span><span class="p" data-group-id="7039895144-33">}</span><span class="p" data-group-id="7039895144-18">]</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="7039895144-34">(</span><span class="s">&quot;</span><span class="si">~62p</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7039895144-35">[</span><span class="n">T</span><span class="p" data-group-id="7039895144-35">]</span><span class="p" data-group-id="7039895144-34">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="7039895144-36">[</span><span class="p" data-group-id="7039895144-37">{</span><span class="ss">attributes</span><span class="p">,</span><span class="p" data-group-id="7039895144-38">[</span><span class="p" data-group-id="7039895144-39">[</span><span class="p" data-group-id="7039895144-40">{</span><span class="ss">id</span><span class="p">,</span><span class="ss">age</span><span class="p">,</span><span class="mf">1.5</span><span class="p" data-group-id="7039895144-40">}</span><span class="p">,</span><span class="w">
+               </span><span class="p" data-group-id="7039895144-41">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">explicit</span><span class="p" data-group-id="7039895144-41">}</span><span class="p">,</span><span class="w">
+               </span><span class="p" data-group-id="7039895144-42">{</span><span class="ss">typename</span><span class="p">,</span><span class="s">&quot;INTEGER&quot;</span><span class="p" data-group-id="7039895144-42">}</span><span class="p" data-group-id="7039895144-39">]</span><span class="p">,</span><span class="w">
+              </span><span class="p" data-group-id="7039895144-43">[</span><span class="p" data-group-id="7039895144-44">{</span><span class="ss">id</span><span class="p">,</span><span class="ss">cho</span><span class="p" data-group-id="7039895144-44">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-45">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">explicit</span><span class="p" data-group-id="7039895144-45">}</span><span class="p">,</span><span class="p" data-group-id="7039895144-46">{</span><span class="ss">typename</span><span class="p">,</span><span class="ss">&#39;Cho&#39;</span><span class="p" data-group-id="7039895144-46">}</span><span class="p" data-group-id="7039895144-43">]</span><span class="p" data-group-id="7039895144-38">]</span><span class="p" data-group-id="7039895144-37">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="7039895144-47">{</span><span class="ss">typename</span><span class="p">,</span><span class="ss">&#39;Person&#39;</span><span class="p" data-group-id="7039895144-47">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="7039895144-48">{</span><span class="ss">tag</span><span class="p">,</span><span class="p" data-group-id="7039895144-49">{</span><span class="ss">&#39;PRIVATE&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="7039895144-49">}</span><span class="p" data-group-id="7039895144-48">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="7039895144-50">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">implicit</span><span class="p" data-group-id="7039895144-50">}</span><span class="p" data-group-id="7039895144-36">]</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p> The field width specifies the maximum line length. It defaults to 80. The precision specifies the initial indentation of the term. It defaults to the number of characters printed on this line in the same call to <code class="inline">write/1</code> or <code class="inline">format/1,2,3</code>. For example, using <code class="inline">T</code> above:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="9788421163-1">(</span><span class="s">&quot;Here T = </span><span class="si">~62p</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9788421163-2">[</span><span class="n">T</span><span class="p" data-group-id="9788421163-2">]</span><span class="p" data-group-id="9788421163-1">)</span><span class="p">.</span><span class="w">
+</span><span class="n">Here</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9788421163-3">[</span><span class="p" data-group-id="9788421163-4">{</span><span class="ss">attributes</span><span class="p">,</span><span class="p" data-group-id="9788421163-5">[</span><span class="p" data-group-id="9788421163-6">[</span><span class="p" data-group-id="9788421163-7">{</span><span class="ss">id</span><span class="p">,</span><span class="ss">age</span><span class="p">,</span><span class="mf">1.5</span><span class="p" data-group-id="9788421163-7">}</span><span class="p">,</span><span class="w">
+                        </span><span class="p" data-group-id="9788421163-8">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">explicit</span><span class="p" data-group-id="9788421163-8">}</span><span class="p">,</span><span class="w">
+                        </span><span class="p" data-group-id="9788421163-9">{</span><span class="ss">typename</span><span class="p">,</span><span class="s">&quot;INTEGER&quot;</span><span class="p" data-group-id="9788421163-9">}</span><span class="p" data-group-id="9788421163-6">]</span><span class="p">,</span><span class="w">
+                       </span><span class="p" data-group-id="9788421163-10">[</span><span class="p" data-group-id="9788421163-11">{</span><span class="ss">id</span><span class="p">,</span><span class="ss">cho</span><span class="p" data-group-id="9788421163-11">}</span><span class="p">,</span><span class="w">
+                        </span><span class="p" data-group-id="9788421163-12">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">explicit</span><span class="p" data-group-id="9788421163-12">}</span><span class="p">,</span><span class="w">
+                        </span><span class="p" data-group-id="9788421163-13">{</span><span class="ss">typename</span><span class="p">,</span><span class="ss">&#39;Cho&#39;</span><span class="p" data-group-id="9788421163-13">}</span><span class="p" data-group-id="9788421163-10">]</span><span class="p" data-group-id="9788421163-5">]</span><span class="p" data-group-id="9788421163-4">}</span><span class="p">,</span><span class="w">
+          </span><span class="p" data-group-id="9788421163-14">{</span><span class="ss">typename</span><span class="p">,</span><span class="ss">&#39;Person&#39;</span><span class="p" data-group-id="9788421163-14">}</span><span class="p">,</span><span class="w">
+          </span><span class="p" data-group-id="9788421163-15">{</span><span class="ss">tag</span><span class="p">,</span><span class="p" data-group-id="9788421163-16">{</span><span class="ss">&#39;PRIVATE&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="9788421163-16">}</span><span class="p" data-group-id="9788421163-15">}</span><span class="p">,</span><span class="w">
+          </span><span class="p" data-group-id="9788421163-17">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">implicit</span><span class="p" data-group-id="9788421163-17">}</span><span class="p" data-group-id="9788421163-3">]</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p> As from Erlang/OTP 21.0, a field width of value <code class="inline">0</code> can be used for specifying that a line is infinitely long, which means that no line breaks are inserted. For example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">5</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="0247357011-1">(</span><span class="s">&quot;</span><span class="si">~0p</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0247357011-2">[</span><span class="nc">lists</span><span class="p">:</span><span class="nf">seq</span><span class="p" data-group-id="0247357011-3">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p" data-group-id="0247357011-3">)</span><span class="p" data-group-id="0247357011-2">]</span><span class="p" data-group-id="0247357011-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="0247357011-4">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">29</span><span class="p">,</span><span class="mi">30</span><span class="p" data-group-id="0247357011-4">]</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p> When the modifier <code class="inline">l</code> is specified, no detection of printable character lists takes place, for example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0912913593-1">[</span><span class="p" data-group-id="0912913593-2">{</span><span class="ss">a</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="0912913593-2">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0912913593-3">{</span><span class="ss">b</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p" data-group-id="0912913593-3">}</span><span class="p" data-group-id="0912913593-1">]</span><span class="p">,</span><span class="w">
+   </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="0912913593-4">(</span><span class="s">&quot;</span><span class="si">~15p</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0912913593-5">[</span><span class="n">S</span><span class="p" data-group-id="0912913593-5">]</span><span class="p" data-group-id="0912913593-4">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="0912913593-6">[</span><span class="p" data-group-id="0912913593-7">{</span><span class="ss">a</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="0912913593-7">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="0912913593-8">{</span><span class="ss">b</span><span class="p">,</span><span class="s">&quot;b&quot;</span><span class="p" data-group-id="0912913593-8">}</span><span class="p" data-group-id="0912913593-6">]</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">7</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="0912913593-9">(</span><span class="s">&quot;~15lp</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0912913593-10">[</span><span class="n">S</span><span class="p" data-group-id="0912913593-10">]</span><span class="p" data-group-id="0912913593-9">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="0912913593-11">[</span><span class="p" data-group-id="0912913593-12">{</span><span class="ss">a</span><span class="p">,</span><span class="p" data-group-id="0912913593-13">[</span><span class="mi">97</span><span class="p" data-group-id="0912913593-13">]</span><span class="p" data-group-id="0912913593-12">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="0912913593-14">{</span><span class="ss">b</span><span class="p">,</span><span class="p" data-group-id="0912913593-15">[</span><span class="mi">98</span><span class="p" data-group-id="0912913593-15">]</span><span class="p" data-group-id="0912913593-14">}</span><span class="p" data-group-id="0912913593-11">]</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p> The Unicode translation modifier <code class="inline">t</code> specifies how to treat characters outside the Latin-1 range of codepoints, in atoms, strings, and binaries. For example, printing an atom containing a character &gt; 255:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">8</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="2220813271-1">(</span><span class="s">&quot;</span><span class="si">~p</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="2220813271-2">[</span><span class="nf">list_to_atom</span><span class="p" data-group-id="2220813271-3">(</span><span class="p" data-group-id="2220813271-4">[</span><span class="mi">1024</span><span class="p" data-group-id="2220813271-4">]</span><span class="p" data-group-id="2220813271-3">)</span><span class="p" data-group-id="2220813271-2">]</span><span class="p" data-group-id="2220813271-1">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">&#39;\x{400}&#39;</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">9</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="2220813271-5">(</span><span class="s">&quot;~tp</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="2220813271-6">[</span><span class="nf">list_to_atom</span><span class="p" data-group-id="2220813271-7">(</span><span class="p" data-group-id="2220813271-8">[</span><span class="mi">1024</span><span class="p" data-group-id="2220813271-8">]</span><span class="p" data-group-id="2220813271-7">)</span><span class="p" data-group-id="2220813271-6">]</span><span class="p" data-group-id="2220813271-5">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">&#39;Ѐ&#39;</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p> By default, Erlang only detects lists of characters in the Latin-1 range as strings, but the <code class="inline">+pc unicode</code> flag can be used to change this (see  <a href="#printable_range/0"><code class="inline">printable_range/0</code></a> for details). For example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">10</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="5988080828-1">(</span><span class="s">&quot;</span><span class="si">~p</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="5988080828-2">[</span><span class="p" data-group-id="5988080828-3">[</span><span class="mi">214</span><span class="p" data-group-id="5988080828-3">]</span><span class="p" data-group-id="5988080828-2">]</span><span class="p" data-group-id="5988080828-1">)</span><span class="p">.</span><span class="w">
+</span><span class="s">&quot;Ö&quot;</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">11</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="5988080828-4">(</span><span class="s">&quot;</span><span class="si">~p</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="5988080828-5">[</span><span class="p" data-group-id="5988080828-6">[</span><span class="mi">1024</span><span class="p" data-group-id="5988080828-6">]</span><span class="p" data-group-id="5988080828-5">]</span><span class="p" data-group-id="5988080828-4">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="5988080828-7">[</span><span class="mi">1024</span><span class="p" data-group-id="5988080828-7">]</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">12</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="5988080828-8">(</span><span class="s">&quot;~tp</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="5988080828-9">[</span><span class="p" data-group-id="5988080828-10">[</span><span class="mi">1024</span><span class="p" data-group-id="5988080828-10">]</span><span class="p" data-group-id="5988080828-9">]</span><span class="p" data-group-id="5988080828-8">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="5988080828-11">[</span><span class="mi">1024</span><span class="p" data-group-id="5988080828-11">]</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span></code></pre>
+<p> but if Erlang was started with <code class="inline">+pc unicode</code>:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">13</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="3421264818-1">(</span><span class="s">&quot;</span><span class="si">~p</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="3421264818-2">[</span><span class="p" data-group-id="3421264818-3">[</span><span class="mi">1024</span><span class="p" data-group-id="3421264818-3">]</span><span class="p" data-group-id="3421264818-2">]</span><span class="p" data-group-id="3421264818-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="3421264818-4">[</span><span class="mi">1024</span><span class="p" data-group-id="3421264818-4">]</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">14</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="3421264818-5">(</span><span class="s">&quot;~tp</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="3421264818-6">[</span><span class="p" data-group-id="3421264818-7">[</span><span class="mi">1024</span><span class="p" data-group-id="3421264818-7">]</span><span class="p" data-group-id="3421264818-6">]</span><span class="p" data-group-id="3421264818-5">)</span><span class="p">.</span><span class="w">
+</span><span class="s">&quot;Ѐ&quot;</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p> Similarly, binaries that look like UTF-8 encoded strings are output with the binary string syntax if the <code class="inline">t</code> modifier is specified:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">15</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="0365286763-1">(</span><span class="s">&quot;</span><span class="si">~p</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0365286763-2">[</span><span class="p">&lt;&lt;</span><span class="mi">208</span><span class="p">,</span><span class="mi">128</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0365286763-2">]</span><span class="p" data-group-id="0365286763-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="mi">208</span><span class="p">,</span><span class="mi">128</span><span class="p">&gt;&gt;</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">16</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="0365286763-3">(</span><span class="s">&quot;~tp</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0365286763-4">[</span><span class="p">&lt;&lt;</span><span class="mi">208</span><span class="p">,</span><span class="mi">128</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0365286763-4">]</span><span class="p" data-group-id="0365286763-3">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="s">&quot;Ѐ&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">17</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="0365286763-5">(</span><span class="s">&quot;~tp</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0365286763-6">[</span><span class="p">&lt;&lt;</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0365286763-6">]</span><span class="p" data-group-id="0365286763-5">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">&gt;&gt;</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p>  <code class="inline">W</code>   *  Writes data in the same way as <code class="inline">~w</code>, but takes an extra argument that is the maximum depth to which terms are printed. Anything below this depth is replaced with <code class="inline">...</code>. For example, using <code class="inline">T</code> above:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">8</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="5397920987-1">(</span><span class="s">&quot;</span><span class="si">~W</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5397920987-2">[</span><span class="n">T</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="5397920987-2">]</span><span class="p" data-group-id="5397920987-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="5397920987-3">[</span><span class="p" data-group-id="5397920987-4">{</span><span class="ss">attributes</span><span class="p">,</span><span class="p" data-group-id="5397920987-5">[</span><span class="p" data-group-id="5397920987-6">[</span><span class="p" data-group-id="5397920987-7">{</span><span class="ss">id</span><span class="p">,</span><span class="ss">age</span><span class="p">,</span><span class="mf">1.5</span><span class="p" data-group-id="5397920987-7">}</span><span class="p">,</span><span class="p" data-group-id="5397920987-8">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">explicit</span><span class="p" data-group-id="5397920987-8">}</span><span class="p">,</span><span class="p" data-group-id="5397920987-9">{</span><span class="ss">typename</span><span class="p">,</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="5397920987-9">}</span><span class="p" data-group-id="5397920987-6">]</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="5397920987-10">[</span><span class="p" data-group-id="5397920987-11">{</span><span class="ss">id</span><span class="p">,</span><span class="ss">cho</span><span class="p" data-group-id="5397920987-11">}</span><span class="p">,</span><span class="p" data-group-id="5397920987-12">{</span><span class="ss">mode</span><span class="p">,</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="5397920987-12">}</span><span class="p">,</span><span class="p" data-group-id="5397920987-13">{</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="5397920987-13">}</span><span class="p" data-group-id="5397920987-10">]</span><span class="p" data-group-id="5397920987-5">]</span><span class="p" data-group-id="5397920987-4">}</span><span class="p">,</span><span class="p" data-group-id="5397920987-14">{</span><span class="ss">typename</span><span class="p">,</span><span class="ss">&#39;Person&#39;</span><span class="p" data-group-id="5397920987-14">}</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="5397920987-15">{</span><span class="ss">tag</span><span class="p">,</span><span class="p" data-group-id="5397920987-16">{</span><span class="ss">&#39;PRIVATE&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="5397920987-16">}</span><span class="p" data-group-id="5397920987-15">}</span><span class="p">,</span><span class="p" data-group-id="5397920987-17">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">implicit</span><span class="p" data-group-id="5397920987-17">}</span><span class="p" data-group-id="5397920987-3">]</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p> If the maximum depth is reached, it cannot be read in the resultant output. Also, the <code class="inline">,...</code> form in a tuple denotes that there are more elements in the tuple but these are below the print depth.</p>
+<p>  <code class="inline">P</code>   *  Writes data in the same way as <code class="inline">~p</code>, but takes an extra argument that is the maximum depth to which terms are printed. Anything below this depth is replaced with <code class="inline">...</code>, for example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">9</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="2654936117-1">(</span><span class="s">&quot;</span><span class="si">~62P</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2654936117-2">[</span><span class="n">T</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="2654936117-2">]</span><span class="p" data-group-id="2654936117-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="2654936117-3">[</span><span class="p" data-group-id="2654936117-4">{</span><span class="ss">attributes</span><span class="p">,</span><span class="p" data-group-id="2654936117-5">[</span><span class="p" data-group-id="2654936117-6">[</span><span class="p" data-group-id="2654936117-7">{</span><span class="ss">id</span><span class="p">,</span><span class="ss">age</span><span class="p">,</span><span class="mf">1.5</span><span class="p" data-group-id="2654936117-7">}</span><span class="p">,</span><span class="p" data-group-id="2654936117-8">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">explicit</span><span class="p" data-group-id="2654936117-8">}</span><span class="p">,</span><span class="p" data-group-id="2654936117-9">{</span><span class="ss">typename</span><span class="p">,</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="2654936117-9">}</span><span class="p" data-group-id="2654936117-6">]</span><span class="p">,</span><span class="w">
+              </span><span class="p" data-group-id="2654936117-10">[</span><span class="p" data-group-id="2654936117-11">{</span><span class="ss">id</span><span class="p">,</span><span class="ss">cho</span><span class="p" data-group-id="2654936117-11">}</span><span class="p">,</span><span class="p" data-group-id="2654936117-12">{</span><span class="ss">mode</span><span class="p">,</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="2654936117-12">}</span><span class="p">,</span><span class="p" data-group-id="2654936117-13">{</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="2654936117-13">}</span><span class="p" data-group-id="2654936117-10">]</span><span class="p" data-group-id="2654936117-5">]</span><span class="p" data-group-id="2654936117-4">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="2654936117-14">{</span><span class="ss">typename</span><span class="p">,</span><span class="ss">&#39;Person&#39;</span><span class="p" data-group-id="2654936117-14">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="2654936117-15">{</span><span class="ss">tag</span><span class="p">,</span><span class="p" data-group-id="2654936117-16">{</span><span class="ss">&#39;PRIVATE&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="2654936117-16">}</span><span class="p" data-group-id="2654936117-15">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="2654936117-17">{</span><span class="ss">mode</span><span class="p">,</span><span class="ss">implicit</span><span class="p" data-group-id="2654936117-17">}</span><span class="p" data-group-id="2654936117-3">]</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p>  <code class="inline">B</code>   *  Writes an integer in base 2-36, the default base is 10. A leading dash is printed for negative integers.</p>
+<p> The precision field selects base, for example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="2993582072-1">(</span><span class="s">&quot;</span><span class="si">~.16B</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2993582072-2">[</span><span class="mi">31</span><span class="p" data-group-id="2993582072-2">]</span><span class="p" data-group-id="2993582072-1">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">1</span><span class="n">F</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="2993582072-3">(</span><span class="s">&quot;</span><span class="si">~.2B</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2993582072-4">[</span><span class="o">-</span><span class="mi">19</span><span class="p" data-group-id="2993582072-4">]</span><span class="p" data-group-id="2993582072-3">)</span><span class="p">.</span><span class="w">
+</span><span class="o">-</span><span class="mi">10011</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="2993582072-5">(</span><span class="s">&quot;</span><span class="si">~.36B</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2993582072-6">[</span><span class="mi">5</span><span class="o">*</span><span class="mi">36</span><span class="o">+</span><span class="mi">35</span><span class="p" data-group-id="2993582072-6">]</span><span class="p" data-group-id="2993582072-5">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">5</span><span class="n">Z</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p>  <code class="inline">X</code>   *  Like <code class="inline">B</code>, but takes an extra argument that is a prefix to insert before the number, but after the leading dash, if any.</p>
+<p> The prefix can be a possibly deep list of characters or an atom. Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="4833838380-1">(</span><span class="s">&quot;</span><span class="si">~X</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4833838380-2">[</span><span class="mi">31</span><span class="p">,</span><span class="s">&quot;10#&quot;</span><span class="p" data-group-id="4833838380-2">]</span><span class="p" data-group-id="4833838380-1">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">10#31</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="4833838380-3">(</span><span class="s">&quot;</span><span class="si">~.16X</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4833838380-4">[</span><span class="o">-</span><span class="mi">31</span><span class="p">,</span><span class="s">&quot;0x&quot;</span><span class="p" data-group-id="4833838380-4">]</span><span class="p" data-group-id="4833838380-3">)</span><span class="p">.</span><span class="w">
+</span><span class="o">-</span><span class="mi">0</span><span class="ss">x1F</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p>  <code class="inline">#</code>   *  Like <code class="inline">B</code>, but prints the number with an Erlang style <code class="inline">#</code>-separated base prefix. Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="9611404379-1">(</span><span class="s">&quot;</span><span class="si">~.10#</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9611404379-2">[</span><span class="mi">31</span><span class="p" data-group-id="9611404379-2">]</span><span class="p" data-group-id="9611404379-1">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">10#31</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="9611404379-3">(</span><span class="s">&quot;</span><span class="si">~.16#</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9611404379-4">[</span><span class="o">-</span><span class="mi">31</span><span class="p" data-group-id="9611404379-4">]</span><span class="p" data-group-id="9611404379-3">)</span><span class="p">.</span><span class="w">
+</span><span class="o">-</span><span class="mi">16#1F</span><span class="w">
+</span><span class="ss">ok</span></code></pre>
+<p>  <code class="inline">b</code>   *  Like <code class="inline">B</code>, but prints lowercase letters.</p>
+<p>  <code class="inline">x</code>   *  Like <code class="inline">X</code>, but prints lowercase letters.</p>
+<p>  <code class="inline">+</code>   *  Like <code class="inline">#</code>, but prints lowercase letters.</p>
+<p>  <code class="inline">n</code>   *  Writes a new line.</p>
+<p>  <code class="inline">i</code>   *  Ignores the next term.</p>
+<p>   The function returns:</p>
+<p>  <code class="inline">ok</code>   *  The formatting succeeded.</p>
+<p>   If an error occurs, there is no output. Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="8547729892-1">(</span><span class="s">&quot;</span><span class="si">~s</span><span class="s"> </span><span class="si">~w</span><span class="s"> </span><span class="si">~i</span><span class="s"> </span><span class="si">~w</span><span class="s"> ~c </span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="8547729892-2">[</span><span class="ss">&#39;abc def&#39;</span><span class="p">,</span><span class="w"> </span><span class="ss">&#39;abc def&#39;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8547729892-3">{</span><span class="ss">foo</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8547729892-3">}</span><span class="p">,</span><span class="p" data-group-id="8547729892-4">{</span><span class="ss">foo</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8547729892-4">}</span><span class="p">,</span><span class="w"> </span><span class="mi">65</span><span class="p" data-group-id="8547729892-2">]</span><span class="p" data-group-id="8547729892-1">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">abc</span><span class="w"> </span><span class="ss">def</span><span class="w"> </span><span class="ss">&#39;abc def&#39;</span><span class="w">  </span><span class="p" data-group-id="8547729892-5">{</span><span class="ss">foo</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="8547729892-5">}</span><span class="w"> </span><span class="n">A</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fwrite</span><span class="p" data-group-id="8547729892-6">(</span><span class="s">&quot;</span><span class="si">~s</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8547729892-7">[</span><span class="mi">65</span><span class="p" data-group-id="8547729892-7">]</span><span class="p" data-group-id="8547729892-6">)</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="o">*</span><span class="w"> </span><span class="ss">exception</span><span class="w"> </span><span class="nc">error</span><span class="p">:</span><span class="w"> </span><span class="ss">bad</span><span class="w"> </span><span class="ss">argument</span><span class="w">
+     </span><span class="ss">in</span><span class="w"> </span><span class="ss">function</span><span class="w">  </span><span class="nc">io</span><span class="p">:</span><span class="ss">format</span><span class="o">/</span><span class="mi">3</span><span class="w">
+        </span><span class="ss">called</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">format</span><span class="p" data-group-id="8547729892-8">(</span><span class="o">&lt;</span><span class="mf">0.53</span><span class="p">.</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">~s</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;A&quot;</span><span class="p" data-group-id="8547729892-8">)</span></code></pre>
+<p> In this example, an attempt was made to output the single character 65 with the aid of the string formatting directive <code class="inline">&quot;~s&quot;</code>.</p>
+  </section>
+</section>
+<section class="detail" id="freadfread/23">
+  <div class="detail-header">
+    <a href="#freadfread/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">freadfread/23</h1>
+  </div>
+  <section class="docstring">
+<p> Reads characters from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>. Interprets the characters in accordance with <code class="inline">Format</code>. <code class="inline">Format</code> contains control sequences that directs the interpretation of the input.</p>
+<p> <code class="inline">Format</code> can contain the following:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">Whitespace</span><span class="w"> </span><span class="nf">characters</span><span class="w"> </span><span class="p" data-group-id="5180685058-1">(</span><span class="n">Space</span><span class="p">,</span><span class="w"> </span><span class="n">Tab</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Newline</span><span class="p" data-group-id="5180685058-1">)</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">cause</span><span class="w"> </span><span class="ss">input</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">read</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">next</span><span class="w"> </span><span class="ss">non</span><span class="o">-</span><span class="ss">whitespace</span><span class="w"> </span><span class="ss">character</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">Ordinary</span><span class="w"> </span><span class="ss">characters</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">must</span><span class="w"> </span><span class="ss">match</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">next</span><span class="w"> </span><span class="ss">input</span><span class="w"> </span><span class="ss">character</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">Control</span><span class="w"> </span><span class="ss">sequences</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">have</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">general</span><span class="w"> </span><span class="ss">format</span><span class="w"> </span><span class="err">`</span><span class="err">~</span><span class="o">*</span><span class="n">FMC</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="nc">where</span><span class="p">:</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">Character</span><span class="w"> </span><span class="err">`</span><span class="o">*</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">optional</span><span class="w"> </span><span class="ss">return</span><span class="w"> </span><span class="ss">suppression</span><span class="w"> </span><span class="ss">character</span><span class="p">.</span><span class="w"> </span><span class="n">It</span><span class="w"> </span><span class="ss">provides</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">method</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">specify</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">field</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">omitted</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="n">F</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="ss">field</span><span class="w"> </span><span class="ss">width</span><span class="err">`</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">input</span><span class="w"> </span><span class="ss">field</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="n">M</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">optional</span><span class="w"> </span><span class="ss">translation</span><span class="w"> </span><span class="nf">modifier</span><span class="w"> </span><span class="p" data-group-id="5180685058-2">(</span><span class="k">of</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="err">`</span><span class="ss">t</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">only</span><span class="w"> </span><span class="ss">supported</span><span class="p">,</span><span class="w"> </span><span class="ss">meaning</span><span class="w"> </span><span class="n">Unicode</span><span class="w"> </span><span class="ss">translation</span><span class="p" data-group-id="5180685058-2">)</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="n">C</span><span class="err">`</span><span class="w"> </span><span class="ss">determines</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">type</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">control</span><span class="w"> </span><span class="ss">sequence</span><span class="p">.</span></code></pre>
+<p>   Unless otherwise specified, leading whitespace is ignored for all control sequences. An input field cannot be more than one line wide.</p>
+<p> Available control sequences:</p>
+<p>  <code class="inline">~</code>   *  A single <code class="inline">~</code> is expected in the input.</p>
+<p>  <code class="inline">d</code>   *  A decimal integer is expected.</p>
+<p>  <code class="inline">u</code>   *  An unsigned integer in base 2-36 is expected. The field width parameter is used to specify base. Leading whitespace characters are not skipped.</p>
+<p>  <code class="inline">-</code>   *  An optional sign character is expected. A sign character <code class="inline">-</code> gives return value <code class="inline">-1</code>. Sign character <code class="inline">+</code> or none gives <code class="inline">1</code>. The field width parameter is ignored. Leading whitespace characters are not skipped.</p>
+<p>  <code class="inline">#</code>   *  An integer in base 2-36 with Erlang-style base prefix (for example, <code class="inline">&quot;16#ffff&quot;</code>) is expected.</p>
+<p>  <code class="inline">f</code>   *  A floating point number is expected. It must follow the Erlang floating point number syntax.</p>
+<p>  <code class="inline">s</code>   *  A string of non-whitespace characters is read. If a field width has been specified, this number of characters are read and all trailing whitespace characters are stripped. An Erlang string (list of characters) is returned.</p>
+<p> If Unicode translation is in effect (<code class="inline">~ts</code>), characters &gt; 255 are accepted, otherwise not. With the translation modifier, the returned list can as a consequence also contain integers &gt; 255:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fread</span><span class="p" data-group-id="6087025877-1">(</span><span class="s">&quot;Prompt&gt; &quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">~s</span><span class="s">&quot;</span><span class="p" data-group-id="6087025877-1">)</span><span class="p">.</span><span class="w">
+</span><span class="n">Prompt</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Characters</span><span class="w"> </span><span class="ss">beyond</span><span class="w"> </span><span class="ss">latin1</span><span class="w"> </span><span class="ss">range</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">printable</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">medium</span><span class="o">&gt;</span><span class="w">
+</span><span class="p" data-group-id="6087025877-2">{</span><span class="ss">error</span><span class="p">,</span><span class="p" data-group-id="6087025877-3">{</span><span class="ss">fread</span><span class="p">,</span><span class="ss">string</span><span class="p" data-group-id="6087025877-3">}</span><span class="p" data-group-id="6087025877-2">}</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fread</span><span class="p" data-group-id="6087025877-4">(</span><span class="s">&quot;Prompt&gt; &quot;</span><span class="p">,</span><span class="s">&quot;~ts&quot;</span><span class="p" data-group-id="6087025877-4">)</span><span class="p">.</span><span class="w">
+</span><span class="n">Prompt</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Characters</span><span class="w"> </span><span class="ss">beyond</span><span class="w"> </span><span class="ss">latin1</span><span class="w"> </span><span class="ss">range</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">printable</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">medium</span><span class="o">&gt;</span><span class="w">
+</span><span class="p" data-group-id="6087025877-5">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="6087025877-6">[</span><span class="p" data-group-id="6087025877-7">[</span><span class="mi">1091</span><span class="p">,</span><span class="mi">1085</span><span class="p">,</span><span class="mi">1080</span><span class="p">,</span><span class="mi">1094</span><span class="p">,</span><span class="mi">1086</span><span class="p">,</span><span class="mi">1076</span><span class="p">,</span><span class="mi">1077</span><span class="p" data-group-id="6087025877-7">]</span><span class="p" data-group-id="6087025877-6">]</span><span class="p" data-group-id="6087025877-5">}</span></code></pre>
+<p>  <code class="inline">a</code>   *  Similar to <code class="inline">s</code>, but the resulting string is converted into an atom.</p>
+<p>  <code class="inline">c</code>   *  The number of characters equal to the field width are read (default is 1) and returned as an Erlang string. However, leading and trailing whitespace characters are not omitted as they are with <code class="inline">s</code>. All characters are returned.</p>
+<p> The Unicode translation modifier works as with <code class="inline">s</code>: </p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fread</span><span class="p" data-group-id="9368106785-1">(</span><span class="s">&quot;Prompt&gt; &quot;</span><span class="p">,</span><span class="s">&quot;~c&quot;</span><span class="p" data-group-id="9368106785-1">)</span><span class="p">.</span><span class="w">
+</span><span class="n">Prompt</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Character</span><span class="w"> </span><span class="ss">beyond</span><span class="w"> </span><span class="ss">latin1</span><span class="w"> </span><span class="ss">range</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">printable</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">medium</span><span class="o">&gt;</span><span class="w">
+</span><span class="p" data-group-id="9368106785-2">{</span><span class="ss">error</span><span class="p">,</span><span class="p" data-group-id="9368106785-3">{</span><span class="ss">fread</span><span class="p">,</span><span class="ss">string</span><span class="p" data-group-id="9368106785-3">}</span><span class="p" data-group-id="9368106785-2">}</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fread</span><span class="p" data-group-id="9368106785-4">(</span><span class="s">&quot;Prompt&gt; &quot;</span><span class="p">,</span><span class="s">&quot;~tc&quot;</span><span class="p" data-group-id="9368106785-4">)</span><span class="p">.</span><span class="w">
+</span><span class="n">Prompt</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Character</span><span class="w"> </span><span class="ss">beyond</span><span class="w"> </span><span class="ss">latin1</span><span class="w"> </span><span class="ss">range</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">printable</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">medium</span><span class="o">&gt;</span><span class="w">
+</span><span class="p" data-group-id="9368106785-5">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="9368106785-6">[</span><span class="p" data-group-id="9368106785-7">[</span><span class="mi">1091</span><span class="p" data-group-id="9368106785-7">]</span><span class="p" data-group-id="9368106785-6">]</span><span class="p" data-group-id="9368106785-5">}</span></code></pre>
+<p>  <code class="inline">l</code>   *  Returns the number of characters that have been scanned up to that point, including whitespace characters.</p>
+<p>   The function returns:</p>
+<p>  <code class="inline">{ok, ``Terms``}</code>   *  The read was successful and <code class="inline">Terms</code> is the list of successfully matched and read items.</p>
+<p>  <code class="inline">eof</code>   *  End of file was encountered.</p>
+<p>  <code class="inline">{error, ``FreadError``}</code>   *  The reading failed and <code class="inline">FreadError</code> gives a hint about the error.</p>
+<p>  <code class="inline">{error, ``ErrorDescription``}</code>   *  The read operation failed and parameter <code class="inline">ErrorDescription</code> gives a hint about the error.</p>
+<pre><code class="nohighlight makeup erlang"><span class="w"> </span><span class="n">Examples</span><span class="p">:</span></code></pre>
+<pre><code class="nohighlight makeup erlang"><span class="mi">20</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fread</span><span class="p" data-group-id="0640525220-1">(</span><span class="ss">&#39;enter&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~f~f~f&quot;</span><span class="p" data-group-id="0640525220-1">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">enter</span><span class="o">&gt;</span><span class="mf">1.9</span><span class="w"> </span><span class="mf">35.5e3</span><span class="w"> </span><span class="mf">15.0</span><span class="w">
+</span><span class="p" data-group-id="0640525220-2">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="0640525220-3">[</span><span class="mf">1.9</span><span class="p">,</span><span class="mf">3.55e4</span><span class="p">,</span><span class="mf">15.0</span><span class="p" data-group-id="0640525220-3">]</span><span class="p" data-group-id="0640525220-2">}</span><span class="w">
+</span><span class="mi">21</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fread</span><span class="p" data-group-id="0640525220-4">(</span><span class="ss">&#39;enter&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~10f~d&quot;</span><span class="p" data-group-id="0640525220-4">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">enter</span><span class="o">&gt;</span><span class="w">     </span><span class="mf">5.67899</span><span class="w">
+</span><span class="p" data-group-id="0640525220-5">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="0640525220-6">[</span><span class="mf">5.678</span><span class="p">,</span><span class="mi">99</span><span class="p" data-group-id="0640525220-6">]</span><span class="p" data-group-id="0640525220-5">}</span><span class="w">
+</span><span class="mi">22</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">fread</span><span class="p" data-group-id="0640525220-7">(</span><span class="ss">&#39;enter&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;:</span><span class="si">~10s</span><span class="s">:~10c:&quot;</span><span class="p" data-group-id="0640525220-7">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">enter</span><span class="o">&gt;</span><span class="p">:</span><span class="w">   </span><span class="ss">alan</span><span class="w">   </span><span class="p">:</span><span class="w">   </span><span class="ss">joe</span><span class="w">    </span><span class="p">:</span><span class="w">
+</span><span class="p" data-group-id="0640525220-8">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0640525220-9">[</span><span class="s">&quot;alan&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;   joe    &quot;</span><span class="p" data-group-id="0640525220-9">]</span><span class="p" data-group-id="0640525220-8">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_charsget_chars/23">
+  <div class="detail-header">
+    <a href="#get_charsget_chars/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_charsget_chars/23</h1>
+  </div>
+  <section class="docstring">
+<p> Reads <code class="inline">Count</code> characters from standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>.</p>
+<p> The function returns:</p>
+<p>  <code class="inline">Data</code>   *  The input characters. If the I/O device supports Unicode, the data can represent codepoints &gt; 255 (the <code class="inline">latin1</code> range). If the I/O server is set to deliver binaries, they are encoded in UTF-8 (regardless of whether the I/O device supports Unicode).</p>
+<p>  <code class="inline">eof</code>   *  End of file was encountered.</p>
+<p>  <code class="inline">{error, ``ErrorDescription``}</code>   *  Other (rare) error condition, such as <code class="inline">{error, estale}</code> if reading from an NFS file system.</p>
+  </section>
+</section>
+<section class="detail" id="get_lineget_line/12">
+  <div class="detail-header">
+    <a href="#get_lineget_line/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_lineget_line/12</h1>
+  </div>
+  <section class="docstring">
+<p> Reads a line from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>.</p>
+<p> The function returns:</p>
+<p>  <code class="inline">Data</code>   *  The characters in the line terminated by a line feed (or end of file). If the I/O device supports Unicode, the data can represent codepoints &gt; 255 (the <code class="inline">latin1</code> range). If the I/O server is set to deliver binaries, they are encoded in UTF-8 (regardless of if the I/O device supports Unicode).</p>
+<p>  <code class="inline">eof</code>   *  End of file was encountered.</p>
+<p>  <code class="inline">{error, ``ErrorDescription``}</code>   *  Other (rare) error condition, such as <code class="inline">{error, estale}</code> if reading from an NFS file system.</p>
+  </section>
+</section>
+<section class="detail" id="getoptsgetopts/1">
+  <div class="detail-header">
+    <a href="#getoptsgetopts/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">getoptsgetopts/1</h1>
+  </div>
+  <section class="docstring">
+<p> Requests all available options and their current values for a specific I/O device, for example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="2556460899-1">{</span><span class="ss">ok</span><span class="p">,</span><span class="n">F</span><span class="p" data-group-id="2556460899-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">file</span><span class="p">:</span><span class="nf">open</span><span class="p" data-group-id="2556460899-2">(</span><span class="s">&quot;/dev/null&quot;</span><span class="p">,</span><span class="p" data-group-id="2556460899-3">[</span><span class="ss">read</span><span class="p" data-group-id="2556460899-3">]</span><span class="p" data-group-id="2556460899-2">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="2556460899-4">{</span><span class="ss">ok</span><span class="p">,</span><span class="o">&lt;</span><span class="mf">0.42</span><span class="p">.</span><span class="mi">0</span><span class="o">&gt;</span><span class="p" data-group-id="2556460899-4">}</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">getopts</span><span class="p" data-group-id="2556460899-5">(</span><span class="n">F</span><span class="p" data-group-id="2556460899-5">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="2556460899-6">[</span><span class="p" data-group-id="2556460899-7">{</span><span class="ss">binary</span><span class="p">,</span><span class="ss">false</span><span class="p" data-group-id="2556460899-7">}</span><span class="p">,</span><span class="p" data-group-id="2556460899-8">{</span><span class="ss">encoding</span><span class="p">,</span><span class="ss">latin1</span><span class="p" data-group-id="2556460899-8">}</span><span class="p" data-group-id="2556460899-6">]</span></code></pre>
+<p> Here the file I/O server returns all available options for a file, which are the expected ones, <code class="inline">encoding</code> and <code class="inline">binary</code>. However, the standard shell has some more options:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">getopts</span><span class="p" data-group-id="1867078221-1">(</span><span class="p" data-group-id="1867078221-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="1867078221-2">[</span><span class="p" data-group-id="1867078221-3">{</span><span class="ss">expand_fun</span><span class="p">,</span><span class="p">#</span><span class="n">Fun</span><span class="o">&lt;</span><span class="ss">group</span><span class="p">.</span><span class="mf">0.120017273</span><span class="o">&gt;</span><span class="p" data-group-id="1867078221-3">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="1867078221-4">{</span><span class="ss">echo</span><span class="p">,</span><span class="ss">true</span><span class="p" data-group-id="1867078221-4">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="1867078221-5">{</span><span class="ss">binary</span><span class="p">,</span><span class="ss">false</span><span class="p" data-group-id="1867078221-5">}</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="1867078221-6">{</span><span class="ss">encoding</span><span class="p">,</span><span class="ss">unicode</span><span class="p" data-group-id="1867078221-6">}</span><span class="p" data-group-id="1867078221-2">]</span></code></pre>
+<p> This example is, as can be seen, run in an environment where the terminal supports Unicode input and output.</p>
+  </section>
+</section>
+<section class="detail" id="nlnl/1">
+  <div class="detail-header">
+    <a href="#nlnl/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">nlnl/1</h1>
+  </div>
+  <section class="docstring">
+<p> Writes new line to the standard output (<code class="inline">IoDevice</code>).</p>
+  </section>
+</section>
+<section class="detail" id="parse_erl_exprsparse_erl_exprsparse_erl_exprsparse_erl_exprs/1234">
+  <div class="detail-header">
+    <a href="#parse_erl_exprsparse_erl_exprsparse_erl_exprsparse_erl_exprs/1234" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_erl_exprsparse_erl_exprsparse_erl_exprsparse_erl_exprs/1234</h1>
+  </div>
+  <section class="docstring">
+<p> Reads data from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>. Starts reading at location <code class="inline">StartLocation</code> (<code class="inline">1</code>). Argument <code class="inline">Options</code> is passed on as argument <code class="inline">Options</code> of function  <code class="inline">erl_scan:tokens/4</code>. The data is tokenized and parsed as if it was a sequence of Erlang expressions until a final dot (<code class="inline">.</code>) is reached.</p>
+<p> The function returns:</p>
+<p>  <code class="inline">{ok, ExprList, EndLocation}</code>   *  The parsing was successful.</p>
+<p>  <code class="inline">{eof, EndLocation}</code>   *  End of file was encountered by the tokenizer.</p>
+<p>  <code class="inline">eof</code>   *  End of file was encountered by the I/O server.</p>
+<p>  <code class="inline">{error, ErrorInfo, ErrorLocation}</code>   *  An error occurred while tokenizing or parsing.</p>
+<p>  <code class="inline">{error, ``ErrorDescription``}</code>   *  Other (rare) error condition, such as <code class="inline">{error, estale}</code> if reading from an NFS file system.</p>
+<p>   Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">25</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">parse_erl_exprs</span><span class="p" data-group-id="4499112119-1">(</span><span class="ss">&#39;enter&gt;&#39;</span><span class="p" data-group-id="4499112119-1">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">enter</span><span class="o">&gt;</span><span class="nf">abc</span><span class="p" data-group-id="4499112119-2">(</span><span class="p" data-group-id="4499112119-2">)</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hey&quot;</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="4499112119-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4499112119-4">[</span><span class="p" data-group-id="4499112119-5">{</span><span class="ss">call</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="p" data-group-id="4499112119-6">{</span><span class="ss">atom</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="ss">abc</span><span class="p" data-group-id="4499112119-6">}</span><span class="p">,</span><span class="p" data-group-id="4499112119-7">[</span><span class="p" data-group-id="4499112119-7">]</span><span class="p" data-group-id="4499112119-5">}</span><span class="p">,</span><span class="p" data-group-id="4499112119-8">{</span><span class="ss">string</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;hey&quot;</span><span class="p" data-group-id="4499112119-8">}</span><span class="p" data-group-id="4499112119-4">]</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="4499112119-3">}</span><span class="w">
+</span><span class="mi">26</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">parse_erl_exprs</span><span class="w"> </span><span class="p" data-group-id="4499112119-9">(</span><span class="ss">&#39;enter&gt;&#39;</span><span class="p" data-group-id="4499112119-9">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">enter</span><span class="o">&gt;</span><span class="nf">abc</span><span class="p" data-group-id="4499112119-10">(</span><span class="s">&quot;hey&quot;</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="4499112119-11">{</span><span class="ss">error</span><span class="p">,</span><span class="p" data-group-id="4499112119-12">{</span><span class="mi">1</span><span class="p">,</span><span class="ss">erl_parse</span><span class="p">,</span><span class="p" data-group-id="4499112119-13">[</span><span class="s">&quot;syntax error before: &quot;</span><span class="p">,</span><span class="p" data-group-id="4499112119-14">[</span><span class="s">&quot;&#39;.&#39;&quot;</span><span class="p" data-group-id="4499112119-14">]</span><span class="p" data-group-id="4499112119-13">]</span><span class="p" data-group-id="4499112119-12">}</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="4499112119-11">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="parse_erl_formparse_erl_formparse_erl_formparse_erl_form/1234">
+  <div class="detail-header">
+    <a href="#parse_erl_formparse_erl_formparse_erl_formparse_erl_form/1234" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_erl_formparse_erl_formparse_erl_formparse_erl_form/1234</h1>
+  </div>
+  <section class="docstring">
+<p> Reads data from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>. Starts reading at location <code class="inline">StartLocation</code> (<code class="inline">1</code>). Argument <code class="inline">Options</code> is passed on as argument <code class="inline">Options</code> of function  <code class="inline">erl_scan:tokens/4</code>. The data is tokenized and parsed as if it was an Erlang form (one of the valid Erlang expressions in an Erlang source file) until a final dot (<code class="inline">.</code>) is reached.</p>
+<p> The function returns:</p>
+<p>  <code class="inline">{ok, AbsForm, EndLocation}</code>   *  The parsing was successful.</p>
+<p>  <code class="inline">{eof, EndLocation}</code>   *  End of file was encountered by the tokenizer.</p>
+<p>  <code class="inline">eof</code>   *  End of file was encountered by the I/O server.</p>
+<p>  <code class="inline">{error, ErrorInfo, ErrorLocation}</code>   *  An error occurred while tokenizing or parsing.</p>
+<p>  <code class="inline">{error, ``ErrorDescription``}</code>   *  Other (rare) error condition, such as <code class="inline">{error, estale}</code> if reading from an NFS file system.</p>
+  </section>
+</section>
+<section class="detail" id="printable_range/0">
+  <div class="detail-header">
+    <a href="#printable_range/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">printable_range/0</h1>
+      <div class="specs">
+          <pre>printable_range() :: :unicode | :latin1</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the user-requested range of printable Unicode characters.</p>
+<p> The user can request a range of characters that are to be considered printable in heuristic detection of strings by the shell and by the formatting functions. This is done by supplying <code class="inline">+pc &lt;range&gt;</code> when starting Erlang.</p>
+<p> The only valid values for <code class="inline">&lt;range&gt;</code> are <code class="inline">latin1</code> and <code class="inline">unicode</code>. <code class="inline">latin1</code> means that only code points &lt; 256 (except control characters, and so on) are considered printable. <code class="inline">unicode</code> means that all printable characters in all Unicode character ranges are considered printable by the I/O functions.</p>
+<p> By default, Erlang is started so that only the <code class="inline">latin1</code> range of characters indicate that a list of integers is a string.</p>
+<p> The simplest way to use the setting is to call  <code class="inline">io_lib:printable_list/1</code>, which uses the return value of this function to decide if a list is a string of printable characters.</p>
+<p>  In a future release, this function may return more values and ranges. To avoid compatibility problems, it is recommended to use function  <code class="inline">io_lib:printable_list/1</code>.</p>
+  </section>
+</section>
+<section class="detail" id="put_charsput_chars/12">
+  <div class="detail-header">
+    <a href="#put_charsput_chars/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">put_charsput_chars/12</h1>
+  </div>
+  <section class="docstring">
+<p> Writes the characters of <code class="inline">CharData</code> to the I/O server (<code class="inline">IoDevice</code>).</p>
+  </section>
+</section>
+<section class="detail" id="readread/12">
+  <div class="detail-header">
+    <a href="#readread/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">readread/12</h1>
+  </div>
+  <section class="docstring">
+<p> Reads a term <code class="inline">Term</code> from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>.</p>
+<p> The function returns:</p>
+<p>  <code class="inline">{ok, ``Term``}</code>   *  The parsing was successful.</p>
+<p>  <code class="inline">eof</code>   *  End of file was encountered.</p>
+<p>  <code class="inline">{error, ``ErrorInfo``}</code>   *  The parsing failed.</p>
+<p>  <code class="inline">{error, ``ErrorDescription``}</code>   *  Other (rare) error condition, such as <code class="inline">{error, estale}</code> if reading from an NFS file system.</p>
+  </section>
+</section>
+<section class="detail" id="readread/34">
+  <div class="detail-header">
+    <a href="#readread/34" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">readread/34</h1>
+  </div>
+  <section class="docstring">
+<p> Reads a term <code class="inline">Term</code> from <code class="inline">IoDevice</code>, prompting it with <code class="inline">Prompt</code>. Reading starts at location <code class="inline">StartLocation</code>. Argument <code class="inline">Options</code> is passed on as argument <code class="inline">Options</code> of function  <code class="inline">erl_scan:tokens/4</code>.</p>
+<p> The function returns:</p>
+<p>  <code class="inline">{ok, Term, ``EndLocation``}</code>   *  The parsing was successful.</p>
+<p>  <code class="inline">{eof, ``EndLocation``}</code>   *  End of file was encountered.</p>
+<p>  <code class="inline">{error, ``ErrorInfo``, ``ErrorLocation``}</code>   *  The parsing failed.</p>
+<p>  <code class="inline">{error, ``ErrorDescription``}</code>   *  Other (rare) error condition, such as <code class="inline">{error, estale}</code> if reading from an NFS file system.</p>
+  </section>
+</section>
+<section class="detail" id="rowsrows/1">
+  <div class="detail-header">
+    <a href="#rowsrows/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">rowsrows/1</h1>
+  </div>
+  <section class="docstring">
+<p> Retrieves the number of rows of <code class="inline">IoDevice</code> (that is, the height of a terminal). The function only succeeds for terminal devices, for all other I/O devices the function returns <code class="inline">{error, enotsup}</code>.</p>
+  </section>
+</section>
+<section class="detail" id="scan_erl_exprsscan_erl_exprsscan_erl_exprsscan_erl_exprs/1234">
+  <div class="detail-header">
+    <a href="#scan_erl_exprsscan_erl_exprsscan_erl_exprsscan_erl_exprs/1234" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">scan_erl_exprsscan_erl_exprsscan_erl_exprsscan_erl_exprs/1234</h1>
+  </div>
+  <section class="docstring">
+<p> Reads data from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>. Reading starts at location <code class="inline">StartLocation</code> (<code class="inline">1</code>). Argument <code class="inline">Options</code> is passed on as argument <code class="inline">Options</code> of function  <code class="inline">erl_scan:tokens/4</code>. The data is tokenized as if it were a sequence of Erlang expressions until a final dot (<code class="inline">.</code>) is reached. This token is also returned.</p>
+<p> The function returns:</p>
+<p>  <code class="inline">{ok, Tokens, EndLocation}</code>   *  The tokenization succeeded.</p>
+<p>  <code class="inline">{eof, EndLocation}</code>   *  End of file was encountered by the tokenizer.</p>
+<p>  <code class="inline">eof</code>   *  End of file was encountered by the I/O server.</p>
+<p>  <code class="inline">{error, ErrorInfo, ErrorLocation}</code>   *  An error occurred while tokenizing.</p>
+<p>  <code class="inline">{error, ``ErrorDescription``}</code>   *  Other (rare) error condition, such as <code class="inline">{error, estale}</code> if reading from an NFS file system.</p>
+<p>   Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">23</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">scan_erl_exprs</span><span class="p" data-group-id="9179831123-1">(</span><span class="ss">&#39;enter&gt;&#39;</span><span class="p" data-group-id="9179831123-1">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">enter</span><span class="o">&gt;</span><span class="nf">abc</span><span class="p" data-group-id="9179831123-2">(</span><span class="p" data-group-id="9179831123-2">)</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hey&quot;</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="9179831123-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="9179831123-4">[</span><span class="p" data-group-id="9179831123-5">{</span><span class="ss">atom</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="ss">abc</span><span class="p" data-group-id="9179831123-5">}</span><span class="p">,</span><span class="p" data-group-id="9179831123-6">{</span><span class="ss">&#39;(&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="9179831123-6">}</span><span class="p">,</span><span class="p" data-group-id="9179831123-7">{</span><span class="ss">&#39;)&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="9179831123-7">}</span><span class="p">,</span><span class="p" data-group-id="9179831123-8">{</span><span class="ss">&#39;,&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="9179831123-8">}</span><span class="p">,</span><span class="p" data-group-id="9179831123-9">{</span><span class="ss">string</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;hey&quot;</span><span class="p" data-group-id="9179831123-9">}</span><span class="p">,</span><span class="p" data-group-id="9179831123-10">{</span><span class="ss">dot</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="9179831123-10">}</span><span class="p" data-group-id="9179831123-4">]</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="9179831123-3">}</span><span class="w">
+</span><span class="mi">24</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">scan_erl_exprs</span><span class="p" data-group-id="9179831123-11">(</span><span class="ss">&#39;enter&gt;&#39;</span><span class="p" data-group-id="9179831123-11">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">enter</span><span class="o">&gt;</span><span class="mf">1.0</span><span class="ss">er</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="9179831123-12">{</span><span class="ss">error</span><span class="p">,</span><span class="p" data-group-id="9179831123-13">{</span><span class="mi">1</span><span class="p">,</span><span class="ss">erl_scan</span><span class="p">,</span><span class="p" data-group-id="9179831123-14">{</span><span class="ss">illegal</span><span class="p">,</span><span class="nb">float</span><span class="p" data-group-id="9179831123-14">}</span><span class="p" data-group-id="9179831123-13">}</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="9179831123-12">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="scan_erl_formscan_erl_formscan_erl_formscan_erl_form/1234">
+  <div class="detail-header">
+    <a href="#scan_erl_formscan_erl_formscan_erl_formscan_erl_form/1234" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">scan_erl_formscan_erl_formscan_erl_formscan_erl_form/1234</h1>
+  </div>
+  <section class="docstring">
+<p> Reads data from the standard input (<code class="inline">IoDevice</code>), prompting it with <code class="inline">Prompt</code>. Starts reading at location <code class="inline">StartLocation</code> (<code class="inline">1</code>). Argument <code class="inline">Options</code> is passed on as argument <code class="inline">Options</code> of function  <code class="inline">erl_scan:tokens/4</code>. The data is tokenized as if it was an Erlang form (one of the valid Erlang expressions in an Erlang source file) until a final dot (<code class="inline">.</code>) is reached. This last token is also returned.</p>
+<p> The return values are the same as for  <code class="inline">scan_erl_exprs/1,2,3,4</code>.</p>
+  </section>
+</section>
+<section class="detail" id="setoptssetopts/12">
+  <div class="detail-header">
+    <a href="#setoptssetopts/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">setoptssetopts/12</h1>
+  </div>
+  <section class="docstring">
+<p> Set options for the standard I/O device (<code class="inline">IoDevice</code>).</p>
+<p> Possible options and values vary depending on the I/O device. For a list of supported options and their current values on a specific I/O device, use function <code class="inline">getopts/1</code>.</p>
+<p> The options and values supported by the OTP I/O devices are as follows:</p>
+<p>  <code class="inline">binary</code>, <code class="inline">list</code>, or <code class="inline">{binary, boolean()}</code>   *  If set in binary mode (<code class="inline">binary</code> or <code class="inline">{binary, true}</code>), the I/O server sends binary data (encoded in UTF-8) as answers to the <code class="inline">get_line</code>, <code class="inline">get_chars</code>, and, if possible, <code class="inline">get_until</code> requests (for details, see section The Erlang I/O Protocol) in the User&#39;s Guide). The immediate effect is that <code class="inline">get_chars/2,3</code> and <code class="inline">get_line/1,2</code> return UTF-8 binaries instead of lists of characters for the affected I/O device.</p>
+<p> By default, all I/O devices in OTP are set in <code class="inline">list</code> mode. However, the I/O functions can handle any of these modes and so should other, user-written, modules behaving as clients to I/O servers.</p>
+<p> This option is supported by the standard shell (<code class="inline">group.erl</code>), the &#39;oldshell&#39; (<code class="inline">user.erl</code>), and the file I/O servers.</p>
+<p>  <code class="inline">{echo, boolean()}</code>   *  Denotes if the terminal is to echo input. Only supported for the standard shell I/O server (<code class="inline">group.erl</code>)</p>
+<p>  <code class="inline">{expand_fun, expand_fun()}</code>   *  Provides a function for tab-completion (expansion) like the Erlang shell. This function is called when the user presses the Tab key. The expansion is active when calling line-reading functions, such as <code class="inline">get_line/1,2</code>.</p>
+<p> The function is called with the current line, up to the cursor, as a reversed string. It is to return a three-tuple: <code class="inline">{yes|no, string(), [string(), ...]}</code>. The first element gives a beep if <code class="inline">no</code>, otherwise the expansion is silent; the second is a string that will be entered at the cursor position; the third is a list of possible expansions. If this list is not empty, it is printed and the current input line is written once again.</p>
+<p> Trivial example (beep on anything except empty line, which is expanded to <code class="inline">&quot;quit&quot;</code>):</p>
+<pre><code class="nohighlight makeup erlang"><span class="nf">fun</span><span class="p" data-group-id="3487687694-1">(</span><span class="s">&quot;&quot;</span><span class="p" data-group-id="3487687694-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="p" data-group-id="3487687694-2">{</span><span class="ss">yes</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;quit&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3487687694-3">[</span><span class="p" data-group-id="3487687694-3">]</span><span class="p" data-group-id="3487687694-2">}</span><span class="p">;</span><span class="w">
+   </span><span class="p" data-group-id="3487687694-4">(</span><span class="p">_</span><span class="p" data-group-id="3487687694-4">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="p" data-group-id="3487687694-5">{</span><span class="ss">no</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3487687694-6">[</span><span class="s">&quot;quit&quot;</span><span class="p" data-group-id="3487687694-6">]</span><span class="p" data-group-id="3487687694-5">}</span><span class="w"> </span><span class="k">end</span></code></pre>
+<p> This option is only supported by the standard shell (<code class="inline">group.erl</code>).</p>
+<p>  <code class="inline">{encoding, latin1 | unicode}</code>   *  Specifies how characters are input or output from or to the I/O device, implying that, for example, a terminal is set to handle Unicode input and output or a file is set to handle UTF-8 data encoding.</p>
+<p> The option does not affect how data is returned from the I/O functions or how it is sent in the I/O protocol, it only affects how the I/O device is to handle Unicode characters to the &quot;physical&quot; device.</p>
+<p> The standard shell is set for <code class="inline">unicode</code> or <code class="inline">latin1</code> encoding when the system is started. The encoding is set with the help of the <code class="inline">LANG</code> or <code class="inline">LC_CTYPE</code> environment variables on Unix-like system or by other means on other systems. So, the user can input Unicode characters and the I/O device is in <code class="inline">{encoding, unicode}</code> mode if the I/O device supports it. The mode can be changed, if the assumption of the runtime system is wrong, by setting this option.</p>
+<p> The I/O device used when Erlang is started with the &quot;-oldshell&quot; or &quot;-noshell&quot; flags is by default set to <code class="inline">latin1</code> encoding, meaning that any characters &gt; codepoint 255 are escaped and that input is expected to be plain 8-bit ISO Latin-1. If the encoding is changed to Unicode, input and output from the standard file descriptors are in UTF-8 (regardless of operating system).</p>
+<p> Files can also be set in <code class="inline">{encoding, unicode}</code>, meaning that data is written and read as UTF-8. More encodings are possible for files, see below.</p>
+<p> <code class="inline">{encoding, unicode | latin1}</code> is supported by both the standard shell (<code class="inline">group.erl</code> including <code class="inline">werl</code> on Windows), the &#39;oldshell&#39; (<code class="inline">user.erl</code>), and the file I/O servers.</p>
+<p>  `{encoding, utf8 | utf16 | utf32 | {utf16,big} |</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">        </span><span class="p" data-group-id="9235102301-1">{</span><span class="ss">utf16</span><span class="p">,</span><span class="ss">little</span><span class="p" data-group-id="9235102301-1">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p" data-group-id="9235102301-2">{</span><span class="ss">utf32</span><span class="p">,</span><span class="ss">big</span><span class="p" data-group-id="9235102301-2">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p" data-group-id="9235102301-3">{</span><span class="ss">utf32</span><span class="p">,</span><span class="ss">little</span><span class="p" data-group-id="9235102301-3">}</span><span class="p">}</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w">  </span><span class="n">For</span><span class="w"> </span><span class="ss">disk</span><span class="w"> </span><span class="ss">files</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">encoding</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">set</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">various</span><span class="w"> </span><span class="n">UTF</span><span class="w"> </span><span class="ss">variants</span><span class="p">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="ss">has</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">effect</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">data</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">expected</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">read</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">specified</span><span class="w"> </span><span class="ss">encoding</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">file</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">data</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">written</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">specified</span><span class="w"> </span><span class="ss">encoding</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">disk</span><span class="w"> </span><span class="ss">file</span><span class="p">.</span></code></pre>
+<p> <code class="inline">{encoding, utf8}</code> has the same effect as <code class="inline">{encoding, unicode}</code> on files.</p>
+<p> The extended encodings are only supported on disk files (opened by function  <code class="inline">file:open/2</code>).</p>
+  </section>
+</section>
+<section class="detail" id="writewrite/12">
+  <div class="detail-header">
+    <a href="#writewrite/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">writewrite/12</h1>
+  </div>
+  <section class="docstring">
+<p> Writes term <code class="inline">Term</code> to the standard output (<code class="inline">IoDevice</code>).</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

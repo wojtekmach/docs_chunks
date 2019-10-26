@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>epp — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+epp      </h1>
+
+
+        <section id="moduledoc">
+<p> The Erlang code preprocessor includes functions that are used by the <code class="inline">compile</code> module to preprocess macros and include files before the parsing takes place.</p>
+<p> The Erlang source file encoding is selected by a comment in one of the first two lines of the source file. The first string matching the regular expression <code class="inline">coding\s*[:=]\s*([-a-zA-Z0-9])+</code> selects the encoding. If the matching string is not a valid encoding, it is ignored. The valid encodings are <code class="inline">Latin-1</code> and <code class="inline">UTF-8</code>, where the case of the characters can be chosen freely.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="c1">%% coding: utf-8</span></code></pre>
+<pre><code class="nohighlight makeup erlang"><span class="c1">%% For this file we have chosen encoding = Latin-1</span></code></pre>
+<pre><code class="nohighlight makeup erlang"><span class="c1">%% -*- coding: latin-1 -*-</span></code></pre>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#close/1">close/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Closes the preprocessing of a file.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#default_encoding/0">default_encoding/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the default encoding of Erlang source files.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encoding_to_string/1">encoding_to_string/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a string representation of an encoding. The string is recognized by <code class="inline">read_encoding/1,2</code>,  <code class="inline">read_encoding_from_binary/1,2</code>, and <a href="#set_encoding/1"><code class="inline">set_encoding/1,2</code></a> as a valid encoding.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#format_error/1">format_error/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Takes an <code class="inline">ErrorDescriptor</code> and returns a string that describes the error or warning. This function is usually called implicitly when processing an <code class="inline">ErrorInfo</code> structure (see section Error Information).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#open/1">open/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Opens a file for preprocessing.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#open/2">open/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Equivalent to <code class="inline">epp:open([{name, FileName}, {includes, IncludePath}])</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#open/3">open/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Equivalent to <code class="inline">epp:open([{name, FileName}, {includes, IncludePath}, {macros, PredefMacros}])</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_erl_form/1">parse_erl_form/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the next Erlang form from the opened Erlang source file. Tuple <code class="inline">{eof, ``Line``}</code> is returned at the end of the file. The first form corresponds to an implicit attribute <code class="inline">-file(File,1).</code>, where <a href="https://hexdocs.pm/elixir/File.html"><code class="inline">File</code></a> is the file name.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_file/2">parse_file/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Preprocesses and parses an Erlang source file. Notice that tuple <code class="inline">{eof, ``Line``}</code> returned at the end of the file is included as a &quot;form&quot;.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_file/3">parse_file/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Equivalent to <code class="inline">epp:parse_file(FileName, [{includes, IncludePath}, {macros, PredefMacros}])</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_encoding_from_binaryread_encoding_from_binary/12">read_encoding_from_binaryread_encoding_from_binary/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Read the encoding from a binary. Returns the read encoding, or <code class="inline">none</code> if no valid encoding is found.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_encodingread_encoding/12">read_encodingread_encoding/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Read the encoding from a file. Returns the read encoding, or <code class="inline">none</code> if no valid encoding is found.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_encoding/1">set_encoding/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Reads the encoding from an I/O device and sets the encoding of the device accordingly. The position of the I/O device referenced by <a href="https://hexdocs.pm/elixir/File.html"><code class="inline">File</code></a> is not affected. If no valid encoding can be read from the I/O device, the encoding of the I/O device is set to the default encoding.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_encoding/2">set_encoding/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Reads the encoding from an I/O device and sets the encoding of the device accordingly. The position of the I/O device referenced by <a href="https://hexdocs.pm/elixir/File.html"><code class="inline">File</code></a> is not affected. If no valid encoding can be read from the I/O device, the encoding of the I/O device is set to the encoding specified by <code class="inline">Default</code>.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="close/1">
+  <div class="detail-header">
+    <a href="#close/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">close/1</h1>
+      <div class="specs">
+          <pre>close(epp) :: :ok when epp: epp_handle()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Closes the preprocessing of a file.</p>
+  </section>
+</section>
+<section class="detail" id="default_encoding/0">
+  <div class="detail-header">
+    <a href="#default_encoding/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">default_encoding/0</h1>
+      <div class="specs">
+          <pre>default_encoding() :: source_encoding()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the default encoding of Erlang source files.</p>
+  </section>
+</section>
+<section class="detail" id="encoding_to_string/1">
+  <div class="detail-header">
+    <a href="#encoding_to_string/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">encoding_to_string/1</h1>
+      <div class="specs">
+          <pre>encoding_to_string(encoding) :: string() when encoding: source_encoding()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a string representation of an encoding. The string is recognized by <code class="inline">read_encoding/1,2</code>,  <code class="inline">read_encoding_from_binary/1,2</code>, and <a href="#set_encoding/1"><code class="inline">set_encoding/1,2</code></a> as a valid encoding.</p>
+  </section>
+</section>
+<section class="detail" id="format_error/1">
+  <div class="detail-header">
+    <a href="#format_error/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">format_error/1</h1>
+      <div class="specs">
+          <pre>format_error(errorDescriptor) :: <a href=":io_lib.html#t:chars/0">:io_lib.chars</a>() when errorDescriptor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Takes an <code class="inline">ErrorDescriptor</code> and returns a string that describes the error or warning. This function is usually called implicitly when processing an <code class="inline">ErrorInfo</code> structure (see section Error Information).</p>
+  </section>
+</section>
+<section class="detail" id="open/1">
+  <div class="detail-header">
+    <a href="#open/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">open/1</h1>
+      <div class="specs">
+          <pre>open(options) :: {:ok, epp} | {:ok, epp, extra} | {:error, errorDescriptor}
+when options: [
+       {:default_encoding, defEncoding :: source_encoding()}
+       | {:includes, includePath :: [directoryName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()]}
+       | {:source_name, sourceName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()}
+       | {:macros, predefMacros :: macros()}
+       | {:name, fileName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()}
+       | :extra
+     ],
+     epp: epp_handle(),
+     extra: [{:encoding, source_encoding() | :none}],
+     errorDescriptor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Opens a file for preprocessing.</p>
+<p> If you want to change the file name of the implicit -file() attributes inserted during preprocessing, you can do with <code class="inline">{source_name, ``SourceName``}</code>. If unset it will default to the name of the opened file.</p>
+<p> If <code class="inline">extra</code> is specified in <code class="inline">Options</code>, the return value is <code class="inline">{ok, ``Epp``, ``Extra``}</code> instead of <code class="inline">{ok, ``Epp``}</code>.</p>
+  </section>
+</section>
+<section class="detail" id="open/2">
+  <div class="detail-header">
+    <a href="#open/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">open/2</h1>
+      <div class="specs">
+          <pre>open(fileName, includePath) :: {:ok, epp} | {:error, errorDescriptor}
+when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>(),
+     includePath: [directoryName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()],
+     epp: epp_handle(),
+     errorDescriptor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Equivalent to <code class="inline">epp:open([{name, FileName}, {includes, IncludePath}])</code>.</p>
+  </section>
+</section>
+<section class="detail" id="open/3">
+  <div class="detail-header">
+    <a href="#open/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">open/3</h1>
+      <div class="specs">
+          <pre>open(fileName, includePath, predefMacros) ::
+  {:ok, epp} | {:error, errorDescriptor}
+when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>(),
+     includePath: [directoryName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()],
+     predefMacros: macros(),
+     epp: epp_handle(),
+     errorDescriptor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Equivalent to <code class="inline">epp:open([{name, FileName}, {includes, IncludePath}, {macros, PredefMacros}])</code>.</p>
+  </section>
+</section>
+<section class="detail" id="parse_erl_form/1">
+  <div class="detail-header">
+    <a href="#parse_erl_form/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_erl_form/1</h1>
+      <div class="specs">
+          <pre>parse_erl_form(epp) ::
+  {:ok, absForm} | {:error, errorInfo} | {:warning, warningInfo} | {:eof, line}
+when epp: epp_handle(),
+     absForm: <a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>(),
+     line: <a href=":erl_anno.html#t:line/0">:erl_anno.line</a>(),
+     errorInfo: <a href=":erl_scan.html#t:error_info/0">:erl_scan.error_info</a>() | <a href=":erl_parse.html#t:error_info/0">:erl_parse.error_info</a>(),
+     warningInfo: warning_info()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the next Erlang form from the opened Erlang source file. Tuple <code class="inline">{eof, ``Line``}</code> is returned at the end of the file. The first form corresponds to an implicit attribute <code class="inline">-file(File,1).</code>, where <a href="https://hexdocs.pm/elixir/File.html"><code class="inline">File</code></a> is the file name.</p>
+  </section>
+</section>
+<section class="detail" id="parse_file/2">
+  <div class="detail-header">
+    <a href="#parse_file/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_file/2</h1>
+      <div class="specs">
+          <pre>parse_file(fileName, options) ::
+  {:ok, [form]} | {:ok, [form], extra} | {:error, openError}
+when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>(),
+     options: [
+       {:includes, includePath :: [directoryName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()]}
+       | {:source_name, sourceName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()}
+       | {:macros, predefMacros :: macros()}
+       | {:default_encoding, defEncoding :: source_encoding()}
+       | :extra
+     ],
+     form: <a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>() | {:error, errorInfo} | {:eof, line},
+     line: <a href=":erl_anno.html#t:line/0">:erl_anno.line</a>(),
+     errorInfo: <a href=":erl_scan.html#t:error_info/0">:erl_scan.error_info</a>() | <a href=":erl_parse.html#t:error_info/0">:erl_parse.error_info</a>(),
+     extra: [{:encoding, source_encoding() | :none}],
+     openError: <a href="http://www.erlang.org/doc/man/file.html#type-posix">:file.posix</a>() | :badarg | :system_limit</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Preprocesses and parses an Erlang source file. Notice that tuple <code class="inline">{eof, ``Line``}</code> returned at the end of the file is included as a &quot;form&quot;.</p>
+<p> If you want to change the file name of the implicit -file() attributes inserted during preprocessing, you can do with <code class="inline">{source_name, ``SourceName``}</code>. If unset it will default to the name of the opened file.</p>
+<p> If <code class="inline">extra</code> is specified in <code class="inline">Options</code>, the return value is <code class="inline">{ok, [``Form``], ``Extra``}</code> instead of <code class="inline">{ok, [``Form``]}</code>.</p>
+  </section>
+</section>
+<section class="detail" id="parse_file/3">
+  <div class="detail-header">
+    <a href="#parse_file/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_file/3</h1>
+      <div class="specs">
+          <pre>parse_file(fileName, includePath, predefMacros) ::
+  {:ok, [form]} | {:error, openError}
+when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>(),
+     includePath: [directoryName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()],
+     form: <a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>() | {:error, errorInfo} | {:eof, line},
+     predefMacros: macros(),
+     line: <a href=":erl_anno.html#t:line/0">:erl_anno.line</a>(),
+     errorInfo: <a href=":erl_scan.html#t:error_info/0">:erl_scan.error_info</a>() | <a href=":erl_parse.html#t:error_info/0">:erl_parse.error_info</a>(),
+     openError: <a href="http://www.erlang.org/doc/man/file.html#type-posix">:file.posix</a>() | :badarg | :system_limit</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Equivalent to <code class="inline">epp:parse_file(FileName, [{includes, IncludePath}, {macros, PredefMacros}])</code>.</p>
+  </section>
+</section>
+<section class="detail" id="read_encoding_from_binaryread_encoding_from_binary/12">
+  <div class="detail-header">
+    <a href="#read_encoding_from_binaryread_encoding_from_binary/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_encoding_from_binaryread_encoding_from_binary/12</h1>
+  </div>
+  <section class="docstring">
+<p> Read the encoding from a binary. Returns the read encoding, or <code class="inline">none</code> if no valid encoding is found.</p>
+<p> Option <code class="inline">in_comment_only</code> is <code class="inline">true</code> by default, which is correct for Erlang source files. If set to <code class="inline">false</code>, the encoding string does not necessarily have to occur in a comment.</p>
+  </section>
+</section>
+<section class="detail" id="read_encodingread_encoding/12">
+  <div class="detail-header">
+    <a href="#read_encodingread_encoding/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">read_encodingread_encoding/12</h1>
+  </div>
+  <section class="docstring">
+<p> Read the encoding from a file. Returns the read encoding, or <code class="inline">none</code> if no valid encoding is found.</p>
+<p> Option <code class="inline">in_comment_only</code> is <code class="inline">true</code> by default, which is correct for Erlang source files. If set to <code class="inline">false</code>, the encoding string does not necessarily have to occur in a comment.</p>
+  </section>
+</section>
+<section class="detail" id="set_encoding/1">
+  <div class="detail-header">
+    <a href="#set_encoding/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_encoding/1</h1>
+      <div class="specs">
+          <pre>set_encoding(file) :: source_encoding() | :none when file: <a href=":io.html#t:device/0">:io.device</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Reads the encoding from an I/O device and sets the encoding of the device accordingly. The position of the I/O device referenced by <a href="https://hexdocs.pm/elixir/File.html"><code class="inline">File</code></a> is not affected. If no valid encoding can be read from the I/O device, the encoding of the I/O device is set to the default encoding.</p>
+<p> Returns the read encoding, or <code class="inline">none</code> if no valid encoding is found.</p>
+  </section>
+</section>
+<section class="detail" id="set_encoding/2">
+  <div class="detail-header">
+    <a href="#set_encoding/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_encoding/2</h1>
+      <div class="specs">
+          <pre>set_encoding(file, default) :: source_encoding() | :none
+when default: source_encoding(), file: <a href=":io.html#t:device/0">:io.device</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Reads the encoding from an I/O device and sets the encoding of the device accordingly. The position of the I/O device referenced by <a href="https://hexdocs.pm/elixir/File.html"><code class="inline">File</code></a> is not affected. If no valid encoding can be read from the I/O device, the encoding of the I/O device is set to the encoding specified by <code class="inline">Default</code>.</p>
+<p> Returns the read encoding, or <code class="inline">none</code> if no valid encoding is found.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

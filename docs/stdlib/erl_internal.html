@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>erl_internal — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+erl_internal      </h1>
+
+
+        <section id="moduledoc">
+<p> This module defines Erlang BIFs, guard tests, and operators. This module is only of interest to programmers who manipulate Erlang code.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add_predefined_functions/1">add_predefined_functions/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Adds to <code class="inline">Forms</code> the code for the standard pre-defined functions (such as <code class="inline">module_info/0</code>) that are to be included in every module.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#arith_op/2">arith_op/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">OpName``/``Arity</code> is an arithmetic operator, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bif/2">bif/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Name``/``Arity</code> is an Erlang BIF that is automatically recognized by the compiler, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bool_op/2">bool_op/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">OpName``/``Arity</code> is a Boolean operator, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#comp_op/2">comp_op/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">OpName``/``Arity</code> is a comparison operator, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#guard_bif/2">guard_bif/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Name``/``Arity</code> is an Erlang BIF that is allowed in guards, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_op/2">list_op/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">OpName``/``Arity</code> is a list operator, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#op_type/2">op_type/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the <code class="inline">Type</code> of operator that <code class="inline">OpName``/``Arity</code> belongs to, or generates a <code class="inline">function_clause</code> error if it is not an operator.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_op/2">send_op/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">OpName``/``Arity</code> is a send operator, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#type_test/2">type_test/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Name``/``Arity</code> is a valid Erlang type test, otherwise <code class="inline">false</code>.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="add_predefined_functions/1">
+  <div class="detail-header">
+    <a href="#add_predefined_functions/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add_predefined_functions/1</h1>
+      <div class="specs">
+          <pre>add_predefined_functions(forms) :: updatedForms
+when forms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>() | <a href=":erl_parse.html#t:form_info/0">:erl_parse.form_info</a>()],
+     updatedForms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>() | <a href=":erl_parse.html#t:form_info/0">:erl_parse.form_info</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Adds to <code class="inline">Forms</code> the code for the standard pre-defined functions (such as <code class="inline">module_info/0</code>) that are to be included in every module.</p>
+  </section>
+</section>
+<section class="detail" id="arith_op/2">
+  <div class="detail-header">
+    <a href="#arith_op/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">arith_op/2</h1>
+      <div class="specs">
+          <pre>arith_op(opName, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">OpName``/``Arity</code> is an arithmetic operator, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="bif/2">
+  <div class="detail-header">
+    <a href="#bif/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bif/2</h1>
+      <div class="specs">
+          <pre>bif(name, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when name: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Name``/``Arity</code> is an Erlang BIF that is automatically recognized by the compiler, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="bool_op/2">
+  <div class="detail-header">
+    <a href="#bool_op/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bool_op/2</h1>
+      <div class="specs">
+          <pre>bool_op(opName, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">OpName``/``Arity</code> is a Boolean operator, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="comp_op/2">
+  <div class="detail-header">
+    <a href="#comp_op/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">comp_op/2</h1>
+      <div class="specs">
+          <pre>comp_op(opName, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">OpName``/``Arity</code> is a comparison operator, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="guard_bif/2">
+  <div class="detail-header">
+    <a href="#guard_bif/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">guard_bif/2</h1>
+      <div class="specs">
+          <pre>guard_bif(name, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when name: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Name``/``Arity</code> is an Erlang BIF that is allowed in guards, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="list_op/2">
+  <div class="detail-header">
+    <a href="#list_op/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_op/2</h1>
+      <div class="specs">
+          <pre>list_op(opName, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">OpName``/``Arity</code> is a list operator, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="op_type/2">
+  <div class="detail-header">
+    <a href="#op_type/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">op_type/2</h1>
+      <div class="specs">
+          <pre>op_type(opName, arity) :: type
+when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+     arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>(),
+     type: :arith | :bool | :comp | :list | :send</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the <code class="inline">Type</code> of operator that <code class="inline">OpName``/``Arity</code> belongs to, or generates a <code class="inline">function_clause</code> error if it is not an operator.</p>
+  </section>
+</section>
+<section class="detail" id="send_op/2">
+  <div class="detail-header">
+    <a href="#send_op/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_op/2</h1>
+      <div class="specs">
+          <pre>send_op(opName, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">OpName``/``Arity</code> is a send operator, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="type_test/2">
+  <div class="detail-header">
+    <a href="#type_test/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">type_test/2</h1>
+      <div class="specs">
+          <pre>type_test(name, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when name: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Name``/``Arity</code> is a valid Erlang type test, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

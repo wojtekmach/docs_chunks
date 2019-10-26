@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>pool — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+pool      </h1>
+
+
+        <section id="moduledoc">
+<p> This module can be used to run a set of Erlang nodes as a pool of computational processors. It is organized as a master and a set of slave nodes and includes the following features:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">slave</span><span class="w"> </span><span class="nb">nodes</span><span class="w"> </span><span class="nb">send</span><span class="w"> </span><span class="ss">regular</span><span class="w"> </span><span class="ss">reports</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">master</span><span class="w"> </span><span class="ss">about</span><span class="w"> </span><span class="ss">their</span><span class="w"> </span><span class="ss">current</span><span class="w"> </span><span class="ss">load</span><span class="p">.</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Queries</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">sent</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">master</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">determine</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="nb">node</span><span class="w"> </span><span class="ss">will</span><span class="w"> </span><span class="ss">have</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">least</span><span class="w"> </span><span class="ss">load</span><span class="p">.</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="n">BIF</span><span class="w"> </span><span class="err">`</span><span class="nf">statistics</span><span class="p" data-group-id="2207343630-1">(</span><span class="ss">run_queue</span><span class="p" data-group-id="2207343630-1">)</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">used</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">estimating</span><span class="w"> </span><span class="ss">future</span><span class="w"> </span><span class="ss">loads</span><span class="p">.</span><span class="w"> </span><span class="n">It</span><span class="w"> </span><span class="ss">returns</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="nb">length</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">queue</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">ready</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">run</span><span class="w"> </span><span class="ss">processes</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="n">Erlang</span><span class="w"> </span><span class="ss">runtime</span><span class="w"> </span><span class="ss">system</span><span class="p">.</span></code></pre>
+<p> The slave nodes are started with the <code class="inline">slave(3)</code> module. This effects terminal I/O, file I/O, and code loading.</p>
+<p> If the master node fails, the entire pool exits.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#attach/1">attach/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Ensures that a pool master is running and includes <a href="https://hexdocs.pm/elixir/Node.html"><code class="inline">Node</code></a> in the pool master&#39;s pool of nodes.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_node/0">get_node/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the node with the expected lowest future load.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_nodes/0">get_nodes/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of the current member nodes of the pool.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pspawn/3">pspawn/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Spawns a process on the pool node that is expected to have the lowest future load.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pspawn_link/3">pspawn_link/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Spawns and links to a process on the pool node that is expected to have the lowest future load.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#startstart/12">startstart/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Starts a new pool. The file <code class="inline">.hosts.erlang</code> is read to find host names where the pool nodes can be started; see section Files. The startup procedure fails if the file is not found.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/0">stop/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Stops the pool and kills all the slave nodes.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="attach/1">
+  <div class="detail-header">
+    <a href="#attach/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">attach/1</h1>
+      <div class="specs">
+          <pre>attach(node) :: :already_attached | :attached when node: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Ensures that a pool master is running and includes <a href="https://hexdocs.pm/elixir/Node.html"><code class="inline">Node</code></a> in the pool master&#39;s pool of nodes.</p>
+  </section>
+</section>
+<section class="detail" id="get_node/0">
+  <div class="detail-header">
+    <a href="#get_node/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_node/0</h1>
+      <div class="specs">
+          <pre>get_node() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the node with the expected lowest future load.</p>
+  </section>
+</section>
+<section class="detail" id="get_nodes/0">
+  <div class="detail-header">
+    <a href="#get_nodes/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_nodes/0</h1>
+      <div class="specs">
+          <pre>get_nodes() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of the current member nodes of the pool.</p>
+  </section>
+</section>
+<section class="detail" id="pspawn/3">
+  <div class="detail-header">
+    <a href="#pspawn/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pspawn/3</h1>
+      <div class="specs">
+          <pre>pspawn(mod, fun, args) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()
+when mod: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), fun: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), args: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Spawns a process on the pool node that is expected to have the lowest future load.</p>
+  </section>
+</section>
+<section class="detail" id="pspawn_link/3">
+  <div class="detail-header">
+    <a href="#pspawn_link/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pspawn_link/3</h1>
+      <div class="specs">
+          <pre>pspawn_link(mod, fun, args) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()
+when mod: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), fun: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), args: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Spawns and links to a process on the pool node that is expected to have the lowest future load.</p>
+  </section>
+</section>
+<section class="detail" id="startstart/12">
+  <div class="detail-header">
+    <a href="#startstart/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">startstart/12</h1>
+  </div>
+  <section class="docstring">
+<p> Starts a new pool. The file <code class="inline">.hosts.erlang</code> is read to find host names where the pool nodes can be started; see section Files. The startup procedure fails if the file is not found.</p>
+<p> The slave nodes are started with <code class="inline">slave:start/2,3</code>, passing along <code class="inline">Name</code> and, if provided, <code class="inline">Args</code>. <code class="inline">Name</code> is used as the first part of the node names, <code class="inline">Args</code> is used to specify command-line arguments.</p>
+<p> Access rights must be set so that all nodes in the pool have the authority to access each other.</p>
+<p> The function is synchronous and all the nodes, and all the system servers, are running when it returns a value.</p>
+  </section>
+</section>
+<section class="detail" id="stop/0">
+  <div class="detail-header">
+    <a href="#stop/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/0</h1>
+      <div class="specs">
+          <pre>stop() :: :stopped</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Stops the pool and kills all the slave nodes.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

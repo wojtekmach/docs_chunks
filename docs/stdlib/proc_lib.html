@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>proc_lib — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+proc_lib      </h1>
+
+
+        <section id="moduledoc">
+<p> This module is used to start processes adhering to the  OTP Design Principles. Specifically, the functions in this module are used by the OTP standard behaviors (for example, <code class="inline">gen_server</code> and <code class="inline">gen_statem</code>) when starting new processes. The functions can also be used to start special processes, user-defined processes that comply to the OTP design principles. For an example, see section  sys and proc_lib in OTP Design Principles.</p>
+<p> Some useful information is initialized when a process starts. The registered names, or the process identifiers, of the parent process, and the parent ancestors, are stored together with information about the function initially called in the process.</p>
+<p> While in &quot;plain Erlang&quot;, a process is said to terminate normally only for exit reason <code class="inline">normal</code>, a process started using <code class="inline">proc_lib</code> is also said to terminate normally if it exits with reason <code class="inline">shutdown</code> or <code class="inline">{shutdown,Term}</code>. <code class="inline">shutdown</code> is the reason used when an application (supervision tree) is stopped.</p>
+<p> When a process that is started using <code class="inline">proc_lib</code> terminates abnormally (that is, with another exit reason than <code class="inline">normal</code>, <code class="inline">shutdown</code>, or <code class="inline">{shutdown,Term}</code>), a crash report is generated, which is written to terminal by the default logger handler setup by Kernel. For more information about how crash reports were logged prior to Erlang/OTP 21.0, see SASL Error Logging in the SASL User&#39;s Guide.</p>
+<p> Unlike in &quot;plain Erlang&quot;, <code class="inline">proc_lib</code> processes will not generate error reports, which are written to the terminal by the emulator. All exceptions are converted to exits which are ignored by the default <code class="inline">logger</code> handler.</p>
+<p> The crash report contains the previously stored information, such as ancestors and initial function, the termination reason, and information about other processes that terminate as a result of this process terminating.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#format/1">format/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Equivalent to  <code class="inline">format(``CrashReport``, latin1)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#format/2">format/2</a>
+  </div>
+    <div class="summary-synopsis"><p>  This function is deprecated in the sense that the <code class="inline">error_logger</code> is no longer the preferred interface for logging in Erlang/OTP. A new logging API was added in Erlang/OTP 21.0, but legacy <code class="inline">error_logger</code> handlers can still be used. New Logger handlers do not need to use this function, since the formatting callback (<code class="inline">report_cb</code>) is included as metadata in the log event.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#format/3">format/3</a>
+  </div>
+    <div class="summary-synopsis"><p>  This function is deprecated in the sense that the <code class="inline">error_logger</code> is no longer the preferred interface for logging in Erlang/OTP. A new logging API was added in Erlang/OTP 21.0, but legacy <code class="inline">error_logger</code> handlers can still be used. New Logger handlers do not need to used this function, since the formatting callback (<code class="inline">report_cb</code>) is included as metadata in the log event.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#hibernate/3">hibernate/3</a>
+  </div>
+    <div class="summary-synopsis"><p> This function does the same as (and does call) the  <a href="#hibernate/3"><code class="inline">hibernate/3</code></a> BIF, but ensures that exception handling and logging continues to work as expected when the process wakes up.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init_ackinit_ack/12">init_ackinit_ack/12</a>
+  </div>
+    <div class="summary-synopsis"><p> This function must be used by a process that has been started by a <code class="inline">start[_link]/3,4,5</code> function. It tells <code class="inline">Parent</code> that the process has initialized itself, has started, or has failed to initialize itself.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#initial_call/1">initial_call/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Extracts the initial call of a process that was started using one of the spawn or start functions in this module. <a href="https://hexdocs.pm/elixir/Process.html"><code class="inline">Process</code></a> can either be a pid, an integer tuple (from which a pid can be created), or the process information of a process <code class="inline">Pid</code> fetched through an <code class="inline">erlang:process_info(Pid)</code> function call.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#spawn_linkspawn_linkspawn_linkspawn_link/1234">spawn_linkspawn_linkspawn_linkspawn_link/1234</a>
+  </div>
+    <div class="summary-synopsis"><p> Spawns a new process and initializes it as described in the beginning of this manual page. The process is spawned using the <code class="inline">spawn_link</code> BIFs.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#spawn_optspawn_optspawn_optspawn_opt/2345">spawn_optspawn_optspawn_optspawn_opt/2345</a>
+  </div>
+    <div class="summary-synopsis"><p> Spawns a new process and initializes it as described in the beginning of this manual page. The process is spawned using the <code class="inline">spawn_opt</code> BIFs.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#spawnspawnspawnspawn/1234">spawnspawnspawnspawn/1234</a>
+  </div>
+    <div class="summary-synopsis"><p> Spawns a new process and initializes it as described in the beginning of this manual page. The process is spawned using the <code class="inline">spawn</code> BIFs.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#startstartstartstart_linkstart_linkstart_link/345345">startstartstartstart_linkstart_linkstart_link/345345</a>
+  </div>
+    <div class="summary-synopsis"><p> Starts a new process synchronously. Spawns the process and waits for it to start. When the process has started, it must call <code class="inline">init_ack(Parent, Ret)</code> or <code class="inline">init_ack(Ret)</code>, where <code class="inline">Parent</code> is the process that evaluates this function. At this time, <code class="inline">Ret</code> is returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/1">stop/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Equivalent to  <code class="inline">stop(Process, normal, infinity)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/3">stop/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Orders the process to exit with the specified <code class="inline">Reason</code> and waits for it to terminate.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#translate_initial_call/1">translate_initial_call/1</a>
+  </div>
+    <div class="summary-synopsis"><p> This function is used by functions <code class="inline">c:i/0</code> and <code class="inline">c:regs/0</code> to present process information.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="format/1">
+  <div class="detail-header">
+    <a href="#format/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">format/1</h1>
+      <div class="specs">
+          <pre>format(crashReport) :: string() when crashReport: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Equivalent to  <code class="inline">format(``CrashReport``, latin1)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="format/2">
+  <div class="detail-header">
+    <a href="#format/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">format/2</h1>
+      <div class="specs">
+          <pre>format(crashReport, encoding) :: string()
+when crashReport: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()], encoding: :latin1 | :unicode | :utf8</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  This function is deprecated in the sense that the <code class="inline">error_logger</code> is no longer the preferred interface for logging in Erlang/OTP. A new logging API was added in Erlang/OTP 21.0, but legacy <code class="inline">error_logger</code> handlers can still be used. New Logger handlers do not need to use this function, since the formatting callback (<code class="inline">report_cb</code>) is included as metadata in the log event.</p>
+<p>  This function can be used by a user-defined legacy <code class="inline">error_logger</code> event handler to format a crash report. The crash report is sent using  <code class="inline">logger(3)</code>, and the event to be handled is of the format <code class="inline">{error_report, GL, {Pid, crash_report, ``CrashReport``}}</code>, where <code class="inline">GL</code> is the group leader pid of process <code class="inline">Pid</code> that sent the crash report.</p>
+  </section>
+</section>
+<section class="detail" id="format/3">
+  <div class="detail-header">
+    <a href="#format/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">format/3</h1>
+      <div class="specs">
+          <pre>format(crashReport, encoding, depth) :: string()
+when crashReport: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
+     encoding: :latin1 | :unicode | :utf8,
+     depth: :unlimited | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  This function is deprecated in the sense that the <code class="inline">error_logger</code> is no longer the preferred interface for logging in Erlang/OTP. A new logging API was added in Erlang/OTP 21.0, but legacy <code class="inline">error_logger</code> handlers can still be used. New Logger handlers do not need to used this function, since the formatting callback (<code class="inline">report_cb</code>) is included as metadata in the log event.</p>
+<p>  This function can be used by a user-defined legacy <code class="inline">error_logger</code> event handler to format a crash report. When Depth is specified as a positive integer, it is used in the format string to limit the output as follows: <code class="inline">io_lib:format(&quot;~P&quot;, [Term,``Depth``])</code>.</p>
+  </section>
+</section>
+<section class="detail" id="hibernate/3">
+  <div class="detail-header">
+    <a href="#hibernate/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">hibernate/3</h1>
+      <div class="specs">
+          <pre>hibernate(module, function, args) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()
+when module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), function: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), args: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> This function does the same as (and does call) the  <a href="#hibernate/3"><code class="inline">hibernate/3</code></a> BIF, but ensures that exception handling and logging continues to work as expected when the process wakes up.</p>
+<p> Always use this function instead of the BIF for processes started using <code class="inline">proc_lib</code> functions.</p>
+  </section>
+</section>
+<section class="detail" id="init_ackinit_ack/12">
+  <div class="detail-header">
+    <a href="#init_ackinit_ack/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">init_ackinit_ack/12</h1>
+  </div>
+  <section class="docstring">
+<p> This function must be used by a process that has been started by a <code class="inline">start[_link]/3,4,5</code> function. It tells <code class="inline">Parent</code> that the process has initialized itself, has started, or has failed to initialize itself.</p>
+<p> Function <code class="inline">init_ack/1</code> uses the parent value previously stored by the start function used.</p>
+<p> If this function is not called, the start function returns an error tuple (if a link and/or a time-out is used) or hang otherwise.</p>
+<p> The following example illustrates how this function and <code class="inline">proc_lib:start_link/3</code> are used:</p>
+<pre><code class="nohighlight makeup erlang"><span class="p">-</span><span class="na">module</span><span class="p" data-group-id="0848850864-1">(</span><span class="ss">my_proc</span><span class="p" data-group-id="0848850864-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p">-</span><span class="na">export</span><span class="p" data-group-id="0848850864-2">(</span><span class="p" data-group-id="0848850864-3">[</span><span class="ss">start_link</span><span class="o">/</span><span class="mi">0</span><span class="p" data-group-id="0848850864-3">]</span><span class="p" data-group-id="0848850864-2">)</span><span class="p">.</span><span class="w">
+</span><span class="p">-</span><span class="na">export</span><span class="p" data-group-id="0848850864-4">(</span><span class="p" data-group-id="0848850864-5">[</span><span class="ss">init</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="0848850864-5">]</span><span class="p" data-group-id="0848850864-4">)</span><span class="p">.</span><span class="w">
+
+</span><span class="nf">start_link</span><span class="p" data-group-id="0848850864-6">(</span><span class="p" data-group-id="0848850864-6">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+    </span><span class="nc">proc_lib</span><span class="p">:</span><span class="nf">start_link</span><span class="p" data-group-id="0848850864-7">(</span><span class="ss">my_proc</span><span class="p">,</span><span class="w"> </span><span class="ss">init</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0848850864-8">[</span><span class="nf">self</span><span class="p" data-group-id="0848850864-9">(</span><span class="p" data-group-id="0848850864-9">)</span><span class="p" data-group-id="0848850864-8">]</span><span class="p" data-group-id="0848850864-7">)</span><span class="p">.</span><span class="w">
+
+</span><span class="nf">init</span><span class="p" data-group-id="0848850864-10">(</span><span class="n">Parent</span><span class="p" data-group-id="0848850864-10">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+    </span><span class="k">case</span><span class="w"> </span><span class="nf">do_initialization</span><span class="p" data-group-id="0848850864-11">(</span><span class="p" data-group-id="0848850864-11">)</span><span class="w"> </span><span class="k">of</span><span class="w">
+        </span><span class="ss">ok</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+            </span><span class="nc">proc_lib</span><span class="p">:</span><span class="nf">init_ack</span><span class="p" data-group-id="0848850864-12">(</span><span class="n">Parent</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0848850864-13">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="nf">self</span><span class="p" data-group-id="0848850864-14">(</span><span class="p" data-group-id="0848850864-14">)</span><span class="p" data-group-id="0848850864-13">}</span><span class="p" data-group-id="0848850864-12">)</span><span class="p">;</span><span class="w">
+        </span><span class="p" data-group-id="0848850864-15">{</span><span class="ss">error</span><span class="p">,</span><span class="w"> </span><span class="n">Reason</span><span class="p" data-group-id="0848850864-15">}</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+            </span><span class="nf">exit</span><span class="p" data-group-id="0848850864-16">(</span><span class="n">Reason</span><span class="p" data-group-id="0848850864-16">)</span><span class="w">
+    </span><span class="k">end</span><span class="p">,</span><span class="w">
+    </span><span class="nf">loop</span><span class="p" data-group-id="0848850864-17">(</span><span class="p" data-group-id="0848850864-17">)</span><span class="p">.</span><span class="w">
+
+</span><span class="p">.</span><span class="p">.</span><span class="p">.</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="initial_call/1">
+  <div class="detail-header">
+    <a href="#initial_call/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">initial_call/1</h1>
+      <div class="specs">
+          <pre>initial_call(process) :: {module, function, args} | false
+when process: dict_or_pid(),
+     module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+     function: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+     args: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Extracts the initial call of a process that was started using one of the spawn or start functions in this module. <a href="https://hexdocs.pm/elixir/Process.html"><code class="inline">Process</code></a> can either be a pid, an integer tuple (from which a pid can be created), or the process information of a process <code class="inline">Pid</code> fetched through an <code class="inline">erlang:process_info(Pid)</code> function call.</p>
+<p>  The list <code class="inline">Args</code> no longer contains the arguments, but the same number of atoms as the number of arguments; the first atom is <code class="inline">&#39;Argument__1&#39;</code>, the second <code class="inline">&#39;Argument__2&#39;</code>, and so on. The reason is that the argument list could waste a significant amount of memory, and if the argument list contained funs, it could be impossible to upgrade the code for the module.</p>
+<p> If the process was spawned using a fun, <a href="#initial_call/1"><code class="inline">initial_call/1</code></a> no longer returns the fun, but the module, function for the local function implementing the fun, and the arity, for example, <code class="inline">{some_module,-work/3-fun-0-,0}</code> (meaning that the fun was created in function <code class="inline">some_module:work/3</code>). The reason is that keeping the fun would prevent code upgrade for the module, and that a significant amount of memory could be wasted.</p>
+  </section>
+</section>
+<section class="detail" id="spawn_linkspawn_linkspawn_linkspawn_link/1234">
+  <div class="detail-header">
+    <a href="#spawn_linkspawn_linkspawn_linkspawn_link/1234" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">spawn_linkspawn_linkspawn_linkspawn_link/1234</h1>
+  </div>
+  <section class="docstring">
+<p> Spawns a new process and initializes it as described in the beginning of this manual page. The process is spawned using the <code class="inline">spawn_link</code> BIFs.</p>
+  </section>
+</section>
+<section class="detail" id="spawn_optspawn_optspawn_optspawn_opt/2345">
+  <div class="detail-header">
+    <a href="#spawn_optspawn_optspawn_optspawn_opt/2345" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">spawn_optspawn_optspawn_optspawn_opt/2345</h1>
+  </div>
+  <section class="docstring">
+<p> Spawns a new process and initializes it as described in the beginning of this manual page. The process is spawned using the <code class="inline">spawn_opt</code> BIFs.</p>
+<p>  Using spawn option <code class="inline">monitor</code> is not allowed. It causes the function to fail with reason <code class="inline">badarg</code>.</p>
+  </section>
+</section>
+<section class="detail" id="spawnspawnspawnspawn/1234">
+  <div class="detail-header">
+    <a href="#spawnspawnspawnspawn/1234" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">spawnspawnspawnspawn/1234</h1>
+  </div>
+  <section class="docstring">
+<p> Spawns a new process and initializes it as described in the beginning of this manual page. The process is spawned using the <code class="inline">spawn</code> BIFs.</p>
+  </section>
+</section>
+<section class="detail" id="startstartstartstart_linkstart_linkstart_link/345345">
+  <div class="detail-header">
+    <a href="#startstartstartstart_linkstart_linkstart_link/345345" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">startstartstartstart_linkstart_linkstart_link/345345</h1>
+  </div>
+  <section class="docstring">
+<p> Starts a new process synchronously. Spawns the process and waits for it to start. When the process has started, it must call <code class="inline">init_ack(Parent, Ret)</code> or <code class="inline">init_ack(Ret)</code>, where <code class="inline">Parent</code> is the process that evaluates this function. At this time, <code class="inline">Ret</code> is returned.</p>
+<p> If function <code class="inline">start_link/3,4,5</code> is used and the process crashes before it has called <code class="inline">init_ack/1,2</code>, <code class="inline">{error, ``Reason``}</code> is returned if the calling process traps exits.</p>
+<p> If <a href="https://hexdocs.pm/elixir/Time.html"><code class="inline">Time</code></a> is specified as an integer, this function waits for <a href="https://hexdocs.pm/elixir/Time.html"><code class="inline">Time</code></a> milliseconds for the new process to call <code class="inline">init_ack</code>, or <code class="inline">{error, timeout}</code> is returned, and the process is killed.</p>
+<p> Argument <code class="inline">SpawnOpts</code>, if specified, is passed as the last argument to the  <code class="inline">spawn_opt/2,3,4,5</code> BIF.</p>
+<p>  Using spawn option <code class="inline">monitor</code> is not allowed. It causes the function to fail with reason <code class="inline">badarg</code>.</p>
+  </section>
+</section>
+<section class="detail" id="stop/1">
+  <div class="detail-header">
+    <a href="#stop/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/1</h1>
+      <div class="specs">
+          <pre>stop(process) :: :ok
+when process: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>() | regName | {regName, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>()}, regName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Equivalent to  <code class="inline">stop(Process, normal, infinity)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="stop/3">
+  <div class="detail-header">
+    <a href="#stop/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/3</h1>
+      <div class="specs">
+          <pre>stop(process, reason, timeout) :: :ok
+when process: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>() | regName | {regName, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>()},
+     regName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     timeout: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">timeout</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Orders the process to exit with the specified <code class="inline">Reason</code> and waits for it to terminate.</p>
+<p> Returns <code class="inline">ok</code> if the process exits with the specified <code class="inline">Reason</code> within <code class="inline">Timeout</code> milliseconds.</p>
+<p> If the call times out, a <code class="inline">timeout</code> exception is raised.</p>
+<p> If the process does not exist, a <code class="inline">noproc</code> exception is raised.</p>
+<p> The implementation of this function is based on the <code class="inline">terminate</code> system message, and requires that the process handles system messages correctly. For information about system messages, see <code class="inline">sys(3)</code> and section  sys and proc_lib in OTP Design Principles.</p>
+  </section>
+</section>
+<section class="detail" id="translate_initial_call/1">
+  <div class="detail-header">
+    <a href="#translate_initial_call/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">translate_initial_call/1</h1>
+      <div class="specs">
+          <pre>translate_initial_call(process) :: {module, function, arity}
+when process: dict_or_pid(), module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), function: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">byte</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> This function is used by functions <code class="inline">c:i/0</code> and <code class="inline">c:regs/0</code> to present process information.</p>
+<p> This function extracts the initial call of a process that was started using one of the spawn or start functions in this module, and translates it to more useful information. <a href="https://hexdocs.pm/elixir/Process.html"><code class="inline">Process</code></a> can either be a pid, an integer tuple (from which a pid can be created), or the process information of a process <code class="inline">Pid</code> fetched through an <code class="inline">erlang:process_info(Pid)</code> function call.</p>
+<p> If the initial call is to one of the system-defined behaviors such as <code class="inline">gen_server</code> or <code class="inline">gen_event</code>, it is translated to more useful information. If a <code class="inline">gen_server</code> is spawned, the returned <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> is the name of the callback module and <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is <code class="inline">init</code> (the function that initiates the new server).</p>
+<p> A <code class="inline">supervisor</code> and a <code class="inline">supervisor_bridge</code> are also <code class="inline">gen_server</code> processes. To return information that this process is a supervisor and the name of the callback module, <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> is <code class="inline">supervisor</code> and <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> is the name of the supervisor callback module. <code class="inline">Arity</code> is <code class="inline">1</code>, as the <code class="inline">init/1</code> function is called initially in the callback module.</p>
+<p> By default, <code class="inline">{proc_lib,init_p,5}</code> is returned if no information about the initial call can be found. It is assumed that the caller knows that the process has been spawned with the <code class="inline">proc_lib</code> module.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>zip — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+zip      </h1>
+
+
+        <section id="moduledoc">
+<p> This module archives and extracts files to and from a zip archive. The zip format is specified by the &quot;ZIP Appnote.txt&quot; file, available on the PKWARE web site www.pkware.com.</p>
+<p> The zip module supports zip archive versions up to 6.1. However, password-protection and Zip64 are not supported.</p>
+<p> By convention, the name of a zip file is to end with <code class="inline">.zip</code>. To abide to the convention, add <code class="inline">.zip</code> to the filename.</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">To</span><span class="w"> </span><span class="ss">create</span><span class="w"> </span><span class="ss">zip</span><span class="w"> </span><span class="ss">archives</span><span class="p">,</span><span class="w"> </span><span class="ss">use</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="err">`</span><span class="ss">zip</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">`</span><span class="ss">zip</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">They</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">also</span><span class="w"> </span><span class="ss">available</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="err">`</span><span class="ss">create</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">resemble</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="ss">erl_tar</span><span class="err">`</span><span class="w"> </span><span class="ss">module</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">To</span><span class="w"> </span><span class="ss">extract</span><span class="w"> </span><span class="ss">files</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">zip</span><span class="w"> </span><span class="ss">archive</span><span class="p">,</span><span class="w"> </span><span class="ss">use</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="err">`</span><span class="ss">unzip</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">`</span><span class="ss">unzip</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">They</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">also</span><span class="w"> </span><span class="ss">available</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="err">`</span><span class="ss">extract</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">resemble</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="ss">erl_tar</span><span class="err">`</span><span class="w"> </span><span class="ss">module</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">To</span><span class="w"> </span><span class="ss">fold</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="ss">over</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">files</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">zip</span><span class="w"> </span><span class="ss">archive</span><span class="p">,</span><span class="w"> </span><span class="ss">use</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="p" data-group-id="6769463915-1">[</span><span class="err">`</span><span class="ss">foldl</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="p" data-group-id="6769463915-1">]</span><span class="p" data-group-id="6769463915-2">(</span><span class="p">#</span><span class="ss">foldl</span><span class="o">/</span><span class="mi">3</span><span class="p" data-group-id="6769463915-2">)</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">To</span><span class="w"> </span><span class="ss">return</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">files</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">zip</span><span class="w"> </span><span class="ss">archive</span><span class="p">,</span><span class="w"> </span><span class="ss">use</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="err">`</span><span class="ss">list_dir</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">`</span><span class="ss">list_dir</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">They</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">also</span><span class="w"> </span><span class="ss">available</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="err">`</span><span class="ss">table</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">resemble</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="ss">erl_tar</span><span class="err">`</span><span class="w"> </span><span class="ss">module</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">To</span><span class="w"> </span><span class="ss">print</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">files</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="n">Erlang</span><span class="w"> </span><span class="ss">shell</span><span class="p">,</span><span class="w"> </span><span class="ss">use</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="p" data-group-id="6769463915-3">[</span><span class="err">`</span><span class="ss">t</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="6769463915-3">]</span><span class="p" data-group-id="6769463915-4">(</span><span class="p">#</span><span class="ss">t</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="6769463915-4">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p" data-group-id="6769463915-5">[</span><span class="err">`</span><span class="ss">tt</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="6769463915-5">]</span><span class="p" data-group-id="6769463915-6">(</span><span class="p">#</span><span class="ss">tt</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="6769463915-6">)</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">Sometimes</span><span class="w"> </span><span class="ss">it</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">desirable</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">open</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">zip</span><span class="w"> </span><span class="ss">archive</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">unzip</span><span class="w"> </span><span class="ss">files</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">it</span><span class="w"> </span><span class="ss">file</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="ss">file</span><span class="p">,</span><span class="w"> </span><span class="ss">without</span><span class="w"> </span><span class="ss">having</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">reopen</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">archive</span><span class="p">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">done</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="ss">functions</span><span class="w"> </span><span class="err">`</span><span class="ss">zip_open</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="ss">zip_get</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6769463915-7">[</span><span class="err">`</span><span class="ss">zip_list_dir</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="6769463915-7">]</span><span class="p" data-group-id="6769463915-8">(</span><span class="p">#</span><span class="ss">zip_list_dir</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="6769463915-8">)</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p" data-group-id="6769463915-9">[</span><span class="err">`</span><span class="ss">zip_close</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="6769463915-9">]</span><span class="p" data-group-id="6769463915-10">(</span><span class="p">#</span><span class="ss">zip_close</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="6769463915-10">)</span><span class="p">.</span></code></pre>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#foldl/3">foldl/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Calls <code class="inline">Fun``(``FileInArchive``, ``GetInfo ``, ``GetBin``, ``AccIn``)</code> on successive files in the <code class="inline">Archive</code>, starting with <code class="inline">AccIn`` == ``Acc0</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_dirlist_dirtabletable/1212">list_dirlist_dirtabletable/1212</a>
+  </div>
+    <div class="summary-synopsis"><p> <code class="inline">list_dir/1</code> retrieves all filenames in the zip archive <code class="inline">Archive</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t/1">t/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Prints all filenames in the zip archive <code class="inline">Archive</code> to the Erlang shell. (Similar to <code class="inline">tar t</code>.)</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tt/1">tt/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Prints filenames and information about all files in the zip archive <code class="inline">Archive</code> to the Erlang shell. (Similar to <code class="inline">tar tv</code>.)</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unzipunzipextractextract/1212">unzipunzipextractextract/1212</a>
+  </div>
+    <div class="summary-synopsis"><p> <code class="inline">unzip/1</code> extracts all files from a zip archive.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#zip_close/1">zip_close/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Closes a zip archive, previously opened with <code class="inline">zip_open/1,2</code>. All resources are closed, and the handle is not to be used after closing.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#zip_getzip_get/12">zip_getzip_get/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Extracts one or all files from an open archive.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#zip_list_dir/1">zip_list_dir/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the file list of an open zip archive. The first returned element is the zip archive comment.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#zip_openzip_open/12">zip_openzip_open/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Opens a zip archive, and reads and saves its directory. This means that later reading files from the archive is faster than unzipping files one at a time with <code class="inline">unzip/1,2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#zipzipcreatecreate/2323">zipzipcreatecreate/2323</a>
+  </div>
+    <div class="summary-synopsis"><p> Creates a zip archive containing the files specified in <code class="inline">FileList</code>.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="foldl/3">
+  <div class="detail-header">
+    <a href="#foldl/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">foldl/3</h1>
+      <div class="specs">
+          <pre>foldl(fun, acc0, archive) :: {:ok, acc1} | {:error, reason}
+when fun: (fileInArchive, getInfo, getBin, accIn -> accOut),
+     fileInArchive: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>(),
+     getInfo: (() -> <a href="http://www.erlang.org/doc/man/file.html#type-file_info">:file.file_info</a>()),
+     getBin: (() -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()),
+     acc0: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     acc1: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accIn: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     accOut: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     archive: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>() | {<a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()},
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Calls <code class="inline">Fun``(``FileInArchive``, ``GetInfo ``, ``GetBin``, ``AccIn``)</code> on successive files in the <code class="inline">Archive</code>, starting with <code class="inline">AccIn`` == ``Acc0</code>.</p>
+<p> <code class="inline">FileInArchive</code> is the name that the file has in the archive.</p>
+<p> <code class="inline">GetInfo</code> is a fun that returns information about the file.</p>
+<p> <code class="inline">GetBin</code> returns the file contents.</p>
+<p> Both <code class="inline">GetInfo</code> and <code class="inline">GetBin</code> must be called within the <code class="inline">Fun</code>. Their behavior is undefined if they are called outside the context of <code class="inline">Fun</code>.</p>
+<p> The <code class="inline">Fun</code> must return a new accumulator, which is passed to the next call. <a href="#foldl/3"><code class="inline">foldl/3</code></a> returns the final accumulator value. <code class="inline">Acc0</code> is returned if the archive is empty. It is not necessary to iterate over all files in the archive. The iteration can be ended prematurely in a controlled manner by throwing an exception.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dummy.zip&quot;</span><span class="p">.</span><span class="w">
+</span><span class="s">&quot;dummy.zip&quot;</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="0615856724-1">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0615856724-2">{</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Bin</span><span class="p" data-group-id="0615856724-2">}</span><span class="p" data-group-id="0615856724-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">zip</span><span class="p">:</span><span class="nf">create</span><span class="p" data-group-id="0615856724-3">(</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0615856724-4">[</span><span class="p" data-group-id="0615856724-5">{</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;FOO&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0615856724-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0615856724-6">{</span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;BAR&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0615856724-6">}</span><span class="p" data-group-id="0615856724-4">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0615856724-7">[</span><span class="nb">memory</span><span class="p" data-group-id="0615856724-7">]</span><span class="p" data-group-id="0615856724-3">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="0615856724-8">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="0615856724-9">{</span><span class="s">&quot;dummy.zip&quot;</span><span class="p">,</span><span class="w">
+     </span><span class="p">&lt;&lt;</span><span class="mi">80</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">74</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">171</span><span class="p">,</span><span class="mi">39</span><span class="p">,</span><span class="mi">212</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0615856724-9">}</span><span class="p" data-group-id="0615856724-8">}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="0615856724-10">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="n">FileSpec</span><span class="p" data-group-id="0615856724-10">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">zip</span><span class="p">:</span><span class="nf">foldl</span><span class="p" data-group-id="0615856724-11">(</span><span class="nf">fun</span><span class="p" data-group-id="0615856724-12">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">I</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">Acc</span><span class="p" data-group-id="0615856724-12">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="p" data-group-id="0615856724-13">[</span><span class="p" data-group-id="0615856724-14">{</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p" data-group-id="0615856724-15">(</span><span class="p" data-group-id="0615856724-15">)</span><span class="p">,</span><span class="w"> </span><span class="n">I</span><span class="p" data-group-id="0615856724-16">(</span><span class="p" data-group-id="0615856724-16">)</span><span class="p" data-group-id="0615856724-14">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="n">Acc</span><span class="p" data-group-id="0615856724-13">]</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0615856724-17">[</span><span class="p" data-group-id="0615856724-17">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0615856724-18">{</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Bin</span><span class="p" data-group-id="0615856724-18">}</span><span class="p" data-group-id="0615856724-11">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="0615856724-19">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="0615856724-20">[</span><span class="p" data-group-id="0615856724-21">{</span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;BAR&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="0615856724-22">{</span><span class="ss">file_info</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="ss">regular</span><span class="p">,</span><span class="ss">read_write</span><span class="p">,</span><span class="w">
+                 </span><span class="p" data-group-id="0615856724-23">{</span><span class="p" data-group-id="0615856724-24">{</span><span class="mi">2010</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="0615856724-24">}</span><span class="p">,</span><span class="p" data-group-id="0615856724-25">{</span><span class="mi">19</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p" data-group-id="0615856724-25">}</span><span class="p" data-group-id="0615856724-23">}</span><span class="p">,</span><span class="w">
+                 </span><span class="p" data-group-id="0615856724-26">{</span><span class="p" data-group-id="0615856724-27">{</span><span class="mi">2010</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="0615856724-27">}</span><span class="p">,</span><span class="p" data-group-id="0615856724-28">{</span><span class="mi">19</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p" data-group-id="0615856724-28">}</span><span class="p" data-group-id="0615856724-26">}</span><span class="p">,</span><span class="w">
+                 </span><span class="p" data-group-id="0615856724-29">{</span><span class="p" data-group-id="0615856724-30">{</span><span class="mi">2010</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="0615856724-30">}</span><span class="p">,</span><span class="p" data-group-id="0615856724-31">{</span><span class="mi">19</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p" data-group-id="0615856724-31">}</span><span class="p" data-group-id="0615856724-29">}</span><span class="p">,</span><span class="w">
+                 </span><span class="mi">54</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p" data-group-id="0615856724-22">}</span><span class="p" data-group-id="0615856724-21">}</span><span class="p">,</span><span class="w">
+     </span><span class="p" data-group-id="0615856724-32">{</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;FOO&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="0615856724-33">{</span><span class="ss">file_info</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="ss">regular</span><span class="p">,</span><span class="ss">read_write</span><span class="p">,</span><span class="w">
+                 </span><span class="p" data-group-id="0615856724-34">{</span><span class="p" data-group-id="0615856724-35">{</span><span class="mi">2010</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="0615856724-35">}</span><span class="p">,</span><span class="p" data-group-id="0615856724-36">{</span><span class="mi">19</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p" data-group-id="0615856724-36">}</span><span class="p" data-group-id="0615856724-34">}</span><span class="p">,</span><span class="w">
+                 </span><span class="p" data-group-id="0615856724-37">{</span><span class="p" data-group-id="0615856724-38">{</span><span class="mi">2010</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="0615856724-38">}</span><span class="p">,</span><span class="p" data-group-id="0615856724-39">{</span><span class="mi">19</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p" data-group-id="0615856724-39">}</span><span class="p" data-group-id="0615856724-37">}</span><span class="p">,</span><span class="w">
+                 </span><span class="p" data-group-id="0615856724-40">{</span><span class="p" data-group-id="0615856724-41">{</span><span class="mi">2010</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="0615856724-41">}</span><span class="p">,</span><span class="p" data-group-id="0615856724-42">{</span><span class="mi">19</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p" data-group-id="0615856724-42">}</span><span class="p" data-group-id="0615856724-40">}</span><span class="p">,</span><span class="w">
+                 </span><span class="mi">54</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p" data-group-id="0615856724-33">}</span><span class="p" data-group-id="0615856724-32">}</span><span class="p" data-group-id="0615856724-20">]</span><span class="p" data-group-id="0615856724-19">}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="0615856724-43">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0615856724-44">{</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Bin</span><span class="p" data-group-id="0615856724-44">}</span><span class="p" data-group-id="0615856724-43">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">zip</span><span class="p">:</span><span class="nf">create</span><span class="p" data-group-id="0615856724-45">(</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">reverse</span><span class="p" data-group-id="0615856724-46">(</span><span class="n">FileSpec</span><span class="p" data-group-id="0615856724-46">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0615856724-47">[</span><span class="nb">memory</span><span class="p" data-group-id="0615856724-47">]</span><span class="p" data-group-id="0615856724-45">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="0615856724-48">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="0615856724-49">{</span><span class="s">&quot;dummy.zip&quot;</span><span class="p">,</span><span class="w">
+     </span><span class="p">&lt;&lt;</span><span class="mi">80</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">74</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">171</span><span class="p">,</span><span class="mi">39</span><span class="p">,</span><span class="mi">212</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0615856724-49">}</span><span class="p" data-group-id="0615856724-48">}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="nc">zip</span><span class="p">:</span><span class="nf">foldl</span><span class="p" data-group-id="0615856724-50">(</span><span class="nf">fun</span><span class="p" data-group-id="0615856724-51">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">_</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="p">_</span><span class="p" data-group-id="0615856724-51">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nf">throw</span><span class="p" data-group-id="0615856724-52">(</span><span class="n">B</span><span class="p" data-group-id="0615856724-53">(</span><span class="p" data-group-id="0615856724-53">)</span><span class="p" data-group-id="0615856724-52">)</span><span class="p">;</span><span class="w"> </span><span class="p" data-group-id="0615856724-54">(</span><span class="p">_</span><span class="p">,</span><span class="p">_</span><span class="p">,</span><span class="p">_</span><span class="p">,</span><span class="n">Acc</span><span class="p" data-group-id="0615856724-54">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Acc</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0615856724-55">[</span><span class="p" data-group-id="0615856724-55">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0615856724-56">{</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Bin</span><span class="p" data-group-id="0615856724-56">}</span><span class="p" data-group-id="0615856724-50">)</span><span class="p">.</span><span class="w"> 
+</span><span class="p">&lt;&lt;</span><span class="s">&quot;FOO&quot;</span><span class="p">&gt;&gt;</span><span class="w">
+</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="list_dirlist_dirtabletable/1212">
+  <div class="detail-header">
+    <a href="#list_dirlist_dirtabletable/1212" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_dirlist_dirtabletable/1212</h1>
+  </div>
+  <section class="docstring">
+<p> <code class="inline">list_dir/1</code> retrieves all filenames in the zip archive <code class="inline">Archive</code>.</p>
+<p> <code class="inline">list_dir/2</code> provides options.</p>
+<p> <code class="inline">table/1</code> and <code class="inline">table/2</code> are provided as synonyms to resemble the <code class="inline">erl_tar</code> module.</p>
+<p> The result value is the tuple <code class="inline">{ok, List}</code>, where <a href="https://hexdocs.pm/elixir/List.html"><code class="inline">List</code></a> contains the zip archive comment as the first element.</p>
+<p> One option is available:</p>
+<p>  <code class="inline">cooked</code>   *  By default, this function opens the zip file in <code class="inline">raw</code> mode, which is faster but does not allow a remote (Erlang) file server to be used. Adding <code class="inline">cooked</code> to the mode list overrides the default and opens the zip file without option <code class="inline">raw</code>.</p>
+  </section>
+</section>
+<section class="detail" id="t/1">
+  <div class="detail-header">
+    <a href="#t/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">t/1</h1>
+      <div class="specs">
+          <pre>t(archive) :: :ok
+when archive: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | zipHandle, zipHandle: handle()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Prints all filenames in the zip archive <code class="inline">Archive</code> to the Erlang shell. (Similar to <code class="inline">tar t</code>.)</p>
+  </section>
+</section>
+<section class="detail" id="tt/1">
+  <div class="detail-header">
+    <a href="#tt/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">tt/1</h1>
+      <div class="specs">
+          <pre>tt(archive) :: :ok
+when archive: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | zipHandle, zipHandle: handle()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Prints filenames and information about all files in the zip archive <code class="inline">Archive</code> to the Erlang shell. (Similar to <code class="inline">tar tv</code>.)</p>
+  </section>
+</section>
+<section class="detail" id="unzipunzipextractextract/1212">
+  <div class="detail-header">
+    <a href="#unzipunzipextractextract/1212" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unzipunzipextractextract/1212</h1>
+  </div>
+  <section class="docstring">
+<p> <code class="inline">unzip/1</code> extracts all files from a zip archive.</p>
+<p> <code class="inline">unzip/2</code> provides options to extract some files, and more.</p>
+<p> <code class="inline">extract/1</code> and <code class="inline">extract/2</code> are provided as synonyms to resemble module <code class="inline">erl_tar</code>.</p>
+<p> If argument <code class="inline">Archive</code> is specified as a binary, the contents of the binary is assumed to be a zip archive, otherwise a filename.</p>
+<p> Options:</p>
+<p>  <code class="inline">{file_list, ``FileList``}</code>   *  By default, all files are extracted from the zip archive. With option <code class="inline">{file_list, ``FileList``}</code>, function <code class="inline">unzip/2</code> only extracts the files whose names are included in <code class="inline">FileList</code>. The full paths, including the names of all subdirectories within the zip archive, must be specified.</p>
+<p>  <code class="inline">cooked</code>   *  By default, this function opens the zip file in <code class="inline">raw</code> mode, which is faster but does not allow a remote (Erlang) file server to be used. Adding <code class="inline">cooked</code> to the mode list overrides the default and opens the zip file without option <code class="inline">raw</code>. The same applies for the files extracted.</p>
+<p>  <code class="inline">keep_old_files</code>   *  By default, all files with the same name as files in the zip archive are overwritten. With option <code class="inline">keep_old_files</code> set, function <code class="inline">unzip/2</code> does not overwrite existing files. Notice that even with option <code class="inline">memory</code> specified, which means that no files are overwritten, existing files are excluded from the result.</p>
+<p>  <code class="inline">verbose</code>   *  Prints an informational message for each extracted file.</p>
+<p>  <code class="inline">memory</code>   *  Instead of extracting to the current directory, the result is given as a list of tuples <code class="inline">{Filename, Binary}</code>, where <code class="inline">Binary</code> is a binary containing the extracted data of file <code class="inline">Filename</code> in the zip archive.</p>
+<p>  <code class="inline">{cwd, CWD}</code>   *  Uses the specified directory as current directory. It is prepended to filenames when extracting them from the zip archive. (Acting like  <code class="inline">file:set_cwd/1</code> in Kernel, but without changing the global <code class="inline">cwd</code> property.)</p>
+  </section>
+</section>
+<section class="detail" id="zip_close/1">
+  <div class="detail-header">
+    <a href="#zip_close/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">zip_close/1</h1>
+      <div class="specs">
+          <pre>zip_close(zipHandle) :: :ok | {:error, :einval} when zipHandle: handle()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Closes a zip archive, previously opened with <code class="inline">zip_open/1,2</code>. All resources are closed, and the handle is not to be used after closing.</p>
+  </section>
+</section>
+<section class="detail" id="zip_getzip_get/12">
+  <div class="detail-header">
+    <a href="#zip_getzip_get/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">zip_getzip_get/12</h1>
+  </div>
+  <section class="docstring">
+<p> Extracts one or all files from an open archive.</p>
+<p> The files are unzipped to memory or to file, depending on the options specified to function <code class="inline">zip_open/1,2</code> when opening the archive.</p>
+  </section>
+</section>
+<section class="detail" id="zip_list_dir/1">
+  <div class="detail-header">
+    <a href="#zip_list_dir/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">zip_list_dir/1</h1>
+      <div class="specs">
+          <pre>zip_list_dir(zipHandle) :: {:ok, result} | {:error, reason}
+when result: [zip_comment() | zip_file()], zipHandle: handle(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the file list of an open zip archive. The first returned element is the zip archive comment.</p>
+  </section>
+</section>
+<section class="detail" id="zip_openzip_open/12">
+  <div class="detail-header">
+    <a href="#zip_openzip_open/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">zip_openzip_open/12</h1>
+  </div>
+  <section class="docstring">
+<p> Opens a zip archive, and reads and saves its directory. This means that later reading files from the archive is faster than unzipping files one at a time with <code class="inline">unzip/1,2</code>.</p>
+<p> The archive must be closed with <a href="#zip_close/1"><code class="inline">zip_close/1</code></a>.</p>
+<p> The <code class="inline">ZipHandle</code> is closed if the process that originally opened the archive dies.</p>
+  </section>
+</section>
+<section class="detail" id="zipzipcreatecreate/2323">
+  <div class="detail-header">
+    <a href="#zipzipcreatecreate/2323" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">zipzipcreatecreate/2323</h1>
+  </div>
+  <section class="docstring">
+<p> Creates a zip archive containing the files specified in <code class="inline">FileList</code>.</p>
+<p> <code class="inline">create/2</code> and <code class="inline">create/3</code> are provided as synonyms to resemble module <code class="inline">erl_tar</code>.</p>
+<p> <code class="inline">FileList</code> is a list of files, with paths relative to the current directory, which are stored with this path in the archive. Files can also be specified with data in binaries to create an archive directly from data.</p>
+<p> Files are compressed using the DEFLATE compression, as described in the &quot;Appnote.txt&quot; file. However, files are stored without compression if they are already compressed. <code class="inline">zip/2</code> and <code class="inline">zip/3</code> check the file extension to determine if the file is to be stored without compression. Files with the following extensions are not compressed: <code class="inline">.Z</code>, <code class="inline">.zip</code>, <code class="inline">.zoo</code>, <code class="inline">.arc</code>, <code class="inline">.lzh</code>, <code class="inline">.arj</code>.</p>
+<p> It is possible to override the default behavior and control what types of files that are to be compressed by using options <code class="inline">{compress, ``What``}</code> and <code class="inline">{uncompress, ``What``}</code>. It is also possible to use many <code class="inline">compress</code> and <code class="inline">uncompress</code> options.</p>
+<p> To trigger file compression, its extension must match with the <code class="inline">compress</code> condition and must not match the <code class="inline">uncompress</code> condition. For example, if <code class="inline">compress</code> is set to <code class="inline">[&quot;gif&quot;, &quot;jpg&quot;]</code> and <code class="inline">uncompress</code> is set to <code class="inline">[&quot;jpg&quot;]</code>, only files with extension <code class="inline">&quot;gif&quot;</code> are compressed.</p>
+<p>  Options:</p>
+<p>  <code class="inline">cooked</code>   *  By default, this function opens the zip file in mode <code class="inline">raw</code>, which is faster but does not allow a remote (Erlang) file server to be used. Adding <code class="inline">cooked</code> to the mode list overrides the default and opens the zip file without the <code class="inline">raw</code> option. The same applies for the files added.</p>
+<p>  <code class="inline">verbose</code>   *  Prints an informational message about each added file.</p>
+<p>  <code class="inline">memory</code>   *  The output is not to a file, but instead as a tuple <code class="inline">{``FileName``, binary()}</code>. The binary is a full zip archive with header and can be extracted with, for example, <code class="inline">unzip/2</code>.</p>
+<p>  <code class="inline">{comment, ``Comment``}</code>   *  Adds a comment to the zip archive.</p>
+<p>  <code class="inline">{cwd, ``CWD``}</code>   *  Uses the specified directory as current work directory (<code class="inline">cwd</code>). This is prepended to filenames when adding them, although not in the zip archive (acting like  <code class="inline">file:set_cwd/1</code> in Kernel, but without changing the global <code class="inline">cwd</code> property.).</p>
+<p>  <code class="inline">{compress, ``What``}</code>   *  Controls what types of files to be compressed. Defaults to <code class="inline">all</code>. The following values of <code class="inline">What</code> are allowed:</p>
+<p>  <code class="inline">all</code>   *  All files are compressed (as long as they pass the <code class="inline">uncompress</code> condition).</p>
+<p>  <code class="inline">[``Extension``]</code>   *  Only files with exactly these extensions are compressed.</p>
+<p>  <code class="inline">{add,[``Extension``]}</code>   *  Adds these extensions to the list of compress extensions.</p>
+<p>  <code class="inline">{del,[``Extension``]}</code>   *  Deletes these extensions from the list of compress extensions.</p>
+<pre><code class="nohighlight makeup erlang"><span class="err">`</span><span class="p" data-group-id="9401603439-1">{</span><span class="ss">uncompress</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">What</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="9401603439-1">}</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w">  </span><span class="n">Controls</span><span class="w"> </span><span class="ss">what</span><span class="w"> </span><span class="ss">types</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">files</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">uncompressed</span><span class="p">.</span><span class="w"> </span><span class="n">Defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="9401603439-2">[</span><span class="s">&quot;.Z&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.zip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.zoo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.arc&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.lzh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.arj&quot;</span><span class="p" data-group-id="9401603439-2">]</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">following</span><span class="w"> </span><span class="ss">values</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="err">`</span><span class="n">What</span><span class="err">`</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="nc">allowed</span><span class="p">:</span></code></pre>
+<p>  <code class="inline">all</code>   *  No files are compressed.</p>
+<p>  <code class="inline">[``Extension``]</code>   *  Files with these extensions are uncompressed.</p>
+<p>  <code class="inline">{add,[``Extension``]}</code>   *  Adds these extensions to the list of uncompress extensions.</p>
+<p>  <code class="inline">{del,[``Extension``]}</code>   *  Deletes these extensions from the list of uncompress extensions.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>dets — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+dets      </h1>
+
+
+        <section id="moduledoc">
+<p> This module provides a term storage on file. The stored terms, in this module called objects, are tuples such that one element is defined to be the key. A Dets table is a collection of objects with the key at the same position stored on a file.</p>
+<p> This module is used by the Mnesia application, and is provided &quot;as is&quot; for users who are interested in efficient storage of Erlang terms on disk only. Many applications only need to store some terms in a file. Mnesia adds transactions, queries, and distribution. The size of Dets files cannot exceed 2 GB. If larger tables are needed, table fragmentation in Mnesia can be used.</p>
+<p> Three types of Dets tables exist:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="ss">set</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">type</span><span class="w"> </span><span class="ss">has</span><span class="w"> </span><span class="ss">at</span><span class="w"> </span><span class="ss">most</span><span class="w"> </span><span class="ss">one</span><span class="w"> </span><span class="ss">object</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">given</span><span class="w"> </span><span class="ss">key</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">object</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">key</span><span class="w"> </span><span class="ss">already</span><span class="w"> </span><span class="ss">present</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">inserted</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">existing</span><span class="w"> </span><span class="ss">object</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">overwritten</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">new</span><span class="w"> </span><span class="ss">object</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="ss">bag</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">type</span><span class="w"> </span><span class="ss">has</span><span class="w"> </span><span class="ss">zero</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">more</span><span class="w"> </span><span class="ss">different</span><span class="w"> </span><span class="ss">objects</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">given</span><span class="w"> </span><span class="ss">key</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="ss">duplicate_bag</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">type</span><span class="w"> </span><span class="ss">has</span><span class="w"> </span><span class="ss">zero</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">more</span><span class="w"> </span><span class="ss">possibly</span><span class="w"> </span><span class="ss">matching</span><span class="w"> </span><span class="ss">objects</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">given</span><span class="w"> </span><span class="ss">key</span><span class="p">.</span></code></pre>
+<p>   Dets tables must be opened before they can be updated or read, and when finished they must be properly closed. If a table is not properly closed, Dets automatically repairs the table. This can take a substantial time if the table is large. A Dets table is closed when the process which opened the table terminates. If many Erlang processes (users) open the same Dets table, they share the table. The table is properly closed when all users have either terminated or closed the table. Dets tables are not properly closed if the Erlang runtime system terminates abnormally.</p>
+<p>  A <code class="inline">^C</code> command abnormally terminates an Erlang runtime system in a Unix environment with a break-handler.</p>
+<p>  As all operations performed by Dets are disk operations, it is important to realize that a single look-up operation involves a series of disk seek and read operations. The Dets functions are therefore much slower than the corresponding <code class="inline">ets(3)</code> functions, although Dets exports a similar interface.</p>
+<p> Dets organizes data as a linear hash list and the hash list grows gracefully as more data is inserted into the table. Space management on the file is performed by what is called a buddy system. The current implementation keeps the entire buddy system in RAM, which implies that if the table gets heavily fragmented, quite some memory can be used up. The only way to defragment a table is to close it and then open it again with option <code class="inline">repair</code> set to <code class="inline">force</code>.</p>
+<p> Notice that type <code class="inline">ordered_set</code> in Ets is not yet provided by Dets, neither is the limited support for concurrent updates that makes a sequence of <code class="inline">first</code> and <code class="inline">next</code> calls safe to use on fixed ETS tables. Both these features may be provided by Dets in a future release of Erlang/OTP. Until then, the Mnesia application (or some user-implemented method for locking) must be used to implement safe concurrency. Currently, no Erlang/OTP library has support for ordered disk-based term storage.</p>
+<p> All Dets functions return <code class="inline">{error, Reason}</code> if an error occurs (<a href="#first/1"><code class="inline">first/1</code></a> and <a href="#next/2"><code class="inline">next/2</code></a> are exceptions, they exit the process with the error tuple). If badly formed arguments are specified, all functions exit the process with a <code class="inline">badarg</code> message.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#all/0">all/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of the names of all open tables on this node.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bchunk/2">bchunk/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of objects stored in a table. The exact representation of the returned objects is not public. The lists of data can be used for initializing a table by specifying value <code class="inline">bchunk</code> to option <code class="inline">format</code> of function <code class="inline">init_table/3</code> The Mnesia application uses this function for copying open tables.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#close/1">close/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Closes a table. Only processes that have opened a table are allowed to close it.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete/2">delete/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes all objects with key <code class="inline">Key</code> from table <code class="inline">Name</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_all_objects/1">delete_all_objects/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes all objects from a table in almost constant time. However, if the table if fixed, <code class="inline">delete_all_objects(T)</code> is equivalent to <code class="inline">match_delete(T, &#39;_&#39;)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_object/2">delete_object/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes all instances of a specified object from a table. If a table is of type <code class="inline">bag</code> or <code class="inline">duplicate_bag</code>, this function can be used to delete only some of the objects with a specified key.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#first/1">first/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the first key stored in table <code class="inline">Name</code> according to the internal order of the table, or <code class="inline">&#39;$end_of_table&#39;</code> if the table is empty.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#foldlfoldr/33">foldlfoldr/33</a>
+  </div>
+    <div class="summary-synopsis"><p> Calls <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> on successive elements of table <code class="inline">Name</code> together with an extra argument <code class="inline">AccIn</code>. The table elements are traversed in unspecified order. <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> must return a new accumulator that is passed to the next call. <code class="inline">Acc0</code> is returned if the table is empty.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#from_ets/2">from_ets/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes all objects of table <code class="inline">Name</code> and then inserts all the objects of the ETS table <code class="inline">EtsTab</code>. The objects are inserted in unspecified order. As <code class="inline">ets:safe_fixtable/2</code> is called, the ETS table must be public or owned by the calling process.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#info/1">info/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns information about table <code class="inline">Name</code> as a list of tuples</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#info/2">info/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the information associated with <code class="inline">Item</code> for table <code class="inline">Name</code>. In addition to the <code class="inline">{``Item``, ``Value``}</code> pairs defined for <a href="#info/1"><code class="inline">info/1</code></a>, the following items are allowed</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init_tableinit_table/23">init_tableinit_table/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Replaces the existing objects of table <code class="inline">Name</code> with objects created by calling the input function <code class="inline">InitFun</code>, see below. The reason for using this function rather than calling <a href="#insert/2"><code class="inline">insert/2</code></a> is that of efficiency. Notice that the input functions are called by the process that handles requests to the Dets table, not by the calling process.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#insert/2">insert/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Inserts one or more objects into the table <code class="inline">Name</code>. If there already exists an object with a key matching the key of some of the given objects and the table type is <code class="inline">set</code>, the old object will be replaced.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#insert_new/2">insert_new/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Inserts one or more objects into table <code class="inline">Name</code>. If there already exists some object with a key matching the key of any of the specified objects, the table is not updated and <code class="inline">false</code> is returned. Otherwise the objects are inserted and <code class="inline">true</code> returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_compatible_bchunk_format/2">is_compatible_bchunk_format/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if it would be possible to initialize table <code class="inline">Name</code>, using <code class="inline">init_table/3</code> with option <code class="inline">{format, bchunk}</code>, with objects read with <a href="#bchunk/2"><code class="inline">bchunk/2</code></a> from some table <code class="inline">T</code>, such that calling <code class="inline">info(T, bchunk_format)</code> returns <code class="inline">BchunkFormat</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_dets_file/1">is_dets_file/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if file <code class="inline">Filename</code> is a Dets table, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lookup/2">lookup/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of all objects with key <code class="inline">Key</code> stored in table <code class="inline">Name</code>, for example</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#match/1">match/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Matches some objects stored in a table and returns a non-empty list of the bindings matching a specified pattern in some unspecified order. The table, the pattern, and the number of objects that are matched are all defined by <code class="inline">Continuation</code>, which has been returned by a previous call to <a href="#match/1"><code class="inline">match/1</code></a> or <a href="#match/3"><code class="inline">match/3</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#match/2">match/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns for each object of table <code class="inline">Name</code> that matches <code class="inline">Pattern</code> a list of bindings in some unspecified order. For a description of patterns, see <code class="inline">ets:match/2</code>. If the keypos&#39;th element of <code class="inline">Pattern</code> is unbound, all table objects are matched. If the keypos&#39;th element is bound, only the objects with the correct key are matched.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#match/3">match/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Matches some or all objects of table <code class="inline">Name</code> and returns a non-empty list of the bindings that match <code class="inline">Pattern</code> in some unspecified order. For a description of patterns, see <code class="inline">ets:match/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#match_delete/2">match_delete/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes all objects that match <code class="inline">Pattern</code> from table <code class="inline">Name</code>. For a description of patterns, see <code class="inline">ets:match/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#match_object/1">match_object/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a non-empty list of some objects stored in a table that match a given pattern in some unspecified order. The table, the pattern, and the number of objects that are matched are all defined by <code class="inline">Continuation</code>, which has been returned by a previous call to <a href="#match_object/1"><code class="inline">match_object/1</code></a> or <a href="#match_object/3"><code class="inline">match_object/3</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#match_object/2">match_object/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of all objects of table <code class="inline">Name</code> that match <code class="inline">Pattern</code> in some unspecified order. For a description of patterns, see <code class="inline">ets:match/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#match_object/3">match_object/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Matches some or all objects stored in table <code class="inline">Name</code> and returns a non-empty list of the objects that match <code class="inline">Pattern</code> in some unspecified order. For a description of patterns, see <code class="inline">ets:match/2</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#member/2">member/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Works like <a href="#lookup/2"><code class="inline">lookup/2</code></a>, but does not return the objects. Returns <code class="inline">true</code> if one or more table elements has key <code class="inline">Key</code>, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#next/2">next/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns either the key following <code class="inline">Key1</code> in table <code class="inline">Name</code> according to the internal order of the table, or <code class="inline">&#39;$end_of_table&#39;</code> if there is no next key.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#open_file/1">open_file/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Opens an existing table. If the table is not properly closed, it is repaired. The returned reference is to be used as the table name. This function is most useful for debugging purposes.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#open_file/2">open_file/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Opens a table. An empty Dets table is created if no file exists.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pid2name/1">pid2name/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the table name given the pid of a process that handles requests to a table, or <code class="inline">undefined</code> if there is no such table.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#repair_continuation/2">repair_continuation/2</a>
+  </div>
+    <div class="summary-synopsis"><p> This function can be used to restore an opaque continuation returned by <a href="#select/3"><code class="inline">select/3</code></a> or <a href="#select/1"><code class="inline">select/1</code></a> if the continuation has passed through external term format (been sent between nodes or stored on disk).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#safe_fixtable/2">safe_fixtable/2</a>
+  </div>
+    <div class="summary-synopsis"><p> If <code class="inline">Fix</code> is <code class="inline">true</code>, table <code class="inline">Name</code> is fixed (once more) by the calling process, otherwise the table is released. The table is also released when a fixing process terminates.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select/1">select/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Applies a match specification to some objects stored in a table and returns a non-empty list of the results. The table, the match specification, and the number of objects that are matched are all defined by <code class="inline">Continuation</code>, which is returned by a previous call to <a href="#select/1"><code class="inline">select/1</code></a> or <a href="#select/3"><code class="inline">select/3</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select/2">select/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the results of applying match specification <code class="inline">MatchSpec</code> to all or some objects stored in table <code class="inline">Name</code>. The order of the objects is not specified. For a description of match specifications, see the ERTS User&#39;s Guide.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select/3">select/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the results of applying match specification <code class="inline">MatchSpec</code> to some or all objects stored in table <code class="inline">Name</code>. The order of the objects is not specified. For a description of match specifications, see the ERTS User&#39;s Guide.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select_delete/2">select_delete/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes each object from table <code class="inline">Name</code> such that applying match specification <code class="inline">MatchSpec</code> to the object returns value <code class="inline">true</code>. For a description of match specifications, see the ERTS User&#39;s Guide. Returns the number of deleted objects.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#slot/2">slot/2</a>
+  </div>
+    <div class="summary-synopsis"><p> The objects of a table are distributed among slots, starting with slot <code class="inline">0</code> and ending with slot <code class="inline">n</code>. Returns the list of objects associated with slot <code class="inline">I</code>. If <code class="inline">I</code> &gt; <code class="inline">n</code>, <code class="inline">&#39;$end_of_table&#39;</code> is returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sync/1">sync/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Ensures that all updates made to table <code class="inline">Name</code> are written to disk. This also applies to tables that have been opened with flag <code class="inline">ram_file</code> set to <code class="inline">true</code>. In this case, the contents of the RAM file are flushed to disk.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tabletable/12">tabletable/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a Query List Comprehension (QLC) query handle. The <code class="inline">qlc(3)</code> module provides a query language aimed mainly for Mnesia, but ETS tables, Dets tables, and lists are also recognized by <code class="inline">qlc</code> as sources of data. Calling <code class="inline">dets:table/1,2</code> is the means to make Dets table <code class="inline">Name</code> usable to <code class="inline">qlc</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_ets/2">to_ets/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Inserts the objects of the Dets table <code class="inline">Name</code> into the ETS table <code class="inline">EtsTab</code>. The order in which the objects are inserted is not specified. The existing objects of the ETS table are kept unless overwritten.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#traverse/2">traverse/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Applies <code class="inline">Fun</code> to each object stored in table <code class="inline">Name</code> in some unspecified order. Different actions are taken depending on the return value of <code class="inline">Fun</code>. The following <code class="inline">Fun</code> return values are allowed</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_counter/3">update_counter/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Updates the object with key <code class="inline">Key</code> stored in table <code class="inline">Name</code> of type <code class="inline">set</code> by adding <code class="inline">Incr</code> to the element at the <code class="inline">Pos</code>:th position. The new counter value is returned. If no position is specified, the element directly following the key is updated.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="all/0">
+  <div class="detail-header">
+    <a href="#all/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">all/0</h1>
+      <div class="specs">
+          <pre>all() :: [tab_name()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of the names of all open tables on this node.</p>
+  </section>
+</section>
+<section class="detail" id="bchunk/2">
+  <div class="detail-header">
+    <a href="#bchunk/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bchunk/2</h1>
+      <div class="specs">
+          <pre>bchunk(name, continuation) ::
+  {continuation2, data} | :"$end_of_table" | {:error, reason}
+when name: tab_name(),
+     continuation: :start | cont(),
+     continuation2: cont(),
+     data: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>(),
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of objects stored in a table. The exact representation of the returned objects is not public. The lists of data can be used for initializing a table by specifying value <code class="inline">bchunk</code> to option <code class="inline">format</code> of function <code class="inline">init_table/3</code> The Mnesia application uses this function for copying open tables.</p>
+<p> Unless the table is protected using <a href="#safe_fixtable/2"><code class="inline">safe_fixtable/2</code></a>, calls to <a href="#bchunk/2"><code class="inline">bchunk/2</code></a> do possibly not work as expected if concurrent updates are made to the table.</p>
+<p> The first time <a href="#bchunk/2"><code class="inline">bchunk/2</code></a> is called, an initial continuation, the atom <code class="inline">start</code>, must be provided.</p>
+<p> <a href="#bchunk/2"><code class="inline">bchunk/2</code></a> returns a tuple <code class="inline">{``Continuation2``, ``Data``}</code>, where <code class="inline">Data</code> is a list of objects. <code class="inline">Continuation2</code> is another continuation that is to be passed on to a subsequent call to <a href="#bchunk/2"><code class="inline">bchunk/2</code></a>. With a series of calls to <a href="#bchunk/2"><code class="inline">bchunk/2</code></a>, all table objects can be extracted.</p>
+<p> <a href="#bchunk/2"><code class="inline">bchunk/2</code></a> returns <code class="inline">&#39;$end_of_table&#39;</code> when all objects are returned, or <code class="inline">{error, ``Reason``}</code> if an error occurs.</p>
+  </section>
+</section>
+<section class="detail" id="close/1">
+  <div class="detail-header">
+    <a href="#close/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">close/1</h1>
+      <div class="specs">
+          <pre>close(name) :: :ok | {:error, reason} when name: tab_name(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Closes a table. Only processes that have opened a table are allowed to close it.</p>
+<p> All open tables must be closed before the system is stopped. If an attempt is made to open a table that is not properly closed, Dets automatically tries to repair it.</p>
+  </section>
+</section>
+<section class="detail" id="delete/2">
+  <div class="detail-header">
+    <a href="#delete/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete/2</h1>
+      <div class="specs">
+          <pre>delete(name, key) :: :ok | {:error, reason}
+when name: tab_name(), key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes all objects with key <code class="inline">Key</code> from table <code class="inline">Name</code>.</p>
+  </section>
+</section>
+<section class="detail" id="delete_all_objects/1">
+  <div class="detail-header">
+    <a href="#delete_all_objects/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_all_objects/1</h1>
+      <div class="specs">
+          <pre>delete_all_objects(name) :: :ok | {:error, reason}
+when name: tab_name(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes all objects from a table in almost constant time. However, if the table if fixed, <code class="inline">delete_all_objects(T)</code> is equivalent to <code class="inline">match_delete(T, &#39;_&#39;)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="delete_object/2">
+  <div class="detail-header">
+    <a href="#delete_object/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_object/2</h1>
+      <div class="specs">
+          <pre>delete_object(name, object) :: :ok | {:error, reason}
+when name: tab_name(), object: object(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes all instances of a specified object from a table. If a table is of type <code class="inline">bag</code> or <code class="inline">duplicate_bag</code>, this function can be used to delete only some of the objects with a specified key.</p>
+  </section>
+</section>
+<section class="detail" id="first/1">
+  <div class="detail-header">
+    <a href="#first/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">first/1</h1>
+      <div class="specs">
+          <pre>first(name) :: key | :"$end_of_table" when name: tab_name(), key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the first key stored in table <code class="inline">Name</code> according to the internal order of the table, or <code class="inline">&#39;$end_of_table&#39;</code> if the table is empty.</p>
+<p> Unless the table is protected using <a href="#safe_fixtable/2"><code class="inline">safe_fixtable/2</code></a>, subsequent calls to <a href="#next/2"><code class="inline">next/2</code></a> do possibly not work as expected if concurrent updates are made to the table.</p>
+<p> If an error occurs, the process is exited with an error tuple <code class="inline">{error, Reason}</code>. The error tuple is not returned, as it cannot be distinguished from a key.</p>
+<p> There are two reasons why <a href="#first/1"><code class="inline">first/1</code></a> and <a href="#next/2"><code class="inline">next/2</code></a> are not to be used: they are not efficient, and they prevent the use of key <code class="inline">&#39;$end_of_table&#39;</code>, as this atom is used to indicate the end of the table. If possible, use functions <code class="inline">match</code>, <code class="inline">match_object</code>, and <code class="inline">select</code> for traversing tables.</p>
+  </section>
+</section>
+<section class="detail" id="foldlfoldr/33">
+  <div class="detail-header">
+    <a href="#foldlfoldr/33" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">foldlfoldr/33</h1>
+  </div>
+  <section class="docstring">
+<p> Calls <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> on successive elements of table <code class="inline">Name</code> together with an extra argument <code class="inline">AccIn</code>. The table elements are traversed in unspecified order. <a href="https://hexdocs.pm/elixir/Function.html"><code class="inline">Function</code></a> must return a new accumulator that is passed to the next call. <code class="inline">Acc0</code> is returned if the table is empty.</p>
+  </section>
+</section>
+<section class="detail" id="from_ets/2">
+  <div class="detail-header">
+    <a href="#from_ets/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_ets/2</h1>
+      <div class="specs">
+          <pre>from_ets(name, etsTab) :: :ok | {:error, reason}
+when name: tab_name(), etsTab: <a href=":ets.html#t:tab/0">:ets.tab</a>(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes all objects of table <code class="inline">Name</code> and then inserts all the objects of the ETS table <code class="inline">EtsTab</code>. The objects are inserted in unspecified order. As <code class="inline">ets:safe_fixtable/2</code> is called, the ETS table must be public or owned by the calling process.</p>
+  </section>
+</section>
+<section class="detail" id="info/1">
+  <div class="detail-header">
+    <a href="#info/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">info/1</h1>
+      <div class="specs">
+          <pre>info(name) :: infoList | :undefined
+when name: tab_name(),
+     infoList: [infoTuple],
+     infoTuple:
+       {:file_size, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()}
+       | {:filename, <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()}
+       | {:keypos, keypos()}
+       | {:size, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()}
+       | {:type, type()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns information about table <code class="inline">Name</code> as a list of tuples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0456751809-1">{</span><span class="ss">file_size</span><span class="p">,</span><span class="w"> </span><span class="nf">integer</span><span class="p" data-group-id="0456751809-2">(</span><span class="p" data-group-id="0456751809-2">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="0456751809-1">}</span><span class="p">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">file</span><span class="w"> </span><span class="nb">size</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">bytes</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0456751809-3">{</span><span class="ss">filename</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nc">file</span><span class="p">:</span><span class="nf">name</span><span class="p" data-group-id="0456751809-4">(</span><span class="p" data-group-id="0456751809-4">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0456751809-3">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">name</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">file</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="ss">objects</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">stored</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0456751809-5">{</span><span class="ss">keypos</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nf">keypos</span><span class="p" data-group-id="0456751809-6">(</span><span class="p" data-group-id="0456751809-6">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0456751809-5">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">key</span><span class="w"> </span><span class="ss">position</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0456751809-7">{</span><span class="nb">size</span><span class="p">,</span><span class="w"> </span><span class="nf">integer</span><span class="p" data-group-id="0456751809-8">(</span><span class="p" data-group-id="0456751809-8">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="0456751809-7">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">objects</span><span class="w"> </span><span class="ss">stored</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0456751809-9">{</span><span class="ss">type</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nf">type</span><span class="p" data-group-id="0456751809-10">(</span><span class="p" data-group-id="0456751809-10">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0456751809-9">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">type</span><span class="p">.</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="info/2">
+  <div class="detail-header">
+    <a href="#info/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">info/2</h1>
+      <div class="specs">
+          <pre>info(name, item) :: value | :undefined
+when name: tab_name(),
+     item:
+       :access
+       | :auto_save
+       | :bchunk_format
+       | :hash
+       | :file_size
+       | :filename
+       | :keypos
+       | :memory
+       | :no_keys
+       | :no_objects
+       | :no_slots
+       | :owner
+       | :ram_file
+       | :safe_fixed
+       | :safe_fixed_monotonic_time
+       | :size
+       | :type,
+     value: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the information associated with <code class="inline">Item</code> for table <code class="inline">Name</code>. In addition to the <code class="inline">{``Item``, ``Value``}</code> pairs defined for <a href="#info/1"><code class="inline">info/1</code></a>, the following items are allowed:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="1602810447-1">{</span><span class="ss">access</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nf">access</span><span class="p" data-group-id="1602810447-2">(</span><span class="p" data-group-id="1602810447-2">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="1602810447-1">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">access</span><span class="w"> </span><span class="ss">mode</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="1602810447-3">{</span><span class="ss">auto_save</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nf">auto_save</span><span class="p" data-group-id="1602810447-4">(</span><span class="p" data-group-id="1602810447-4">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="1602810447-3">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">autosave</span><span class="w"> </span><span class="ss">interval</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="1602810447-5">{</span><span class="ss">bchunk_format</span><span class="p">,</span><span class="w"> </span><span class="nf">binary</span><span class="p" data-group-id="1602810447-6">(</span><span class="p" data-group-id="1602810447-6">)</span><span class="p" data-group-id="1602810447-5">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">An</span><span class="w"> </span><span class="ss">opaque</span><span class="w"> </span><span class="ss">binary</span><span class="w"> </span><span class="ss">describing</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">format</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">objects</span><span class="w"> </span><span class="ss">returned</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="p" data-group-id="1602810447-7">[</span><span class="err">`</span><span class="ss">bchunk</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="p" data-group-id="1602810447-7">]</span><span class="p" data-group-id="1602810447-8">(</span><span class="p">#</span><span class="ss">bchunk</span><span class="o">/</span><span class="mi">2</span><span class="p" data-group-id="1602810447-8">)</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">binary</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">used</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">argument</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="ss">is_compatible_chunk_format</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="1602810447-9">{</span><span class="nb">hash</span><span class="p">,</span><span class="w"> </span><span class="n">Hash</span><span class="p" data-group-id="1602810447-9">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Describes</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="n">BIF</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">used</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">calculate</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="nb">hash</span><span class="w"> </span><span class="ss">values</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">objects</span><span class="w"> </span><span class="ss">stored</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="n">Dets</span><span class="w"> </span><span class="ss">table</span><span class="p">.</span><span class="w"> </span><span class="n">Possible</span><span class="w"> </span><span class="ss">values</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="err">`</span><span class="n">Hash</span><span class="err">`</span><span class="p">:</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="nb">phash</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Implies</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="nc">erlang</span><span class="p">:</span><span class="nb">phash</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="w"> </span><span class="n">BIF</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">used</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="nb">phash2</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Implies</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="nc">erlang</span><span class="p">:</span><span class="nb">phash2</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="w"> </span><span class="n">BIF</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">used</span><span class="p">.</span><span class="w">
+
+  </span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="1602810447-10">{</span><span class="nb">memory</span><span class="p">,</span><span class="w"> </span><span class="nf">integer</span><span class="p" data-group-id="1602810447-11">(</span><span class="p" data-group-id="1602810447-11">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="1602810447-10">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">file</span><span class="w"> </span><span class="nb">size</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">bytes</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">same</span><span class="w"> </span><span class="ss">value</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">associated</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">item</span><span class="w"> </span><span class="err">`</span><span class="ss">file_size</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="1602810447-12">{</span><span class="ss">no_keys</span><span class="p">,</span><span class="w"> </span><span class="ss">integer</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="1602810447-13">(</span><span class="p" data-group-id="1602810447-13">)</span><span class="p" data-group-id="1602810447-12">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">different</span><span class="w"> </span><span class="ss">keys</span><span class="w"> </span><span class="ss">stored</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="1602810447-14">{</span><span class="ss">no_objects</span><span class="p">,</span><span class="w"> </span><span class="ss">integer</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="1602810447-15">(</span><span class="p" data-group-id="1602810447-15">)</span><span class="p" data-group-id="1602810447-14">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">objects</span><span class="w"> </span><span class="ss">stored</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="1602810447-16">{</span><span class="ss">no_slots</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1602810447-17">{</span><span class="n">Min</span><span class="p">,</span><span class="w"> </span><span class="n">Used</span><span class="p">,</span><span class="w"> </span><span class="n">Max</span><span class="p" data-group-id="1602810447-17">}</span><span class="p" data-group-id="1602810447-16">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">slots</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="p">.</span><span class="w"> </span><span class="err">`</span><span class="n">Min</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">minimum</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">slots</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">Used</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">currently</span><span class="w"> </span><span class="ss">used</span><span class="w"> </span><span class="ss">slots</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">Max</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">maximum</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">slots</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="1602810447-18">{</span><span class="ss">owner</span><span class="p">,</span><span class="w"> </span><span class="nf">pid</span><span class="p" data-group-id="1602810447-19">(</span><span class="p" data-group-id="1602810447-19">)</span><span class="p" data-group-id="1602810447-18">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">pid</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">handles</span><span class="w"> </span><span class="ss">requests</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="n">Dets</span><span class="w"> </span><span class="ss">table</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="1602810447-20">{</span><span class="ss">ram_file</span><span class="p">,</span><span class="w"> </span><span class="nf">boolean</span><span class="p" data-group-id="1602810447-21">(</span><span class="p" data-group-id="1602810447-21">)</span><span class="p" data-group-id="1602810447-20">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Whether</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">kept</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="n">RAM</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="1602810447-22">{</span><span class="ss">safe_fixed_monotonic_time</span><span class="p">,</span><span class="w"> </span><span class="n">SafeFixed</span><span class="p" data-group-id="1602810447-22">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">fixed</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">SafeFixed</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">tuple</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="1602810447-23">{</span><span class="n">FixedAtTime</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1602810447-24">[</span><span class="p" data-group-id="1602810447-25">{</span><span class="n">Pid</span><span class="p">,</span><span class="n">RefCount</span><span class="p" data-group-id="1602810447-25">}</span><span class="p" data-group-id="1602810447-24">]</span><span class="p" data-group-id="1602810447-23">}</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="err">`</span><span class="n">FixedAtTime</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">time</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">was</span><span class="w"> </span><span class="ss">first</span><span class="w"> </span><span class="ss">fixed</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">Pid</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">pid</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">fixes</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="err">`</span><span class="n">RefCount</span><span class="err">`</span><span class="w"> </span><span class="ss">times</span><span class="p">.</span><span class="w"> </span><span class="n">There</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">any</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">processes</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">list</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">fixed</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">SafeFixed</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">atom</span><span class="w"> </span><span class="err">`</span><span class="ss">false</span><span class="err">`</span><span class="p">.</span></code></pre>
+<p> <code class="inline">FixedAtTime</code> corresponds to the result returned by  <code class="inline">erlang:monotonic_time/0</code> at the time of fixation. The use of <code class="inline">safe_fixed_monotonic_time</code> is  time warp safe.</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="8203343874-1">{</span><span class="ss">safe_fixed</span><span class="p">,</span><span class="w"> </span><span class="n">SafeFixed</span><span class="p" data-group-id="8203343874-1">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">same</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="8203343874-2">{</span><span class="ss">safe_fixed_monotonic_time</span><span class="p">,</span><span class="w"> </span><span class="n">SafeFixed</span><span class="p" data-group-id="8203343874-2">}</span><span class="err">`</span><span class="w"> </span><span class="ss">except</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">format</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">value</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="err">`</span><span class="n">FixedAtTime</span><span class="err">`</span><span class="p">.</span></code></pre>
+<p> <code class="inline">FixedAtTime</code> corresponds to the result returned by  <code class="inline">erlang:timestamp/0</code> at the time of fixation. Notice that when the system uses single or multi time warp modes, this can produce strange results. This is because the use of <code class="inline">safe_fixed</code> is not  time warp safe. Time warp safe code must use <code class="inline">safe_fixed_monotonic_time</code> instead.</p>
+  </section>
+</section>
+<section class="detail" id="init_tableinit_table/23">
+  <div class="detail-header">
+    <a href="#init_tableinit_table/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">init_tableinit_table/23</h1>
+  </div>
+  <section class="docstring">
+<p> Replaces the existing objects of table <code class="inline">Name</code> with objects created by calling the input function <code class="inline">InitFun</code>, see below. The reason for using this function rather than calling <a href="#insert/2"><code class="inline">insert/2</code></a> is that of efficiency. Notice that the input functions are called by the process that handles requests to the Dets table, not by the calling process.</p>
+<p> When called with argument <code class="inline">read</code>, function <code class="inline">InitFun</code> is assumed to return <code class="inline">end_of_input</code> when there is no more input, or <code class="inline">{Objects, Fun}</code>, where <code class="inline">Objects</code> is a list of objects and <code class="inline">Fun</code> is a new input function. Any other value <code class="inline">Value</code> is returned as an error <code class="inline">{error, {init_fun, Value}}</code>. Each input function is called exactly once, and if an error occurs, the last function is called with argument <code class="inline">close</code>, the reply of which is ignored.</p>
+<p> If the table type is <code class="inline">set</code> and more than one object exists with a given key, one of the objects is chosen. This is not necessarily the last object with the given key in the sequence of objects returned by the input functions. Avoid duplicate keys, otherwise the file becomes unnecessarily fragmented. This holds also for duplicated objects stored in tables of type <code class="inline">bag</code>.</p>
+<p> It is important that the table has a sufficient number of slots for the objects. If not, the hash list starts to grow when <code class="inline">init_table/2</code> returns, which significantly slows down access to the table for a period of time. The minimum number of slots is set by the <a href="#open_file/2"><code class="inline">open_file/2</code></a> option <code class="inline">min_no_slots</code> and returned by the <a href="#info/2"><code class="inline">info/2</code></a> item <code class="inline">no_slots</code>. See also option <code class="inline">min_no_slots</code> below.</p>
+<p> Argument <code class="inline">Options</code> is a list of <code class="inline">{Key, Val}</code> tuples, where the following values are allowed:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0359199153-1">{</span><span class="ss">min_no_slots</span><span class="p">,</span><span class="w"> </span><span class="nf">no_slots</span><span class="p" data-group-id="0359199153-2">(</span><span class="p" data-group-id="0359199153-2">)</span><span class="p" data-group-id="0359199153-1">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Specifies</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">estimated</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">different</span><span class="w"> </span><span class="ss">keys</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">stored</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="p" data-group-id="0359199153-3">[</span><span class="err">`</span><span class="ss">open_file</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="p" data-group-id="0359199153-3">]</span><span class="p" data-group-id="0359199153-4">(</span><span class="p">#</span><span class="ss">open_file</span><span class="o">/</span><span class="mi">2</span><span class="p" data-group-id="0359199153-4">)</span><span class="w"> </span><span class="ss">option</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">same</span><span class="w"> </span><span class="ss">name</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">ignored</span><span class="p">,</span><span class="w"> </span><span class="ss">unless</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">created</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="ss">performance</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">enhanced</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="ss">supplying</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">estimate</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="ss">initializing</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0359199153-5">{</span><span class="ss">format</span><span class="p">,</span><span class="w"> </span><span class="n">Format</span><span class="p" data-group-id="0359199153-5">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Specifies</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">format</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">objects</span><span class="w"> </span><span class="ss">returned</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="err">`</span><span class="n">InitFun</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="err">`</span><span class="n">Format</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="err">`</span><span class="ss">term</span><span class="err">`</span><span class="w"> </span><span class="p" data-group-id="0359199153-6">(</span><span class="ss">the</span><span class="w"> </span><span class="ss">default</span><span class="p" data-group-id="0359199153-6">)</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">InitFun</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">assumed</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">return</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">tuples</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="err">`</span><span class="n">Format</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="err">`</span><span class="ss">bchunk</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">InitFun</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">assumed</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">return</span><span class="w"> </span><span class="err">`</span><span class="n">Data</span><span class="err">`</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">returned</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="p" data-group-id="0359199153-7">[</span><span class="err">`</span><span class="ss">bchunk</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="p" data-group-id="0359199153-7">]</span><span class="p" data-group-id="0359199153-8">(</span><span class="p">#</span><span class="ss">bchunk</span><span class="o">/</span><span class="mi">2</span><span class="p" data-group-id="0359199153-8">)</span><span class="p">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="ss">option</span><span class="w"> </span><span class="ss">overrides</span><span class="w"> </span><span class="ss">option</span><span class="w"> </span><span class="err">`</span><span class="ss">min_no_slots</span><span class="err">`</span><span class="p">.</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="insert/2">
+  <div class="detail-header">
+    <a href="#insert/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">insert/2</h1>
+      <div class="specs">
+          <pre>insert(name, objects) :: :ok | {:error, reason}
+when name: tab_name(), objects: object() | [object()], reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Inserts one or more objects into the table <code class="inline">Name</code>. If there already exists an object with a key matching the key of some of the given objects and the table type is <code class="inline">set</code>, the old object will be replaced.</p>
+  </section>
+</section>
+<section class="detail" id="insert_new/2">
+  <div class="detail-header">
+    <a href="#insert_new/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">insert_new/2</h1>
+      <div class="specs">
+          <pre>insert_new(name, objects) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | {:error, reason}
+when name: tab_name(), objects: object() | [object()], reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Inserts one or more objects into table <code class="inline">Name</code>. If there already exists some object with a key matching the key of any of the specified objects, the table is not updated and <code class="inline">false</code> is returned. Otherwise the objects are inserted and <code class="inline">true</code> returned.</p>
+  </section>
+</section>
+<section class="detail" id="is_compatible_bchunk_format/2">
+  <div class="detail-header">
+    <a href="#is_compatible_bchunk_format/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_compatible_bchunk_format/2</h1>
+      <div class="specs">
+          <pre>is_compatible_bchunk_format(name, bchunkFormat) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+when name: tab_name(), bchunkFormat: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if it would be possible to initialize table <code class="inline">Name</code>, using <code class="inline">init_table/3</code> with option <code class="inline">{format, bchunk}</code>, with objects read with <a href="#bchunk/2"><code class="inline">bchunk/2</code></a> from some table <code class="inline">T</code>, such that calling <code class="inline">info(T, bchunk_format)</code> returns <code class="inline">BchunkFormat</code>.</p>
+  </section>
+</section>
+<section class="detail" id="is_dets_file/1">
+  <div class="detail-header">
+    <a href="#is_dets_file/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_dets_file/1</h1>
+      <div class="specs">
+          <pre>is_dets_file(filename) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | {:error, reason}
+when filename: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if file <code class="inline">Filename</code> is a Dets table, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="lookup/2">
+  <div class="detail-header">
+    <a href="#lookup/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lookup/2</h1>
+      <div class="specs">
+          <pre>lookup(name, key) :: objects | {:error, reason}
+when name: tab_name(), key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), objects: [object()], reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of all objects with key <code class="inline">Key</code> stored in table <code class="inline">Name</code>, for example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">dets</span><span class="p">:</span><span class="nf">open_file</span><span class="p" data-group-id="2233030865-1">(</span><span class="ss">abc</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2233030865-2">[</span><span class="p" data-group-id="2233030865-3">{</span><span class="ss">type</span><span class="p">,</span><span class="w"> </span><span class="ss">bag</span><span class="p" data-group-id="2233030865-3">}</span><span class="p" data-group-id="2233030865-2">]</span><span class="p" data-group-id="2233030865-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="2233030865-4">{</span><span class="ss">ok</span><span class="p">,</span><span class="ss">abc</span><span class="p" data-group-id="2233030865-4">}</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">dets</span><span class="p">:</span><span class="nf">insert</span><span class="p" data-group-id="2233030865-5">(</span><span class="ss">abc</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2233030865-6">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="2233030865-6">}</span><span class="p" data-group-id="2233030865-5">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">dets</span><span class="p">:</span><span class="nf">insert</span><span class="p" data-group-id="2233030865-7">(</span><span class="ss">abc</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2233030865-8">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="2233030865-8">}</span><span class="p" data-group-id="2233030865-7">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">ok</span><span class="w">
+</span><span class="mi">5</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">dets</span><span class="p">:</span><span class="nf">lookup</span><span class="p" data-group-id="2233030865-9">(</span><span class="ss">abc</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2233030865-9">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="2233030865-10">[</span><span class="p" data-group-id="2233030865-11">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="2233030865-11">}</span><span class="p">,</span><span class="p" data-group-id="2233030865-12">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="2233030865-12">}</span><span class="p" data-group-id="2233030865-10">]</span></code></pre>
+<p> If the table type is <code class="inline">set</code>, the function returns either the empty list or a list with one object, as there cannot be more than one object with a given key. If the table type is <code class="inline">bag</code> or <code class="inline">duplicate_bag</code>, the function returns a list of arbitrary length.</p>
+<p> Notice that the order of objects returned is unspecified. In particular, the order in which objects were inserted is not reflected.</p>
+  </section>
+</section>
+<section class="detail" id="match/1">
+  <div class="detail-header">
+    <a href="#match/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">match/1</h1>
+      <div class="specs">
+          <pre>match(continuation) ::
+  {[match], continuation2} | :"$end_of_table" | {:error, reason}
+when continuation: bindings_cont(),
+     continuation2: bindings_cont(),
+     match: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Matches some objects stored in a table and returns a non-empty list of the bindings matching a specified pattern in some unspecified order. The table, the pattern, and the number of objects that are matched are all defined by <code class="inline">Continuation</code>, which has been returned by a previous call to <a href="#match/1"><code class="inline">match/1</code></a> or <a href="#match/3"><code class="inline">match/3</code></a>.</p>
+<p> When all table objects are matched, <code class="inline">&#39;$end_of_table&#39;</code> is returned.</p>
+  </section>
+</section>
+<section class="detail" id="match/2">
+  <div class="detail-header">
+    <a href="#match/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">match/2</h1>
+      <div class="specs">
+          <pre>match(name, pattern) :: [match] | {:error, reason}
+when name: tab_name(), pattern: pattern(), match: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()], reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns for each object of table <code class="inline">Name</code> that matches <code class="inline">Pattern</code> a list of bindings in some unspecified order. For a description of patterns, see <code class="inline">ets:match/2</code>. If the keypos&#39;th element of <code class="inline">Pattern</code> is unbound, all table objects are matched. If the keypos&#39;th element is bound, only the objects with the correct key are matched.</p>
+  </section>
+</section>
+<section class="detail" id="match/3">
+  <div class="detail-header">
+    <a href="#match/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">match/3</h1>
+      <div class="specs">
+          <pre>match(name, pattern, n) ::
+  {[match], continuation} | :"$end_of_table" | {:error, reason}
+when name: tab_name(),
+     pattern: pattern(),
+     n: :default | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+     continuation: bindings_cont(),
+     match: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Matches some or all objects of table <code class="inline">Name</code> and returns a non-empty list of the bindings that match <code class="inline">Pattern</code> in some unspecified order. For a description of patterns, see <code class="inline">ets:match/2</code>.</p>
+<p> A tuple of the bindings and a continuation is returned, unless the table is empty, in which case <code class="inline">&#39;$end_of_table&#39;</code> is returned. The continuation is to be used when matching further objects by calling <a href="#match/1"><code class="inline">match/1</code></a>.</p>
+<p> If the keypos&#39;th element of <code class="inline">Pattern</code> is bound, all table objects are matched. If the keypos&#39;th element is unbound, all table objects are matched, <code class="inline">N</code> objects at a time, until at least one object matches or the end of the table is reached. The default, indicated by giving <code class="inline">N</code> the value <code class="inline">default</code>, is to let the number of objects vary depending on the sizes of the objects. All objects with the same key are always matched at the same time, which implies that more than N objects can sometimes be matched.</p>
+<p> The table is always to be protected using <a href="#safe_fixtable/2"><code class="inline">safe_fixtable/2</code></a> before calling <a href="#match/3"><code class="inline">match/3</code></a>, otherwise errors can occur when calling <a href="#match/1"><code class="inline">match/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="match_delete/2">
+  <div class="detail-header">
+    <a href="#match_delete/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">match_delete/2</h1>
+      <div class="specs">
+          <pre>match_delete(name, pattern) :: :ok | {:error, reason}
+when name: tab_name(), pattern: pattern(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes all objects that match <code class="inline">Pattern</code> from table <code class="inline">Name</code>. For a description of patterns, see <code class="inline">ets:match/2</code>.</p>
+<p> If the keypos&#39;th element of <code class="inline">Pattern</code> is bound, only the objects with the correct key are matched.</p>
+  </section>
+</section>
+<section class="detail" id="match_object/1">
+  <div class="detail-header">
+    <a href="#match_object/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">match_object/1</h1>
+      <div class="specs">
+          <pre>match_object(continuation) ::
+  {objects, continuation2} | :"$end_of_table" | {:error, reason}
+when continuation: object_cont(),
+     continuation2: object_cont(),
+     objects: [object()],
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a non-empty list of some objects stored in a table that match a given pattern in some unspecified order. The table, the pattern, and the number of objects that are matched are all defined by <code class="inline">Continuation</code>, which has been returned by a previous call to <a href="#match_object/1"><code class="inline">match_object/1</code></a> or <a href="#match_object/3"><code class="inline">match_object/3</code></a>.</p>
+<p> When all table objects are matched, <code class="inline">&#39;$end_of_table&#39;</code> is returned.</p>
+  </section>
+</section>
+<section class="detail" id="match_object/2">
+  <div class="detail-header">
+    <a href="#match_object/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">match_object/2</h1>
+      <div class="specs">
+          <pre>match_object(name, pattern) :: objects | {:error, reason}
+when name: tab_name(), pattern: pattern(), objects: [object()], reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list of all objects of table <code class="inline">Name</code> that match <code class="inline">Pattern</code> in some unspecified order. For a description of patterns, see <code class="inline">ets:match/2</code>.</p>
+<p> If the keypos&#39;th element of <code class="inline">Pattern</code> is unbound, all table objects are matched. If the keypos&#39;th element of <code class="inline">Pattern</code> is bound, only the objects with the correct key are matched.</p>
+<p> Using the <code class="inline">match_object</code> functions for traversing all table objects is more efficient than calling <a href="#first/1"><code class="inline">first/1</code></a> and <a href="#next/2"><code class="inline">next/2</code></a> or <a href="#slot/2"><code class="inline">slot/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="match_object/3">
+  <div class="detail-header">
+    <a href="#match_object/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">match_object/3</h1>
+      <div class="specs">
+          <pre>match_object(name, pattern, n) ::
+  {objects, continuation} | :"$end_of_table" | {:error, reason}
+when name: tab_name(),
+     pattern: pattern(),
+     n: :default | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+     continuation: object_cont(),
+     objects: [object()],
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Matches some or all objects stored in table <code class="inline">Name</code> and returns a non-empty list of the objects that match <code class="inline">Pattern</code> in some unspecified order. For a description of patterns, see <code class="inline">ets:match/2</code>.</p>
+<p> A list of objects and a continuation is returned, unless the table is empty, in which case <code class="inline">&#39;$end_of_table&#39;</code> is returned. The continuation is to be used when matching further objects by calling <a href="#match_object/1"><code class="inline">match_object/1</code></a>.</p>
+<p> If the keypos&#39;th element of <code class="inline">Pattern</code> is bound, all table objects are matched. If the keypos&#39;th element is unbound, all table objects are matched, <code class="inline">N</code> objects at a time, until at least one object matches or the end of the table is reached. The default, indicated by giving <code class="inline">N</code> the value <code class="inline">default</code>, is to let the number of objects vary depending on the sizes of the objects. All matching objects with the same key are always returned in the same reply, which implies that more than N objects can sometimes be returned.</p>
+<p> The table is always to be protected using <a href="#safe_fixtable/2"><code class="inline">safe_fixtable/2</code></a> before calling <a href="#match_object/3"><code class="inline">match_object/3</code></a>, otherwise errors can occur when calling <a href="#match_object/1"><code class="inline">match_object/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="member/2">
+  <div class="detail-header">
+    <a href="#member/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">member/2</h1>
+      <div class="specs">
+          <pre>member(name, key) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | {:error, reason}
+when name: tab_name(), key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Works like <a href="#lookup/2"><code class="inline">lookup/2</code></a>, but does not return the objects. Returns <code class="inline">true</code> if one or more table elements has key <code class="inline">Key</code>, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="next/2">
+  <div class="detail-header">
+    <a href="#next/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">next/2</h1>
+      <div class="specs">
+          <pre>next(name, key1) :: key2 | :"$end_of_table"
+when name: tab_name(), key1: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), key2: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns either the key following <code class="inline">Key1</code> in table <code class="inline">Name</code> according to the internal order of the table, or <code class="inline">&#39;$end_of_table&#39;</code> if there is no next key.</p>
+<p> If an error occurs, the process is exited with an error tuple <code class="inline">{error, Reason}</code>.</p>
+<p> To find the first key in the table, use <a href="#first/1"><code class="inline">first/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="open_file/1">
+  <div class="detail-header">
+    <a href="#open_file/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">open_file/1</h1>
+      <div class="specs">
+          <pre>open_file(filename) :: {:ok, reference} | {:error, reason}
+when filename: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>(), reference: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">reference</a>(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Opens an existing table. If the table is not properly closed, it is repaired. The returned reference is to be used as the table name. This function is most useful for debugging purposes.</p>
+  </section>
+</section>
+<section class="detail" id="open_file/2">
+  <div class="detail-header">
+    <a href="#open_file/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">open_file/2</h1>
+      <div class="specs">
+          <pre>open_file(name, args) :: {:ok, name} | {:error, reason}
+when name: tab_name(),
+     args: [openArg],
+     openArg:
+       {:access, access()}
+       | {:auto_save, auto_save()}
+       | {:estimated_no_objects, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()}
+       | {:file, <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()}
+       | {:max_no_slots, no_slots()}
+       | {:min_no_slots, no_slots()}
+       | {:keypos, keypos()}
+       | {:ram_file, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}
+       | {:repair, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | :force}
+       | {:type, type()},
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Opens a table. An empty Dets table is created if no file exists.</p>
+<p> The atom <code class="inline">Name</code> is the table name. The table name must be provided in all subsequent operations on the table. The name can be used by other processes as well, and many processes can share one table.</p>
+<p> If two processes open the same table by giving the same name and arguments, the table has two users. If one user closes the table, it remains open until the second user closes it.</p>
+<p> Argument <code class="inline">Args</code> is a list of <code class="inline">{Key, Val}</code> tuples, where the following values are allowed:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0156930589-1">{</span><span class="ss">access</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nf">access</span><span class="p" data-group-id="0156930589-2">(</span><span class="p" data-group-id="0156930589-2">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0156930589-1">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Existing</span><span class="w"> </span><span class="ss">tables</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">opened</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">read</span><span class="o">-</span><span class="ss">only</span><span class="w"> </span><span class="ss">mode</span><span class="p">.</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">opened</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">read</span><span class="o">-</span><span class="ss">only</span><span class="w"> </span><span class="ss">mode</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">subjected</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">automatic</span><span class="w"> </span><span class="ss">file</span><span class="w"> </span><span class="ss">reparation</span><span class="w"> </span><span class="ss">algorithm</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">it</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">later</span><span class="w"> </span><span class="ss">opened</span><span class="w"> </span><span class="k">after</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">crash</span><span class="p">.</span><span class="w"> </span><span class="n">Defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="ss">read_write</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0156930589-3">{</span><span class="ss">auto_save</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nf">auto_save</span><span class="p" data-group-id="0156930589-4">(</span><span class="p" data-group-id="0156930589-4">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0156930589-3">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">autosave</span><span class="w"> </span><span class="ss">interval</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">interval</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">integer</span><span class="w"> </span><span class="p" data-group-id="0156930589-5">[</span><span class="err">`</span><span class="n">Time</span><span class="err">`</span><span class="p" data-group-id="0156930589-5">]</span><span class="p" data-group-id="0156930589-6">(</span><span class="nc">https</span><span class="p">:</span><span class="o">/</span><span class="o">/</span><span class="ss">hexdocs</span><span class="p">.</span><span class="ss">pm</span><span class="o">/</span><span class="ss">elixir</span><span class="o">/</span><span class="n">Time</span><span class="p">.</span><span class="ss">html</span><span class="p" data-group-id="0156930589-6">)</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">flushed</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">disk</span><span class="w"> </span><span class="ss">whenever</span><span class="w"> </span><span class="ss">it</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">accessed</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="p" data-group-id="0156930589-7">[</span><span class="err">`</span><span class="n">Time</span><span class="err">`</span><span class="p" data-group-id="0156930589-7">]</span><span class="p" data-group-id="0156930589-8">(</span><span class="nc">https</span><span class="p">:</span><span class="o">/</span><span class="o">/</span><span class="ss">hexdocs</span><span class="p">.</span><span class="ss">pm</span><span class="o">/</span><span class="ss">elixir</span><span class="o">/</span><span class="n">Time</span><span class="p">.</span><span class="ss">html</span><span class="p" data-group-id="0156930589-8">)</span><span class="w"> </span><span class="ss">milliseconds</span><span class="p">.</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">has</span><span class="w"> </span><span class="ss">been</span><span class="w"> </span><span class="ss">flushed</span><span class="w"> </span><span class="ss">requires</span><span class="w"> </span><span class="ss">no</span><span class="w"> </span><span class="ss">reparation</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="ss">reopened</span><span class="w"> </span><span class="k">after</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">uncontrolled</span><span class="w"> </span><span class="ss">emulator</span><span class="w"> </span><span class="ss">halt</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">interval</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">atom</span><span class="w"> </span><span class="err">`</span><span class="ss">infinity</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">autosave</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">disabled</span><span class="p">.</span><span class="w"> </span><span class="n">Defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="mi">180000</span><span class="w"> </span><span class="p" data-group-id="0156930589-9">(</span><span class="mi">3</span><span class="w"> </span><span class="ss">minutes</span><span class="p" data-group-id="0156930589-9">)</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0156930589-10">{</span><span class="ss">estimated_no_objects</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nf">no_slots</span><span class="p" data-group-id="0156930589-11">(</span><span class="p" data-group-id="0156930589-11">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0156930589-10">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Equivalent</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">option</span><span class="w"> </span><span class="err">`</span><span class="ss">min_no_slots</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0156930589-12">{</span><span class="ss">file</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nc">file</span><span class="p">:</span><span class="nf">name</span><span class="p" data-group-id="0156930589-13">(</span><span class="p" data-group-id="0156930589-13">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0156930589-12">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">name</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">file</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">opened</span><span class="p">.</span><span class="w"> </span><span class="n">Defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">name</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0156930589-14">{</span><span class="ss">max_no_slots</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nf">no_slots</span><span class="p" data-group-id="0156930589-15">(</span><span class="p" data-group-id="0156930589-15">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0156930589-14">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">maximum</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">slots</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">used</span><span class="p">.</span><span class="w"> </span><span class="n">Defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">maximal</span><span class="w"> </span><span class="ss">value</span><span class="p">.</span><span class="w"> </span><span class="n">Notice</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">higher</span><span class="w"> </span><span class="ss">value</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">increase</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">fragmentation</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">smaller</span><span class="w"> </span><span class="ss">value</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">decrease</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">fragmentation</span><span class="p">,</span><span class="w"> </span><span class="ss">at</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">expense</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">execution</span><span class="w"> </span><span class="ss">time</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0156930589-16">{</span><span class="ss">min_no_slots</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nf">no_slots</span><span class="p" data-group-id="0156930589-17">(</span><span class="p" data-group-id="0156930589-17">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0156930589-16">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="ss">performance</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">enhanced</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">flag</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="ss">specifying</span><span class="p">,</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">created</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">estimated</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">different</span><span class="w"> </span><span class="ss">keys</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">stored</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="p">.</span><span class="w"> </span><span class="n">Defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">minimum</span><span class="w"> </span><span class="ss">value</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0156930589-18">{</span><span class="ss">keypos</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nf">keypos</span><span class="p" data-group-id="0156930589-19">(</span><span class="p" data-group-id="0156930589-19">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0156930589-18">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">position</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="nb">element</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">each</span><span class="w"> </span><span class="ss">object</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">used</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">key</span><span class="p">.</span><span class="w"> </span><span class="n">Defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">ability</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">explicitly</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">key</span><span class="w"> </span><span class="ss">position</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">most</span><span class="w"> </span><span class="ss">convenient</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="ss">we</span><span class="w"> </span><span class="ss">want</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">store</span><span class="w"> </span><span class="n">Erlang</span><span class="w"> </span><span class="ss">records</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">first</span><span class="w"> </span><span class="ss">position</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">record</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">name</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">record</span><span class="w"> </span><span class="ss">type</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0156930589-20">{</span><span class="ss">ram_file</span><span class="p">,</span><span class="w"> </span><span class="nf">boolean</span><span class="p" data-group-id="0156930589-21">(</span><span class="p" data-group-id="0156930589-21">)</span><span class="p" data-group-id="0156930589-20">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Whether</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">kept</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="n">RAM</span><span class="p">.</span><span class="w"> </span><span class="n">Keeping</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="n">RAM</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">sound</span><span class="w"> </span><span class="ss">like</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">anomaly</span><span class="p">,</span><span class="w"> </span><span class="ss">but</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">enhance</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">performance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">applications</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">open</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">table</span><span class="p">,</span><span class="w"> </span><span class="ss">insert</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">set</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">objects</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">then</span><span class="w"> </span><span class="ss">close</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="p">.</span><span class="w"> </span><span class="n">When</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">closed</span><span class="p">,</span><span class="w"> </span><span class="ss">its</span><span class="w"> </span><span class="ss">contents</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">written</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">disk</span><span class="w"> </span><span class="ss">file</span><span class="p">.</span><span class="w"> </span><span class="n">Defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="ss">false</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="0156930589-22">{</span><span class="ss">repair</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="p" data-group-id="0156930589-22">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">`</span><span class="n">Value</span><span class="err">`</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">either</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="err">`</span><span class="nf">boolean</span><span class="p" data-group-id="0156930589-23">(</span><span class="p" data-group-id="0156930589-23">)</span><span class="err">`</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">atom</span><span class="w"> </span><span class="err">`</span><span class="ss">force</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">flag</span><span class="w"> </span><span class="ss">specifies</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="n">Dets</span><span class="w"> </span><span class="ss">server</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">invoke</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">automatic</span><span class="w"> </span><span class="ss">file</span><span class="w"> </span><span class="ss">reparation</span><span class="w"> </span><span class="ss">algorithm</span><span class="p">.</span><span class="w"> </span><span class="n">Defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="ss">true</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="err">`</span><span class="ss">false</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">specified</span><span class="p">,</span><span class="w"> </span><span class="ss">no</span><span class="w"> </span><span class="ss">attempt</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">made</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">repair</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">file</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="0156930589-24">{</span><span class="ss">error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0156930589-25">{</span><span class="ss">needs_repair</span><span class="p">,</span><span class="w">
+          </span><span class="n">FileName</span><span class="p" data-group-id="0156930589-25">}</span><span class="p" data-group-id="0156930589-24">}</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">returned</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">must</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">repaired</span><span class="p">.</span></code></pre>
+<p> Value <code class="inline">force</code> means that a reparation is made even if the table is properly closed. This is a seldom needed option.</p>
+<p> Option <code class="inline">repair</code> is ignored if the table is already open.</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="2524451864-1">{</span><span class="ss">type</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="err">`</span><span class="nf">type</span><span class="p" data-group-id="2524451864-2">(</span><span class="p" data-group-id="2524451864-2">)</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="2524451864-1">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">type</span><span class="p">.</span><span class="w"> </span><span class="n">Defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="ss">set</span><span class="err">`</span><span class="p">.</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="pid2name/1">
+  <div class="detail-header">
+    <a href="#pid2name/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pid2name/1</h1>
+      <div class="specs">
+          <pre>pid2name(pid) :: {:ok, name} | :undefined when pid: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(), name: tab_name()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the table name given the pid of a process that handles requests to a table, or <code class="inline">undefined</code> if there is no such table.</p>
+<p> This function is meant to be used for debugging only.</p>
+  </section>
+</section>
+<section class="detail" id="repair_continuation/2">
+  <div class="detail-header">
+    <a href="#repair_continuation/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">repair_continuation/2</h1>
+      <div class="specs">
+          <pre>repair_continuation(continuation, matchSpec) :: continuation2
+when continuation: select_cont(),
+     continuation2: select_cont(),
+     matchSpec: match_spec()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> This function can be used to restore an opaque continuation returned by <a href="#select/3"><code class="inline">select/3</code></a> or <a href="#select/1"><code class="inline">select/1</code></a> if the continuation has passed through external term format (been sent between nodes or stored on disk).</p>
+<p> The reason for this function is that continuation terms contain compiled match specifications and therefore are invalidated if converted to external term format. Given that the original match specification is kept intact, the continuation can be restored, meaning it can once again be used in subsequent <a href="#select/1"><code class="inline">select/1</code></a> calls even though it has been stored on disk or on another node.</p>
+<p> For more information and examples, see the <code class="inline">ets(3)</code> module.</p>
+<p>  This function is rarely needed in application code. It is used by application Mnesia to provide distributed <a href="#select/3"><code class="inline">select/3</code></a> and <a href="#select/1"><code class="inline">select/1</code></a> sequences. A normal application would either use Mnesia or keep the continuation from being converted to external format.</p>
+<p> The reason for not having an external representation of compiled match specifications is performance. It can be subject to change in future releases, while this interface remains for backward compatibility.</p>
+  </section>
+</section>
+<section class="detail" id="safe_fixtable/2">
+  <div class="detail-header">
+    <a href="#safe_fixtable/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">safe_fixtable/2</h1>
+      <div class="specs">
+          <pre>safe_fixtable(name, fix) :: :ok when name: tab_name(), fix: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> If <code class="inline">Fix</code> is <code class="inline">true</code>, table <code class="inline">Name</code> is fixed (once more) by the calling process, otherwise the table is released. The table is also released when a fixing process terminates.</p>
+<p> If many processes fix a table, the table remains fixed until all processes have released it or terminated. A reference counter is kept on a per process basis, and N consecutive fixes require N releases to release the table.</p>
+<p> It is not guaranteed that calls to <a href="#first/1"><code class="inline">first/1</code></a>, <a href="#next/2"><code class="inline">next/2</code></a>, or select and match functions work as expected even if the table is fixed; the limited support for concurrency provided by the <code class="inline">ets(3)</code> module is not yet provided by Dets. Fixing a table currently only disables resizing of the hash list of the table.</p>
+<p> If objects have been added while the table was fixed, the hash list starts to grow when the table is released, which significantly slows down access to the table for a period of time.</p>
+  </section>
+</section>
+<section class="detail" id="select/1">
+  <div class="detail-header">
+    <a href="#select/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select/1</h1>
+      <div class="specs">
+          <pre>select(continuation) ::
+  {selection, continuation2} | :"$end_of_table" | {:error, reason}
+when continuation: select_cont(),
+     continuation2: select_cont(),
+     selection: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Applies a match specification to some objects stored in a table and returns a non-empty list of the results. The table, the match specification, and the number of objects that are matched are all defined by <code class="inline">Continuation</code>, which is returned by a previous call to <a href="#select/1"><code class="inline">select/1</code></a> or <a href="#select/3"><code class="inline">select/3</code></a>.</p>
+<p> When all objects of the table have been matched, <code class="inline">&#39;$end_of_table&#39;</code> is returned.</p>
+  </section>
+</section>
+<section class="detail" id="select/2">
+  <div class="detail-header">
+    <a href="#select/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select/2</h1>
+      <div class="specs">
+          <pre>select(name, matchSpec) :: selection | {:error, reason}
+when name: tab_name(),
+     matchSpec: match_spec(),
+     selection: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the results of applying match specification <code class="inline">MatchSpec</code> to all or some objects stored in table <code class="inline">Name</code>. The order of the objects is not specified. For a description of match specifications, see the ERTS User&#39;s Guide.</p>
+<p> If the keypos&#39;th element of <code class="inline">MatchSpec</code> is unbound, the match specification is applied to all objects of the table. If the keypos&#39;th element is bound, the match specification is applied to the objects with the correct key(s) only.</p>
+<p> Using the <code class="inline">select</code> functions for traversing all objects of a table is more efficient than calling <a href="#first/1"><code class="inline">first/1</code></a> and <a href="#next/2"><code class="inline">next/2</code></a> or <a href="#slot/2"><code class="inline">slot/2</code></a>. </p>
+  </section>
+</section>
+<section class="detail" id="select/3">
+  <div class="detail-header">
+    <a href="#select/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select/3</h1>
+      <div class="specs">
+          <pre>select(name, matchSpec, n) ::
+  {selection, continuation} | :"$end_of_table" | {:error, reason}
+when name: tab_name(),
+     matchSpec: match_spec(),
+     n: :default | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+     continuation: select_cont(),
+     selection: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the results of applying match specification <code class="inline">MatchSpec</code> to some or all objects stored in table <code class="inline">Name</code>. The order of the objects is not specified. For a description of match specifications, see the ERTS User&#39;s Guide.</p>
+<p> A tuple of the results of applying the match specification and a continuation is returned, unless the table is empty, in which case <code class="inline">&#39;$end_of_table&#39;</code> is returned. The continuation is to be used when matching more objects by calling <a href="#select/1"><code class="inline">select/1</code></a>.</p>
+<p> If the keypos&#39;th element of <code class="inline">MatchSpec</code> is bound, the match specification is applied to all objects of the table with the correct key(s). If the keypos&#39;th element of <code class="inline">MatchSpec</code> is unbound, the match specification is applied to all objects of the table, <code class="inline">N</code> objects at a time, until at least one object matches or the end of the table is reached. The default, indicated by giving <code class="inline">N</code> the value <code class="inline">default</code>, is to let the number of objects vary depending on the sizes of the objects. All objects with the same key are always handled at the same time, which implies that the match specification can be applied to more than N objects.</p>
+<p> The table is always to be protected using <a href="#safe_fixtable/2"><code class="inline">safe_fixtable/2</code></a> before calling <a href="#select/3"><code class="inline">select/3</code></a>, otherwise errors can occur when calling <a href="#select/1"><code class="inline">select/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="select_delete/2">
+  <div class="detail-header">
+    <a href="#select_delete/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select_delete/2</h1>
+      <div class="specs">
+          <pre>select_delete(name, matchSpec) :: n | {:error, reason}
+when name: tab_name(),
+     matchSpec: match_spec(),
+     n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes each object from table <code class="inline">Name</code> such that applying match specification <code class="inline">MatchSpec</code> to the object returns value <code class="inline">true</code>. For a description of match specifications, see the ERTS User&#39;s Guide. Returns the number of deleted objects.</p>
+<p> If the keypos&#39;th element of <code class="inline">MatchSpec</code> is bound, the match specification is applied to the objects with the correct key(s) only.</p>
+  </section>
+</section>
+<section class="detail" id="slot/2">
+  <div class="detail-header">
+    <a href="#slot/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">slot/2</h1>
+      <div class="specs">
+          <pre>slot(name, i) :: :"$end_of_table" | objects | {:error, reason}
+when name: tab_name(),
+     i: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+     objects: [object()],
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> The objects of a table are distributed among slots, starting with slot <code class="inline">0</code> and ending with slot <code class="inline">n</code>. Returns the list of objects associated with slot <code class="inline">I</code>. If <code class="inline">I</code> &gt; <code class="inline">n</code>, <code class="inline">&#39;$end_of_table&#39;</code> is returned.</p>
+  </section>
+</section>
+<section class="detail" id="sync/1">
+  <div class="detail-header">
+    <a href="#sync/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sync/1</h1>
+      <div class="specs">
+          <pre>sync(name) :: :ok | {:error, reason} when name: tab_name(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Ensures that all updates made to table <code class="inline">Name</code> are written to disk. This also applies to tables that have been opened with flag <code class="inline">ram_file</code> set to <code class="inline">true</code>. In this case, the contents of the RAM file are flushed to disk.</p>
+<p> Notice that the space management data structures kept in RAM, the buddy system, is also written to the disk. This can take some time if the table is fragmented.</p>
+  </section>
+</section>
+<section class="detail" id="tabletable/12">
+  <div class="detail-header">
+    <a href="#tabletable/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">tabletable/12</h1>
+  </div>
+  <section class="docstring">
+<p> Returns a Query List Comprehension (QLC) query handle. The <code class="inline">qlc(3)</code> module provides a query language aimed mainly for Mnesia, but ETS tables, Dets tables, and lists are also recognized by <code class="inline">qlc</code> as sources of data. Calling <code class="inline">dets:table/1,2</code> is the means to make Dets table <code class="inline">Name</code> usable to <code class="inline">qlc</code>.</p>
+<p> When there are only simple restrictions on the key position, <code class="inline">qlc</code> uses <code class="inline">dets:lookup/2</code> to look up the keys. When that is not possible, the whole table is traversed. Option <code class="inline">traverse</code> determines how this is done:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="ss">first_next</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">traversed</span><span class="w"> </span><span class="ss">one</span><span class="w"> </span><span class="ss">key</span><span class="w"> </span><span class="ss">at</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">time</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="ss">calling</span><span class="w"> </span><span class="err">`</span><span class="nc">dets</span><span class="p">:</span><span class="ss">first</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="nc">dets</span><span class="p">:</span><span class="ss">next</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="ss">select</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">traversed</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="ss">calling</span><span class="w"> </span><span class="err">`</span><span class="nc">dets</span><span class="p">:</span><span class="ss">select</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="nc">dets</span><span class="p">:</span><span class="ss">select</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">Option</span><span class="w"> </span><span class="err">`</span><span class="ss">n_objects</span><span class="err">`</span><span class="w"> </span><span class="ss">determines</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">objects</span><span class="w"> </span><span class="nf">returned</span><span class="w"> </span><span class="p" data-group-id="3107219783-1">(</span><span class="ss">the</span><span class="w"> </span><span class="ss">third</span><span class="w"> </span><span class="ss">argument</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="p" data-group-id="3107219783-2">[</span><span class="err">`</span><span class="ss">select</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="p" data-group-id="3107219783-2">]</span><span class="p" data-group-id="3107219783-3">(</span><span class="p">#</span><span class="ss">select</span><span class="o">/</span><span class="mi">3</span><span class="p" data-group-id="3107219783-3">)</span><span class="p" data-group-id="3107219783-1">)</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">match</span><span class="w"> </span><span class="nf">specification</span><span class="w"> </span><span class="p" data-group-id="3107219783-4">(</span><span class="ss">the</span><span class="w"> </span><span class="ss">second</span><span class="w"> </span><span class="ss">argument</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="p" data-group-id="3107219783-5">[</span><span class="err">`</span><span class="ss">select</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="p" data-group-id="3107219783-5">]</span><span class="p" data-group-id="3107219783-6">(</span><span class="p">#</span><span class="ss">select</span><span class="o">/</span><span class="mi">3</span><span class="p" data-group-id="3107219783-6">)</span><span class="p" data-group-id="3107219783-4">)</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">assembled</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="err">`</span><span class="ss">qlc</span><span class="err">`</span><span class="p">:</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">Simple</span><span class="w"> </span><span class="ss">filters</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">translated</span><span class="w"> </span><span class="ss">into</span><span class="w"> </span><span class="ss">equivalent</span><span class="w"> </span><span class="ss">match</span><span class="w"> </span><span class="ss">specifications</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">More</span><span class="w"> </span><span class="ss">complicated</span><span class="w"> </span><span class="ss">filters</span><span class="w"> </span><span class="ss">must</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">applied</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">objects</span><span class="w"> </span><span class="ss">returned</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="p" data-group-id="3107219783-7">[</span><span class="err">`</span><span class="ss">select</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="p" data-group-id="3107219783-7">]</span><span class="p" data-group-id="3107219783-8">(</span><span class="p">#</span><span class="ss">select</span><span class="o">/</span><span class="mi">3</span><span class="p" data-group-id="3107219783-8">)</span><span class="w"> </span><span class="ss">given</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">match</span><span class="w"> </span><span class="ss">specification</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">matches</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">objects</span><span class="p">.</span><span class="w">
+
+  </span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="3107219783-9">{</span><span class="ss">select</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="w"> </span><span class="nf">match_spec</span><span class="p" data-group-id="3107219783-10">(</span><span class="p" data-group-id="3107219783-10">)</span><span class="err">`</span><span class="p" data-group-id="3107219783-9">}</span><span class="err">`</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">As</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="err">`</span><span class="ss">select</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">table</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">traversed</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="ss">calling</span><span class="w"> </span><span class="err">`</span><span class="nc">dets</span><span class="p">:</span><span class="ss">select</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="nc">dets</span><span class="p">:</span><span class="ss">select</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">difference</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">match</span><span class="w"> </span><span class="ss">specification</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">specified</span><span class="w"> </span><span class="ss">explicitly</span><span class="p">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">how</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="ss">match</span><span class="w"> </span><span class="ss">specifications</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">cannot</span><span class="w"> </span><span class="ss">easily</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">expressed</span><span class="w"> </span><span class="ss">within</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">syntax</span><span class="w"> </span><span class="ss">provided</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="err">`</span><span class="ss">qlc</span><span class="err">`</span><span class="p">.</span></code></pre>
+<p>   The following example uses an explicit match specification to traverse the table:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">dets</span><span class="p">:</span><span class="nf">open_file</span><span class="p" data-group-id="3983501515-1">(</span><span class="ss">t</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3983501515-2">[</span><span class="p" data-group-id="3983501515-2">]</span><span class="p" data-group-id="3983501515-1">)</span><span class="p">,</span><span class="w">
+</span><span class="ss">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">dets</span><span class="p">:</span><span class="nf">insert</span><span class="p" data-group-id="3983501515-3">(</span><span class="ss">t</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3983501515-4">[</span><span class="p" data-group-id="3983501515-5">{</span><span class="mi">1</span><span class="p">,</span><span class="ss">a</span><span class="p" data-group-id="3983501515-5">}</span><span class="p">,</span><span class="p" data-group-id="3983501515-6">{</span><span class="mi">2</span><span class="p">,</span><span class="ss">b</span><span class="p" data-group-id="3983501515-6">}</span><span class="p">,</span><span class="p" data-group-id="3983501515-7">{</span><span class="mi">3</span><span class="p">,</span><span class="ss">c</span><span class="p" data-group-id="3983501515-7">}</span><span class="p">,</span><span class="p" data-group-id="3983501515-8">{</span><span class="mi">4</span><span class="p">,</span><span class="ss">d</span><span class="p" data-group-id="3983501515-8">}</span><span class="p" data-group-id="3983501515-4">]</span><span class="p" data-group-id="3983501515-3">)</span><span class="p">,</span><span class="w">
+</span><span class="n">MS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ets</span><span class="p">:</span><span class="nf">fun2ms</span><span class="p" data-group-id="3983501515-9">(</span><span class="nf">fun</span><span class="p" data-group-id="3983501515-10">(</span><span class="p" data-group-id="3983501515-11">{</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p" data-group-id="3983501515-11">}</span><span class="p" data-group-id="3983501515-10">)</span><span class="w"> </span><span class="nf">when</span><span class="w"> </span><span class="p" data-group-id="3983501515-12">(</span><span class="n">X</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3983501515-12">)</span><span class="w"> </span><span class="nf">or</span><span class="w"> </span><span class="p" data-group-id="3983501515-13">(</span><span class="n">X</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="3983501515-13">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="p" data-group-id="3983501515-14">{</span><span class="n">Y</span><span class="p" data-group-id="3983501515-14">}</span><span class="w"> </span><span class="k">end</span><span class="p" data-group-id="3983501515-9">)</span><span class="p">,</span><span class="w">
+</span><span class="n">QH1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">dets</span><span class="p">:</span><span class="nf">table</span><span class="p" data-group-id="3983501515-15">(</span><span class="ss">t</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3983501515-16">[</span><span class="p" data-group-id="3983501515-17">{</span><span class="ss">traverse</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3983501515-18">{</span><span class="ss">select</span><span class="p">,</span><span class="w"> </span><span class="n">MS</span><span class="p" data-group-id="3983501515-18">}</span><span class="p" data-group-id="3983501515-17">}</span><span class="p" data-group-id="3983501515-16">]</span><span class="p" data-group-id="3983501515-15">)</span><span class="p">.</span></code></pre>
+<p> An example with implicit match specification:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">QH2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">qlc</span><span class="p">:</span><span class="nf">q</span><span class="p" data-group-id="3973025592-1">(</span><span class="p" data-group-id="3973025592-2">[</span><span class="p" data-group-id="3973025592-3">{</span><span class="n">Y</span><span class="p" data-group-id="3973025592-3">}</span><span class="w"> </span><span class="p">||</span><span class="w"> </span><span class="p" data-group-id="3973025592-4">{</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p" data-group-id="3973025592-4">}</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nc">dets</span><span class="p">:</span><span class="nf">table</span><span class="p" data-group-id="3973025592-5">(</span><span class="ss">t</span><span class="p" data-group-id="3973025592-5">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3973025592-6">(</span><span class="n">X</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3973025592-6">)</span><span class="w"> </span><span class="nf">or</span><span class="w"> </span><span class="p" data-group-id="3973025592-7">(</span><span class="n">X</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="3973025592-7">)</span><span class="p" data-group-id="3973025592-2">]</span><span class="p" data-group-id="3973025592-1">)</span><span class="p">.</span></code></pre>
+<p> The latter example is equivalent to the former, which can be verified using function <code class="inline">qlc:info/1</code>:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">qlc</span><span class="p">:</span><span class="nf">info</span><span class="p" data-group-id="5876477901-1">(</span><span class="n">QH1</span><span class="p" data-group-id="5876477901-1">)</span><span class="w"> </span><span class="o">=:=</span><span class="w"> </span><span class="nc">qlc</span><span class="p">:</span><span class="nf">info</span><span class="p" data-group-id="5876477901-2">(</span><span class="n">QH2</span><span class="p" data-group-id="5876477901-2">)</span><span class="p">.</span><span class="w">
+</span><span class="ss">true</span></code></pre>
+<p> <code class="inline">qlc:info/1</code> returns information about a query handle. In this case identical information is returned for the two query handles.</p>
+  </section>
+</section>
+<section class="detail" id="to_ets/2">
+  <div class="detail-header">
+    <a href="#to_ets/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_ets/2</h1>
+      <div class="specs">
+          <pre>to_ets(name, etsTab) :: etsTab | {:error, reason}
+when name: tab_name(), etsTab: <a href=":ets.html#t:tab/0">:ets.tab</a>(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Inserts the objects of the Dets table <code class="inline">Name</code> into the ETS table <code class="inline">EtsTab</code>. The order in which the objects are inserted is not specified. The existing objects of the ETS table are kept unless overwritten.</p>
+  </section>
+</section>
+<section class="detail" id="traverse/2">
+  <div class="detail-header">
+    <a href="#traverse/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">traverse/2</h1>
+      <div class="specs">
+          <pre>traverse(name, fun) :: return | {:error, reason}
+when name: tab_name(),
+     fun: (object -> funReturn),
+     object: object(),
+     funReturn: :continue | {:continue, val} | {:done, value} | otherValue,
+     return: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()] | otherValue,
+     val: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     value: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     otherValue: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Applies <code class="inline">Fun</code> to each object stored in table <code class="inline">Name</code> in some unspecified order. Different actions are taken depending on the return value of <code class="inline">Fun</code>. The following <code class="inline">Fun</code> return values are allowed:</p>
+<p>  <code class="inline">continue</code>   *  Continue to perform the traversal. For example, the following function can be used to print the contents of a table:</p>
+<pre><code class="nohighlight makeup erlang"><span class="nf">fun</span><span class="p" data-group-id="9870183414-1">(</span><span class="n">X</span><span class="p" data-group-id="9870183414-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">format</span><span class="p" data-group-id="9870183414-2">(</span><span class="s">&quot;</span><span class="si">~p</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9870183414-3">[</span><span class="n">X</span><span class="p" data-group-id="9870183414-3">]</span><span class="p" data-group-id="9870183414-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">continue</span><span class="w"> </span><span class="k">end</span><span class="p">.</span></code></pre>
+<p>  <code class="inline">{continue, Val}</code>   *  Continue the traversal and accumulate <code class="inline">Val</code>. The following function is supplied to collect all objects of a table in a list:</p>
+<pre><code class="nohighlight makeup erlang"><span class="nf">fun</span><span class="p" data-group-id="4220289465-1">(</span><span class="n">X</span><span class="p" data-group-id="4220289465-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="p" data-group-id="4220289465-2">{</span><span class="ss">continue</span><span class="p">,</span><span class="w"> </span><span class="n">X</span><span class="p" data-group-id="4220289465-2">}</span><span class="w"> </span><span class="k">end</span><span class="p">.</span></code></pre>
+<p>  <code class="inline">{done, ``Value``}</code>   *  Terminate the traversal and return <code class="inline">[``Value`` | Acc]</code>.</p>
+<p>   Any other value <code class="inline">OtherValue</code> returned by <code class="inline">Fun</code> terminates the traversal and is returned immediately.</p>
+  </section>
+</section>
+<section class="detail" id="update_counter/3">
+  <div class="detail-header">
+    <a href="#update_counter/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_counter/3</h1>
+      <div class="specs">
+          <pre>update_counter(name, key, increment) :: result
+when name: tab_name(),
+     key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     increment: {pos, incr} | incr,
+     pos: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+     incr: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+     result: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Updates the object with key <code class="inline">Key</code> stored in table <code class="inline">Name</code> of type <code class="inline">set</code> by adding <code class="inline">Incr</code> to the element at the <code class="inline">Pos</code>:th position. The new counter value is returned. If no position is specified, the element directly following the key is updated.</p>
+<p> This functions provides a way of updating a counter, without having to look up an object, update the object by incrementing an element, and insert the resulting object into the table again.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>unicode — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+unicode      </h1>
+
+
+        <section id="moduledoc">
+<p> This module contains functions for converting between different character representations. It converts between ISO Latin-1 characters and Unicode characters, but it can also convert between different Unicode encodings (like UTF-8, UTF-16, and UTF-32).</p>
+<p> The default Unicode encoding in Erlang is in binaries UTF-8, which is also the format in which built-in functions and libraries in OTP expect to find binary Unicode data. In lists, Unicode data is encoded as integers, each integer representing one character and encoded simply as the Unicode code point for the character.</p>
+<p> Other Unicode encodings than integers representing code points or UTF-8 in binaries are referred to as &quot;external encodings&quot;. The ISO Latin-1 encoding is in binaries and lists referred to as latin1-encoding.</p>
+<p> It is recommended to only use external encodings for communication with external entities where this is required. When working inside the Erlang/OTP environment, it is recommended to keep binaries in UTF-8 when representing Unicode characters. ISO Latin-1 encoding is supported both for backward compatibility and for communication with external entities not supporting Unicode character sets.</p>
+<p> Programs should always operate on a normalized form and compare canonical-equivalent Unicode characters as equal. All characters should thus be normalized to one form once on the system borders. One of the following functions can convert characters to their normalized forms  <a href="#characters_to_nfc_list/1"><code class="inline">characters_to_nfc_list/1</code></a>,  <a href="#characters_to_nfc_binary/1"><code class="inline">characters_to_nfc_binary/1</code></a>,  <a href="#characters_to_nfd_list/1"><code class="inline">characters_to_nfd_list/1</code></a> or  <a href="#characters_to_nfd_binary/1"><code class="inline">characters_to_nfd_binary/1</code></a>. For general text  <a href="#characters_to_nfc_list/1"><code class="inline">characters_to_nfc_list/1</code></a> or  <a href="#characters_to_nfc_binary/1"><code class="inline">characters_to_nfc_binary/1</code></a> is preferred, and for identifiers one of the compatibility normalization functions, such as  <a href="#characters_to_nfkc_list/1"><code class="inline">characters_to_nfkc_list/1</code></a>, is preferred for security reasons. The normalization functions where introduced in OTP 20. Additional information on normalization can be found in the Unicode FAQ. </p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#bom_to_encoding/1">bom_to_encoding/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Checks for a UTF Byte Order Mark (BOM) in the beginning of a binary. If the supplied binary <code class="inline">Bin</code> begins with a valid BOM for either UTF-8, UTF-16, or UTF-32, the function returns the encoding identified along with the BOM length in bytes.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_binary/1">characters_to_binary/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as <code class="inline">characters_to_binary(``Data``, unicode, unicode)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_binary/2">characters_to_binary/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as <code class="inline">characters_to_binary(``Data``, ``InEncoding``, unicode)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_binary/3">characters_to_binary/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Behaves as  <a href="#characters_to_list/2"><code class="inline">characters_to_list/2</code></a>, but produces a binary instead of a Unicode list.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_list/1">characters_to_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Same as <code class="inline">characters_to_list(``Data``, unicode)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_list/2">characters_to_list/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts a possibly deep list of integers and binaries into a list of integers representing Unicode characters. The binaries in the input can have characters encoded as one of the following</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_nfc_binary/1">characters_to_nfc_binary/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts a possibly deep list of characters and binaries into a Normalized Form of canonical equivalent Composed characters according to the Unicode standard.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_nfc_list/1">characters_to_nfc_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts a possibly deep list of characters and binaries into a Normalized Form of canonical equivalent Composed characters according to the Unicode standard.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_nfd_binary/1">characters_to_nfd_binary/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts a possibly deep list of characters and binaries into a Normalized Form of canonical equivalent Decomposed characters according to the Unicode standard.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_nfd_list/1">characters_to_nfd_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts a possibly deep list of characters and binaries into a Normalized Form of canonical equivalent Decomposed characters according to the Unicode standard.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_nfkc_binary/1">characters_to_nfkc_binary/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts a possibly deep list of characters and binaries into a Normalized Form of compatibly equivalent Composed characters according to the Unicode standard.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_nfkc_list/1">characters_to_nfkc_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts a possibly deep list of characters and binaries into a Normalized Form of compatibly equivalent Composed characters according to the Unicode standard.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_nfkd_binary/1">characters_to_nfkd_binary/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts a possibly deep list of characters and binaries into a Normalized Form of compatibly equivalent Decomposed characters according to the Unicode standard.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#characters_to_nfkd_list/1">characters_to_nfkd_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Converts a possibly deep list of characters and binaries into a Normalized Form of compatibly equivalent Decomposed characters according to the Unicode standard.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#encoding_to_bom/1">encoding_to_bom/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Creates a UTF Byte Order Mark (BOM) as a binary from the supplied <code class="inline">InEncoding</code>. The BOM is, if supported at all, expected to be placed first in UTF encoded files or messages.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="bom_to_encoding/1">
+  <div class="detail-header">
+    <a href="#bom_to_encoding/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">bom_to_encoding/1</h1>
+      <div class="specs">
+          <pre>bom_to_encoding(bin) :: {encoding, length}
+when bin: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+     encoding: :latin1 | :utf8 | {:utf16, endian()} | {:utf32, endian()},
+     length: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Checks for a UTF Byte Order Mark (BOM) in the beginning of a binary. If the supplied binary <code class="inline">Bin</code> begins with a valid BOM for either UTF-8, UTF-16, or UTF-32, the function returns the encoding identified along with the BOM length in bytes.</p>
+<p> If no BOM is found, the function returns <code class="inline">{latin1,0}</code>.</p>
+  </section>
+</section>
+<section class="detail" id="characters_to_binary/1">
+  <div class="detail-header">
+    <a href="#characters_to_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_binary/1</h1>
+      <div class="specs">
+          <pre>characters_to_binary(data) :: result
+when data: latin1_chardata() | chardata() | external_chardata(),
+     result:
+       <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()
+       | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), restData}
+       | {:incomplete, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()},
+     restData: latin1_chardata() | chardata() | external_chardata()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as <code class="inline">characters_to_binary(``Data``, unicode, unicode)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="characters_to_binary/2">
+  <div class="detail-header">
+    <a href="#characters_to_binary/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_binary/2</h1>
+      <div class="specs">
+          <pre>characters_to_binary(data, inEncoding) :: result
+when data: latin1_chardata() | chardata() | external_chardata(),
+     inEncoding: encoding(),
+     result:
+       <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()
+       | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), restData}
+       | {:incomplete, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()},
+     restData: latin1_chardata() | chardata() | external_chardata()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as <code class="inline">characters_to_binary(``Data``, ``InEncoding``, unicode)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="characters_to_binary/3">
+  <div class="detail-header">
+    <a href="#characters_to_binary/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_binary/3</h1>
+      <div class="specs">
+          <pre>characters_to_binary(data, inEncoding, outEncoding) :: result
+when data: latin1_chardata() | chardata() | external_chardata(),
+     inEncoding: encoding(),
+     outEncoding: encoding(),
+     result:
+       <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()
+       | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), restData}
+       | {:incomplete, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()},
+     restData: latin1_chardata() | chardata() | external_chardata()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Behaves as  <a href="#characters_to_list/2"><code class="inline">characters_to_list/2</code></a>, but produces a binary instead of a Unicode list.</p>
+<p> <code class="inline">InEncoding</code> defines how input is to be interpreted if binaries are present in <code class="inline">Data</code></p>
+<p> <code class="inline">OutEncoding</code> defines in what format output is to be generated.</p>
+<p> Options:</p>
+<p>  <code class="inline">unicode</code>   *  An alias for <code class="inline">utf8</code>, as this is the preferred encoding for Unicode characters in binaries.</p>
+<p>  <code class="inline">utf16</code>   *  An alias for <code class="inline">{utf16,big}</code>.</p>
+<p>  <code class="inline">utf32</code>   *  An alias for <code class="inline">{utf32,big}</code>.</p>
+<p>   The atoms <code class="inline">big</code> and <code class="inline">little</code> denote big- or little-endian encoding.</p>
+<p> Errors and exceptions occur as in  <a href="#characters_to_list/2"><code class="inline">characters_to_list/2</code></a>, but the second element in tuple <code class="inline">error</code> or <code class="inline">incomplete</code> is a <code class="inline">binary()</code> and not a <code class="inline">list()</code>.</p>
+  </section>
+</section>
+<section class="detail" id="characters_to_list/1">
+  <div class="detail-header">
+    <a href="#characters_to_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_list/1</h1>
+      <div class="specs">
+          <pre>characters_to_list(data) :: result
+when data: latin1_chardata() | chardata() | external_chardata(),
+     result:
+       <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>() | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), restData} | {:incomplete, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()},
+     restData: latin1_chardata() | chardata() | external_chardata()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Same as <code class="inline">characters_to_list(``Data``, unicode)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="characters_to_list/2">
+  <div class="detail-header">
+    <a href="#characters_to_list/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_list/2</h1>
+      <div class="specs">
+          <pre>characters_to_list(data, inEncoding) :: result
+when data: latin1_chardata() | chardata() | external_chardata(),
+     inEncoding: encoding(),
+     result:
+       <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>() | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), restData} | {:incomplete, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()},
+     restData: latin1_chardata() | chardata() | external_chardata()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts a possibly deep list of integers and binaries into a list of integers representing Unicode characters. The binaries in the input can have characters encoded as one of the following:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">ISO</span><span class="w"> </span><span class="n">Latin</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p" data-group-id="3091404709-1">(</span><span class="mi">0</span><span class="o">-</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="ss">one</span><span class="w"> </span><span class="ss">character</span><span class="w"> </span><span class="ss">per</span><span class="w"> </span><span class="ss">byte</span><span class="p" data-group-id="3091404709-1">)</span><span class="p">.</span><span class="w"> </span><span class="n">Here</span><span class="p">,</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="ss">parameter</span><span class="w"> </span><span class="err">`</span><span class="n">InEncoding</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">specified</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="err">`</span><span class="ss">latin1</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">One</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="n">UTF</span><span class="o">-</span><span class="ss">encodings</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">specified</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">parameter</span><span class="w"> </span><span class="err">`</span><span class="n">InEncoding</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="n">Note</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">integers</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">list</span><span class="w"> </span><span class="ss">always</span><span class="w"> </span><span class="ss">represent</span><span class="w"> </span><span class="ss">code</span><span class="w"> </span><span class="ss">points</span><span class="w"> </span><span class="ss">regardless</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="err">`</span><span class="n">InEncoding</span><span class="err">`</span><span class="w"> </span><span class="ss">passed</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="err">`</span><span class="n">InEncoding</span><span class="err">`</span><span class="err">`</span><span class="w"> </span><span class="ss">latin1</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">passed</span><span class="p">,</span><span class="w"> </span><span class="ss">only</span><span class="w"> </span><span class="ss">code</span><span class="w"> </span><span class="ss">points</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">allowed</span><span class="p">;</span><span class="w"> </span><span class="ss">otherwise</span><span class="p">,</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">valid</span><span class="w"> </span><span class="ss">unicode</span><span class="w"> </span><span class="ss">code</span><span class="w"> </span><span class="ss">points</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">allowed</span><span class="p">.</span><span class="w"> </span></code></pre>
+<p> If <code class="inline">InEncoding</code> is <code class="inline">latin1</code>, parameter <code class="inline">Data</code> corresponds to the <code class="inline">iodata()</code> type, but for <code class="inline">unicode</code>, parameter <code class="inline">Data</code> can contain integers &gt; 255 (Unicode characters beyond the ISO Latin-1 range), which makes it invalid as <code class="inline">iodata()</code>.</p>
+<p> The purpose of the function is mainly to convert combinations of Unicode characters into a pure Unicode string in list representation for further processing. For writing the data to an external entity, the reverse function  <a href="#characters_to_binary/3"><code class="inline">characters_to_binary/3</code></a> comes in handy.</p>
+<p> Option <code class="inline">unicode</code> is an alias for <code class="inline">utf8</code>, as this is the preferred encoding for Unicode characters in binaries. <code class="inline">utf16</code> is an alias for <code class="inline">{utf16,big}</code> and <code class="inline">utf32</code> is an alias for <code class="inline">{utf32,big}</code>. The atoms <code class="inline">big</code> and <code class="inline">little</code> denote big- or little-endian encoding.</p>
+<p> If the data cannot be converted, either because of illegal Unicode/ISO Latin-1 characters in the list, or because of invalid UTF encoding in any binaries, an error tuple is returned. The error tuple contains the tag <code class="inline">error</code>, a list representing the characters that could be converted before the error occurred and a representation of the characters including and after the offending integer/bytes. The last part is mostly for debugging, as it still constitutes a possibly deep or mixed list, or both, not necessarily of the same depth as the original data. The error occurs when traversing the list and whatever is left to decode is returned &quot;as is&quot;.</p>
+<p> However, if the input <code class="inline">Data</code> is a pure binary, the third part of the error tuple is guaranteed to be a binary as well.</p>
+<p> Errors occur for the following reasons:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">Integers</span><span class="w"> </span><span class="ss">out</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">range</span><span class="p">.</span></code></pre>
+<p> If <code class="inline">InEncoding</code> is <code class="inline">latin1</code>, an error occurs whenever an integer &gt; 255 is found in the lists.</p>
+<p> If <code class="inline">InEncoding</code> is of a Unicode type, an error occurs whenever either of the following is found:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">An</span><span class="w"> </span><span class="ss">integer</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">16#10FFFF</span><span class="w"> </span><span class="p" data-group-id="8737813968-1">(</span><span class="ss">the</span><span class="w"> </span><span class="ss">maximum</span><span class="w"> </span><span class="n">Unicode</span><span class="w"> </span><span class="ss">character</span><span class="p" data-group-id="8737813968-1">)</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">An</span><span class="w"> </span><span class="ss">integer</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">range</span><span class="w"> </span><span class="mi">16#D800</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="mi">16#DFFF</span><span class="w"> </span><span class="p" data-group-id="8737813968-2">(</span><span class="ss">invalid</span><span class="w"> </span><span class="ss">range</span><span class="w"> </span><span class="ss">reserved</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="n">UTF</span><span class="o">-</span><span class="mi">16</span><span class="w"> </span><span class="ss">surrogate</span><span class="w"> </span><span class="ss">pairs</span><span class="p" data-group-id="8737813968-2">)</span><span class="w">
+
+  </span><span class="o">*</span><span class="w">  </span><span class="n">Incorrect</span><span class="w"> </span><span class="n">UTF</span><span class="w"> </span><span class="ss">encoding</span><span class="p">.</span></code></pre>
+<p> If <code class="inline">InEncoding</code> is one of the UTF types, the bytes in any binaries must be valid in that encoding.</p>
+<p> Errors can occur for various reasons, including the following:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="s">&quot;Pure&quot;</span><span class="w"> </span><span class="ss">decoding</span><span class="w"> </span><span class="nf">errors</span><span class="w"> </span><span class="p" data-group-id="2040202076-1">(</span><span class="ss">like</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">upper</span><span class="w"> </span><span class="ss">bits</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">bytes</span><span class="w"> </span><span class="ss">being</span><span class="w"> </span><span class="ss">wrong</span><span class="p" data-group-id="2040202076-1">)</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="ss">bytes</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">decoded</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">too</span><span class="w"> </span><span class="ss">large</span><span class="w"> </span><span class="ss">number</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="ss">bytes</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">decoded</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">code</span><span class="w"> </span><span class="ss">point</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">invalid</span><span class="w"> </span><span class="n">Unicode</span><span class="w"> </span><span class="ss">range</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">Encoding</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="s">&quot;overlong&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">meaning</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="ss">should</span><span class="w"> </span><span class="ss">have</span><span class="w"> </span><span class="ss">been</span><span class="w"> </span><span class="ss">encoded</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">fewer</span><span class="w"> </span><span class="ss">bytes</span><span class="p">.</span></code></pre>
+<p>   The case of a truncated UTF is handled specially, see the paragraph about incomplete binaries below.</p>
+<p> If <code class="inline">InEncoding</code> is <code class="inline">latin1</code>, binaries are always valid as long as they contain whole bytes, as each byte falls into the valid ISO Latin-1 range.</p>
+<p>   A special type of error is when no actual invalid integers or bytes are found, but a trailing <code class="inline">binary()</code> consists of too few bytes to decode the last character. This error can occur if bytes are read from a file in chunks or if binaries in other ways are split on non-UTF character boundaries. An <code class="inline">incomplete</code> tuple is then returned instead of the <code class="inline">error</code> tuple. It consists of the same parts as the <code class="inline">error</code> tuple, but the tag is <code class="inline">incomplete</code> instead of <code class="inline">error</code> and the last element is always guaranteed to be a binary consisting of the first part of a (so far) valid UTF character.</p>
+<p> If one UTF character is split over two consecutive binaries in the <code class="inline">Data</code>, the conversion succeeds. This means that a character can be decoded from a range of binaries as long as the whole range is specified as input without errors occurring.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="nf">decode_data</span><span class="p" data-group-id="2231645879-1">(</span><span class="n">Data</span><span class="p" data-group-id="2231645879-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+   </span><span class="k">case</span><span class="w"> </span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_list</span><span class="p" data-group-id="2231645879-2">(</span><span class="n">Data</span><span class="p">,</span><span class="ss">unicode</span><span class="p" data-group-id="2231645879-2">)</span><span class="w"> </span><span class="k">of</span><span class="w">
+      </span><span class="p" data-group-id="2231645879-3">{</span><span class="ss">incomplete</span><span class="p">,</span><span class="n">Encoded</span><span class="p">,</span><span class="w"> </span><span class="n">Rest</span><span class="p" data-group-id="2231645879-3">}</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+            </span><span class="n">More</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">get_some_more_data</span><span class="p" data-group-id="2231645879-4">(</span><span class="p" data-group-id="2231645879-4">)</span><span class="p">,</span><span class="w">
+            </span><span class="n">Encoded</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="nf">decode_data</span><span class="p" data-group-id="2231645879-5">(</span><span class="p" data-group-id="2231645879-6">[</span><span class="n">Rest</span><span class="p">,</span><span class="w"> </span><span class="n">More</span><span class="p" data-group-id="2231645879-6">]</span><span class="p" data-group-id="2231645879-5">)</span><span class="p">;</span><span class="w">
+      </span><span class="p" data-group-id="2231645879-7">{</span><span class="ss">error</span><span class="p">,</span><span class="n">Encoded</span><span class="p">,</span><span class="n">Rest</span><span class="p" data-group-id="2231645879-7">}</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+            </span><span class="nf">handle_error</span><span class="p" data-group-id="2231645879-8">(</span><span class="n">Encoded</span><span class="p">,</span><span class="n">Rest</span><span class="p" data-group-id="2231645879-8">)</span><span class="p">;</span><span class="w">
+      </span><span class="n">List</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
+            </span><span class="n">List</span><span class="w">
+   </span><span class="k">end</span><span class="p">.</span></code></pre>
+<p> However, bit strings that are not whole bytes are not allowed, so a UTF character must be split along 8-bit boundaries to ever be decoded.</p>
+<p> A <code class="inline">badarg</code> exception is thrown for the following cases:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="n">Any</span><span class="w"> </span><span class="ss">parameters</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">wrong</span><span class="w"> </span><span class="ss">type</span><span class="p">.</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">list</span><span class="w"> </span><span class="ss">structure</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="nf">invalid</span><span class="w"> </span><span class="p" data-group-id="4702590401-1">(</span><span class="ss">a</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">tail</span><span class="p" data-group-id="4702590401-1">)</span><span class="p">.</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">binaries</span><span class="w"> </span><span class="ss">do</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">contain</span><span class="w"> </span><span class="ss">whole</span><span class="w"> </span><span class="nf">bytes</span><span class="w"> </span><span class="p" data-group-id="4702590401-2">(</span><span class="ss">bit</span><span class="w"> </span><span class="ss">strings</span><span class="p" data-group-id="4702590401-2">)</span><span class="p">.</span><span class="w">  </span></code></pre>
+  </section>
+</section>
+<section class="detail" id="characters_to_nfc_binary/1">
+  <div class="detail-header">
+    <a href="#characters_to_nfc_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_nfc_binary/1</h1>
+      <div class="specs">
+          <pre>characters_to_nfc_binary(chardata()) ::
+  unicode_binary() | {:error, unicode_binary(), chardata()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts a possibly deep list of characters and binaries into a Normalized Form of canonical equivalent Composed characters according to the Unicode standard.</p>
+<p> Any binaries in the input must be encoded with utf8 encoding.</p>
+<p> The result is an utf8 encoded binary.</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_nfc_binary</span><span class="p" data-group-id="0237455375-1">(</span><span class="p" data-group-id="0237455375-2">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc..a&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="0237455375-3">[</span><span class="mi">778</span><span class="p" data-group-id="0237455375-3">]</span><span class="p">,</span><span class="sc">$a</span><span class="p">,</span><span class="p" data-group-id="0237455375-4">[</span><span class="mi">776</span><span class="p" data-group-id="0237455375-4">]</span><span class="p">,</span><span class="sc">$o</span><span class="p">,</span><span class="p" data-group-id="0237455375-5">[</span><span class="mi">776</span><span class="p" data-group-id="0237455375-5">]</span><span class="p" data-group-id="0237455375-2">]</span><span class="p" data-group-id="0237455375-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc..åäö&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="w">
+</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="characters_to_nfc_list/1">
+  <div class="detail-header">
+    <a href="#characters_to_nfc_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_nfc_list/1</h1>
+      <div class="specs">
+          <pre>characters_to_nfc_list(chardata()) ::
+  [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()] | {:error, [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()], chardata()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts a possibly deep list of characters and binaries into a Normalized Form of canonical equivalent Composed characters according to the Unicode standard.</p>
+<p> Any binaries in the input must be encoded with utf8 encoding. </p>
+<p> The result is a list of characters.</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_nfc_list</span><span class="p" data-group-id="2927691903-1">(</span><span class="p" data-group-id="2927691903-2">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc..a&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="2927691903-3">[</span><span class="mi">778</span><span class="p" data-group-id="2927691903-3">]</span><span class="p">,</span><span class="sc">$a</span><span class="p">,</span><span class="p" data-group-id="2927691903-4">[</span><span class="mi">776</span><span class="p" data-group-id="2927691903-4">]</span><span class="p">,</span><span class="sc">$o</span><span class="p">,</span><span class="p" data-group-id="2927691903-5">[</span><span class="mi">776</span><span class="p" data-group-id="2927691903-5">]</span><span class="p" data-group-id="2927691903-2">]</span><span class="p" data-group-id="2927691903-1">)</span><span class="p">.</span><span class="w">
+</span><span class="s">&quot;abc..åäö&quot;</span><span class="w">
+</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="characters_to_nfd_binary/1">
+  <div class="detail-header">
+    <a href="#characters_to_nfd_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_nfd_binary/1</h1>
+      <div class="specs">
+          <pre>characters_to_nfd_binary(chardata()) ::
+  unicode_binary() | {:error, unicode_binary(), chardata()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts a possibly deep list of characters and binaries into a Normalized Form of canonical equivalent Decomposed characters according to the Unicode standard.</p>
+<p> Any binaries in the input must be encoded with utf8 encoding.</p>
+<p> The result is an utf8 encoded binary.</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_nfd_binary</span><span class="p" data-group-id="5233985756-1">(</span><span class="s">&quot;abc..åäö&quot;</span><span class="p" data-group-id="5233985756-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="mi">97</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">99</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">204</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">204</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">204</span><span class="p">,</span><span class="mi">136</span><span class="p">&gt;&gt;</span><span class="w">
+</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="characters_to_nfd_list/1">
+  <div class="detail-header">
+    <a href="#characters_to_nfd_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_nfd_list/1</h1>
+      <div class="specs">
+          <pre>characters_to_nfd_list(chardata()) ::
+  [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()] | {:error, [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()], chardata()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts a possibly deep list of characters and binaries into a Normalized Form of canonical equivalent Decomposed characters according to the Unicode standard.</p>
+<p> Any binaries in the input must be encoded with utf8 encoding. </p>
+<p> The result is a list of characters.</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_nfd_list</span><span class="p" data-group-id="5509684464-1">(</span><span class="s">&quot;abc..åäö&quot;</span><span class="p" data-group-id="5509684464-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="5509684464-2">[</span><span class="mi">97</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">99</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">778</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">776</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">776</span><span class="p" data-group-id="5509684464-2">]</span><span class="w">
+</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="characters_to_nfkc_binary/1">
+  <div class="detail-header">
+    <a href="#characters_to_nfkc_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_nfkc_binary/1</h1>
+      <div class="specs">
+          <pre>characters_to_nfkc_binary(chardata()) ::
+  unicode_binary() | {:error, unicode_binary(), chardata()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts a possibly deep list of characters and binaries into a Normalized Form of compatibly equivalent Composed characters according to the Unicode standard.</p>
+<p> Any binaries in the input must be encoded with utf8 encoding.</p>
+<p> The result is an utf8 encoded binary.</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_nfkc_binary</span><span class="p" data-group-id="1255544315-1">(</span><span class="p" data-group-id="1255544315-2">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc..a&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="1255544315-3">[</span><span class="mi">778</span><span class="p" data-group-id="1255544315-3">]</span><span class="p">,</span><span class="sc">$a</span><span class="p">,</span><span class="p" data-group-id="1255544315-4">[</span><span class="mi">776</span><span class="p" data-group-id="1255544315-4">]</span><span class="p">,</span><span class="sc">$o</span><span class="p">,</span><span class="p" data-group-id="1255544315-5">[</span><span class="mi">776</span><span class="p" data-group-id="1255544315-5">]</span><span class="p">,</span><span class="p" data-group-id="1255544315-6">[</span><span class="mi">65299</span><span class="p">,</span><span class="mi">65298</span><span class="p" data-group-id="1255544315-6">]</span><span class="p" data-group-id="1255544315-2">]</span><span class="p" data-group-id="1255544315-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc..åäö32&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="w">
+</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="characters_to_nfkc_list/1">
+  <div class="detail-header">
+    <a href="#characters_to_nfkc_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_nfkc_list/1</h1>
+      <div class="specs">
+          <pre>characters_to_nfkc_list(chardata()) ::
+  [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()] | {:error, [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()], chardata()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts a possibly deep list of characters and binaries into a Normalized Form of compatibly equivalent Composed characters according to the Unicode standard.</p>
+<p> Any binaries in the input must be encoded with utf8 encoding. </p>
+<p> The result is a list of characters.</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_nfkc_list</span><span class="p" data-group-id="1660938116-1">(</span><span class="p" data-group-id="1660938116-2">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc..a&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="1660938116-3">[</span><span class="mi">778</span><span class="p" data-group-id="1660938116-3">]</span><span class="p">,</span><span class="sc">$a</span><span class="p">,</span><span class="p" data-group-id="1660938116-4">[</span><span class="mi">776</span><span class="p" data-group-id="1660938116-4">]</span><span class="p">,</span><span class="sc">$o</span><span class="p">,</span><span class="p" data-group-id="1660938116-5">[</span><span class="mi">776</span><span class="p" data-group-id="1660938116-5">]</span><span class="p">,</span><span class="p" data-group-id="1660938116-6">[</span><span class="mi">65299</span><span class="p">,</span><span class="mi">65298</span><span class="p" data-group-id="1660938116-6">]</span><span class="p" data-group-id="1660938116-2">]</span><span class="p" data-group-id="1660938116-1">)</span><span class="p">.</span><span class="w">
+</span><span class="s">&quot;abc..åäö32&quot;</span><span class="w">
+</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="characters_to_nfkd_binary/1">
+  <div class="detail-header">
+    <a href="#characters_to_nfkd_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_nfkd_binary/1</h1>
+      <div class="specs">
+          <pre>characters_to_nfkd_binary(chardata()) ::
+  unicode_binary() | {:error, unicode_binary(), chardata()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts a possibly deep list of characters and binaries into a Normalized Form of compatibly equivalent Decomposed characters according to the Unicode standard.</p>
+<p> Any binaries in the input must be encoded with utf8 encoding.</p>
+<p> The result is an utf8 encoded binary.</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_nfkd_binary</span><span class="p" data-group-id="6049653399-1">(</span><span class="p" data-group-id="6049653399-2">[</span><span class="s">&quot;abc..åäö&quot;</span><span class="p">,</span><span class="p" data-group-id="6049653399-3">[</span><span class="mi">65299</span><span class="p">,</span><span class="mi">65298</span><span class="p" data-group-id="6049653399-3">]</span><span class="p" data-group-id="6049653399-2">]</span><span class="p" data-group-id="6049653399-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p">&lt;&lt;</span><span class="mi">97</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">99</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">204</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">204</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">204</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">51</span><span class="p">,</span><span class="mi">50</span><span class="p">&gt;&gt;</span><span class="w">
+</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="characters_to_nfkd_list/1">
+  <div class="detail-header">
+    <a href="#characters_to_nfkd_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">characters_to_nfkd_list/1</h1>
+      <div class="specs">
+          <pre>characters_to_nfkd_list(chardata()) ::
+  [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()] | {:error, [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()], chardata()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Converts a possibly deep list of characters and binaries into a Normalized Form of compatibly equivalent Decomposed characters according to the Unicode standard.</p>
+<p> Any binaries in the input must be encoded with utf8 encoding. </p>
+<p> The result is a list of characters.</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_nfkd_list</span><span class="p" data-group-id="6300642885-1">(</span><span class="p" data-group-id="6300642885-2">[</span><span class="s">&quot;abc..åäö&quot;</span><span class="p">,</span><span class="p" data-group-id="6300642885-3">[</span><span class="mi">65299</span><span class="p">,</span><span class="mi">65298</span><span class="p" data-group-id="6300642885-3">]</span><span class="p" data-group-id="6300642885-2">]</span><span class="p" data-group-id="6300642885-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="6300642885-4">[</span><span class="mi">97</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">99</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">778</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">776</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">776</span><span class="p">,</span><span class="mi">51</span><span class="p">,</span><span class="mi">50</span><span class="p" data-group-id="6300642885-4">]</span><span class="w">
+</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="encoding_to_bom/1">
+  <div class="detail-header">
+    <a href="#encoding_to_bom/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">encoding_to_bom/1</h1>
+      <div class="specs">
+          <pre>encoding_to_bom(inEncoding) :: bin when bin: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), inEncoding: encoding()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Creates a UTF Byte Order Mark (BOM) as a binary from the supplied <code class="inline">InEncoding</code>. The BOM is, if supported at all, expected to be placed first in UTF encoded files or messages.</p>
+<p> The function returns <code class="inline">&lt;&lt;&gt;&gt;</code> for <code class="inline">latin1</code> encoding, as there is no BOM for ISO Latin-1.</p>
+<p> Notice that the BOM for UTF-8 is seldom used, and it is really not a byte order mark. There are obviously no byte order issues with UTF-8, so the BOM is only there to differentiate UTF-8 encoding from other UTF formats.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

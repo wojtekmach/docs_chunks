@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>sys — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+sys      </h1>
+
+
+        <section id="moduledoc">
+<p> This module contains functions for sending system messages used by programs, and messages used for debugging purposes.</p>
+<p> Functions used for implementation of processes are also expected to understand system messages, such as debug messages and code change. These functions must be used to implement the use of system messages for a process; either directly, or through standard behaviors, such as <code class="inline">gen_server</code>.</p>
+<p> The default time-out is 5000 ms, unless otherwise specified. <code class="inline">timeout</code> defines the time to wait for the process to respond to a request. If the process does not respond, the function evaluates <code class="inline">exit({timeout, {M, F, A}})</code>. </p>
+<p>  The functions make references to a debug structure. The debug structure is a list of <code class="inline">dbg_opt()</code>, which is an internal data type used by function  <a href="#handle_system_msg/6"><code class="inline">handle_system_msg/6</code></a>. No debugging is performed if it is an empty list.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#change_codechange_code/45">change_codechange_code/45</a>
+  </div>
+    <div class="summary-synopsis"><p> Tells the process to change code. The process must be suspended to handle this message. Argument <code class="inline">Extra</code> is reserved for each process to use as its own. Function <code class="inline">Module``:system_code_change/4</code> is called. <code class="inline">OldVsn</code> is the old version of the <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#debug_options/1">debug_options/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Can be used by a process that initiates a debug structure from a list of options. The values of argument <code class="inline">Opt</code> are the same as for the corresponding functions.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_debug/3">get_debug/3</a>
+  </div>
+    <div class="summary-synopsis"><p>   <a href="#get_debug/3"><code class="inline">get_debug/3</code></a> is deprecated since it returns data of an internal type only useful for debugging. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_log/1">get_log/1</a>
+  </div>
+    <div class="summary-synopsis"><p>  Returns the logged system events in the debug structure, that is the last argument to <a href="#handle_debug/4"><code class="inline">handle_debug/4</code></a>. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_stateget_state/12">get_stateget_state/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Gets the state of the process.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_statusget_status/12">get_statusget_status/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Gets the status of the process.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_debug/4">handle_debug/4</a>
+  </div>
+    <div class="summary-synopsis"><p> This function is called by a process when it generates a system event. <code class="inline">FormFunc</code> is a formatting function, called as <code class="inline">FormFunc``(Device, ``Event``, ``Extra``)</code> to print the events, which is necessary if tracing is activated. <code class="inline">Extra</code> is any extra information that the process needs in the format function, for example, the process name.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#handle_system_msg/6">handle_system_msg/6</a>
+  </div>
+    <div class="summary-synopsis"><p> This function is used by a process module to take care of system messages. The process receives a <code class="inline">{system, ``From``, ``Msg``}</code> message and passes <code class="inline">Msg</code> and <code class="inline">From</code> to this function.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#installinstall/23">installinstall/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Enables installation of alternative debug functions. An example of such a function is a trigger, a function that waits for some special event and performs some action when the event is generated. For example, turning on low-level tracing.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#log_to_filelog_to_file/23">log_to_filelog_to_file/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Enables or disables the logging of all system events in text format to the file. The events are formatted with a function that is defined by the process that generated the event (with a call to <a href="#handle_debug/4"><code class="inline">handle_debug/4</code></a>). The file is opened with encoding UTF-8.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#loglog/23">loglog/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Turns the logging of system events on or off. If on, a maximum of <code class="inline">N</code> events are kept in the debug structure (default is 10).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#no_debugno_debug/12">no_debugno_debug/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Turns off all debugging for the process. This includes functions that are installed explicitly with function <code class="inline">install/2,3</code>, for example, triggers.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#print_log/1">print_log/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Prints the logged system events in the debug structure, using <code class="inline">FormFunc</code> as defined when the event was generated by a call to <a href="#handle_debug/4"><code class="inline">handle_debug/4</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#removeremove/23">removeremove/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Removes an installed debug function from the process. <code class="inline">Func</code> or <code class="inline">FuncId</code> must be the same as previously installed.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#replace_statereplace_state/23">replace_statereplace_state/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Replaces the state of the process, and returns the new state.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resumeresume/12">resumeresume/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Resumes a suspended process.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#statisticsstatistics/23">statisticsstatistics/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Enables or disables the collection of statistics. If <code class="inline">Flag</code> is <code class="inline">get</code>, the statistical collection is returned.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#suspendsuspend/12">suspendsuspend/12</a>
+  </div>
+    <div class="summary-synopsis"><p> Suspends the process. When the process is suspended, it only responds to other system messages, but not other messages.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminateterminate/23">terminateterminate/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Orders the process to terminate with the specified <code class="inline">Reason</code>. The termination is done asynchronously, so it is not guaranteed that the process is terminated when the function returns.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tracetrace/23">tracetrace/23</a>
+  </div>
+    <div class="summary-synopsis"><p> Prints all system events on <code class="inline">standard_io</code>. The events are formatted with a function that is defined by the process that generated the event (with a call to <a href="#handle_debug/4"><code class="inline">handle_debug/4</code></a>). </p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="change_codechange_code/45">
+  <div class="detail-header">
+    <a href="#change_codechange_code/45" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">change_codechange_code/45</h1>
+  </div>
+  <section class="docstring">
+<p> Tells the process to change code. The process must be suspended to handle this message. Argument <code class="inline">Extra</code> is reserved for each process to use as its own. Function <code class="inline">Module``:system_code_change/4</code> is called. <code class="inline">OldVsn</code> is the old version of the <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="debug_options/1">
+  <div class="detail-header">
+    <a href="#debug_options/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">debug_options/1</h1>
+      <div class="specs">
+          <pre>debug_options([opt :: debug_option()]) :: [dbg_opt()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Can be used by a process that initiates a debug structure from a list of options. The values of argument <code class="inline">Opt</code> are the same as for the corresponding functions.</p>
+  </section>
+</section>
+<section class="detail" id="get_debug/3">
+  <div class="detail-header">
+    <a href="#get_debug/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_debug/3</h1>
+      <div class="specs">
+          <pre>get_debug(item, debug, default) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+when item: :log | :statistics, debug: [dbg_opt()], default: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>   <a href="#get_debug/3"><code class="inline">get_debug/3</code></a> is deprecated since it returns data of an internal type only useful for debugging. </p>
+<p>  Gets the data associated with a debug option. <code class="inline">Default</code> is returned if <code class="inline">Item</code> is not found. Can be used by the process to retrieve debug data for printing before it terminates.</p>
+  </section>
+</section>
+<section class="detail" id="get_log/1">
+  <div class="detail-header">
+    <a href="#get_log/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_log/1</h1>
+      <div class="specs">
+          <pre>get_log(debug) :: [system_event()] when debug: [dbg_opt()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Returns the logged system events in the debug structure, that is the last argument to <a href="#handle_debug/4"><code class="inline">handle_debug/4</code></a>. </p>
+  </section>
+</section>
+<section class="detail" id="get_stateget_state/12">
+  <div class="detail-header">
+    <a href="#get_stateget_state/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_stateget_state/12</h1>
+  </div>
+  <section class="docstring">
+<p> Gets the state of the process.</p>
+<p>  These functions are intended only to help with debugging. They are provided for convenience, allowing developers to avoid having to create their own state extraction functions and also avoid having to interactively extract the state from the return values of <code class="inline">get_status/1</code> or <code class="inline">get_status/2</code> while debugging.</p>
+<p>  The value of <code class="inline">State</code> varies for different types of processes, as follows:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">For</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_server</span><span class="err">`</span><span class="w"> </span><span class="ss">process</span><span class="p">,</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">returned</span><span class="w"> </span><span class="err">`</span><span class="n">State</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">callback</span><span class="w"> </span><span class="ss">module</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">For</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_statem</span><span class="err">`</span><span class="w"> </span><span class="ss">process</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">State</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">tuple</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="3836879952-1">{</span><span class="n">CurrentState</span><span class="p">,</span><span class="n">CurrentData</span><span class="p" data-group-id="3836879952-1">}</span><span class="err">`</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">For</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_event</span><span class="err">`</span><span class="w"> </span><span class="ss">process</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">State</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">tuples</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="ss">each</span><span class="w"> </span><span class="ss">tuple</span><span class="w"> </span><span class="ss">corresponds</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">event</span><span class="w"> </span><span class="ss">handler</span><span class="w"> </span><span class="ss">registered</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">contains</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="3836879952-2">{</span><span class="n">Module</span><span class="p">,</span><span class="w"> </span><span class="n">Id</span><span class="p">,</span><span class="w"> </span><span class="n">HandlerState</span><span class="p" data-group-id="3836879952-2">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="nc">follows</span><span class="p">:</span></code></pre>
+<p>  <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a>   *  The module name of the event handler.</p>
+<p>  <code class="inline">Id</code>   *  The ID of the handler (which is <code class="inline">false</code> if it was registered without an ID).</p>
+<p>  <code class="inline">HandlerState</code>   *  The state of the handler.</p>
+<pre><code class="nohighlight makeup erlang"><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">callback</span><span class="w"> </span><span class="ss">module</span><span class="w"> </span><span class="ss">exports</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="err">`</span><span class="ss">system_get_state</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">it</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">called</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">target</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="nb">get</span><span class="w"> </span><span class="ss">its</span><span class="w"> </span><span class="ss">state</span><span class="p">.</span><span class="w"> </span><span class="n">Its</span><span class="w"> </span><span class="ss">argument</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">same</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="err">`</span><span class="n">Misc</span><span class="err">`</span><span class="w"> </span><span class="ss">value</span><span class="w"> </span><span class="ss">returned</span><span class="w"> </span><span class="ss">by</span><span class="w"> </span><span class="err">`</span><span class="ss">get_status</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">function</span><span class="w">  </span><span class="err">`</span><span class="n">Module</span><span class="p">:</span><span class="ss">system_get_state</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">expected</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">extract</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">callback</span><span class="w"> </span><span class="ss">module</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">it</span><span class="p">.</span><span class="w"> </span><span class="n">Function</span><span class="w"> </span><span class="err">`</span><span class="ss">system_get_state</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="w"> </span><span class="ss">must</span><span class="w"> </span><span class="ss">return</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="9550419612-1">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="n">State</span><span class="p" data-group-id="9550419612-1">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="err">`</span><span class="n">State</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">callback</span><span class="w"> </span><span class="ss">module</span><span class="p">.</span></code></pre>
+<p> If the callback module does not export a <code class="inline">system_get_state/1</code> function, <code class="inline">get_state/1,2</code> assumes that the <code class="inline">Misc</code> value is the state of the callback module and returns it directly instead.</p>
+<p> If the callback module&#39;s <code class="inline">system_get_state/1</code> function crashes or throws an exception, the caller exits with error <code class="inline">{callback_failed, {Module, system_get_state}, {Class, Reason}}</code>, where <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> is the name of the callback module and <code class="inline">Class</code> and <code class="inline">Reason</code> indicate details of the exception.</p>
+<p> Function <code class="inline">system_get_state/1</code> is primarily useful for user-defined behaviors and modules that implement OTP special processes. The <code class="inline">gen_server</code>, <code class="inline">gen_statem</code>, and <code class="inline">gen_event</code> OTP behavior modules export this function, so callback modules for those behaviors need not to supply their own.</p>
+<p> For more information about a process, including its state, see <code class="inline">get_status/1</code> and <code class="inline">get_status/2</code>.</p>
+  </section>
+</section>
+<section class="detail" id="get_statusget_status/12">
+  <div class="detail-header">
+    <a href="#get_statusget_status/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_statusget_status/12</h1>
+  </div>
+  <section class="docstring">
+<p> Gets the status of the process.</p>
+<p> The value of <code class="inline">Misc</code> varies for different types of processes, for example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_server</span><span class="err">`</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">returns</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">callback</span><span class="w"> </span><span class="ss">module</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_statem</span><span class="err">`</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">returns</span><span class="w"> </span><span class="ss">information</span><span class="p">,</span><span class="w"> </span><span class="ss">such</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">its</span><span class="w"> </span><span class="ss">current</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="ss">name</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="ss">data</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_event</span><span class="err">`</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">returns</span><span class="w"> </span><span class="ss">information</span><span class="w"> </span><span class="ss">about</span><span class="w"> </span><span class="ss">each</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">its</span><span class="w"> </span><span class="ss">registered</span><span class="w"> </span><span class="ss">handlers</span><span class="p">.</span></code></pre>
+<p>   Callback modules for <code class="inline">gen_server</code>, <code class="inline">gen_statem</code>, and <code class="inline">gen_event</code> can also change the value of <code class="inline">Misc</code> by exporting a function <code class="inline">format_status/2</code>, which contributes module-specific information. For details, see  <code class="inline">gen_server:format_status/2</code>,  <code class="inline">gen_statem:format_status/2</code>, and  <code class="inline">gen_event:format_status/2</code>.</p>
+  </section>
+</section>
+<section class="detail" id="handle_debug/4">
+  <div class="detail-header">
+    <a href="#handle_debug/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_debug/4</h1>
+      <div class="specs">
+          <pre>handle_debug(debug, formFunc, extra, event) :: [dbg_opt()]
+when debug: [dbg_opt()],
+     formFunc: format_fun(),
+     extra: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     event: system_event()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> This function is called by a process when it generates a system event. <code class="inline">FormFunc</code> is a formatting function, called as <code class="inline">FormFunc``(Device, ``Event``, ``Extra``)</code> to print the events, which is necessary if tracing is activated. <code class="inline">Extra</code> is any extra information that the process needs in the format function, for example, the process name.</p>
+  </section>
+</section>
+<section class="detail" id="handle_system_msg/6">
+  <div class="detail-header">
+    <a href="#handle_system_msg/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">handle_system_msg/6</h1>
+      <div class="specs">
+          <pre>handle_system_msg(msg, from, parent, module, debug, misc) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()
+when msg: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+     from: {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(), tag :: _},
+     parent: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(),
+     module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+     debug: [dbg_opt()],
+     misc: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> This function is used by a process module to take care of system messages. The process receives a <code class="inline">{system, ``From``, ``Msg``}</code> message and passes <code class="inline">Msg</code> and <code class="inline">From</code> to this function.</p>
+<p> This function never returns. It calls either of the following functions:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="n">Module</span><span class="err">`</span><span class="err">`</span><span class="p">:</span><span class="nf">system_continue</span><span class="p" data-group-id="7103816201-1">(</span><span class="err">`</span><span class="err">`</span><span class="n">Parent</span><span class="err">`</span><span class="err">`</span><span class="p">,</span><span class="w">
+          </span><span class="n">NDebug</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">Misc</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="7103816201-1">)</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">continues</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">execution</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="n">Module</span><span class="err">`</span><span class="err">`</span><span class="p">:</span><span class="nf">system_terminate</span><span class="p" data-group-id="7103816201-2">(</span><span class="n">Reason</span><span class="p">,</span><span class="w">
+          </span><span class="err">`</span><span class="err">`</span><span class="n">Parent</span><span class="err">`</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">Debug</span><span class="err">`</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">Misc</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="7103816201-2">)</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">terminate</span><span class="p">.</span></code></pre>
+<p>   <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> must export the following:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="ss">system_continue</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="ss">system_terminate</span><span class="o">/</span><span class="mi">4</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="ss">system_code_change</span><span class="o">/</span><span class="mi">4</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="ss">system_get_state</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="ss">system_replace_state</span><span class="o">/</span><span class="mi">2</span><span class="err">`</span><span class="w">  </span><span class="n">Argument</span><span class="w"> </span><span class="err">`</span><span class="n">Misc</span><span class="err">`</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">used</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">save</span><span class="w"> </span><span class="ss">internal</span><span class="w"> </span><span class="ss">data</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">process</span><span class="p">,</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">example</span><span class="p">,</span><span class="w"> </span><span class="ss">its</span><span class="w"> </span><span class="ss">state</span><span class="p">.</span><span class="w"> </span><span class="n">It</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">sent</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="n">Module</span><span class="err">`</span><span class="err">`</span><span class="p">:</span><span class="ss">system_continue</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">`</span><span class="n">Module</span><span class="err">`</span><span class="err">`</span><span class="p">:</span><span class="ss">system_terminate</span><span class="o">/</span><span class="mi">4</span><span class="err">`</span><span class="p">.</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="installinstall/23">
+  <div class="detail-header">
+    <a href="#installinstall/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">installinstall/23</h1>
+  </div>
+  <section class="docstring">
+<p> Enables installation of alternative debug functions. An example of such a function is a trigger, a function that waits for some special event and performs some action when the event is generated. For example, turning on low-level tracing.</p>
+<p> <code class="inline">Func</code> is called whenever a system event is generated. This function is to return <code class="inline">done</code>, or a new <code class="inline">Func</code> state. In the first case, the function is removed. It is also removed if the function fails. If one debug function should be installed more times, a unique <code class="inline">FuncId</code> must be specified for each installation.</p>
+  </section>
+</section>
+<section class="detail" id="log_to_filelog_to_file/23">
+  <div class="detail-header">
+    <a href="#log_to_filelog_to_file/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">log_to_filelog_to_file/23</h1>
+  </div>
+  <section class="docstring">
+<p> Enables or disables the logging of all system events in text format to the file. The events are formatted with a function that is defined by the process that generated the event (with a call to <a href="#handle_debug/4"><code class="inline">handle_debug/4</code></a>). The file is opened with encoding UTF-8.</p>
+  </section>
+</section>
+<section class="detail" id="loglog/23">
+  <div class="detail-header">
+    <a href="#loglog/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">loglog/23</h1>
+  </div>
+  <section class="docstring">
+<p> Turns the logging of system events on or off. If on, a maximum of <code class="inline">N</code> events are kept in the debug structure (default is 10).</p>
+<p> If <code class="inline">Flag</code> is <code class="inline">get</code>, a list of all logged events is returned.</p>
+<p> If <code class="inline">Flag</code> is <code class="inline">print</code>, the logged events are printed to <code class="inline">standard_io</code>.</p>
+<p> The events are formatted with a function that is defined by the process that generated the event (with a call to  <a href="#handle_debug/4"><code class="inline">handle_debug/4</code></a>).</p>
+  </section>
+</section>
+<section class="detail" id="no_debugno_debug/12">
+  <div class="detail-header">
+    <a href="#no_debugno_debug/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">no_debugno_debug/12</h1>
+  </div>
+  <section class="docstring">
+<p> Turns off all debugging for the process. This includes functions that are installed explicitly with function <code class="inline">install/2,3</code>, for example, triggers.</p>
+  </section>
+</section>
+<section class="detail" id="print_log/1">
+  <div class="detail-header">
+    <a href="#print_log/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">print_log/1</h1>
+      <div class="specs">
+          <pre>print_log(debug) :: :ok when debug: [dbg_opt()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Prints the logged system events in the debug structure, using <code class="inline">FormFunc</code> as defined when the event was generated by a call to <a href="#handle_debug/4"><code class="inline">handle_debug/4</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="removeremove/23">
+  <div class="detail-header">
+    <a href="#removeremove/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">removeremove/23</h1>
+  </div>
+  <section class="docstring">
+<p> Removes an installed debug function from the process. <code class="inline">Func</code> or <code class="inline">FuncId</code> must be the same as previously installed.</p>
+  </section>
+</section>
+<section class="detail" id="replace_statereplace_state/23">
+  <div class="detail-header">
+    <a href="#replace_statereplace_state/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">replace_statereplace_state/23</h1>
+  </div>
+  <section class="docstring">
+<p> Replaces the state of the process, and returns the new state.</p>
+<p>  These functions are intended only to help with debugging, and are not to be called from normal code. They are provided for convenience, allowing developers to avoid having to create their own custom state replacement functions.</p>
+<p>  Function <code class="inline">StateFun</code> provides a new state for the process. Argument <code class="inline">State</code> and the <code class="inline">NewState</code> return value of <code class="inline">StateFun</code> vary for different types of processes as follows:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">For</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_server</span><span class="err">`</span><span class="w"> </span><span class="ss">process</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">State</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">callback</span><span class="w"> </span><span class="ss">module</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">NewState</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">new</span><span class="w"> </span><span class="ss">instance</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">state</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">For</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_statem</span><span class="err">`</span><span class="w"> </span><span class="ss">process</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">State</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">tuple</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="0897062545-1">{</span><span class="n">CurrentState</span><span class="p">,</span><span class="n">CurrentData</span><span class="p" data-group-id="0897062545-1">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">NewState</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">similar</span><span class="w"> </span><span class="ss">tuple</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">contain</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">new</span><span class="w"> </span><span class="ss">current</span><span class="w"> </span><span class="ss">state</span><span class="p">,</span><span class="w"> </span><span class="ss">new</span><span class="w"> </span><span class="ss">state</span><span class="w"> </span><span class="ss">data</span><span class="p">,</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">both</span><span class="p">.</span><span class="w">
+
+</span><span class="o">*</span><span class="w">  </span><span class="n">For</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="err">`</span><span class="ss">gen_event</span><span class="err">`</span><span class="w"> </span><span class="ss">process</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">State</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">tuple</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="0897062545-2">{</span><span class="n">Module</span><span class="p">,</span><span class="w"> </span><span class="n">Id</span><span class="p">,</span><span class="w"> </span><span class="n">HandlerState</span><span class="p" data-group-id="0897062545-2">}</span><span class="err">`</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="nc">follows</span><span class="p">:</span></code></pre>
+<p>  <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a>   *  The module name of the event handler.</p>
+<p>  <code class="inline">Id</code>   *  The ID of the handler (which is <code class="inline">false</code> if it was registered without an ID).</p>
+<p>  <code class="inline">HandlerState</code>   *  The state of the handler.</p>
+<p>   <code class="inline">NewState</code> is a similar tuple where <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> and <code class="inline">Id</code> are to have the same values as in <code class="inline">State</code>, but the value of <code class="inline">HandlerState</code> can be different. Returning a <code class="inline">NewState</code>, whose <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> or <code class="inline">Id</code> values differ from those of <code class="inline">State</code>, leaves the state of the event handler unchanged. For a <code class="inline">gen_event</code> process, <code class="inline">StateFun</code> is called once for each event handler registered in the <code class="inline">gen_event</code> process.</p>
+<p>   If a <code class="inline">StateFun</code> function decides not to effect any change in process state, then regardless of process type, it can return its <code class="inline">State</code> argument.</p>
+<p> If a <code class="inline">StateFun</code> function crashes or throws an exception, the original state of the process is unchanged for <code class="inline">gen_server</code>, and <code class="inline">gen_statem</code> processes. For <code class="inline">gen_event</code> processes, a crashing or failing <code class="inline">StateFun</code> function means that only the state of the particular event handler it was working on when it failed or crashed is unchanged; it can still succeed in changing the states of other event handlers registered in the same <code class="inline">gen_event</code> process.</p>
+<p> If the callback module exports a  <code class="inline">system_replace_state/2</code> function, it is called in the target process to replace its state using <code class="inline">StateFun</code>. Its two arguments are <code class="inline">StateFun</code> and <code class="inline">Misc</code>, where <code class="inline">Misc</code> is the same as the <code class="inline">Misc</code> value returned by <code class="inline">get_status/1,2</code>. A <code class="inline">system_replace_state/2</code> function is expected to return <code class="inline">{ok, NewState, NewMisc}</code>, where <code class="inline">NewState</code> is the new state of the callback module, obtained by calling <code class="inline">StateFun</code>, and <code class="inline">NewMisc</code> is a possibly new value used to replace the original <code class="inline">Misc</code> (required as <code class="inline">Misc</code> often contains the state of the callback module within it).</p>
+<p> If the callback module does not export a <code class="inline">system_replace_state/2</code> function, <code class="inline">replace_state/2,3</code> assumes that <code class="inline">Misc</code> is the state of the callback module, passes it to <code class="inline">StateFun</code> and uses the return value as both the new state and as the new value of <code class="inline">Misc</code>.</p>
+<p> If the callback module&#39;s function <code class="inline">system_replace_state/2</code> crashes or throws an exception, the caller exits with error <code class="inline">{callback_failed, {Module, system_replace_state}, {Class, Reason}}</code>, where <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> is the name of the callback module and <code class="inline">Class</code> and <code class="inline">Reason</code> indicate details of the exception. If the callback module does not provide a <code class="inline">system_replace_state/2</code> function and <code class="inline">StateFun</code> crashes or throws an exception, the caller exits with error <code class="inline">{callback_failed, StateFun, {Class, Reason}}</code>.</p>
+<p> Function <code class="inline">system_replace_state/2</code> is primarily useful for user-defined behaviors and modules that implement OTP special processes. The OTP behavior modules <code class="inline">gen_server</code>, <code class="inline">gen_statem</code>, and <code class="inline">gen_event</code> export this function, so callback modules for those behaviors need not to supply their own.</p>
+  </section>
+</section>
+<section class="detail" id="resumeresume/12">
+  <div class="detail-header">
+    <a href="#resumeresume/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resumeresume/12</h1>
+  </div>
+  <section class="docstring">
+<p> Resumes a suspended process.</p>
+  </section>
+</section>
+<section class="detail" id="statisticsstatistics/23">
+  <div class="detail-header">
+    <a href="#statisticsstatistics/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">statisticsstatistics/23</h1>
+  </div>
+  <section class="docstring">
+<p> Enables or disables the collection of statistics. If <code class="inline">Flag</code> is <code class="inline">get</code>, the statistical collection is returned.</p>
+  </section>
+</section>
+<section class="detail" id="suspendsuspend/12">
+  <div class="detail-header">
+    <a href="#suspendsuspend/12" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">suspendsuspend/12</h1>
+  </div>
+  <section class="docstring">
+<p> Suspends the process. When the process is suspended, it only responds to other system messages, but not other messages.</p>
+  </section>
+</section>
+<section class="detail" id="terminateterminate/23">
+  <div class="detail-header">
+    <a href="#terminateterminate/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">terminateterminate/23</h1>
+  </div>
+  <section class="docstring">
+<p> Orders the process to terminate with the specified <code class="inline">Reason</code>. The termination is done asynchronously, so it is not guaranteed that the process is terminated when the function returns.</p>
+  </section>
+</section>
+<section class="detail" id="tracetrace/23">
+  <div class="detail-header">
+    <a href="#tracetrace/23" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">tracetrace/23</h1>
+  </div>
+  <section class="docstring">
+<p> Prints all system events on <code class="inline">standard_io</code>. The events are formatted with a function that is defined by the process that generated the event (with a call to <a href="#handle_debug/4"><code class="inline">handle_debug/4</code></a>). </p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

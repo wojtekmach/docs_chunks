@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="stdlib v22.1.4">
+    <title>io_lib — stdlib v22.1.4</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="array.html" class="sidebar-projectName">
+stdlib      </a>
+      <h2 class="sidebar-projectVersion">
+        v22.1.4
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">stdlib v22.1.4</small>
+io_lib      </h1>
+
+
+        <section id="moduledoc">
+<p> This module contains functions for converting to and from strings (lists of characters). They are used for implementing the functions in the <code class="inline">io</code> module. There is no guarantee that the character lists returned from some of the functions are flat, they can be deep lists. Function <code class="inline">lists:flatten/1</code> can be used for flattening deep lists.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#build_text/1">build_text/1</a>
+  </div>
+    <div class="summary-synopsis"><p> For details, see <a href="#scan_format/2"><code class="inline">scan_format/2</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#char_list/1">char_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a flat list of characters in the Unicode range, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#deep_char_list/1">deep_char_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a, possibly deep, list of characters in the Unicode range, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#deep_latin1_char_list/1">deep_latin1_char_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a, possibly deep, list of characters in the ISO Latin-1 range, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#formatfwrite/22">formatfwrite/22</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a character list that represents <code class="inline">Data</code> formatted in accordance with <code class="inline">Format</code>. For a detailed description of the available formatting options, see <code class="inline">io:fwrite/1,2,3</code>. If the format string or argument list contains an error, a fault is generated.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#formatfwrite/33">formatfwrite/33</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a character list that represents <code class="inline">Data</code> formatted in accordance with <code class="inline">Format</code> in the same way as <code class="inline">fwrite/2</code> and <code class="inline">format/2</code>, but takes an extra argument, a list of options.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fread/2">fread/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Tries to read <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> in accordance with the control sequences in <code class="inline">Format</code>. For a detailed description of the available formatting options, see <code class="inline">io:fread/3</code>. It is assumed that <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> contains whole lines.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fread/3">fread/3</a>
+  </div>
+    <div class="summary-synopsis"><p> This is the re-entrant formatted reader. The continuation of the first call to the functions must be <code class="inline">[]</code>. For a complete description of how the re-entrant input scheme works, see Armstrong, Virding, Williams: &#39;Concurrent Programming in Erlang&#39;, Chapter 13.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#indentation/2">indentation/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the indentation if <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> has been printed, starting at <code class="inline">StartIndent</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#latin1_char_list/1">latin1_char_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a flat list of characters in the ISO Latin-1 range, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#nl/0">nl/0</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a character list that represents a new line character.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#printable_latin1_list/1">printable_latin1_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a flat list of printable ISO Latin-1 characters, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#printable_list/1">printable_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a flat list of printable characters, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#printable_unicode_list/1">printable_unicode_list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a flat list of printable Unicode characters, otherwise <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#printprint/14">printprint/14</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list of characters that represents <code class="inline">Term</code>, but breaks representations longer than one line into many lines and indents each line sensibly. Also tries to detect and output lists of printable characters as strings.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#scan_format/2">scan_format/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a list corresponding to the specified format string, where control sequences have been replaced with corresponding tuples. This list can be passed to</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unscan_format/1">unscan_format/1</a>
+  </div>
+    <div class="summary-synopsis"><p> For details, see <a href="#scan_format/2"><code class="inline">scan_format/2</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write_atom/1">write_atom/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the list of characters needed to print atom <a href="https://hexdocs.pm/elixir/Atom.html"><code class="inline">Atom</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write_atom_as_latin1/1">write_atom_as_latin1/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the list of characters needed to print atom <a href="https://hexdocs.pm/elixir/Atom.html"><code class="inline">Atom</code></a>. Non-Latin-1 characters are escaped.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write_char/1">write_char/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the list of characters needed to print a character constant in the Unicode character set.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write_char_as_latin1/1">write_char_as_latin1/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the list of characters needed to print a character constant in the Unicode character set. Non-Latin-1 characters are escaped.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write_latin1_char/1">write_latin1_char/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the list of characters needed to print a character constant in the ISO Latin-1 character set.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write_latin1_string/1">write_latin1_string/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the list of characters needed to print <code class="inline">Latin1String</code> as a string.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write_string/1">write_string/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the list of characters needed to print <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> as a string.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#write_string_as_latin1/1">write_string_as_latin1/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns the list of characters needed to print <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> as a string. Non-Latin-1 characters are escaped.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#writewritewrite/122">writewritewrite/122</a>
+  </div>
+    <div class="summary-synopsis"><p> Returns a character list that represents <code class="inline">Term</code>. Option <code class="inline">Depth</code> controls the depth of the structures written. When the specified depth is reached, everything below this level is replaced by &quot;<code class="inline">...</code>&quot;. <code class="inline">Depth</code> defaults to -1, which means no limitation. Option <code class="inline">CharsLimit</code> puts a soft limit on the number of characters returned. When the number of characters is reached, remaining structures are replaced by &quot;<code class="inline">...</code>&quot;. <code class="inline">CharsLimit</code> defaults to -1, which means no limit on the number of characters returned.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="build_text/1">
+  <div class="detail-header">
+    <a href="#build_text/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">build_text/1</h1>
+      <div class="specs">
+          <pre>build_text(formatList) :: chars() when formatList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>() | format_spec()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> For details, see <a href="#scan_format/2"><code class="inline">scan_format/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="char_list/1">
+  <div class="detail-header">
+    <a href="#char_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">char_list/1</h1>
+      <div class="specs">
+          <pre>char_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a flat list of characters in the Unicode range, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="deep_char_list/1">
+  <div class="detail-header">
+    <a href="#deep_char_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">deep_char_list/1</h1>
+      <div class="specs">
+          <pre>deep_char_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a, possibly deep, list of characters in the Unicode range, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="deep_latin1_char_list/1">
+  <div class="detail-header">
+    <a href="#deep_latin1_char_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">deep_latin1_char_list/1</h1>
+      <div class="specs">
+          <pre>deep_latin1_char_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a, possibly deep, list of characters in the ISO Latin-1 range, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="formatfwrite/22">
+  <div class="detail-header">
+    <a href="#formatfwrite/22" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">formatfwrite/22</h1>
+  </div>
+  <section class="docstring">
+<p> Returns a character list that represents <code class="inline">Data</code> formatted in accordance with <code class="inline">Format</code>. For a detailed description of the available formatting options, see <code class="inline">io:fwrite/1,2,3</code>. If the format string or argument list contains an error, a fault is generated.</p>
+<p> If and only if the Unicode translation modifier is used in the format string (that is, <code class="inline">~ts</code> or <code class="inline">~tc</code>), the resulting list can contain characters beyond the ISO Latin-1 character range (that is, numbers &gt; 255). If so, the result is still an ordinary Erlang <code class="inline">string()</code>, and can well be used in any context where Unicode data is allowed.</p>
+  </section>
+</section>
+<section class="detail" id="formatfwrite/33">
+  <div class="detail-header">
+    <a href="#formatfwrite/33" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">formatfwrite/33</h1>
+  </div>
+  <section class="docstring">
+<p> Returns a character list that represents <code class="inline">Data</code> formatted in accordance with <code class="inline">Format</code> in the same way as <code class="inline">fwrite/2</code> and <code class="inline">format/2</code>, but takes an extra argument, a list of options.</p>
+<p> Valid option:</p>
+<p>  <code class="inline">{chars_limit, ``CharsLimit``}</code>   *  A soft limit on the number of characters returned. When the number of characters is reached, remaining structures are replaced by &quot;<code class="inline">...</code>&quot;. <code class="inline">CharsLimit</code> defaults to -1, which means no limit on the number of characters returned.</p>
+  </section>
+</section>
+<section class="detail" id="fread/2">
+  <div class="detail-header">
+    <a href="#fread/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fread/2</h1>
+      <div class="specs">
+          <pre>fread(format, string) :: result
+when format: string(),
+     string: string(),
+     result:
+       {:ok, inputList :: [fread_item()], leftOverChars :: string()}
+       | {:more, restFormat :: string(), nchars :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+          inputStack :: chars()}
+       | {:error, {:fread, what :: fread_error()}}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Tries to read <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> in accordance with the control sequences in <code class="inline">Format</code>. For a detailed description of the available formatting options, see <code class="inline">io:fread/3</code>. It is assumed that <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> contains whole lines.</p>
+<p> The function returns:</p>
+<p>  <code class="inline">{ok, ``InputList``, ``LeftOverChars``}</code>   *  The string was read. <code class="inline">InputList</code> is the list of successfully matched and read items, and <code class="inline">LeftOverChars</code> are the input characters not used.</p>
+<p>  <code class="inline">{more, ``RestFormat``, ``Nchars``, ``InputStack``}</code>   *  The string was read, but more input is needed to complete the original format string. <code class="inline">RestFormat</code> is the remaining format string, <code class="inline">Nchars</code> is the number of characters scanned, and <code class="inline">InputStack</code> is the reversed list of inputs matched up to that point.</p>
+<p>  <code class="inline">{error, ``What``}</code>   *  The read operation failed and parameter <code class="inline">What</code> gives a hint about the error.</p>
+<p>   Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io_lib</span><span class="p">:</span><span class="nf">fread</span><span class="p" data-group-id="2620776077-1">(</span><span class="s">&quot;~f~f~f&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;15.6 17.3e-6 24.5&quot;</span><span class="p" data-group-id="2620776077-1">)</span><span class="p">.</span><span class="w">
+</span><span class="p" data-group-id="2620776077-2">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="2620776077-3">[</span><span class="mf">15.6</span><span class="p">,</span><span class="mf">1.73e-5</span><span class="p">,</span><span class="mf">24.5</span><span class="p" data-group-id="2620776077-3">]</span><span class="p">,</span><span class="p" data-group-id="2620776077-4">[</span><span class="p" data-group-id="2620776077-4">]</span><span class="p" data-group-id="2620776077-2">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="fread/3">
+  <div class="detail-header">
+    <a href="#fread/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fread/3</h1>
+      <div class="specs">
+          <pre>fread(continuation, charSpec, format) :: return
+when continuation: continuation() | [],
+     charSpec: string() | :eof,
+     format: string(),
+     return:
+       {:more, continuation1 :: continuation()}
+       | {:done, result, leftOverChars :: string()},
+     result:
+       {:ok, inputList :: [fread_item()]}
+       | :eof
+       | {:error, {:fread, what :: fread_error()}}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> This is the re-entrant formatted reader. The continuation of the first call to the functions must be <code class="inline">[]</code>. For a complete description of how the re-entrant input scheme works, see Armstrong, Virding, Williams: &#39;Concurrent Programming in Erlang&#39;, Chapter 13.</p>
+<p> The function returns:</p>
+<p>  <code class="inline">{done, ``Result``, ``LeftOverChars``}</code>   *  The input is complete. The result is one of the following:</p>
+<p>  <code class="inline">{ok, ``InputList``}</code>   *  The string was read. <code class="inline">InputList</code> is the list of successfully matched and read items, and <code class="inline">LeftOverChars</code> are the remaining characters.</p>
+<p>  <code class="inline">eof</code>   *  End of file was encountered. <code class="inline">LeftOverChars</code> are the input characters not used.</p>
+<p>  <code class="inline">{error, ``What``}</code>   *  An error occurred and parameter <code class="inline">What</code> gives a hint about the error.</p>
+<pre><code class="nohighlight makeup erlang"><span class="err">`</span><span class="p" data-group-id="1747481481-1">{</span><span class="ss">more</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">Continuation</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="1747481481-1">}</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w">  </span><span class="n">More</span><span class="w"> </span><span class="ss">data</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">required</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">build</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">term</span><span class="p">.</span><span class="w"> </span><span class="err">`</span><span class="n">Continuation</span><span class="err">`</span><span class="w"> </span><span class="ss">must</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">passed</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="p" data-group-id="1747481481-2">[</span><span class="err">`</span><span class="ss">fread</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="p" data-group-id="1747481481-2">]</span><span class="p" data-group-id="1747481481-3">(</span><span class="p">#</span><span class="ss">fread</span><span class="o">/</span><span class="mi">3</span><span class="p" data-group-id="1747481481-3">)</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="ss">more</span><span class="w"> </span><span class="ss">data</span><span class="w"> </span><span class="ss">becomes</span><span class="w"> </span><span class="ss">available</span><span class="p">.</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="indentation/2">
+  <div class="detail-header">
+    <a href="#indentation/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">indentation/2</h1>
+      <div class="specs">
+          <pre>indentation(string, startIndent) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()
+when string: string(), startIndent: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the indentation if <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> has been printed, starting at <code class="inline">StartIndent</code>.</p>
+  </section>
+</section>
+<section class="detail" id="latin1_char_list/1">
+  <div class="detail-header">
+    <a href="#latin1_char_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">latin1_char_list/1</h1>
+      <div class="specs">
+          <pre>latin1_char_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a flat list of characters in the ISO Latin-1 range, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="nl/0">
+  <div class="detail-header">
+    <a href="#nl/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">nl/0</h1>
+      <div class="specs">
+          <pre>nl() :: string()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a character list that represents a new line character.</p>
+  </section>
+</section>
+<section class="detail" id="printable_latin1_list/1">
+  <div class="detail-header">
+    <a href="#printable_latin1_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">printable_latin1_list/1</h1>
+      <div class="specs">
+          <pre>printable_latin1_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a flat list of printable ISO Latin-1 characters, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="printable_list/1">
+  <div class="detail-header">
+    <a href="#printable_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">printable_list/1</h1>
+      <div class="specs">
+          <pre>printable_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a flat list of printable characters, otherwise <code class="inline">false</code>.</p>
+<p> What is a printable character in this case is determined by startup flag <code class="inline">+pc</code> to the Erlang VM; see  <code class="inline">io:printable_range/0</code> and <code class="inline">erl(1)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="printable_unicode_list/1">
+  <div class="detail-header">
+    <a href="#printable_unicode_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">printable_unicode_list/1</h1>
+      <div class="specs">
+          <pre>printable_unicode_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns <code class="inline">true</code> if <code class="inline">Term</code> is a flat list of printable Unicode characters, otherwise <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="printprint/14">
+  <div class="detail-header">
+    <a href="#printprint/14" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">printprint/14</h1>
+  </div>
+  <section class="docstring">
+<p> Returns a list of characters that represents <code class="inline">Term</code>, but breaks representations longer than one line into many lines and indents each line sensibly. Also tries to detect and output lists of printable characters as strings.</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">Column</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">starting</span><span class="w"> </span><span class="ss">column</span><span class="p">;</span><span class="w"> </span><span class="ss">defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">LineLength</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">maximum</span><span class="w"> </span><span class="ss">line</span><span class="w"> </span><span class="nb">length</span><span class="p">;</span><span class="w"> </span><span class="ss">defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="mi">80</span><span class="p">.</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">Depth</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">maximum</span><span class="w"> </span><span class="ss">print</span><span class="w"> </span><span class="ss">depth</span><span class="p">;</span><span class="w"> </span><span class="ss">defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">means</span><span class="w"> </span><span class="ss">no</span><span class="w"> </span><span class="ss">limitation</span><span class="p">.</span><span class="w">  </span></code></pre>
+  </section>
+</section>
+<section class="detail" id="scan_format/2">
+  <div class="detail-header">
+    <a href="#scan_format/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">scan_format/2</h1>
+      <div class="specs">
+          <pre>scan_format(format, data) :: formatList
+when format: <a href=":io.html#t:format/0">:io.format</a>(),
+     data: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
+     formatList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>() | format_spec()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns a list corresponding to the specified format string, where control sequences have been replaced with corresponding tuples. This list can be passed to:</p>
+<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="p" data-group-id="7929121092-1">[</span><span class="err">`</span><span class="ss">build_text</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="7929121092-1">]</span><span class="p" data-group-id="7929121092-2">(</span><span class="p">#</span><span class="ss">build_text</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="7929121092-2">)</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">have</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">same</span><span class="w"> </span><span class="ss">effect</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="err">`</span><span class="nf">format</span><span class="p" data-group-id="7929121092-3">(</span><span class="n">Format</span><span class="p">,</span><span class="w"> </span><span class="n">Args</span><span class="p" data-group-id="7929121092-3">)</span><span class="err">`</span><span class="w">
+
+</span><span class="o">*</span><span class="w">   </span><span class="p" data-group-id="7929121092-4">[</span><span class="err">`</span><span class="ss">unscan_format</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="7929121092-4">]</span><span class="p" data-group-id="7929121092-5">(</span><span class="p">#</span><span class="ss">unscan_format</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="7929121092-5">)</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="nb">get</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">corresponding</span><span class="w"> </span><span class="ss">pair</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="err">`</span><span class="n">Format</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">Args</span><span class="err">`</span><span class="w"> </span><span class="p" data-group-id="7929121092-6">(</span><span class="ss">with</span><span class="w"> </span><span class="ss">every</span><span class="w"> </span><span class="err">`</span><span class="o">*</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">corresponding</span><span class="w"> </span><span class="ss">argument</span><span class="w"> </span><span class="ss">expanded</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">numeric</span><span class="w"> </span><span class="ss">values</span><span class="p" data-group-id="7929121092-6">)</span></code></pre>
+<p>   A typical use of this function is to replace unbounded-size control sequences like <code class="inline">~w</code> and <code class="inline">~p</code> with the depth-limited variants <code class="inline">~W</code> and <code class="inline">~P</code> before formatting to text in, for example, a logger.</p>
+  </section>
+</section>
+<section class="detail" id="unscan_format/1">
+  <div class="detail-header">
+    <a href="#unscan_format/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unscan_format/1</h1>
+      <div class="specs">
+          <pre>unscan_format(formatList) :: {format, data}
+when formatList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>() | format_spec()],
+     format: <a href=":io.html#t:format/0">:io.format</a>(),
+     data: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> For details, see <a href="#scan_format/2"><code class="inline">scan_format/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="write_atom/1">
+  <div class="detail-header">
+    <a href="#write_atom/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write_atom/1</h1>
+      <div class="specs">
+          <pre>write_atom(atom) :: chars() when atom: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the list of characters needed to print atom <a href="https://hexdocs.pm/elixir/Atom.html"><code class="inline">Atom</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="write_atom_as_latin1/1">
+  <div class="detail-header">
+    <a href="#write_atom_as_latin1/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write_atom_as_latin1/1</h1>
+      <div class="specs">
+          <pre>write_atom_as_latin1(atom) :: latin1_string() when atom: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the list of characters needed to print atom <a href="https://hexdocs.pm/elixir/Atom.html"><code class="inline">Atom</code></a>. Non-Latin-1 characters are escaped.</p>
+  </section>
+</section>
+<section class="detail" id="write_char/1">
+  <div class="detail-header">
+    <a href="#write_char/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write_char/1</h1>
+      <div class="specs">
+          <pre>write_char(char) :: chars() when char: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the list of characters needed to print a character constant in the Unicode character set.</p>
+  </section>
+</section>
+<section class="detail" id="write_char_as_latin1/1">
+  <div class="detail-header">
+    <a href="#write_char_as_latin1/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write_char_as_latin1/1</h1>
+      <div class="specs">
+          <pre>write_char_as_latin1(char) :: latin1_string() when char: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the list of characters needed to print a character constant in the Unicode character set. Non-Latin-1 characters are escaped.</p>
+  </section>
+</section>
+<section class="detail" id="write_latin1_char/1">
+  <div class="detail-header">
+    <a href="#write_latin1_char/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write_latin1_char/1</h1>
+      <div class="specs">
+          <pre>write_latin1_char(latin1Char) :: latin1_string()
+when latin1Char: <a href=":unicode.html#t:latin1_char/0">:unicode.latin1_char</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the list of characters needed to print a character constant in the ISO Latin-1 character set.</p>
+  </section>
+</section>
+<section class="detail" id="write_latin1_string/1">
+  <div class="detail-header">
+    <a href="#write_latin1_string/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write_latin1_string/1</h1>
+      <div class="specs">
+          <pre>write_latin1_string(latin1String) :: latin1_string()
+when latin1String: latin1_string()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the list of characters needed to print <code class="inline">Latin1String</code> as a string.</p>
+  </section>
+</section>
+<section class="detail" id="write_string/1">
+  <div class="detail-header">
+    <a href="#write_string/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write_string/1</h1>
+      <div class="specs">
+          <pre>write_string(string) :: chars() when string: string()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the list of characters needed to print <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> as a string.</p>
+  </section>
+</section>
+<section class="detail" id="write_string_as_latin1/1">
+  <div class="detail-header">
+    <a href="#write_string_as_latin1/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">write_string_as_latin1/1</h1>
+      <div class="specs">
+          <pre>write_string_as_latin1(string) :: latin1_string() when string: string()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Returns the list of characters needed to print <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> as a string. Non-Latin-1 characters are escaped.</p>
+  </section>
+</section>
+<section class="detail" id="writewritewrite/122">
+  <div class="detail-header">
+    <a href="#writewritewrite/122" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">writewritewrite/122</h1>
+  </div>
+  <section class="docstring">
+<p> Returns a character list that represents <code class="inline">Term</code>. Option <code class="inline">Depth</code> controls the depth of the structures written. When the specified depth is reached, everything below this level is replaced by &quot;<code class="inline">...</code>&quot;. <code class="inline">Depth</code> defaults to -1, which means no limitation. Option <code class="inline">CharsLimit</code> puts a soft limit on the number of characters returned. When the number of characters is reached, remaining structures are replaced by &quot;<code class="inline">...</code>&quot;. <code class="inline">CharsLimit</code> defaults to -1, which means no limit on the number of characters returned.</p>
+<p> Example:</p>
+<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">flatten</span><span class="p" data-group-id="1180089522-1">(</span><span class="nc">io_lib</span><span class="p">:</span><span class="nf">write</span><span class="p" data-group-id="1180089522-2">(</span><span class="p" data-group-id="1180089522-3">{</span><span class="mi">1</span><span class="p">,</span><span class="p" data-group-id="1180089522-4">[</span><span class="mi">2</span><span class="p" data-group-id="1180089522-4">]</span><span class="p">,</span><span class="p" data-group-id="1180089522-5">[</span><span class="mi">3</span><span class="p" data-group-id="1180089522-5">]</span><span class="p">,</span><span class="p" data-group-id="1180089522-6">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="1180089522-6">]</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="1180089522-3">}</span><span class="p" data-group-id="1180089522-2">)</span><span class="p" data-group-id="1180089522-1">)</span><span class="p">.</span><span class="w">
+</span><span class="s">&quot;{1,[2],[3],[4,5],6,7,8,9}&quot;</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">flatten</span><span class="p" data-group-id="1180089522-7">(</span><span class="nc">io_lib</span><span class="p">:</span><span class="nf">write</span><span class="p" data-group-id="1180089522-8">(</span><span class="p" data-group-id="1180089522-9">{</span><span class="mi">1</span><span class="p">,</span><span class="p" data-group-id="1180089522-10">[</span><span class="mi">2</span><span class="p" data-group-id="1180089522-10">]</span><span class="p">,</span><span class="p" data-group-id="1180089522-11">[</span><span class="mi">3</span><span class="p" data-group-id="1180089522-11">]</span><span class="p">,</span><span class="p" data-group-id="1180089522-12">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="1180089522-12">]</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="1180089522-9">}</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="1180089522-8">)</span><span class="p" data-group-id="1180089522-7">)</span><span class="p">.</span><span class="w">
+</span><span class="s">&quot;{1,[2],[3],[...],...}&quot;</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">flatten</span><span class="p" data-group-id="1180089522-13">(</span><span class="nc">io_lib</span><span class="p">:</span><span class="nf">write</span><span class="p" data-group-id="1180089522-14">(</span><span class="p" data-group-id="1180089522-15">{</span><span class="p" data-group-id="1180089522-16">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="1180089522-16">]</span><span class="p">,</span><span class="p" data-group-id="1180089522-17">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="1180089522-17">]</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="1180089522-15">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1180089522-18">[</span><span class="p" data-group-id="1180089522-19">{</span><span class="ss">chars_limit</span><span class="p">,</span><span class="mi">20</span><span class="p" data-group-id="1180089522-19">}</span><span class="p" data-group-id="1180089522-18">]</span><span class="p" data-group-id="1180089522-14">)</span><span class="p" data-group-id="1180089522-13">)</span><span class="p">.</span><span class="w">
+</span><span class="s">&quot;{[1,2|...],[4|...],...}&quot;</span></code></pre>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
