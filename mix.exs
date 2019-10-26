@@ -48,6 +48,11 @@ defmodule DocsChunks.MixProject do
 
   defp telemetry_chunks(_) do
     {_, 0} = System.cmd("rebar3", ~w(compile), cd: "../telemetry", into: IO.stream(:stdio, :line))
-    {_, 0} = System.cmd("../docs_chunks/docs_chunks", ~w(-project), cd: "../telemetry", into: IO.stream(:stdio, :line))
+
+    {_, 0} =
+      System.cmd("../docs_chunks/docs_chunks", ~w(-project),
+        cd: "../telemetry",
+        into: IO.stream(:stdio, :line)
+      )
   end
 end
