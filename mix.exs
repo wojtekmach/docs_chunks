@@ -42,17 +42,22 @@ defmodule DocsChunks.MixProject do
         "escript.build",
         &telemetry_chunks/1,
         "cmd ex_doc telemetry 0.4.0 ../telemetry/_build/default/lib/telemetry/ebin --main telemetry --output docs/telemetry"
+      ],
+      hex_core_docs: [
+        "escript.build",
+        &hex_core_chunks/1,
+        "cmd ex_doc hex_core 0.6.1 ../hex_core/_build/default/lib/hex_core/ebin --main hex_core --output docs/hex_core"
       ]
     ]
   end
 
   defp telemetry_chunks(_) do
     {_, 0} = System.cmd("rebar3", ~w(compile), cd: "../telemetry", into: IO.stream(:stdio, :line))
+    {_, 0} = System.cmd("../docs_chunks/docs_chunks", ~w(-project), cd: "../telemetry", into: IO.stream(:stdio, :line))
+  end
 
-    {_, 0} =
-      System.cmd("../docs_chunks/docs_chunks", ~w(-project),
-        cd: "../telemetry",
-        into: IO.stream(:stdio, :line)
-      )
+  defp hex_core_chunks(_) do
+    {_, 0} = System.cmd("rebar3", ~w(compile), cd: "../hex_core", into: IO.stream(:stdio, :line))
+    {_, 0} = System.cmd("../docs_chunks/docs_chunks", ~w(-project), cd: "../hex_core", into: IO.stream(:stdio, :line))
   end
 end
