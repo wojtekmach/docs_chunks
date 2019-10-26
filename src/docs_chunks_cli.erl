@@ -33,6 +33,10 @@ main(["-otp-xml-stdlib", OTPRootDir]) ->
     {ok, Modules} = application:get_key(stdlib, modules),
     [main(["-otp-xml", OTPRootDir, atom_to_list(Module)]) || Module <- Modules];
 
+%% TODO this is needed to run `mix telemetry_docs`. Why?!
+main([<<"-project">>]) ->
+    main(["-project"]);
+
 main(["-project"]) ->
     {ok, Cwd} = file:get_cwd(),
     Project = filename:basename(Cwd),
