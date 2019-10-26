@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="telemetry v0.4.0">
+    <title>telemetry — telemetry v0.4.0</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-26bdd1908a.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="telemetry.html" class="sidebar-projectName">
+telemetry      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.4.0
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">telemetry v0.4.0</small>
+telemetry      </h1>
+
+
+        <section id="moduledoc">
+<p><code class="inline">telemetry</code> allows you to invoke certain functions whenever a particular event is emitted.</p>
+<p> For more information see the documentation for <a href="#attach/4"><code class="inline">attach/4</code></a>, <a href="#attach_many/4"><code class="inline">attach_many/4</code></a> and <code class="inline">execute/2</code>.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#attach/4">attach/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Attaches the handler to the event.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#attach_many/4">attach_many/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Attaches the handler to many events.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#detach/1">detach/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Removes the existing handler.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#execute/3">execute/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Emits the event, invoking handlers attached to it.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_handlers/1">list_handlers/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns all handlers attached to events with given prefix.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="attach/4">
+  <div class="detail-header">
+    <a href="#attach/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">attach/4</h1>
+      <div class="specs">
+          <pre>attach(handlerId, eventName, function, config) ::
+  :ok | {:error, :already_exists}
+when handlerId: handler_id(),
+     eventName: event_name(),
+     function: handler_function(),
+     config: handler_config()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Attaches the handler to the event.</p>
+<p> <code class="inline">handler_id</code> must be unique, if another handler with the same ID already exists the <code class="inline">{error, already_exists}</code> tuple is returned.</p>
+<p> See <a href="#execute/3"><code class="inline">execute/3</code></a> to learn how the handlers are invoked.</p>
+<p> Note: due to how anonymous functions are implemented in the Erlang VM, it is best to use function captures (i.e. <code class="inline">fun mod:fun/4</code> in Erlang or <code class="inline">&amp;Mod.fun/4</code> in Elixir) as event handlers to achieve maximum performance. In other words, avoid using literal anonymous functions (<code class="inline">fun(...) -&gt; ... end</code> or <code class="inline">fn ... -&gt; ... end</code>) or local function captures (<code class="inline">fun handle_event/4</code> or <code class="inline">&amp;handle_event/4</code> ) as event handlers.</p>
+<p> All the handlers are executed by the process dispatching event. If the function fails (raises, exits or throws) then the handler is removed. Note that you should not rely on the order in which handlers are invoked.</p>
+  </section>
+</section>
+<section class="detail" id="attach_many/4">
+  <div class="detail-header">
+    <a href="#attach_many/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">attach_many/4</h1>
+      <div class="specs">
+          <pre>attach_many(handlerId, [eventName], function, config) ::
+  :ok | {:error, :already_exists}
+when handlerId: handler_id(),
+     eventName: event_name(),
+     function: handler_function(),
+     config: handler_config()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Attaches the handler to many events.</p>
+<p> The handler will be invoked whenever any of the events in the <code class="inline">event_names</code> list is emitted. Note that failure of the handler on any of these invokations will detach it from all the events in <code class="inline">event_name</code> (the same applies to manual detaching using <a href="#detach/1"><code class="inline">detach/1</code></a>).</p>
+<p> Note: due to how anonymous functions are implemented in the Erlang VM, it is best to use function captures (i.e. <code class="inline">fun mod:fun/4</code> in Erlang or <code class="inline">&amp;Mod.fun/4</code> in Elixir) as event handlers to achieve maximum performance. In other words, avoid using literal anonymous functions (<code class="inline">fun(...) -&gt; ... end</code> or <code class="inline">fn ... -&gt; ... end</code>) or local function captures (<code class="inline">fun handle_event/4</code> or <code class="inline">&amp;handle_event/4</code> ) as event handlers.</p>
+<p> All the handlers are executed by the process dispatching event. If the function fails (raises, exits or throws) then the handler is removed. Note that you should not rely on the order in which handlers are invoked.</p>
+  </section>
+</section>
+<section class="detail" id="detach/1">
+  <div class="detail-header">
+    <a href="#detach/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">detach/1</h1>
+      <div class="specs">
+          <pre>detach(handler_id()) :: :ok | {:error, :not_found}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Removes the existing handler.</p>
+<p> If the handler with given ID doesn&#39;t exist, <code class="inline">{error, not_found}</code> is returned.</p>
+  </section>
+</section>
+<section class="detail" id="execute/3">
+  <div class="detail-header">
+    <a href="#execute/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">execute/3</h1>
+      <div class="specs">
+          <pre>execute(eventName, measurements, metadata) :: :ok
+when eventName: event_name(),
+     measurements: event_measurements() | event_value(),
+     metadata: event_metadata()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Emits the event, invoking handlers attached to it.</p>
+<p> When the event is emitted, the handler function provided to <a href="#attach/4"><code class="inline">attach/4</code></a> is called with four arguments:  the event name the map of measurements the map of event metadata the handler configuration given to <a href="#attach/4"><code class="inline">attach/4</code></a> </p>
+  </section>
+</section>
+<section class="detail" id="list_handlers/1">
+  <div class="detail-header">
+    <a href="#list_handlers/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_handlers/1</h1>
+      <div class="specs">
+          <pre>list_handlers(event_prefix()) :: [handler()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns all handlers attached to events with given prefix.</p>
+<p> Handlers attached to many events at once using <a href="#attach_many/4"><code class="inline">attach_many/4</code></a> will be listed once for each event they&#39;re attached to. Note that you can list all handlers by feeding this function an empty list.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
