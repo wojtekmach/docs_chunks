@@ -68,8 +68,18 @@ edoc_to_chunk(ErlPath) ->
     % 'Elixir.IO':inspect(Chunk),
     Chunk.
 
-% TODO: extract types and callbacks too
 edoc_extract_docs(Doc) ->
+    edoc_extract_types(Doc) ++ edoc_extract_functions(Doc).
+
+edoc_extract_types(Doc) ->
+    [edoc_extract_type(D) || D <- xmerl_xpath:string("//typedecls/typedecl/typedef", Doc)].
+
+edoc_extract_type(Doc) ->
+    Name = xpath_to_atom("./erlangName/@name", Doc),
+    [#xmlElement{content=[]}] = xmerl_xpath:string("./argtypes", Doc),
+    docs_v1_entry(type, Name, 0, <<"">>).
+
+edoc_extract_functions(Doc) ->
     [edoc_extract_function(Doc1) || Doc1 <- xmerl_xpath:string("//module/functions/function", Doc)].
 
 edoc_extract_function(Doc) ->
@@ -83,7 +93,7 @@ edoc_extract_function(Doc) ->
             [] ->
                 xpath_to_binary("./description/fullDescription", Doc)
         end,
-    docs_v1_function(Name, Arity, DocString).
+    docs_v1_entry(function, Name, Arity, DocString).
 
 % %% @doc Extract XML docs from `XMLPath' in `OTPRootDir' and convert it to docs chunk.
 otp_xml_to_chunk(OTPRootDir, XMLPath) ->
@@ -119,7 +129,7 @@ otp_xml_extract_function(Doc, XMLPath) ->
             %         ok
             % end,
 
-            docs_v1_function(Name, Arity, DocString)
+            docs_v1_entry(function, Name, Arity, DocString)
     end.
 
 % TODO: example warning:
@@ -161,14 +171,14 @@ docs_v1(DocString, Docs) ->
     Doc = doc_string_to_doc(DocString, hidden),
     {docs_v1, Anno, BeamLanguage, Format, Doc, Metadata, Docs}.
 
-docs_v1_function(Name, Arity, DocString) ->
+docs_v1_entry(Kind, Name, Arity, DocString) ->
     % TODO fill these in
     Anno = 0,
     % TODO get signature from abstract code
     Signature = [list_to_binary(atom_to_list(Name) ++ "/" ++ integer_to_list(Arity))],
     Metadata = #{},
     Doc = doc_string_to_doc(DocString, none),
-    {{function, Name, Arity}, Anno, Signature, Doc, Metadata}.
+    {{Kind, Name, Arity}, Anno, Signature, Doc, Metadata}.
 
 doc_string_to_doc(<<"">>, Empty) -> Empty;
 doc_string_to_doc(DocString, _Empty) when is_binary(DocString) -> #{<<"en">> => DocString}.

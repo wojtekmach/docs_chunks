@@ -7,9 +7,16 @@ defmodule DocsChunksTest do
     assert {:error, :chunk_not_found} = Code.fetch_docs(beam_path)
 
     chunk = :docs_chunks.edoc_to_chunk('src/docs_chunks.erl')
-    {:docs_v1, _, :erlang, _, %{"en" => moduledoc}, _, docs} = chunk
+    {:docs_v1, _, :erlang, _, %{"en" => moduledoc}, _, entries} = chunk
     assert moduledoc == "A module to extract docs and attach them as chunks."
-    [_, {{:function, :edoc_to_chunk, 1}, _anno, _signature, %{"en" => doc}, _metadata} | _] = docs
+
+    entry1 = List.keyfind(entries, {:type, :docs_v1, 0}, 0)
+    {_, _anno, signature, _, _metadata} = entry1
+    assert signature == ["docs_v1/0"]
+
+    entry2 = List.keyfind(entries, {:function, :edoc_to_chunk, 1}, 0)
+    {_, _anno, signature, %{"en" => doc}, _metadata} = entry2
+    assert signature == ["edoc_to_chunk/1"]
     assert doc =~ "Fetch edoc docs from a given `ErlPath` and convert it to docs chunk."
 
     :ok = :docs_chunks.write_chunk(String.to_charlist(beam_path), chunk)
