@@ -38,14 +38,20 @@ defmodule DocsChunks.MixProject do
         "otp",
         "cmd ex_doc stdlib 22.1.4 ~/.asdf/installs/erlang/22.1.4/lib/stdlib-3.10/ebin/ --main array --output docs/stdlib"
       ],
-      telemetry_docs: [
+      telemetry_chunks: [
         "escript.build",
-        &telemetry_chunks/1,
-        "cmd ex_doc telemetry 0.4.0 ../telemetry/_build/default/lib/telemetry/ebin --main telemetry --output docs/telemetry"
+        &telemetry_chunks/1
+      ],
+      telemetry_docs: [
+        "telemetry_chunks",
+        "cmd ex_doc telemetry 0.4.0 ../telemetry/_build/default/lib/telemetry/ebin --main telemetry --output docs/telemetry -u https://github.com/beam-telemetry/telemetry"
       ],
       hex_core_docs: [
         "escript.build",
-        &hex_core_chunks/1,
+        &hex_core_chunks/1
+      ],
+      hex_core_docs: [
+        "telemetry_chunks",
         "cmd ex_doc hex_core 0.6.1 ../hex_core/_build/default/lib/hex_core/ebin --main hex_core --output docs/hex_core"
       ]
     ]
