@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="hex_core v0.6.1">
     <title>hex_api_user — hex_core v0.6.1</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-3e29812628.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-ccd1db27e2.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -86,9 +86,24 @@ hex_api_user      </h1>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#create/4">create/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#get/2">get/2</a>
   </div>
     <div class="summary-synopsis"><p> Gets user.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#me/1">me/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reset_password/2">reset_password/2</a>
+  </div>
 </div>
   </div>
         </section>
@@ -101,6 +116,17 @@ hex_api_user      </h1>
             </a>
 Functions          </h1>
           <div class="functions-list">
+<section class="detail" id="create/4">
+  <div class="detail-header">
+    <a href="#create/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
 <section class="detail" id="get/2">
   <div class="detail-header">
     <a href="#get/2" class="detail-link" title="Link to this function">
@@ -112,18 +138,40 @@ Functions          </h1>
   <section class="docstring">
 <p> Gets user.</p>
 <p> Examples:</p>
-<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_user</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="3895828933-1">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="3895828933-2">(</span><span class="p" data-group-id="3895828933-2">)</span><span class="p" data-group-id="3895828933-1">)</span><span class="p">.</span><span class="w">
-  </span><span class="p" data-group-id="3895828933-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3895828933-4">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3895828933-5">#{</span><span class="w">
-       </span><span class="p">&lt;&lt;</span><span class="s">&quot;username&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
-       </span><span class="p">&lt;&lt;</span><span class="s">&quot;packages&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="3895828933-6">[</span><span class="w">
-           </span><span class="p" data-group-id="3895828933-7">#{</span><span class="w">
-               </span><span class="p">&lt;&lt;</span><span class="s">&quot;name&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w">
-               </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w">
-               </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="w">
-           </span><span class="p" data-group-id="3895828933-7">}</span><span class="p">,</span><span class="w">
-           </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="w">
-       </span><span class="p" data-group-id="3895828933-6">]</span><span class="p">,</span><span class="w">
-       </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="3895828933-5">}</span><span class="p" data-group-id="3895828933-4">}</span><span class="p" data-group-id="3895828933-3">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">hex_api_user</span><span class="ss">:get</span><span class="p" data-group-id="1073428340-1">(</span><span class="p" data-group-id="1073428340-2">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p" data-group-id="1073428340-2">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">hex_core</span><span class="ss">:default_config</span><span class="p" data-group-id="1073428340-3">(</span><span class="p" data-group-id="1073428340-3">)</span><span class="p" data-group-id="1073428340-1">)</span><span class="o">.</span><span class="w">
+  </span><span class="p" data-group-id="1073428340-4">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1073428340-5">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">,</span><span class="w"> </span><span class="c1">#{</span><span class="w">
+       </span><span class="p" data-group-id="1073428340-6">&lt;&lt;</span><span class="s">&quot;username&quot;</span><span class="p" data-group-id="1073428340-6">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="1073428340-7">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p" data-group-id="1073428340-7">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p" data-group-id="1073428340-8">&lt;&lt;</span><span class="s">&quot;packages&quot;</span><span class="p" data-group-id="1073428340-8">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="1073428340-9">[</span><span class="w">
+           </span><span class="c1">#{</span><span class="w">
+               </span><span class="p" data-group-id="1073428340-10">&lt;&lt;</span><span class="s">&quot;name&quot;</span><span class="p" data-group-id="1073428340-10">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="n">...</span><span class="p">,</span><span class="w">
+               </span><span class="p" data-group-id="1073428340-11">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p" data-group-id="1073428340-11">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="n">...</span><span class="p">,</span><span class="w">
+               </span><span class="n">...</span><span class="w">
+           </span><span class="p">}</span><span class="p">,</span><span class="w">
+           </span><span class="n">...</span><span class="w">
+       </span><span class="p" data-group-id="1073428340-9">]</span><span class="p">,</span><span class="w">
+       </span><span class="n">...</span><span class="p" data-group-id="1073428340-5">}</span><span class="err">}</span><span class="err">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="me/1">
+  <div class="detail-header">
+    <a href="#me/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">me/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="reset_password/2">
+  <div class="detail-header">
+    <a href="#reset_password/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reset_password/2</h1>
+  </div>
+  <section class="docstring">
   </section>
 </section>
           </div>
@@ -140,18 +188,18 @@ Functions          </h1>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

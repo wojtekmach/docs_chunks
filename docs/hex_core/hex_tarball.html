@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="hex_core v0.6.1">
     <title>hex_tarball — hex_core v0.6.1</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-3e29812628.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-ccd1db27e2.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -80,6 +80,41 @@ hex_tarball      </h1>
             </a>
             Summary
           </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:checksum/0">checksum()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:contents/0">contents()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:filename/0">filename()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:files/0">files()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:metadata/0">metadata()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:tarball/0">tarball()</a>
+  </div>
+</div>
+  </div>
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
@@ -117,6 +152,106 @@ hex_tarball      </h1>
   </div>
         </section>
 
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:checksum/0">
+  <div class="detail-header">
+    <a href="#t:checksum/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">checksum()</h1>
+      <div class="specs">
+          <pre>checksum() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:contents/0">
+  <div class="detail-header">
+    <a href="#t:contents/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">contents()</h1>
+      <div class="specs">
+          <pre>contents() :: #{<a href="#t:filename/0">filename</a>() => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:filename/0">
+  <div class="detail-header">
+    <a href="#t:filename/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">filename()</h1>
+      <div class="specs">
+          <pre>filename() :: string().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:files/0">
+  <div class="detail-header">
+    <a href="#t:files/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">files()</h1>
+      <div class="specs">
+          <pre>files() :: [<a href="#t:filename/0">filename</a>() | {<a href="#t:filename/0">filename</a>(), <a href="#t:filename/0">filename</a>()}] | <a href="#t:contents/0">contents</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:metadata/0">
+  <div class="detail-header">
+    <a href="#t:metadata/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">metadata()</h1>
+      <div class="specs">
+          <pre>metadata() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:tarball/0">
+  <div class="detail-header">
+    <a href="#t:tarball/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">tarball()</h1>
+      <div class="specs">
+          <pre>tarball() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
         <section id="functions" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#functions">
@@ -133,19 +268,20 @@ Functions          </h1>
     </a>
     <h1 class="signature">create/2</h1>
       <div class="specs">
-          <pre>create(metadata(), files()) :: {:ok, {tarball(), checksum()}}</pre>
+          <pre>create(<a href="#t:metadata/0">metadata</a>(), <a href="#t:files/0">files</a>()) -> {ok, {<a href="#t:tarball/0">tarball</a>(), <a href="#t:checksum/0">checksum</a>()}}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Creates a package tarball.</p>
 <p> Returns the binary of the tarball the &quot;inner checksum&quot; and &quot;outer checksum&quot;. The inner checksum is deprecated in favor of the inner checksum.</p>
 <p> Examples:</p>
-<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5418581842-1">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;name&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;foo&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;version&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;1.0.0&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="5418581842-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5418581842-2">[</span><span class="p" data-group-id="5418581842-3">{</span><span class="s">&quot;src/foo.erl&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;-module(foo).&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="5418581842-3">}</span><span class="p" data-group-id="5418581842-2">]</span><span class="p">,</span><span class="w">
-  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_tarball</span><span class="p">:</span><span class="nf">create</span><span class="p" data-group-id="5418581842-4">(</span><span class="n">Metadata</span><span class="p">,</span><span class="w"> </span><span class="n">Files</span><span class="p" data-group-id="5418581842-4">)</span><span class="p">.</span><span class="w">
-  </span><span class="p" data-group-id="5418581842-5">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5418581842-6">#{</span><span class="ss">tarball</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="mi">86</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
-         </span><span class="ss">outer_checksum</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="mi">40</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
-         </span><span class="ss">inner_checksum</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="mi">178</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="5418581842-6">}</span><span class="p" data-group-id="5418581842-5">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">Metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{&lt;&lt;&quot;name&quot;&gt;&gt; =&gt; &lt;&lt;&quot;foo&quot;&gt;&gt;, &lt;&lt;&quot;version&quot;&gt;&gt; =&gt; &lt;&lt;&quot;1.0.0&quot;&gt;&gt;},</span><span class="w">
+  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">Files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9255935563-1">[</span><span class="p" data-group-id="9255935563-2">{</span><span class="s">&quot;src/foo.erl&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9255935563-3">&lt;&lt;</span><span class="s">&quot;-module(foo).&quot;</span><span class="p" data-group-id="9255935563-3">&gt;&gt;</span><span class="p" data-group-id="9255935563-2">}</span><span class="p" data-group-id="9255935563-1">]</span><span class="p">,</span><span class="w">
+  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">hex_tarball</span><span class="ss">:create</span><span class="p" data-group-id="9255935563-4">(</span><span class="nc">Metadata</span><span class="p">,</span><span class="w"> </span><span class="nc">Files</span><span class="p" data-group-id="9255935563-4">)</span><span class="o">.</span><span class="w">
+  </span><span class="p" data-group-id="9255935563-5">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="c1">#{tarball =&gt; &lt;&lt;86,69,...&gt;&gt;,</span><span class="w">
+         </span><span class="n">outer_checksum</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="9255935563-6">&lt;&lt;</span><span class="mi">40</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="n">...</span><span class="p" data-group-id="9255935563-6">&gt;&gt;</span><span class="p">,</span><span class="w">
+         </span><span class="n">inner_checksum</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="9255935563-7">&lt;&lt;</span><span class="mi">178</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="n">...</span><span class="p" data-group-id="9255935563-7">&gt;&gt;</span><span class="p" data-group-id="9255935563-5">}</span><span class="err">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="create_docs/1">
@@ -156,16 +292,17 @@ Functions          </h1>
     </a>
     <h1 class="signature">create_docs/1</h1>
       <div class="specs">
-          <pre>create_docs(files()) :: {:ok, {tarball(), checksum()}}</pre>
+          <pre>create_docs(<a href="#t:files/0">files</a>()) -> {ok, {<a href="#t:tarball/0">tarball</a>(), <a href="#t:checksum/0">checksum</a>()}}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Creates a docs tarball.</p>
 <p> Examples:</p>
-<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4135760169-1">[</span><span class="p" data-group-id="4135760169-2">{</span><span class="s">&quot;doc/index.html&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;Docs&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="4135760169-2">}</span><span class="p" data-group-id="4135760169-1">]</span><span class="p">,</span><span class="w">
-  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_tarball</span><span class="p">:</span><span class="nf">create_docs</span><span class="p" data-group-id="4135760169-3">(</span><span class="n">Files</span><span class="p" data-group-id="4135760169-3">)</span><span class="p">.</span><span class="w">
-  </span><span class="p" data-group-id="4135760169-4">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4135760169-5">#{</span><span class="ss">tarball</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="mi">86</span><span class="p">,</span><span class="mi">69</span><span class="p">,</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
-         </span><span class="ss">checksum</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="mi">40</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="4135760169-5">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">Files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1469854014-1">[</span><span class="p" data-group-id="1469854014-2">{</span><span class="s">&quot;doc/index.html&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1469854014-3">&lt;&lt;</span><span class="s">&quot;Docs&quot;</span><span class="p" data-group-id="1469854014-3">&gt;&gt;</span><span class="p" data-group-id="1469854014-2">}</span><span class="p" data-group-id="1469854014-1">]</span><span class="p">,</span><span class="w">
+  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">hex_tarball</span><span class="ss">:create_docs</span><span class="p" data-group-id="1469854014-4">(</span><span class="nc">Files</span><span class="p" data-group-id="1469854014-4">)</span><span class="o">.</span><span class="w">
+  </span><span class="p" data-group-id="1469854014-5">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="c1">#{tarball =&gt; &lt;&lt;86,69,...&gt;&gt;,</span><span class="w">
+         </span><span class="n">checksum</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="1469854014-6">&lt;&lt;</span><span class="mi">40</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="n">...</span><span class="p" data-group-id="1469854014-6">&gt;&gt;</span><span class="p" data-group-id="1469854014-5">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="format_checksum/1">
@@ -176,7 +313,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">format_checksum/1</h1>
       <div class="specs">
-          <pre>format_checksum(checksum()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+          <pre>format_checksum(<a href="#t:checksum/0">checksum</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -191,7 +329,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">format_error/1</h1>
       <div class="specs">
-          <pre>format_error(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: string()</pre>
+          <pre>format_error(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) -> string().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -206,31 +345,31 @@ Functions          </h1>
     </a>
     <h1 class="signature">unpack/2</h1>
       <div class="specs">
-          <pre>unpack(tarball(), :memory) ::
-  {:ok,
-   %{
-     optional(:checksum) => checksum(),
-     optional(:metadata) => metadata(),
-     optional(:contents) => contents()
-   }}
-  | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
-          <pre>unpack(tarball(), filename()) ::
-  {:ok, %{optional(:checksum) => checksum(), optional(:metadata) => metadata()}}
-  | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>unpack(<a href="#t:tarball/0">tarball</a>(), memory) ->
+          {ok,
+           #{checksum => <a href="#t:checksum/0">checksum</a>(),
+             metadata => <a href="#t:metadata/0">metadata</a>(),
+             contents => <a href="#t:contents/0">contents</a>()}} |
+          {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+          <pre>unpack(<a href="#t:tarball/0">tarball</a>(), <a href="#t:filename/0">filename</a>()) ->
+          {ok, #{checksum => <a href="#t:checksum/0">checksum</a>(), metadata => <a href="#t:metadata/0">metadata</a>()}} |
+          {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Unpacks a package tarball.</p>
 <p> Remember to verify the outer tarball checksum against the registry checksum returned from <code class="inline">hex_repo:get_package(Config, Package)</code>.</p>
 <p>  Examples:</p>
-<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_tarball</span><span class="p">:</span><span class="nf">unpack</span><span class="p" data-group-id="7490830042-1">(</span><span class="n">Tarball</span><span class="p">,</span><span class="w"> </span><span class="nb">memory</span><span class="p" data-group-id="7490830042-1">)</span><span class="p">.</span><span class="w">
-  </span><span class="p" data-group-id="7490830042-2">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="7490830042-3">#{</span><span class="ss">outer_checksum</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
-        </span><span class="ss">contents</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="7490830042-4">[</span><span class="p" data-group-id="7490830042-5">{</span><span class="s">&quot;src/foo.erl&quot;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;-module(foo).&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="7490830042-5">}</span><span class="p" data-group-id="7490830042-4">]</span><span class="p">,</span><span class="w">
-        </span><span class="ss">metadata</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="7490830042-6">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;name&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;foo&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="7490830042-6">}</span><span class="p" data-group-id="7490830042-3">}</span><span class="p" data-group-id="7490830042-2">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">hex_tarball</span><span class="ss">:unpack</span><span class="p" data-group-id="5003611180-1">(</span><span class="nc">Tarball</span><span class="p">,</span><span class="w"> </span><span class="n">memory</span><span class="p" data-group-id="5003611180-1">)</span><span class="o">.</span><span class="w">
+  </span><span class="err">{</span><span class="n">ok</span><span class="p">,</span><span class="c1">#{outer_checksum =&gt; &lt;&lt;...&gt;&gt;,</span><span class="w">
+        </span><span class="n">contents</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="5003611180-2">[</span><span class="p" data-group-id="5003611180-3">{</span><span class="s">&quot;src/foo.erl&quot;</span><span class="p">,</span><span class="p" data-group-id="5003611180-4">&lt;&lt;</span><span class="s">&quot;-module(foo).&quot;</span><span class="p" data-group-id="5003611180-4">&gt;&gt;</span><span class="p" data-group-id="5003611180-3">}</span><span class="p" data-group-id="5003611180-2">]</span><span class="p">,</span><span class="w">
+        </span><span class="n">metadata</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">#{&lt;&lt;&quot;name&quot;&gt;&gt; =&gt; &lt;&lt;&quot;foo&quot;&gt;&gt;, ...}}}</span><span class="w">
  
-  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_tarball</span><span class="p">:</span><span class="nf">unpack</span><span class="p" data-group-id="7490830042-7">(</span><span class="n">Tarball</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;path/to/unpack&quot;</span><span class="p" data-group-id="7490830042-7">)</span><span class="p">.</span><span class="w">
-  </span><span class="p" data-group-id="7490830042-8">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="7490830042-9">#{</span><span class="ss">outer_checksum</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
-        </span><span class="ss">metadata</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="7490830042-10">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;name&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;foo&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="7490830042-10">}</span><span class="p" data-group-id="7490830042-9">}</span><span class="p" data-group-id="7490830042-8">}</span><span class="err">`</span><span class="ss">&#39;&#39;</span></code></pre>
+  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">hex_tarball</span><span class="ss">:unpack</span><span class="p" data-group-id="5003611180-5">(</span><span class="nc">Tarball</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;path/to/unpack&quot;</span><span class="p" data-group-id="5003611180-5">)</span><span class="o">.</span><span class="w">
+  </span><span class="err">{</span><span class="n">ok</span><span class="p">,</span><span class="c1">#{outer_checksum =&gt; &lt;&lt;...&gt;&gt;,</span><span class="w">
+        </span><span class="n">metadata</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">#{&lt;&lt;&quot;name&quot;&gt;&gt; =&gt; &lt;&lt;&quot;foo&quot;&gt;&gt;, ...}}}`&#39;&#39;</span></code></pre>
   </section>
 </section>
           </div>
@@ -247,18 +386,18 @@ Functions          </h1>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

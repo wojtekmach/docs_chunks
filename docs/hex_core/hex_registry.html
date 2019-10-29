@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="hex_core v0.6.1">
     <title>hex_registry — hex_core v0.6.1</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-3e29812628.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-ccd1db27e2.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -80,6 +80,21 @@ hex_registry      </h1>
             </a>
             Summary
           </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:private_key/0">private_key()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:public_key/0">public_key()</a>
+  </div>
+</div>
+  </div>
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
@@ -153,6 +168,46 @@ hex_registry      </h1>
   </div>
         </section>
 
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:private_key/0">
+  <div class="detail-header">
+    <a href="#t:private_key/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">private_key()</h1>
+      <div class="specs">
+          <pre>private_key() :: public_key:rsa_private_key() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:public_key/0">
+  <div class="detail-header">
+    <a href="#t:public_key/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">public_key()</h1>
+      <div class="specs">
+          <pre>public_key() :: public_key:rsa_public_key() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
         <section id="functions" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#functions">
@@ -169,8 +224,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">decode_and_verify_signed/2</h1>
       <div class="specs">
-          <pre>decode_and_verify_signed(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), public_key()) ::
-  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>decode_and_verify_signed(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="#t:public_key/0">public_key</a>()) ->
+                            {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -269,7 +325,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">sign/2</h1>
       <div class="specs">
-          <pre>sign(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), private_key()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+          <pre>sign(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="#t:private_key/0">private_key</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -296,7 +353,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">verify/3</h1>
       <div class="specs">
-          <pre>verify(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), public_key()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>verify(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="#t:public_key/0">public_key</a>()) ->
+          <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -317,18 +376,18 @@ Functions          </h1>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

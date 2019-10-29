@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="hex_core v0.6.1">
     <title>hex_http — hex_core v0.6.1</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-3e29812628.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-ccd1db27e2.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -72,7 +72,151 @@ hex_http <small>behaviour</small>      </h1>
 <p>Behaviour for Hex HTTP adapters.</p>
         </section>
 
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:body/0">body()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:headers/0">headers()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:method/0">method()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:status/0">status()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#request/5">request/5</a>
+  </div>
+</div>
+  </div>
+        </section>
 
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:body/0">
+  <div class="detail-header">
+    <a href="#t:body/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">body()</h1>
+      <div class="specs">
+          <pre>body() :: {ContentType :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), Body :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} | undefined.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:headers/0">
+  <div class="detail-header">
+    <a href="#t:headers/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">headers()</h1>
+      <div class="specs">
+          <pre>headers() :: #{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:method/0">
+  <div class="detail-header">
+    <a href="#t:method/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">method()</h1>
+      <div class="specs">
+          <pre>method() :: get | post | put | patch | delete.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:status/0">
+  <div class="detail-header">
+    <a href="#t:status/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">status()</h1>
+      <div class="specs">
+          <pre>status() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="request/5">
+  <div class="detail-header">
+    <a href="#request/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">request/5</h1>
+      <div class="specs">
+          <pre>request(hex_core:config(),
+        <a href="#t:method/0">method</a>(),
+        URI :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+        <a href="#t:headers/0">headers</a>(),
+        <a href="#t:body/0">body</a>()) ->
+           {ok, {<a href="#t:status/0">status</a>(), <a href="#t:headers/0">headers</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
       <footer class="footer">
         <p>
           <span class="line">
@@ -85,18 +229,18 @@ hex_http <small>behaviour</small>      </h1>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

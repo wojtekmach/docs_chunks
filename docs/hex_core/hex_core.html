@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="hex_core v0.6.1">
     <title>hex_core — hex_core v0.6.1</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-3e29812628.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-ccd1db27e2.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -115,6 +115,16 @@ hex_core      </h1>
             </a>
             Summary
           </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:config/0">config()</a>
+  </div>
+</div>
+  </div>
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
@@ -128,6 +138,46 @@ hex_core      </h1>
   </div>
         </section>
 
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:config/0">
+  <div class="detail-header">
+    <a href="#t:config/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">config()</h1>
+      <div class="specs">
+          <pre>config() ::
+    #{api_key => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | undefined,
+      api_organization => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | undefined,
+      api_repository => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | undefined,
+      api_url => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+      http_adapter => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+      http_etag => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | undefined,
+      http_adapter_config => <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(),
+      http_user_agent_fragment => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+      repo_key => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | undefined,
+      repo_name => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+      repo_public_key => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+      repo_url => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+      repo_organization => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | undefined,
+      repo_verify => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+      repo_verify_origin => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
         <section id="functions" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#functions">
@@ -144,7 +194,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">default_config/0</h1>
       <div class="specs">
-          <pre>default_config() :: config()</pre>
+          <pre>default_config() -> <a href="#t:config/0">config</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -165,18 +216,18 @@ Functions          </h1>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>
