@@ -59,6 +59,8 @@
 %% %% docs_chunks:edoc_to_chunk("src/foo.erl").
 %% #=> {docs_v1, ..., erlang, <<"text/markdown">>", ..., ..., ..., ...}
 %% '''
+%%
+%% @equiv docs_chunks:edoc_to_chunk("foo")
 -spec edoc_to_chunk(string()) -> docs_v1().
 edoc_to_chunk(ErlPath) ->
     {_Module, Doc} = edoc:get_doc(ErlPath, [{preprocess, true}]),
@@ -88,7 +90,9 @@ edoc_extract_function(Doc) ->
     DocString =
         case xmerl_xpath:string("./equiv", Doc) of
             [Equiv] ->
-                iolist_to_binary(["Equivalent to ", xpath_to_binary("./expr", Equiv), "."]);
+                Expr = xpath_to_binary("./expr", Equiv),
+                See = xpath_to_binary("./see", Equiv),
+                iolist_to_binary(["Equivalent to ", "[", Expr, "](`", See, "`)."]);
 
             [] ->
                 xpath_to_binary("./description/fullDescription", Doc)
