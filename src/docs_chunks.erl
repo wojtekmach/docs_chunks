@@ -1,7 +1,8 @@
 %% @doc A module to extract docs and attach them as chunks.
+%% @since 0.1.0
 -module(docs_chunks).
 -include_lib("xmerl/include/xmerl.hrl").
--export([edoc_to_chunk/1, otp_xml_to_chunk/2, write_chunk/2, '__info__'/1]).
+-export([edoc_to_chunk/1, otp_xml_to_chunk/2, write_chunk/2]).
 
 -record(docs_v1, {anno,
                   beam_language,
@@ -16,12 +17,14 @@
                         doc,
                         metadata}).
 
+
 -type docs_v1() :: #docs_v1{anno :: erl_anno:anno(),
                             beam_language :: beam_language(),
                             format :: mime_type(),
                             module_doc :: doc(),
                             metadata :: metadata(),
                             docs :: [docs_v1_entry()]}.
+%% The Docs v1 chunk per EEP 48.
 
 -type docs_v1_entry() :: #docs_v1_entry{kind_name_arity :: {atom(), atom(), arity()},
                                         anno :: erl_anno:anno(),
@@ -43,12 +46,6 @@
 
 -type signature() :: [binary()].
 
-%% TODO: hack to get ExDoc to not crash.
-'__info__'(compile) ->
-    [
-     {source, "src/docs_chunks.erl"}
-    ].
-
 %% @doc Fetch edoc docs from a given `ErlPath' and convert it to docs chunk.
 %%
 %% http://erlang.org/eeps/eep-0048.html
@@ -59,14 +56,24 @@
 %% %% docs_chunks:edoc_to_chunk("src/foo.erl").
 %% #=> {docs_v1, ..., erlang, <<"text/markdown">>", ..., ..., ..., ...}
 %% '''
+%%
+%% @since 0.0.1
 -spec edoc_to_chunk(string()) -> docs_v1().
 edoc_to_chunk(ErlPath) ->
     {_Module, Doc} = edoc:get_doc(ErlPath, [{preprocess, true}]),
+    [Doc] = xmerl_xpath:string("//module", Doc),
+    Metadata = edoc_extract_metadata(Doc),
     DocString = xpath_to_binary("//module/description/fullDescription", Doc),
     Docs = edoc_extract_docs(Doc),
-    Chunk = docs_v1(DocString, Docs),
+    Chunk = docs_v1(DocString, Metadata, Docs),
     % 'Elixir.IO':inspect(Chunk),
     Chunk.
+
+edoc_extract_metadata(Doc) ->
+    case xpath_to_binary("./since", Doc) of
+        "" -> #{};
+        Since -> #{since => Since}
+    end.
 
 edoc_extract_docs(Doc) ->
     edoc_extract_types(Doc) ++ edoc_extract_functions(Doc).
@@ -77,7 +84,7 @@ edoc_extract_types(Doc) ->
 edoc_extract_type(Doc) ->
     Name = xpath_to_atom("./erlangName/@name", Doc),
     [#xmlElement{content=[]}] = xmerl_xpath:string("./argtypes", Doc),
-    docs_v1_entry(type, Name, 0, <<"">>).
+    docs_v1_entry(type, Name, 0, #{}, <<"">>).
 
 edoc_extract_functions(Doc) ->
     [edoc_extract_function(Doc1) || Doc1 <- xmerl_xpath:string("//module/functions/function", Doc)].
@@ -95,14 +102,15 @@ edoc_extract_function(Doc) ->
             [] ->
                 xpath_to_binary("./description/fullDescription", Doc)
         end,
-    docs_v1_entry(function, Name, Arity, DocString).
+    Metadata = edoc_extract_metadata(Doc),
+    docs_v1_entry(function, Name, Arity, Metadata, DocString).
 
 % %% @doc Extract XML docs from `XMLPath' in `OTPRootDir' and convert it to docs chunk.
 otp_xml_to_chunk(OTPRootDir, XMLPath) ->
     Doc = load_otp_xml(OTPRootDir, filename:join([OTPRootDir, XMLPath])),
     DocString = xpath_to_binary("//description", Doc),
     Docs = otp_xml_extract_docs(Doc, XMLPath),
-    docs_v1(DocString, Docs).
+    docs_v1(DocString, #{}, Docs).
 
 % TODO: extract types and callbacks too
 otp_xml_extract_docs(Doc, XMLPath) ->
@@ -131,7 +139,7 @@ otp_xml_extract_function(Doc, XMLPath) ->
             %         ok
             % end,
 
-            docs_v1_entry(function, Name, Arity, DocString)
+            docs_v1_entry(function, Name, Arity, #{}, DocString)
     end.
 
 % TODO: example warning:
@@ -164,21 +172,19 @@ write_chunk(BeamPath, Chunk) ->
 %% Utilities
 %%
 
-docs_v1(DocString, Docs) ->
+docs_v1(DocString, Metadata, Docs) ->
     % TODO fill these in
     Anno = 0,
     BeamLanguage = erlang,
     Format = <<"text/markdown">>,
-    Metadata = #{},
     Doc = doc_string_to_doc(DocString, hidden),
     {docs_v1, Anno, BeamLanguage, Format, Doc, Metadata, Docs}.
 
-docs_v1_entry(Kind, Name, Arity, DocString) ->
+docs_v1_entry(Kind, Name, Arity, Metadata, DocString) ->
     % TODO fill these in
     Anno = 0,
     % TODO get signature from abstract code
     Signature = [list_to_binary(atom_to_list(Name) ++ "/" ++ integer_to_list(Arity))],
-    Metadata = #{},
     Doc = doc_string_to_doc(DocString, none),
     {{Kind, Name, Arity}, Anno, Signature, Doc, Metadata}.
 

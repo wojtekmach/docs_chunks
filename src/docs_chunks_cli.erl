@@ -1,9 +1,5 @@
 -module(docs_chunks_cli).
--export([main/1, '__info__'/1]).
-
-%% TODO: hack to get ExDoc to not crash.
-'__info__'(_) ->
-    [].
+-export([main/1]).
 
 main(["-edoc", ErlPath, LibDir]) ->
     Basename = filename:basename(ErlPath, ".erl"),
