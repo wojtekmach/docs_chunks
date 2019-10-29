@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>maps — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -247,20 +247,22 @@ Functions          </h1>
     </a>
     <h1 class="signature">filter/2</h1>
       <div class="specs">
-          <pre>filter(pred, mapOrIter) :: map
-when pred: (key, value -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()),
-     mapOrIter: %{optional(key) => value} | iterator(key, value),
-     map: %{optional(key) => value}</pre>
+          <pre>filter(Pred, MapOrIter) -> Map
+          when
+              Pred :: fun((Key, Value) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()),
+              MapOrIter :: #{Key => Value} | iterator(Key, Value),
+              Map :: #{Key => Value}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a map <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> for which predicate <code class="inline">Pred</code> holds true in <code class="inline">MapOrIter</code>.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <code class="inline">MapOrIter</code> is not a map or valid iterator, or with <code class="inline">badarg</code> if <code class="inline">Pred</code> is not a function of arity 2.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7565459957-1">#{</span><span class="ss">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7565459957-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="n">Pred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fun</span><span class="p" data-group-id="7565459957-2">(</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="p" data-group-id="7565459957-2">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nf">is_atom</span><span class="p" data-group-id="7565459957-3">(</span><span class="n">K</span><span class="p" data-group-id="7565459957-3">)</span><span class="w"> </span><span class="nf">andalso</span><span class="w"> </span><span class="p" data-group-id="7565459957-4">(</span><span class="n">V</span><span class="w"> </span><span class="ow">rem</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7565459957-4">)</span><span class="w"> </span><span class="o">=:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">filter</span><span class="p" data-group-id="7565459957-5">(</span><span class="n">Pred</span><span class="p">,</span><span class="n">M</span><span class="p" data-group-id="7565459957-5">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="7565459957-6">#{</span><span class="ss">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="ss">c</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7565459957-6">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{a =&gt; 2, b =&gt; 3, c=&gt; 4, &quot;a&quot; =&gt; 1, &quot;b&quot; =&gt; 2, &quot;c&quot; =&gt; 4},</span><span class="w">
+  </span><span class="nc">Pred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fun</span><span class="p" data-group-id="0858239710-1">(</span><span class="nc">K</span><span class="p">,</span><span class="nc">V</span><span class="p" data-group-id="0858239710-1">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">is_atom</span><span class="p" data-group-id="0858239710-2">(</span><span class="nc">K</span><span class="p" data-group-id="0858239710-2">)</span><span class="w"> </span><span class="n">andalso</span><span class="w"> </span><span class="p" data-group-id="0858239710-3">(</span><span class="nc">V</span><span class="w"> </span><span class="n">rem</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0858239710-3">)</span><span class="w"> </span><span class="o">=</span><span class="ss">:=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:filter</span><span class="p" data-group-id="0858239710-4">(</span><span class="nc">Pred</span><span class="p">,</span><span class="nc">M</span><span class="p" data-group-id="0858239710-4">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{a =&gt; 2,c =&gt; 4}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="find/2">
@@ -271,18 +273,19 @@ when pred: (key, value -> <a href="https://hexdocs.pm/elixir/typespecs.html#buil
     </a>
     <h1 class="signature">find/2</h1>
       <div class="specs">
-          <pre>find(key, map) :: {:ok, value} | :error
-when map: %{optional(key) => value, optional(_) => _}, key: var, value: var</pre>
+          <pre>find(Key, Map) -> {ok, Value} | error
+        when Map :: #{Key => Value, _ => _}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a tuple <code class="inline">{ok, Value}</code>, where <code class="inline">Value</code> is the value associated with <code class="inline">Key</code>, or <code class="inline">error</code> if no value is associated with <code class="inline">Key</code> in <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a>.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> is not a map.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6621108603-1">#{</span><span class="s">&quot;hi&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="6621108603-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="n">Key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hi&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">find</span><span class="p" data-group-id="6621108603-2">(</span><span class="n">Key</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="6621108603-2">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="6621108603-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="mi">42</span><span class="p" data-group-id="6621108603-3">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{&quot;hi&quot; =&gt; 42},</span><span class="w">
+  </span><span class="nc">Key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hi&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:find</span><span class="p" data-group-id="5747096776-1">(</span><span class="nc">Key</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="5747096776-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5747096776-2">{</span><span class="n">ok</span><span class="p">,</span><span class="mi">42</span><span class="p" data-group-id="5747096776-2">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="fold/3">
@@ -293,21 +296,23 @@ when map: %{optional(key) => value, optional(_) => _}, key: var, value: var</pre
     </a>
     <h1 class="signature">fold/3</h1>
       <div class="specs">
-          <pre>fold(fun, init, mapOrIter) :: acc
-when fun: (key, value, accIn -> accOut),
-     init: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     acc: accOut,
-     accIn: init | accOut,
-     mapOrIter: %{optional(key) => value} | iterator(key, value)</pre>
+          <pre>fold(Fun, Init, MapOrIter) -> Acc
+        when
+            Fun :: fun((Key, Value, AccIn) -> AccOut),
+            Init :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+            Acc :: AccOut,
+            AccIn :: Init | AccOut,
+            MapOrIter :: #{Key => Value} | iterator(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Calls <code class="inline">F(Key, Value, AccIn)</code> for every <code class="inline">Key</code> to value <code class="inline">Value</code> association in <code class="inline">MapOrIter</code> in any order. Function <code class="inline">fun F/3</code> must return a new accumulator, which is passed to the next successive call. This function returns the final value of the accumulator. The initial accumulator value <code class="inline">Init</code> is returned if the map is empty.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <code class="inline">MapOrIter</code> is not a map or valid iterator, or with <code class="inline">badarg</code> if <code class="inline">Fun</code> is not a function of arity 3.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fun</span><span class="p" data-group-id="5910033747-1">(</span><span class="n">K</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">AccIn</span><span class="p" data-group-id="5910033747-1">)</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="nf">is_list</span><span class="p" data-group-id="5910033747-2">(</span><span class="n">K</span><span class="p" data-group-id="5910033747-2">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">AccIn</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w">
-  </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5910033747-3">#{</span><span class="s">&quot;k1&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;k2&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;k3&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="5910033747-3">}</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">fold</span><span class="p" data-group-id="5910033747-4">(</span><span class="n">Fun</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="5910033747-4">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fun</span><span class="p" data-group-id="0507519685-1">(</span><span class="nc">K</span><span class="p">,</span><span class="nc">V</span><span class="p">,</span><span class="nc">AccIn</span><span class="p" data-group-id="0507519685-1">)</span><span class="w"> </span><span class="ow">when</span><span class="w"> </span><span class="n">is_list</span><span class="p" data-group-id="0507519685-2">(</span><span class="nc">K</span><span class="p" data-group-id="0507519685-2">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">AccIn</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nc">V</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w">
+  </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{&quot;k1&quot; =&gt; 1, &quot;k2&quot; =&gt; 2, &quot;k3&quot; =&gt; 3},</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:fold</span><span class="p" data-group-id="0507519685-3">(</span><span class="nc">Fun</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="0507519685-3">)</span><span class="o">.</span><span class="w">
 </span><span class="mi">6</span></code></pre>
   </section>
 </section>
@@ -319,16 +324,21 @@ when fun: (key, value, accIn -> accOut),
     </a>
     <h1 class="signature">from_list/1</h1>
       <div class="specs">
-          <pre>from_list(list) :: map
-when list: [{key, value}], key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), value: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), map: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+          <pre>from_list(List) -> Map
+             when
+                 List :: [{Key, Value}],
+                 Key :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                 Value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                 Map :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Takes a list of key-value tuples elements and builds a map. The associations can be in any order, and both keys and values in the association can be of any term. If the same key appears more than once, the latter (right-most) value is used and the previous values are ignored.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">List</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="3645851879-1">[</span><span class="p" data-group-id="3645851879-2">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="ss">ignored</span><span class="p" data-group-id="3645851879-2">}</span><span class="p">,</span><span class="p" data-group-id="3645851879-3">{</span><span class="mi">1337</span><span class="p">,</span><span class="s">&quot;value two&quot;</span><span class="p" data-group-id="3645851879-3">}</span><span class="p">,</span><span class="p" data-group-id="3645851879-4">{</span><span class="mi">42</span><span class="p">,</span><span class="ss">value_three</span><span class="p" data-group-id="3645851879-4">}</span><span class="p">,</span><span class="p" data-group-id="3645851879-5">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="3645851879-5">}</span><span class="p" data-group-id="3645851879-1">]</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">from_list</span><span class="p" data-group-id="3645851879-6">(</span><span class="n">List</span><span class="p" data-group-id="3645851879-6">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="3645851879-7">#{</span><span class="mi">42</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">value_three</span><span class="p">,</span><span class="mi">1337</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;value two&quot;</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3645851879-7">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">List</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7393230299-1">[</span><span class="p" data-group-id="7393230299-2">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="n">ignored</span><span class="p" data-group-id="7393230299-2">}</span><span class="p">,</span><span class="p" data-group-id="7393230299-3">{</span><span class="mi">1337</span><span class="p">,</span><span class="s">&quot;value two&quot;</span><span class="p" data-group-id="7393230299-3">}</span><span class="p">,</span><span class="p" data-group-id="7393230299-4">{</span><span class="mi">42</span><span class="p">,</span><span class="n">value_three</span><span class="p" data-group-id="7393230299-4">}</span><span class="p">,</span><span class="p" data-group-id="7393230299-5">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="7393230299-5">}</span><span class="p" data-group-id="7393230299-1">]</span><span class="p">,</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:from_list</span><span class="p" data-group-id="7393230299-6">(</span><span class="nc">List</span><span class="p" data-group-id="7393230299-6">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{42 =&gt; value_three,1337 =&gt; &quot;value two&quot;,&quot;a&quot; =&gt; 1}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="get/2">
@@ -339,16 +349,18 @@ when list: [{key, value}], key: <a href="https://hexdocs.pm/elixir/typespecs.htm
     </a>
     <h1 class="signature">get/2</h1>
       <div class="specs">
-          <pre>get(key, map) :: value when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), map: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), value: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>get(Key, Map) -> Value
+       when Key :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), Map :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), Value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns value <code class="inline">Value</code> associated with <code class="inline">Key</code> if <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> contains <code class="inline">Key</code>.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> is not a map, or with a <code class="inline">{badkey,Key}</code> exception if no value is associated with <code class="inline">Key</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1337</span><span class="p">,</span><span class="w">
-  </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1023693384-1">#{</span><span class="mi">42</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">value_two</span><span class="p">,</span><span class="mi">1337</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;value one&quot;</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="1023693384-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="1023693384-2">(</span><span class="n">Key</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="1023693384-2">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1337</span><span class="p">,</span><span class="w">
+  </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{42 =&gt; value_two,1337 =&gt; &quot;value one&quot;,&quot;a&quot; =&gt; 1},</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:get</span><span class="p" data-group-id="1679769951-1">(</span><span class="nc">Key</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="1679769951-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;value one&quot;</span></code></pre>
   </section>
 </section>
@@ -360,22 +372,20 @@ when list: [{key, value}], key: <a href="https://hexdocs.pm/elixir/typespecs.htm
     </a>
     <h1 class="signature">get/3</h1>
       <div class="specs">
-          <pre>get(key, map, default) :: value | default
-when map: %{optional(key) => value, optional(_) => _},
-     key: var,
-     default: var,
-     value: var</pre>
+          <pre>get(Key, Map, Default) -> Value | Default
+       when Map :: #{Key => Value, _ => _}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns value <code class="inline">Value</code> associated with <code class="inline">Key</code> if <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> contains <code class="inline">Key</code>. If no value is associated with <code class="inline">Key</code>, <code class="inline">Default</code> is returned.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> is not a map.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4744412648-1">#{</span><span class="w"> </span><span class="ss">key1</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">val1</span><span class="p">,</span><span class="w"> </span><span class="ss">key2</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">val2</span><span class="w"> </span><span class="p" data-group-id="4744412648-1">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="4744412648-2">#{</span><span class="ss">key1</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">val1</span><span class="p">,</span><span class="ss">key2</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">val2</span><span class="p" data-group-id="4744412648-2">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="4744412648-3">(</span><span class="ss">key1</span><span class="p">,</span><span class="w"> </span><span class="n">Map</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Default value&quot;</span><span class="p" data-group-id="4744412648-3">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">val1</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="4744412648-4">(</span><span class="ss">key3</span><span class="p">,</span><span class="w"> </span><span class="n">Map</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Default value&quot;</span><span class="p" data-group-id="4744412648-4">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{ key1 =&gt; val1, key2 =&gt; val2 }.</span><span class="w">
+</span><span class="c1">#{key1 =&gt; val1,key2 =&gt; val2}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:get</span><span class="p" data-group-id="0411827733-1">(</span><span class="n">key1</span><span class="p">,</span><span class="w"> </span><span class="nc">Map</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Default value&quot;</span><span class="p" data-group-id="0411827733-1">)</span><span class="o">.</span><span class="w">
+</span><span class="n">val1</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:get</span><span class="p" data-group-id="0411827733-2">(</span><span class="n">key3</span><span class="p">,</span><span class="w"> </span><span class="nc">Map</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Default value&quot;</span><span class="p" data-group-id="0411827733-2">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;Default value&quot;</span></code></pre>
   </section>
 </section>
@@ -387,19 +397,20 @@ when map: %{optional(key) => value, optional(_) => _},
     </a>
     <h1 class="signature">is_key/2</h1>
       <div class="specs">
-          <pre>is_key(key, map) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), map: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+          <pre>is_key(Key, Map) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Key :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), Map :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns <code class="inline">true</code> if map <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> contains <code class="inline">Key</code> and returns <code class="inline">false</code> if it does not contain the <code class="inline">Key</code>.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> is not a map.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="3586657426-1">#{</span><span class="s">&quot;42&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">value</span><span class="p" data-group-id="3586657426-1">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="3586657426-2">#{</span><span class="s">&quot;42&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">value</span><span class="p" data-group-id="3586657426-2">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">is_key</span><span class="p" data-group-id="3586657426-3">(</span><span class="s">&quot;42&quot;</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="3586657426-3">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">true</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">is_key</span><span class="p" data-group-id="3586657426-4">(</span><span class="ss">value</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="3586657426-4">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">false</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{&quot;42&quot; =&gt; value}.</span><span class="w">
+</span><span class="c1">#{&quot;42&quot; =&gt; value}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:is_key</span><span class="p" data-group-id="6317968677-1">(</span><span class="s">&quot;42&quot;</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="6317968677-1">)</span><span class="o">.</span><span class="w">
+</span><span class="no">true</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:is_key</span><span class="p" data-group-id="6317968677-2">(</span><span class="n">value</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="6317968677-2">)</span><span class="o">.</span><span class="w">
+</span><span class="no">false</span></code></pre>
   </section>
 </section>
 <section class="detail" id="iterator/1">
@@ -410,24 +421,27 @@ when map: %{optional(key) => value, optional(_) => _},
     </a>
     <h1 class="signature">iterator/1</h1>
       <div class="specs">
-          <pre>iterator(map) :: iterator
-when map: %{optional(key) => value}, iterator: iterator(key, value)</pre>
+          <pre>iterator(Map) -> Iterator
+            when
+                Map :: #{Key => Value},
+                Iterator :: iterator(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a map iterator <code class="inline">Iterator</code> that can be used by <code class="inline">maps:next/1</code> to traverse the key-value associations in a map. When iterating over a map, the memory usage is guaranteed to be bounded no matter the size of the map.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> is not a map.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0252645201-1">#{</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p" data-group-id="0252645201-1">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="0252645201-2">#{</span><span class="ss">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="ss">b</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0252645201-2">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">iterator</span><span class="p" data-group-id="0252645201-3">(</span><span class="n">M</span><span class="p" data-group-id="0252645201-3">)</span><span class="p">,</span><span class="w"> </span><span class="ss">ok</span><span class="p">.</span><span class="w">
-</span><span class="ss">ok</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="0252645201-4">{</span><span class="n">K1</span><span class="p">,</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span><span class="w"> </span><span class="n">I2</span><span class="p" data-group-id="0252645201-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">next</span><span class="p" data-group-id="0252645201-5">(</span><span class="n">I</span><span class="p" data-group-id="0252645201-5">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0252645201-6">{</span><span class="n">K1</span><span class="p">,</span><span class="w"> </span><span class="n">V1</span><span class="p" data-group-id="0252645201-6">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="0252645201-7">{</span><span class="ss">a</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="0252645201-7">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="0252645201-8">{</span><span class="n">K2</span><span class="p">,</span><span class="w"> </span><span class="n">V2</span><span class="p">,</span><span class="w"> </span><span class="n">I3</span><span class="p" data-group-id="0252645201-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">next</span><span class="p" data-group-id="0252645201-9">(</span><span class="n">I2</span><span class="p" data-group-id="0252645201-9">)</span><span class="p">,</span><span class="p" data-group-id="0252645201-10">{</span><span class="n">K2</span><span class="p">,</span><span class="w"> </span><span class="n">V2</span><span class="p" data-group-id="0252645201-10">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="0252645201-11">{</span><span class="ss">b</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="0252645201-11">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">next</span><span class="p" data-group-id="0252645201-12">(</span><span class="n">I3</span><span class="p" data-group-id="0252645201-12">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">none</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{ a =&gt; 1, b =&gt; 2 }.</span><span class="w">
+</span><span class="c1">#{a =&gt; 1,b =&gt; 2}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maps</span><span class="ss">:iterator</span><span class="p" data-group-id="5520232218-1">(</span><span class="nc">M</span><span class="p" data-group-id="5520232218-1">)</span><span class="p">,</span><span class="w"> </span><span class="n">ok</span><span class="o">.</span><span class="w">
+</span><span class="n">ok</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="5520232218-2">{</span><span class="nc">K1</span><span class="p">,</span><span class="w"> </span><span class="nc">V1</span><span class="p">,</span><span class="w"> </span><span class="nc">I2</span><span class="p" data-group-id="5520232218-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maps</span><span class="ss">:next</span><span class="p" data-group-id="5520232218-3">(</span><span class="nc">I</span><span class="p" data-group-id="5520232218-3">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5520232218-4">{</span><span class="nc">K1</span><span class="p">,</span><span class="w"> </span><span class="nc">V1</span><span class="p" data-group-id="5520232218-4">}</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5520232218-5">{</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="5520232218-5">}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="5520232218-6">{</span><span class="nc">K2</span><span class="p">,</span><span class="w"> </span><span class="nc">V2</span><span class="p">,</span><span class="w"> </span><span class="nc">I3</span><span class="p" data-group-id="5520232218-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maps</span><span class="ss">:next</span><span class="p" data-group-id="5520232218-7">(</span><span class="nc">I2</span><span class="p" data-group-id="5520232218-7">)</span><span class="p">,</span><span class="p" data-group-id="5520232218-8">{</span><span class="nc">K2</span><span class="p">,</span><span class="w"> </span><span class="nc">V2</span><span class="p" data-group-id="5520232218-8">}</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5520232218-9">{</span><span class="n">b</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="5520232218-9">}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:next</span><span class="p" data-group-id="5520232218-10">(</span><span class="nc">I3</span><span class="p" data-group-id="5520232218-10">)</span><span class="o">.</span><span class="w">
+</span><span class="n">none</span></code></pre>
   </section>
 </section>
 <section class="detail" id="keys/1">
@@ -438,16 +452,17 @@ when map: %{optional(key) => value}, iterator: iterator(key, value)</pre>
     </a>
     <h1 class="signature">keys/1</h1>
       <div class="specs">
-          <pre>keys(map) :: keys when map: %{optional(key) => _}, keys: [key]</pre>
+          <pre>keys(Map) -> Keys when Map :: #{Key => _}, Keys :: [Key].
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a complete list of keys, in any order, which resides within <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a>.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> is not a map.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9549858344-1">#{</span><span class="mi">42</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">value_three</span><span class="p">,</span><span class="mi">1337</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;value two&quot;</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="9549858344-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">keys</span><span class="p" data-group-id="9549858344-2">(</span><span class="n">Map</span><span class="p" data-group-id="9549858344-2">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="9549858344-3">[</span><span class="mi">42</span><span class="p">,</span><span class="mi">1337</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="9549858344-3">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{42 =&gt; value_three,1337 =&gt; &quot;value two&quot;,&quot;a&quot; =&gt; 1},</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:keys</span><span class="p" data-group-id="8907647284-1">(</span><span class="nc">Map</span><span class="p" data-group-id="8907647284-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="8907647284-2">[</span><span class="mi">42</span><span class="p">,</span><span class="mi">1337</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="p" data-group-id="8907647284-2">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="map/2">
@@ -458,20 +473,22 @@ when map: %{optional(key) => value}, iterator: iterator(key, value)</pre>
     </a>
     <h1 class="signature">map/2</h1>
       <div class="specs">
-          <pre>map(fun, mapOrIter) :: map
-when fun: (key, value1 -> value2),
-     mapOrIter: %{optional(key) => value1} | iterator(key, value1),
-     map: %{optional(key) => value2}</pre>
+          <pre>map(Fun, MapOrIter) -> Map
+       when
+           Fun :: fun((Key, Value1) -> Value2),
+           MapOrIter :: #{Key => Value1} | iterator(Key, Value1),
+           Map :: #{Key => Value2}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Produces a new map <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> by calling function <code class="inline">fun F(Key, Value1)</code> for every <code class="inline">Key</code> to value <code class="inline">Value1</code> association in <code class="inline">MapOrIter</code> in any order. Function <code class="inline">fun Fun/2</code> must return value <code class="inline">Value2</code> to be associated with key <code class="inline">Key</code> for the new map <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a>.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <code class="inline">MapOrIter</code> is not a map or valid iterator, or with <code class="inline">badarg</code> if <code class="inline">Fun</code> is not a function of arity 2.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fun</span><span class="p" data-group-id="9377705791-1">(</span><span class="n">K</span><span class="p">,</span><span class="n">V1</span><span class="p" data-group-id="9377705791-1">)</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="nf">is_list</span><span class="p" data-group-id="9377705791-2">(</span><span class="n">K</span><span class="p" data-group-id="9377705791-2">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">V1</span><span class="o">*</span><span class="mi">2</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w">
-  </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9377705791-3">#{</span><span class="s">&quot;k1&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;k2&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;k3&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="9377705791-3">}</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">map</span><span class="p" data-group-id="9377705791-4">(</span><span class="n">Fun</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="9377705791-4">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="9377705791-5">#{</span><span class="s">&quot;k1&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="s">&quot;k2&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="s">&quot;k3&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">6</span><span class="p" data-group-id="9377705791-5">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fun</span><span class="p" data-group-id="2841173060-1">(</span><span class="nc">K</span><span class="p">,</span><span class="nc">V1</span><span class="p" data-group-id="2841173060-1">)</span><span class="w"> </span><span class="ow">when</span><span class="w"> </span><span class="n">is_list</span><span class="p" data-group-id="2841173060-2">(</span><span class="nc">K</span><span class="p" data-group-id="2841173060-2">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">V1</span><span class="o">*</span><span class="mi">2</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w">
+  </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{&quot;k1&quot; =&gt; 1, &quot;k2&quot; =&gt; 2, &quot;k3&quot; =&gt; 3},</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:map</span><span class="p" data-group-id="2841173060-3">(</span><span class="nc">Fun</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="2841173060-3">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{&quot;k1&quot; =&gt; 2,&quot;k2&quot; =&gt; 4,&quot;k3&quot; =&gt; 6}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="merge/2">
@@ -482,17 +499,19 @@ when fun: (key, value1 -> value2),
     </a>
     <h1 class="signature">merge/2</h1>
       <div class="specs">
-          <pre>merge(map1, map2) :: map3 when map1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), map2: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), map3: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+          <pre>merge(Map1, Map2) -> Map3
+         when Map1 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), Map2 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), Map3 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Merges two maps into a single map <code class="inline">Map3</code>. If two keys exist in both maps, the value in <code class="inline">Map1</code> is superseded by the value in <code class="inline">Map2</code>.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <code class="inline">Map1</code> or <code class="inline">Map2</code> is not a map.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6258152278-1">#{</span><span class="ss">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;value_one&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;value_two&quot;</span><span class="p" data-group-id="6258152278-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="n">Map2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6258152278-2">#{</span><span class="ss">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6258152278-2">}</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">merge</span><span class="p" data-group-id="6258152278-3">(</span><span class="n">Map1</span><span class="p">,</span><span class="n">Map2</span><span class="p" data-group-id="6258152278-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="6258152278-4">#{</span><span class="ss">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="ss">b</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;value_two&quot;</span><span class="p">,</span><span class="ss">c</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6258152278-4">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{a =&gt; &quot;value_one&quot;, b =&gt; &quot;value_two&quot;},</span><span class="w">
+  </span><span class="nc">Map2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{a =&gt; 1, c =&gt; 2},</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:merge</span><span class="p" data-group-id="4145138431-1">(</span><span class="nc">Map1</span><span class="p">,</span><span class="nc">Map2</span><span class="p" data-group-id="4145138431-1">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{a =&gt; 1,b =&gt; &quot;value_two&quot;,c =&gt; 2}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="new/0">
@@ -503,14 +522,15 @@ when fun: (key, value1 -> value2),
     </a>
     <h1 class="signature">new/0</h1>
       <div class="specs">
-          <pre>new() :: map when map: %{}</pre>
+          <pre>new() -> Map when Map :: #{}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a new empty map.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="8926208380-1">(</span><span class="p" data-group-id="8926208380-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="8926208380-2">#{</span><span class="p" data-group-id="8926208380-2">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:new</span><span class="p" data-group-id="6279324348-1">(</span><span class="p" data-group-id="6279324348-1">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="next/1">
@@ -521,29 +541,29 @@ when fun: (key, value1 -> value2),
     </a>
     <h1 class="signature">next/1</h1>
       <div class="specs">
-          <pre>next(iterator) :: {key, value, nextIterator} | :none
-when iterator: iterator(key, value),
-     nextIterator: iterator(key, value),
-     key: var,
-     value: var</pre>
+          <pre>next(Iterator) -> {Key, Value, NextIterator} | none
+        when
+            Iterator :: iterator(Key, Value),
+            NextIterator :: iterator(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns the next key-value association in <code class="inline">Iterator</code> and a new iterator for the remaining associations in the iterator. </p>
 <p>  If there are no more associations in the iterator, <code class="inline">none</code> is returned. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9160395201-1">#{</span><span class="ss">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="9160395201-1">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="9160395201-2">#{</span><span class="ss">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="ss">b</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="ss">c</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="9160395201-2">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">iterator</span><span class="p" data-group-id="9160395201-3">(</span><span class="n">Map</span><span class="p" data-group-id="9160395201-3">)</span><span class="p">,</span><span class="w"> </span><span class="ss">ok</span><span class="p">.</span><span class="w">
-</span><span class="ss">ok</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="9160395201-4">{</span><span class="n">K1</span><span class="p">,</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span><span class="w"> </span><span class="n">I1</span><span class="p" data-group-id="9160395201-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">next</span><span class="p" data-group-id="9160395201-5">(</span><span class="n">I</span><span class="p" data-group-id="9160395201-5">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9160395201-6">{</span><span class="n">K1</span><span class="p">,</span><span class="w"> </span><span class="n">V1</span><span class="p" data-group-id="9160395201-6">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="9160395201-7">{</span><span class="ss">a</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="9160395201-7">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="9160395201-8">{</span><span class="n">K2</span><span class="p">,</span><span class="w"> </span><span class="n">V2</span><span class="p">,</span><span class="w"> </span><span class="n">I2</span><span class="p" data-group-id="9160395201-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">next</span><span class="p" data-group-id="9160395201-9">(</span><span class="n">I1</span><span class="p" data-group-id="9160395201-9">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9160395201-10">{</span><span class="n">K2</span><span class="p">,</span><span class="w"> </span><span class="n">V2</span><span class="p" data-group-id="9160395201-10">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="9160395201-11">{</span><span class="ss">b</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="9160395201-11">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="9160395201-12">{</span><span class="n">K3</span><span class="p">,</span><span class="w"> </span><span class="n">V3</span><span class="p">,</span><span class="w"> </span><span class="n">I3</span><span class="p" data-group-id="9160395201-12">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">next</span><span class="p" data-group-id="9160395201-13">(</span><span class="n">I2</span><span class="p" data-group-id="9160395201-13">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9160395201-14">{</span><span class="n">K3</span><span class="p">,</span><span class="w"> </span><span class="n">V3</span><span class="p" data-group-id="9160395201-14">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="9160395201-15">{</span><span class="ss">c</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="9160395201-15">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">next</span><span class="p" data-group-id="9160395201-16">(</span><span class="n">I3</span><span class="p" data-group-id="9160395201-16">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">none</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{a =&gt; 1, b =&gt; 2, c =&gt; 3}.</span><span class="w">
+</span><span class="c1">#{a =&gt; 1,b =&gt; 2,c =&gt; 3}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maps</span><span class="ss">:iterator</span><span class="p" data-group-id="5007118891-1">(</span><span class="nc">Map</span><span class="p" data-group-id="5007118891-1">)</span><span class="p">,</span><span class="w"> </span><span class="n">ok</span><span class="o">.</span><span class="w">
+</span><span class="n">ok</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="5007118891-2">{</span><span class="nc">K1</span><span class="p">,</span><span class="w"> </span><span class="nc">V1</span><span class="p">,</span><span class="w"> </span><span class="nc">I1</span><span class="p" data-group-id="5007118891-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maps</span><span class="ss">:next</span><span class="p" data-group-id="5007118891-3">(</span><span class="nc">I</span><span class="p" data-group-id="5007118891-3">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5007118891-4">{</span><span class="nc">K1</span><span class="p">,</span><span class="w"> </span><span class="nc">V1</span><span class="p" data-group-id="5007118891-4">}</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5007118891-5">{</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="5007118891-5">}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="5007118891-6">{</span><span class="nc">K2</span><span class="p">,</span><span class="w"> </span><span class="nc">V2</span><span class="p">,</span><span class="w"> </span><span class="nc">I2</span><span class="p" data-group-id="5007118891-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maps</span><span class="ss">:next</span><span class="p" data-group-id="5007118891-7">(</span><span class="nc">I1</span><span class="p" data-group-id="5007118891-7">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5007118891-8">{</span><span class="nc">K2</span><span class="p">,</span><span class="w"> </span><span class="nc">V2</span><span class="p" data-group-id="5007118891-8">}</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5007118891-9">{</span><span class="n">b</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="5007118891-9">}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="5007118891-10">{</span><span class="nc">K3</span><span class="p">,</span><span class="w"> </span><span class="nc">V3</span><span class="p">,</span><span class="w"> </span><span class="nc">I3</span><span class="p" data-group-id="5007118891-10">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maps</span><span class="ss">:next</span><span class="p" data-group-id="5007118891-11">(</span><span class="nc">I2</span><span class="p" data-group-id="5007118891-11">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5007118891-12">{</span><span class="nc">K3</span><span class="p">,</span><span class="w"> </span><span class="nc">V3</span><span class="p" data-group-id="5007118891-12">}</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5007118891-13">{</span><span class="n">c</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="5007118891-13">}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:next</span><span class="p" data-group-id="5007118891-14">(</span><span class="nc">I3</span><span class="p" data-group-id="5007118891-14">)</span><span class="o">.</span><span class="w">
+</span><span class="n">none</span></code></pre>
   </section>
 </section>
 <section class="detail" id="put/3">
@@ -554,20 +574,25 @@ when iterator: iterator(key, value),
     </a>
     <h1 class="signature">put/3</h1>
       <div class="specs">
-          <pre>put(key, value, map1) :: map2
-when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), value: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), map1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), map2: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+          <pre>put(Key, Value, Map1) -> Map2
+       when
+           Key :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+           Value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+           Map1 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(),
+           Map2 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Associates <code class="inline">Key</code> with value <code class="inline">Value</code> and inserts the association into map <code class="inline">Map2</code>. If key <code class="inline">Key</code> already exists in map <code class="inline">Map1</code>, the old associated value is replaced by value <code class="inline">Value</code>. The function returns a new map <code class="inline">Map2</code> containing the new association and the old associations in <code class="inline">Map1</code>.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <code class="inline">Map1</code> is not a map.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4528022273-1">#{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="4528022273-1">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="4528022273-2">#{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="4528022273-2">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">put</span><span class="p" data-group-id="4528022273-3">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="n">Map</span><span class="p" data-group-id="4528022273-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="4528022273-4">#{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="4528022273-4">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">put</span><span class="p" data-group-id="4528022273-5">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1337</span><span class="p">,</span><span class="w"> </span><span class="n">Map</span><span class="p" data-group-id="4528022273-5">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="4528022273-6">#{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1337</span><span class="p" data-group-id="4528022273-6">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{&quot;a&quot; =&gt; 1}.</span><span class="w">
+</span><span class="c1">#{&quot;a&quot; =&gt; 1}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:put</span><span class="p" data-group-id="5037497887-1">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="nc">Map</span><span class="p" data-group-id="5037497887-1">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{&quot;a&quot; =&gt; 42}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:put</span><span class="p" data-group-id="5037497887-2">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1337</span><span class="p">,</span><span class="w"> </span><span class="nc">Map</span><span class="p" data-group-id="5037497887-2">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{&quot;a&quot; =&gt; 1,&quot;b&quot; =&gt; 1337}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="remove/2">
@@ -578,19 +603,21 @@ when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term
     </a>
     <h1 class="signature">remove/2</h1>
       <div class="specs">
-          <pre>remove(key, map1) :: map2 when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), map1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), map2: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+          <pre>remove(Key, Map1) -> Map2
+          when Key :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), Map1 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), Map2 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Removes the <code class="inline">Key</code>, if it exists, and its associated value from <code class="inline">Map1</code> and returns a new map <code class="inline">Map2</code> without key <code class="inline">Key</code>.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <code class="inline">Map1</code> is not a map.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2461663096-1">#{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2461663096-1">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="2461663096-2">#{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2461663096-2">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">remove</span><span class="p" data-group-id="2461663096-3">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="2461663096-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="2461663096-4">#{</span><span class="p" data-group-id="2461663096-4">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">remove</span><span class="p" data-group-id="2461663096-5">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="2461663096-5">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="2461663096-6">#{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2461663096-6">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{&quot;a&quot; =&gt; 1}.</span><span class="w">
+</span><span class="c1">#{&quot;a&quot; =&gt; 1}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:remove</span><span class="p" data-group-id="7936926588-1">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="7936926588-1">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:remove</span><span class="p" data-group-id="7936926588-2">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="7936926588-2">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{&quot;a&quot; =&gt; 1}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="size/1">
@@ -601,14 +628,15 @@ when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term
     </a>
     <h1 class="signature">size/1</h1>
       <div class="specs">
-          <pre>size(map) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when map: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+          <pre>size(Map) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when Map :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns the number of key-value associations in <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a>. This operation occurs in constant time.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9644843755-1">#{</span><span class="mi">42</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">value_two</span><span class="p">,</span><span class="mi">1337</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;value one&quot;</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="9644843755-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">size</span><span class="p" data-group-id="9644843755-2">(</span><span class="n">Map</span><span class="p" data-group-id="9644843755-2">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{42 =&gt; value_two,1337 =&gt; &quot;value one&quot;,&quot;a&quot; =&gt; 1},</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:size</span><span class="p" data-group-id="4077265276-1">(</span><span class="nc">Map</span><span class="p" data-group-id="4077265276-1">)</span><span class="o">.</span><span class="w">
 </span><span class="mi">3</span></code></pre>
   </section>
 </section>
@@ -620,23 +648,21 @@ when key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term
     </a>
     <h1 class="signature">take/2</h1>
       <div class="specs">
-          <pre>take(key, map1) :: {value, map2} | :error
-when map1: %{optional(key) => value, optional(_) => _},
-     map2: %{optional(_) => _},
-     key: var,
-     value: var</pre>
+          <pre>take(Key, Map1) -> {Value, Map2} | error
+        when Map1 :: #{Key => Value, _ => _}, Map2 :: #{_ => _}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> The function removes the <code class="inline">Key</code>, if it exists, and its associated value from <code class="inline">Map1</code> and returns a tuple with the removed <code class="inline">Value</code> and the new map <code class="inline">Map2</code> without key <code class="inline">Key</code>. If the key does not exist <code class="inline">error</code> is returned. </p>
 <p> The call will fail with a <code class="inline">{badmap,Map}</code> exception if <code class="inline">Map1</code> is not a map. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7777398925-1">#{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p" data-group-id="7777398925-1">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="7777398925-2">#{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p" data-group-id="7777398925-2">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">take</span><span class="p" data-group-id="7777398925-3">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="7777398925-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="7777398925-4">{</span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="p" data-group-id="7777398925-5">#{</span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p" data-group-id="7777398925-5">}</span><span class="p" data-group-id="7777398925-4">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">take</span><span class="p" data-group-id="7777398925-6">(</span><span class="s">&quot;does not exist&quot;</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="7777398925-6">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">error</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{&quot;a&quot; =&gt; &quot;hello&quot;, &quot;b&quot; =&gt; &quot;world&quot;}.</span><span class="w">
+</span><span class="c1">#{&quot;a&quot; =&gt; &quot;hello&quot;, &quot;b&quot; =&gt; &quot;world&quot;}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:take</span><span class="p" data-group-id="7123708014-1">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="7123708014-1">)</span><span class="o">.</span><span class="w">
+</span><span class="err">{</span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="c1">#{&quot;b&quot; =&gt; &quot;world&quot;}}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:take</span><span class="p" data-group-id="7123708014-2">(</span><span class="s">&quot;does not exist&quot;</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="7123708014-2">)</span><span class="o">.</span><span class="w">
+</span><span class="n">error</span></code></pre>
   </section>
 </section>
 <section class="detail" id="to_list/1">
@@ -647,17 +673,17 @@ when map1: %{optional(key) => value, optional(_) => _},
     </a>
     <h1 class="signature">to_list/1</h1>
       <div class="specs">
-          <pre>to_list(map) :: [{key, value}]
-when map: %{optional(key) => value}, key: var, value: var</pre>
+          <pre>to_list(Map) -> [{Key, Value}] when Map :: #{Key => Value}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a list of pairs representing the key-value associations of <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a>, where the pairs <code class="inline">[{K1,V1}, ..., {Kn,Vn}]</code> are returned in arbitrary order.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> is not a map.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6646155351-1">#{</span><span class="mi">42</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">value_three</span><span class="p">,</span><span class="mi">1337</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;value two&quot;</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="6646155351-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">to_list</span><span class="p" data-group-id="6646155351-2">(</span><span class="n">Map</span><span class="p" data-group-id="6646155351-2">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="6646155351-3">[</span><span class="p" data-group-id="6646155351-4">{</span><span class="mi">42</span><span class="p">,</span><span class="ss">value_three</span><span class="p" data-group-id="6646155351-4">}</span><span class="p">,</span><span class="p" data-group-id="6646155351-5">{</span><span class="mi">1337</span><span class="p">,</span><span class="s">&quot;value two&quot;</span><span class="p" data-group-id="6646155351-5">}</span><span class="p">,</span><span class="p" data-group-id="6646155351-6">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="6646155351-6">}</span><span class="p" data-group-id="6646155351-3">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{42 =&gt; value_three,1337 =&gt; &quot;value two&quot;,&quot;a&quot; =&gt; 1},</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:to_list</span><span class="p" data-group-id="0753192661-1">(</span><span class="nc">Map</span><span class="p" data-group-id="0753192661-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="0753192661-2">[</span><span class="p" data-group-id="0753192661-3">{</span><span class="mi">42</span><span class="p">,</span><span class="n">value_three</span><span class="p" data-group-id="0753192661-3">}</span><span class="p">,</span><span class="p" data-group-id="0753192661-4">{</span><span class="mi">1337</span><span class="p">,</span><span class="s">&quot;value two&quot;</span><span class="p" data-group-id="0753192661-4">}</span><span class="p">,</span><span class="p" data-group-id="0753192661-5">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="0753192661-5">}</span><span class="p" data-group-id="0753192661-2">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="update/3">
@@ -668,21 +694,21 @@ when map: %{optional(key) => value}, key: var, value: var</pre>
     </a>
     <h1 class="signature">update/3</h1>
       <div class="specs">
-          <pre>update(key, value, map1) :: map2
-when map1: %{required(key) => _, optional(_) => _},
-     map2: %{required(key) => value, optional(_) => _},
-     key: var,
-     value: var</pre>
+          <pre>update(Key, Value, Map1) -> Map2
+          when
+              Map1 :: #{Key := _, _ => _},
+              Map2 :: #{Key := Value, _ => _}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> If <code class="inline">Key</code> exists in <code class="inline">Map1</code>, the old associated value is replaced by value <code class="inline">Value</code>. The function returns a new map <code class="inline">Map2</code> containing the new associated value.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <code class="inline">Map1</code> is not a map, or with a <code class="inline">{badkey,Key}</code> exception if no value is associated with <code class="inline">Key</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9526782870-1">#{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="9526782870-1">}</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="9526782870-2">#{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="9526782870-2">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">maps</span><span class="p">:</span><span class="nf">update</span><span class="p" data-group-id="9526782870-3">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="n">Map</span><span class="p" data-group-id="9526782870-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="9526782870-4">#{</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="9526782870-4">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{&quot;a&quot; =&gt; 1}.</span><span class="w">
+</span><span class="c1">#{&quot;a&quot; =&gt; 1}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maps</span><span class="ss">:update</span><span class="p" data-group-id="6268407449-1">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="nc">Map</span><span class="p" data-group-id="6268407449-1">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{&quot;a&quot; =&gt; 42}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="update_with/3">
@@ -693,20 +719,21 @@ when map1: %{required(key) => _, optional(_) => _},
     </a>
     <h1 class="signature">update_with/3</h1>
       <div class="specs">
-          <pre>update_with(key, fun, map1) :: map2
-when map1: %{required(key) => value1, optional(_) => _},
-     map2: %{required(key) => value2, optional(_) => _},
-     fun: (value1 -> value2),
-     key: var</pre>
+          <pre>update_with(Key, Fun, Map1) -> Map2
+               when
+                   Map1 :: #{Key := Value1, _ => _},
+                   Map2 :: #{Key := Value2, _ => _},
+                   Fun :: fun((Value1) -> Value2).
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Update a value in a <code class="inline">Map1</code> associated with <code class="inline">Key</code> by calling <code class="inline">Fun</code> on the old value to get a new value. An exception <code class="inline">{badkey,``Key``}</code> is generated if <code class="inline">Key</code> is not present in the map.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7729520262-1">#{</span><span class="s">&quot;counter&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="7729520262-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="n">Fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fun</span><span class="p" data-group-id="7729520262-2">(</span><span class="n">V</span><span class="p" data-group-id="7729520262-2">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">update_with</span><span class="p" data-group-id="7729520262-3">(</span><span class="s">&quot;counter&quot;</span><span class="p">,</span><span class="n">Fun</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="7729520262-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="7729520262-4">#{</span><span class="s">&quot;counter&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7729520262-4">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{&quot;counter&quot; =&gt; 1},</span><span class="w">
+  </span><span class="nc">Fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fun</span><span class="p" data-group-id="5649204069-1">(</span><span class="nc">V</span><span class="p" data-group-id="5649204069-1">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">V</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:update_with</span><span class="p" data-group-id="5649204069-2">(</span><span class="s">&quot;counter&quot;</span><span class="p">,</span><span class="nc">Fun</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="5649204069-2">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{&quot;counter&quot; =&gt; 2}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="update_with/4">
@@ -717,21 +744,21 @@ when map1: %{required(key) => value1, optional(_) => _},
     </a>
     <h1 class="signature">update_with/4</h1>
       <div class="specs">
-          <pre>update_with(key, fun, init, map1) :: map2
-when map1: %{optional(key) => value1, optional(_) => _},
-     map2: %{required(key) => value2 | init, optional(_) => _},
-     fun: (value1 -> value2),
-     key: var,
-     init: var</pre>
+          <pre>update_with(Key, Fun, Init, Map1) -> Map2
+               when
+                   Map1 :: #{Key => Value1, _ => _},
+                   Map2 :: #{Key := Value2 | Init, _ => _},
+                   Fun :: fun((Value1) -> Value2).
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Update a value in a <code class="inline">Map1</code> associated with <code class="inline">Key</code> by calling <code class="inline">Fun</code> on the old value to get a new value. If <code class="inline">Key</code> is not present in <code class="inline">Map1</code> then <code class="inline">Init</code> will be associated with <code class="inline">Key</code>. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4545692955-1">#{</span><span class="s">&quot;counter&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="4545692955-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="n">Fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">fun</span><span class="p" data-group-id="4545692955-2">(</span><span class="n">V</span><span class="p" data-group-id="4545692955-2">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">update_with</span><span class="p" data-group-id="4545692955-3">(</span><span class="s">&quot;new counter&quot;</span><span class="p">,</span><span class="n">Fun</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="4545692955-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="4545692955-4">#{</span><span class="s">&quot;counter&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;new counter&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="4545692955-4">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{&quot;counter&quot; =&gt; 1},</span><span class="w">
+  </span><span class="nc">Fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fun</span><span class="p" data-group-id="2868190060-1">(</span><span class="nc">V</span><span class="p" data-group-id="2868190060-1">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">V</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:update_with</span><span class="p" data-group-id="2868190060-2">(</span><span class="s">&quot;new counter&quot;</span><span class="p">,</span><span class="nc">Fun</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="2868190060-2">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{&quot;counter&quot; =&gt; 1,&quot;new counter&quot; =&gt; 42}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="values/1">
@@ -742,16 +769,17 @@ when map1: %{optional(key) => value1, optional(_) => _},
     </a>
     <h1 class="signature">values/1</h1>
       <div class="specs">
-          <pre>values(map) :: values when map: %{optional(_) => value}, values: [value]</pre>
+          <pre>values(Map) -> Values when Map :: #{_ => Value}, Values :: [Value].
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a complete list of values, in arbitrary order, contained in map <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a>.</p>
 <p> The call fails with a <code class="inline">{badmap,Map}</code> exception if <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> is not a map.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0123639514-1">#{</span><span class="mi">42</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">value_three</span><span class="p">,</span><span class="mi">1337</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;value two&quot;</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0123639514-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">values</span><span class="p" data-group-id="0123639514-2">(</span><span class="n">Map</span><span class="p" data-group-id="0123639514-2">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="0123639514-3">[</span><span class="ss">value_three</span><span class="p">,</span><span class="s">&quot;value two&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="0123639514-3">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{42 =&gt; value_three,1337 =&gt; &quot;value two&quot;,&quot;a&quot; =&gt; 1},</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:values</span><span class="p" data-group-id="3737705184-1">(</span><span class="nc">Map</span><span class="p" data-group-id="3737705184-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="3737705184-2">[</span><span class="n">value_three</span><span class="p">,</span><span class="s">&quot;value two&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p" data-group-id="3737705184-2">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="with/2">
@@ -762,19 +790,21 @@ when map1: %{optional(key) => value1, optional(_) => _},
     </a>
     <h1 class="signature">with/2</h1>
       <div class="specs">
-          <pre>with(ks, map1) :: map2
-when ks: [k],
-     map1: %{optional(k) => v, optional(_) => _},
-     map2: %{optional(k) => v}</pre>
+          <pre>with(Ks, Map1) -> Map2
+        when
+            Ks :: [K],
+            Map1 :: #{K => V, _ => _},
+            Map2 :: #{K => V}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a new map <code class="inline">Map2</code> with the keys <code class="inline">K1</code> through <code class="inline">Kn</code> and their associated values from map <code class="inline">Map1</code>. Any key in <code class="inline">Ks</code> that does not exist in <code class="inline">Map1</code> is ignored.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8384445138-1">#{</span><span class="mi">42</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">value_three</span><span class="p">,</span><span class="mi">1337</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;value two&quot;</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8384445138-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="n">Ks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8384445138-2">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="s">&quot;other key&quot;</span><span class="p" data-group-id="8384445138-2">]</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">with</span><span class="p" data-group-id="8384445138-3">(</span><span class="n">Ks</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="8384445138-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="8384445138-4">#{</span><span class="mi">42</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">value_three</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8384445138-4">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{42 =&gt; value_three,1337 =&gt; &quot;value two&quot;,&quot;a&quot; =&gt; 1},</span><span class="w">
+  </span><span class="nc">Ks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0559280012-1">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="s">&quot;other key&quot;</span><span class="p" data-group-id="0559280012-1">]</span><span class="p">,</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:with</span><span class="p" data-group-id="0559280012-2">(</span><span class="nc">Ks</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="0559280012-2">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{42 =&gt; value_three,&quot;a&quot; =&gt; 1}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="without/2">
@@ -785,16 +815,22 @@ when ks: [k],
     </a>
     <h1 class="signature">without/2</h1>
       <div class="specs">
-          <pre>without(ks, map1) :: map2 when ks: [k], map1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), map2: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), k: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>without(Ks, Map1) -> Map2
+           when
+               Ks :: [K],
+               Map1 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(),
+               Map2 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(),
+               K :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a new map <code class="inline">Map2</code> without keys <code class="inline">K1</code> through <code class="inline">Kn</code> and their associated values from map <code class="inline">Map1</code>. Any key in <code class="inline">Ks</code> that does not exist in <code class="inline">Map1</code> is ignored</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5558421149-1">#{</span><span class="mi">42</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">value_three</span><span class="p">,</span><span class="mi">1337</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;value two&quot;</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="5558421149-1">}</span><span class="p">,</span><span class="w">
-  </span><span class="n">Ks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5558421149-2">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="s">&quot;other key&quot;</span><span class="p" data-group-id="5558421149-2">]</span><span class="p">,</span><span class="w">
-  </span><span class="nc">maps</span><span class="p">:</span><span class="nf">without</span><span class="p" data-group-id="5558421149-3">(</span><span class="n">Ks</span><span class="p">,</span><span class="n">Map</span><span class="p" data-group-id="5558421149-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="5558421149-4">#{</span><span class="mi">1337</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;value two&quot;</span><span class="p" data-group-id="5558421149-4">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="nc">Map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">#{42 =&gt; value_three,1337 =&gt; &quot;value two&quot;,&quot;a&quot; =&gt; 1},</span><span class="w">
+  </span><span class="nc">Ks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8088596455-1">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="s">&quot;other key&quot;</span><span class="p" data-group-id="8088596455-1">]</span><span class="p">,</span><span class="w">
+  </span><span class="n">maps</span><span class="ss">:without</span><span class="p" data-group-id="8088596455-2">(</span><span class="nc">Ks</span><span class="p">,</span><span class="nc">Map</span><span class="p" data-group-id="8088596455-2">)</span><span class="o">.</span><span class="w">
+</span><span class="c1">#{1337 =&gt; &quot;value two&quot;}</span></code></pre>
   </section>
 </section>
           </div>
@@ -811,18 +847,18 @@ when ks: [k],
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

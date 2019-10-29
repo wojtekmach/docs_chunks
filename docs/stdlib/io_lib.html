@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>io_lib — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -259,7 +259,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">build_text/1</h1>
       <div class="specs">
-          <pre>build_text(formatList) :: chars() when formatList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>() | format_spec()]</pre>
+          <pre>build_text(FormatList) -> chars()
+              when FormatList :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>() | format_spec()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -274,7 +276,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">char_list/1</h1>
       <div class="specs">
-          <pre>char_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>char_list(Term) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Term :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -289,7 +292,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">deep_char_list/1</h1>
       <div class="specs">
-          <pre>deep_char_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>deep_char_list(Term) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Term :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -304,7 +308,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">deep_latin1_char_list/1</h1>
       <div class="specs">
-          <pre>deep_latin1_char_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>deep_latin1_char_list(Term) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Term :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -346,14 +351,20 @@ Functions          </h1>
     </a>
     <h1 class="signature">fread/2</h1>
       <div class="specs">
-          <pre>fread(format, string) :: result
-when format: string(),
-     string: string(),
-     result:
-       {:ok, inputList :: [fread_item()], leftOverChars :: string()}
-       | {:more, restFormat :: string(), nchars :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
-          inputStack :: chars()}
-       | {:error, {:fread, what :: fread_error()}}</pre>
+          <pre>fread(Format, String) -> Result
+         when
+             Format :: string(),
+             String :: string(),
+             Result ::
+                 {ok,
+                  InputList :: [fread_item()],
+                  LeftOverChars :: string()} |
+                 {more,
+                  RestFormat :: string(),
+                  Nchars :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+                  InputStack :: chars()} |
+                 {error, {fread, What :: fread_error()}}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -363,8 +374,8 @@ when format: string(),
 <p>  <code class="inline">{more, ``RestFormat``, ``Nchars``, ``InputStack``}</code>   *  The string was read, but more input is needed to complete the original format string. <code class="inline">RestFormat</code> is the remaining format string, <code class="inline">Nchars</code> is the number of characters scanned, and <code class="inline">InputStack</code> is the reversed list of inputs matched up to that point.</p>
 <p>  <code class="inline">{error, ``What``}</code>   *  The read operation failed and parameter <code class="inline">What</code> gives a hint about the error.</p>
 <p>   Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io_lib</span><span class="p">:</span><span class="nf">fread</span><span class="p" data-group-id="2620776077-1">(</span><span class="s">&quot;~f~f~f&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;15.6 17.3e-6 24.5&quot;</span><span class="p" data-group-id="2620776077-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="2620776077-2">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="2620776077-3">[</span><span class="mf">15.6</span><span class="p">,</span><span class="mf">1.73e-5</span><span class="p">,</span><span class="mf">24.5</span><span class="p" data-group-id="2620776077-3">]</span><span class="p">,</span><span class="p" data-group-id="2620776077-4">[</span><span class="p" data-group-id="2620776077-4">]</span><span class="p" data-group-id="2620776077-2">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">io_lib</span><span class="ss">:fread</span><span class="p" data-group-id="2561455974-1">(</span><span class="s">&quot;~f~f~f&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;15.6 17.3e-6 24.5&quot;</span><span class="p" data-group-id="2561455974-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="2561455974-2">{</span><span class="n">ok</span><span class="p">,</span><span class="p" data-group-id="2561455974-3">[</span><span class="mf">15.6</span><span class="p">,</span><span class="mf">1.73e-5</span><span class="p">,</span><span class="mf">24.5</span><span class="p" data-group-id="2561455974-3">]</span><span class="p">,</span><span class="p" data-group-id="2561455974-4">[</span><span class="p" data-group-id="2561455974-4">]</span><span class="p" data-group-id="2561455974-2">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="fread/3">
@@ -375,17 +386,19 @@ when format: string(),
     </a>
     <h1 class="signature">fread/3</h1>
       <div class="specs">
-          <pre>fread(continuation, charSpec, format) :: return
-when continuation: continuation() | [],
-     charSpec: string() | :eof,
-     format: string(),
-     return:
-       {:more, continuation1 :: continuation()}
-       | {:done, result, leftOverChars :: string()},
-     result:
-       {:ok, inputList :: [fread_item()]}
-       | :eof
-       | {:error, {:fread, what :: fread_error()}}</pre>
+          <pre>fread(Continuation, CharSpec, Format) -> Return
+         when
+             Continuation :: continuation() | [],
+             CharSpec :: string() | eof,
+             Format :: string(),
+             Return ::
+                 {more, Continuation1 :: continuation()} |
+                 {done, Result, LeftOverChars :: string()},
+             Result ::
+                 {ok, InputList :: [fread_item()]} |
+                 eof |
+                 {error, {fread, What :: fread_error()}}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -395,7 +408,7 @@ when continuation: continuation() | [],
 <p>  <code class="inline">{ok, ``InputList``}</code>   *  The string was read. <code class="inline">InputList</code> is the list of successfully matched and read items, and <code class="inline">LeftOverChars</code> are the remaining characters.</p>
 <p>  <code class="inline">eof</code>   *  End of file was encountered. <code class="inline">LeftOverChars</code> are the input characters not used.</p>
 <p>  <code class="inline">{error, ``What``}</code>   *  An error occurred and parameter <code class="inline">What</code> gives a hint about the error.</p>
-<pre><code class="nohighlight makeup erlang"><span class="err">`</span><span class="p" data-group-id="1747481481-1">{</span><span class="ss">more</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">Continuation</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="1747481481-1">}</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w">  </span><span class="n">More</span><span class="w"> </span><span class="ss">data</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">required</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">build</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">term</span><span class="p">.</span><span class="w"> </span><span class="err">`</span><span class="n">Continuation</span><span class="err">`</span><span class="w"> </span><span class="ss">must</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">passed</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="p" data-group-id="1747481481-2">[</span><span class="err">`</span><span class="ss">fread</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="p" data-group-id="1747481481-2">]</span><span class="p" data-group-id="1747481481-3">(</span><span class="p">#</span><span class="ss">fread</span><span class="o">/</span><span class="mi">3</span><span class="p" data-group-id="1747481481-3">)</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="ss">more</span><span class="w"> </span><span class="ss">data</span><span class="w"> </span><span class="ss">becomes</span><span class="w"> </span><span class="ss">available</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="err">`</span><span class="p" data-group-id="7174482107-1">{</span><span class="n">more</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="nc">Continuation</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="7174482107-1">}</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w">  </span><span class="nc">More</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">term</span><span class="o">.</span><span class="w"> </span><span class="err">`</span><span class="nc">Continuation</span><span class="err">`</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">passed</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p" data-group-id="7174482107-2">[</span><span class="err">`</span><span class="n">fread</span><span class="o">/</span><span class="mi">3</span><span class="err">`</span><span class="p" data-group-id="7174482107-2">]</span><span class="p" data-group-id="7174482107-3">(</span><span class="c1">#fread/3) when more data becomes available.</span></code></pre>
   </section>
 </section>
 <section class="detail" id="indentation/2">
@@ -406,8 +419,9 @@ when continuation: continuation() | [],
     </a>
     <h1 class="signature">indentation/2</h1>
       <div class="specs">
-          <pre>indentation(string, startIndent) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()
-when string: string(), startIndent: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+          <pre>indentation(String, StartIndent) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()
+               when String :: string(), StartIndent :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -422,7 +436,8 @@ when string: string(), startIndent: <a href="https://hexdocs.pm/elixir/typespecs
     </a>
     <h1 class="signature">latin1_char_list/1</h1>
       <div class="specs">
-          <pre>latin1_char_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>latin1_char_list(Term) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Term :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -437,7 +452,8 @@ when string: string(), startIndent: <a href="https://hexdocs.pm/elixir/typespecs
     </a>
     <h1 class="signature">nl/0</h1>
       <div class="specs">
-          <pre>nl() :: string()</pre>
+          <pre>nl() -> string().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -452,7 +468,8 @@ when string: string(), startIndent: <a href="https://hexdocs.pm/elixir/typespecs
     </a>
     <h1 class="signature">printable_latin1_list/1</h1>
       <div class="specs">
-          <pre>printable_latin1_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>printable_latin1_list(Term) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Term :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -467,7 +484,8 @@ when string: string(), startIndent: <a href="https://hexdocs.pm/elixir/typespecs
     </a>
     <h1 class="signature">printable_list/1</h1>
       <div class="specs">
-          <pre>printable_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>printable_list(Term) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Term :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -483,7 +501,8 @@ when string: string(), startIndent: <a href="https://hexdocs.pm/elixir/typespecs
     </a>
     <h1 class="signature">printable_unicode_list/1</h1>
       <div class="specs">
-          <pre>printable_unicode_list(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>printable_unicode_list(Term) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Term :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -500,7 +519,7 @@ when string: string(), startIndent: <a href="https://hexdocs.pm/elixir/typespecs
   </div>
   <section class="docstring">
 <p> Returns a list of characters that represents <code class="inline">Term</code>, but breaks representations longer than one line into many lines and indents each line sensibly. Also tries to detect and output lists of printable characters as strings.</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">Column</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">starting</span><span class="w"> </span><span class="ss">column</span><span class="p">;</span><span class="w"> </span><span class="ss">defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">LineLength</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">maximum</span><span class="w"> </span><span class="ss">line</span><span class="w"> </span><span class="nb">length</span><span class="p">;</span><span class="w"> </span><span class="ss">defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="mi">80</span><span class="p">.</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">Depth</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">maximum</span><span class="w"> </span><span class="ss">print</span><span class="w"> </span><span class="ss">depth</span><span class="p">;</span><span class="w"> </span><span class="ss">defaults</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">means</span><span class="w"> </span><span class="ss">no</span><span class="w"> </span><span class="ss">limitation</span><span class="p">.</span><span class="w">  </span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nc">Column</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">starting</span><span class="w"> </span><span class="n">column</span><span class="p">;</span><span class="w"> </span><span class="n">defaults</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="mi">1</span><span class="o">.</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nc">LineLength</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">maximum</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">length</span><span class="p">;</span><span class="w"> </span><span class="n">defaults</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="mi">80</span><span class="o">.</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nc">Depth</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">maximum</span><span class="w"> </span><span class="n">print</span><span class="w"> </span><span class="n">depth</span><span class="p">;</span><span class="w"> </span><span class="n">defaults</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">means</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">limitation</span><span class="o">.</span><span class="w">  </span></code></pre>
   </section>
 </section>
 <section class="detail" id="scan_format/2">
@@ -511,17 +530,19 @@ when string: string(), startIndent: <a href="https://hexdocs.pm/elixir/typespecs
     </a>
     <h1 class="signature">scan_format/2</h1>
       <div class="specs">
-          <pre>scan_format(format, data) :: formatList
-when format: <a href=":io.html#t:format/0">:io.format</a>(),
-     data: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
-     formatList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>() | format_spec()]</pre>
+          <pre>scan_format(Format, Data) -> FormatList
+               when
+                   Format :: io:format(),
+                   Data :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
+                   FormatList :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>() | format_spec()].
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a list corresponding to the specified format string, where control sequences have been replaced with corresponding tuples. This list can be passed to:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="p" data-group-id="7929121092-1">[</span><span class="err">`</span><span class="ss">build_text</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="7929121092-1">]</span><span class="p" data-group-id="7929121092-2">(</span><span class="p">#</span><span class="ss">build_text</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="7929121092-2">)</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">have</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">same</span><span class="w"> </span><span class="ss">effect</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="err">`</span><span class="nf">format</span><span class="p" data-group-id="7929121092-3">(</span><span class="n">Format</span><span class="p">,</span><span class="w"> </span><span class="n">Args</span><span class="p" data-group-id="7929121092-3">)</span><span class="err">`</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">*</span><span class="w">  </span><span class="p" data-group-id="8014324144-1">[</span><span class="err">`</span><span class="n">build_text</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="8014324144-1">]</span><span class="p" data-group-id="8014324144-2">(</span><span class="c1">#build_text/1) to have the same effect as `format(Format, Args)`</span><span class="w">
 
-</span><span class="o">*</span><span class="w">   </span><span class="p" data-group-id="7929121092-4">[</span><span class="err">`</span><span class="ss">unscan_format</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="7929121092-4">]</span><span class="p" data-group-id="7929121092-5">(</span><span class="p">#</span><span class="ss">unscan_format</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="7929121092-5">)</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="nb">get</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">corresponding</span><span class="w"> </span><span class="ss">pair</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="err">`</span><span class="n">Format</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">Args</span><span class="err">`</span><span class="w"> </span><span class="p" data-group-id="7929121092-6">(</span><span class="ss">with</span><span class="w"> </span><span class="ss">every</span><span class="w"> </span><span class="err">`</span><span class="o">*</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">corresponding</span><span class="w"> </span><span class="ss">argument</span><span class="w"> </span><span class="ss">expanded</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">numeric</span><span class="w"> </span><span class="ss">values</span><span class="p" data-group-id="7929121092-6">)</span></code></pre>
+</span><span class="o">*</span><span class="w">   </span><span class="p" data-group-id="8014324144-3">[</span><span class="err">`</span><span class="n">unscan_format</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="8014324144-3">]</span><span class="p" data-group-id="8014324144-4">(</span><span class="c1">#unscan_format/1) to get the corresponding pair of `Format` and `Args` (with every `*` and corresponding argument expanded to numeric values)</span></code></pre>
 <p>   A typical use of this function is to replace unbounded-size control sequences like <code class="inline">~w</code> and <code class="inline">~p</code> with the depth-limited variants <code class="inline">~W</code> and <code class="inline">~P</code> before formatting to text in, for example, a logger.</p>
   </section>
 </section>
@@ -533,10 +554,12 @@ when format: <a href=":io.html#t:format/0">:io.format</a>(),
     </a>
     <h1 class="signature">unscan_format/1</h1>
       <div class="specs">
-          <pre>unscan_format(formatList) :: {format, data}
-when formatList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>() | format_spec()],
-     format: <a href=":io.html#t:format/0">:io.format</a>(),
-     data: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]</pre>
+          <pre>unscan_format(FormatList) -> {Format, Data}
+                 when
+                     FormatList :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>() | format_spec()],
+                     Format :: io:format(),
+                     Data :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -551,7 +574,8 @@ when formatList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-typ
     </a>
     <h1 class="signature">write_atom/1</h1>
       <div class="specs">
-          <pre>write_atom(atom) :: chars() when atom: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
+          <pre>write_atom(Atom) -> chars() when Atom :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -566,7 +590,8 @@ when formatList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-typ
     </a>
     <h1 class="signature">write_atom_as_latin1/1</h1>
       <div class="specs">
-          <pre>write_atom_as_latin1(atom) :: latin1_string() when atom: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
+          <pre>write_atom_as_latin1(Atom) -> latin1_string() when Atom :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -581,7 +606,8 @@ when formatList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-typ
     </a>
     <h1 class="signature">write_char/1</h1>
       <div class="specs">
-          <pre>write_char(char) :: chars() when char: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()</pre>
+          <pre>write_char(Char) -> chars() when Char :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -596,7 +622,8 @@ when formatList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-typ
     </a>
     <h1 class="signature">write_char_as_latin1/1</h1>
       <div class="specs">
-          <pre>write_char_as_latin1(char) :: latin1_string() when char: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()</pre>
+          <pre>write_char_as_latin1(Char) -> latin1_string() when Char :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -611,8 +638,9 @@ when formatList: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-typ
     </a>
     <h1 class="signature">write_latin1_char/1</h1>
       <div class="specs">
-          <pre>write_latin1_char(latin1Char) :: latin1_string()
-when latin1Char: <a href=":unicode.html#t:latin1_char/0">:unicode.latin1_char</a>()</pre>
+          <pre>write_latin1_char(Latin1Char) -> latin1_string()
+                     when Latin1Char :: unicode:latin1_char().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -627,8 +655,9 @@ when latin1Char: <a href=":unicode.html#t:latin1_char/0">:unicode.latin1_char</a
     </a>
     <h1 class="signature">write_latin1_string/1</h1>
       <div class="specs">
-          <pre>write_latin1_string(latin1String) :: latin1_string()
-when latin1String: latin1_string()</pre>
+          <pre>write_latin1_string(Latin1String) -> latin1_string()
+                       when Latin1String :: latin1_string().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -643,7 +672,8 @@ when latin1String: latin1_string()</pre>
     </a>
     <h1 class="signature">write_string/1</h1>
       <div class="specs">
-          <pre>write_string(string) :: chars() when string: string()</pre>
+          <pre>write_string(String) -> chars() when String :: string().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -658,7 +688,9 @@ when latin1String: latin1_string()</pre>
     </a>
     <h1 class="signature">write_string_as_latin1/1</h1>
       <div class="specs">
-          <pre>write_string_as_latin1(string) :: latin1_string() when string: string()</pre>
+          <pre>write_string_as_latin1(String) -> latin1_string()
+                          when String :: string().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -676,11 +708,11 @@ when latin1String: latin1_string()</pre>
   <section class="docstring">
 <p> Returns a character list that represents <code class="inline">Term</code>. Option <code class="inline">Depth</code> controls the depth of the structures written. When the specified depth is reached, everything below this level is replaced by &quot;<code class="inline">...</code>&quot;. <code class="inline">Depth</code> defaults to -1, which means no limitation. Option <code class="inline">CharsLimit</code> puts a soft limit on the number of characters returned. When the number of characters is reached, remaining structures are replaced by &quot;<code class="inline">...</code>&quot;. <code class="inline">CharsLimit</code> defaults to -1, which means no limit on the number of characters returned.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">flatten</span><span class="p" data-group-id="1180089522-1">(</span><span class="nc">io_lib</span><span class="p">:</span><span class="nf">write</span><span class="p" data-group-id="1180089522-2">(</span><span class="p" data-group-id="1180089522-3">{</span><span class="mi">1</span><span class="p">,</span><span class="p" data-group-id="1180089522-4">[</span><span class="mi">2</span><span class="p" data-group-id="1180089522-4">]</span><span class="p">,</span><span class="p" data-group-id="1180089522-5">[</span><span class="mi">3</span><span class="p" data-group-id="1180089522-5">]</span><span class="p">,</span><span class="p" data-group-id="1180089522-6">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="1180089522-6">]</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="1180089522-3">}</span><span class="p" data-group-id="1180089522-2">)</span><span class="p" data-group-id="1180089522-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lists</span><span class="ss">:flatten</span><span class="p" data-group-id="7827728372-1">(</span><span class="n">io_lib</span><span class="ss">:write</span><span class="p" data-group-id="7827728372-2">(</span><span class="p" data-group-id="7827728372-3">{</span><span class="mi">1</span><span class="p">,</span><span class="p" data-group-id="7827728372-4">[</span><span class="mi">2</span><span class="p" data-group-id="7827728372-4">]</span><span class="p">,</span><span class="p" data-group-id="7827728372-5">[</span><span class="mi">3</span><span class="p" data-group-id="7827728372-5">]</span><span class="p">,</span><span class="p" data-group-id="7827728372-6">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="7827728372-6">]</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="7827728372-3">}</span><span class="p" data-group-id="7827728372-2">)</span><span class="p" data-group-id="7827728372-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;{1,[2],[3],[4,5],6,7,8,9}&quot;</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">flatten</span><span class="p" data-group-id="1180089522-7">(</span><span class="nc">io_lib</span><span class="p">:</span><span class="nf">write</span><span class="p" data-group-id="1180089522-8">(</span><span class="p" data-group-id="1180089522-9">{</span><span class="mi">1</span><span class="p">,</span><span class="p" data-group-id="1180089522-10">[</span><span class="mi">2</span><span class="p" data-group-id="1180089522-10">]</span><span class="p">,</span><span class="p" data-group-id="1180089522-11">[</span><span class="mi">3</span><span class="p" data-group-id="1180089522-11">]</span><span class="p">,</span><span class="p" data-group-id="1180089522-12">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="1180089522-12">]</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="1180089522-9">}</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="1180089522-8">)</span><span class="p" data-group-id="1180089522-7">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lists</span><span class="ss">:flatten</span><span class="p" data-group-id="7827728372-7">(</span><span class="n">io_lib</span><span class="ss">:write</span><span class="p" data-group-id="7827728372-8">(</span><span class="p" data-group-id="7827728372-9">{</span><span class="mi">1</span><span class="p">,</span><span class="p" data-group-id="7827728372-10">[</span><span class="mi">2</span><span class="p" data-group-id="7827728372-10">]</span><span class="p">,</span><span class="p" data-group-id="7827728372-11">[</span><span class="mi">3</span><span class="p" data-group-id="7827728372-11">]</span><span class="p">,</span><span class="p" data-group-id="7827728372-12">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="7827728372-12">]</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="7827728372-9">}</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="7827728372-8">)</span><span class="p" data-group-id="7827728372-7">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;{1,[2],[3],[...],...}&quot;</span><span class="w">
-</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">flatten</span><span class="p" data-group-id="1180089522-13">(</span><span class="nc">io_lib</span><span class="p">:</span><span class="nf">write</span><span class="p" data-group-id="1180089522-14">(</span><span class="p" data-group-id="1180089522-15">{</span><span class="p" data-group-id="1180089522-16">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="1180089522-16">]</span><span class="p">,</span><span class="p" data-group-id="1180089522-17">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="1180089522-17">]</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="1180089522-15">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1180089522-18">[</span><span class="p" data-group-id="1180089522-19">{</span><span class="ss">chars_limit</span><span class="p">,</span><span class="mi">20</span><span class="p" data-group-id="1180089522-19">}</span><span class="p" data-group-id="1180089522-18">]</span><span class="p" data-group-id="1180089522-14">)</span><span class="p" data-group-id="1180089522-13">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lists</span><span class="ss">:flatten</span><span class="p" data-group-id="7827728372-13">(</span><span class="n">io_lib</span><span class="ss">:write</span><span class="p" data-group-id="7827728372-14">(</span><span class="p" data-group-id="7827728372-15">{</span><span class="p" data-group-id="7827728372-16">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p" data-group-id="7827728372-16">]</span><span class="p">,</span><span class="p" data-group-id="7827728372-17">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p" data-group-id="7827728372-17">]</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p" data-group-id="7827728372-15">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7827728372-18">[</span><span class="p" data-group-id="7827728372-19">{</span><span class="n">chars_limit</span><span class="p">,</span><span class="mi">20</span><span class="p" data-group-id="7827728372-19">}</span><span class="p" data-group-id="7827728372-18">]</span><span class="p" data-group-id="7827728372-14">)</span><span class="p" data-group-id="7827728372-13">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;{[1,2|...],[4|...],...}&quot;</span></code></pre>
   </section>
 </section>
@@ -698,18 +730,18 @@ when latin1String: latin1_string()</pre>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

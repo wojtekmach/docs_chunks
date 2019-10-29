@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>erl_expand_records — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -109,10 +109,12 @@ Functions          </h1>
     </a>
     <h1 class="signature">module/2</h1>
       <div class="specs">
-          <pre>module(absForms, compileOptions) :: absForms2
-when absForms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>()],
-     absForms2: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>()],
-     compileOptions: [<a href="http://www.erlang.org/doc/man/compile.html#type-option">:compile.option</a>()]</pre>
+          <pre>module(AbsForms, CompileOptions) -> AbsForms2
+          when
+              AbsForms :: [erl_parse:abstract_form()],
+              AbsForms2 :: [erl_parse:abstract_form()],
+              CompileOptions :: [compile:option()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -133,18 +135,18 @@ when absForms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

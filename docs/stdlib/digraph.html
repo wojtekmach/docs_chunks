@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>digraph — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -71,7 +71,7 @@ digraph      </h1>
         <section id="moduledoc">
 <p> This module provides a version of labeled directed graphs (&quot;digraphs&quot;).</p>
 <p> The digraphs managed by this module are stored in ETS tables. That implies the following:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="n">Only</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">process</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">created</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">allowed</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">update</span><span class="w"> </span><span class="ss">it</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">*</span><span class="w"> </span><span class="nc">Only</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">created</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">digraph</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">allowed</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="n">it</span><span class="o">.</span></code></pre>
 <ul>
 <li><p>Digraphs will not be garbage collected. The ETS tables used for a digraph will only be deleted when <a href="#delete/1"><code class="inline">delete/1</code></a> is called or the process that created the digraph terminates.</p>
 </li>
@@ -84,29 +84,29 @@ digraph      </h1>
 </li>
 </ul>
 <p> In this module, V is allowed to be empty. The so obtained unique digraph is called the empty digraph. Both vertices and edges are represented by unique Erlang terms.</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">Digraphs</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">annotated</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">more</span><span class="w"> </span><span class="ss">information</span><span class="p">.</span><span class="w"> </span><span class="n">Such</span><span class="w"> </span><span class="ss">information</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">attached</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">digraph</span><span class="p">.</span><span class="w"> </span><span class="n">An</span><span class="w"> </span><span class="ss">annotated</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">called</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">labeled</span><span class="w"> </span><span class="ss">digraph</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">information</span><span class="w"> </span><span class="ss">attached</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">edge</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">called</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">label</span><span class="p">.</span><span class="w"> </span><span class="n">Labels</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="n">Erlang</span><span class="w"> </span><span class="ss">terms</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">*</span><span class="w">  </span><span class="nc">Digraphs</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">annotated</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">information</span><span class="o">.</span><span class="w"> </span><span class="nc">Such</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">attached</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">vertices</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">edges</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">digraph</span><span class="o">.</span><span class="w"> </span><span class="nc">An</span><span class="w"> </span><span class="n">annotated</span><span class="w"> </span><span class="n">digraph</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">labeled</span><span class="w"> </span><span class="n">digraph</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="n">attached</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">vertex</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">edge</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">label</span><span class="o">.</span><span class="w"> </span><span class="nc">Labels</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="nc">Erlang</span><span class="w"> </span><span class="n">terms</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">An</span><span class="w"> </span><span class="ss">edge</span><span class="w"> </span><span class="ss">e</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="p" data-group-id="2946049968-1">(</span><span class="ss">v</span><span class="p">,</span><span class="err"> </span><span class="ss">w</span><span class="p" data-group-id="2946049968-1">)</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">said</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">emanate</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">v</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">incident</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">w</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="w">  </span><span class="nc">An</span><span class="w"> </span><span class="n">edge</span><span class="w"> </span><span class="n">e</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="p" data-group-id="9382235672-1">(</span><span class="n">v</span><span class="p">,</span><span class="err"> </span><span class="n">w</span><span class="p" data-group-id="9382235672-1">)</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">said</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">emanate</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">vertex</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">incident</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">vertex</span><span class="w"> </span><span class="n">w</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="ss">out</span><span class="o">-</span><span class="ss">degree</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="ss">emanating</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">vertex</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="w">  </span><span class="nc">The</span><span class="w"> </span><span class="n">out</span><span class="o">-</span><span class="n">degree</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">vertex</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">edges</span><span class="w"> </span><span class="n">emanating</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">vertex</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="ss">in</span><span class="o">-</span><span class="ss">degree</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">vertex</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="ss">incident</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">vertex</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="w">  </span><span class="nc">The</span><span class="w"> </span><span class="ow">in</span><span class="o">-</span><span class="n">degree</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">vertex</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">edges</span><span class="w"> </span><span class="n">incident</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">vertex</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">If</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">edge</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">emanating</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">v</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">incident</span><span class="w"> </span><span class="ss">on</span><span class="w"> </span><span class="ss">w</span><span class="p">,</span><span class="w"> </span><span class="ss">then</span><span class="w"> </span><span class="ss">w</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">said</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">an</span><span class="w">  </span><span class="ss">out</span><span class="o">-</span><span class="ss">neighbor</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">v</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">v</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">said</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">in</span><span class="o">-</span><span class="ss">neighbor</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">w</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="w">  </span><span class="nc">If</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">edge</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">emanating</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">incident</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">then</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">said</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">an</span><span class="w">  </span><span class="n">out</span><span class="o">-</span><span class="n">neighbor</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">said</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="ow">in</span><span class="o">-</span><span class="n">neighbor</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">w</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-2">[</span><span class="mi">1</span><span class="p" data-group-id="2946049968-2">]</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-3">[</span><span class="ss">k</span><span class="p" data-group-id="2946049968-3">]</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="nf">digraph</span><span class="w"> </span><span class="p" data-group-id="2946049968-4">(</span><span class="n">V</span><span class="p">,</span><span class="err"> </span><span class="n">E</span><span class="p" data-group-id="2946049968-4">)</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">non</span><span class="o">-</span><span class="ss">empty</span><span class="w"> </span><span class="ss">sequence</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-5">[</span><span class="mi">1</span><span class="p" data-group-id="2946049968-5">]</span><span class="p">,</span><span class="err"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-6">[</span><span class="mi">2</span><span class="p" data-group-id="2946049968-6">]</span><span class="p">,</span><span class="err"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="err"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-7">[</span><span class="ss">k</span><span class="p" data-group-id="2946049968-7">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="ss">such</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="nf">edge</span><span class="w"> </span><span class="p" data-group-id="2946049968-8">(</span><span class="ss">v</span><span class="p" data-group-id="2946049968-9">[</span><span class="ss">i</span><span class="p" data-group-id="2946049968-9">]</span><span class="p">,</span><span class="ss">v</span><span class="p" data-group-id="2946049968-10">[</span><span class="ss">i</span><span class="o">+</span><span class="mi">1</span><span class="p" data-group-id="2946049968-10">]</span><span class="p" data-group-id="2946049968-8">)</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="mi">1</span><span class="err"> </span><span class="o">&lt;</span><span class="o">=</span><span class="err"> </span><span class="ss">i</span><span class="err"> </span><span class="o">&lt;</span><span class="err"> </span><span class="ss">k</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="w">  </span><span class="nc">A</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="nc">P</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">v</span><span class="p" data-group-id="9382235672-2">[</span><span class="mi">1</span><span class="p" data-group-id="9382235672-2">]</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">v</span><span class="p" data-group-id="9382235672-3">[</span><span class="n">k</span><span class="p" data-group-id="9382235672-3">]</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">digraph</span><span class="w"> </span><span class="p" data-group-id="9382235672-4">(</span><span class="nc">V</span><span class="p">,</span><span class="err"> </span><span class="nc">E</span><span class="p" data-group-id="9382235672-4">)</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">empty</span><span class="w"> </span><span class="n">sequence</span><span class="w"> </span><span class="n">v</span><span class="p" data-group-id="9382235672-5">[</span><span class="mi">1</span><span class="p" data-group-id="9382235672-5">]</span><span class="p">,</span><span class="err"> </span><span class="n">v</span><span class="p" data-group-id="9382235672-6">[</span><span class="mi">2</span><span class="p" data-group-id="9382235672-6">]</span><span class="p">,</span><span class="err"> </span><span class="n">...</span><span class="p">,</span><span class="err"> </span><span class="n">v</span><span class="p" data-group-id="9382235672-7">[</span><span class="n">k</span><span class="p" data-group-id="9382235672-7">]</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">vertices</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">V</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">there</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">edge</span><span class="w"> </span><span class="p" data-group-id="9382235672-8">(</span><span class="n">v</span><span class="p" data-group-id="9382235672-9">[</span><span class="n">i</span><span class="p" data-group-id="9382235672-9">]</span><span class="p">,</span><span class="n">v</span><span class="p" data-group-id="9382235672-10">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p" data-group-id="9382235672-10">]</span><span class="p" data-group-id="9382235672-8">)</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">E</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">1</span><span class="err"> </span><span class="o">&lt;=</span><span class="err"> </span><span class="n">i</span><span class="err"> </span><span class="o">&lt;</span><span class="err"> </span><span class="n">k</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="nb">length</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">k</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="w">  </span><span class="nc">The</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="nc">P</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">Path</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">simple</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">distinct</span><span class="p">,</span><span class="w"> </span><span class="ss">except</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">first</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">last</span><span class="w"> </span><span class="ss">vertices</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">same</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="w">  </span><span class="nc">Path</span><span class="w"> </span><span class="nc">P</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">simple</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">vertices</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">distinct</span><span class="p">,</span><span class="w"> </span><span class="n">except</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">last</span><span class="w"> </span><span class="n">vertices</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">Path</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">cycle</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="nb">length</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ss">zero</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-11">[</span><span class="mi">1</span><span class="p" data-group-id="2946049968-11">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2946049968-12">[</span><span class="ss">k</span><span class="p" data-group-id="2946049968-12">]</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="w">  </span><span class="nc">Path</span><span class="w"> </span><span class="nc">P</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">cycle</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="nc">P</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">zero</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">v</span><span class="p" data-group-id="9382235672-11">[</span><span class="mi">1</span><span class="p" data-group-id="9382235672-11">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p" data-group-id="9382235672-12">[</span><span class="n">k</span><span class="p" data-group-id="9382235672-12">]</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">loop</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">cycle</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">length</span><span class="w"> </span><span class="ss">one</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="w">  </span><span class="nc">A</span><span class="w"> </span><span class="n">loop</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">cycle</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="n">one</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="ss">simple</span><span class="w"> </span><span class="ss">cycle</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="ss">that</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">both</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">cycle</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">simple</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="w">  </span><span class="nc">A</span><span class="w"> </span><span class="n">simple</span><span class="w"> </span><span class="n">cycle</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">cycle</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">simple</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">An</span><span class="w"> </span><span class="ss">acyclic</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">digraph</span><span class="w"> </span><span class="ss">without</span><span class="w"> </span><span class="ss">cycles</span><span class="p">.</span></code></pre>
+</span><span class="o">*</span><span class="w">  </span><span class="nc">An</span><span class="w"> </span><span class="n">acyclic</span><span class="w"> </span><span class="n">digraph</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">digraph</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="n">cycles</span><span class="o">.</span></code></pre>
         </section>
 
         <section id="summary" class="details-list">
@@ -337,7 +337,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">del_edge/2</h1>
       <div class="specs">
-          <pre>del_edge(g, e) :: true when g: graph(), e: edge()</pre>
+          <pre>del_edge(G, E) -> true when G :: graph(), E :: edge().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -352,7 +353,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">del_edges/2</h1>
       <div class="specs">
-          <pre>del_edges(g, edges) :: true when g: graph(), edges: [edge()]</pre>
+          <pre>del_edges(G, Edges) -> true when G :: graph(), Edges :: [edge()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -367,17 +369,19 @@ Functions          </h1>
     </a>
     <h1 class="signature">del_path/3</h1>
       <div class="specs">
-          <pre>del_path(g, v1, v2) :: true when g: graph(), v1: vertex(), v2: vertex()</pre>
+          <pre>del_path(G, V1, V2) -> true
+            when G :: graph(), V1 :: vertex(), V2 :: vertex().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Deletes edges from digraph <code class="inline">G</code> until there are no paths from vertex <code class="inline">V1</code> to vertex <code class="inline">V2</code>.</p>
 <p> A sketch of the procedure employed:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="n">Find</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">arbitrary</span><span class="w"> </span><span class="ss">simple</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2156693405-1">[</span><span class="mi">1</span><span class="p" data-group-id="2156693405-1">]</span><span class="p">,</span><span class="err"> </span><span class="ss">v</span><span class="p" data-group-id="2156693405-2">[</span><span class="mi">2</span><span class="p" data-group-id="2156693405-2">]</span><span class="p">,</span><span class="err"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="err"> </span><span class="ss">v</span><span class="p" data-group-id="2156693405-3">[</span><span class="ss">k</span><span class="p" data-group-id="2156693405-3">]</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="err">`</span><span class="n">V1</span><span class="err">`</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="n">V2</span><span class="err">`</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="err">`</span><span class="n">G</span><span class="err">`</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">*</span><span class="w">  </span><span class="nc">Find</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">arbitrary</span><span class="w"> </span><span class="n">simple</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="n">v</span><span class="p" data-group-id="9075110327-1">[</span><span class="mi">1</span><span class="p" data-group-id="9075110327-1">]</span><span class="p">,</span><span class="err"> </span><span class="n">v</span><span class="p" data-group-id="9075110327-2">[</span><span class="mi">2</span><span class="p" data-group-id="9075110327-2">]</span><span class="p">,</span><span class="err"> </span><span class="n">...</span><span class="p">,</span><span class="err"> </span><span class="n">v</span><span class="p" data-group-id="9075110327-3">[</span><span class="n">k</span><span class="p" data-group-id="9075110327-3">]</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="err">`</span><span class="nc">V1</span><span class="err">`</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="err">`</span><span class="nc">V2</span><span class="err">`</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="err">`</span><span class="nc">G</span><span class="err">`</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">Remove</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">edges</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="err">`</span><span class="n">G</span><span class="err">`</span><span class="w"> </span><span class="ss">emanating</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2156693405-4">[</span><span class="ss">i</span><span class="p" data-group-id="2156693405-4">]</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">incident</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">v</span><span class="p" data-group-id="2156693405-5">[</span><span class="ss">i</span><span class="o">+</span><span class="mi">1</span><span class="p" data-group-id="2156693405-5">]</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="mi">1</span><span class="err"> </span><span class="o">&lt;</span><span class="o">=</span><span class="err"> </span><span class="ss">i</span><span class="err"> </span><span class="o">&lt;</span><span class="err"> </span><span class="nf">k</span><span class="w"> </span><span class="p" data-group-id="2156693405-6">(</span><span class="ss">including</span><span class="w"> </span><span class="ss">multiple</span><span class="w"> </span><span class="ss">edges</span><span class="p" data-group-id="2156693405-6">)</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="w">  </span><span class="nc">Remove</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">edges</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="err">`</span><span class="nc">G</span><span class="err">`</span><span class="w"> </span><span class="n">emanating</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">v</span><span class="p" data-group-id="9075110327-4">[</span><span class="n">i</span><span class="p" data-group-id="9075110327-4">]</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">incident</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">v</span><span class="p" data-group-id="9075110327-5">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p" data-group-id="9075110327-5">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">1</span><span class="err"> </span><span class="o">&lt;=</span><span class="err"> </span><span class="n">i</span><span class="err"> </span><span class="o">&lt;</span><span class="err"> </span><span class="n">k</span><span class="w"> </span><span class="p" data-group-id="9075110327-6">(</span><span class="n">including</span><span class="w"> </span><span class="n">multiple</span><span class="w"> </span><span class="n">edges</span><span class="p" data-group-id="9075110327-6">)</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">Repeat</span><span class="w"> </span><span class="ss">until</span><span class="w"> </span><span class="ss">there</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">no</span><span class="w"> </span><span class="ss">path</span><span class="w"> </span><span class="ss">between</span><span class="w"> </span><span class="err">`</span><span class="n">V1</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="n">V2</span><span class="err">`</span><span class="p">.</span></code></pre>
+</span><span class="o">*</span><span class="w">  </span><span class="nc">Repeat</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="n">there</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="err">`</span><span class="nc">V1</span><span class="err">`</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="err">`</span><span class="nc">V2</span><span class="err">`</span><span class="o">.</span></code></pre>
   </section>
 </section>
 <section class="detail" id="del_vertex/2">
@@ -388,7 +392,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">del_vertex/2</h1>
       <div class="specs">
-          <pre>del_vertex(g, v) :: true when g: graph(), v: vertex()</pre>
+          <pre>del_vertex(G, V) -> true when G :: graph(), V :: vertex().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -403,7 +408,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">del_vertices/2</h1>
       <div class="specs">
-          <pre>del_vertices(g, vertices) :: true when g: graph(), vertices: [vertex()]</pre>
+          <pre>del_vertices(G, Vertices) -> true
+                when G :: graph(), Vertices :: [vertex()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -418,7 +425,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">delete/1</h1>
       <div class="specs">
-          <pre>delete(g) :: true when g: graph()</pre>
+          <pre>delete(G) -> true when G :: graph().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -433,8 +441,14 @@ Functions          </h1>
     </a>
     <h1 class="signature">edge/2</h1>
       <div class="specs">
-          <pre>edge(g, e) :: {e, v1, v2, label} | false
-when g: graph(), e: edge(), v1: vertex(), v2: vertex(), label: label()</pre>
+          <pre>edge(G, E) -> {E, V1, V2, Label} | false
+        when
+            G :: graph(),
+            E :: edge(),
+            V1 :: vertex(),
+            V2 :: vertex(),
+            Label :: label().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -449,7 +463,8 @@ when g: graph(), e: edge(), v1: vertex(), v2: vertex(), label: label()</pre>
     </a>
     <h1 class="signature">edges/1</h1>
       <div class="specs">
-          <pre>edges(g) :: edges when g: graph(), edges: [edge()]</pre>
+          <pre>edges(G) -> Edges when G :: graph(), Edges :: [edge()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -464,7 +479,9 @@ when g: graph(), e: edge(), v1: vertex(), v2: vertex(), label: label()</pre>
     </a>
     <h1 class="signature">edges/2</h1>
       <div class="specs">
-          <pre>edges(g, v) :: edges when g: graph(), v: vertex(), edges: [edge()]</pre>
+          <pre>edges(G, V) -> Edges
+         when G :: graph(), V :: vertex(), Edges :: [edge()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -479,8 +496,12 @@ when g: graph(), e: edge(), v1: vertex(), v2: vertex(), label: label()</pre>
     </a>
     <h1 class="signature">get_cycle/2</h1>
       <div class="specs">
-          <pre>get_cycle(g, v) :: vertices | false
-when g: graph(), v: vertex(), vertices: [vertex(), ...]</pre>
+          <pre>get_cycle(G, V) -> Vertices | false
+             when
+                 G :: graph(),
+                 V :: vertex(),
+                 Vertices :: [vertex(), ...].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -496,8 +517,13 @@ when g: graph(), v: vertex(), vertices: [vertex(), ...]</pre>
     </a>
     <h1 class="signature">get_path/3</h1>
       <div class="specs">
-          <pre>get_path(g, v1, v2) :: vertices | false
-when g: graph(), v1: vertex(), v2: vertex(), vertices: [vertex(), ...]</pre>
+          <pre>get_path(G, V1, V2) -> Vertices | false
+            when
+                G :: graph(),
+                V1 :: vertex(),
+                V2 :: vertex(),
+                Vertices :: [vertex(), ...].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -513,8 +539,12 @@ when g: graph(), v1: vertex(), v2: vertex(), vertices: [vertex(), ...]</pre>
     </a>
     <h1 class="signature">get_short_cycle/2</h1>
       <div class="specs">
-          <pre>get_short_cycle(g, v) :: vertices | false
-when g: graph(), v: vertex(), vertices: [vertex(), ...]</pre>
+          <pre>get_short_cycle(G, V) -> Vertices | false
+                   when
+                       G :: graph(),
+                       V :: vertex(),
+                       Vertices :: [vertex(), ...].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -530,8 +560,13 @@ when g: graph(), v: vertex(), vertices: [vertex(), ...]</pre>
     </a>
     <h1 class="signature">get_short_path/3</h1>
       <div class="specs">
-          <pre>get_short_path(g, v1, v2) :: vertices | false
-when g: graph(), v1: vertex(), v2: vertex(), vertices: [vertex(), ...]</pre>
+          <pre>get_short_path(G, V1, V2) -> Vertices | false
+                  when
+                      G :: graph(),
+                      V1 :: vertex(),
+                      V2 :: vertex(),
+                      Vertices :: [vertex(), ...].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -547,7 +582,9 @@ when g: graph(), v1: vertex(), v2: vertex(), vertices: [vertex(), ...]</pre>
     </a>
     <h1 class="signature">in_degree/2</h1>
       <div class="specs">
-          <pre>in_degree(g, v) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when g: graph(), v: vertex()</pre>
+          <pre>in_degree(G, V) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()
+             when G :: graph(), V :: vertex().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -562,7 +599,9 @@ when g: graph(), v1: vertex(), v2: vertex(), vertices: [vertex(), ...]</pre>
     </a>
     <h1 class="signature">in_edges/2</h1>
       <div class="specs">
-          <pre>in_edges(g, v) :: edges when g: graph(), v: vertex(), edges: [edge()]</pre>
+          <pre>in_edges(G, V) -> Edges
+            when G :: graph(), V :: vertex(), Edges :: [edge()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -577,7 +616,12 @@ when g: graph(), v1: vertex(), v2: vertex(), vertices: [vertex(), ...]</pre>
     </a>
     <h1 class="signature">in_neighbours/2</h1>
       <div class="specs">
-          <pre>in_neighbours(g, v) :: vertex when g: graph(), v: vertex(), vertex: [vertex()]</pre>
+          <pre>in_neighbours(G, V) -> Vertex
+                 when
+                     G :: graph(),
+                     V :: vertex(),
+                     Vertex :: [vertex()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -592,22 +636,23 @@ when g: graph(), v1: vertex(), v2: vertex(), vertices: [vertex(), ...]</pre>
     </a>
     <h1 class="signature">info/1</h1>
       <div class="specs">
-          <pre>info(g) :: infoList
-when g: graph(),
-     infoList: [
-       cyclicity: cyclicity :: d_cyclicity(),
-       memory: noWords :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
-       protection: protection :: d_protection()
-     ]</pre>
+          <pre>info(G) -> InfoList
+        when
+            G :: graph(),
+            InfoList ::
+                [{cyclicity, Cyclicity :: d_cyclicity()} |
+                 {memory, NoWords :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()} |
+                 {protection, Protection :: d_protection()}].
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a list of <code class="inline">{Tag, Value}</code> pairs describing digraph <code class="inline">G</code>. The following pairs are returned:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="8317702959-1">{</span><span class="ss">cyclicity</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">Cyclicity</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="8317702959-1">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="err">`</span><span class="n">Cyclicity</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="err">`</span><span class="ss">cyclic</span><span class="err">`</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">`</span><span class="ss">acyclic</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">according</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">options</span><span class="w"> </span><span class="ss">given</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="ss">new</span><span class="err">`</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="8045742095-1">{</span><span class="n">cyclicity</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="nc">Cyclicity</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="8045742095-1">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="err">`</span><span class="nc">Cyclicity</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="err">`</span><span class="n">cyclic</span><span class="err">`</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">`</span><span class="n">acyclic</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="n">according</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="n">given</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="err">`</span><span class="n">new</span><span class="err">`</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="8317702959-2">{</span><span class="nb">memory</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">NoWords</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="8317702959-2">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="err">`</span><span class="n">NoWords</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">words</span><span class="w"> </span><span class="ss">allocated</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="n">ETS</span><span class="w"> </span><span class="ss">tables</span><span class="p">.</span><span class="w">
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="8045742095-2">{</span><span class="n">memory</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="nc">NoWords</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="8045742095-2">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="err">`</span><span class="nc">NoWords</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="n">allocated</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nc">ETS</span><span class="w"> </span><span class="n">tables</span><span class="o">.</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="8317702959-3">{</span><span class="ss">protection</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="n">Protection</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="8317702959-3">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="w"> </span><span class="err">`</span><span class="n">Protection</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="err">`</span><span class="ss">protected</span><span class="err">`</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">`</span><span class="ss">private</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">according</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">options</span><span class="w"> </span><span class="ss">given</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="err">`</span><span class="ss">new</span><span class="err">`</span><span class="p">.</span></code></pre>
+</span><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="8045742095-3">{</span><span class="n">protection</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="err">`</span><span class="nc">Protection</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="8045742095-3">}</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="err">`</span><span class="nc">Protection</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="err">`</span><span class="n">protected</span><span class="err">`</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="err">`</span><span class="n">private</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="n">according</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="n">given</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="err">`</span><span class="n">new</span><span class="err">`</span><span class="o">.</span></code></pre>
   </section>
 </section>
 <section class="detail" id="new/0">
@@ -618,7 +663,8 @@ when g: graph(),
     </a>
     <h1 class="signature">new/0</h1>
       <div class="specs">
-          <pre>new() :: graph()</pre>
+          <pre>new() -> graph().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -633,7 +679,8 @@ when g: graph(),
     </a>
     <h1 class="signature">new/1</h1>
       <div class="specs">
-          <pre>new(type) :: graph() when type: [d_type()]</pre>
+          <pre>new(Type) -> graph() when Type :: [d_type()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -653,7 +700,8 @@ when g: graph(),
     </a>
     <h1 class="signature">no_edges/1</h1>
       <div class="specs">
-          <pre>no_edges(g) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when g: graph()</pre>
+          <pre>no_edges(G) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when G :: graph().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -668,7 +716,8 @@ when g: graph(),
     </a>
     <h1 class="signature">no_vertices/1</h1>
       <div class="specs">
-          <pre>no_vertices(g) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when g: graph()</pre>
+          <pre>no_vertices(G) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when G :: graph().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -683,7 +732,9 @@ when g: graph(),
     </a>
     <h1 class="signature">out_degree/2</h1>
       <div class="specs">
-          <pre>out_degree(g, v) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when g: graph(), v: vertex()</pre>
+          <pre>out_degree(G, V) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()
+              when G :: graph(), V :: vertex().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -698,7 +749,9 @@ when g: graph(),
     </a>
     <h1 class="signature">out_edges/2</h1>
       <div class="specs">
-          <pre>out_edges(g, v) :: edges when g: graph(), v: vertex(), edges: [edge()]</pre>
+          <pre>out_edges(G, V) -> Edges
+             when G :: graph(), V :: vertex(), Edges :: [edge()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -713,8 +766,12 @@ when g: graph(),
     </a>
     <h1 class="signature">out_neighbours/2</h1>
       <div class="specs">
-          <pre>out_neighbours(g, v) :: vertices
-when g: graph(), v: vertex(), vertices: [vertex()]</pre>
+          <pre>out_neighbours(G, V) -> Vertices
+                  when
+                      G :: graph(),
+                      V :: vertex(),
+                      Vertices :: [vertex()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -729,7 +786,9 @@ when g: graph(), v: vertex(), vertices: [vertex()]</pre>
     </a>
     <h1 class="signature">vertex/2</h1>
       <div class="specs">
-          <pre>vertex(g, v) :: {v, label} | false when g: graph(), v: vertex(), label: label()</pre>
+          <pre>vertex(G, V) -> {V, Label} | false
+          when G :: graph(), V :: vertex(), Label :: label().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -744,7 +803,8 @@ when g: graph(), v: vertex(), vertices: [vertex()]</pre>
     </a>
     <h1 class="signature">vertices/1</h1>
       <div class="specs">
-          <pre>vertices(g) :: vertices when g: graph(), vertices: [vertex()]</pre>
+          <pre>vertices(G) -> Vertices when G :: graph(), Vertices :: [vertex()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -765,18 +825,18 @@ when g: graph(), v: vertex(), vertices: [vertex()]</pre>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

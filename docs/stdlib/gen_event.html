@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>gen_event — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -72,32 +72,32 @@ gen_event <small>behaviour</small>      </h1>
 <p> This behavior module provides event handling functionality. It consists of a generic event manager process with any number of event handlers that are added and deleted dynamically.</p>
 <p> An event manager implemented using this module has a standard set of interface functions and includes functionality for tracing and error reporting. It also fits into an OTP supervision tree. For more information, see OTP Design Principles. </p>
 <p> Each event handler is implemented as a callback module exporting a predefined set of functions. The relationship between the behavior functions and the callback functions is as follows:</p>
-<pre><code class="nohighlight makeup erlang"><span class="ss">gen_event</span><span class="w"> </span><span class="ss">module</span><span class="w">                   </span><span class="n">Callback</span><span class="w"> </span><span class="ss">module</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">gen_event</span><span class="w"> </span><span class="n">module</span><span class="w">                   </span><span class="nc">Callback</span><span class="w"> </span><span class="n">module</span><span class="w">
 </span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="w">                   </span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">-</span><span class="w">
-</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">start</span><span class="w">
-</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">start_link</span><span class="w">       </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="o">-</span><span class="w">
+</span><span class="n">gen_event</span><span class="ss">:start</span><span class="w">
+</span><span class="n">gen_event</span><span class="ss">:start_link</span><span class="w">       </span><span class="o">--</span><span class="o">--</span><span class="o">-&gt;</span><span class="w">  </span><span class="o">-</span><span class="w">
 
-</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">add_handler</span><span class="w">
-</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">add_sup_handler</span><span class="w">  </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">init</span><span class="o">/</span><span class="mi">1</span><span class="w">
+</span><span class="n">gen_event</span><span class="ss">:add_handler</span><span class="w">
+</span><span class="n">gen_event</span><span class="ss">:add_sup_handler</span><span class="w">  </span><span class="o">--</span><span class="o">--</span><span class="o">-&gt;</span><span class="w">  </span><span class="nc">Module</span><span class="ss">:init</span><span class="o">/</span><span class="mi">1</span><span class="w">
 
-</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">notify</span><span class="w">
-</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">sync_notify</span><span class="w">      </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">handle_event</span><span class="o">/</span><span class="mi">2</span><span class="w">
+</span><span class="n">gen_event</span><span class="ss">:notify</span><span class="w">
+</span><span class="n">gen_event</span><span class="ss">:sync_notify</span><span class="w">      </span><span class="o">--</span><span class="o">--</span><span class="o">-&gt;</span><span class="w">  </span><span class="nc">Module</span><span class="ss">:handle_event</span><span class="o">/</span><span class="mi">2</span><span class="w">
 
-</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">call</span><span class="w">             </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">handle_call</span><span class="o">/</span><span class="mi">2</span><span class="w">
+</span><span class="n">gen_event</span><span class="ss">:call</span><span class="w">             </span><span class="o">--</span><span class="o">--</span><span class="o">-&gt;</span><span class="w">  </span><span class="nc">Module</span><span class="ss">:handle_call</span><span class="o">/</span><span class="mi">2</span><span class="w">
 
-</span><span class="o">-</span><span class="w">                          </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">handle_info</span><span class="o">/</span><span class="mi">2</span><span class="w">
+</span><span class="o">-</span><span class="w">                          </span><span class="o">--</span><span class="o">--</span><span class="o">-&gt;</span><span class="w">  </span><span class="nc">Module</span><span class="ss">:handle_info</span><span class="o">/</span><span class="mi">2</span><span class="w">
 
-</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">delete_handler</span><span class="w">   </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">terminate</span><span class="o">/</span><span class="mi">2</span><span class="w">
+</span><span class="n">gen_event</span><span class="ss">:delete_handler</span><span class="w">   </span><span class="o">--</span><span class="o">--</span><span class="o">-&gt;</span><span class="w">  </span><span class="nc">Module</span><span class="ss">:terminate</span><span class="o">/</span><span class="mi">2</span><span class="w">
 
-</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">swap_handler</span><span class="w">
-</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">swap_sup_handler</span><span class="w"> </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module1</span><span class="p">:</span><span class="ss">terminate</span><span class="o">/</span><span class="mi">2</span><span class="w">
-                                   </span><span class="n">Module2</span><span class="p">:</span><span class="ss">init</span><span class="o">/</span><span class="mi">1</span><span class="w">
+</span><span class="n">gen_event</span><span class="ss">:swap_handler</span><span class="w">
+</span><span class="n">gen_event</span><span class="ss">:swap_sup_handler</span><span class="w"> </span><span class="o">--</span><span class="o">--</span><span class="o">-&gt;</span><span class="w">  </span><span class="nc">Module1</span><span class="ss">:terminate</span><span class="o">/</span><span class="mi">2</span><span class="w">
+                                   </span><span class="nc">Module2</span><span class="ss">:init</span><span class="o">/</span><span class="mi">1</span><span class="w">
 
-</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">which_handlers</span><span class="w">   </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="o">-</span><span class="w">
+</span><span class="n">gen_event</span><span class="ss">:which_handlers</span><span class="w">   </span><span class="o">--</span><span class="o">--</span><span class="o">-&gt;</span><span class="w">  </span><span class="o">-</span><span class="w">
 
-</span><span class="nc">gen_event</span><span class="p">:</span><span class="ss">stop</span><span class="w">             </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">terminate</span><span class="o">/</span><span class="mi">2</span><span class="w">
+</span><span class="n">gen_event</span><span class="ss">:stop</span><span class="w">             </span><span class="o">--</span><span class="o">--</span><span class="o">-&gt;</span><span class="w">  </span><span class="nc">Module</span><span class="ss">:terminate</span><span class="o">/</span><span class="mi">2</span><span class="w">
 
-</span><span class="o">-</span><span class="w">                          </span><span class="o">--</span><span class="o">--</span><span class="p">-&gt;</span><span class="w">  </span><span class="n">Module</span><span class="p">:</span><span class="ss">code_change</span><span class="o">/</span><span class="mi">3</span></code></pre>
+</span><span class="o">-</span><span class="w">                          </span><span class="o">--</span><span class="o">--</span><span class="o">-&gt;</span><span class="w">  </span><span class="nc">Module</span><span class="ss">:code_change</span><span class="o">/</span><span class="mi">3</span></code></pre>
 <p> As each event handler is one callback module, an event manager has many callback modules that are added and deleted dynamically. <code class="inline">gen_event</code> is therefore more tolerant of callback module errors than the other behaviors. If a callback function for an installed event handler fails with <code class="inline">Reason</code>, or returns a bad value <code class="inline">Term</code>, the event manager does not fail. It deletes the event handler by calling callback function <code class="inline">Module:terminate/2</code>, giving as argument <code class="inline">{error,{&#39;EXIT&#39;,Reason}}</code> or <code class="inline">{error,Term}</code>, respectively. No other event handler is affected.</p>
 <p> A <code class="inline">gen_event</code> process handles system messages as described in <code class="inline">sys(3)</code>. The <code class="inline">sys</code> module can be used for debugging an event manager.</p>
 <p> Notice that an event manager does trap exit signals automatically.</p>
@@ -119,18 +119,18 @@ gen_event <small>behaviour</small>      </h1>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

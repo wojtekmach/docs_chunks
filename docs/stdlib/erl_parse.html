@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>erl_parse — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -181,7 +181,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">abstract/1</h1>
       <div class="specs">
-          <pre>abstract(data) :: absTerm when data: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), absTerm: abstract_expr()</pre>
+          <pre>abstract(Data) -> AbsTerm
+            when Data :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), AbsTerm :: abstract_expr().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -197,13 +199,17 @@ Functions          </h1>
     </a>
     <h1 class="signature">abstract/2</h1>
       <div class="specs">
-          <pre>abstract(data, options) :: absTerm
-when data: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     options: line | [option],
-     option: {:line, line} | {:encoding, encoding},
-     encoding: :latin1 | :unicode | :utf8 | :none | encoding_func(),
-     line: <a href=":erl_anno.html#t:line/0">:erl_anno.line</a>(),
-     absTerm: abstract_expr()</pre>
+          <pre>abstract(Data, Options) -> AbsTerm
+            when
+                Data :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                Options :: Line | [Option],
+                Option :: {line, Line} | {encoding, Encoding},
+                Encoding ::
+                    latin1 | unicode | utf8 | none |
+                    encoding_func(),
+                Line :: erl_anno:line(),
+                AbsTerm :: abstract_expr().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -220,7 +226,9 @@ when data: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
     </a>
     <h1 class="signature">anno_from_term/1</h1>
       <div class="specs">
-          <pre>anno_from_term(term) :: erl_parse_tree() | form_info() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>anno_from_term(Term) -> erl_parse_tree() | form_info()
+                  when Term :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -235,7 +243,9 @@ when data: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
     </a>
     <h1 class="signature">anno_to_term/1</h1>
       <div class="specs">
-          <pre>anno_to_term(abstr) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>() when abstr: erl_parse_tree() | form_info()</pre>
+          <pre>anno_to_term(Abstr) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+                when Abstr :: erl_parse_tree() | form_info().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -250,14 +260,16 @@ when data: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
     </a>
     <h1 class="signature">fold_anno/3</h1>
       <div class="specs">
-          <pre>fold_anno(fun, acc0, abstr) :: acc1
-when fun: (anno, accIn -> accOut),
-     anno: <a href=":erl_anno.html#t:anno/0">:erl_anno.anno</a>(),
-     acc0: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     acc1: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     accIn: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     accOut: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     abstr: erl_parse_tree() | form_info()</pre>
+          <pre>fold_anno(Fun, Acc0, Abstr) -> Acc1
+             when
+                 Fun :: fun((Anno, AccIn) -> AccOut),
+                 Anno :: erl_anno:anno(),
+                 Acc0 :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                 Acc1 :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                 AccIn :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                 AccOut :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                 Abstr :: erl_parse_tree() | form_info().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -272,12 +284,14 @@ when fun: (anno, accIn -> accOut),
     </a>
     <h1 class="signature">map_anno/2</h1>
       <div class="specs">
-          <pre>map_anno(fun, abstr) :: newAbstr
-when fun: (anno -> newAnno),
-     anno: <a href=":erl_anno.html#t:anno/0">:erl_anno.anno</a>(),
-     newAnno: <a href=":erl_anno.html#t:anno/0">:erl_anno.anno</a>(),
-     abstr: erl_parse_tree() | form_info(),
-     newAbstr: erl_parse_tree() | form_info()</pre>
+          <pre>map_anno(Fun, Abstr) -> NewAbstr
+            when
+                Fun :: fun((Anno) -> NewAnno),
+                Anno :: erl_anno:anno(),
+                NewAnno :: erl_anno:anno(),
+                Abstr :: erl_parse_tree() | form_info(),
+                NewAbstr :: erl_parse_tree() | form_info().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -292,16 +306,18 @@ when fun: (anno -> newAnno),
     </a>
     <h1 class="signature">mapfold_anno/3</h1>
       <div class="specs">
-          <pre>mapfold_anno(fun, acc0, abstr) :: {newAbstr, acc1}
-when fun: (anno, accIn -> {newAnno, accOut}),
-     anno: <a href=":erl_anno.html#t:anno/0">:erl_anno.anno</a>(),
-     newAnno: <a href=":erl_anno.html#t:anno/0">:erl_anno.anno</a>(),
-     acc0: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     acc1: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     accIn: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     accOut: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     abstr: erl_parse_tree() | form_info(),
-     newAbstr: erl_parse_tree() | form_info()</pre>
+          <pre>mapfold_anno(Fun, Acc0, Abstr) -> {NewAbstr, Acc1}
+                when
+                    Fun :: fun((Anno, AccIn) -> {NewAnno, AccOut}),
+                    Anno :: erl_anno:anno(),
+                    NewAnno :: erl_anno:anno(),
+                    Acc0 :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                    Acc1 :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                    AccIn :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                    AccOut :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                    Abstr :: erl_parse_tree() | form_info(),
+                    NewAbstr :: erl_parse_tree() | form_info().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -316,8 +332,11 @@ when fun: (anno, accIn -> {newAnno, accOut}),
     </a>
     <h1 class="signature">new_anno/1</h1>
       <div class="specs">
-          <pre>new_anno(term) :: abstr
-when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), abstr: erl_parse_tree() | form_info()</pre>
+          <pre>new_anno(Term) -> Abstr
+            when
+                Term :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                Abstr :: erl_parse_tree() | form_info().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -332,7 +351,9 @@ when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
     </a>
     <h1 class="signature">normalise/1</h1>
       <div class="specs">
-          <pre>normalise(absTerm) :: data when absTerm: abstract_expr(), data: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>normalise(AbsTerm) -> Data
+             when AbsTerm :: abstract_expr(), Data :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -347,8 +368,12 @@ when term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
     </a>
     <h1 class="signature">parse_exprs/1</h1>
       <div class="specs">
-          <pre>parse_exprs(tokens) :: {:ok, exprList} | {:error, errorInfo}
-when tokens: [token()], exprList: [abstract_expr()], errorInfo: error_info()</pre>
+          <pre>parse_exprs(Tokens) -> {ok, ExprList} | {error, ErrorInfo}
+               when
+                   Tokens :: [token()],
+                   ExprList :: [abstract_expr()],
+                   ErrorInfo :: error_info().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -365,8 +390,12 @@ when tokens: [token()], exprList: [abstract_expr()], errorInfo: error_info()</pr
     </a>
     <h1 class="signature">parse_form/1</h1>
       <div class="specs">
-          <pre>parse_form(tokens) :: {:ok, absForm} | {:error, errorInfo}
-when tokens: [token()], absForm: abstract_form(), errorInfo: error_info()</pre>
+          <pre>parse_form(Tokens) -> {ok, AbsForm} | {error, ErrorInfo}
+              when
+                  Tokens :: [token()],
+                  AbsForm :: abstract_form(),
+                  ErrorInfo :: error_info().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -383,8 +412,12 @@ when tokens: [token()], absForm: abstract_form(), errorInfo: error_info()</pre>
     </a>
     <h1 class="signature">parse_term/1</h1>
       <div class="specs">
-          <pre>parse_term(tokens) :: {:ok, term} | {:error, errorInfo}
-when tokens: [token()], term: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), errorInfo: error_info()</pre>
+          <pre>parse_term(Tokens) -> {ok, Term} | {error, ErrorInfo}
+              when
+                  Tokens :: [token()],
+                  Term :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                  ErrorInfo :: error_info().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -419,18 +452,18 @@ when tokens: [token()], term: <a href="https://hexdocs.pm/elixir/typespecs.html#
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

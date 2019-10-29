@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>pool — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -70,7 +70,7 @@ pool      </h1>
 
         <section id="moduledoc">
 <p> This module can be used to run a set of Erlang nodes as a pool of computational processors. It is organized as a master and a set of slave nodes and includes the following features:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="ss">slave</span><span class="w"> </span><span class="nb">nodes</span><span class="w"> </span><span class="nb">send</span><span class="w"> </span><span class="ss">regular</span><span class="w"> </span><span class="ss">reports</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">master</span><span class="w"> </span><span class="ss">about</span><span class="w"> </span><span class="ss">their</span><span class="w"> </span><span class="ss">current</span><span class="w"> </span><span class="ss">load</span><span class="p">.</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="n">Queries</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">sent</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">master</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">determine</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="nb">node</span><span class="w"> </span><span class="ss">will</span><span class="w"> </span><span class="ss">have</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">least</span><span class="w"> </span><span class="ss">load</span><span class="p">.</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="n">BIF</span><span class="w"> </span><span class="err">`</span><span class="nf">statistics</span><span class="p" data-group-id="2207343630-1">(</span><span class="ss">run_queue</span><span class="p" data-group-id="2207343630-1">)</span><span class="err">`</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">used</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">estimating</span><span class="w"> </span><span class="ss">future</span><span class="w"> </span><span class="ss">loads</span><span class="p">.</span><span class="w"> </span><span class="n">It</span><span class="w"> </span><span class="ss">returns</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="nb">length</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">queue</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">ready</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">run</span><span class="w"> </span><span class="ss">processes</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="n">Erlang</span><span class="w"> </span><span class="ss">runtime</span><span class="w"> </span><span class="ss">system</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">*</span><span class="w"> </span><span class="nc">The</span><span class="w"> </span><span class="n">slave</span><span class="w"> </span><span class="n">nodes</span><span class="w"> </span><span class="n">send</span><span class="w"> </span><span class="n">regular</span><span class="w"> </span><span class="n">reports</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">load</span><span class="o">.</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="nc">Queries</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">sent</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">determine</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">least</span><span class="w"> </span><span class="n">load</span><span class="o">.</span><span class="w">  </span><span class="nc">The</span><span class="w"> </span><span class="nc">BIF</span><span class="w"> </span><span class="err">`</span><span class="n">statistics</span><span class="p" data-group-id="1390951633-1">(</span><span class="n">run_queue</span><span class="p" data-group-id="1390951633-1">)</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">estimating</span><span class="w"> </span><span class="n">future</span><span class="w"> </span><span class="n">loads</span><span class="o">.</span><span class="w"> </span><span class="nc">It</span><span class="w"> </span><span class="n">returns</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">ready</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">processes</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nc">Erlang</span><span class="w"> </span><span class="n">runtime</span><span class="w"> </span><span class="n">system</span><span class="o">.</span></code></pre>
 <p> The slave nodes are started with the <code class="inline">slave(3)</code> module. This effects terminal I/O, file I/O, and code loading.</p>
 <p> If the master node fails, the entire pool exits.</p>
         </section>
@@ -148,7 +148,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">attach/1</h1>
       <div class="specs">
-          <pre>attach(node) :: :already_attached | :attached when node: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>()</pre>
+          <pre>attach(Node) -> already_attached | attached when Node :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -163,7 +164,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">get_node/0</h1>
       <div class="specs">
-          <pre>get_node() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>()</pre>
+          <pre>get_node() -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -178,7 +180,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">get_nodes/0</h1>
       <div class="specs">
-          <pre>get_nodes() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>()]</pre>
+          <pre>get_nodes() -> [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">node</a>()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -193,8 +196,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">pspawn/3</h1>
       <div class="specs">
-          <pre>pspawn(mod, fun, args) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()
-when mod: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), fun: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), args: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]</pre>
+          <pre>pspawn(Mod, Fun, Args) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()
+          when Mod :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), Fun :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), Args :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -209,8 +213,12 @@ when mod: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">modu
     </a>
     <h1 class="signature">pspawn_link/3</h1>
       <div class="specs">
-          <pre>pspawn_link(mod, fun, args) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()
-when mod: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), fun: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), args: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]</pre>
+          <pre>pspawn_link(Mod, Fun, Args) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()
+               when
+                   Mod :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+                   Fun :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+                   Args :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -240,7 +248,8 @@ when mod: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">modu
     </a>
     <h1 class="signature">stop/0</h1>
       <div class="specs">
-          <pre>stop() :: :stopped</pre>
+          <pre>stop() -> stopped.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -261,18 +270,18 @@ when mod: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">modu
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

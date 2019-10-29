@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>shell — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -78,11 +78,11 @@ shell      </h1>
 <p> The shell also permits the user to start multiple concurrent jobs. A job can be regarded as a set of processes that can communicate with the shell.</p>
 <p> There is some support for reading and printing records in the shell. During compilation record expressions are translated to tuple expressions. In runtime it is not known whether a tuple represents a record, and the record definitions used by the compiler are unavailable at runtime. So, to read the record syntax and print tuples as records when possible, record definitions must be maintained by the shell itself.</p>
 <p> The shell commands for reading, defining, forgetting, listing, and printing records are described below. Notice that each job has its own set of record definitions. To facilitate matters, record definitions in modules <code class="inline">shell_default</code> and <code class="inline">user_default</code> (if loaded) are read each time a new job is started. For example, adding the following line to <code class="inline">user_default</code> makes the definition of <code class="inline">file_info</code> readily available in the shell:</p>
-<pre><code class="nohighlight makeup erlang"><span class="p">-</span><span class="na">include_lib</span><span class="p" data-group-id="7395886405-1">(</span><span class="s">&quot;kernel/include/file.hrl&quot;</span><span class="p" data-group-id="7395886405-1">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">-</span><span class="n">include_lib</span><span class="p" data-group-id="9521136017-1">(</span><span class="s">&quot;kernel/include/file.hrl&quot;</span><span class="p" data-group-id="9521136017-1">)</span><span class="o">.</span></code></pre>
 <p> The shell runs in two modes:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="n">Normal</span><span class="w"> </span><span class="p" data-group-id="7297946266-1">(</span><span class="ss">possibly</span><span class="w"> </span><span class="ss">restricted</span><span class="p" data-group-id="7297946266-1">)</span><span class="err">`</span><span class="w"> </span><span class="ss">mode</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">commands</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">edited</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">expressions</span><span class="w"> </span><span class="ss">evaluated</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">*</span><span class="w">  </span><span class="err">`</span><span class="nc">Normal</span><span class="w"> </span><span class="p" data-group-id="8718790780-1">(</span><span class="n">possibly</span><span class="w"> </span><span class="n">restricted</span><span class="p" data-group-id="8718790780-1">)</span><span class="err">`</span><span class="w"> </span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">commands</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">edited</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">expressions</span><span class="w"> </span><span class="n">evaluated</span><span class="w">
 
-</span><span class="o">*</span><span class="w">  </span><span class="n">Job</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="n">Mode</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">JCL</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">jobs</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">started</span><span class="p">,</span><span class="w"> </span><span class="ss">killed</span><span class="p">,</span><span class="w"> </span><span class="ss">detached</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">connected</span></code></pre>
+</span><span class="o">*</span><span class="w">  </span><span class="nc">Job</span><span class="w"> </span><span class="nc">Control</span><span class="w"> </span><span class="nc">Mode</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="nc">JCL</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">jobs</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">started</span><span class="p">,</span><span class="w"> </span><span class="n">killed</span><span class="p">,</span><span class="w"> </span><span class="n">detached</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">connected</span></code></pre>
 <p>   Only the currently connected job can &#39;talk&#39; to the shell.</p>
         </section>
 
@@ -153,7 +153,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">history/1</h1>
       <div class="specs">
-          <pre>history(n) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>history(N) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when N :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -168,9 +169,11 @@ Functions          </h1>
     </a>
     <h1 class="signature">prompt_func/1</h1>
       <div class="specs">
-          <pre>prompt_func(promptFunc) :: promptFunc2
-when promptFunc: :default | {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()},
-     promptFunc2: :default | {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+          <pre>prompt_func(PromptFunc) -> PromptFunc2
+               when
+                   PromptFunc :: default | {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()},
+                   PromptFunc2 :: default | {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -185,7 +188,8 @@ when promptFunc: :default | {<a href="https://hexdocs.pm/elixir/typespecs.html#b
     </a>
     <h1 class="signature">results/1</h1>
       <div class="specs">
-          <pre>results(n) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>results(N) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when N :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -200,8 +204,11 @@ when promptFunc: :default | {<a href="https://hexdocs.pm/elixir/typespecs.html#b
     </a>
     <h1 class="signature">start_restricted/1</h1>
       <div class="specs">
-          <pre>start_restricted(module) :: {:error, reason}
-when module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), reason: <a href="http://www.erlang.org/doc/man/code.html#type-load_error_rsn">:code.load_error_rsn</a>()</pre>
+          <pre>start_restricted(Module) -> {error, Reason}
+                    when
+                        Module :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+                        Reason :: code:load_error_rsn().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -217,7 +224,8 @@ when module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">m
     </a>
     <h1 class="signature">stop_restricted/0</h1>
       <div class="specs">
-          <pre>stop_restricted() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+          <pre>stop_restricted() -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -232,7 +240,9 @@ when module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">m
     </a>
     <h1 class="signature">strings/1</h1>
       <div class="specs">
-          <pre>strings(strings) :: strings2 when strings: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(), strings2: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+          <pre>strings(Strings) -> Strings2
+           when Strings :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(), Strings2 :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -254,18 +264,18 @@ when module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">m
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

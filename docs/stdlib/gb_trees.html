@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>gb_trees — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -260,7 +260,11 @@ Functions          </h1>
     </a>
     <h1 class="signature">balance/1</h1>
       <div class="specs">
-          <pre>balance(tree1) :: tree2 when tree1: tree(key, value), tree2: tree(key, value)</pre>
+          <pre>balance(Tree1) -> Tree2
+           when
+               Tree1 :: tree(Key, Value),
+               Tree2 :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -275,8 +279,10 @@ Functions          </h1>
     </a>
     <h1 class="signature">delete/2</h1>
       <div class="specs">
-          <pre>delete(key, tree1) :: tree2
-when tree1: tree(key, value), tree2: tree(key, value), key: var</pre>
+          <pre>delete(Key, Tree1) -> Tree2
+          when
+              Tree1 :: tree(Key, Value), Tree2 :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -291,8 +297,11 @@ when tree1: tree(key, value), tree2: tree(key, value), key: var</pre>
     </a>
     <h1 class="signature">delete_any/2</h1>
       <div class="specs">
-          <pre>delete_any(key, tree1) :: tree2
-when tree1: tree(key, value), tree2: tree(key, value), key: var</pre>
+          <pre>delete_any(Key, Tree1) -> Tree2
+              when
+                  Tree1 :: tree(Key, Value),
+                  Tree2 :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -307,7 +316,8 @@ when tree1: tree(key, value), tree2: tree(key, value), key: var</pre>
     </a>
     <h1 class="signature">empty/0</h1>
       <div class="specs">
-          <pre>empty() :: tree()</pre>
+          <pre>empty() -> tree().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -322,8 +332,9 @@ when tree1: tree(key, value), tree2: tree(key, value), key: var</pre>
     </a>
     <h1 class="signature">enter/3</h1>
       <div class="specs">
-          <pre>enter(key, value, tree1) :: tree2
-when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre>
+          <pre>enter(Key, Value, Tree1) -> Tree2
+         when Tree1 :: tree(Key, Value), Tree2 :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -338,7 +349,11 @@ when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre
     </a>
     <h1 class="signature">from_orddict/1</h1>
       <div class="specs">
-          <pre>from_orddict(list) :: tree when list: [{key, value}], tree: tree(key, value)</pre>
+          <pre>from_orddict(List) -> Tree
+                when
+                    List :: [{Key, Value}],
+                    Tree :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -353,7 +368,8 @@ when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre
     </a>
     <h1 class="signature">get/2</h1>
       <div class="specs">
-          <pre>get(key, tree) :: value when tree: tree(key, value), key: var, value: var</pre>
+          <pre>get(Key, Tree) -> Value when Tree :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -368,8 +384,10 @@ when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre
     </a>
     <h1 class="signature">insert/3</h1>
       <div class="specs">
-          <pre>insert(key, value, tree1) :: tree2
-when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre>
+          <pre>insert(Key, Value, Tree1) -> Tree2
+          when
+              Tree1 :: tree(Key, Value), Tree2 :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -384,8 +402,9 @@ when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre
     </a>
     <h1 class="signature">is_defined/2</h1>
       <div class="specs">
-          <pre>is_defined(key, tree) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
-when tree: tree(key, value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()), key: var</pre>
+          <pre>is_defined(Key, Tree) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+              when Tree :: tree(Key, Value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -400,7 +419,8 @@ when tree: tree(key, value :: <a href="https://hexdocs.pm/elixir/typespecs.html#
     </a>
     <h1 class="signature">is_empty/1</h1>
       <div class="specs">
-          <pre>is_empty(tree) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when tree: tree()</pre>
+          <pre>is_empty(Tree) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Tree :: tree().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -415,7 +435,10 @@ when tree: tree(key, value :: <a href="https://hexdocs.pm/elixir/typespecs.html#
     </a>
     <h1 class="signature">iterator/1</h1>
       <div class="specs">
-          <pre>iterator(tree) :: iter when tree: tree(key, value), iter: iter(key, value)</pre>
+          <pre>iterator(Tree) -> Iter
+            when
+                Tree :: tree(Key, Value), Iter :: iter(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -430,8 +453,11 @@ when tree: tree(key, value :: <a href="https://hexdocs.pm/elixir/typespecs.html#
     </a>
     <h1 class="signature">iterator_from/2</h1>
       <div class="specs">
-          <pre>iterator_from(key, tree) :: iter
-when tree: tree(key, value), iter: iter(key, value), key: var</pre>
+          <pre>iterator_from(Key, Tree) -> Iter
+                 when
+                     Tree :: tree(Key, Value),
+                     Iter :: iter(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -446,7 +472,8 @@ when tree: tree(key, value), iter: iter(key, value), key: var</pre>
     </a>
     <h1 class="signature">keys/1</h1>
       <div class="specs">
-          <pre>keys(tree) :: [key] when tree: tree(key, value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()), key: var</pre>
+          <pre>keys(Tree) -> [Key] when Tree :: tree(Key, Value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -461,7 +488,8 @@ when tree: tree(key, value), iter: iter(key, value), key: var</pre>
     </a>
     <h1 class="signature">largest/1</h1>
       <div class="specs">
-          <pre>largest(tree) :: {key, value} when tree: tree(key, value), key: var, value: var</pre>
+          <pre>largest(Tree) -> {Key, Value} when Tree :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -476,8 +504,9 @@ when tree: tree(key, value), iter: iter(key, value), key: var</pre>
     </a>
     <h1 class="signature">lookup/2</h1>
       <div class="specs">
-          <pre>lookup(key, tree) :: :none | {:value, value}
-when tree: tree(key, value), key: var, value: var</pre>
+          <pre>lookup(Key, Tree) -> none | {value, Value}
+          when Tree :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -492,10 +521,13 @@ when tree: tree(key, value), key: var, value: var</pre>
     </a>
     <h1 class="signature">map/2</h1>
       <div class="specs">
-          <pre>map(function, tree1) :: tree2
-when function: (k :: key, v1 :: value1 -> v2 :: value2),
-     tree1: tree(key, value1),
-     tree2: tree(key, value2)</pre>
+          <pre>map(Function, Tree1) -> Tree2
+       when
+           Function ::
+               fun((K :: Key, V1 :: Value1) -> V2 :: Value2),
+           Tree1 :: tree(Key, Value1),
+           Tree2 :: tree(Key, Value2).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -510,8 +542,9 @@ when function: (k :: key, v1 :: value1 -> v2 :: value2),
     </a>
     <h1 class="signature">next/1</h1>
       <div class="specs">
-          <pre>next(iter1) :: :none | {key, value, iter2}
-when iter1: iter(key, value), iter2: iter(key, value), key: var, value: var</pre>
+          <pre>next(Iter1) -> none | {Key, Value, Iter2}
+        when Iter1 :: iter(Key, Value), Iter2 :: iter(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -526,7 +559,8 @@ when iter1: iter(key, value), iter2: iter(key, value), key: var, value: var</pre
     </a>
     <h1 class="signature">size/1</h1>
       <div class="specs">
-          <pre>size(tree) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when tree: tree()</pre>
+          <pre>size(Tree) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when Tree :: tree().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -541,7 +575,8 @@ when iter1: iter(key, value), iter2: iter(key, value), key: var, value: var</pre
     </a>
     <h1 class="signature">smallest/1</h1>
       <div class="specs">
-          <pre>smallest(tree) :: {key, value} when tree: tree(key, value), key: var, value: var</pre>
+          <pre>smallest(Tree) -> {Key, Value} when Tree :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -556,8 +591,13 @@ when iter1: iter(key, value), iter2: iter(key, value), key: var, value: var</pre
     </a>
     <h1 class="signature">take/2</h1>
       <div class="specs">
-          <pre>take(key, tree1) :: {value, tree2}
-when tree1: tree(key, _), tree2: tree(key, _), key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), value: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>take(Key, Tree1) -> {Value, Tree2}
+        when
+            Tree1 :: tree(Key, _),
+            Tree2 :: tree(Key, _),
+            Key :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+            Value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -572,8 +612,13 @@ when tree1: tree(key, _), tree2: tree(key, _), key: <a href="https://hexdocs.pm/
     </a>
     <h1 class="signature">take_any/2</h1>
       <div class="specs">
-          <pre>take_any(key, tree1) :: {value, tree2} | :error
-when tree1: tree(key, _), tree2: tree(key, _), key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), value: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>take_any(Key, Tree1) -> {Value, Tree2} | error
+            when
+                Tree1 :: tree(Key, _),
+                Tree2 :: tree(Key, _),
+                Key :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                Value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -588,8 +633,11 @@ when tree1: tree(key, _), tree2: tree(key, _), key: <a href="https://hexdocs.pm/
     </a>
     <h1 class="signature">take_largest/1</h1>
       <div class="specs">
-          <pre>take_largest(tree1) :: {key, value, tree2}
-when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre>
+          <pre>take_largest(Tree1) -> {Key, Value, Tree2}
+                when
+                    Tree1 :: tree(Key, Value),
+                    Tree2 :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -604,8 +652,11 @@ when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre
     </a>
     <h1 class="signature">take_smallest/1</h1>
       <div class="specs">
-          <pre>take_smallest(tree1) :: {key, value, tree2}
-when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre>
+          <pre>take_smallest(Tree1) -> {Key, Value, Tree2}
+                 when
+                     Tree1 :: tree(Key, Value),
+                     Tree2 :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -620,8 +671,8 @@ when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre
     </a>
     <h1 class="signature">to_list/1</h1>
       <div class="specs">
-          <pre>to_list(tree) :: [{key, value}]
-when tree: tree(key, value), key: var, value: var</pre>
+          <pre>to_list(Tree) -> [{Key, Value}] when Tree :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -636,8 +687,10 @@ when tree: tree(key, value), key: var, value: var</pre>
     </a>
     <h1 class="signature">update/3</h1>
       <div class="specs">
-          <pre>update(key, value, tree1) :: tree2
-when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre>
+          <pre>update(Key, Value, Tree1) -> Tree2
+          when
+              Tree1 :: tree(Key, Value), Tree2 :: tree(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -652,7 +705,8 @@ when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre
     </a>
     <h1 class="signature">values/1</h1>
       <div class="specs">
-          <pre>values(tree) :: [value] when tree: tree(key :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), value), value: var</pre>
+          <pre>values(Tree) -> [Value] when Tree :: tree(Key :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -673,18 +727,18 @@ when tree1: tree(key, value), tree2: tree(key, value), key: var, value: var</pre
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

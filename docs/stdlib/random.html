@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>random — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -155,7 +155,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">seed/0</h1>
       <div class="specs">
-          <pre>seed() :: ran()</pre>
+          <pre>seed() -> ran().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -170,11 +171,13 @@ Functions          </h1>
     </a>
     <h1 class="signature">seed/1</h1>
       <div class="specs">
-          <pre>seed(sValue) :: :undefined | ran()
-when sValue: {a1, a2, a3} | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
-     a1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
-     a2: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
-     a3: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+          <pre>seed(SValue) -> undefined | ran()
+        when
+            SValue :: {A1, A2, A3} | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+            A1 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+            A2 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+            A3 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -189,16 +192,17 @@ when sValue: {a1, a2, a3} | <a href="https://hexdocs.pm/elixir/typespecs.html#ba
     </a>
     <h1 class="signature">seed/3</h1>
       <div class="specs">
-          <pre>seed(a1, a2, a3) :: :undefined | ran()
-when a1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), a2: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), a3: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+          <pre>seed(A1, A2, A3) -> undefined | ran()
+        when A1 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), A2 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), A3 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Seeds random number generation with integer values in the process dictionary and returns the old state.</p>
 <p> The following is an easy way of obtaining a unique value to seed with:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nc">random</span><span class="p">:</span><span class="nf">seed</span><span class="p" data-group-id="0976660040-1">(</span><span class="nc">erlang</span><span class="p">:</span><span class="nf">phash2</span><span class="p" data-group-id="0976660040-2">(</span><span class="p" data-group-id="0976660040-3">[</span><span class="nf">node</span><span class="p" data-group-id="0976660040-4">(</span><span class="p" data-group-id="0976660040-4">)</span><span class="p" data-group-id="0976660040-3">]</span><span class="p" data-group-id="0976660040-2">)</span><span class="p">,</span><span class="w">
-            </span><span class="nc">erlang</span><span class="p">:</span><span class="nf">monotonic_time</span><span class="p" data-group-id="0976660040-5">(</span><span class="p" data-group-id="0976660040-5">)</span><span class="p">,</span><span class="w">
-            </span><span class="nc">erlang</span><span class="p">:</span><span class="nf">unique_integer</span><span class="p" data-group-id="0976660040-6">(</span><span class="p" data-group-id="0976660040-6">)</span><span class="p" data-group-id="0976660040-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">random</span><span class="ss">:seed</span><span class="p" data-group-id="1850834866-1">(</span><span class="n">erlang</span><span class="ss">:phash2</span><span class="p" data-group-id="1850834866-2">(</span><span class="p" data-group-id="1850834866-3">[</span><span class="n">node</span><span class="p" data-group-id="1850834866-4">(</span><span class="p" data-group-id="1850834866-4">)</span><span class="p" data-group-id="1850834866-3">]</span><span class="p" data-group-id="1850834866-2">)</span><span class="p">,</span><span class="w">
+            </span><span class="n">erlang</span><span class="ss">:monotonic_time</span><span class="p" data-group-id="1850834866-5">(</span><span class="p" data-group-id="1850834866-5">)</span><span class="p">,</span><span class="w">
+            </span><span class="n">erlang</span><span class="ss">:unique_integer</span><span class="p" data-group-id="1850834866-6">(</span><span class="p" data-group-id="1850834866-6">)</span><span class="p" data-group-id="1850834866-1">)</span></code></pre>
 <p> For details, see  <code class="inline">erlang:phash2/1</code>,  <code class="inline">erlang:node/0</code>,  <code class="inline">erlang:monotonic_time/0</code>, and  <code class="inline">erlang:unique_integer/0</code>.</p>
   </section>
 </section>
@@ -210,7 +214,8 @@ when a1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer<
     </a>
     <h1 class="signature">seed0/0</h1>
       <div class="specs">
-          <pre>seed0() :: ran()</pre>
+          <pre>seed0() -> ran().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -225,7 +230,8 @@ when a1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer<
     </a>
     <h1 class="signature">uniform/0</h1>
       <div class="specs">
-          <pre>uniform() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
+          <pre>uniform() -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -240,7 +246,8 @@ when a1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer<
     </a>
     <h1 class="signature">uniform/1</h1>
       <div class="specs">
-          <pre>uniform(n) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>() when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()</pre>
+          <pre>uniform(N) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>() when N :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -255,7 +262,9 @@ when a1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer<
     </a>
     <h1 class="signature">uniform_s/1</h1>
       <div class="specs">
-          <pre>uniform_s(state0) :: {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), state1} when state0: ran(), state1: ran()</pre>
+          <pre>uniform_s(State0) -> {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), State1}
+             when State0 :: ran(), State1 :: ran().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -270,8 +279,12 @@ when a1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer<
     </a>
     <h1 class="signature">uniform_s/2</h1>
       <div class="specs">
-          <pre>uniform_s(n, state0) :: {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), state1}
-when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), state0: ran(), state1: ran()</pre>
+          <pre>uniform_s(N, State0) -> {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), State1}
+             when
+                 N :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+                 State0 :: ran(),
+                 State1 :: ran().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -292,18 +305,18 @@ when n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integ
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

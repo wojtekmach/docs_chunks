@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>timer — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -195,13 +195,16 @@ Functions          </h1>
     </a>
     <h1 class="signature">apply_after/4</h1>
       <div class="specs">
-          <pre>apply_after(time, module, function, arguments) :: {:ok, tRef} | {:error, reason}
-when time: time(),
-     module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
-     function: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
-     arguments: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
-     tRef: tref(),
-     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>apply_after(Time, Module, Function, Arguments) ->
+               {ok, TRef} | {error, Reason}
+               when
+                   Time :: time(),
+                   Module :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+                   Function :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+                   Arguments :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
+                   TRef :: tref(),
+                   Reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -217,14 +220,16 @@ when time: time(),
     </a>
     <h1 class="signature">apply_interval/4</h1>
       <div class="specs">
-          <pre>apply_interval(time, module, function, arguments) ::
-  {:ok, tRef} | {:error, reason}
-when time: time(),
-     module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
-     function: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
-     arguments: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
-     tRef: tref(),
-     reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>apply_interval(Time, Module, Function, Arguments) ->
+                  {ok, TRef} | {error, Reason}
+                  when
+                      Time :: time(),
+                      Module :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+                      Function :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+                      Arguments :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()],
+                      TRef :: tref(),
+                      Reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -240,8 +245,9 @@ when time: time(),
     </a>
     <h1 class="signature">cancel/1</h1>
       <div class="specs">
-          <pre>cancel(tRef) :: {:ok, :cancel} | {:error, reason}
-when tRef: tref(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>cancel(TRef) -> {ok, cancel} | {error, Reason}
+          when TRef :: tref(), Reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -270,11 +276,13 @@ when tRef: tref(), reason: <a href="https://hexdocs.pm/elixir/typespecs.html#bui
     </a>
     <h1 class="signature">hms/3</h1>
       <div class="specs">
-          <pre>hms(hours, minutes, seconds) :: milliSeconds
-when hours: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
-     minutes: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
-     seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
-     milliSeconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>hms(Hours, Minutes, Seconds) -> MilliSeconds
+       when
+           Hours :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+           Minutes :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+           Seconds :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+           MilliSeconds :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -289,8 +297,11 @@ when hours: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_n
     </a>
     <h1 class="signature">hours/1</h1>
       <div class="specs">
-          <pre>hours(hours) :: milliSeconds
-when hours: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), milliSeconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>hours(Hours) -> MilliSeconds
+         when
+             Hours :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+             MilliSeconds :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -318,8 +329,11 @@ when hours: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_n
     </a>
     <h1 class="signature">minutes/1</h1>
       <div class="specs">
-          <pre>minutes(minutes) :: milliSeconds
-when minutes: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), milliSeconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>minutes(Minutes) -> MilliSeconds
+           when
+               Minutes :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+               MilliSeconds :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -334,8 +348,12 @@ when minutes: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non
     </a>
     <h1 class="signature">now_diff/2</h1>
       <div class="specs">
-          <pre>now_diff(t2, t1) :: tdiff
-when t1: <a href="http://www.erlang.org/doc/man/erlang.html#type-timestamp">:erlang.timestamp</a>(), t2: <a href="http://www.erlang.org/doc/man/erlang.html#type-timestamp">:erlang.timestamp</a>(), tdiff: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+          <pre>now_diff(T2, T1) -> Tdiff
+            when
+                T1 :: erlang:timestamp(),
+                T2 :: erlang:timestamp(),
+                Tdiff :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -350,8 +368,11 @@ when t1: <a href="http://www.erlang.org/doc/man/erlang.html#type-timestamp">:erl
     </a>
     <h1 class="signature">seconds/1</h1>
       <div class="specs">
-          <pre>seconds(seconds) :: milliSeconds
-when seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), milliSeconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>seconds(Seconds) -> MilliSeconds
+           when
+               Seconds :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+               MilliSeconds :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -394,7 +415,8 @@ when seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non
     </a>
     <h1 class="signature">sleep/1</h1>
       <div class="specs">
-          <pre>sleep(time) :: :ok when time: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">timeout</a>()</pre>
+          <pre>sleep(Time) -> ok when Time :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">timeout</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -409,7 +431,8 @@ when seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non
     </a>
     <h1 class="signature">start/0</h1>
       <div class="specs">
-          <pre>start() :: :ok</pre>
+          <pre>start() -> ok.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -445,18 +468,18 @@ when seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>erl_anno — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -217,7 +217,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">column/1</h1>
       <div class="specs">
-          <pre>column(anno) :: column() | :undefined when anno: anno()</pre>
+          <pre>column(Anno) -> column() | undefined when Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -232,7 +233,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">end_location/1</h1>
       <div class="specs">
-          <pre>end_location(anno) :: location() | :undefined when anno: anno()</pre>
+          <pre>end_location(Anno) -> location() | undefined when Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -247,7 +249,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">file/1</h1>
       <div class="specs">
-          <pre>file(anno) :: filename() | :undefined when anno: anno()</pre>
+          <pre>file(Anno) -> filename() | undefined when Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -262,7 +265,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">from_term/1</h1>
       <div class="specs">
-          <pre>from_term(term) :: anno when term: anno_term(), anno: anno()</pre>
+          <pre>from_term(Term) -> Anno when Term :: anno_term(), Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -278,7 +282,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">generated/1</h1>
       <div class="specs">
-          <pre>generated(anno) :: generated() when anno: anno()</pre>
+          <pre>generated(Anno) -> generated() when Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -293,7 +298,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">is_anno/1</h1>
       <div class="specs">
-          <pre>is_anno(term) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when term: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()</pre>
+          <pre>is_anno(Term) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Term :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -308,7 +314,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">line/1</h1>
       <div class="specs">
-          <pre>line(anno) :: line() when anno: anno()</pre>
+          <pre>line(Anno) -> line() when Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -323,7 +330,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">location/1</h1>
       <div class="specs">
-          <pre>location(anno) :: location() when anno: anno()</pre>
+          <pre>location(Anno) -> location() when Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -338,7 +346,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">new/1</h1>
       <div class="specs">
-          <pre>new(location) :: anno() when location: location()</pre>
+          <pre>new(Location) -> anno() when Location :: location().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -353,7 +362,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">set_file/2</h1>
       <div class="specs">
-          <pre>set_file(file, anno) :: anno when file: filename(), anno: anno()</pre>
+          <pre>set_file(File, Anno) -> Anno
+            when File :: filename(), Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -368,7 +379,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">set_generated/2</h1>
       <div class="specs">
-          <pre>set_generated(generated, anno) :: anno when generated: generated(), anno: anno()</pre>
+          <pre>set_generated(Generated, Anno) -> Anno
+                 when Generated :: generated(), Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -383,7 +396,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">set_line/2</h1>
       <div class="specs">
-          <pre>set_line(line, anno) :: anno when line: line(), anno: anno()</pre>
+          <pre>set_line(Line, Anno) -> Anno when Line :: line(), Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -398,7 +412,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">set_location/2</h1>
       <div class="specs">
-          <pre>set_location(location, anno) :: anno when location: location(), anno: anno()</pre>
+          <pre>set_location(Location, Anno) -> Anno
+                when Location :: location(), Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -413,7 +429,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">set_record/2</h1>
       <div class="specs">
-          <pre>set_record(record, anno) :: anno when record: record(), anno: anno()</pre>
+          <pre>set_record(Record, Anno) -> Anno
+              when Record :: record(), Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -428,7 +446,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">set_text/2</h1>
       <div class="specs">
-          <pre>set_text(text, anno) :: anno when text: text(), anno: anno()</pre>
+          <pre>set_text(Text, Anno) -> Anno when Text :: text(), Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -443,7 +462,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">text/1</h1>
       <div class="specs">
-          <pre>text(anno) :: text() | :undefined when anno: anno()</pre>
+          <pre>text(Anno) -> text() | undefined when Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -458,7 +478,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">to_term/1</h1>
       <div class="specs">
-          <pre>to_term(anno) :: anno_term() when anno: anno()</pre>
+          <pre>to_term(Anno) -> anno_term() when Anno :: anno().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -480,18 +501,18 @@ Functions          </h1>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

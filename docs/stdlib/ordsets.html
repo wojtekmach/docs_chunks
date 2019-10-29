@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>ordsets — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -212,8 +212,12 @@ Functions          </h1>
     </a>
     <h1 class="signature">add_element/2</h1>
       <div class="specs">
-          <pre>add_element(element, ordset1) :: ordset2
-when element: e, ordset1: ordset(t), ordset2: ordset(t | e)</pre>
+          <pre>add_element(Element, Ordset1) -> Ordset2
+               when
+                   Element :: E,
+                   Ordset1 :: ordset(T),
+                   Ordset2 :: ordset(T | E).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -228,8 +232,12 @@ when element: e, ordset1: ordset(t), ordset2: ordset(t | e)</pre>
     </a>
     <h1 class="signature">del_element/2</h1>
       <div class="specs">
-          <pre>del_element(element, ordset1) :: ordset2
-when element: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), ordset1: ordset(t), ordset2: ordset(t)</pre>
+          <pre>del_element(Element, Ordset1) -> Ordset2
+               when
+                   Element :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                   Ordset1 :: ordset(T),
+                   Ordset2 :: ordset(T).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -244,8 +252,12 @@ when element: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">
     </a>
     <h1 class="signature">filter/2</h1>
       <div class="specs">
-          <pre>filter(pred, ordset1) :: ordset2
-when pred: (element :: t -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), ordset1: ordset(t), ordset2: ordset(t)</pre>
+          <pre>filter(Pred, Ordset1) -> Ordset2
+          when
+              Pred :: fun((Element :: T) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()),
+              Ordset1 :: ordset(T),
+              Ordset2 :: ordset(T).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -260,11 +272,15 @@ when pred: (element :: t -> <a href="https://hexdocs.pm/elixir/typespecs.html#bu
     </a>
     <h1 class="signature">fold/3</h1>
       <div class="specs">
-          <pre>fold(function, acc0, ordset) :: acc1
-when function: (element :: t, accIn :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>() -> accOut :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()),
-     ordset: ordset(t),
-     acc0: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     acc1: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>fold(Function, Acc0, Ordset) -> Acc1
+        when
+            Function ::
+                <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>((Element :: T, AccIn :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) ->
+                        AccOut :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()),
+            Ordset :: ordset(T),
+            Acc0 :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+            Acc1 :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -279,7 +295,8 @@ when function: (element :: t, accIn :: <a href="https://hexdocs.pm/elixir/typesp
     </a>
     <h1 class="signature">from_list/1</h1>
       <div class="specs">
-          <pre>from_list(list) :: ordset when list: [t], ordset: ordset(t)</pre>
+          <pre>from_list(List) -> Ordset when List :: [T], Ordset :: ordset(T).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -294,8 +311,11 @@ when function: (element :: t, accIn :: <a href="https://hexdocs.pm/elixir/typesp
     </a>
     <h1 class="signature">intersection/1</h1>
       <div class="specs">
-          <pre>intersection(ordsetList) :: ordset
-when ordsetList: [ordset(_), ...], ordset: ordset(_)</pre>
+          <pre>intersection(OrdsetList) -> Ordset
+                when
+                    OrdsetList :: [ordset(_), ...],
+                    Ordset :: ordset(_).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -310,8 +330,12 @@ when ordsetList: [ordset(_), ...], ordset: ordset(_)</pre>
     </a>
     <h1 class="signature">intersection/2</h1>
       <div class="specs">
-          <pre>intersection(ordset1, ordset2) :: ordset3
-when ordset1: ordset(_), ordset2: ordset(_), ordset3: ordset(_)</pre>
+          <pre>intersection(Ordset1, Ordset2) -> Ordset3
+                when
+                    Ordset1 :: ordset(_),
+                    Ordset2 :: ordset(_),
+                    Ordset3 :: ordset(_).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -326,8 +350,9 @@ when ordset1: ordset(_), ordset2: ordset(_), ordset3: ordset(_)</pre>
     </a>
     <h1 class="signature">is_disjoint/2</h1>
       <div class="specs">
-          <pre>is_disjoint(ordset1, ordset2) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
-when ordset1: ordset(_), ordset2: ordset(_)</pre>
+          <pre>is_disjoint(Ordset1, Ordset2) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+               when Ordset1 :: ordset(_), Ordset2 :: ordset(_).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -342,8 +367,9 @@ when ordset1: ordset(_), ordset2: ordset(_)</pre>
     </a>
     <h1 class="signature">is_element/2</h1>
       <div class="specs">
-          <pre>is_element(element, ordset) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
-when element: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), ordset: ordset(_)</pre>
+          <pre>is_element(Element, Ordset) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+              when Element :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), Ordset :: ordset(_).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -358,7 +384,8 @@ when element: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">
     </a>
     <h1 class="signature">is_empty/1</h1>
       <div class="specs">
-          <pre>is_empty(ordset) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when ordset: ordset(_)</pre>
+          <pre>is_empty(Ordset) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Ordset :: ordset(_).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -373,7 +400,8 @@ when element: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">
     </a>
     <h1 class="signature">is_set/1</h1>
       <div class="specs">
-          <pre>is_set(ordset) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when ordset: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>is_set(Ordset) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Ordset :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -388,8 +416,9 @@ when element: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">
     </a>
     <h1 class="signature">is_subset/2</h1>
       <div class="specs">
-          <pre>is_subset(ordset1, ordset2) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
-when ordset1: ordset(_), ordset2: ordset(_)</pre>
+          <pre>is_subset(Ordset1, Ordset2) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+             when Ordset1 :: ordset(_), Ordset2 :: ordset(_).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -404,7 +433,8 @@ when ordset1: ordset(_), ordset2: ordset(_)</pre>
     </a>
     <h1 class="signature">new/0</h1>
       <div class="specs">
-          <pre>new() :: []</pre>
+          <pre>new() -> [].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -419,7 +449,8 @@ when ordset1: ordset(_), ordset2: ordset(_)</pre>
     </a>
     <h1 class="signature">size/1</h1>
       <div class="specs">
-          <pre>size(ordset) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when ordset: ordset(_)</pre>
+          <pre>size(Ordset) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when Ordset :: ordset(_).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -434,8 +465,12 @@ when ordset1: ordset(_), ordset2: ordset(_)</pre>
     </a>
     <h1 class="signature">subtract/2</h1>
       <div class="specs">
-          <pre>subtract(ordset1, ordset2) :: ordset3
-when ordset1: ordset(_), ordset2: ordset(_), ordset3: ordset(_)</pre>
+          <pre>subtract(Ordset1, Ordset2) -> Ordset3
+            when
+                Ordset1 :: ordset(_),
+                Ordset2 :: ordset(_),
+                Ordset3 :: ordset(_).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -450,7 +485,8 @@ when ordset1: ordset(_), ordset2: ordset(_), ordset3: ordset(_)</pre>
     </a>
     <h1 class="signature">to_list/1</h1>
       <div class="specs">
-          <pre>to_list(ordset) :: list when ordset: ordset(t), list: [t]</pre>
+          <pre>to_list(Ordset) -> List when Ordset :: ordset(T), List :: [T].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -465,7 +501,9 @@ when ordset1: ordset(_), ordset2: ordset(_), ordset3: ordset(_)</pre>
     </a>
     <h1 class="signature">union/1</h1>
       <div class="specs">
-          <pre>union(ordsetList) :: ordset when ordsetList: [ordset(t)], ordset: ordset(t)</pre>
+          <pre>union(OrdsetList) -> Ordset
+         when OrdsetList :: [ordset(T)], Ordset :: ordset(T).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -480,8 +518,12 @@ when ordset1: ordset(_), ordset2: ordset(_), ordset3: ordset(_)</pre>
     </a>
     <h1 class="signature">union/2</h1>
       <div class="specs">
-          <pre>union(ordset1, ordset2) :: ordset3
-when ordset1: ordset(t1), ordset2: ordset(t2), ordset3: ordset(t1 | t2)</pre>
+          <pre>union(Ordset1, Ordset2) -> Ordset3
+         when
+             Ordset1 :: ordset(T1),
+             Ordset2 :: ordset(T2),
+             Ordset3 :: ordset(T1 | T2).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -502,18 +544,18 @@ when ordset1: ordset(t1), ordset2: ordset(t2), ordset3: ordset(t1 | t2)</pre>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

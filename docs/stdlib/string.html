@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>string — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -71,17 +71,17 @@ string      </h1>
         <section id="moduledoc">
 <p> This module provides functions for string processing.</p>
 <p> A string in this module is represented by  <code class="inline">unicode:chardata()</code>, that is, a list of codepoints, binaries with UTF-8-encoded codepoints (UTF-8 binaries), or a mix of the two.</p>
-<pre><code class="nohighlight makeup erlang"><span class="s">&quot;abcd&quot;</span><span class="w">               </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">valid</span><span class="w"> </span><span class="ss">string</span><span class="w">
-</span><span class="p">&lt;&lt;</span><span class="s">&quot;abcd&quot;</span><span class="p">&gt;&gt;</span><span class="w">           </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">valid</span><span class="w"> </span><span class="ss">string</span><span class="w">
-</span><span class="p" data-group-id="7267341700-1">[</span><span class="s">&quot;abcd&quot;</span><span class="p" data-group-id="7267341700-1">]</span><span class="w">             </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">valid</span><span class="w"> </span><span class="ss">string</span><span class="w">
-</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc..åäö&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="w">  </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">valid</span><span class="w"> </span><span class="ss">string</span><span class="w">
-</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc..åäö&quot;</span><span class="p">&gt;&gt;</span><span class="w">       </span><span class="ss">is</span><span class="w"> </span><span class="n">NOT</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">valid</span><span class="w"> </span><span class="ss">string</span><span class="p">,</span><span class="w">
-                     </span><span class="ss">but</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">binary</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="n">Latin</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="ss">encoded</span><span class="w"> </span><span class="ss">codepoints</span><span class="w">
-</span><span class="p" data-group-id="7267341700-2">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..åäö&quot;</span><span class="p" data-group-id="7267341700-2">]</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">valid</span><span class="w"> </span><span class="ss">string</span><span class="w">
-</span><span class="p" data-group-id="7267341700-3">[</span><span class="ss">atom</span><span class="p" data-group-id="7267341700-3">]</span><span class="w">               </span><span class="ss">is</span><span class="w"> </span><span class="n">NOT</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">valid</span><span class="w"> </span><span class="ss">string</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="s">&quot;abcd&quot;</span><span class="w">               </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="n">string</span><span class="w">
+</span><span class="p" data-group-id="8175627641-1">&lt;&lt;</span><span class="s">&quot;abcd&quot;</span><span class="p" data-group-id="8175627641-1">&gt;&gt;</span><span class="w">           </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="n">string</span><span class="w">
+</span><span class="p" data-group-id="8175627641-2">[</span><span class="s">&quot;abcd&quot;</span><span class="p" data-group-id="8175627641-2">]</span><span class="w">             </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="n">string</span><span class="w">
+</span><span class="p" data-group-id="8175627641-3">&lt;&lt;</span><span class="s">&quot;abc..åäö&quot;</span><span class="o">/</span><span class="n">utf8</span><span class="p" data-group-id="8175627641-3">&gt;&gt;</span><span class="w">  </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="n">string</span><span class="w">
+</span><span class="p" data-group-id="8175627641-4">&lt;&lt;</span><span class="s">&quot;abc..åäö&quot;</span><span class="p" data-group-id="8175627641-4">&gt;&gt;</span><span class="w">       </span><span class="n">is</span><span class="w"> </span><span class="nc">NOT</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w">
+                     </span><span class="n">but</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">binary</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nc">Latin</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">encoded</span><span class="w"> </span><span class="n">codepoints</span><span class="w">
+</span><span class="p" data-group-id="8175627641-5">[</span><span class="p" data-group-id="8175627641-6">&lt;&lt;</span><span class="s">&quot;abc&quot;</span><span class="p" data-group-id="8175627641-6">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..åäö&quot;</span><span class="p" data-group-id="8175627641-5">]</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="n">string</span><span class="w">
+</span><span class="p" data-group-id="8175627641-7">[</span><span class="n">atom</span><span class="p" data-group-id="8175627641-7">]</span><span class="w">               </span><span class="n">is</span><span class="w"> </span><span class="nc">NOT</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="n">string</span></code></pre>
 <p>  This module operates on grapheme clusters. A grapheme cluster is a user-perceived character, which can be represented by several codepoints. </p>
-<pre><code class="nohighlight makeup erlang"><span class="s">&quot;å&quot;</span><span class="w">  </span><span class="p" data-group-id="9156670591-1">[</span><span class="mi">229</span><span class="p" data-group-id="9156670591-1">]</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p" data-group-id="9156670591-2">[</span><span class="mi">97</span><span class="p">,</span><span class="w"> </span><span class="mi">778</span><span class="p" data-group-id="9156670591-2">]</span><span class="w">
-</span><span class="s">&quot;e̊&quot;</span><span class="w">  </span><span class="p" data-group-id="9156670591-3">[</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="mi">778</span><span class="p" data-group-id="9156670591-3">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="s">&quot;å&quot;</span><span class="w">  </span><span class="p" data-group-id="4967570060-1">[</span><span class="mi">229</span><span class="p" data-group-id="4967570060-1">]</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p" data-group-id="4967570060-2">[</span><span class="mi">97</span><span class="p">,</span><span class="w"> </span><span class="mi">778</span><span class="p" data-group-id="4967570060-2">]</span><span class="w">
+</span><span class="s">&quot;e̊&quot;</span><span class="w">  </span><span class="p" data-group-id="4967570060-3">[</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="mi">778</span><span class="p" data-group-id="4967570060-3">]</span></code></pre>
 <p>  The string length of &quot;ß↑e̊&quot; is 3, even though it is represented by the codepoints <code class="inline">[223,8593,101,778]</code> or the UTF-8 binary <code class="inline">&lt;&lt;195,159,226,134,145,101,204,138&gt;&gt;</code>. </p>
 <p>  Grapheme clusters for codepoints of class <code class="inline">prepend</code> and non-modern (or decomposed) Hangul is not handled for performance reasons in <code class="inline">find/3</code>, <code class="inline">replace/3</code>, <code class="inline">split/2</code>, <code class="inline">split/2</code> and <code class="inline">trim/3</code>. </p>
 <p>  Splitting and appending strings is to be done on grapheme clusters borders. There is no verification that the results of appending strings are valid or normalized. </p>
@@ -89,14 +89,14 @@ string      </h1>
 <p>  Language or locale specific handling of input is not considered in any function. </p>
 <p>  The functions can crash for non-valid input strings. For example, the functions expect UTF-8 binaries but not all functions verify that all binaries are encoded correctly. </p>
 <p>  Unless otherwise specified the return value type is the same as the input type. That is, binary input returns binary output, list input returns a list output, and mixed input can return a mixed output.</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">trim</span><span class="p" data-group-id="5142750876-1">(</span><span class="s">&quot;  sarah  &quot;</span><span class="p" data-group-id="5142750876-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:trim</span><span class="p" data-group-id="2439191484-1">(</span><span class="s">&quot;  sarah  &quot;</span><span class="p" data-group-id="2439191484-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;sarah&quot;</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">trim</span><span class="p" data-group-id="5142750876-2">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;  sarah  &quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="5142750876-2">)</span><span class="p">.</span><span class="w">
-</span><span class="p">&lt;&lt;</span><span class="s">&quot;sarah&quot;</span><span class="p">&gt;&gt;</span><span class="w">
-</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">lexemes</span><span class="p" data-group-id="5142750876-3">(</span><span class="s">&quot;foo bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p" data-group-id="5142750876-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="5142750876-4">[</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="s">&quot;bar&quot;</span><span class="p" data-group-id="5142750876-4">]</span><span class="w">
-</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">lexemes</span><span class="p" data-group-id="5142750876-5">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;foo bar&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p" data-group-id="5142750876-5">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="5142750876-6">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;foo&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;bar&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="5142750876-6">]</span></code></pre>
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:trim</span><span class="p" data-group-id="2439191484-2">(</span><span class="p" data-group-id="2439191484-3">&lt;&lt;</span><span class="s">&quot;  sarah  &quot;</span><span class="p" data-group-id="2439191484-3">&gt;&gt;</span><span class="p" data-group-id="2439191484-2">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="2439191484-4">&lt;&lt;</span><span class="s">&quot;sarah&quot;</span><span class="p" data-group-id="2439191484-4">&gt;&gt;</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:lexemes</span><span class="p" data-group-id="2439191484-5">(</span><span class="s">&quot;foo bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p" data-group-id="2439191484-5">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="2439191484-6">[</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="s">&quot;bar&quot;</span><span class="p" data-group-id="2439191484-6">]</span><span class="w">
+</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:lexemes</span><span class="p" data-group-id="2439191484-7">(</span><span class="p" data-group-id="2439191484-8">&lt;&lt;</span><span class="s">&quot;foo bar&quot;</span><span class="p" data-group-id="2439191484-8">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p" data-group-id="2439191484-7">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="2439191484-9">[</span><span class="p" data-group-id="2439191484-10">&lt;&lt;</span><span class="s">&quot;foo&quot;</span><span class="p" data-group-id="2439191484-10">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="2439191484-11">&lt;&lt;</span><span class="s">&quot;bar&quot;</span><span class="p" data-group-id="2439191484-11">&gt;&gt;</span><span class="p" data-group-id="2439191484-9">]</span></code></pre>
 <p> This module has been reworked in Erlang/OTP 20 to handle  <code class="inline">unicode:chardata()</code> and operate on grapheme clusters. The  <code class="inline">old functions</code> that only work on Latin-1 lists as input are still available but should not be used, they will be deprecated in a future release. </p>
         </section>
 
@@ -401,13 +401,14 @@ Functions          </h1>
     </a>
     <h1 class="signature">casefold/1</h1>
       <div class="specs">
-          <pre>casefold(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()) :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()</pre>
+          <pre>casefold(String :: unicode:chardata()) -> unicode:chardata().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p>  Converts <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> to a case-agnostic comparable string. Function <a href="#casefold/1"><code class="inline">casefold/1</code></a> is preferred over <a href="#lowercase/1"><code class="inline">lowercase/1</code></a> when two strings are to be compared for equality. See also <code class="inline">equal/4</code>. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">casefold</span><span class="p" data-group-id="6485557833-1">(</span><span class="s">&quot;Ω and ẞ SHARP S&quot;</span><span class="p" data-group-id="6485557833-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:casefold</span><span class="p" data-group-id="3634425452-1">(</span><span class="s">&quot;Ω and ẞ SHARP S&quot;</span><span class="p" data-group-id="3634425452-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;ω and ss sharp s&quot;</span></code></pre>
   </section>
 </section>
@@ -445,16 +446,17 @@ Functions          </h1>
     </a>
     <h1 class="signature">chomp/1</h1>
       <div class="specs">
-          <pre>chomp(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()) :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()</pre>
+          <pre>chomp(String :: unicode:chardata()) -> unicode:chardata().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p>  Returns a string where any trailing <code class="inline">\n</code> or <code class="inline">\r\n</code> have been removed from <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">182</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">chomp</span><span class="p" data-group-id="4390635817-1">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;\nHello\n\n&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="4390635817-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p">&lt;&lt;</span><span class="s">&quot;\nHello&quot;</span><span class="p">&gt;&gt;</span><span class="w">
-</span><span class="mi">183</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">chomp</span><span class="p" data-group-id="4390635817-2">(</span><span class="s">&quot;\nHello\r\r\n&quot;</span><span class="p" data-group-id="4390635817-2">)</span><span class="p">.</span><span class="w">
-</span><span class="s">&quot;\nHello\r&quot;</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">182</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:chomp</span><span class="p" data-group-id="4131556024-1">(</span><span class="p" data-group-id="4131556024-2">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Hello</span><span class="se">\n</span><span class="se">\n</span><span class="s">&quot;</span><span class="p" data-group-id="4131556024-2">&gt;&gt;</span><span class="p" data-group-id="4131556024-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="4131556024-3">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Hello&quot;</span><span class="p" data-group-id="4131556024-3">&gt;&gt;</span><span class="w">
+</span><span class="mi">183</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:chomp</span><span class="p" data-group-id="4131556024-4">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Hello</span><span class="se">\r</span><span class="se">\r</span><span class="se">\n</span><span class="s">&quot;</span><span class="p" data-group-id="4131556024-4">)</span><span class="o">.</span><span class="w">
+</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Hello</span><span class="se">\r</span><span class="s">&quot;</span></code></pre>
   </section>
 </section>
 <section class="detail" id="chr/2">
@@ -465,8 +467,12 @@ Functions          </h1>
     </a>
     <h1 class="signature">chr/2</h1>
       <div class="specs">
-          <pre>chr(string, character) :: index
-when string: string(), character: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>(), index: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>chr(String, Character) -> Index
+       when
+           String :: string(),
+           Character :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>(),
+           Index :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -482,8 +488,12 @@ when string: string(), character: <a href="https://hexdocs.pm/elixir/typespecs.h
     </a>
     <h1 class="signature">concat/2</h1>
       <div class="specs">
-          <pre>concat(string1, string2) :: string3
-when string1: string(), string2: string(), string3: string()</pre>
+          <pre>concat(String1, String2) -> String3
+          when
+              String1 :: string(),
+              String2 :: string(),
+              String3 :: string().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -499,8 +509,12 @@ when string1: string(), string2: string(), string3: string()</pre>
     </a>
     <h1 class="signature">copies/2</h1>
       <div class="specs">
-          <pre>copies(string, number) :: copies
-when string: string(), copies: string(), number: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>copies(String, Number) -> Copies
+          when
+              String :: string(),
+              Copies :: string(),
+              Number :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -516,15 +530,19 @@ when string: string(), copies: string(), number: <a href="https://hexdocs.pm/eli
     </a>
     <h1 class="signature">cspan/2</h1>
       <div class="specs">
-          <pre>cspan(string, chars) :: length
-when string: string(), chars: string(), length: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>cspan(String, Chars) -> Length
+         when
+             String :: string(),
+             Chars :: string(),
+             Length :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns the length of the maximum initial segment of <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>, which consists entirely of characters not from <code class="inline">Chars</code>.</p>
 <p> This function is obsolete. Use <code class="inline">take/3</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">cspan</span><span class="p" data-group-id="6351827875-1">(</span><span class="s">&quot;\t    abcdef&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; \t&quot;</span><span class="p" data-group-id="6351827875-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:cspan</span><span class="p" data-group-id="8859522696-1">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">    abcdef&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; </span><span class="se">\t</span><span class="s">&quot;</span><span class="p" data-group-id="8859522696-1">)</span><span class="o">.</span><span class="w">
 </span><span class="mi">0</span></code></pre>
   </section>
 </section>
@@ -542,12 +560,12 @@ when string: string(), chars: string(), length: <a href="https://hexdocs.pm/elix
 <p> If <code class="inline">Norm</code> is not <code class="inline">none</code> the function applies normalization on the fly before the equality test. There are four available normalization forms:  <code class="inline">nfc</code>,  <code class="inline">nfd</code>,  <code class="inline">nfkc</code>, and  <code class="inline">nfkd</code>. </p>
 <p> By default, <code class="inline">IgnoreCase</code> is <code class="inline">false</code> and <code class="inline">Norm</code> is <code class="inline">none</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">equal</span><span class="p" data-group-id="9998225980-1">(</span><span class="s">&quot;åäö&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;åäö&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9998225980-1">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">true</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">equal</span><span class="p" data-group-id="9998225980-2">(</span><span class="s">&quot;åäö&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_nfd_binary</span><span class="p" data-group-id="9998225980-3">(</span><span class="s">&quot;åäö&quot;</span><span class="p" data-group-id="9998225980-3">)</span><span class="p" data-group-id="9998225980-2">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">false</span><span class="w">
-</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">equal</span><span class="p" data-group-id="9998225980-4">(</span><span class="s">&quot;åäö&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_nfd_binary</span><span class="p" data-group-id="9998225980-5">(</span><span class="s">&quot;ÅÄÖ&quot;</span><span class="p" data-group-id="9998225980-5">)</span><span class="p">,</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w"> </span><span class="ss">nfc</span><span class="p" data-group-id="9998225980-4">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">true</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:equal</span><span class="p" data-group-id="7372247645-1">(</span><span class="s">&quot;åäö&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7372247645-2">&lt;&lt;</span><span class="s">&quot;åäö&quot;</span><span class="o">/</span><span class="n">utf8</span><span class="p" data-group-id="7372247645-2">&gt;&gt;</span><span class="p" data-group-id="7372247645-1">)</span><span class="o">.</span><span class="w">
+</span><span class="no">true</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:equal</span><span class="p" data-group-id="7372247645-3">(</span><span class="s">&quot;åäö&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">unicode</span><span class="ss">:characters_to_nfd_binary</span><span class="p" data-group-id="7372247645-4">(</span><span class="s">&quot;åäö&quot;</span><span class="p" data-group-id="7372247645-4">)</span><span class="p" data-group-id="7372247645-3">)</span><span class="o">.</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:equal</span><span class="p" data-group-id="7372247645-5">(</span><span class="s">&quot;åäö&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">unicode</span><span class="ss">:characters_to_nfd_binary</span><span class="p" data-group-id="7372247645-6">(</span><span class="s">&quot;ÅÄÖ&quot;</span><span class="p" data-group-id="7372247645-6">)</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="n">nfc</span><span class="p" data-group-id="7372247645-5">)</span><span class="o">.</span><span class="w">
+</span><span class="no">true</span></code></pre>
   </section>
 </section>
 <section class="detail" id="findfind/23">
@@ -562,14 +580,14 @@ when string: string(), chars: string(), length: <a href="https://hexdocs.pm/elix
 <p>  Removes anything before <code class="inline">SearchPattern</code> in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> and returns the remainder of the string or <code class="inline">nomatch</code> if <code class="inline">SearchPattern</code> is not found. <code class="inline">Dir</code>, which can be <code class="inline">leading</code> or <code class="inline">trailing</code>, indicates from which direction characters are to be searched. </p>
 <p>  By default, <code class="inline">Dir</code> is <code class="inline">leading</code>. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">find</span><span class="p" data-group-id="9957922184-1">(</span><span class="s">&quot;ab..cd..ef&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="p" data-group-id="9957922184-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:find</span><span class="p" data-group-id="4590512238-1">(</span><span class="s">&quot;ab..cd..ef&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="p" data-group-id="4590512238-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;..cd..ef&quot;</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">find</span><span class="p" data-group-id="9957922184-2">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;ab..cd..ef&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">trailing</span><span class="p" data-group-id="9957922184-2">)</span><span class="p">.</span><span class="w">
-</span><span class="p">&lt;&lt;</span><span class="s">&quot;..ef&quot;</span><span class="p">&gt;&gt;</span><span class="w">
-</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">find</span><span class="p" data-group-id="9957922184-3">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;ab..cd..ef&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">leading</span><span class="p" data-group-id="9957922184-3">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">nomatch</span><span class="w">
-</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">find</span><span class="p" data-group-id="9957922184-4">(</span><span class="s">&quot;ab..cd..ef&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">trailing</span><span class="p" data-group-id="9957922184-4">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">nomatch</span></code></pre>
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:find</span><span class="p" data-group-id="4590512238-2">(</span><span class="p" data-group-id="4590512238-3">&lt;&lt;</span><span class="s">&quot;ab..cd..ef&quot;</span><span class="p" data-group-id="4590512238-3">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">trailing</span><span class="p" data-group-id="4590512238-2">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="4590512238-4">&lt;&lt;</span><span class="s">&quot;..ef&quot;</span><span class="p" data-group-id="4590512238-4">&gt;&gt;</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:find</span><span class="p" data-group-id="4590512238-5">(</span><span class="p" data-group-id="4590512238-6">&lt;&lt;</span><span class="s">&quot;ab..cd..ef&quot;</span><span class="p" data-group-id="4590512238-6">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">leading</span><span class="p" data-group-id="4590512238-5">)</span><span class="o">.</span><span class="w">
+</span><span class="n">nomatch</span><span class="w">
+</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:find</span><span class="p" data-group-id="4590512238-7">(</span><span class="s">&quot;ab..cd..ef&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">trailing</span><span class="p" data-group-id="4590512238-7">)</span><span class="o">.</span><span class="w">
+</span><span class="n">nomatch</span></code></pre>
   </section>
 </section>
 <section class="detail" id="is_empty/1">
@@ -580,16 +598,17 @@ when string: string(), chars: string(), length: <a href="https://hexdocs.pm/elix
     </a>
     <h1 class="signature">is_empty/1</h1>
       <div class="specs">
-          <pre>is_empty(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+          <pre>is_empty(String :: unicode:chardata()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns <code class="inline">true</code> if <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> is the empty string, otherwise <code class="inline">false</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">is_empty</span><span class="p" data-group-id="8541849841-1">(</span><span class="s">&quot;foo&quot;</span><span class="p" data-group-id="8541849841-1">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">false</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">is_empty</span><span class="p" data-group-id="8541849841-2">(</span><span class="p" data-group-id="8541849841-3">[</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="8541849841-3">]</span><span class="p" data-group-id="8541849841-2">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">true</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:is_empty</span><span class="p" data-group-id="7165295953-1">(</span><span class="s">&quot;foo&quot;</span><span class="p" data-group-id="7165295953-1">)</span><span class="o">.</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:is_empty</span><span class="p" data-group-id="7165295953-2">(</span><span class="p" data-group-id="7165295953-3">[</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="p" data-group-id="7165295953-4">&lt;&lt;</span><span class="p" data-group-id="7165295953-4">&gt;&gt;</span><span class="p" data-group-id="7165295953-3">]</span><span class="p" data-group-id="7165295953-2">)</span><span class="o">.</span><span class="w">
+</span><span class="no">true</span></code></pre>
   </section>
 </section>
 <section class="detail" id="join/2">
@@ -600,15 +619,19 @@ when string: string(), chars: string(), length: <a href="https://hexdocs.pm/elix
     </a>
     <h1 class="signature">join/2</h1>
       <div class="specs">
-          <pre>join(stringList, separator) :: string
-when stringList: [string()], separator: string(), string: string()</pre>
+          <pre>join(StringList, Separator) -> String
+        when
+            StringList :: [string()],
+            Separator :: string(),
+            String :: string().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a string with the elements of <code class="inline">StringList</code> separated by the string in <code class="inline">Separator</code>.</p>
 <p> This function is obsolete. Use <code class="inline">lists:join/2</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nf">join</span><span class="p" data-group-id="1574891156-1">(</span><span class="p" data-group-id="1574891156-2">[</span><span class="s">&quot;one&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;two&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;three&quot;</span><span class="p" data-group-id="1574891156-2">]</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p" data-group-id="1574891156-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">join</span><span class="p" data-group-id="9990319201-1">(</span><span class="p" data-group-id="9990319201-2">[</span><span class="s">&quot;one&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;two&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;three&quot;</span><span class="p" data-group-id="9990319201-2">]</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p" data-group-id="9990319201-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;one, two, three&quot;</span></code></pre>
   </section>
 </section>
@@ -624,7 +647,7 @@ when stringList: [string()], separator: string(), string: string()</pre>
 <p> Returns <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> with the length adjusted in accordance with <code class="inline">Number</code>. The left margin is fixed. If <code class="inline">length(``String``)</code> &lt; <code class="inline">Number</code>, then <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> is padded with blanks or <code class="inline">Character</code>s.</p>
 <p> This function is obsolete. Use <code class="inline">pad/2</code> or <code class="inline">pad/3</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">left</span><span class="p" data-group-id="0723585629-1">(</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="sc">$.</span><span class="p" data-group-id="0723585629-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:left</span><span class="p" data-group-id="9898142120-1">(</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="err">$</span><span class="o">.</span><span class="p" data-group-id="9898142120-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;Hello.....&quot;</span></code></pre>
   </section>
 </section>
@@ -636,7 +659,9 @@ when stringList: [string()], separator: string(), string: string()</pre>
     </a>
     <h1 class="signature">len/1</h1>
       <div class="specs">
-          <pre>len(string) :: length when string: string(), length: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>len(String) -> Length
+       when String :: string(), Length :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -652,15 +677,16 @@ when stringList: [string()], separator: string(), string: string()</pre>
     </a>
     <h1 class="signature">length/1</h1>
       <div class="specs">
-          <pre>length(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>length(String :: unicode:chardata()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p>  Returns the number of grapheme clusters in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">length</span><span class="p" data-group-id="5608755444-1">(</span><span class="s">&quot;ß↑e̊&quot;</span><span class="p" data-group-id="5608755444-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:length</span><span class="p" data-group-id="2684165641-1">(</span><span class="s">&quot;ß↑e̊&quot;</span><span class="p" data-group-id="2684165641-1">)</span><span class="o">.</span><span class="w">
 </span><span class="mi">3</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">length</span><span class="p" data-group-id="5608755444-2">(</span><span class="p">&lt;&lt;</span><span class="mi">195</span><span class="p">,</span><span class="mi">159</span><span class="p">,</span><span class="mi">226</span><span class="p">,</span><span class="mi">134</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">204</span><span class="p">,</span><span class="mi">138</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="5608755444-2">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:length</span><span class="p" data-group-id="2684165641-2">(</span><span class="p" data-group-id="2684165641-3">&lt;&lt;</span><span class="mi">195</span><span class="p">,</span><span class="mi">159</span><span class="p">,</span><span class="mi">226</span><span class="p">,</span><span class="mi">134</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">204</span><span class="p">,</span><span class="mi">138</span><span class="p" data-group-id="2684165641-3">&gt;&gt;</span><span class="p" data-group-id="2684165641-2">)</span><span class="o">.</span><span class="w">
 </span><span class="mi">3</span></code></pre>
   </section>
 </section>
@@ -672,8 +698,10 @@ when stringList: [string()], separator: string(), string: string()</pre>
     </a>
     <h1 class="signature">lexemes/2</h1>
       <div class="specs">
-          <pre>lexemes(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(), separatorList :: [grapheme_cluster()]) ::
-  [<a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()]</pre>
+          <pre>lexemes(String :: unicode:chardata(),
+        SeparatorList :: [grapheme_cluster()]) ->
+           [unicode:chardata()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -681,10 +709,10 @@ when stringList: [string()], separator: string(), string: string()</pre>
 <p>  Notice that, as shown in this example, two or more adjacent separator graphemes clusters in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> are treated as one. That is, there are no empty strings in the resulting list of lexemes. See also <code class="inline">split/3</code> which returns empty strings. </p>
 <p> Notice that <code class="inline">[$\r,$\n]</code> is one grapheme cluster.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">lexemes</span><span class="p" data-group-id="5856605111-1">(</span><span class="s">&quot;abc de̊fxxghix jkl\r\nfoo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x e&quot;</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p" data-group-id="5856605111-2">[</span><span class="p" data-group-id="5856605111-3">[</span><span class="sc">$\</span><span class="ss">r</span><span class="p">,</span><span class="sc">$\</span><span class="ss">n</span><span class="p" data-group-id="5856605111-3">]</span><span class="p" data-group-id="5856605111-2">]</span><span class="p" data-group-id="5856605111-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="5856605111-4">[</span><span class="s">&quot;abc&quot;</span><span class="p">,</span><span class="s">&quot;de̊f&quot;</span><span class="p">,</span><span class="s">&quot;ghi&quot;</span><span class="p">,</span><span class="s">&quot;jkl&quot;</span><span class="p">,</span><span class="s">&quot;foo&quot;</span><span class="p" data-group-id="5856605111-4">]</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">lexemes</span><span class="p" data-group-id="5856605111-5">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc de̊fxxghix jkl\r\nfoo&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x e&quot;</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p" data-group-id="5856605111-6">[</span><span class="sc">$\</span><span class="ss">r</span><span class="p">,</span><span class="sc">$\</span><span class="ss">n</span><span class="p" data-group-id="5856605111-6">]</span><span class="p" data-group-id="5856605111-5">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="5856605111-7">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;de̊f&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;ghi&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;jkl\r\nfoo&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="5856605111-7">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:lexemes</span><span class="p" data-group-id="5587015083-1">(</span><span class="s">&quot;abc de̊fxxghix jkl</span><span class="se">\r</span><span class="se">\n</span><span class="s">foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x e&quot;</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p" data-group-id="5587015083-2">[</span><span class="p" data-group-id="5587015083-3">[</span><span class="err">$</span><span class="err">\</span><span class="n">r</span><span class="p">,</span><span class="err">$</span><span class="err">\</span><span class="n">n</span><span class="p" data-group-id="5587015083-3">]</span><span class="p" data-group-id="5587015083-2">]</span><span class="p" data-group-id="5587015083-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5587015083-4">[</span><span class="s">&quot;abc&quot;</span><span class="p">,</span><span class="s">&quot;de̊f&quot;</span><span class="p">,</span><span class="s">&quot;ghi&quot;</span><span class="p">,</span><span class="s">&quot;jkl&quot;</span><span class="p">,</span><span class="s">&quot;foo&quot;</span><span class="p" data-group-id="5587015083-4">]</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:lexemes</span><span class="p" data-group-id="5587015083-5">(</span><span class="p" data-group-id="5587015083-6">&lt;&lt;</span><span class="s">&quot;abc de̊fxxghix jkl</span><span class="se">\r</span><span class="se">\n</span><span class="s">foo&quot;</span><span class="o">/</span><span class="n">utf8</span><span class="p" data-group-id="5587015083-6">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x e&quot;</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p" data-group-id="5587015083-7">[</span><span class="err">$</span><span class="err">\</span><span class="n">r</span><span class="p">,</span><span class="err">$</span><span class="err">\</span><span class="n">n</span><span class="p" data-group-id="5587015083-7">]</span><span class="p" data-group-id="5587015083-5">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5587015083-8">[</span><span class="p" data-group-id="5587015083-9">&lt;&lt;</span><span class="s">&quot;abc&quot;</span><span class="p" data-group-id="5587015083-9">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="5587015083-10">&lt;&lt;</span><span class="s">&quot;de̊f&quot;</span><span class="o">/</span><span class="n">utf8</span><span class="p" data-group-id="5587015083-10">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="5587015083-11">&lt;&lt;</span><span class="s">&quot;ghi&quot;</span><span class="p" data-group-id="5587015083-11">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="5587015083-12">&lt;&lt;</span><span class="s">&quot;jkl</span><span class="se">\r</span><span class="se">\n</span><span class="s">foo&quot;</span><span class="p" data-group-id="5587015083-12">&gt;&gt;</span><span class="p" data-group-id="5587015083-8">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="lowercase/1">
@@ -695,14 +723,15 @@ when stringList: [string()], separator: string(), string: string()</pre>
     </a>
     <h1 class="signature">lowercase/1</h1>
       <div class="specs">
-          <pre>lowercase(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()) :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()</pre>
+          <pre>lowercase(String :: unicode:chardata()) -> unicode:chardata().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p>  Converts <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> to lowercase. </p>
 <p>  Notice that function <a href="#casefold/1"><code class="inline">casefold/1</code></a> should be used when converting a string to be tested for equality. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">lowercase</span><span class="p" data-group-id="0136991296-1">(</span><span class="nc">string</span><span class="p">:</span><span class="nf">uppercase</span><span class="p" data-group-id="0136991296-2">(</span><span class="s">&quot;Michał&quot;</span><span class="p" data-group-id="0136991296-2">)</span><span class="p" data-group-id="0136991296-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:lowercase</span><span class="p" data-group-id="5696245614-1">(</span><span class="n">string</span><span class="ss">:uppercase</span><span class="p" data-group-id="5696245614-2">(</span><span class="s">&quot;Michał&quot;</span><span class="p" data-group-id="5696245614-2">)</span><span class="p" data-group-id="5696245614-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;michał&quot;</span></code></pre>
   </section>
 </section>
@@ -714,16 +743,17 @@ when stringList: [string()], separator: string(), string: string()</pre>
     </a>
     <h1 class="signature">next_codepoint/1</h1>
       <div class="specs">
-          <pre>next_codepoint(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()) ::
-  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">maybe_improper_list</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>(), <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>())
-  | {:error, <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()}</pre>
+          <pre>next_codepoint(String :: unicode:chardata()) ->
+                  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">maybe_improper_list</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>(), unicode:chardata()) |
+                  {error, unicode:chardata()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p>  Returns the first codepoint in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> and the rest of <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> in the tail. Returns an empty list if <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> is empty or an <code class="inline">{error, String}</code> tuple if the next byte is invalid. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">next_codepoint</span><span class="p" data-group-id="9454318216-1">(</span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_binary</span><span class="p" data-group-id="9454318216-2">(</span><span class="s">&quot;e̊fg&quot;</span><span class="p" data-group-id="9454318216-2">)</span><span class="p" data-group-id="9454318216-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="9454318216-3">[</span><span class="mi">101</span><span class="p">|</span><span class="p">&lt;&lt;</span><span class="s">&quot;̊fg&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9454318216-3">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:next_codepoint</span><span class="p" data-group-id="5175574834-1">(</span><span class="n">unicode</span><span class="ss">:characters_to_binary</span><span class="p" data-group-id="5175574834-2">(</span><span class="s">&quot;e̊fg&quot;</span><span class="p" data-group-id="5175574834-2">)</span><span class="p" data-group-id="5175574834-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5175574834-3">[</span><span class="mi">101</span><span class="o">|</span><span class="p" data-group-id="5175574834-4">&lt;&lt;</span><span class="s">&quot;̊fg&quot;</span><span class="o">/</span><span class="n">utf8</span><span class="p" data-group-id="5175574834-4">&gt;&gt;</span><span class="p" data-group-id="5175574834-3">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="next_grapheme/1">
@@ -734,16 +764,18 @@ when stringList: [string()], separator: string(), string: string()</pre>
     </a>
     <h1 class="signature">next_grapheme/1</h1>
       <div class="specs">
-          <pre>next_grapheme(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()) ::
-  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">maybe_improper_list</a>(grapheme_cluster(), <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>())
-  | {:error, <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()}</pre>
+          <pre>next_grapheme(String :: unicode:chardata()) ->
+                 <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">maybe_improper_list</a>(grapheme_cluster(),
+                                     unicode:chardata()) |
+                 {error, unicode:chardata()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p>  Returns the first grapheme cluster in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> and the rest of <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> in the tail. Returns an empty list if <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> is empty or an <code class="inline">{error, String}</code> tuple if the next byte is invalid. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">next_grapheme</span><span class="p" data-group-id="1809660167-1">(</span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_binary</span><span class="p" data-group-id="1809660167-2">(</span><span class="s">&quot;e̊fg&quot;</span><span class="p" data-group-id="1809660167-2">)</span><span class="p" data-group-id="1809660167-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="1809660167-3">[</span><span class="s">&quot;e̊&quot;</span><span class="p">|</span><span class="p">&lt;&lt;</span><span class="s">&quot;fg&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="1809660167-3">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:next_grapheme</span><span class="p" data-group-id="3977379103-1">(</span><span class="n">unicode</span><span class="ss">:characters_to_binary</span><span class="p" data-group-id="3977379103-2">(</span><span class="s">&quot;e̊fg&quot;</span><span class="p" data-group-id="3977379103-2">)</span><span class="p" data-group-id="3977379103-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="3977379103-3">[</span><span class="s">&quot;e̊&quot;</span><span class="o">|</span><span class="p" data-group-id="3977379103-4">&lt;&lt;</span><span class="s">&quot;fg&quot;</span><span class="p" data-group-id="3977379103-4">&gt;&gt;</span><span class="p" data-group-id="3977379103-3">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="nth_lexeme/3">
@@ -754,16 +786,18 @@ when stringList: [string()], separator: string(), string: string()</pre>
     </a>
     <h1 class="signature">nth_lexeme/3</h1>
       <div class="specs">
-          <pre>nth_lexeme(string, n, separatorList) :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()
-when string: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(),
-     n: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
-     separatorList: [grapheme_cluster()]</pre>
+          <pre>nth_lexeme(String, N, SeparatorList) -> unicode:chardata()
+              when
+                  String :: unicode:chardata(),
+                  N :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+                  SeparatorList :: [grapheme_cluster()].
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns lexeme number <code class="inline">N</code> in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>, where lexemes are separated by the grapheme clusters in <code class="inline">SeparatorList</code>. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">nth_lexeme</span><span class="p" data-group-id="0115899415-1">(</span><span class="s">&quot;abc.de̊f.ghiejkl&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.e&quot;</span><span class="p" data-group-id="0115899415-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:nth_lexeme</span><span class="p" data-group-id="6807094002-1">(</span><span class="s">&quot;abc.de̊f.ghiejkl&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.e&quot;</span><span class="p" data-group-id="6807094002-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;ghi&quot;</span></code></pre>
   </section>
 </section>
@@ -779,12 +813,12 @@ when string: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(),
 <p>  Pads <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> to <code class="inline">Length</code> with grapheme cluster <code class="inline">Char</code>. <code class="inline">Dir</code>, which can be <code class="inline">leading</code>, <code class="inline">trailing</code>, or <code class="inline">both</code>, indicates where the padding should be added. </p>
 <p> By default, <code class="inline">Char</code> is <code class="inline">$\s</code> and <code class="inline">Dir</code> is <code class="inline">trailing</code>. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">pad</span><span class="p" data-group-id="0179897503-1">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;He̊llö&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p" data-group-id="0179897503-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="0179897503-2">[</span><span class="p">&lt;&lt;</span><span class="mi">72</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">204</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">108</span><span class="p">,</span><span class="mi">108</span><span class="p">,</span><span class="mi">195</span><span class="p">,</span><span class="mi">182</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p" data-group-id="0179897503-2">]</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">format</span><span class="p" data-group-id="0179897503-3">(</span><span class="s">&quot;&#39;~ts&#39;</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="0179897503-4">[</span><span class="nc">string</span><span class="p">:</span><span class="nf">pad</span><span class="p" data-group-id="0179897503-5">(</span><span class="s">&quot;He̊llö&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="ss">leading</span><span class="p" data-group-id="0179897503-5">)</span><span class="p" data-group-id="0179897503-4">]</span><span class="p" data-group-id="0179897503-3">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">&#39;   He̊llö&#39;</span><span class="w">
-</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">format</span><span class="p" data-group-id="0179897503-6">(</span><span class="s">&quot;&#39;~ts&#39;</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="0179897503-7">[</span><span class="nc">string</span><span class="p">:</span><span class="nf">pad</span><span class="p" data-group-id="0179897503-8">(</span><span class="s">&quot;He̊llö&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="ss">both</span><span class="p" data-group-id="0179897503-8">)</span><span class="p" data-group-id="0179897503-7">]</span><span class="p" data-group-id="0179897503-6">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">&#39; He̊llö  &#39;</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:pad</span><span class="p" data-group-id="2517613255-1">(</span><span class="p" data-group-id="2517613255-2">&lt;&lt;</span><span class="s">&quot;He̊llö&quot;</span><span class="o">/</span><span class="n">utf8</span><span class="p" data-group-id="2517613255-2">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p" data-group-id="2517613255-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="2517613255-3">[</span><span class="p" data-group-id="2517613255-4">&lt;&lt;</span><span class="mi">72</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">204</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">108</span><span class="p">,</span><span class="mi">108</span><span class="p">,</span><span class="mi">195</span><span class="p">,</span><span class="mi">182</span><span class="p" data-group-id="2517613255-4">&gt;&gt;</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p" data-group-id="2517613255-3">]</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">io</span><span class="ss">:format</span><span class="p" data-group-id="2517613255-5">(</span><span class="s">&quot;&#39;~ts&#39;~n&quot;</span><span class="p">,</span><span class="p" data-group-id="2517613255-6">[</span><span class="n">string</span><span class="ss">:pad</span><span class="p" data-group-id="2517613255-7">(</span><span class="s">&quot;He̊llö&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="n">leading</span><span class="p" data-group-id="2517613255-7">)</span><span class="p" data-group-id="2517613255-6">]</span><span class="p" data-group-id="2517613255-5">)</span><span class="o">.</span><span class="w">
+</span><span class="sc">&#39;   He̊llö&#39;</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">io</span><span class="ss">:format</span><span class="p" data-group-id="2517613255-8">(</span><span class="s">&quot;&#39;~ts&#39;~n&quot;</span><span class="p">,</span><span class="p" data-group-id="2517613255-9">[</span><span class="n">string</span><span class="ss">:pad</span><span class="p" data-group-id="2517613255-10">(</span><span class="s">&quot;He̊llö&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="n">both</span><span class="p" data-group-id="2517613255-10">)</span><span class="p" data-group-id="2517613255-9">]</span><span class="p" data-group-id="2517613255-8">)</span><span class="o">.</span><span class="w">
+</span><span class="sc">&#39; He̊llö  &#39;</span></code></pre>
   </section>
 </section>
 <section class="detail" id="prefix/2">
@@ -795,17 +829,18 @@ when string: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(),
     </a>
     <h1 class="signature">prefix/2</h1>
       <div class="specs">
-          <pre>prefix(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(), prefix :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()) ::
-  :nomatch | <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()</pre>
+          <pre>prefix(String :: unicode:chardata(), Prefix :: unicode:chardata()) ->
+          nomatch | unicode:chardata().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p>  If <code class="inline">Prefix</code> is the prefix of <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>, removes it and returns the remainder of <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>, otherwise returns <code class="inline">nomatch</code>. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">prefix</span><span class="p" data-group-id="9082048796-1">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;prefix of string&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;pre&quot;</span><span class="p" data-group-id="9082048796-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p">&lt;&lt;</span><span class="s">&quot;fix of string&quot;</span><span class="p">&gt;&gt;</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">prefix</span><span class="p" data-group-id="9082048796-2">(</span><span class="s">&quot;pre&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;prefix&quot;</span><span class="p" data-group-id="9082048796-2">)</span><span class="p">.</span><span class="w">
-</span><span class="ss">nomatch</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:prefix</span><span class="p" data-group-id="2809494152-1">(</span><span class="p" data-group-id="2809494152-2">&lt;&lt;</span><span class="s">&quot;prefix of string&quot;</span><span class="p" data-group-id="2809494152-2">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;pre&quot;</span><span class="p" data-group-id="2809494152-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="2809494152-3">&lt;&lt;</span><span class="s">&quot;fix of string&quot;</span><span class="p" data-group-id="2809494152-3">&gt;&gt;</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:prefix</span><span class="p" data-group-id="2809494152-4">(</span><span class="s">&quot;pre&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;prefix&quot;</span><span class="p" data-group-id="2809494152-4">)</span><span class="o">.</span><span class="w">
+</span><span class="n">nomatch</span></code></pre>
   </section>
 </section>
 <section class="detail" id="rchr/2">
@@ -816,8 +851,12 @@ when string: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(),
     </a>
     <h1 class="signature">rchr/2</h1>
       <div class="specs">
-          <pre>rchr(string, character) :: index
-when string: string(), character: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>(), index: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>rchr(String, Character) -> Index
+        when
+            String :: string(),
+            Character :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>(),
+            Index :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -836,12 +875,12 @@ when string: string(), character: <a href="https://hexdocs.pm/elixir/typespecs.h
   <section class="docstring">
 <p>  Replaces <code class="inline">SearchPattern</code> in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> with <code class="inline">Replacement</code>. <code class="inline">Where</code>, default <code class="inline">leading</code>, indicates whether the <code class="inline">leading</code>, the <code class="inline">trailing</code> or <code class="inline">all</code> encounters of <code class="inline">SearchPattern</code> are to be replaced. </p>
 <p> Can be implemented as:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nc">lists</span><span class="p">:</span><span class="nf">join</span><span class="p" data-group-id="6278615599-1">(</span><span class="n">Replacement</span><span class="p">,</span><span class="w"> </span><span class="nf">split</span><span class="p" data-group-id="6278615599-2">(</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">SearchPattern</span><span class="p">,</span><span class="w"> </span><span class="n">Where</span><span class="p" data-group-id="6278615599-2">)</span><span class="p" data-group-id="6278615599-1">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">lists</span><span class="ss">:join</span><span class="p" data-group-id="0951597632-1">(</span><span class="nc">Replacement</span><span class="p">,</span><span class="w"> </span><span class="n">split</span><span class="p" data-group-id="0951597632-2">(</span><span class="nc">String</span><span class="p">,</span><span class="w"> </span><span class="nc">SearchPattern</span><span class="p">,</span><span class="w"> </span><span class="nc">Where</span><span class="p" data-group-id="0951597632-2">)</span><span class="p" data-group-id="0951597632-1">)</span><span class="o">.</span></code></pre>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">replace</span><span class="p" data-group-id="9069089577-1">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;ab..cd..ef&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p" data-group-id="9069089577-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="9069089577-2">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;ab&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;cd..ef&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9069089577-2">]</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">replace</span><span class="p" data-group-id="9069089577-3">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;ab..cd..ef&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">all</span><span class="p" data-group-id="9069089577-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="9069089577-4">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;ab&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;cd&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;ef&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9069089577-4">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:replace</span><span class="p" data-group-id="5932713300-1">(</span><span class="p" data-group-id="5932713300-2">&lt;&lt;</span><span class="s">&quot;ab..cd..ef&quot;</span><span class="p" data-group-id="5932713300-2">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p" data-group-id="5932713300-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5932713300-3">[</span><span class="p" data-group-id="5932713300-4">&lt;&lt;</span><span class="s">&quot;ab&quot;</span><span class="p" data-group-id="5932713300-4">&gt;&gt;</span><span class="p">,</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="p" data-group-id="5932713300-5">&lt;&lt;</span><span class="s">&quot;cd..ef&quot;</span><span class="p" data-group-id="5932713300-5">&gt;&gt;</span><span class="p" data-group-id="5932713300-3">]</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:replace</span><span class="p" data-group-id="5932713300-6">(</span><span class="p" data-group-id="5932713300-7">&lt;&lt;</span><span class="s">&quot;ab..cd..ef&quot;</span><span class="p" data-group-id="5932713300-7">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">all</span><span class="p" data-group-id="5932713300-6">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5932713300-8">[</span><span class="p" data-group-id="5932713300-9">&lt;&lt;</span><span class="s">&quot;ab&quot;</span><span class="p" data-group-id="5932713300-9">&gt;&gt;</span><span class="p">,</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="p" data-group-id="5932713300-10">&lt;&lt;</span><span class="s">&quot;cd&quot;</span><span class="p" data-group-id="5932713300-10">&gt;&gt;</span><span class="p">,</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="p" data-group-id="5932713300-11">&lt;&lt;</span><span class="s">&quot;ef&quot;</span><span class="p" data-group-id="5932713300-11">&gt;&gt;</span><span class="p" data-group-id="5932713300-8">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="reverse/1">
@@ -852,16 +891,17 @@ when string: string(), character: <a href="https://hexdocs.pm/elixir/typespecs.h
     </a>
     <h1 class="signature">reverse/1</h1>
       <div class="specs">
-          <pre>reverse(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()) :: [grapheme_cluster()]</pre>
+          <pre>reverse(String :: unicode:chardata()) -> [grapheme_cluster()].
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p>  Returns the reverse list of the grapheme clusters in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">reverse</span><span class="p" data-group-id="7873507917-1">(</span><span class="nc">unicode</span><span class="p">:</span><span class="nf">characters_to_nfd_binary</span><span class="p" data-group-id="7873507917-2">(</span><span class="s">&quot;ÅÄÖ&quot;</span><span class="p" data-group-id="7873507917-2">)</span><span class="p" data-group-id="7873507917-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="7873507917-3">[</span><span class="p" data-group-id="7873507917-4">[</span><span class="mi">79</span><span class="p">,</span><span class="mi">776</span><span class="p" data-group-id="7873507917-4">]</span><span class="p">,</span><span class="p" data-group-id="7873507917-5">[</span><span class="mi">65</span><span class="p">,</span><span class="mi">776</span><span class="p" data-group-id="7873507917-5">]</span><span class="p">,</span><span class="p" data-group-id="7873507917-6">[</span><span class="mi">65</span><span class="p">,</span><span class="mi">778</span><span class="p" data-group-id="7873507917-6">]</span><span class="p" data-group-id="7873507917-3">]</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">io</span><span class="p">:</span><span class="nf">format</span><span class="p" data-group-id="7873507917-7">(</span><span class="s">&quot;~ts</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">,</span><span class="p" data-group-id="7873507917-8">[</span><span class="n">Reverse</span><span class="p" data-group-id="7873507917-8">]</span><span class="p" data-group-id="7873507917-7">)</span><span class="p">.</span><span class="w">
-</span><span class="n">O</span><span class="err">̈</span><span class="n">A</span><span class="err">̈</span><span class="n">A</span><span class="err">̊</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">Reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string</span><span class="ss">:reverse</span><span class="p" data-group-id="9870955267-1">(</span><span class="n">unicode</span><span class="ss">:characters_to_nfd_binary</span><span class="p" data-group-id="9870955267-2">(</span><span class="s">&quot;ÅÄÖ&quot;</span><span class="p" data-group-id="9870955267-2">)</span><span class="p" data-group-id="9870955267-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="9870955267-3">[</span><span class="p" data-group-id="9870955267-4">[</span><span class="mi">79</span><span class="p">,</span><span class="mi">776</span><span class="p" data-group-id="9870955267-4">]</span><span class="p">,</span><span class="p" data-group-id="9870955267-5">[</span><span class="mi">65</span><span class="p">,</span><span class="mi">776</span><span class="p" data-group-id="9870955267-5">]</span><span class="p">,</span><span class="p" data-group-id="9870955267-6">[</span><span class="mi">65</span><span class="p">,</span><span class="mi">778</span><span class="p" data-group-id="9870955267-6">]</span><span class="p" data-group-id="9870955267-3">]</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">io</span><span class="ss">:format</span><span class="p" data-group-id="9870955267-7">(</span><span class="s">&quot;~ts~n&quot;</span><span class="p">,</span><span class="p" data-group-id="9870955267-8">[</span><span class="nc">Reverse</span><span class="p" data-group-id="9870955267-8">]</span><span class="p" data-group-id="9870955267-7">)</span><span class="o">.</span><span class="w">
+</span><span class="nc">O</span><span class="err">̈</span><span class="nc">A</span><span class="err">̈</span><span class="nc">A</span><span class="err">̊</span></code></pre>
   </section>
 </section>
 <section class="detail" id="rightright/23">
@@ -876,7 +916,7 @@ when string: string(), character: <a href="https://hexdocs.pm/elixir/typespecs.h
 <p> Returns <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> with the length adjusted in accordance with <code class="inline">Number</code>. The right margin is fixed. If the length of <code class="inline">(``String``)</code> &lt; <code class="inline">Number</code>, then <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> is padded with blanks or <code class="inline">Character</code>s.</p>
 <p> This function is obsolete. Use <code class="inline">pad/3</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">right</span><span class="p" data-group-id="7828486594-1">(</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="sc">$.</span><span class="p" data-group-id="7828486594-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:right</span><span class="p" data-group-id="7385216573-1">(</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="err">$</span><span class="o">.</span><span class="p" data-group-id="7385216573-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;.....Hello&quot;</span></code></pre>
   </section>
 </section>
@@ -888,15 +928,19 @@ when string: string(), character: <a href="https://hexdocs.pm/elixir/typespecs.h
     </a>
     <h1 class="signature">rstr/2</h1>
       <div class="specs">
-          <pre>rstr(string, subString) :: index
-when string: string(), subString: string(), index: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>rstr(String, SubString) -> Index
+        when
+            String :: string(),
+            SubString :: string(),
+            Index :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns the position where the last occurrence of <code class="inline">SubString</code> begins in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>. Returns <code class="inline">0</code> if <code class="inline">SubString</code> does not exist in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>.</p>
 <p> This function is obsolete. Use <code class="inline">find/3</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">rstr</span><span class="p" data-group-id="6903919933-1">(</span><span class="s">&quot; Hello Hello World World &quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="p" data-group-id="6903919933-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:rstr</span><span class="p" data-group-id="4385611898-1">(</span><span class="s">&quot; Hello Hello World World &quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="p" data-group-id="4385611898-1">)</span><span class="o">.</span><span class="w">
 </span><span class="mi">8</span></code></pre>
   </section>
 </section>
@@ -912,11 +956,11 @@ when string: string(), subString: string(), index: <a href="https://hexdocs.pm/e
 <p> Returns a substring of <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> of at most <code class="inline">Length</code> grapheme clusters, starting at position <code class="inline">Start</code>.</p>
 <p> By default, <code class="inline">Length</code> is <code class="inline">infinity</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">slice</span><span class="p" data-group-id="8009020983-1">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;He̊llö Wörld&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="8009020983-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p">&lt;&lt;</span><span class="s">&quot;ö Wörld&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">slice</span><span class="p" data-group-id="8009020983-2">(</span><span class="p" data-group-id="8009020983-3">[</span><span class="s">&quot;He̊llö &quot;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;Wörld&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="8009020983-3">]</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="8009020983-2">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:slice</span><span class="p" data-group-id="0836812015-1">(</span><span class="p" data-group-id="0836812015-2">&lt;&lt;</span><span class="s">&quot;He̊llö Wörld&quot;</span><span class="o">/</span><span class="n">utf8</span><span class="p" data-group-id="0836812015-2">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="0836812015-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="0836812015-3">&lt;&lt;</span><span class="s">&quot;ö Wörld&quot;</span><span class="o">/</span><span class="n">utf8</span><span class="p" data-group-id="0836812015-3">&gt;&gt;</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:slice</span><span class="p" data-group-id="0836812015-4">(</span><span class="p" data-group-id="0836812015-5">[</span><span class="s">&quot;He̊llö &quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0836812015-6">&lt;&lt;</span><span class="s">&quot;Wörld&quot;</span><span class="o">/</span><span class="n">utf8</span><span class="p" data-group-id="0836812015-6">&gt;&gt;</span><span class="p" data-group-id="0836812015-5">]</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="0836812015-4">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;ö Wö&quot;</span><span class="w">
-</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">slice</span><span class="p" data-group-id="8009020983-4">(</span><span class="p" data-group-id="8009020983-5">[</span><span class="s">&quot;He̊llö &quot;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;Wörld&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="8009020983-5">]</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="mi">50</span><span class="p" data-group-id="8009020983-4">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:slice</span><span class="p" data-group-id="0836812015-7">(</span><span class="p" data-group-id="0836812015-8">[</span><span class="s">&quot;He̊llö &quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0836812015-9">&lt;&lt;</span><span class="s">&quot;Wörld&quot;</span><span class="o">/</span><span class="n">utf8</span><span class="p" data-group-id="0836812015-9">&gt;&gt;</span><span class="p" data-group-id="0836812015-8">]</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="mi">50</span><span class="p" data-group-id="0836812015-7">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;ö Wörld&quot;</span></code></pre>
   </section>
 </section>
@@ -928,15 +972,19 @@ when string: string(), subString: string(), index: <a href="https://hexdocs.pm/e
     </a>
     <h1 class="signature">span/2</h1>
       <div class="specs">
-          <pre>span(string, chars) :: length
-when string: string(), chars: string(), length: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>span(String, Chars) -> Length
+        when
+            String :: string(),
+            Chars :: string(),
+            Length :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns the length of the maximum initial segment of <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>, which consists entirely of characters from <code class="inline">Chars</code>.</p>
 <p> This function is obsolete. Use <code class="inline">take/2</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">span</span><span class="p" data-group-id="5527845384-1">(</span><span class="s">&quot;\t    abcdef&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; \t&quot;</span><span class="p" data-group-id="5527845384-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:span</span><span class="p" data-group-id="5939750008-1">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">    abcdef&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; </span><span class="se">\t</span><span class="s">&quot;</span><span class="p" data-group-id="5939750008-1">)</span><span class="o">.</span><span class="w">
 </span><span class="mi">5</span></code></pre>
   </section>
 </section>
@@ -951,12 +999,12 @@ when string: string(), chars: string(), length: <a href="https://hexdocs.pm/elix
   <section class="docstring">
 <p>  Splits <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> where <code class="inline">SearchPattern</code> is encountered and return the remaining parts. <code class="inline">Where</code>, default <code class="inline">leading</code>, indicates whether the <code class="inline">leading</code>, the <code class="inline">trailing</code> or <code class="inline">all</code> encounters of <code class="inline">SearchPattern</code> will split <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">0</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">split</span><span class="p" data-group-id="5612163239-1">(</span><span class="s">&quot;ab..bc..cd&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p" data-group-id="5612163239-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="5612163239-2">[</span><span class="s">&quot;ab&quot;</span><span class="p">,</span><span class="s">&quot;bc..cd&quot;</span><span class="p" data-group-id="5612163239-2">]</span><span class="w">
-</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">split</span><span class="p" data-group-id="5612163239-3">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;ab..bc..cd&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">trailing</span><span class="p" data-group-id="5612163239-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="5612163239-4">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;ab..bc&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;cd&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="5612163239-4">]</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">split</span><span class="p" data-group-id="5612163239-5">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;ab..bc....cd&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">all</span><span class="p" data-group-id="5612163239-5">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="5612163239-6">[</span><span class="p">&lt;&lt;</span><span class="s">&quot;ab&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;bc&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;cd&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="5612163239-6">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">0</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:split</span><span class="p" data-group-id="1305774816-1">(</span><span class="s">&quot;ab..bc..cd&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p" data-group-id="1305774816-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="1305774816-2">[</span><span class="s">&quot;ab&quot;</span><span class="p">,</span><span class="s">&quot;bc..cd&quot;</span><span class="p" data-group-id="1305774816-2">]</span><span class="w">
+</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:split</span><span class="p" data-group-id="1305774816-3">(</span><span class="p" data-group-id="1305774816-4">&lt;&lt;</span><span class="s">&quot;ab..bc..cd&quot;</span><span class="p" data-group-id="1305774816-4">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">trailing</span><span class="p" data-group-id="1305774816-3">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="1305774816-5">[</span><span class="p" data-group-id="1305774816-6">&lt;&lt;</span><span class="s">&quot;ab..bc&quot;</span><span class="p" data-group-id="1305774816-6">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="1305774816-7">&lt;&lt;</span><span class="s">&quot;cd&quot;</span><span class="p" data-group-id="1305774816-7">&gt;&gt;</span><span class="p" data-group-id="1305774816-5">]</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:split</span><span class="p" data-group-id="1305774816-8">(</span><span class="p" data-group-id="1305774816-9">&lt;&lt;</span><span class="s">&quot;ab..bc....cd&quot;</span><span class="p" data-group-id="1305774816-9">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">all</span><span class="p" data-group-id="1305774816-8">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="1305774816-10">[</span><span class="p" data-group-id="1305774816-11">&lt;&lt;</span><span class="s">&quot;ab&quot;</span><span class="p" data-group-id="1305774816-11">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="1305774816-12">&lt;&lt;</span><span class="s">&quot;bc&quot;</span><span class="p" data-group-id="1305774816-12">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="1305774816-13">&lt;&lt;</span><span class="p" data-group-id="1305774816-13">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="1305774816-14">&lt;&lt;</span><span class="s">&quot;cd&quot;</span><span class="p" data-group-id="1305774816-14">&gt;&gt;</span><span class="p" data-group-id="1305774816-10">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="str/2">
@@ -967,15 +1015,19 @@ when string: string(), chars: string(), length: <a href="https://hexdocs.pm/elix
     </a>
     <h1 class="signature">str/2</h1>
       <div class="specs">
-          <pre>str(string, subString) :: index
-when string: string(), subString: string(), index: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>str(String, SubString) -> Index
+       when
+           String :: string(),
+           SubString :: string(),
+           Index :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns the position where the first occurrence of <code class="inline">SubString</code> begins in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>. Returns <code class="inline">0</code> if <code class="inline">SubString</code> does not exist in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>.</p>
 <p> This function is obsolete. Use <code class="inline">find/2</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">str</span><span class="p" data-group-id="8255847109-1">(</span><span class="s">&quot; Hello Hello World World &quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="p" data-group-id="8255847109-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:str</span><span class="p" data-group-id="4834335076-1">(</span><span class="s">&quot; Hello Hello World World &quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="p" data-group-id="4834335076-1">)</span><span class="o">.</span><span class="w">
 </span><span class="mi">8</span></code></pre>
   </section>
 </section>
@@ -991,7 +1043,7 @@ when string: string(), subString: string(), index: <a href="https://hexdocs.pm/e
 <p> Returns a string, where leading or trailing, or both, blanks or a number of <code class="inline">Character</code> have been removed. <code class="inline">Direction</code>, which can be <code class="inline">left</code>, <code class="inline">right</code>, or <code class="inline">both</code>, indicates from which direction blanks are to be removed. <code class="inline">strip/1</code> is equivalent to <code class="inline">strip(String, both)</code>.</p>
 <p> This function is obsolete. Use <code class="inline">trim/3</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">strip</span><span class="p" data-group-id="6992945576-1">(</span><span class="s">&quot;...Hello.....&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">both</span><span class="p">,</span><span class="w"> </span><span class="sc">$.</span><span class="p" data-group-id="6992945576-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:strip</span><span class="p" data-group-id="6976471953-1">(</span><span class="s">&quot;...Hello.....&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">both</span><span class="p">,</span><span class="w"> </span><span class="err">$</span><span class="o">.</span><span class="p" data-group-id="6976471953-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;Hello&quot;</span></code></pre>
   </section>
 </section>
@@ -1007,7 +1059,7 @@ when string: string(), subString: string(), index: <a href="https://hexdocs.pm/e
 <p> Returns a substring of <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>, starting at position <code class="inline">Start</code> to the end of the string, or to and including position <code class="inline">Stop</code>.</p>
 <p> This function is obsolete. Use <code class="inline">slice/3</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nf">sub_string</span><span class="p" data-group-id="1274777795-1">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p" data-group-id="1274777795-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">sub_string</span><span class="p" data-group-id="7305534223-1">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p" data-group-id="7305534223-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;lo Wo&quot;</span></code></pre>
   </section>
 </section>
@@ -1023,7 +1075,7 @@ when string: string(), subString: string(), index: <a href="https://hexdocs.pm/e
 <p> Returns the word in position <code class="inline">Number</code> of <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>. Words are separated by blanks or <code class="inline">Character</code>s.</p>
 <p> This function is obsolete. Use <a href="#nth_lexeme/3"><code class="inline">nth_lexeme/3</code></a>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">sub_word</span><span class="p" data-group-id="7343263254-1">(</span><span class="s">&quot; Hello old boy !&quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="sc">$o</span><span class="p" data-group-id="7343263254-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:sub_word</span><span class="p" data-group-id="4197036609-1">(</span><span class="s">&quot; Hello old boy !&quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="err">$</span><span class="n">o</span><span class="p" data-group-id="4197036609-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;ld b&quot;</span></code></pre>
   </section>
 </section>
@@ -1039,7 +1091,7 @@ when string: string(), subString: string(), index: <a href="https://hexdocs.pm/e
 <p> Returns a substring of <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>, starting at position <code class="inline">Start</code>, and ending at the end of the string or at length <code class="inline">Length</code>.</p>
 <p> This function is obsolete. Use <code class="inline">slice/3</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nf">substr</span><span class="p" data-group-id="7115592442-1">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="7115592442-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">substr</span><span class="p" data-group-id="0412286783-1">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="0412286783-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;lo Wo&quot;</span></code></pre>
   </section>
 </section>
@@ -1054,14 +1106,14 @@ when string: string(), subString: string(), index: <a href="https://hexdocs.pm/e
   <section class="docstring">
 <p> Takes characters from <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> as long as the characters are members of set <code class="inline">Characters</code> or the complement of set <code class="inline">Characters</code>. <code class="inline">Dir</code>, which can be <code class="inline">leading</code> or <code class="inline">trailing</code>, indicates from which direction characters are to be taken. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">5</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">take</span><span class="p" data-group-id="0027118332-1">(</span><span class="s">&quot;abc0z123&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">seq</span><span class="p" data-group-id="0027118332-2">(</span><span class="sc">$a</span><span class="p">,</span><span class="sc">$z</span><span class="p" data-group-id="0027118332-2">)</span><span class="p" data-group-id="0027118332-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="0027118332-3">{</span><span class="s">&quot;abc&quot;</span><span class="p">,</span><span class="s">&quot;0z123&quot;</span><span class="p" data-group-id="0027118332-3">}</span><span class="w">
-</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">take</span><span class="p" data-group-id="0027118332-4">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc0z123&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">seq</span><span class="p" data-group-id="0027118332-5">(</span><span class="sc">$0</span><span class="p">,</span><span class="sc">$9</span><span class="p" data-group-id="0027118332-5">)</span><span class="p">,</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w"> </span><span class="ss">leading</span><span class="p" data-group-id="0027118332-4">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="0027118332-6">{</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;0z123&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0027118332-6">}</span><span class="w">
-</span><span class="mi">7</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">take</span><span class="p" data-group-id="0027118332-7">(</span><span class="s">&quot;abc0z123&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">seq</span><span class="p" data-group-id="0027118332-8">(</span><span class="sc">$0</span><span class="p">,</span><span class="sc">$9</span><span class="p" data-group-id="0027118332-8">)</span><span class="p">,</span><span class="w"> </span><span class="ss">false</span><span class="p">,</span><span class="w"> </span><span class="ss">trailing</span><span class="p" data-group-id="0027118332-7">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="0027118332-9">{</span><span class="s">&quot;abc0z&quot;</span><span class="p">,</span><span class="s">&quot;123&quot;</span><span class="p" data-group-id="0027118332-9">}</span><span class="w">
-</span><span class="mi">8</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">take</span><span class="p" data-group-id="0027118332-10">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc0z123&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="nc">lists</span><span class="p">:</span><span class="nf">seq</span><span class="p" data-group-id="0027118332-11">(</span><span class="sc">$a</span><span class="p">,</span><span class="sc">$z</span><span class="p" data-group-id="0027118332-11">)</span><span class="p">,</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w"> </span><span class="ss">trailing</span><span class="p" data-group-id="0027118332-10">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="0027118332-12">{</span><span class="p">&lt;&lt;</span><span class="s">&quot;abc0z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;123&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0027118332-12">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">5</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:take</span><span class="p" data-group-id="5329653636-1">(</span><span class="s">&quot;abc0z123&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lists</span><span class="ss">:seq</span><span class="p" data-group-id="5329653636-2">(</span><span class="err">$</span><span class="n">a</span><span class="p">,</span><span class="err">$</span><span class="n">z</span><span class="p" data-group-id="5329653636-2">)</span><span class="p" data-group-id="5329653636-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5329653636-3">{</span><span class="s">&quot;abc&quot;</span><span class="p">,</span><span class="s">&quot;0z123&quot;</span><span class="p" data-group-id="5329653636-3">}</span><span class="w">
+</span><span class="mi">6</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:take</span><span class="p" data-group-id="5329653636-4">(</span><span class="p" data-group-id="5329653636-5">&lt;&lt;</span><span class="s">&quot;abc0z123&quot;</span><span class="p" data-group-id="5329653636-5">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">lists</span><span class="ss">:seq</span><span class="p" data-group-id="5329653636-6">(</span><span class="err">$</span><span class="mi">0</span><span class="p">,</span><span class="err">$</span><span class="mi">9</span><span class="p" data-group-id="5329653636-6">)</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="n">leading</span><span class="p" data-group-id="5329653636-4">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5329653636-7">{</span><span class="p" data-group-id="5329653636-8">&lt;&lt;</span><span class="s">&quot;abc&quot;</span><span class="p" data-group-id="5329653636-8">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="5329653636-9">&lt;&lt;</span><span class="s">&quot;0z123&quot;</span><span class="p" data-group-id="5329653636-9">&gt;&gt;</span><span class="p" data-group-id="5329653636-7">}</span><span class="w">
+</span><span class="mi">7</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:take</span><span class="p" data-group-id="5329653636-10">(</span><span class="s">&quot;abc0z123&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lists</span><span class="ss">:seq</span><span class="p" data-group-id="5329653636-11">(</span><span class="err">$</span><span class="mi">0</span><span class="p">,</span><span class="err">$</span><span class="mi">9</span><span class="p" data-group-id="5329653636-11">)</span><span class="p">,</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w"> </span><span class="n">trailing</span><span class="p" data-group-id="5329653636-10">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5329653636-12">{</span><span class="s">&quot;abc0z&quot;</span><span class="p">,</span><span class="s">&quot;123&quot;</span><span class="p" data-group-id="5329653636-12">}</span><span class="w">
+</span><span class="mi">8</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:take</span><span class="p" data-group-id="5329653636-13">(</span><span class="p" data-group-id="5329653636-14">&lt;&lt;</span><span class="s">&quot;abc0z123&quot;</span><span class="p" data-group-id="5329653636-14">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">lists</span><span class="ss">:seq</span><span class="p" data-group-id="5329653636-15">(</span><span class="err">$</span><span class="n">a</span><span class="p">,</span><span class="err">$</span><span class="n">z</span><span class="p" data-group-id="5329653636-15">)</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="n">trailing</span><span class="p" data-group-id="5329653636-13">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5329653636-16">{</span><span class="p" data-group-id="5329653636-17">&lt;&lt;</span><span class="s">&quot;abc0z&quot;</span><span class="p" data-group-id="5329653636-17">&gt;&gt;</span><span class="p">,</span><span class="p" data-group-id="5329653636-18">&lt;&lt;</span><span class="s">&quot;123&quot;</span><span class="p" data-group-id="5329653636-18">&gt;&gt;</span><span class="p" data-group-id="5329653636-16">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="titlecase/1">
@@ -1072,13 +1124,14 @@ when string: string(), subString: string(), index: <a href="https://hexdocs.pm/e
     </a>
     <h1 class="signature">titlecase/1</h1>
       <div class="specs">
-          <pre>titlecase(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()) :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()</pre>
+          <pre>titlecase(String :: unicode:chardata()) -> unicode:chardata().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p>  Converts <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> to titlecase. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">titlecase</span><span class="p" data-group-id="9604568125-1">(</span><span class="s">&quot;ß is a SHARP s&quot;</span><span class="p" data-group-id="9604568125-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:titlecase</span><span class="p" data-group-id="6663760743-1">(</span><span class="s">&quot;ß is a SHARP s&quot;</span><span class="p" data-group-id="6663760743-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;Ss is a SHARP s&quot;</span></code></pre>
   </section>
 </section>
@@ -1090,24 +1143,26 @@ when string: string(), subString: string(), index: <a href="https://hexdocs.pm/e
     </a>
     <h1 class="signature">to_float/1</h1>
       <div class="specs">
-          <pre>to_float(string) :: {float, rest} | {:error, reason}
-when string: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(),
-     float: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(),
-     rest: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(),
-     reason: :no_float | :badarg</pre>
+          <pre>to_float(String) -> {Float, Rest} | {error, Reason}
+            when
+                String :: unicode:chardata(),
+                Float :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(),
+                Rest :: unicode:chardata(),
+                Reason :: no_float | badarg.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Argument <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> is expected to start with a valid text represented float (the digits are ASCII values). Remaining characters in the string after the float are returned in <code class="inline">Rest</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="6673748164-1">{</span><span class="n">F1</span><span class="p">,</span><span class="n">Fs</span><span class="p" data-group-id="6673748164-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">to_float</span><span class="p" data-group-id="6673748164-2">(</span><span class="s">&quot;1.0-1.0e-1&quot;</span><span class="p" data-group-id="6673748164-2">)</span><span class="p">,</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="6673748164-3">{</span><span class="n">F2</span><span class="p">,</span><span class="p" data-group-id="6673748164-4">[</span><span class="p" data-group-id="6673748164-4">]</span><span class="p" data-group-id="6673748164-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">to_float</span><span class="p" data-group-id="6673748164-5">(</span><span class="n">Fs</span><span class="p" data-group-id="6673748164-5">)</span><span class="p">,</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="n">F1</span><span class="o">+</span><span class="n">F2</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="8122628770-1">{</span><span class="nc">F1</span><span class="p">,</span><span class="nc">Fs</span><span class="p" data-group-id="8122628770-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string</span><span class="ss">:to_float</span><span class="p" data-group-id="8122628770-2">(</span><span class="s">&quot;1.0-1.0e-1&quot;</span><span class="p" data-group-id="8122628770-2">)</span><span class="p">,</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="8122628770-3">{</span><span class="nc">F2</span><span class="p">,</span><span class="p" data-group-id="8122628770-4">[</span><span class="p" data-group-id="8122628770-4">]</span><span class="p" data-group-id="8122628770-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string</span><span class="ss">:to_float</span><span class="p" data-group-id="8122628770-5">(</span><span class="nc">Fs</span><span class="p" data-group-id="8122628770-5">)</span><span class="p">,</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">F1</span><span class="o">+</span><span class="nc">F2</span><span class="o">.</span><span class="w">
 </span><span class="mf">0.9</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">to_float</span><span class="p" data-group-id="6673748164-6">(</span><span class="s">&quot;3/2=1.5&quot;</span><span class="p" data-group-id="6673748164-6">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="6673748164-7">{</span><span class="ss">error</span><span class="p">,</span><span class="ss">no_float</span><span class="p" data-group-id="6673748164-7">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">to_float</span><span class="p" data-group-id="6673748164-8">(</span><span class="s">&quot;-1.5eX&quot;</span><span class="p" data-group-id="6673748164-8">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="6673748164-9">{</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&quot;eX&quot;</span><span class="p" data-group-id="6673748164-9">}</span></code></pre>
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:to_float</span><span class="p" data-group-id="8122628770-6">(</span><span class="s">&quot;3/2=1.5&quot;</span><span class="p" data-group-id="8122628770-6">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="8122628770-7">{</span><span class="n">error</span><span class="p">,</span><span class="n">no_float</span><span class="p" data-group-id="8122628770-7">}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:to_float</span><span class="p" data-group-id="8122628770-8">(</span><span class="s">&quot;-1.5eX&quot;</span><span class="p" data-group-id="8122628770-8">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="8122628770-9">{</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="s">&quot;eX&quot;</span><span class="p" data-group-id="8122628770-9">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="to_graphemes/1">
@@ -1118,16 +1173,17 @@ when string: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(),
     </a>
     <h1 class="signature">to_graphemes/1</h1>
       <div class="specs">
-          <pre>to_graphemes(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()) :: [grapheme_cluster()]</pre>
+          <pre>to_graphemes(String :: unicode:chardata()) -> [grapheme_cluster()].
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p>  Converts <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> to a list of grapheme clusters. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">to_graphemes</span><span class="p" data-group-id="6082176212-1">(</span><span class="s">&quot;ß↑e̊&quot;</span><span class="p" data-group-id="6082176212-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="6082176212-2">[</span><span class="mi">223</span><span class="p">,</span><span class="mi">8593</span><span class="p">,</span><span class="p" data-group-id="6082176212-3">[</span><span class="mi">101</span><span class="p">,</span><span class="mi">778</span><span class="p" data-group-id="6082176212-3">]</span><span class="p" data-group-id="6082176212-2">]</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">to_graphemes</span><span class="p" data-group-id="6082176212-4">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;ß↑e̊&quot;</span><span class="o">/</span><span class="ss">utf8</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="6082176212-4">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="6082176212-5">[</span><span class="mi">223</span><span class="p">,</span><span class="mi">8593</span><span class="p">,</span><span class="p" data-group-id="6082176212-6">[</span><span class="mi">101</span><span class="p">,</span><span class="mi">778</span><span class="p" data-group-id="6082176212-6">]</span><span class="p" data-group-id="6082176212-5">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:to_graphemes</span><span class="p" data-group-id="0517385483-1">(</span><span class="s">&quot;ß↑e̊&quot;</span><span class="p" data-group-id="0517385483-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="0517385483-2">[</span><span class="mi">223</span><span class="p">,</span><span class="mi">8593</span><span class="p">,</span><span class="p" data-group-id="0517385483-3">[</span><span class="mi">101</span><span class="p">,</span><span class="mi">778</span><span class="p" data-group-id="0517385483-3">]</span><span class="p" data-group-id="0517385483-2">]</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:to_graphemes</span><span class="p" data-group-id="0517385483-4">(</span><span class="p" data-group-id="0517385483-5">&lt;&lt;</span><span class="s">&quot;ß↑e̊&quot;</span><span class="o">/</span><span class="n">utf8</span><span class="p" data-group-id="0517385483-5">&gt;&gt;</span><span class="p" data-group-id="0517385483-4">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="0517385483-6">[</span><span class="mi">223</span><span class="p">,</span><span class="mi">8593</span><span class="p">,</span><span class="p" data-group-id="0517385483-7">[</span><span class="mi">101</span><span class="p">,</span><span class="mi">778</span><span class="p" data-group-id="0517385483-7">]</span><span class="p" data-group-id="0517385483-6">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="to_integer/1">
@@ -1138,24 +1194,26 @@ when string: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(),
     </a>
     <h1 class="signature">to_integer/1</h1>
       <div class="specs">
-          <pre>to_integer(string) :: {int, rest} | {:error, reason}
-when string: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(),
-     int: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
-     rest: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(),
-     reason: :no_integer | :badarg</pre>
+          <pre>to_integer(String) -> {Int, Rest} | {error, Reason}
+              when
+                  String :: unicode:chardata(),
+                  Int :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+                  Rest :: unicode:chardata(),
+                  Reason :: no_integer | badarg.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Argument <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> is expected to start with a valid text represented integer (the digits are ASCII values). Remaining characters in the string after the integer are returned in <code class="inline">Rest</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="8780836113-1">{</span><span class="n">I1</span><span class="p">,</span><span class="n">Is</span><span class="p" data-group-id="8780836113-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">to_integer</span><span class="p" data-group-id="8780836113-2">(</span><span class="s">&quot;33+22&quot;</span><span class="p" data-group-id="8780836113-2">)</span><span class="p">,</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="8780836113-3">{</span><span class="n">I2</span><span class="p">,</span><span class="p" data-group-id="8780836113-4">[</span><span class="p" data-group-id="8780836113-4">]</span><span class="p" data-group-id="8780836113-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">to_integer</span><span class="p" data-group-id="8780836113-5">(</span><span class="n">Is</span><span class="p" data-group-id="8780836113-5">)</span><span class="p">,</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="n">I1</span><span class="o">-</span><span class="n">I2</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="5234800862-1">{</span><span class="nc">I1</span><span class="p">,</span><span class="nc">Is</span><span class="p" data-group-id="5234800862-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string</span><span class="ss">:to_integer</span><span class="p" data-group-id="5234800862-2">(</span><span class="s">&quot;33+22&quot;</span><span class="p" data-group-id="5234800862-2">)</span><span class="p">,</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="5234800862-3">{</span><span class="nc">I2</span><span class="p">,</span><span class="p" data-group-id="5234800862-4">[</span><span class="p" data-group-id="5234800862-4">]</span><span class="p" data-group-id="5234800862-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string</span><span class="ss">:to_integer</span><span class="p" data-group-id="5234800862-5">(</span><span class="nc">Is</span><span class="p" data-group-id="5234800862-5">)</span><span class="p">,</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">I1</span><span class="o">-</span><span class="nc">I2</span><span class="o">.</span><span class="w">
 </span><span class="mi">11</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">to_integer</span><span class="p" data-group-id="8780836113-6">(</span><span class="s">&quot;0.5&quot;</span><span class="p" data-group-id="8780836113-6">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="8780836113-7">{</span><span class="mi">0</span><span class="p">,</span><span class="s">&quot;.5&quot;</span><span class="p" data-group-id="8780836113-7">}</span><span class="w">
-</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">to_integer</span><span class="p" data-group-id="8780836113-8">(</span><span class="s">&quot;x=2&quot;</span><span class="p" data-group-id="8780836113-8">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="8780836113-9">{</span><span class="ss">error</span><span class="p">,</span><span class="ss">no_integer</span><span class="p" data-group-id="8780836113-9">}</span></code></pre>
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:to_integer</span><span class="p" data-group-id="5234800862-6">(</span><span class="s">&quot;0.5&quot;</span><span class="p" data-group-id="5234800862-6">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5234800862-7">{</span><span class="mi">0</span><span class="p">,</span><span class="s">&quot;.5&quot;</span><span class="p" data-group-id="5234800862-7">}</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:to_integer</span><span class="p" data-group-id="5234800862-8">(</span><span class="s">&quot;x=2&quot;</span><span class="p" data-group-id="5234800862-8">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="5234800862-9">{</span><span class="n">error</span><span class="p">,</span><span class="n">no_integer</span><span class="p" data-group-id="5234800862-9">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="to_lowerto_lowerto_upperto_upper/1111">
@@ -1179,17 +1237,19 @@ when string: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>(),
     </a>
     <h1 class="signature">tokens/2</h1>
       <div class="specs">
-          <pre>tokens(string, separatorList) :: tokens
-when string: string(),
-     separatorList: string(),
-     tokens: [token :: nonempty_string()]</pre>
+          <pre>tokens(String, SeparatorList) -> Tokens
+          when
+              String :: string(),
+              SeparatorList :: string(),
+              Tokens :: [Token :: nonempty_string()].
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a list of tokens in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>, separated by the characters in <code class="inline">SeparatorList</code>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nf">tokens</span><span class="p" data-group-id="5543981986-1">(</span><span class="s">&quot;abc defxxghix jkl&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x &quot;</span><span class="p" data-group-id="5543981986-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="5543981986-2">[</span><span class="s">&quot;abc&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;def&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ghi&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;jkl&quot;</span><span class="p" data-group-id="5543981986-2">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">tokens</span><span class="p" data-group-id="8482744427-1">(</span><span class="s">&quot;abc defxxghix jkl&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x &quot;</span><span class="p" data-group-id="8482744427-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="8482744427-2">[</span><span class="s">&quot;abc&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;def&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ghi&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;jkl&quot;</span><span class="p" data-group-id="8482744427-2">]</span></code></pre>
 <p> Notice that, as shown in this example, two or more adjacent separator characters in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> are treated as one. That is, there are no empty strings in the resulting list of tokens.</p>
 <p> This function is obsolete. Use <a href="#lexemes/2"><code class="inline">lexemes/2</code></a>.</p>
   </section>
@@ -1207,12 +1267,12 @@ when string: string(),
 <p>  Default <code class="inline">Characters</code> is the set of nonbreakable whitespace codepoints, defined as Pattern_White_Space in Unicode Standard Annex #31. <code class="inline">By default, ``Dir</code> is <code class="inline">both</code>. </p>
 <p>  Notice that <code class="inline">[$\r,$\n]</code> is one grapheme cluster according to the Unicode Standard. </p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">trim</span><span class="p" data-group-id="4237739137-1">(</span><span class="s">&quot;\t  Hello  \n&quot;</span><span class="p" data-group-id="4237739137-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:trim</span><span class="p" data-group-id="2904849544-1">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">  Hello  </span><span class="se">\n</span><span class="s">&quot;</span><span class="p" data-group-id="2904849544-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;Hello&quot;</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">trim</span><span class="p" data-group-id="4237739137-2">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;\t  Hello  \n&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">leading</span><span class="p" data-group-id="4237739137-2">)</span><span class="p">.</span><span class="w">
-</span><span class="p">&lt;&lt;</span><span class="s">&quot;Hello  \n&quot;</span><span class="p">&gt;&gt;</span><span class="w">
-</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">trim</span><span class="p" data-group-id="4237739137-3">(</span><span class="p">&lt;&lt;</span><span class="s">&quot;.Hello.\n&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">trailing</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\n.&quot;</span><span class="p" data-group-id="4237739137-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p">&lt;&lt;</span><span class="s">&quot;.Hello&quot;</span><span class="p">&gt;&gt;</span></code></pre>
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:trim</span><span class="p" data-group-id="2904849544-2">(</span><span class="p" data-group-id="2904849544-3">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">  Hello  </span><span class="se">\n</span><span class="s">&quot;</span><span class="p" data-group-id="2904849544-3">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">leading</span><span class="p" data-group-id="2904849544-2">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="2904849544-4">&lt;&lt;</span><span class="s">&quot;Hello  </span><span class="se">\n</span><span class="s">&quot;</span><span class="p" data-group-id="2904849544-4">&gt;&gt;</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:trim</span><span class="p" data-group-id="2904849544-5">(</span><span class="p" data-group-id="2904849544-6">&lt;&lt;</span><span class="s">&quot;.Hello.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p" data-group-id="2904849544-6">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">trailing</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">.&quot;</span><span class="p" data-group-id="2904849544-5">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="2904849544-7">&lt;&lt;</span><span class="s">&quot;.Hello&quot;</span><span class="p" data-group-id="2904849544-7">&gt;&gt;</span></code></pre>
   </section>
 </section>
 <section class="detail" id="uppercase/1">
@@ -1223,14 +1283,15 @@ when string: string(),
     </a>
     <h1 class="signature">uppercase/1</h1>
       <div class="specs">
-          <pre>uppercase(string :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()) :: <a href=":unicode.html#t:chardata/0">:unicode.chardata</a>()</pre>
+          <pre>uppercase(String :: unicode:chardata()) -> unicode:chardata().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p>  Converts <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> to uppercase. </p>
 <p> See also <a href="#titlecase/1"><code class="inline">titlecase/1</code></a>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">string</span><span class="p">:</span><span class="nf">uppercase</span><span class="p" data-group-id="9929741481-1">(</span><span class="s">&quot;Michał&quot;</span><span class="p" data-group-id="9929741481-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">string</span><span class="ss">:uppercase</span><span class="p" data-group-id="4477790555-1">(</span><span class="s">&quot;Michał&quot;</span><span class="p" data-group-id="4477790555-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;MICHAŁ&quot;</span></code></pre>
   </section>
 </section>
@@ -1246,7 +1307,7 @@ when string: string(),
 <p> Returns the number of words in <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a>, separated by blanks or <code class="inline">Character</code>.</p>
 <p> This function is obsolete. Use <a href="#lexemes/2"><code class="inline">lexemes/2</code></a>.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">&gt;</span><span class="w"> </span><span class="nf">words</span><span class="p" data-group-id="0583277257-1">(</span><span class="s">&quot; Hello old boy!&quot;</span><span class="p">,</span><span class="w"> </span><span class="sc">$o</span><span class="p" data-group-id="0583277257-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&gt;</span><span class="w"> </span><span class="n">words</span><span class="p" data-group-id="5257861447-1">(</span><span class="s">&quot; Hello old boy!&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">$</span><span class="n">o</span><span class="p" data-group-id="5257861447-1">)</span><span class="o">.</span><span class="w">
 </span><span class="mi">4</span></code></pre>
   </section>
 </section>
@@ -1264,18 +1325,18 @@ when string: string(),
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

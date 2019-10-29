@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>erl_internal — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -163,9 +163,15 @@ Functions          </h1>
     </a>
     <h1 class="signature">add_predefined_functions/1</h1>
       <div class="specs">
-          <pre>add_predefined_functions(forms) :: updatedForms
-when forms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>() | <a href=":erl_parse.html#t:form_info/0">:erl_parse.form_info</a>()],
-     updatedForms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>() | <a href=":erl_parse.html#t:form_info/0">:erl_parse.form_info</a>()]</pre>
+          <pre>add_predefined_functions(Forms) -> UpdatedForms
+                            when
+                                Forms ::
+                                    [erl_parse:abstract_form() |
+                                     erl_parse:form_info()],
+                                UpdatedForms ::
+                                    [erl_parse:abstract_form() |
+                                     erl_parse:form_info()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -180,7 +186,9 @@ when forms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_for
     </a>
     <h1 class="signature">arith_op/2</h1>
       <div class="specs">
-          <pre>arith_op(opName, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+          <pre>arith_op(OpName, Arity) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+            when OpName :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), Arity :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -195,7 +203,9 @@ when forms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_for
     </a>
     <h1 class="signature">bif/2</h1>
       <div class="specs">
-          <pre>bif(name, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when name: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+          <pre>bif(Name, Arity) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+       when Name :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), Arity :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -210,7 +220,9 @@ when forms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_for
     </a>
     <h1 class="signature">bool_op/2</h1>
       <div class="specs">
-          <pre>bool_op(opName, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+          <pre>bool_op(OpName, Arity) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+           when OpName :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), Arity :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -225,7 +237,9 @@ when forms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_for
     </a>
     <h1 class="signature">comp_op/2</h1>
       <div class="specs">
-          <pre>comp_op(opName, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+          <pre>comp_op(OpName, Arity) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+           when OpName :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), Arity :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -240,7 +254,9 @@ when forms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_for
     </a>
     <h1 class="signature">guard_bif/2</h1>
       <div class="specs">
-          <pre>guard_bif(name, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when name: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+          <pre>guard_bif(Name, Arity) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+             when Name :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), Arity :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -255,7 +271,9 @@ when forms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_for
     </a>
     <h1 class="signature">list_op/2</h1>
       <div class="specs">
-          <pre>list_op(opName, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+          <pre>list_op(OpName, Arity) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+           when OpName :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), Arity :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -270,10 +288,12 @@ when forms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_for
     </a>
     <h1 class="signature">op_type/2</h1>
       <div class="specs">
-          <pre>op_type(opName, arity) :: type
-when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
-     arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>(),
-     type: :arith | :bool | :comp | :list | :send</pre>
+          <pre>op_type(OpName, Arity) -> Type
+           when
+               OpName :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+               Arity :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>(),
+               Type :: arith | bool | comp | list | send.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -288,7 +308,9 @@ when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom
     </a>
     <h1 class="signature">send_op/2</h1>
       <div class="specs">
-          <pre>send_op(opName, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+          <pre>send_op(OpName, Arity) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+           when OpName :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), Arity :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -303,7 +325,9 @@ when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom
     </a>
     <h1 class="signature">type_test/2</h1>
       <div class="specs">
-          <pre>type_test(name, arity) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when name: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), arity: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>()</pre>
+          <pre>type_test(Name, Arity) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+             when Name :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), Arity :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">arity</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -324,18 +348,18 @@ when opName: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

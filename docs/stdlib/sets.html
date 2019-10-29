@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>sets — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -212,8 +212,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">add_element/2</h1>
       <div class="specs">
-          <pre>add_element(element, set1) :: set2
-when set1: set(element), set2: set(element), element: var</pre>
+          <pre>add_element(Element, Set1) -> Set2
+               when Set1 :: set(Element), Set2 :: set(Element).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -228,8 +229,9 @@ when set1: set(element), set2: set(element), element: var</pre>
     </a>
     <h1 class="signature">del_element/2</h1>
       <div class="specs">
-          <pre>del_element(element, set1) :: set2
-when set1: set(element), set2: set(element), element: var</pre>
+          <pre>del_element(Element, Set1) -> Set2
+               when Set1 :: set(Element), Set2 :: set(Element).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -244,8 +246,12 @@ when set1: set(element), set2: set(element), element: var</pre>
     </a>
     <h1 class="signature">filter/2</h1>
       <div class="specs">
-          <pre>filter(pred, set1) :: set2
-when pred: (element -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), set1: set(element), set2: set(element)</pre>
+          <pre>filter(Pred, Set1) -> Set2
+          when
+              Pred :: fun((Element) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()),
+              Set1 :: set(Element),
+              Set2 :: set(Element).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -260,13 +266,15 @@ when pred: (element -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-i
     </a>
     <h1 class="signature">fold/3</h1>
       <div class="specs">
-          <pre>fold(function, acc0, set) :: acc1
-when function: (element, accIn -> accOut),
-     set: set(element),
-     acc0: acc,
-     acc1: acc,
-     accIn: acc,
-     accOut: acc</pre>
+          <pre>fold(Function, Acc0, Set) -> Acc1
+        when
+            Function :: fun((Element, AccIn) -> AccOut),
+            Set :: set(Element),
+            Acc0 :: Acc,
+            Acc1 :: Acc,
+            AccIn :: Acc,
+            AccOut :: Acc.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -281,7 +289,8 @@ when function: (element, accIn -> accOut),
     </a>
     <h1 class="signature">from_list/1</h1>
       <div class="specs">
-          <pre>from_list(list) :: set when list: [element], set: set(element)</pre>
+          <pre>from_list(List) -> Set when List :: [Element], Set :: set(Element).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -296,8 +305,11 @@ when function: (element, accIn -> accOut),
     </a>
     <h1 class="signature">intersection/1</h1>
       <div class="specs">
-          <pre>intersection(setList) :: set
-when setList: [set(element), ...], set: set(element)</pre>
+          <pre>intersection(SetList) -> Set
+                when
+                    SetList :: [set(Element), ...],
+                    Set :: set(Element).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -312,8 +324,12 @@ when setList: [set(element), ...], set: set(element)</pre>
     </a>
     <h1 class="signature">intersection/2</h1>
       <div class="specs">
-          <pre>intersection(set1, set2) :: set3
-when set1: set(element), set2: set(element), set3: set(element)</pre>
+          <pre>intersection(Set1, Set2) -> Set3
+                when
+                    Set1 :: set(Element),
+                    Set2 :: set(Element),
+                    Set3 :: set(Element).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -328,7 +344,9 @@ when set1: set(element), set2: set(element), set3: set(element)</pre>
     </a>
     <h1 class="signature">is_disjoint/2</h1>
       <div class="specs">
-          <pre>is_disjoint(set1, set2) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when set1: set(element), set2: set(element)</pre>
+          <pre>is_disjoint(Set1, Set2) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+               when Set1 :: set(Element), Set2 :: set(Element).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -343,7 +361,8 @@ when set1: set(element), set2: set(element), set3: set(element)</pre>
     </a>
     <h1 class="signature">is_element/2</h1>
       <div class="specs">
-          <pre>is_element(element, set) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when set: set(element), element: var</pre>
+          <pre>is_element(Element, Set) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Set :: set(Element).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -358,7 +377,8 @@ when set1: set(element), set2: set(element), set3: set(element)</pre>
     </a>
     <h1 class="signature">is_empty/1</h1>
       <div class="specs">
-          <pre>is_empty(set) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when set: set()</pre>
+          <pre>is_empty(Set) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Set :: set().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -373,7 +393,8 @@ when set1: set(element), set2: set(element), set3: set(element)</pre>
     </a>
     <h1 class="signature">is_set/1</h1>
       <div class="specs">
-          <pre>is_set(set) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when set: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>is_set(Set) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Set :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -388,7 +409,9 @@ when set1: set(element), set2: set(element), set3: set(element)</pre>
     </a>
     <h1 class="signature">is_subset/2</h1>
       <div class="specs">
-          <pre>is_subset(set1, set2) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when set1: set(element), set2: set(element)</pre>
+          <pre>is_subset(Set1, Set2) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+             when Set1 :: set(Element), Set2 :: set(Element).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -403,7 +426,8 @@ when set1: set(element), set2: set(element), set3: set(element)</pre>
     </a>
     <h1 class="signature">new/0</h1>
       <div class="specs">
-          <pre>new() :: set()</pre>
+          <pre>new() -> set().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -418,7 +442,8 @@ when set1: set(element), set2: set(element), set3: set(element)</pre>
     </a>
     <h1 class="signature">size/1</h1>
       <div class="specs">
-          <pre>size(set) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when set: set()</pre>
+          <pre>size(Set) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when Set :: set().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -433,8 +458,12 @@ when set1: set(element), set2: set(element), set3: set(element)</pre>
     </a>
     <h1 class="signature">subtract/2</h1>
       <div class="specs">
-          <pre>subtract(set1, set2) :: set3
-when set1: set(element), set2: set(element), set3: set(element)</pre>
+          <pre>subtract(Set1, Set2) -> Set3
+            when
+                Set1 :: set(Element),
+                Set2 :: set(Element),
+                Set3 :: set(Element).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -449,7 +478,8 @@ when set1: set(element), set2: set(element), set3: set(element)</pre>
     </a>
     <h1 class="signature">to_list/1</h1>
       <div class="specs">
-          <pre>to_list(set) :: list when set: set(element), list: [element]</pre>
+          <pre>to_list(Set) -> List when Set :: set(Element), List :: [Element].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -464,7 +494,9 @@ when set1: set(element), set2: set(element), set3: set(element)</pre>
     </a>
     <h1 class="signature">union/1</h1>
       <div class="specs">
-          <pre>union(setList) :: set when setList: [set(element)], set: set(element)</pre>
+          <pre>union(SetList) -> Set
+         when SetList :: [set(Element)], Set :: set(Element).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -479,8 +511,12 @@ when set1: set(element), set2: set(element), set3: set(element)</pre>
     </a>
     <h1 class="signature">union/2</h1>
       <div class="specs">
-          <pre>union(set1, set2) :: set3
-when set1: set(element), set2: set(element), set3: set(element)</pre>
+          <pre>union(Set1, Set2) -> Set3
+         when
+             Set1 :: set(Element),
+             Set2 :: set(Element),
+             Set3 :: set(Element).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -501,18 +537,18 @@ when set1: set(element), set2: set(element), set3: set(element)</pre>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

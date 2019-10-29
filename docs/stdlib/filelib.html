@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>filelib — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -180,8 +180,11 @@ Functions          </h1>
     </a>
     <h1 class="signature">ensure_dir/1</h1>
       <div class="specs">
-          <pre>ensure_dir(name) :: :ok | {:error, reason}
-when name: filename_all() | dirname_all(), reason: <a href="http://www.erlang.org/doc/man/file.html#type-posix">:file.posix</a>()</pre>
+          <pre>ensure_dir(Name) -> ok | {error, Reason}
+              when
+                  Name :: filename_all() | dirname_all(),
+                  Reason :: file:posix().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -197,7 +200,9 @@ when name: filename_all() | dirname_all(), reason: <a href="http://www.erlang.or
     </a>
     <h1 class="signature">file_size/1</h1>
       <div class="specs">
-          <pre>file_size(filename) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when filename: filename_all()</pre>
+          <pre>file_size(Filename) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()
+             when Filename :: filename_all().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -225,7 +230,8 @@ when name: filename_all() | dirname_all(), reason: <a href="http://www.erlang.or
     </a>
     <h1 class="signature">find_source/1</h1>
       <div class="specs">
-          <pre>find_source(filename()) :: {:ok, filename()} | {:error, :not_found}</pre>
+          <pre>find_source(filename()) -> {ok, filename()} | {error, not_found}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -253,13 +259,16 @@ when name: filename_all() | dirname_all(), reason: <a href="http://www.erlang.or
     </a>
     <h1 class="signature">fold_files/5</h1>
       <div class="specs">
-          <pre>fold_files(dir, regExp, recursive, fun, accIn) :: accOut
-when dir: dirname(),
-     regExp: string(),
-     recursive: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
-     fun: (f :: <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>(), accIn -> accOut),
-     accIn: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     accOut: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>fold_files(Dir, RegExp, Recursive, Fun, AccIn) -> AccOut
+              when
+                  Dir :: dirname(),
+                  RegExp :: string(),
+                  Recursive :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+                  Fun ::
+                      fun((F :: file:filename(), AccIn) -> AccOut),
+                  AccIn :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                  AccOut :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -276,7 +285,9 @@ when dir: dirname(),
     </a>
     <h1 class="signature">is_dir/1</h1>
       <div class="specs">
-          <pre>is_dir(name) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when name: filename_all() | dirname_all()</pre>
+          <pre>is_dir(Name) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+          when Name :: filename_all() | dirname_all().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -291,7 +302,9 @@ when dir: dirname(),
     </a>
     <h1 class="signature">is_file/1</h1>
       <div class="specs">
-          <pre>is_file(name) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when name: filename_all() | dirname_all()</pre>
+          <pre>is_file(Name) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+           when Name :: filename_all() | dirname_all().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -306,7 +319,8 @@ when dir: dirname(),
     </a>
     <h1 class="signature">is_regular/1</h1>
       <div class="specs">
-          <pre>is_regular(name) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when name: filename_all()</pre>
+          <pre>is_regular(Name) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Name :: filename_all().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -321,8 +335,9 @@ when dir: dirname(),
     </a>
     <h1 class="signature">last_modified/1</h1>
       <div class="specs">
-          <pre>last_modified(name) :: <a href="http://www.erlang.org/doc/man/file.html#type-date_time">:file.date_time</a>() | 0
-when name: filename_all() | dirname_all()</pre>
+          <pre>last_modified(Name) -> file:date_time() | 0
+                 when Name :: filename_all() | dirname_all().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -337,7 +352,9 @@ when name: filename_all() | dirname_all()</pre>
     </a>
     <h1 class="signature">wildcard/1</h1>
       <div class="specs">
-          <pre>wildcard(wildcard) :: [<a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>()] when wildcard: filename() | dirname()</pre>
+          <pre>wildcard(Wildcard) -> [file:filename()]
+            when Wildcard :: filename() | dirname().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -361,16 +378,16 @@ when name: filename_all() | dirname_all()</pre>
 <p> Examples:</p>
 <p> The following examples assume that the current directory is the top of an Erlang/OTP installation.</p>
 <p> To find all <code class="inline">.beam</code> files in all applications, use the following line:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nc">filelib</span><span class="p">:</span><span class="nf">wildcard</span><span class="p" data-group-id="1701315628-1">(</span><span class="s">&quot;lib/*/ebin/*.beam&quot;</span><span class="p" data-group-id="1701315628-1">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">filelib</span><span class="ss">:wildcard</span><span class="p" data-group-id="9814670459-1">(</span><span class="s">&quot;lib/*/ebin/*.beam&quot;</span><span class="p" data-group-id="9814670459-1">)</span><span class="o">.</span></code></pre>
 <p> To find <code class="inline">.erl</code> or <code class="inline">.hrl</code> in all applications <code class="inline">src</code> directories, use either of the following lines:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nc">filelib</span><span class="p">:</span><span class="nf">wildcard</span><span class="p" data-group-id="6673748899-1">(</span><span class="s">&quot;lib/*/src/*.?rl&quot;</span><span class="p" data-group-id="6673748899-1">)</span></code></pre>
-<pre><code class="nohighlight makeup erlang"><span class="nc">filelib</span><span class="p">:</span><span class="nf">wildcard</span><span class="p" data-group-id="8129123520-1">(</span><span class="s">&quot;lib/*/src/*.{erl,hrl}&quot;</span><span class="p" data-group-id="8129123520-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">filelib</span><span class="ss">:wildcard</span><span class="p" data-group-id="1398469699-1">(</span><span class="s">&quot;lib/*/src/*.?rl&quot;</span><span class="p" data-group-id="1398469699-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">filelib</span><span class="ss">:wildcard</span><span class="p" data-group-id="8786532641-1">(</span><span class="s">&quot;lib/*/src/*.{erl,hrl}&quot;</span><span class="p" data-group-id="8786532641-1">)</span></code></pre>
 <p> To find all <code class="inline">.hrl</code> files in <code class="inline">src</code> or <code class="inline">include</code> directories:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nc">filelib</span><span class="p">:</span><span class="nf">wildcard</span><span class="p" data-group-id="9497601557-1">(</span><span class="s">&quot;lib/*/{src,include}/*.hrl&quot;</span><span class="p" data-group-id="9497601557-1">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">filelib</span><span class="ss">:wildcard</span><span class="p" data-group-id="0770868426-1">(</span><span class="s">&quot;lib/*/{src,include}/*.hrl&quot;</span><span class="p" data-group-id="0770868426-1">)</span><span class="o">.</span></code></pre>
 <p> To find all <code class="inline">.erl</code> or <code class="inline">.hrl</code> files in either <code class="inline">src</code> or <code class="inline">include</code> directories:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nc">filelib</span><span class="p">:</span><span class="nf">wildcard</span><span class="p" data-group-id="7677588567-1">(</span><span class="s">&quot;lib/*/{src,include}/*.{erl,hrl}&quot;</span><span class="p" data-group-id="7677588567-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">filelib</span><span class="ss">:wildcard</span><span class="p" data-group-id="7609563468-1">(</span><span class="s">&quot;lib/*/{src,include}/*.{erl,hrl}&quot;</span><span class="p" data-group-id="7609563468-1">)</span></code></pre>
 <p> To find all <code class="inline">.erl</code> or <code class="inline">.hrl</code> files in any subdirectory:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nc">filelib</span><span class="p">:</span><span class="nf">wildcard</span><span class="p" data-group-id="3506101082-1">(</span><span class="s">&quot;lib/**/*.{erl,hrl}&quot;</span><span class="p" data-group-id="3506101082-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">filelib</span><span class="ss">:wildcard</span><span class="p" data-group-id="6502178984-1">(</span><span class="s">&quot;lib/**/*.{erl,hrl}&quot;</span><span class="p" data-group-id="6502178984-1">)</span></code></pre>
   </section>
 </section>
 <section class="detail" id="wildcard/2">
@@ -381,8 +398,11 @@ when name: filename_all() | dirname_all()</pre>
     </a>
     <h1 class="signature">wildcard/2</h1>
       <div class="specs">
-          <pre>wildcard(wildcard, cwd) :: [<a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>()]
-when wildcard: filename() | dirname(), cwd: dirname()</pre>
+          <pre>wildcard(Wildcard, Cwd) -> [file:filename()]
+            when
+                Wildcard :: filename() | dirname(),
+                Cwd :: dirname().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -403,18 +423,18 @@ when wildcard: filename() | dirname(), cwd: dirname()</pre>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

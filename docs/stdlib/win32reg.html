@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>win32reg — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -75,24 +75,24 @@ win32reg      </h1>
 <p> Paths to keys are left to right, with subkeys to the right and backslash between keys. (Remember that backslashes must be doubled in Erlang strings.) Case is preserved but not significant.</p>
 <p> For example, <code class="inline">&quot;\\hkey_local_machine\\software\\Ericsson\\Erlang\\5.0&quot;</code> is the key for the installation data for the latest Erlang release.</p>
 <p> There are six entry points in the Windows registry, top-level keys. They can be abbreviated in this module as follows:</p>
-<pre><code class="nohighlight makeup erlang"><span class="n">Abbreviation</span><span class="w">     </span><span class="n">Registry</span><span class="w"> </span><span class="ss">key</span><span class="w">
-</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="w">     </span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="o">==</span><span class="w">
-</span><span class="ss">hkcr</span><span class="w">             </span><span class="n">HKEY_CLASSES_ROOT</span><span class="w">
-</span><span class="ss">current_user</span><span class="w">     </span><span class="n">HKEY_CURRENT_USER</span><span class="w">
-</span><span class="ss">hkcu</span><span class="w">             </span><span class="n">HKEY_CURRENT_USER</span><span class="w">
-</span><span class="ss">local_machine</span><span class="w">    </span><span class="n">HKEY_LOCAL_MACHINE</span><span class="w">
-</span><span class="ss">hklm</span><span class="w">             </span><span class="n">HKEY_LOCAL_MACHINE</span><span class="w">
-</span><span class="ss">users</span><span class="w">            </span><span class="n">HKEY_USERS</span><span class="w">
-</span><span class="ss">hku</span><span class="w">              </span><span class="n">HKEY_USERS</span><span class="w">
-</span><span class="ss">current_config</span><span class="w">   </span><span class="n">HKEY_CURRENT_CONFIG</span><span class="w">
-</span><span class="ss">hkcc</span><span class="w">             </span><span class="n">HKEY_CURRENT_CONFIG</span><span class="w">
-</span><span class="ss">dyn_data</span><span class="w">         </span><span class="n">HKEY_DYN_DATA</span><span class="w">
-</span><span class="ss">hkdd</span><span class="w">             </span><span class="n">HKEY_DYN_DATA</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">Abbreviation</span><span class="w">     </span><span class="nc">Registry</span><span class="w"> </span><span class="n">key</span><span class="w">
+</span><span class="o">===</span><span class="o">===</span><span class="o">===</span><span class="o">===</span><span class="w">     </span><span class="o">===</span><span class="o">===</span><span class="o">===</span><span class="o">===</span><span class="w">
+</span><span class="n">hkcr</span><span class="w">             </span><span class="nc">HKEY_CLASSES_ROOT</span><span class="w">
+</span><span class="n">current_user</span><span class="w">     </span><span class="nc">HKEY_CURRENT_USER</span><span class="w">
+</span><span class="n">hkcu</span><span class="w">             </span><span class="nc">HKEY_CURRENT_USER</span><span class="w">
+</span><span class="n">local_machine</span><span class="w">    </span><span class="nc">HKEY_LOCAL_MACHINE</span><span class="w">
+</span><span class="n">hklm</span><span class="w">             </span><span class="nc">HKEY_LOCAL_MACHINE</span><span class="w">
+</span><span class="n">users</span><span class="w">            </span><span class="nc">HKEY_USERS</span><span class="w">
+</span><span class="n">hku</span><span class="w">              </span><span class="nc">HKEY_USERS</span><span class="w">
+</span><span class="n">current_config</span><span class="w">   </span><span class="nc">HKEY_CURRENT_CONFIG</span><span class="w">
+</span><span class="n">hkcc</span><span class="w">             </span><span class="nc">HKEY_CURRENT_CONFIG</span><span class="w">
+</span><span class="n">dyn_data</span><span class="w">         </span><span class="nc">HKEY_DYN_DATA</span><span class="w">
+</span><span class="n">hkdd</span><span class="w">             </span><span class="nc">HKEY_DYN_DATA</span></code></pre>
 <p> The key above can be written as <code class="inline">&quot;\\hklm\\software\\ericsson\\erlang\\5.0&quot;</code>.</p>
 <p> This module uses a current key. It works much like the current directory. From the current key, values can be fetched, subkeys can be listed, and so on.</p>
 <p> Under a key, any number of named values can be stored. They have names, types, and data.</p>
 <p> <code class="inline">win32reg</code> supports storing of the following types:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">REG_DWORD</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="ss">integer</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">REG_SZ</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">string</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">REG_BINARY</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">binary</span><span class="w">  </span><span class="n">Other</span><span class="w"> </span><span class="ss">types</span><span class="w"> </span><span class="ss">can</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">read</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ss">are</span><span class="w"> </span><span class="ss">returned</span><span class="w"> </span><span class="ss">as</span><span class="w"> </span><span class="ss">binaries</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nc">REG_DWORD</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">integer</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nc">REG_SZ</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">string</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nc">REG_BINARY</span><span class="err">`</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">binary</span><span class="w">  </span><span class="nc">Other</span><span class="w"> </span><span class="n">types</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">read</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">returned</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">binaries</span><span class="o">.</span></code></pre>
 <p> There is also a &quot;default&quot; value, which has the empty string as name. It is read and written with the atom <code class="inline">default</code> instead of the name.</p>
 <p> Some registry values are stored as strings with references to environment variables, for example, <code class="inline">%SystemRoot%Windows</code>. <code class="inline">SystemRoot</code> is an environment variable, and is to be replaced with its value. Function <a href="#expand/1"><code class="inline">expand/1</code></a> is provided so that environment variables surrounded by <code class="inline">%</code> can be expanded to their values.</p>
 <p> For more information on the Windows registry, see consult the Win32 Programmer&#39;s Reference.</p>
@@ -207,10 +207,12 @@ Functions          </h1>
     </a>
     <h1 class="signature">change_key/2</h1>
       <div class="specs">
-          <pre>change_key(regHandle, key) :: returnValue
-when regHandle: reg_handle(),
-     key: string(),
-     returnValue: :ok | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+          <pre>change_key(RegHandle, Key) -> ReturnValue
+              when
+                  RegHandle :: reg_handle(),
+                  Key :: string(),
+                  ReturnValue :: ok | {error, ErrorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -225,10 +227,13 @@ when regHandle: reg_handle(),
     </a>
     <h1 class="signature">change_key_create/2</h1>
       <div class="specs">
-          <pre>change_key_create(regHandle, key) :: returnValue
-when regHandle: reg_handle(),
-     key: string(),
-     returnValue: :ok | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+          <pre>change_key_create(RegHandle, Key) -> ReturnValue
+                     when
+                         RegHandle :: reg_handle(),
+                         Key :: string(),
+                         ReturnValue ::
+                             ok | {error, ErrorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -244,7 +249,8 @@ when regHandle: reg_handle(),
     </a>
     <h1 class="signature">close/1</h1>
       <div class="specs">
-          <pre>close(regHandle) :: :ok when regHandle: reg_handle()</pre>
+          <pre>close(RegHandle) -> ok when RegHandle :: reg_handle().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -259,8 +265,11 @@ when regHandle: reg_handle(),
     </a>
     <h1 class="signature">current_key/1</h1>
       <div class="specs">
-          <pre>current_key(regHandle) :: returnValue
-when regHandle: reg_handle(), returnValue: {:ok, string()}</pre>
+          <pre>current_key(RegHandle) -> ReturnValue
+               when
+                   RegHandle :: reg_handle(),
+                   ReturnValue :: {ok, string()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -276,8 +285,11 @@ when regHandle: reg_handle(), returnValue: {:ok, string()}</pre>
     </a>
     <h1 class="signature">delete_key/1</h1>
       <div class="specs">
-          <pre>delete_key(regHandle) :: returnValue
-when regHandle: reg_handle(), returnValue: :ok | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+          <pre>delete_key(RegHandle) -> ReturnValue
+              when
+                  RegHandle :: reg_handle(),
+                  ReturnValue :: ok | {error, ErrorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -292,10 +304,12 @@ when regHandle: reg_handle(), returnValue: :ok | {:error, errorId :: <a href="ht
     </a>
     <h1 class="signature">delete_value/2</h1>
       <div class="specs">
-          <pre>delete_value(regHandle, name) :: returnValue
-when regHandle: reg_handle(),
-     name: name(),
-     returnValue: :ok | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+          <pre>delete_value(RegHandle, Name) -> ReturnValue
+                when
+                    RegHandle :: reg_handle(),
+                    Name :: name(),
+                    ReturnValue :: ok | {error, ErrorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -311,7 +325,9 @@ when regHandle: reg_handle(),
     </a>
     <h1 class="signature">expand/1</h1>
       <div class="specs">
-          <pre>expand(string) :: expandedString when string: string(), expandedString: string()</pre>
+          <pre>expand(String) -> ExpandedString
+          when String :: string(), ExpandedString :: string().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -327,8 +343,9 @@ when regHandle: reg_handle(),
     </a>
     <h1 class="signature">format_error/1</h1>
       <div class="specs">
-          <pre>format_error(errorId) :: errorString
-when errorId: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), errorString: string()</pre>
+          <pre>format_error(ErrorId) -> ErrorString
+                when ErrorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), ErrorString :: string().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -343,11 +360,14 @@ when errorId: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">ato
     </a>
     <h1 class="signature">open/1</h1>
       <div class="specs">
-          <pre>open(openModeList) :: returnValue
-when openModeList: [openMode],
-     openMode: :read | :write,
-     returnValue: {:ok, regHandle} | {:error, errorId :: :enotsup},
-     regHandle: reg_handle()</pre>
+          <pre>open(OpenModeList) -> ReturnValue
+        when
+            OpenModeList :: [OpenMode],
+            OpenMode :: read | write,
+            ReturnValue ::
+                {ok, RegHandle} | {error, ErrorId :: enotsup},
+            RegHandle :: reg_handle().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -363,16 +383,18 @@ when openModeList: [openMode],
     </a>
     <h1 class="signature">set_value/3</h1>
       <div class="specs">
-          <pre>set_value(regHandle, name, value) :: returnValue
-when regHandle: reg_handle(),
-     name: name(),
-     value: value(),
-     returnValue: :ok | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+          <pre>set_value(RegHandle, Name, Value) -> ReturnValue
+             when
+                 RegHandle :: reg_handle(),
+                 Name :: name(),
+                 Value :: value(),
+                 ReturnValue :: ok | {error, ErrorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Sets the named (or default) value to <code class="inline">value</code>. Calls the Win32 API function <code class="inline">RegSetValueEx()</code>. The value can be of three types, and the corresponding registry type is used. The supported types are the following:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">REG_DWORD</span><span class="err">`</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">integers</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">REG_SZ</span><span class="err">`</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">strings</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">REG_BINARY</span><span class="err">`</span><span class="w"> </span><span class="ss">for</span><span class="w"> </span><span class="ss">binaries</span><span class="w">  </span><span class="n">Other</span><span class="w"> </span><span class="ss">types</span><span class="w"> </span><span class="ss">cannot</span><span class="w"> </span><span class="ss">be</span><span class="w"> </span><span class="ss">added</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">changed</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nc">REG_DWORD</span><span class="err">`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">integers</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nc">REG_SZ</span><span class="err">`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">strings</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nc">REG_BINARY</span><span class="err">`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">binaries</span><span class="w">  </span><span class="nc">Other</span><span class="w"> </span><span class="n">types</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">added</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">changed</span><span class="o">.</span></code></pre>
 <p> The registry must have been opened in write mode.</p>
   </section>
 </section>
@@ -384,10 +406,13 @@ when regHandle: reg_handle(),
     </a>
     <h1 class="signature">sub_keys/1</h1>
       <div class="specs">
-          <pre>sub_keys(regHandle) :: returnValue
-when regHandle: reg_handle(),
-     returnValue: {:ok, [subKey]} | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()},
-     subKey: string()</pre>
+          <pre>sub_keys(RegHandle) -> ReturnValue
+            when
+                RegHandle :: reg_handle(),
+                ReturnValue ::
+                    {ok, [SubKey]} | {error, ErrorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()},
+                SubKey :: string().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -403,10 +428,14 @@ when regHandle: reg_handle(),
     </a>
     <h1 class="signature">value/2</h1>
       <div class="specs">
-          <pre>value(regHandle, name) :: returnValue
-when regHandle: reg_handle(),
-     name: name(),
-     returnValue: {:ok, value :: value()} | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}</pre>
+          <pre>value(RegHandle, Name) -> ReturnValue
+         when
+             RegHandle :: reg_handle(),
+             Name :: name(),
+             ReturnValue ::
+                 {ok, Value :: value()} |
+                 {error, ErrorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -421,10 +450,13 @@ when regHandle: reg_handle(),
     </a>
     <h1 class="signature">values/1</h1>
       <div class="specs">
-          <pre>values(regHandle) :: returnValue
-when regHandle: reg_handle(),
-     returnValue: {:ok, [valuePair]} | {:error, errorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()},
-     valuePair: {name :: name(), value :: value()}</pre>
+          <pre>values(RegHandle) -> ReturnValue
+          when
+              RegHandle :: reg_handle(),
+              ReturnValue ::
+                  {ok, [ValuePair]} | {error, ErrorId :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()},
+              ValuePair :: {Name :: name(), Value :: value()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -445,18 +477,18 @@ when regHandle: reg_handle(),
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

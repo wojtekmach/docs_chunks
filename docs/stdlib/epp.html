@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>epp — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -72,9 +72,9 @@ epp      </h1>
 <p> The Erlang code preprocessor includes functions that are used by the <code class="inline">compile</code> module to preprocess macros and include files before the parsing takes place.</p>
 <p> The Erlang source file encoding is selected by a comment in one of the first two lines of the source file. The first string matching the regular expression <code class="inline">coding\s*[:=]\s*([-a-zA-Z0-9])+</code> selects the encoding. If the matching string is not a valid encoding, it is ignored. The valid encodings are <code class="inline">Latin-1</code> and <code class="inline">UTF-8</code>, where the case of the characters can be chosen freely.</p>
 <p> Examples:</p>
-<pre><code class="nohighlight makeup erlang"><span class="c1">%% coding: utf-8</span></code></pre>
-<pre><code class="nohighlight makeup erlang"><span class="c1">%% For this file we have chosen encoding = Latin-1</span></code></pre>
-<pre><code class="nohighlight makeup erlang"><span class="c1">%% -*- coding: latin-1 -*-</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="p">%</span><span class="p">%</span><span class="w"> </span><span class="ss">coding</span><span class="p">:</span><span class="w"> </span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="p">%</span><span class="p">%</span><span class="w"> </span><span class="nc">For</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">chosen</span><span class="w"> </span><span class="n">encoding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Latin</span><span class="o">-</span><span class="mi">1</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="p">%</span><span class="p">%</span><span class="w"> </span><span class="o">-</span><span class="o">*</span><span class="o">-</span><span class="w"> </span><span class="ss">coding</span><span class="p">:</span><span class="w"> </span><span class="n">latin</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="o">*</span><span class="o">-</span></code></pre>
         </section>
 
         <section id="summary" class="details-list">
@@ -192,7 +192,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">close/1</h1>
       <div class="specs">
-          <pre>close(epp) :: :ok when epp: epp_handle()</pre>
+          <pre>close(Epp) -> ok when Epp :: epp_handle().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -207,7 +208,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">default_encoding/0</h1>
       <div class="specs">
-          <pre>default_encoding() :: source_encoding()</pre>
+          <pre>default_encoding() -> source_encoding().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -222,7 +224,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">encoding_to_string/1</h1>
       <div class="specs">
-          <pre>encoding_to_string(encoding) :: string() when encoding: source_encoding()</pre>
+          <pre>encoding_to_string(Encoding) -> string()
+                      when Encoding :: source_encoding().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -237,7 +241,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">format_error/1</h1>
       <div class="specs">
-          <pre>format_error(errorDescriptor) :: <a href=":io_lib.html#t:chars/0">:io_lib.chars</a>() when errorDescriptor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>format_error(ErrorDescriptor) -> io_lib:chars()
+                when ErrorDescriptor :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -252,18 +258,22 @@ Functions          </h1>
     </a>
     <h1 class="signature">open/1</h1>
       <div class="specs">
-          <pre>open(options) :: {:ok, epp} | {:ok, epp, extra} | {:error, errorDescriptor}
-when options: [
-       {:default_encoding, defEncoding :: source_encoding()}
-       | {:includes, includePath :: [directoryName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()]}
-       | {:source_name, sourceName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()}
-       | {:macros, predefMacros :: macros()}
-       | {:name, fileName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()}
-       | :extra
-     ],
-     epp: epp_handle(),
-     extra: [{:encoding, source_encoding() | :none}],
-     errorDescriptor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>open(Options) ->
+        {ok, Epp} | {ok, Epp, Extra} | {error, ErrorDescriptor}
+        when
+            Options ::
+                [{default_encoding,
+                  DefEncoding :: source_encoding()} |
+                 {includes,
+                  IncludePath :: [DirectoryName :: file:name()]} |
+                 {source_name, SourceName :: file:name()} |
+                 {macros, PredefMacros :: macros()} |
+                 {name, FileName :: file:name()} |
+                 extra],
+            Epp :: epp_handle(),
+            Extra :: [{encoding, source_encoding() | none}],
+            ErrorDescriptor :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -280,11 +290,14 @@ when options: [
     </a>
     <h1 class="signature">open/2</h1>
       <div class="specs">
-          <pre>open(fileName, includePath) :: {:ok, epp} | {:error, errorDescriptor}
-when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>(),
-     includePath: [directoryName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()],
-     epp: epp_handle(),
-     errorDescriptor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>open(FileName, IncludePath) ->
+        {ok, Epp} | {error, ErrorDescriptor}
+        when
+            FileName :: file:name(),
+            IncludePath :: [DirectoryName :: file:name()],
+            Epp :: epp_handle(),
+            ErrorDescriptor :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -299,13 +312,15 @@ when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file
     </a>
     <h1 class="signature">open/3</h1>
       <div class="specs">
-          <pre>open(fileName, includePath, predefMacros) ::
-  {:ok, epp} | {:error, errorDescriptor}
-when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>(),
-     includePath: [directoryName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()],
-     predefMacros: macros(),
-     epp: epp_handle(),
-     errorDescriptor: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>open(FileName, IncludePath, PredefMacros) ->
+        {ok, Epp} | {error, ErrorDescriptor}
+        when
+            FileName :: file:name(),
+            IncludePath :: [DirectoryName :: file:name()],
+            PredefMacros :: macros(),
+            Epp :: epp_handle(),
+            ErrorDescriptor :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -320,13 +335,20 @@ when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file
     </a>
     <h1 class="signature">parse_erl_form/1</h1>
       <div class="specs">
-          <pre>parse_erl_form(epp) ::
-  {:ok, absForm} | {:error, errorInfo} | {:warning, warningInfo} | {:eof, line}
-when epp: epp_handle(),
-     absForm: <a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>(),
-     line: <a href=":erl_anno.html#t:line/0">:erl_anno.line</a>(),
-     errorInfo: <a href=":erl_scan.html#t:error_info/0">:erl_scan.error_info</a>() | <a href=":erl_parse.html#t:error_info/0">:erl_parse.error_info</a>(),
-     warningInfo: warning_info()</pre>
+          <pre>parse_erl_form(Epp) ->
+                  {ok, AbsForm} |
+                  {error, ErrorInfo} |
+                  {warning, WarningInfo} |
+                  {eof, Line}
+                  when
+                      Epp :: epp_handle(),
+                      AbsForm :: erl_parse:abstract_form(),
+                      Line :: erl_anno:line(),
+                      ErrorInfo ::
+                          erl_scan:error_info() |
+                          erl_parse:error_info(),
+                      WarningInfo :: warning_info().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -341,21 +363,33 @@ when epp: epp_handle(),
     </a>
     <h1 class="signature">parse_file/2</h1>
       <div class="specs">
-          <pre>parse_file(fileName, options) ::
-  {:ok, [form]} | {:ok, [form], extra} | {:error, openError}
-when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>(),
-     options: [
-       {:includes, includePath :: [directoryName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()]}
-       | {:source_name, sourceName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()}
-       | {:macros, predefMacros :: macros()}
-       | {:default_encoding, defEncoding :: source_encoding()}
-       | :extra
-     ],
-     form: <a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>() | {:error, errorInfo} | {:eof, line},
-     line: <a href=":erl_anno.html#t:line/0">:erl_anno.line</a>(),
-     errorInfo: <a href=":erl_scan.html#t:error_info/0">:erl_scan.error_info</a>() | <a href=":erl_parse.html#t:error_info/0">:erl_parse.error_info</a>(),
-     extra: [{:encoding, source_encoding() | :none}],
-     openError: <a href="http://www.erlang.org/doc/man/file.html#type-posix">:file.posix</a>() | :badarg | :system_limit</pre>
+          <pre>parse_file(FileName, Options) ->
+              {ok, [Form]} |
+              {ok, [Form], Extra} |
+              {error, OpenError}
+              when
+                  FileName :: file:name(),
+                  Options ::
+                      [{includes,
+                        IncludePath ::
+                            [DirectoryName :: file:name()]} |
+                       {source_name, SourceName :: file:name()} |
+                       {macros, PredefMacros :: macros()} |
+                       {default_encoding,
+                        DefEncoding :: source_encoding()} |
+                       extra],
+                  Form ::
+                      erl_parse:abstract_form() |
+                      {error, ErrorInfo} |
+                      {eof, Line},
+                  Line :: erl_anno:line(),
+                  ErrorInfo ::
+                      erl_scan:error_info() |
+                      erl_parse:error_info(),
+                  Extra :: [{encoding, source_encoding() | none}],
+                  OpenError ::
+                      file:posix() | badarg | system_limit.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -372,15 +406,23 @@ when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file
     </a>
     <h1 class="signature">parse_file/3</h1>
       <div class="specs">
-          <pre>parse_file(fileName, includePath, predefMacros) ::
-  {:ok, [form]} | {:error, openError}
-when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>(),
-     includePath: [directoryName :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()],
-     form: <a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>() | {:error, errorInfo} | {:eof, line},
-     predefMacros: macros(),
-     line: <a href=":erl_anno.html#t:line/0">:erl_anno.line</a>(),
-     errorInfo: <a href=":erl_scan.html#t:error_info/0">:erl_scan.error_info</a>() | <a href=":erl_parse.html#t:error_info/0">:erl_parse.error_info</a>(),
-     openError: <a href="http://www.erlang.org/doc/man/file.html#type-posix">:file.posix</a>() | :badarg | :system_limit</pre>
+          <pre>parse_file(FileName, IncludePath, PredefMacros) ->
+              {ok, [Form]} | {error, OpenError}
+              when
+                  FileName :: file:name(),
+                  IncludePath :: [DirectoryName :: file:name()],
+                  Form ::
+                      erl_parse:abstract_form() |
+                      {error, ErrorInfo} |
+                      {eof, Line},
+                  PredefMacros :: macros(),
+                  Line :: erl_anno:line(),
+                  ErrorInfo ::
+                      erl_scan:error_info() |
+                      erl_parse:error_info(),
+                  OpenError ::
+                      file:posix() | badarg | system_limit.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -421,7 +463,9 @@ when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file
     </a>
     <h1 class="signature">set_encoding/1</h1>
       <div class="specs">
-          <pre>set_encoding(file) :: source_encoding() | :none when file: <a href=":io.html#t:device/0">:io.device</a>()</pre>
+          <pre>set_encoding(File) -> source_encoding() | none
+                when File :: io:device().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -437,8 +481,11 @@ when fileName: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file
     </a>
     <h1 class="signature">set_encoding/2</h1>
       <div class="specs">
-          <pre>set_encoding(file, default) :: source_encoding() | :none
-when default: source_encoding(), file: <a href=":io.html#t:device/0">:io.device</a>()</pre>
+          <pre>set_encoding(File, Default) -> source_encoding() | none
+                when
+                    Default :: source_encoding(),
+                    File :: io:device().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -460,18 +507,18 @@ when default: source_encoding(), file: <a href=":io.html#t:device/0">:io.device<
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

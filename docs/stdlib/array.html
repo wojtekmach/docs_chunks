@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>array — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -75,25 +75,25 @@ array      </h1>
 <p> The array never shrinks automatically. If an index <code class="inline">I</code> has been used to set an entry successfully, all indices in the range [0,<code class="inline">I</code>] stay accessible unless the array size is explicitly changed by calling <a href="#resize/2"><code class="inline">resize/2</code></a>.</p>
 <p> Examples:</p>
 <p> Create a fixed-size array with entries 0-9 set to <code class="inline">undefined</code>:</p>
-<pre><code class="nohighlight makeup erlang"><span class="n">A0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="8513350742-1">(</span><span class="mi">10</span><span class="p" data-group-id="8513350742-1">)</span><span class="p">.</span><span class="w">
-</span><span class="mi">10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">size</span><span class="p" data-group-id="8513350742-2">(</span><span class="n">A0</span><span class="p" data-group-id="8513350742-2">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">A0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="ss">:new</span><span class="p" data-group-id="5058055743-1">(</span><span class="mi">10</span><span class="p" data-group-id="5058055743-1">)</span><span class="o">.</span><span class="w">
+</span><span class="mi">10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="ss">:size</span><span class="p" data-group-id="5058055743-2">(</span><span class="nc">A0</span><span class="p" data-group-id="5058055743-2">)</span><span class="o">.</span></code></pre>
 <p> Create an extendible array and set entry 17 to <code class="inline">true</code>, causing the array to grow automatically:</p>
-<pre><code class="nohighlight makeup erlang"><span class="n">A1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">set</span><span class="p" data-group-id="6063793265-1">(</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="6063793265-2">(</span><span class="p" data-group-id="6063793265-2">)</span><span class="p" data-group-id="6063793265-1">)</span><span class="p">.</span><span class="w">
-</span><span class="mi">18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">size</span><span class="p" data-group-id="6063793265-3">(</span><span class="n">A1</span><span class="p" data-group-id="6063793265-3">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">A1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="ss">:set</span><span class="p" data-group-id="4243122347-1">(</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="n">array</span><span class="ss">:new</span><span class="p" data-group-id="4243122347-2">(</span><span class="p" data-group-id="4243122347-2">)</span><span class="p" data-group-id="4243122347-1">)</span><span class="o">.</span><span class="w">
+</span><span class="mi">18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="ss">:size</span><span class="p" data-group-id="4243122347-3">(</span><span class="nc">A1</span><span class="p" data-group-id="4243122347-3">)</span><span class="o">.</span></code></pre>
 <p> Read back a stored value:</p>
-<pre><code class="nohighlight makeup erlang"><span class="ss">true</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="9380052433-1">(</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="n">A1</span><span class="p" data-group-id="9380052433-1">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="no">true</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="ss">:get</span><span class="p" data-group-id="4652478371-1">(</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="nc">A1</span><span class="p" data-group-id="4652478371-1">)</span><span class="o">.</span></code></pre>
 <p> Accessing an unset entry returns default value:</p>
-<pre><code class="nohighlight makeup erlang"><span class="ss">undefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="6357094399-1">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">A1</span><span class="p" data-group-id="6357094399-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">undefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="ss">:get</span><span class="p" data-group-id="5565744929-1">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nc">A1</span><span class="p" data-group-id="5565744929-1">)</span></code></pre>
 <p> Accessing an entry beyond the last set entry also returns the default value, if the array does not have fixed size:</p>
-<pre><code class="nohighlight makeup erlang"><span class="ss">undefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="6232307962-1">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="n">A1</span><span class="p" data-group-id="6232307962-1">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">undefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="ss">:get</span><span class="p" data-group-id="8693447064-1">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="nc">A1</span><span class="p" data-group-id="8693447064-1">)</span><span class="o">.</span></code></pre>
 <p> &quot;Sparse&quot; functions ignore default-valued entries:</p>
-<pre><code class="nohighlight makeup erlang"><span class="n">A2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">set</span><span class="p" data-group-id="7140893327-1">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="ss">false</span><span class="p">,</span><span class="w"> </span><span class="n">A1</span><span class="p" data-group-id="7140893327-1">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="7140893327-2">[</span><span class="p" data-group-id="7140893327-3">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="ss">false</span><span class="p" data-group-id="7140893327-3">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7140893327-4">{</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="ss">true</span><span class="p" data-group-id="7140893327-4">}</span><span class="p" data-group-id="7140893327-2">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">sparse_to_orddict</span><span class="p" data-group-id="7140893327-5">(</span><span class="n">A2</span><span class="p" data-group-id="7140893327-5">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">A2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="ss">:set</span><span class="p" data-group-id="7309886702-1">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="no">false</span><span class="p">,</span><span class="w"> </span><span class="nc">A1</span><span class="p" data-group-id="7309886702-1">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="7309886702-2">[</span><span class="p" data-group-id="7309886702-3">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="7309886702-3">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7309886702-4">{</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7309886702-4">}</span><span class="p" data-group-id="7309886702-2">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="ss">:sparse_to_orddict</span><span class="p" data-group-id="7309886702-5">(</span><span class="nc">A2</span><span class="p" data-group-id="7309886702-5">)</span><span class="o">.</span></code></pre>
 <p> An extendible array can be made fixed-size later:</p>
-<pre><code class="nohighlight makeup erlang"><span class="n">A3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">fix</span><span class="p" data-group-id="7713393100-1">(</span><span class="n">A2</span><span class="p" data-group-id="7713393100-1">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">A3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="ss">:fix</span><span class="p" data-group-id="7191869810-1">(</span><span class="nc">A2</span><span class="p" data-group-id="7191869810-1">)</span><span class="o">.</span></code></pre>
 <p> A fixed-size array does not grow automatically and does not allow accesses beyond the last set entry:</p>
-<pre><code class="nohighlight makeup erlang"><span class="p" data-group-id="7879869391-1">{</span><span class="ss">&#39;EXIT&#39;</span><span class="p">,</span><span class="p" data-group-id="7879869391-2">{</span><span class="ss">badarg</span><span class="p">,</span><span class="p">_</span><span class="p" data-group-id="7879869391-2">}</span><span class="p" data-group-id="7879869391-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7879869391-3">(</span><span class="k">catch</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">set</span><span class="p" data-group-id="7879869391-4">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w"> </span><span class="n">A3</span><span class="p" data-group-id="7879869391-4">)</span><span class="p" data-group-id="7879869391-3">)</span><span class="p">.</span><span class="w">
-</span><span class="p" data-group-id="7879869391-5">{</span><span class="ss">&#39;EXIT&#39;</span><span class="p">,</span><span class="p" data-group-id="7879869391-6">{</span><span class="ss">badarg</span><span class="p">,</span><span class="p">_</span><span class="p" data-group-id="7879869391-6">}</span><span class="p" data-group-id="7879869391-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7879869391-7">(</span><span class="k">catch</span><span class="w"> </span><span class="nc">array</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="7879869391-8">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="n">A3</span><span class="p" data-group-id="7879869391-8">)</span><span class="p" data-group-id="7879869391-7">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="0664021320-1">{</span><span class="sc">&#39;EXIT&#39;</span><span class="p">,</span><span class="p" data-group-id="0664021320-2">{</span><span class="n">badarg</span><span class="p">,</span><span class="bp">_</span><span class="p" data-group-id="0664021320-2">}</span><span class="p" data-group-id="0664021320-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0664021320-3">(</span><span class="k">catch</span><span class="w"> </span><span class="n">array</span><span class="ss">:set</span><span class="p" data-group-id="0664021320-4">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="nc">A3</span><span class="p" data-group-id="0664021320-4">)</span><span class="p" data-group-id="0664021320-3">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="0664021320-5">{</span><span class="sc">&#39;EXIT&#39;</span><span class="p">,</span><span class="p" data-group-id="0664021320-6">{</span><span class="n">badarg</span><span class="p">,</span><span class="bp">_</span><span class="p" data-group-id="0664021320-6">}</span><span class="p" data-group-id="0664021320-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0664021320-7">(</span><span class="k">catch</span><span class="w"> </span><span class="n">array</span><span class="ss">:get</span><span class="p" data-group-id="0664021320-8">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="nc">A3</span><span class="p" data-group-id="0664021320-8">)</span><span class="p" data-group-id="0664021320-7">)</span><span class="o">.</span></code></pre>
         </section>
 
         <section id="summary" class="details-list">
@@ -301,7 +301,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">default/1</h1>
       <div class="specs">
-          <pre>default(array :: array(type)) :: value :: type</pre>
+          <pre>default(Array :: array(Type)) -> Value :: Type.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -317,7 +318,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">fix/1</h1>
       <div class="specs">
-          <pre>fix(array :: array(type)) :: array(type)</pre>
+          <pre>fix(Array :: array(Type)) -> array(Type).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -333,8 +335,14 @@ Functions          </h1>
     </a>
     <h1 class="signature">foldl/3</h1>
       <div class="specs">
-          <pre>foldl(function, initialAcc :: a, array :: array(type)) :: b
-when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pre>
+          <pre>foldl(Function, InitialAcc :: A, Array :: array(Type)) -> B
+         when
+             Function ::
+                 <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>((Index :: array_indx(),
+                      Value :: Type,
+                      Acc :: A) ->
+                         B).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -350,8 +358,14 @@ when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pr
     </a>
     <h1 class="signature">foldr/3</h1>
       <div class="specs">
-          <pre>foldr(function, initialAcc :: a, array :: array(type)) :: b
-when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pre>
+          <pre>foldr(Function, InitialAcc :: A, Array :: array(Type)) -> B
+         when
+             Function ::
+                 <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>((Index :: array_indx(),
+                      Value :: Type,
+                      Acc :: A) ->
+                         B).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -367,7 +381,8 @@ when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pr
     </a>
     <h1 class="signature">from_list/1</h1>
       <div class="specs">
-          <pre>from_list(list :: [value :: type]) :: array(type)</pre>
+          <pre>from_list(List :: [Value :: Type]) -> array(Type).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -382,7 +397,9 @@ when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pr
     </a>
     <h1 class="signature">from_list/2</h1>
       <div class="specs">
-          <pre>from_list(list :: [value :: type], default :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: array(type)</pre>
+          <pre>from_list(List :: [Value :: Type], Default :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) ->
+             array(Type).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -398,7 +415,8 @@ when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pr
     </a>
     <h1 class="signature">from_orddict/1</h1>
       <div class="specs">
-          <pre>from_orddict(orddict :: indx_pairs(value :: type)) :: array(type)</pre>
+          <pre>from_orddict(Orddict :: indx_pairs(Value :: Type)) -> array(Type).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -413,8 +431,10 @@ when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pr
     </a>
     <h1 class="signature">from_orddict/2</h1>
       <div class="specs">
-          <pre>from_orddict(orddict :: indx_pairs(value :: type), default :: type) ::
-  array(type)</pre>
+          <pre>from_orddict(Orddict :: indx_pairs(Value :: Type),
+             Default :: Type) ->
+                array(Type).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -430,7 +450,8 @@ when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pr
     </a>
     <h1 class="signature">get/2</h1>
       <div class="specs">
-          <pre>get(i :: array_indx(), array :: array(type)) :: value :: type</pre>
+          <pre>get(I :: array_indx(), Array :: array(Type)) -> Value :: Type.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -447,7 +468,8 @@ when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pr
     </a>
     <h1 class="signature">is_array/1</h1>
       <div class="specs">
-          <pre>is_array(x :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+          <pre>is_array(X :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -462,7 +484,8 @@ when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pr
     </a>
     <h1 class="signature">is_fix/1</h1>
       <div class="specs">
-          <pre>is_fix(array :: array()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+          <pre>is_fix(Array :: array()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -478,8 +501,11 @@ when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pr
     </a>
     <h1 class="signature">map/2</h1>
       <div class="specs">
-          <pre>map(function, array :: array(type1)) :: array(type2)
-when function: (index :: array_indx(), type1 -> type2)</pre>
+          <pre>map(Function, Array :: array(Type1)) -> array(Type2)
+       when
+           Function ::
+               fun((Index :: array_indx(), Type1) -> Type2).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -495,7 +521,8 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">new/0</h1>
       <div class="specs">
-          <pre>new() :: array()</pre>
+          <pre>new() -> array().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -511,7 +538,8 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">new/1</h1>
       <div class="specs">
-          <pre>new(options :: array_opts()) :: array()</pre>
+          <pre>new(Options :: array_opts()) -> array().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -524,11 +552,11 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
 <p>   Options are processed in the order they occur in the list, that is, later options have higher precedence.</p>
 <p> The default value is used as the value of uninitialized entries, and cannot be changed once the array has been created.</p>
 <p> Examples:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nc">array</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="8246954756-1">(</span><span class="mi">100</span><span class="p" data-group-id="8246954756-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">array</span><span class="ss">:new</span><span class="p" data-group-id="5045496135-1">(</span><span class="mi">100</span><span class="p" data-group-id="5045496135-1">)</span></code></pre>
 <p> creates a fixed-size array of size 100.</p>
-<pre><code class="nohighlight makeup erlang"><span class="nc">array</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="5669117153-1">(</span><span class="p" data-group-id="5669117153-2">{</span><span class="ss">default</span><span class="p">,</span><span class="mi">0</span><span class="p" data-group-id="5669117153-2">}</span><span class="p" data-group-id="5669117153-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">array</span><span class="ss">:new</span><span class="p" data-group-id="8953085245-1">(</span><span class="p" data-group-id="8953085245-2">{</span><span class="n">default</span><span class="p">,</span><span class="mi">0</span><span class="p" data-group-id="8953085245-2">}</span><span class="p" data-group-id="8953085245-1">)</span></code></pre>
 <p> creates an empty, extendible array whose default value is <code class="inline">0</code>. </p>
-<pre><code class="nohighlight makeup erlang"><span class="nc">array</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="9455231792-1">(</span><span class="p" data-group-id="9455231792-2">[</span><span class="p" data-group-id="9455231792-3">{</span><span class="nb">size</span><span class="p">,</span><span class="mi">10</span><span class="p" data-group-id="9455231792-3">}</span><span class="p">,</span><span class="p" data-group-id="9455231792-4">{</span><span class="ss">fixed</span><span class="p">,</span><span class="ss">false</span><span class="p" data-group-id="9455231792-4">}</span><span class="p">,</span><span class="p" data-group-id="9455231792-5">{</span><span class="ss">default</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p" data-group-id="9455231792-5">}</span><span class="p" data-group-id="9455231792-2">]</span><span class="p" data-group-id="9455231792-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">array</span><span class="ss">:new</span><span class="p" data-group-id="1222298286-1">(</span><span class="p" data-group-id="1222298286-2">[</span><span class="p" data-group-id="1222298286-3">{</span><span class="n">size</span><span class="p">,</span><span class="mi">10</span><span class="p" data-group-id="1222298286-3">}</span><span class="p">,</span><span class="p" data-group-id="1222298286-4">{</span><span class="n">fixed</span><span class="p">,</span><span class="no">false</span><span class="p" data-group-id="1222298286-4">}</span><span class="p">,</span><span class="p" data-group-id="1222298286-5">{</span><span class="n">default</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p" data-group-id="1222298286-5">}</span><span class="p" data-group-id="1222298286-2">]</span><span class="p" data-group-id="1222298286-1">)</span></code></pre>
 <p> creates an extendible array with initial size 10 whose default value is <code class="inline">-1</code>.</p>
 <p> See also <a href="#fix/1"><code class="inline">fix/1</code></a>, <a href="#from_list/2"><code class="inline">from_list/2</code></a>, <a href="#get/2"><code class="inline">get/2</code></a>, <a href="#new/0"><code class="inline">new/0</code></a>, <a href="#new/2"><code class="inline">new/2</code></a>, <a href="#set/3"><code class="inline">set/3</code></a>.</p>
   </section>
@@ -541,15 +569,16 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">new/2</h1>
       <div class="specs">
-          <pre>new(size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), options :: array_opts()) :: array()</pre>
+          <pre>new(Size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), Options :: array_opts()) -> array().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Creates a new array according to the specified size and options. If <code class="inline">Size</code> is not a non-negative integer, the call fails with reason <code class="inline">badarg</code>. By default, the array has fixed size. Notice that any size specifications in <code class="inline">Options</code> override parameter <code class="inline">Size</code>.</p>
 <p> If <code class="inline">Options</code> is a list, this is equivalent to <code class="inline">new([{size, ``Size``} | ``Options``]</code>, otherwise it is equivalent to `new([{size, <code class="inline">Size</code>} |</p>
-<pre><code class="nohighlight makeup erlang"><span class="w">      </span><span class="p" data-group-id="0308382475-1">[</span><span class="err">`</span><span class="err">`</span><span class="n">Options</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="0308382475-1">]</span><span class="p">]</span><span class="err">`</span><span class="p">.</span><span class="w"> </span><span class="n">However</span><span class="p">,</span><span class="w"> </span><span class="ss">using</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">function</span><span class="w"> </span><span class="ss">directly</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">more</span><span class="w"> </span><span class="ss">efficient</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="w">      </span><span class="p" data-group-id="4695083280-1">[</span><span class="err">`</span><span class="err">`</span><span class="nc">Options</span><span class="err">`</span><span class="err">`</span><span class="p" data-group-id="4695083280-1">]</span><span class="p">]</span><span class="err">`</span><span class="o">.</span><span class="w"> </span><span class="nc">However</span><span class="p">,</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">directly</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">efficient</span><span class="o">.</span></code></pre>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nc">array</span><span class="p">:</span><span class="nf">new</span><span class="p" data-group-id="2904002429-1">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2904002429-2">{</span><span class="ss">default</span><span class="p">,</span><span class="mi">0</span><span class="p" data-group-id="2904002429-2">}</span><span class="p" data-group-id="2904002429-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">array</span><span class="ss">:new</span><span class="p" data-group-id="3593144293-1">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3593144293-2">{</span><span class="n">default</span><span class="p">,</span><span class="mi">0</span><span class="p" data-group-id="3593144293-2">}</span><span class="p" data-group-id="3593144293-1">)</span></code></pre>
 <p> creates a fixed-size array of size 100, whose default value is <code class="inline">0</code>.</p>
 <p> See also <a href="#new/1"><code class="inline">new/1</code></a>.</p>
   </section>
@@ -562,7 +591,8 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">relax/1</h1>
       <div class="specs">
-          <pre>relax(array :: array(type)) :: array(type)</pre>
+          <pre>relax(Array :: array(Type)) -> array(Type).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -578,7 +608,8 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">reset/2</h1>
       <div class="specs">
-          <pre>reset(i :: array_indx(), array :: array(type)) :: array(type)</pre>
+          <pre>reset(I :: array_indx(), Array :: array(Type)) -> array(Type).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -595,7 +626,8 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">resize/1</h1>
       <div class="specs">
-          <pre>resize(array :: array(type)) :: array(type)</pre>
+          <pre>resize(Array :: array(Type)) -> array(Type).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -611,7 +643,9 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">resize/2</h1>
       <div class="specs">
-          <pre>resize(size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), array :: array(type)) :: array(type)</pre>
+          <pre>resize(Size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), Array :: array(Type)) ->
+          array(Type).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -626,7 +660,9 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">set/3</h1>
       <div class="specs">
-          <pre>set(i :: array_indx(), value :: type, array :: array(type)) :: array(type)</pre>
+          <pre>set(I :: array_indx(), Value :: Type, Array :: array(Type)) ->
+       array(Type).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -643,7 +679,8 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">size/1</h1>
       <div class="specs">
-          <pre>size(array :: array()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>size(Array :: array()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -659,8 +696,14 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">sparse_foldl/3</h1>
       <div class="specs">
-          <pre>sparse_foldl(function, initialAcc :: a, array :: array(type)) :: b
-when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pre>
+          <pre>sparse_foldl(Function, InitialAcc :: A, Array :: array(Type)) -> B
+                when
+                    Function ::
+                        <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>((Index :: array_indx(),
+                             Value :: Type,
+                             Acc :: A) ->
+                                B).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -676,8 +719,14 @@ when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pr
     </a>
     <h1 class="signature">sparse_foldr/3</h1>
       <div class="specs">
-          <pre>sparse_foldr(function, initialAcc :: a, array :: array(type)) :: b
-when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pre>
+          <pre>sparse_foldr(Function, InitialAcc :: A, Array :: array(Type)) -> B
+                when
+                    Function ::
+                        <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>((Index :: array_indx(),
+                             Value :: Type,
+                             Acc :: A) ->
+                                B).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -693,8 +742,11 @@ when function: (index :: array_indx(), value :: type, acc :: a -> b), b: var</pr
     </a>
     <h1 class="signature">sparse_map/2</h1>
       <div class="specs">
-          <pre>sparse_map(function, array :: array(type1)) :: array(type2)
-when function: (index :: array_indx(), type1 -> type2)</pre>
+          <pre>sparse_map(Function, Array :: array(Type1)) -> array(Type2)
+              when
+                  Function ::
+                      fun((Index :: array_indx(), Type1) -> Type2).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -710,7 +762,8 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">sparse_size/1</h1>
       <div class="specs">
-          <pre>sparse_size(array :: array()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>sparse_size(Array :: array()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -726,7 +779,8 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">sparse_to_list/1</h1>
       <div class="specs">
-          <pre>sparse_to_list(array :: array(type)) :: [value :: type]</pre>
+          <pre>sparse_to_list(Array :: array(Type)) -> [Value :: Type].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -742,7 +796,9 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">sparse_to_orddict/1</h1>
       <div class="specs">
-          <pre>sparse_to_orddict(array :: array(type)) :: indx_pairs(value :: type)</pre>
+          <pre>sparse_to_orddict(Array :: array(Type)) ->
+                     indx_pairs(Value :: Type).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -758,7 +814,8 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">to_list/1</h1>
       <div class="specs">
-          <pre>to_list(array :: array(type)) :: [value :: type]</pre>
+          <pre>to_list(Array :: array(Type)) -> [Value :: Type].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -774,7 +831,8 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
     </a>
     <h1 class="signature">to_orddict/1</h1>
       <div class="specs">
-          <pre>to_orddict(array :: array(type)) :: indx_pairs(value :: type)</pre>
+          <pre>to_orddict(Array :: array(Type)) -> indx_pairs(Value :: Type).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -796,18 +854,18 @@ when function: (index :: array_indx(), type1 -> type2)</pre>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

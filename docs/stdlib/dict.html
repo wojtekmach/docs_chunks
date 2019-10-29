@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>dict — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -230,8 +230,10 @@ Functions          </h1>
     </a>
     <h1 class="signature">append/3</h1>
       <div class="specs">
-          <pre>append(key, value, dict1) :: dict2
-when dict1: dict(key, value), dict2: dict(key, value), key: var, value: var</pre>
+          <pre>append(Key, Value, Dict1) -> Dict2
+          when
+              Dict1 :: dict(Key, Value), Dict2 :: dict(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -247,11 +249,12 @@ when dict1: dict(key, value), dict2: dict(key, value), key: var, value: var</pre
     </a>
     <h1 class="signature">append_list/3</h1>
       <div class="specs">
-          <pre>append_list(key, valList, dict1) :: dict2
-when dict1: dict(key, value),
-     dict2: dict(key, value),
-     valList: [value],
-     key: var</pre>
+          <pre>append_list(Key, ValList, Dict1) -> Dict2
+               when
+                   Dict1 :: dict(Key, Value),
+                   Dict2 :: dict(Key, Value),
+                   ValList :: [Value].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -267,8 +270,9 @@ when dict1: dict(key, value),
     </a>
     <h1 class="signature">erase/2</h1>
       <div class="specs">
-          <pre>erase(key, dict1) :: dict2
-when dict1: dict(key, value), dict2: dict(key, value), key: var</pre>
+          <pre>erase(Key, Dict1) -> Dict2
+         when Dict1 :: dict(Key, Value), Dict2 :: dict(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -283,7 +287,8 @@ when dict1: dict(key, value), dict2: dict(key, value), key: var</pre>
     </a>
     <h1 class="signature">fetch/2</h1>
       <div class="specs">
-          <pre>fetch(key, dict) :: value when dict: dict(key, value), key: var, value: var</pre>
+          <pre>fetch(Key, Dict) -> Value when Dict :: dict(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -299,7 +304,11 @@ when dict1: dict(key, value), dict2: dict(key, value), key: var</pre>
     </a>
     <h1 class="signature">fetch_keys/1</h1>
       <div class="specs">
-          <pre>fetch_keys(dict) :: keys when dict: dict(key, value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()), keys: [key]</pre>
+          <pre>fetch_keys(Dict) -> Keys
+              when
+                  Dict :: dict(Key, Value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()),
+                  Keys :: [Key].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -314,10 +323,12 @@ when dict1: dict(key, value), dict2: dict(key, value), key: var</pre>
     </a>
     <h1 class="signature">filter/2</h1>
       <div class="specs">
-          <pre>filter(pred, dict1) :: dict2
-when pred: (key, value -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()),
-     dict1: dict(key, value),
-     dict2: dict(key, value)</pre>
+          <pre>filter(Pred, Dict1) -> Dict2
+          when
+              Pred :: fun((Key, Value) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()),
+              Dict1 :: dict(Key, Value),
+              Dict2 :: dict(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -332,8 +343,9 @@ when pred: (key, value -> <a href="https://hexdocs.pm/elixir/typespecs.html#buil
     </a>
     <h1 class="signature">find/2</h1>
       <div class="specs">
-          <pre>find(key, dict) :: {:ok, value} | :error
-when dict: dict(key, value), key: var, value: var</pre>
+          <pre>find(Key, Dict) -> {ok, Value} | error
+        when Dict :: dict(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -349,13 +361,15 @@ when dict: dict(key, value), key: var, value: var</pre>
     </a>
     <h1 class="signature">fold/3</h1>
       <div class="specs">
-          <pre>fold(fun, acc0, dict) :: acc1
-when fun: (key, value, accIn -> accOut),
-     dict: dict(key, value),
-     acc0: acc,
-     acc1: acc,
-     accIn: acc,
-     accOut: acc</pre>
+          <pre>fold(Fun, Acc0, Dict) -> Acc1
+        when
+            Fun :: fun((Key, Value, AccIn) -> AccOut),
+            Dict :: dict(Key, Value),
+            Acc0 :: Acc,
+            Acc1 :: Acc,
+            AccIn :: Acc,
+            AccOut :: Acc.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -370,7 +384,9 @@ when fun: (key, value, accIn -> accOut),
     </a>
     <h1 class="signature">from_list/1</h1>
       <div class="specs">
-          <pre>from_list(list) :: dict when dict: dict(key, value), list: [{key, value}]</pre>
+          <pre>from_list(List) -> Dict
+             when Dict :: dict(Key, Value), List :: [{Key, Value}].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -385,7 +401,8 @@ when fun: (key, value, accIn -> accOut),
     </a>
     <h1 class="signature">is_empty/1</h1>
       <div class="specs">
-          <pre>is_empty(dict) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when dict: dict()</pre>
+          <pre>is_empty(Dict) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Dict :: dict().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -400,7 +417,9 @@ when fun: (key, value, accIn -> accOut),
     </a>
     <h1 class="signature">is_key/2</h1>
       <div class="specs">
-          <pre>is_key(key, dict) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when dict: dict(key, value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()), key: var</pre>
+          <pre>is_key(Key, Dict) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+          when Dict :: dict(Key, Value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -415,10 +434,12 @@ when fun: (key, value, accIn -> accOut),
     </a>
     <h1 class="signature">map/2</h1>
       <div class="specs">
-          <pre>map(fun, dict1) :: dict2
-when fun: (key, value1 -> value2),
-     dict1: dict(key, value1),
-     dict2: dict(key, value2)</pre>
+          <pre>map(Fun, Dict1) -> Dict2
+       when
+           Fun :: fun((Key, Value1) -> Value2),
+           Dict1 :: dict(Key, Value1),
+           Dict2 :: dict(Key, Value2).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -433,19 +454,21 @@ when fun: (key, value1 -> value2),
     </a>
     <h1 class="signature">merge/3</h1>
       <div class="specs">
-          <pre>merge(fun, dict1, dict2) :: dict3
-when fun: (key, value1, value2 -> value),
-     dict1: dict(key, value1),
-     dict2: dict(key, value2),
-     dict3: dict(key, value)</pre>
+          <pre>merge(Fun, Dict1, Dict2) -> Dict3
+         when
+             Fun :: fun((Key, Value1, Value2) -> Value),
+             Dict1 :: dict(Key, Value1),
+             Dict2 :: dict(Key, Value2),
+             Dict3 :: dict(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Merges two dictionaries, <code class="inline">Dict1</code> and <code class="inline">Dict2</code>, to create a new dictionary. All the <code class="inline">Key</code>-<code class="inline">Value</code> pairs from both dictionaries are included in the new dictionary. If a key occurs in both dictionaries, <code class="inline">Fun</code> is called with the key and both values to return a new value. <code class="inline">merge</code> can be defined as follows, but is faster:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nf">merge</span><span class="p" data-group-id="5289619961-1">(</span><span class="n">Fun</span><span class="p">,</span><span class="w"> </span><span class="n">D1</span><span class="p">,</span><span class="w"> </span><span class="n">D2</span><span class="p" data-group-id="5289619961-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
-    </span><span class="nf">fold</span><span class="p" data-group-id="5289619961-2">(</span><span class="nf">fun</span><span class="w"> </span><span class="p" data-group-id="5289619961-3">(</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span><span class="w"> </span><span class="n">D</span><span class="p" data-group-id="5289619961-3">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
-                 </span><span class="nf">update</span><span class="p" data-group-id="5289619961-4">(</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="nf">fun</span><span class="w"> </span><span class="p" data-group-id="5289619961-5">(</span><span class="n">V2</span><span class="p" data-group-id="5289619961-5">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Fun</span><span class="p" data-group-id="5289619961-6">(</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span><span class="w"> </span><span class="n">V2</span><span class="p" data-group-id="5289619961-6">)</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span><span class="w"> </span><span class="n">D</span><span class="p" data-group-id="5289619961-4">)</span><span class="w">
-         </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="n">D2</span><span class="p">,</span><span class="w"> </span><span class="n">D1</span><span class="p" data-group-id="5289619961-2">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">merge</span><span class="p" data-group-id="9436697647-1">(</span><span class="nc">Fun</span><span class="p">,</span><span class="w"> </span><span class="nc">D1</span><span class="p">,</span><span class="w"> </span><span class="nc">D2</span><span class="p" data-group-id="9436697647-1">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="n">fold</span><span class="p" data-group-id="9436697647-2">(</span><span class="n">fun</span><span class="w"> </span><span class="p" data-group-id="9436697647-3">(</span><span class="nc">K</span><span class="p">,</span><span class="w"> </span><span class="nc">V1</span><span class="p">,</span><span class="w"> </span><span class="nc">D</span><span class="p" data-group-id="9436697647-3">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+                 </span><span class="n">update</span><span class="p" data-group-id="9436697647-4">(</span><span class="nc">K</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="p" data-group-id="9436697647-5">(</span><span class="nc">V2</span><span class="p" data-group-id="9436697647-5">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Fun</span><span class="p" data-group-id="9436697647-6">(</span><span class="nc">K</span><span class="p">,</span><span class="w"> </span><span class="nc">V1</span><span class="p">,</span><span class="w"> </span><span class="nc">V2</span><span class="p" data-group-id="9436697647-6">)</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="nc">V1</span><span class="p">,</span><span class="w"> </span><span class="nc">D</span><span class="p" data-group-id="9436697647-4">)</span><span class="w">
+         </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="nc">D2</span><span class="p">,</span><span class="w"> </span><span class="nc">D1</span><span class="p" data-group-id="9436697647-2">)</span><span class="o">.</span></code></pre>
   </section>
 </section>
 <section class="detail" id="new/0">
@@ -456,7 +479,8 @@ when fun: (key, value1, value2 -> value),
     </a>
     <h1 class="signature">new/0</h1>
       <div class="specs">
-          <pre>new() :: dict()</pre>
+          <pre>new() -> dict().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -471,7 +495,8 @@ when fun: (key, value1, value2 -> value),
     </a>
     <h1 class="signature">size/1</h1>
       <div class="specs">
-          <pre>size(dict) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when dict: dict()</pre>
+          <pre>size(Dict) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() when Dict :: dict().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -486,8 +511,9 @@ when fun: (key, value1, value2 -> value),
     </a>
     <h1 class="signature">store/3</h1>
       <div class="specs">
-          <pre>store(key, value, dict1) :: dict2
-when dict1: dict(key, value), dict2: dict(key, value), key: var, value: var</pre>
+          <pre>store(Key, Value, Dict1) -> Dict2
+         when Dict1 :: dict(Key, Value), Dict2 :: dict(Key, Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -502,11 +528,13 @@ when dict1: dict(key, value), dict2: dict(key, value), key: var, value: var</pre
     </a>
     <h1 class="signature">take/2</h1>
       <div class="specs">
-          <pre>take(key, dict) :: {value, dict1} | :error
-when dict: dict(key, value),
-     dict1: dict(key, value),
-     key: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     value: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>take(Key, Dict) -> {Value, Dict1} | error
+        when
+            Dict :: dict(Key, Value),
+            Dict1 :: dict(Key, Value),
+            Key :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+            Value :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -521,7 +549,9 @@ when dict: dict(key, value),
     </a>
     <h1 class="signature">to_list/1</h1>
       <div class="specs">
-          <pre>to_list(dict) :: list when dict: dict(key, value), list: [{key, value}]</pre>
+          <pre>to_list(Dict) -> List
+           when Dict :: dict(Key, Value), List :: [{Key, Value}].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -536,11 +566,12 @@ when dict: dict(key, value),
     </a>
     <h1 class="signature">update/3</h1>
       <div class="specs">
-          <pre>update(key, fun, dict1) :: dict2
-when dict1: dict(key, value),
-     dict2: dict(key, value),
-     fun: (value1 :: value -> value2 :: value),
-     key: var</pre>
+          <pre>update(Key, Fun, Dict1) -> Dict2
+          when
+              Dict1 :: dict(Key, Value),
+              Dict2 :: dict(Key, Value),
+              Fun :: fun((Value1 :: Value) -> Value2 :: Value).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -555,18 +586,19 @@ when dict1: dict(key, value),
     </a>
     <h1 class="signature">update/4</h1>
       <div class="specs">
-          <pre>update(key, fun, initial, dict1) :: dict2
-when dict1: dict(key, value),
-     dict2: dict(key, value),
-     fun: (value1 :: value -> value2 :: value),
-     initial: value,
-     key: var</pre>
+          <pre>update(Key, Fun, Initial, Dict1) -> Dict2
+          when
+              Dict1 :: dict(Key, Value),
+              Dict2 :: dict(Key, Value),
+              Fun :: fun((Value1 :: Value) -> Value2 :: Value),
+              Initial :: Value.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Updates a value in a dictionary by calling <code class="inline">Fun</code> on the value to get a new value. If <code class="inline">Key</code> is not present in the dictionary, <code class="inline">Initial</code> is stored as the first value. For example, <a href="#append/3"><code class="inline">append/3</code></a> can be defined as:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nf">append</span><span class="p" data-group-id="5508600233-1">(</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Val</span><span class="p">,</span><span class="w"> </span><span class="n">D</span><span class="p" data-group-id="5508600233-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
-    </span><span class="nf">update</span><span class="p" data-group-id="5508600233-2">(</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="nf">fun</span><span class="w"> </span><span class="p" data-group-id="5508600233-3">(</span><span class="n">Old</span><span class="p" data-group-id="5508600233-3">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Old</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p" data-group-id="5508600233-4">[</span><span class="n">Val</span><span class="p" data-group-id="5508600233-4">]</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5508600233-5">[</span><span class="n">Val</span><span class="p" data-group-id="5508600233-5">]</span><span class="p">,</span><span class="w"> </span><span class="n">D</span><span class="p" data-group-id="5508600233-2">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">append</span><span class="p" data-group-id="8378730777-1">(</span><span class="nc">Key</span><span class="p">,</span><span class="w"> </span><span class="nc">Val</span><span class="p">,</span><span class="w"> </span><span class="nc">D</span><span class="p" data-group-id="8378730777-1">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="n">update</span><span class="p" data-group-id="8378730777-2">(</span><span class="nc">Key</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="p" data-group-id="8378730777-3">(</span><span class="nc">Old</span><span class="p" data-group-id="8378730777-3">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Old</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p" data-group-id="8378730777-4">[</span><span class="nc">Val</span><span class="p" data-group-id="8378730777-4">]</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8378730777-5">[</span><span class="nc">Val</span><span class="p" data-group-id="8378730777-5">]</span><span class="p">,</span><span class="w"> </span><span class="nc">D</span><span class="p" data-group-id="8378730777-2">)</span><span class="o">.</span></code></pre>
   </section>
 </section>
 <section class="detail" id="update_counter/3">
@@ -577,18 +609,19 @@ when dict1: dict(key, value),
     </a>
     <h1 class="signature">update_counter/3</h1>
       <div class="specs">
-          <pre>update_counter(key, increment, dict1) :: dict2
-when dict1: dict(key, value),
-     dict2: dict(key, value),
-     increment: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(),
-     key: var</pre>
+          <pre>update_counter(Key, Increment, Dict1) -> Dict2
+                  when
+                      Dict1 :: dict(Key, Value),
+                      Dict2 :: dict(Key, Value),
+                      Increment :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Adds <code class="inline">Increment</code> to the value associated with <code class="inline">Key</code> and stores this value. If <code class="inline">Key</code> is not present in the dictionary, <code class="inline">Increment</code> is stored as the first value.</p>
 <p> This can be defined as follows, but is faster:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nf">update_counter</span><span class="p" data-group-id="5624780959-1">(</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Incr</span><span class="p">,</span><span class="w"> </span><span class="n">D</span><span class="p" data-group-id="5624780959-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
-    </span><span class="nf">update</span><span class="p" data-group-id="5624780959-2">(</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="nf">fun</span><span class="w"> </span><span class="p" data-group-id="5624780959-3">(</span><span class="n">Old</span><span class="p" data-group-id="5624780959-3">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Old</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Incr</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="n">Incr</span><span class="p">,</span><span class="w"> </span><span class="n">D</span><span class="p" data-group-id="5624780959-2">)</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">update_counter</span><span class="p" data-group-id="9746794333-1">(</span><span class="nc">Key</span><span class="p">,</span><span class="w"> </span><span class="nc">Incr</span><span class="p">,</span><span class="w"> </span><span class="nc">D</span><span class="p" data-group-id="9746794333-1">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="n">update</span><span class="p" data-group-id="9746794333-2">(</span><span class="nc">Key</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="p" data-group-id="9746794333-3">(</span><span class="nc">Old</span><span class="p" data-group-id="9746794333-3">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Old</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nc">Incr</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="nc">Incr</span><span class="p">,</span><span class="w"> </span><span class="nc">D</span><span class="p" data-group-id="9746794333-2">)</span><span class="o">.</span></code></pre>
   </section>
 </section>
           </div>
@@ -605,18 +638,18 @@ when dict1: dict(key, value),
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

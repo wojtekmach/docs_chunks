@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>erl_eval — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -151,8 +151,12 @@ Functions          </h1>
     </a>
     <h1 class="signature">add_binding/3</h1>
       <div class="specs">
-          <pre>add_binding(name, value, bindingStruct) :: binding_struct()
-when name: name(), value: value(), bindingStruct: binding_struct()</pre>
+          <pre>add_binding(Name, Value, BindingStruct) -> binding_struct()
+               when
+                   Name :: name(),
+                   Value :: value(),
+                   BindingStruct :: binding_struct().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -167,8 +171,9 @@ when name: name(), value: value(), bindingStruct: binding_struct()</pre>
     </a>
     <h1 class="signature">binding/2</h1>
       <div class="specs">
-          <pre>binding(name, bindingStruct) :: {:value, value()} | :unbound
-when name: name(), bindingStruct: binding_struct()</pre>
+          <pre>binding(Name, BindingStruct) -> {value, value()} | unbound
+           when Name :: name(), BindingStruct :: binding_struct().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -183,7 +188,8 @@ when name: name(), bindingStruct: binding_struct()</pre>
     </a>
     <h1 class="signature">bindings/1</h1>
       <div class="specs">
-          <pre>bindings(bindingStruct :: binding_struct()) :: bindings()</pre>
+          <pre>bindings(BindingStruct :: binding_struct()) -> bindings().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -198,8 +204,11 @@ when name: name(), bindingStruct: binding_struct()</pre>
     </a>
     <h1 class="signature">del_binding/2</h1>
       <div class="specs">
-          <pre>del_binding(name, bindingStruct) :: binding_struct()
-when name: name(), bindingStruct: binding_struct()</pre>
+          <pre>del_binding(Name, BindingStruct) -> binding_struct()
+               when
+                   Name :: name(),
+                   BindingStruct :: binding_struct().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -253,7 +262,8 @@ when name: name(), bindingStruct: binding_struct()</pre>
     </a>
     <h1 class="signature">new_bindings/0</h1>
       <div class="specs">
-          <pre>new_bindings() :: binding_struct()</pre>
+          <pre>new_bindings() -> binding_struct().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -274,18 +284,18 @@ when name: name(), bindingStruct: binding_struct()</pre>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

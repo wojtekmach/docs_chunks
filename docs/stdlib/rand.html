@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>rand — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -88,7 +88,7 @@ rand      </h1>
 <p>  <code class="inline">exsp</code>   *  Xorshift116+, 58 bits precision and period of 2^116-1</p>
 <p> Jump function: equivalent to 2^64 calls</p>
 <p>  This is a corrected version of the previous default algorithm, that now has been superseded by Xoroshiro116+ (<code class="inline">exrop</code>). Since there is no native 58 bit rotate instruction this algorithm executes a little (say &lt; 15%) faster than <code class="inline">exrop</code>. See the algorithms&#39; homepage. </p>
-<pre><code class="nohighlight makeup erlang"><span class="n">The</span><span class="w"> </span><span class="ss">default</span><span class="w"> </span><span class="ss">algorithm</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="err">`</span><span class="ss">exsss</span><span class="err">`</span><span class="w"> </span><span class="p" data-group-id="9403690015-1">(</span><span class="n">Xorshift116</span><span class="o">*</span><span class="o">*</span><span class="p" data-group-id="9403690015-1">)</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">specific</span><span class="w"> </span><span class="ss">algorithm</span><span class="w"> </span><span class="ss">is</span><span class="w"> </span><span class="ss">required</span><span class="p">,</span><span class="w"> </span><span class="ss">ensure</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">always</span><span class="w"> </span><span class="ss">use</span><span class="w">  </span><span class="p" data-group-id="9403690015-2">[</span><span class="err">`</span><span class="ss">seed</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="9403690015-2">]</span><span class="p" data-group-id="9403690015-3">(</span><span class="p">#</span><span class="ss">seed</span><span class="o">/</span><span class="mi">1</span><span class="p" data-group-id="9403690015-3">)</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">initialize</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">state</span><span class="p">.</span><span class="w"> </span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">The</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">algorithm</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="err">`</span><span class="n">exsss</span><span class="err">`</span><span class="w"> </span><span class="p" data-group-id="7014216734-1">(</span><span class="nc">Xorshift116</span><span class="o">*</span><span class="o">*</span><span class="p" data-group-id="7014216734-1">)</span><span class="o">.</span><span class="w"> </span><span class="nc">If</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">specific</span><span class="w"> </span><span class="n">algorithm</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">required</span><span class="p">,</span><span class="w"> </span><span class="n">ensure</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">always</span><span class="w"> </span><span class="kn">use</span><span class="w">  </span><span class="p" data-group-id="7014216734-2">[</span><span class="err">`</span><span class="n">seed</span><span class="o">/</span><span class="mi">1</span><span class="err">`</span><span class="p" data-group-id="7014216734-2">]</span><span class="p" data-group-id="7014216734-3">(</span><span class="c1">#seed/1) to initialize the state. </span></code></pre>
 <p>  Undocumented (old) algorithms are deprecated but still implemented so old code relying on them will produce the same pseudo random sequences as before. </p>
 <p>   There were a number of problems in the implementation of the now undocumented algorithms, which is why they are deprecated. The new algorithms are a bit slower but do not have these problems: </p>
 <p>  Uniform integer ranges had a skew in the probability distribution that was not noticable for small ranges but for large ranges less than the generator&#39;s precision the probability to produce a low number could be twice the probability for a high. </p>
@@ -100,35 +100,35 @@ rand      </h1>
 <p> The functions with explicit state never use the process dictionary.</p>
 <p> Examples:</p>
 <p> Simple use; creates and seeds the default algorithm with a non-constant seed if not already done:</p>
-<pre><code class="nohighlight makeup erlang"><span class="n">R0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="9298347898-1">(</span><span class="p" data-group-id="9298347898-1">)</span><span class="p">,</span><span class="w">
-</span><span class="n">R1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="9298347898-2">(</span><span class="p" data-group-id="9298347898-2">)</span><span class="p">,</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">R0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="ss">:uniform</span><span class="p" data-group-id="5621285493-1">(</span><span class="p" data-group-id="5621285493-1">)</span><span class="p">,</span><span class="w">
+</span><span class="nc">R1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="ss">:uniform</span><span class="p" data-group-id="5621285493-2">(</span><span class="p" data-group-id="5621285493-2">)</span><span class="p">,</span></code></pre>
 <p> Use a specified algorithm:</p>
-<pre><code class="nohighlight makeup erlang"><span class="p">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">seed</span><span class="p" data-group-id="7188392787-1">(</span><span class="ss">exs928ss</span><span class="p" data-group-id="7188392787-1">)</span><span class="p">,</span><span class="w">
-</span><span class="n">R2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="7188392787-2">(</span><span class="p" data-group-id="7188392787-2">)</span><span class="p">,</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="bp">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="ss">:seed</span><span class="p" data-group-id="0444116573-1">(</span><span class="n">exs928ss</span><span class="p" data-group-id="0444116573-1">)</span><span class="p">,</span><span class="w">
+</span><span class="nc">R2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="ss">:uniform</span><span class="p" data-group-id="0444116573-2">(</span><span class="p" data-group-id="0444116573-2">)</span><span class="p">,</span></code></pre>
 <p> Use a specified algorithm with a constant seed:</p>
-<pre><code class="nohighlight makeup erlang"><span class="p">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">seed</span><span class="p" data-group-id="1726517682-1">(</span><span class="ss">exs928ss</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1726517682-2">{</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="mi">123534</span><span class="p">,</span><span class="w"> </span><span class="mi">345345</span><span class="p" data-group-id="1726517682-2">}</span><span class="p" data-group-id="1726517682-1">)</span><span class="p">,</span><span class="w">
-</span><span class="n">R3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="1726517682-3">(</span><span class="p" data-group-id="1726517682-3">)</span><span class="p">,</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="bp">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="ss">:seed</span><span class="p" data-group-id="3546504155-1">(</span><span class="n">exs928ss</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3546504155-2">{</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="mi">123534</span><span class="p">,</span><span class="w"> </span><span class="mi">345345</span><span class="p" data-group-id="3546504155-2">}</span><span class="p" data-group-id="3546504155-1">)</span><span class="p">,</span><span class="w">
+</span><span class="nc">R3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="ss">:uniform</span><span class="p" data-group-id="3546504155-3">(</span><span class="p" data-group-id="3546504155-3">)</span><span class="p">,</span></code></pre>
 <p> Use the functional API with a non-constant seed:</p>
-<pre><code class="nohighlight makeup erlang"><span class="n">S0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">seed_s</span><span class="p" data-group-id="1299411156-1">(</span><span class="ss">exsss</span><span class="p" data-group-id="1299411156-1">)</span><span class="p">,</span><span class="w">
-</span><span class="p" data-group-id="1299411156-2">{</span><span class="n">R4</span><span class="p">,</span><span class="w"> </span><span class="n">S1</span><span class="p" data-group-id="1299411156-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform_s</span><span class="p" data-group-id="1299411156-3">(</span><span class="n">S0</span><span class="p" data-group-id="1299411156-3">)</span><span class="p">,</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">S0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="ss">:seed_s</span><span class="p" data-group-id="0515033916-1">(</span><span class="n">exsss</span><span class="p" data-group-id="0515033916-1">)</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="0515033916-2">{</span><span class="nc">R4</span><span class="p">,</span><span class="w"> </span><span class="nc">S1</span><span class="p" data-group-id="0515033916-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="ss">:uniform_s</span><span class="p" data-group-id="0515033916-3">(</span><span class="nc">S0</span><span class="p" data-group-id="0515033916-3">)</span><span class="p">,</span></code></pre>
 <p> Textbook basic form Box-Muller standard normal deviate</p>
-<pre><code class="nohighlight makeup erlang"><span class="n">R5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform_real</span><span class="p" data-group-id="2439866932-1">(</span><span class="p" data-group-id="2439866932-1">)</span><span class="p">,</span><span class="w">
-</span><span class="n">R6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="2439866932-2">(</span><span class="p" data-group-id="2439866932-2">)</span><span class="p">,</span><span class="w">
-</span><span class="n">SND0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">math</span><span class="p">:</span><span class="nf">sqrt</span><span class="p" data-group-id="2439866932-3">(</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nc">math</span><span class="p">:</span><span class="nf">log</span><span class="p" data-group-id="2439866932-4">(</span><span class="n">R5</span><span class="p" data-group-id="2439866932-4">)</span><span class="p" data-group-id="2439866932-3">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nc">math</span><span class="p">:</span><span class="nf">cos</span><span class="p" data-group-id="2439866932-5">(</span><span class="nc">math</span><span class="p">:</span><span class="nf">pi</span><span class="p" data-group-id="2439866932-6">(</span><span class="p" data-group-id="2439866932-6">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">R6</span><span class="p" data-group-id="2439866932-5">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">R5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="ss">:uniform_real</span><span class="p" data-group-id="8640723106-1">(</span><span class="p" data-group-id="8640723106-1">)</span><span class="p">,</span><span class="w">
+</span><span class="nc">R6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="ss">:uniform</span><span class="p" data-group-id="8640723106-2">(</span><span class="p" data-group-id="8640723106-2">)</span><span class="p">,</span><span class="w">
+</span><span class="nc">SND0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="ss">:sqrt</span><span class="p" data-group-id="8640723106-3">(</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">math</span><span class="ss">:log</span><span class="p" data-group-id="8640723106-4">(</span><span class="nc">R5</span><span class="p" data-group-id="8640723106-4">)</span><span class="p" data-group-id="8640723106-3">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">math</span><span class="ss">:cos</span><span class="p" data-group-id="8640723106-5">(</span><span class="n">math</span><span class="ss">:pi</span><span class="p" data-group-id="8640723106-6">(</span><span class="p" data-group-id="8640723106-6">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nc">R6</span><span class="p" data-group-id="8640723106-5">)</span></code></pre>
 <p> Create a standard normal deviate:</p>
-<pre><code class="nohighlight makeup erlang"><span class="p" data-group-id="2101645289-1">{</span><span class="n">SND1</span><span class="p">,</span><span class="w"> </span><span class="n">S2</span><span class="p" data-group-id="2101645289-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">normal_s</span><span class="p" data-group-id="2101645289-2">(</span><span class="n">S1</span><span class="p" data-group-id="2101645289-2">)</span><span class="p">,</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="0768373281-1">{</span><span class="nc">SND1</span><span class="p">,</span><span class="w"> </span><span class="nc">S2</span><span class="p" data-group-id="0768373281-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="ss">:normal_s</span><span class="p" data-group-id="0768373281-2">(</span><span class="nc">S1</span><span class="p" data-group-id="0768373281-2">)</span><span class="p">,</span></code></pre>
 <p> Create a normal deviate with mean -3 and variance 0.5:</p>
-<pre><code class="nohighlight makeup erlang"><span class="p" data-group-id="1330521248-1">{</span><span class="n">ND0</span><span class="p">,</span><span class="w"> </span><span class="n">S3</span><span class="p" data-group-id="1330521248-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">normal_s</span><span class="p" data-group-id="1330521248-2">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">S2</span><span class="p" data-group-id="1330521248-2">)</span><span class="p">,</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="5272921269-1">{</span><span class="nc">ND0</span><span class="p">,</span><span class="w"> </span><span class="nc">S3</span><span class="p" data-group-id="5272921269-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="ss">:normal_s</span><span class="p" data-group-id="5272921269-2">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="nc">S2</span><span class="p" data-group-id="5272921269-2">)</span><span class="p">,</span></code></pre>
 <p>  The builtin random number generator algorithms are not cryptographically strong. If a cryptographically strong random number generator is needed, use something like <code class="inline">crypto:rand_seed/0</code>. </p>
 <p>   For all these generators except <code class="inline">exro928ss</code> and <code class="inline">exsss</code> the lowest bit(s) has got a slightly less random behaviour than all other bits. 1 bit for <code class="inline">exrop</code> (and <code class="inline">exsp</code>), and 3 bits for <code class="inline">exs1024s</code>. See for example the explanation in the  Xoroshiro128+  generator source code: </p>
-<pre><code class="nohighlight makeup erlang"><span class="n">Beside</span><span class="w"> </span><span class="ss">passing</span><span class="w"> </span><span class="n">BigCrush</span><span class="p">,</span><span class="w"> </span><span class="ss">this</span><span class="w"> </span><span class="ss">generator</span><span class="w"> </span><span class="ss">passes</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="n">PractRand</span><span class="w"> </span><span class="ss">test</span><span class="w"> </span><span class="ss">suite</span><span class="w">
-</span><span class="ss">up</span><span class="w"> </span><span class="nf">to</span><span class="w"> </span><span class="p" data-group-id="3915250232-1">(</span><span class="ow">and</span><span class="w"> </span><span class="ss">included</span><span class="p" data-group-id="3915250232-1">)</span><span class="w"> </span><span class="mi">16</span><span class="n">TB</span><span class="p">,</span><span class="w"> </span><span class="ss">with</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">exception</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">binary</span><span class="w"> </span><span class="ss">rank</span><span class="w"> </span><span class="ss">tests</span><span class="p">,</span><span class="w">
-</span><span class="ss">which</span><span class="w"> </span><span class="ss">fail</span><span class="w"> </span><span class="ss">due</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">lowest</span><span class="w"> </span><span class="ss">bit</span><span class="w"> </span><span class="ss">being</span><span class="w"> </span><span class="ss">an</span><span class="w"> </span><span class="n">LFSR</span><span class="p">;</span><span class="w"> </span><span class="ss">all</span><span class="w"> </span><span class="ss">other</span><span class="w"> </span><span class="ss">bits</span><span class="w"> </span><span class="ss">pass</span><span class="w"> </span><span class="ss">all</span><span class="w">
-</span><span class="ss">tests</span><span class="p">.</span><span class="w"> </span><span class="n">We</span><span class="w"> </span><span class="ss">suggest</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">use</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">sign</span><span class="w"> </span><span class="ss">test</span><span class="w"> </span><span class="ss">to</span><span class="w"> </span><span class="ss">extract</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">random</span><span class="w"> </span><span class="n">Boolean</span><span class="w"> </span><span class="ss">value</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">Beside</span><span class="w"> </span><span class="n">passing</span><span class="w"> </span><span class="nc">BigCrush</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">generator</span><span class="w"> </span><span class="n">passes</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nc">PractRand</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="n">suite</span><span class="w">
+</span><span class="n">up</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="p" data-group-id="4247841733-1">(</span><span class="ow">and</span><span class="w"> </span><span class="n">included</span><span class="p" data-group-id="4247841733-1">)</span><span class="w"> </span><span class="mi">16</span><span class="nc">TB</span><span class="p">,</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">exception</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">binary</span><span class="w"> </span><span class="n">rank</span><span class="w"> </span><span class="n">tests</span><span class="p">,</span><span class="w">
+</span><span class="n">which</span><span class="w"> </span><span class="n">fail</span><span class="w"> </span><span class="n">due</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">lowest</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="n">being</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="nc">LFSR</span><span class="p">;</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">bits</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="n">all</span><span class="w">
+</span><span class="n">tests</span><span class="o">.</span><span class="w"> </span><span class="nc">We</span><span class="w"> </span><span class="n">suggest</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="kn">use</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">sign</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">extract</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="nc">Boolean</span><span class="w"> </span><span class="n">value</span><span class="o">.</span></code></pre>
 <p>  If this is a problem; to generate a boolean with these algorithms use something like this: </p>
-<pre><code class="nohighlight makeup erlang"><span class="p" data-group-id="3350642498-1">(</span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="3350642498-2">(</span><span class="mi">16</span><span class="p" data-group-id="3350642498-2">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p" data-group-id="3350642498-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="2657990368-1">(</span><span class="n">rand</span><span class="ss">:uniform</span><span class="p" data-group-id="2657990368-2">(</span><span class="mi">16</span><span class="p" data-group-id="2657990368-2">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p" data-group-id="2657990368-1">)</span></code></pre>
 <p>  And for a general range, with <code class="inline">N = 1</code> for <code class="inline">exrop</code>, and <code class="inline">N = 3</code> for <code class="inline">exs1024s</code>: </p>
-<pre><code class="nohighlight makeup erlang"><span class="p" data-group-id="3679625922-1">(</span><span class="p" data-group-id="3679625922-2">(</span><span class="p" data-group-id="3679625922-3">(</span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="3679625922-4">(</span><span class="n">Range</span><span class="w"> </span><span class="ow">bsl</span><span class="w"> </span><span class="n">N</span><span class="p" data-group-id="3679625922-4">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3679625922-3">)</span><span class="w"> </span><span class="ow">bsr</span><span class="w"> </span><span class="n">N</span><span class="p" data-group-id="3679625922-2">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3679625922-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="9446667330-1">(</span><span class="p" data-group-id="9446667330-2">(</span><span class="p" data-group-id="9446667330-3">(</span><span class="n">rand</span><span class="ss">:uniform</span><span class="p" data-group-id="9446667330-4">(</span><span class="nc">Range</span><span class="w"> </span><span class="n">bsl</span><span class="w"> </span><span class="nc">N</span><span class="p" data-group-id="9446667330-4">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="9446667330-3">)</span><span class="w"> </span><span class="n">bsr</span><span class="w"> </span><span class="nc">N</span><span class="p" data-group-id="9446667330-2">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="9446667330-1">)</span></code></pre>
 <p>  The floating point generating functions in this module waste the lowest bits when converting from an integer so they avoid this snag. </p>
         </section>
 
@@ -271,7 +271,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">export_seed/0</h1>
       <div class="specs">
-          <pre>export_seed() :: :undefined | export_state()</pre>
+          <pre>export_seed() -> undefined | export_state().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -286,7 +287,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">export_seed_s/1</h1>
       <div class="specs">
-          <pre>export_seed_s(state :: state()) :: export_state()</pre>
+          <pre>export_seed_s(State :: state()) -> export_state().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -301,7 +303,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">jump/0</h1>
       <div class="specs">
-          <pre>jump() :: newState :: state()</pre>
+          <pre>jump() -> NewState :: state().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -317,7 +320,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">jump/1</h1>
       <div class="specs">
-          <pre>jump(state()) :: newState :: state()</pre>
+          <pre>jump(state()) -> NewState :: state().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -333,7 +337,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">normal/0</h1>
       <div class="specs">
-          <pre>normal() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
+          <pre>normal() -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -348,7 +353,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">normal/2</h1>
       <div class="specs">
-          <pre>normal(mean :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(), variance :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
+          <pre>normal(Mean :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(), Variance :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -363,7 +369,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">normal_s/1</h1>
       <div class="specs">
-          <pre>normal_s(state :: state()) :: {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), newState :: state()}</pre>
+          <pre>normal_s(State :: state()) -> {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), NewState :: state()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -378,8 +385,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">normal_s/3</h1>
       <div class="specs">
-          <pre>normal_s(mean :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(), variance :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(), state()) ::
-  {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), newS :: state()}</pre>
+          <pre>normal_s(Mean :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(), Variance :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(), state()) ->
+            {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), NewS :: state()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -394,8 +402,10 @@ Functions          </h1>
     </a>
     <h1 class="signature">seed/1</h1>
       <div class="specs">
-          <pre>seed(algOrStateOrExpState :: builtin_alg() | state() | export_state()) ::
-  state()</pre>
+          <pre>seed(AlgOrStateOrExpState ::
+         builtin_alg() | state() | export_state()) ->
+        state().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -411,7 +421,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">seed/2</h1>
       <div class="specs">
-          <pre>seed(alg :: builtin_alg(), seed :: seed()) :: state()</pre>
+          <pre>seed(Alg :: builtin_alg(), Seed :: seed()) -> state().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -426,8 +437,10 @@ Functions          </h1>
     </a>
     <h1 class="signature">seed_s/1</h1>
       <div class="specs">
-          <pre>seed_s(algOrStateOrExpState :: builtin_alg() | state() | export_state()) ::
-  state()</pre>
+          <pre>seed_s(AlgOrStateOrExpState ::
+           builtin_alg() | state() | export_state()) ->
+          state().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -443,7 +456,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">seed_s/2</h1>
       <div class="specs">
-          <pre>seed_s(alg :: builtin_alg(), seed :: seed()) :: state()</pre>
+          <pre>seed_s(Alg :: builtin_alg(), Seed :: seed()) -> state().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -458,7 +472,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">uniform/0</h1>
       <div class="specs">
-          <pre>uniform() :: x :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
+          <pre>uniform() -> X :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -466,12 +481,12 @@ Functions          </h1>
 <p>  The generated numbers are on the form N * 2.0^(-53), that is; equally spaced in the interval. </p>
 <p>   This function may return exactly <code class="inline">0.0</code> which can be fatal for certain applications. If that is undesired you can use <code class="inline">(1.0 - rand:uniform())</code> to get the interval <code class="inline">0.0 &lt; ``X`` =``&lt; 1.0</code>, or instead use <a href="#uniform_real/0"><code class="inline">uniform_real/0</code></a>. </p>
 <p>  If neither endpoint is desired you can test and re-try like this: </p>
-<pre><code class="nohighlight makeup erlang"><span class="nf">my_uniform</span><span class="p" data-group-id="4631606102-1">(</span><span class="p" data-group-id="4631606102-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
-    </span><span class="k">case</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="4631606102-2">(</span><span class="p" data-group-id="4631606102-2">)</span><span class="w"> </span><span class="k">of</span><span class="w">
-        </span><span class="mf">0.0</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nf">my_uniform</span><span class="p" data-group-id="4631606102-3">(</span><span class="p" data-group-id="4631606102-3">)</span><span class="p">;</span><span class="w">
-    </span><span class="n">X</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">X</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">my_uniform</span><span class="p" data-group-id="1480047243-1">(</span><span class="p" data-group-id="1480047243-1">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="k">case</span><span class="w"> </span><span class="n">rand</span><span class="ss">:uniform</span><span class="p" data-group-id="1480047243-2">(</span><span class="p" data-group-id="1480047243-2">)</span><span class="w"> </span><span class="n">of</span><span class="w">
+        </span><span class="mf">0.0</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">my_uniform</span><span class="p" data-group-id="1480047243-3">(</span><span class="p" data-group-id="1480047243-3">)</span><span class="p">;</span><span class="w">
+    </span><span class="nc">X</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">X</span><span class="w">
     </span><span class="k">end</span><span class="w">
-</span><span class="k">end</span><span class="p">.</span></code></pre>
+</span><span class="k">end</span><span class="o">.</span></code></pre>
   </section>
 </section>
 <section class="detail" id="uniform/1">
@@ -482,7 +497,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">uniform/1</h1>
       <div class="specs">
-          <pre>uniform(n :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()) :: x :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()</pre>
+          <pre>uniform(N :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()) -> X :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -497,7 +513,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">uniform_real/0</h1>
       <div class="specs">
-          <pre>uniform_real() :: x :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
+          <pre>uniform_real() -> X :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -515,7 +532,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">uniform_real_s/1</h1>
       <div class="specs">
-          <pre>uniform_real_s(state :: state()) :: {x :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), newState :: state()}</pre>
+          <pre>uniform_real_s(State :: state()) ->
+                  {X :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), NewState :: state()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -536,7 +555,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">uniform_s/1</h1>
       <div class="specs">
-          <pre>uniform_s(state :: state()) :: {x :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), newState :: state()}</pre>
+          <pre>uniform_s(State :: state()) -> {X :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), NewState :: state()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -544,12 +564,12 @@ Functions          </h1>
 <p>  The generated numbers are on the form N * 2.0^(-53), that is; equally spaced in the interval. </p>
 <p>   This function may return exactly <code class="inline">0.0</code> which can be fatal for certain applications. If that is undesired you can use <code class="inline">(1.0 - rand:uniform(State))</code> to get the interval <code class="inline">0.0 &lt; ``X`` =``&lt; 1.0</code>, or instead use <a href="#uniform_real_s/1"><code class="inline">uniform_real_s/1</code></a>. </p>
 <p>  If neither endpoint is desired you can test and re-try like this: </p>
-<pre><code class="nohighlight makeup erlang"><span class="nf">my_uniform</span><span class="p" data-group-id="2385309659-1">(</span><span class="n">State</span><span class="p" data-group-id="2385309659-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w">
-    </span><span class="k">case</span><span class="w"> </span><span class="nc">rand</span><span class="p">:</span><span class="nf">uniform</span><span class="p" data-group-id="2385309659-2">(</span><span class="n">State</span><span class="p" data-group-id="2385309659-2">)</span><span class="w"> </span><span class="k">of</span><span class="w">
-        </span><span class="p" data-group-id="2385309659-3">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">NewState</span><span class="p" data-group-id="2385309659-3">}</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nf">my_uniform</span><span class="p" data-group-id="2385309659-4">(</span><span class="n">NewState</span><span class="p" data-group-id="2385309659-4">)</span><span class="p">;</span><span class="w">
-    </span><span class="n">Result</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Result</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">my_uniform</span><span class="p" data-group-id="5640202237-1">(</span><span class="nc">State</span><span class="p" data-group-id="5640202237-1">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="k">case</span><span class="w"> </span><span class="n">rand</span><span class="ss">:uniform</span><span class="p" data-group-id="5640202237-2">(</span><span class="nc">State</span><span class="p" data-group-id="5640202237-2">)</span><span class="w"> </span><span class="n">of</span><span class="w">
+        </span><span class="p" data-group-id="5640202237-3">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nc">NewState</span><span class="p" data-group-id="5640202237-3">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">my_uniform</span><span class="p" data-group-id="5640202237-4">(</span><span class="nc">NewState</span><span class="p" data-group-id="5640202237-4">)</span><span class="p">;</span><span class="w">
+    </span><span class="nc">Result</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Result</span><span class="w">
     </span><span class="k">end</span><span class="w">
-</span><span class="k">end</span><span class="p">.</span></code></pre>
+</span><span class="k">end</span><span class="o">.</span></code></pre>
   </section>
 </section>
 <section class="detail" id="uniform_s/2">
@@ -560,8 +580,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">uniform_s/2</h1>
       <div class="specs">
-          <pre>uniform_s(n :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), state :: state()) ::
-  {x :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), newState :: state()}</pre>
+          <pre>uniform_s(N :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), State :: state()) ->
+             {X :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), NewState :: state()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -582,18 +603,18 @@ Functions          </h1>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

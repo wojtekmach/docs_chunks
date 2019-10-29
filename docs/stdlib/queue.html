@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>queue — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -293,7 +293,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">cons/2</h1>
       <div class="specs">
-          <pre>cons(item, q1 :: queue(item)) :: q2 :: queue(item) when item: var</pre>
+          <pre>cons(Item, Q1 :: queue(Item)) -> Q2 :: queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -308,7 +309,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">daeh/1</h1>
       <div class="specs">
-          <pre>daeh(q :: queue(item)) :: item when item: var</pre>
+          <pre>daeh(Q :: queue(Item)) -> Item.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -324,7 +326,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">drop/1</h1>
       <div class="specs">
-          <pre>drop(q1 :: queue(item)) :: q2 :: queue(item)</pre>
+          <pre>drop(Q1 :: queue(Item)) -> Q2 :: queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -340,7 +343,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">drop_r/1</h1>
       <div class="specs">
-          <pre>drop_r(q1 :: queue(item)) :: q2 :: queue(item)</pre>
+          <pre>drop_r(Q1 :: queue(Item)) -> Q2 :: queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -356,8 +360,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">filter/2</h1>
       <div class="specs">
-          <pre>filter(fun, q1 :: queue(item)) :: q2 :: queue(item)
-when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | [item])</pre>
+          <pre>filter(Fun, Q1 :: queue(Item)) -> Q2 :: queue(Item)
+          when Fun :: fun((Item) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | [Item]).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -374,7 +379,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">from_list/1</h1>
       <div class="specs">
-          <pre>from_list(l :: [item]) :: queue(item)</pre>
+          <pre>from_list(L :: [Item]) -> queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -389,7 +395,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">get/1</h1>
       <div class="specs">
-          <pre>get(q :: queue(item)) :: item when item: var</pre>
+          <pre>get(Q :: queue(Item)) -> Item.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -405,7 +412,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">get_r/1</h1>
       <div class="specs">
-          <pre>get_r(q :: queue(item)) :: item when item: var</pre>
+          <pre>get_r(Q :: queue(Item)) -> Item.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -421,7 +429,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">head/1</h1>
       <div class="specs">
-          <pre>head(q :: queue(item)) :: item when item: var</pre>
+          <pre>head(Q :: queue(Item)) -> Item.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -437,7 +446,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">in/2</h1>
       <div class="specs">
-          <pre>item in (q1 :: queue(item)) :: q2 :: queue(item) when item: var</pre>
+          <pre>in(Item, Q1 :: queue(Item)) -> Q2 :: queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -452,7 +462,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">in_r/2</h1>
       <div class="specs">
-          <pre>in_r(item, q1 :: queue(item)) :: q2 :: queue(item) when item: var</pre>
+          <pre>in_r(Item, Q1 :: queue(Item)) -> Q2 :: queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -467,7 +478,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">init/1</h1>
       <div class="specs">
-          <pre>init(q1 :: queue(item)) :: q2 :: queue(item)</pre>
+          <pre>init(Q1 :: queue(Item)) -> Q2 :: queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -483,7 +495,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">is_empty/1</h1>
       <div class="specs">
-          <pre>is_empty(q :: queue()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+          <pre>is_empty(Q :: queue()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -498,7 +511,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">is_queue/1</h1>
       <div class="specs">
-          <pre>is_queue(term :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+          <pre>is_queue(Term :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -513,7 +527,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">join/2</h1>
       <div class="specs">
-          <pre>join(q1 :: queue(item), q2 :: queue(item)) :: q3 :: queue(item)</pre>
+          <pre>join(Q1 :: queue(Item), Q2 :: queue(Item)) -> Q3 :: queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -528,7 +543,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">lait/1</h1>
       <div class="specs">
-          <pre>lait(q1 :: queue(item)) :: q2 :: queue(item)</pre>
+          <pre>lait(Q1 :: queue(Item)) -> Q2 :: queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -545,7 +561,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">last/1</h1>
       <div class="specs">
-          <pre>last(q :: queue(item)) :: item when item: var</pre>
+          <pre>last(Q :: queue(Item)) -> Item.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -561,7 +578,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">len/1</h1>
       <div class="specs">
-          <pre>len(q :: queue()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>len(Q :: queue()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -576,7 +594,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">liat/1</h1>
       <div class="specs">
-          <pre>liat(q1 :: queue(item)) :: q2 :: queue(item)</pre>
+          <pre>liat(Q1 :: queue(Item)) -> Q2 :: queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -592,7 +611,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">member/2</h1>
       <div class="specs">
-          <pre>member(item, q :: queue(item)) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when item: var</pre>
+          <pre>member(Item, Q :: queue(Item)) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -607,7 +627,8 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">new/0</h1>
       <div class="specs">
-          <pre>new() :: queue()</pre>
+          <pre>new() -> queue().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -622,9 +643,10 @@ when fun: (item -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-ty
     </a>
     <h1 class="signature">out/1</h1>
       <div class="specs">
-          <pre>out(q1 :: queue(item)) ::
-  {{:value, item}, q2 :: queue(item)} | {:empty, q1 :: queue(item)}
-when item: var</pre>
+          <pre>out(Q1 :: queue(Item)) ->
+       {{value, Item}, Q2 :: queue(Item)} |
+       {empty, Q1 :: queue(Item)}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -639,9 +661,10 @@ when item: var</pre>
     </a>
     <h1 class="signature">out_r/1</h1>
       <div class="specs">
-          <pre>out_r(q1 :: queue(item)) ::
-  {{:value, item}, q2 :: queue(item)} | {:empty, q1 :: queue(item)}
-when item: var</pre>
+          <pre>out_r(Q1 :: queue(Item)) ->
+         {{value, Item}, Q2 :: queue(Item)} |
+         {empty, Q1 :: queue(Item)}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -656,7 +679,8 @@ when item: var</pre>
     </a>
     <h1 class="signature">peek/1</h1>
       <div class="specs">
-          <pre>peek(q :: queue(item)) :: :empty | {:value, item} when item: var</pre>
+          <pre>peek(Q :: queue(Item)) -> empty | {value, Item}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -671,7 +695,8 @@ when item: var</pre>
     </a>
     <h1 class="signature">peek_r/1</h1>
       <div class="specs">
-          <pre>peek_r(q :: queue(item)) :: :empty | {:value, item} when item: var</pre>
+          <pre>peek_r(Q :: queue(Item)) -> empty | {value, Item}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -686,7 +711,8 @@ when item: var</pre>
     </a>
     <h1 class="signature">reverse/1</h1>
       <div class="specs">
-          <pre>reverse(q1 :: queue(item)) :: q2 :: queue(item)</pre>
+          <pre>reverse(Q1 :: queue(Item)) -> Q2 :: queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -701,7 +727,8 @@ when item: var</pre>
     </a>
     <h1 class="signature">snoc/2</h1>
       <div class="specs">
-          <pre>snoc(q1 :: queue(item), item) :: q2 :: queue(item) when item: var</pre>
+          <pre>snoc(Q1 :: queue(Item), Item) -> Q2 :: queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -716,8 +743,9 @@ when item: var</pre>
     </a>
     <h1 class="signature">split/2</h1>
       <div class="specs">
-          <pre>split(n :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), q1 :: queue(item)) ::
-  {q2 :: queue(item), q3 :: queue(item)}</pre>
+          <pre>split(N :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), Q1 :: queue(Item)) ->
+         {Q2 :: queue(Item), Q3 :: queue(Item)}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -732,7 +760,8 @@ when item: var</pre>
     </a>
     <h1 class="signature">tail/1</h1>
       <div class="specs">
-          <pre>tail(q1 :: queue(item)) :: q2 :: queue(item)</pre>
+          <pre>tail(Q1 :: queue(Item)) -> Q2 :: queue(Item).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -748,7 +777,8 @@ when item: var</pre>
     </a>
     <h1 class="signature">to_list/1</h1>
       <div class="specs">
-          <pre>to_list(q :: queue(item)) :: [item] when item: var</pre>
+          <pre>to_list(Q :: queue(Item)) -> [Item].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -769,18 +799,18 @@ when item: var</pre>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

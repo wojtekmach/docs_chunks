@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>beam_lib — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -71,7 +71,7 @@ beam_lib      </h1>
         <section id="moduledoc">
 <p> This module provides an interface to files created by the BEAM Compiler (&quot;BEAM files&quot;). The format used, a variant of &quot;EA IFF 1985&quot; Standard for Interchange Format Files, divides data into chunks.</p>
 <p> Chunk data can be returned as binaries or as compound terms. Compound terms are returned when chunks are referenced by names (atoms) rather than identifiers (strings). The recognized names and the corresponding identifiers are as follows:</p>
-<pre><code class="nohighlight makeup erlang"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nf">atoms</span><span class="w"> </span><span class="p" data-group-id="4911620929-1">(</span><span class="s">&quot;Atom&quot;</span><span class="p" data-group-id="4911620929-1">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nf">attributes</span><span class="w"> </span><span class="p" data-group-id="4911620929-2">(</span><span class="s">&quot;Attr&quot;</span><span class="p" data-group-id="4911620929-2">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nf">compile_info</span><span class="w"> </span><span class="p" data-group-id="4911620929-3">(</span><span class="s">&quot;CInf&quot;</span><span class="p" data-group-id="4911620929-3">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nf">debug_info</span><span class="w"> </span><span class="p" data-group-id="4911620929-4">(</span><span class="s">&quot;Dbgi&quot;</span><span class="p" data-group-id="4911620929-4">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nf">exports</span><span class="w"> </span><span class="p" data-group-id="4911620929-5">(</span><span class="s">&quot;ExpT&quot;</span><span class="p" data-group-id="4911620929-5">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nf">imports</span><span class="w"> </span><span class="p" data-group-id="4911620929-6">(</span><span class="s">&quot;ImpT&quot;</span><span class="p" data-group-id="4911620929-6">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nf">indexed_imports</span><span class="w"> </span><span class="p" data-group-id="4911620929-7">(</span><span class="s">&quot;ImpT&quot;</span><span class="p" data-group-id="4911620929-7">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nf">labeled_exports</span><span class="w"> </span><span class="p" data-group-id="4911620929-8">(</span><span class="s">&quot;ExpT&quot;</span><span class="p" data-group-id="4911620929-8">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nf">labeled_locals</span><span class="w"> </span><span class="p" data-group-id="4911620929-9">(</span><span class="s">&quot;LocT&quot;</span><span class="p" data-group-id="4911620929-9">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="nf">locals</span><span class="w"> </span><span class="p" data-group-id="4911620929-10">(</span><span class="s">&quot;LocT&quot;</span><span class="p" data-group-id="4911620929-10">)</span><span class="err">`</span><span class="w">  </span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">atoms</span><span class="w"> </span><span class="p" data-group-id="6689777586-1">(</span><span class="s">&quot;Atom&quot;</span><span class="p" data-group-id="6689777586-1">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">attributes</span><span class="w"> </span><span class="p" data-group-id="6689777586-2">(</span><span class="s">&quot;Attr&quot;</span><span class="p" data-group-id="6689777586-2">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">compile_info</span><span class="w"> </span><span class="p" data-group-id="6689777586-3">(</span><span class="s">&quot;CInf&quot;</span><span class="p" data-group-id="6689777586-3">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">debug_info</span><span class="w"> </span><span class="p" data-group-id="6689777586-4">(</span><span class="s">&quot;Dbgi&quot;</span><span class="p" data-group-id="6689777586-4">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">exports</span><span class="w"> </span><span class="p" data-group-id="6689777586-5">(</span><span class="s">&quot;ExpT&quot;</span><span class="p" data-group-id="6689777586-5">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">imports</span><span class="w"> </span><span class="p" data-group-id="6689777586-6">(</span><span class="s">&quot;ImpT&quot;</span><span class="p" data-group-id="6689777586-6">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">indexed_imports</span><span class="w"> </span><span class="p" data-group-id="6689777586-7">(</span><span class="s">&quot;ImpT&quot;</span><span class="p" data-group-id="6689777586-7">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">labeled_exports</span><span class="w"> </span><span class="p" data-group-id="6689777586-8">(</span><span class="s">&quot;ExpT&quot;</span><span class="p" data-group-id="6689777586-8">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">labeled_locals</span><span class="w"> </span><span class="p" data-group-id="6689777586-9">(</span><span class="s">&quot;LocT&quot;</span><span class="p" data-group-id="6689777586-9">)</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="err">`</span><span class="n">locals</span><span class="w"> </span><span class="p" data-group-id="6689777586-10">(</span><span class="s">&quot;LocT&quot;</span><span class="p" data-group-id="6689777586-10">)</span><span class="err">`</span><span class="w">  </span></code></pre>
         </section>
 
         <section id="summary" class="details-list">
@@ -219,8 +219,10 @@ Functions          </h1>
     </a>
     <h1 class="signature">all_chunks/1</h1>
       <div class="specs">
-          <pre>all_chunks(beam()) ::
-  {:ok, :beam_lib, [{chunkid(), dataB()}]} | {:error, :beam_lib, info_rsn()}</pre>
+          <pre>all_chunks(beam()) ->
+              {ok, beam_lib, [{chunkid(), dataB()}]} |
+              {error, beam_lib, info_rsn()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -235,8 +237,11 @@ Functions          </h1>
     </a>
     <h1 class="signature">build_module/1</h1>
       <div class="specs">
-          <pre>build_module(chunks) :: {:ok, binary}
-when chunks: [{chunkid(), dataB()}], binary: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+          <pre>build_module(Chunks) -> {ok, Binary}
+                when
+                    Chunks :: [{chunkid(), dataB()}],
+                    Binary :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -251,9 +256,11 @@ when chunks: [{chunkid(), dataB()}], binary: <a href="https://hexdocs.pm/elixir/
     </a>
     <h1 class="signature">chunks/2</h1>
       <div class="specs">
-          <pre>chunks(beam, chunkRefs) ::
-  {:ok, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), [chunkdata()]}} | {:error, :beam_lib, chnk_rsn()}
-when beam: beam(), chunkRefs: [chunkref()]</pre>
+          <pre>chunks(Beam, ChunkRefs) ->
+          {ok, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), [chunkdata()]}} |
+          {error, beam_lib, chnk_rsn()}
+          when Beam :: beam(), ChunkRefs :: [chunkref()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -268,12 +275,17 @@ when beam: beam(), chunkRefs: [chunkref()]</pre>
     </a>
     <h1 class="signature">chunks/3</h1>
       <div class="specs">
-          <pre>chunks(beam, chunkRefs, options) ::
-  {:ok, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), [chunkResult]}} | {:error, :beam_lib, chnk_rsn()}
-when beam: beam(),
-     chunkRefs: [chunkref()],
-     options: [:allow_missing_chunks],
-     chunkResult: chunkdata() | {chunkRef :: chunkref(), :missing_chunk}</pre>
+          <pre>chunks(Beam, ChunkRefs, Options) ->
+          {ok, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), [ChunkResult]}} |
+          {error, beam_lib, chnk_rsn()}
+          when
+              Beam :: beam(),
+              ChunkRefs :: [chunkref()],
+              Options :: [allow_missing_chunks],
+              ChunkResult ::
+                  chunkdata() |
+                  {ChunkRef :: chunkref(), missing_chunk}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -289,8 +301,9 @@ when beam: beam(),
     </a>
     <h1 class="signature">clear_crypto_key_fun/0</h1>
       <div class="specs">
-          <pre>clear_crypto_key_fun() :: :undefined | {:ok, result}
-when result: :undefined | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>clear_crypto_key_fun() -> undefined | {ok, Result}
+                        when Result :: undefined | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -306,8 +319,9 @@ when result: :undefined | <a href="https://hexdocs.pm/elixir/typespecs.html#buil
     </a>
     <h1 class="signature">cmp/2</h1>
       <div class="specs">
-          <pre>cmp(beam1, beam2) :: :ok | {:error, :beam_lib, cmp_rsn()}
-when beam1: beam(), beam2: beam()</pre>
+          <pre>cmp(Beam1, Beam2) -> ok | {error, beam_lib, cmp_rsn()}
+       when Beam1 :: beam(), Beam2 :: beam().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -322,13 +336,18 @@ when beam1: beam(), beam2: beam()</pre>
     </a>
     <h1 class="signature">cmp_dirs/2</h1>
       <div class="specs">
-          <pre>cmp_dirs(dir1, dir2) :: {only1, only2, different} | {:error, :beam_lib, reason}
-when dir1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>(),
-     dir2: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>(),
-     only1: [<a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>()],
-     only2: [<a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>()],
-     different: [{filename1 :: <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>(), filename2 :: <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>()}],
-     reason: {:not_a_directory, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | info_rsn()</pre>
+          <pre>cmp_dirs(Dir1, Dir2) ->
+            {Only1, Only2, Different} | {error, beam_lib, Reason}
+            when
+                Dir1 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | file:filename(),
+                Dir2 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | file:filename(),
+                Only1 :: [file:filename()],
+                Only2 :: [file:filename()],
+                Different ::
+                    [{Filename1 :: file:filename(),
+                      Filename2 :: file:filename()}],
+                Reason :: {not_a_directory, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | info_rsn().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -343,19 +362,22 @@ when dir1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</
     </a>
     <h1 class="signature">crypto_key_fun/1</h1>
       <div class="specs">
-          <pre>crypto_key_fun(cryptoKeyFun) :: :ok | {:error, reason}
-when cryptoKeyFun: crypto_fun(), reason: :badfun | :exists | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>crypto_key_fun(CryptoKeyFun) -> ok | {error, Reason}
+                  when
+                      CryptoKeyFun :: crypto_fun(),
+                      Reason :: badfun | exists | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Registers an unary fun that is called if <code class="inline">beam_lib</code> must read an <code class="inline">debug_info</code> chunk that has been encrypted. The fun is held in a process that is started by the function.</p>
 <p> If a fun is already registered when attempting to register a fun, <code class="inline">{error, exists}</code> is returned.</p>
 <p> The fun must handle the following arguments:</p>
-<pre><code class="nohighlight makeup erlang"><span class="n">CryptoKeyFun</span><span class="p" data-group-id="7674529406-1">(</span><span class="ss">init</span><span class="p" data-group-id="7674529406-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="ss">ok</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p" data-group-id="7674529406-2">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="n">NewCryptoKeyFun</span><span class="p" data-group-id="7674529406-2">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p" data-group-id="7674529406-3">{</span><span class="ss">error</span><span class="p">,</span><span class="w"> </span><span class="n">Term</span><span class="p" data-group-id="7674529406-3">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CryptoKeyFun</span><span class="p" data-group-id="1932279733-1">(</span><span class="n">init</span><span class="p" data-group-id="1932279733-1">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="1932279733-2">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nc">NewCryptoKeyFun</span><span class="p" data-group-id="1932279733-2">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="1932279733-3">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nc">Term</span><span class="p" data-group-id="1932279733-3">}</span></code></pre>
 <p> Called when the fun is registered, in the process that holds the fun. Here the crypto key fun can do any necessary initializations. If <code class="inline">{ok, NewCryptoKeyFun}</code> is returned, <code class="inline">NewCryptoKeyFun</code> is registered instead of <code class="inline">CryptoKeyFun</code>. If <code class="inline">{error, Term}</code> is returned, the registration is aborted and <a href="#crypto_key_fun/1"><code class="inline">crypto_key_fun/1</code></a> also returns <code class="inline">{error, Term}</code>.</p>
-<pre><code class="nohighlight makeup erlang"><span class="n">CryptoKeyFun</span><span class="p" data-group-id="9585049544-1">(</span><span class="p" data-group-id="9585049544-2">{</span><span class="ss">debug_info</span><span class="p">,</span><span class="w"> </span><span class="n">Mode</span><span class="p">,</span><span class="w"> </span><span class="n">Module</span><span class="p">,</span><span class="w"> </span><span class="n">Filename</span><span class="p" data-group-id="9585049544-2">}</span><span class="p" data-group-id="9585049544-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">Key</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CryptoKeyFun</span><span class="p" data-group-id="0734560772-1">(</span><span class="p" data-group-id="0734560772-2">{</span><span class="n">debug_info</span><span class="p">,</span><span class="w"> </span><span class="nc">Mode</span><span class="p">,</span><span class="w"> </span><span class="nc">Module</span><span class="p">,</span><span class="w"> </span><span class="nc">Filename</span><span class="p" data-group-id="0734560772-2">}</span><span class="p" data-group-id="0734560772-1">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Key</span></code></pre>
 <p> Called when the key is needed for module <a href="https://hexdocs.pm/elixir/Module.html"><code class="inline">Module</code></a> in the file named <code class="inline">Filename</code>. <code class="inline">Mode</code> is the type of crypto algorithm; currently, the only possible value is <code class="inline">des3_cbc</code>. The call is to fail (raise an exception) if no key is available.</p>
-<pre><code class="nohighlight makeup erlang"><span class="n">CryptoKeyFun</span><span class="p" data-group-id="9046708191-1">(</span><span class="ss">clear</span><span class="p" data-group-id="9046708191-1">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nf">term</span><span class="p" data-group-id="9046708191-2">(</span><span class="p" data-group-id="9046708191-2">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CryptoKeyFun</span><span class="p" data-group-id="0245723480-1">(</span><span class="n">clear</span><span class="p" data-group-id="0245723480-1">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">term</span><span class="p" data-group-id="0245723480-2">(</span><span class="p" data-group-id="0245723480-2">)</span></code></pre>
 <p> Called before the fun is unregistered. Here any cleaning up can be done. The return value is not important, but is passed back to the caller of <a href="#clear_crypto_key_fun/0"><code class="inline">clear_crypto_key_fun/0</code></a> as part of its return value.</p>
   </section>
 </section>
@@ -367,10 +389,12 @@ when cryptoKeyFun: crypto_fun(), reason: :badfun | :exists | <a href="https://he
     </a>
     <h1 class="signature">diff_dirs/2</h1>
       <div class="specs">
-          <pre>diff_dirs(dir1, dir2) :: :ok | {:error, :beam_lib, reason}
-when dir1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>(),
-     dir2: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>(),
-     reason: {:not_a_directory, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | info_rsn()</pre>
+          <pre>diff_dirs(Dir1, Dir2) -> ok | {error, beam_lib, Reason}
+             when
+                 Dir1 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | file:filename(),
+                 Dir2 :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | file:filename(),
+                 Reason :: {not_a_directory, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | info_rsn().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -385,7 +409,8 @@ when dir1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</
     </a>
     <h1 class="signature">format_error/1</h1>
       <div class="specs">
-          <pre>format_error(reason) :: <a href=":io_lib.html#t:chars/0">:io_lib.chars</a>() when reason: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+          <pre>format_error(Reason) -> io_lib:chars() when Reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -400,23 +425,24 @@ when dir1: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</
     </a>
     <h1 class="signature">info/1</h1>
       <div class="specs">
-          <pre>info(beam) :: [infoPair] | {:error, :beam_lib, info_rsn()}
-when beam: beam(),
-     infoPair:
-       {:file, filename :: <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>()}
-       | {:binary, binary :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}
-       | {:module, module :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()}
-       | {:chunks,
-          [
-            {chunkId :: chunkid(), pos :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
-             size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()}
-          ]}</pre>
+          <pre>info(Beam) -> [InfoPair] | {error, beam_lib, info_rsn()}
+        when
+            Beam :: beam(),
+            InfoPair ::
+                {file, Filename :: file:filename()} |
+                {binary, Binary :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} |
+                {module, Module :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()} |
+                {chunks,
+                 [{ChunkId :: chunkid(),
+                   Pos :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+                   Size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()}]}.
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns a list containing some information about a BEAM file as tuples <code class="inline">{Item, Info}</code>:</p>
 <p>  `{file, <code class="inline">Filename</code>} | {binary,</p>
-<pre><code class="nohighlight makeup erlang"><span class="w">        </span><span class="err">`</span><span class="err">`</span><span class="n">Binary</span><span class="err">`</span><span class="err">`</span><span class="p">}</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w">  </span><span class="n">The</span><span class="w"> </span><span class="nf">name</span><span class="w"> </span><span class="p" data-group-id="7014590515-1">(</span><span class="ss">string</span><span class="p" data-group-id="7014590515-1">)</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="n">BEAM</span><span class="w"> </span><span class="ss">file</span><span class="p">,</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">binary</span><span class="w"> </span><span class="ss">from</span><span class="w"> </span><span class="ss">which</span><span class="w"> </span><span class="ss">the</span><span class="w"> </span><span class="ss">information</span><span class="w"> </span><span class="ss">was</span><span class="w"> </span><span class="ss">extracted</span><span class="p">.</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="w">        </span><span class="err">`</span><span class="err">`</span><span class="nc">Binary</span><span class="err">`</span><span class="err">`</span><span class="err">}</span><span class="err">`</span><span class="w">   </span><span class="o">*</span><span class="w">  </span><span class="nc">The</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p" data-group-id="9774985990-1">(</span><span class="n">string</span><span class="p" data-group-id="9774985990-1">)</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nc">BEAM</span><span class="w"> </span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">binary</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">extracted</span><span class="o">.</span></code></pre>
 <p>  <code class="inline">{module, ``Module``}</code>   *  The name (atom) of the module.</p>
 <p>  <code class="inline">{chunks, [{``ChunkId``, ``Pos``, ``Size``}]}</code>   *  For each chunk, the identifier (string) and the position and size of the chunk data, in bytes.</p>
   </section>
@@ -429,8 +455,9 @@ when beam: beam(),
     </a>
     <h1 class="signature">md5/1</h1>
       <div class="specs">
-          <pre>md5(beam) :: {:ok, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), mD5}} | {:error, :beam_lib, chnk_rsn()}
-when beam: beam(), mD5: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()</pre>
+          <pre>md5(Beam) -> {ok, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), MD5}} | {error, beam_lib, chnk_rsn()}
+       when Beam :: beam(), MD5 :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -445,8 +472,10 @@ when beam: beam(), mD5: <a href="https://hexdocs.pm/elixir/typespecs.html#built-
     </a>
     <h1 class="signature">strip/1</h1>
       <div class="specs">
-          <pre>strip(beam1) :: {:ok, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), beam2}} | {:error, :beam_lib, info_rsn()}
-when beam1: beam(), beam2: beam()</pre>
+          <pre>strip(Beam1) ->
+         {ok, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), Beam2}} | {error, beam_lib, info_rsn()}
+         when Beam1 :: beam(), Beam2 :: beam().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -461,9 +490,13 @@ when beam1: beam(), beam2: beam()</pre>
     </a>
     <h1 class="signature">strip/2</h1>
       <div class="specs">
-          <pre>strip(beam1, additionalChunks) ::
-  {:ok, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), beam2}} | {:error, :beam_lib, info_rsn()}
-when beam1: beam(), additionalChunks: [chunkid()], beam2: beam()</pre>
+          <pre>strip(Beam1, AdditionalChunks) ->
+         {ok, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), Beam2}} | {error, beam_lib, info_rsn()}
+         when
+             Beam1 :: beam(),
+             AdditionalChunks :: [chunkid()],
+             Beam2 :: beam().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -478,9 +511,11 @@ when beam1: beam(), additionalChunks: [chunkid()], beam2: beam()</pre>
     </a>
     <h1 class="signature">strip_files/1</h1>
       <div class="specs">
-          <pre>strip_files(files) ::
-  {:ok, [{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), beam}]} | {:error, :beam_lib, info_rsn()}
-when files: [beam()], beam: beam()</pre>
+          <pre>strip_files(Files) ->
+               {ok, [{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), Beam}]} |
+               {error, beam_lib, info_rsn()}
+               when Files :: [beam()], Beam :: beam().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -495,9 +530,14 @@ when files: [beam()], beam: beam()</pre>
     </a>
     <h1 class="signature">strip_files/2</h1>
       <div class="specs">
-          <pre>strip_files(files, additionalChunks) ::
-  {:ok, [{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), beam}]} | {:error, :beam_lib, info_rsn()}
-when files: [beam()], additionalChunks: [chunkid()], beam: beam()</pre>
+          <pre>strip_files(Files, AdditionalChunks) ->
+               {ok, [{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), Beam}]} |
+               {error, beam_lib, info_rsn()}
+               when
+                   Files :: [beam()],
+                   AdditionalChunks :: [chunkid()],
+                   Beam :: beam().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -512,10 +552,14 @@ when files: [beam()], additionalChunks: [chunkid()], beam: beam()</pre>
     </a>
     <h1 class="signature">strip_release/1</h1>
       <div class="specs">
-          <pre>strip_release(dir) ::
-  {:ok, [{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>()}]} | {:error, :beam_lib, reason}
-when dir: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>(),
-     reason: {:not_a_directory, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | info_rsn()</pre>
+          <pre>strip_release(Dir) ->
+                 {ok, [{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), file:filename()}]} |
+                 {error, beam_lib, Reason}
+                 when
+                     Dir :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | file:filename(),
+                     Reason ::
+                         {not_a_directory, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | info_rsn().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -530,11 +574,15 @@ when dir: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a
     </a>
     <h1 class="signature">strip_release/2</h1>
       <div class="specs">
-          <pre>strip_release(dir, additionalChunks) ::
-  {:ok, [{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>()}]} | {:error, :beam_lib, reason}
-when dir: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>(),
-     additionalChunks: [chunkid()],
-     reason: {:not_a_directory, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | info_rsn()</pre>
+          <pre>strip_release(Dir, AdditionalChunks) ->
+                 {ok, [{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), file:filename()}]} |
+                 {error, beam_lib, Reason}
+                 when
+                     Dir :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | file:filename(),
+                     AdditionalChunks :: [chunkid()],
+                     Reason ::
+                         {not_a_directory, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | info_rsn().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -549,22 +597,24 @@ when dir: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a
     </a>
     <h1 class="signature">version/1</h1>
       <div class="specs">
-          <pre>version(beam) ::
-  {:ok, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), [version :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]}} | {:error, :beam_lib, chnk_rsn()}
-when beam: beam()</pre>
+          <pre>version(Beam) ->
+           {ok, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), [Version :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()]}} |
+           {error, beam_lib, chnk_rsn()}
+           when Beam :: beam().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Returns the module version or versions. A version is defined by module attribute <code class="inline">-vsn(Vsn)</code>. If this attribute is not specified, the version defaults to the checksum of the module. Notice that if version <code class="inline">Vsn</code> is not a list, it is made into one, that is <code class="inline">{ok,{Module,[Vsn]}}</code> is returned. If there are many <code class="inline">-vsn</code> module attributes, the result is the concatenated list of versions.</p>
 <p> Examples:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">beam_lib</span><span class="p">:</span><span class="nf">version</span><span class="p" data-group-id="9476725045-1">(</span><span class="ss">a</span><span class="p" data-group-id="9476725045-1">)</span><span class="p">.</span><span class="w"> </span><span class="c1">% -vsn(1).</span><span class="w">
-</span><span class="p" data-group-id="9476725045-2">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="9476725045-3">{</span><span class="ss">a</span><span class="p">,</span><span class="p" data-group-id="9476725045-4">[</span><span class="mi">1</span><span class="p" data-group-id="9476725045-4">]</span><span class="p" data-group-id="9476725045-3">}</span><span class="p" data-group-id="9476725045-2">}</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">beam_lib</span><span class="p">:</span><span class="nf">version</span><span class="p" data-group-id="9476725045-5">(</span><span class="ss">b</span><span class="p" data-group-id="9476725045-5">)</span><span class="p">.</span><span class="w"> </span><span class="c1">% -vsn([1]).</span><span class="w">
-</span><span class="p" data-group-id="9476725045-6">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="9476725045-7">{</span><span class="ss">b</span><span class="p">,</span><span class="p" data-group-id="9476725045-8">[</span><span class="mi">1</span><span class="p" data-group-id="9476725045-8">]</span><span class="p" data-group-id="9476725045-7">}</span><span class="p" data-group-id="9476725045-6">}</span><span class="w">
-</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">beam_lib</span><span class="p">:</span><span class="nf">version</span><span class="p" data-group-id="9476725045-9">(</span><span class="ss">c</span><span class="p" data-group-id="9476725045-9">)</span><span class="p">.</span><span class="w"> </span><span class="c1">% -vsn([1]). -vsn(2).</span><span class="w">
-</span><span class="p" data-group-id="9476725045-10">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="9476725045-11">{</span><span class="ss">c</span><span class="p">,</span><span class="p" data-group-id="9476725045-12">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="9476725045-12">]</span><span class="p" data-group-id="9476725045-11">}</span><span class="p" data-group-id="9476725045-10">}</span><span class="w">
-</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">beam_lib</span><span class="p">:</span><span class="nf">version</span><span class="p" data-group-id="9476725045-13">(</span><span class="ss">d</span><span class="p" data-group-id="9476725045-13">)</span><span class="p">.</span><span class="w"> </span><span class="c1">% no -vsn attribute</span><span class="w">
-</span><span class="p" data-group-id="9476725045-14">{</span><span class="ss">ok</span><span class="p">,</span><span class="p" data-group-id="9476725045-15">{</span><span class="ss">d</span><span class="p">,</span><span class="p" data-group-id="9476725045-16">[</span><span class="mi">275613208176997377698094100858909383631</span><span class="p" data-group-id="9476725045-16">]</span><span class="p" data-group-id="9476725045-15">}</span><span class="p" data-group-id="9476725045-14">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">beam_lib</span><span class="ss">:version</span><span class="p" data-group-id="7260307949-1">(</span><span class="n">a</span><span class="p" data-group-id="7260307949-1">)</span><span class="o">.</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="o">-</span><span class="n">vsn</span><span class="p" data-group-id="7260307949-2">(</span><span class="mi">1</span><span class="p" data-group-id="7260307949-2">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="7260307949-3">{</span><span class="n">ok</span><span class="p">,</span><span class="p" data-group-id="7260307949-4">{</span><span class="n">a</span><span class="p">,</span><span class="p" data-group-id="7260307949-5">[</span><span class="mi">1</span><span class="p" data-group-id="7260307949-5">]</span><span class="p" data-group-id="7260307949-4">}</span><span class="p" data-group-id="7260307949-3">}</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">beam_lib</span><span class="ss">:version</span><span class="p" data-group-id="7260307949-6">(</span><span class="n">b</span><span class="p" data-group-id="7260307949-6">)</span><span class="o">.</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="o">-</span><span class="n">vsn</span><span class="p" data-group-id="7260307949-7">(</span><span class="p" data-group-id="7260307949-8">[</span><span class="mi">1</span><span class="p" data-group-id="7260307949-8">]</span><span class="p" data-group-id="7260307949-7">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="7260307949-9">{</span><span class="n">ok</span><span class="p">,</span><span class="p" data-group-id="7260307949-10">{</span><span class="n">b</span><span class="p">,</span><span class="p" data-group-id="7260307949-11">[</span><span class="mi">1</span><span class="p" data-group-id="7260307949-11">]</span><span class="p" data-group-id="7260307949-10">}</span><span class="p" data-group-id="7260307949-9">}</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">beam_lib</span><span class="ss">:version</span><span class="p" data-group-id="7260307949-12">(</span><span class="n">c</span><span class="p" data-group-id="7260307949-12">)</span><span class="o">.</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="o">-</span><span class="n">vsn</span><span class="p" data-group-id="7260307949-13">(</span><span class="p" data-group-id="7260307949-14">[</span><span class="mi">1</span><span class="p" data-group-id="7260307949-14">]</span><span class="p" data-group-id="7260307949-13">)</span><span class="o">.</span><span class="w"> </span><span class="o">-</span><span class="n">vsn</span><span class="p" data-group-id="7260307949-15">(</span><span class="mi">2</span><span class="p" data-group-id="7260307949-15">)</span><span class="o">.</span><span class="w">
+</span><span class="p" data-group-id="7260307949-16">{</span><span class="n">ok</span><span class="p">,</span><span class="p" data-group-id="7260307949-17">{</span><span class="n">c</span><span class="p">,</span><span class="p" data-group-id="7260307949-18">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="7260307949-18">]</span><span class="p" data-group-id="7260307949-17">}</span><span class="p" data-group-id="7260307949-16">}</span><span class="w">
+</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">beam_lib</span><span class="ss">:version</span><span class="p" data-group-id="7260307949-19">(</span><span class="n">d</span><span class="p" data-group-id="7260307949-19">)</span><span class="o">.</span><span class="w"> </span><span class="p">%</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="o">-</span><span class="n">vsn</span><span class="w"> </span><span class="n">attribute</span><span class="w">
+</span><span class="p" data-group-id="7260307949-20">{</span><span class="n">ok</span><span class="p">,</span><span class="p" data-group-id="7260307949-21">{</span><span class="n">d</span><span class="p">,</span><span class="p" data-group-id="7260307949-22">[</span><span class="mi">275613208176997377698094100858909383631</span><span class="p" data-group-id="7260307949-22">]</span><span class="p" data-group-id="7260307949-21">}</span><span class="p" data-group-id="7260307949-20">}</span></code></pre>
   </section>
 </section>
           </div>
@@ -581,18 +631,18 @@ when beam: beam()</pre>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

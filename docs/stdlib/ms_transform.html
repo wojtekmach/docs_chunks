@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>ms_transform — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -126,8 +126,11 @@ Functions          </h1>
     </a>
     <h1 class="signature">format_error/1</h1>
       <div class="specs">
-          <pre>format_error(error) :: chars
-when error: {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}, chars: <a href=":io_lib.html#t:chars/0">:io_lib.chars</a>()</pre>
+          <pre>format_error(Error) -> Chars
+                when
+                    Error :: {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()},
+                    Chars :: io_lib:chars().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -142,12 +145,23 @@ when error: {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-
     </a>
     <h1 class="signature">parse_transform/2</h1>
       <div class="specs">
-          <pre>parse_transform(forms, options) :: forms2 | errors | warnings
-when forms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>() | <a href=":erl_parse.html#t:form_info/0">:erl_parse.form_info</a>()],
-     forms2: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_form</a>() | <a href=":erl_parse.html#t:form_info/0">:erl_parse.form_info</a>()],
-     options: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
-     errors: {:error, errInfo :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()], warnInfo :: []},
-     warnings: {:warning, forms2, warnInfo :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()]}</pre>
+          <pre>parse_transform(Forms, Options) -> Forms2 | Errors | Warnings
+                   when
+                       Forms ::
+                           [erl_parse:abstract_form() |
+                            erl_parse:form_info()],
+                       Forms2 ::
+                           [erl_parse:abstract_form() |
+                            erl_parse:form_info()],
+                       Options :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+                       Errors ::
+                           {error,
+                            ErrInfo :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()],
+                            WarnInfo :: []},
+                       Warnings ::
+                           {warning, Forms2,
+                            WarnInfo :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">tuple</a>()]}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -164,10 +178,14 @@ when forms: [<a href=":erl_parse.html#t:abstract_form/0">:erl_parse.abstract_for
     </a>
     <h1 class="signature">transform_from_shell/3</h1>
       <div class="specs">
-          <pre>transform_from_shell(dialect, clauses, boundEnvironment) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
-when dialect: :ets | :dbg,
-     clauses: [<a href=":erl_parse.html#t:abstract_clause/0">:erl_parse.abstract_clause</a>()],
-     boundEnvironment: <a href=":erl_eval.html#t:binding_struct/0">:erl_eval.binding_struct</a>()</pre>
+          <pre>transform_from_shell(Dialect, Clauses, BoundEnvironment) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+                        when
+                            Dialect :: ets | dbg,
+                            Clauses ::
+                                [erl_parse:abstract_clause()],
+                            BoundEnvironment ::
+                                erl_eval:binding_struct().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -188,18 +206,18 @@ when dialect: :ets | :dbg,
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

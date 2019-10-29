@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>calendar — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -277,8 +277,11 @@ Functions          </h1>
     </a>
     <h1 class="signature">datetime_to_gregorian_seconds/1</h1>
       <div class="specs">
-          <pre>datetime_to_gregorian_seconds(dateTime) :: seconds
-when dateTime: datetime(), seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>datetime_to_gregorian_seconds(DateTime) -> Seconds
+                                 when
+                                     DateTime :: datetime(),
+                                     Seconds :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -305,7 +308,9 @@ when dateTime: datetime(), seconds: <a href="https://hexdocs.pm/elixir/typespecs
     </a>
     <h1 class="signature">gregorian_days_to_date/1</h1>
       <div class="specs">
-          <pre>gregorian_days_to_date(days) :: date() when days: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>gregorian_days_to_date(Days) -> date()
+                          when Days :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -320,8 +325,9 @@ when dateTime: datetime(), seconds: <a href="https://hexdocs.pm/elixir/typespecs
     </a>
     <h1 class="signature">gregorian_seconds_to_datetime/1</h1>
       <div class="specs">
-          <pre>gregorian_seconds_to_datetime(seconds) :: datetime()
-when seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>gregorian_seconds_to_datetime(Seconds) -> datetime()
+                                 when Seconds :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -336,7 +342,8 @@ when seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non
     </a>
     <h1 class="signature">is_leap_year/1</h1>
       <div class="specs">
-          <pre>is_leap_year(year) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when year: year()</pre>
+          <pre>is_leap_year(Year) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() when Year :: year().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -351,7 +358,8 @@ when seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non
     </a>
     <h1 class="signature">iso_week_number/0</h1>
       <div class="specs">
-          <pre>iso_week_number() :: yearweeknum()</pre>
+          <pre>iso_week_number() -> yearweeknum().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -366,7 +374,8 @@ when seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non
     </a>
     <h1 class="signature">iso_week_number/1</h1>
       <div class="specs">
-          <pre>iso_week_number(date) :: yearweeknum() when date: date()</pre>
+          <pre>iso_week_number(Date) -> yearweeknum() when Date :: date().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -381,8 +390,12 @@ when seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non
     </a>
     <h1 class="signature">last_day_of_the_month/2</h1>
       <div class="specs">
-          <pre>last_day_of_the_month(year, month) :: lastDay
-when year: year(), month: month(), lastDay: ldom()</pre>
+          <pre>last_day_of_the_month(Year, Month) -> LastDay
+                         when
+                             Year :: year(),
+                             Month :: month(),
+                             LastDay :: ldom().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -397,7 +410,8 @@ when year: year(), month: month(), lastDay: ldom()</pre>
     </a>
     <h1 class="signature">local_time/0</h1>
       <div class="specs">
-          <pre>local_time() :: datetime()</pre>
+          <pre>local_time() -> datetime().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -412,8 +426,11 @@ when year: year(), month: month(), lastDay: ldom()</pre>
     </a>
     <h1 class="signature">local_time_to_universal_time/1</h1>
       <div class="specs">
-          <pre>local_time_to_universal_time(dateTime1) :: dateTime2
-when dateTime1: datetime1970(), dateTime2: datetime1970()</pre>
+          <pre>local_time_to_universal_time(DateTime1) -> DateTime2
+                                when
+                                    DateTime1 :: datetime1970(),
+                                    DateTime2 :: datetime1970().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -429,8 +446,12 @@ when dateTime1: datetime1970(), dateTime2: datetime1970()</pre>
     </a>
     <h1 class="signature">local_time_to_universal_time_dst/1</h1>
       <div class="specs">
-          <pre>local_time_to_universal_time_dst(dateTime1) :: [dateTime]
-when dateTime1: datetime1970(), dateTime: datetime1970()</pre>
+          <pre>local_time_to_universal_time_dst(DateTime1) -> [DateTime]
+                                    when
+                                        DateTime1 ::
+                                            datetime1970(),
+                                        DateTime :: datetime1970().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -449,7 +470,9 @@ when dateTime1: datetime1970(), dateTime: datetime1970()</pre>
     </a>
     <h1 class="signature">now_to_datetime/1</h1>
       <div class="specs">
-          <pre>now_to_datetime(now) :: datetime1970() when now: <a href="http://www.erlang.org/doc/man/erlang.html#type-timestamp">:erlang.timestamp</a>()</pre>
+          <pre>now_to_datetime(Now) -> datetime1970()
+                   when Now :: erlang:timestamp().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -464,7 +487,9 @@ when dateTime1: datetime1970(), dateTime: datetime1970()</pre>
     </a>
     <h1 class="signature">now_to_local_time/1</h1>
       <div class="specs">
-          <pre>now_to_local_time(now) :: datetime1970() when now: <a href="http://www.erlang.org/doc/man/erlang.html#type-timestamp">:erlang.timestamp</a>()</pre>
+          <pre>now_to_local_time(Now) -> datetime1970()
+                     when Now :: erlang:timestamp().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -479,7 +504,9 @@ when dateTime1: datetime1970(), dateTime: datetime1970()</pre>
     </a>
     <h1 class="signature">now_to_universal_time/1</h1>
       <div class="specs">
-          <pre>now_to_universal_time(now) :: datetime1970() when now: <a href="http://www.erlang.org/doc/man/erlang.html#type-timestamp">:erlang.timestamp</a>()</pre>
+          <pre>now_to_universal_time(Now) -> datetime1970()
+                         when Now :: erlang:timestamp().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -498,10 +525,10 @@ when dateTime1: datetime1970(), dateTime: datetime1970()</pre>
 <p> Converts an RFC 3339 timestamp into system time. The data format of RFC 3339 timestamps is described by RFC 3339.</p>
 <p> Valid option:</p>
 <p>  <code class="inline">{unit, Unit}</code>   * The time unit of the return value. The default is <code class="inline">second</code>.</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">calendar</span><span class="p">:</span><span class="nf">rfc3339_to_system_time</span><span class="p" data-group-id="1258792214-1">(</span><span class="s">&quot;2018-02-01T16:17:58+01:00&quot;</span><span class="p" data-group-id="1258792214-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">calendar</span><span class="ss">:rfc3339_to_system_time</span><span class="p" data-group-id="2864217137-1">(</span><span class="s">&quot;2018-02-01T16:17:58+01:00&quot;</span><span class="p" data-group-id="2864217137-1">)</span><span class="o">.</span><span class="w">
 </span><span class="mi">1517498278</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">calendar</span><span class="p">:</span><span class="nf">rfc3339_to_system_time</span><span class="p" data-group-id="1258792214-2">(</span><span class="s">&quot;2018-02-01 15:18:02.088Z&quot;</span><span class="p">,</span><span class="w">
-   </span><span class="p" data-group-id="1258792214-3">[</span><span class="p" data-group-id="1258792214-4">{</span><span class="ss">unit</span><span class="p">,</span><span class="w"> </span><span class="ss">nanosecond</span><span class="p" data-group-id="1258792214-4">}</span><span class="p" data-group-id="1258792214-3">]</span><span class="p" data-group-id="1258792214-2">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">calendar</span><span class="ss">:rfc3339_to_system_time</span><span class="p" data-group-id="2864217137-2">(</span><span class="s">&quot;2018-02-01 15:18:02.088Z&quot;</span><span class="p">,</span><span class="w">
+   </span><span class="p" data-group-id="2864217137-3">[</span><span class="p" data-group-id="2864217137-4">{</span><span class="n">unit</span><span class="p">,</span><span class="w"> </span><span class="n">nanosecond</span><span class="p" data-group-id="2864217137-4">}</span><span class="p" data-group-id="2864217137-3">]</span><span class="p" data-group-id="2864217137-2">)</span><span class="o">.</span><span class="w">
 </span><span class="mi">1517498282088000000</span></code></pre>
   </section>
 </section>
@@ -513,8 +540,12 @@ when dateTime1: datetime1970(), dateTime: datetime1970()</pre>
     </a>
     <h1 class="signature">seconds_to_daystime/1</h1>
       <div class="specs">
-          <pre>seconds_to_daystime(seconds) :: {days, time}
-when seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), days: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), time: time()</pre>
+          <pre>seconds_to_daystime(Seconds) -> {Days, Time}
+                       when
+                           Seconds :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+                           Days :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+                           Time :: time().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -529,7 +560,8 @@ when seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">int
     </a>
     <h1 class="signature">seconds_to_time/1</h1>
       <div class="specs">
-          <pre>seconds_to_time(seconds) :: time() when seconds: secs_per_day()</pre>
+          <pre>seconds_to_time(Seconds) -> time() when Seconds :: secs_per_day().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -544,8 +576,11 @@ when seconds: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">int
     </a>
     <h1 class="signature">system_time_to_local_time/2</h1>
       <div class="specs">
-          <pre>system_time_to_local_time(time, timeUnit) :: datetime()
-when time: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), timeUnit: <a href="http://www.erlang.org/doc/man/erlang.html#type-time_unit">:erlang.time_unit</a>()</pre>
+          <pre>system_time_to_local_time(Time, TimeUnit) -> datetime()
+                             when
+                                 Time :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+                                 TimeUnit :: erlang:time_unit().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -566,16 +601,16 @@ when time: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">intege
 <p>  <code class="inline">{offset, Offset}</code>   * The offset, either a string or an integer, to be included in the formatted string. An empty string, which is the default, is interpreted as local time. A non-empty string is included as is. The time unit of the integer is the same as the one of <a href="https://hexdocs.pm/elixir/Time.html"><code class="inline">Time</code></a>.</p>
 <p>  <code class="inline">{time_designator, Character}</code>   * The character used as time designator, that is, the date and time separator. The default is <code class="inline">$T</code>.</p>
 <p>  <code class="inline">{unit, Unit}</code>   * The time unit of <a href="https://hexdocs.pm/elixir/Time.html"><code class="inline">Time</code></a>. The default is <code class="inline">second</code>. If some other unit is given (<code class="inline">millisecond</code>, <code class="inline">microsecond</code>, or <code class="inline">nanosecond</code>), the formatted string includes a fraction of a second. The number of fractional second digits is three, six, or nine depending on what time unit is chosen. Notice that trailing zeros are not removed from the fraction. </p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">calendar</span><span class="p">:</span><span class="nf">system_time_to_rfc3339</span><span class="p" data-group-id="4835211753-1">(</span><span class="nc">erlang</span><span class="p">:</span><span class="nf">system_time</span><span class="p" data-group-id="4835211753-2">(</span><span class="ss">second</span><span class="p" data-group-id="4835211753-2">)</span><span class="p" data-group-id="4835211753-1">)</span><span class="p">.</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">calendar</span><span class="ss">:system_time_to_rfc3339</span><span class="p" data-group-id="0815028462-1">(</span><span class="n">erlang</span><span class="ss">:system_time</span><span class="p" data-group-id="0815028462-2">(</span><span class="n">second</span><span class="p" data-group-id="0815028462-2">)</span><span class="p" data-group-id="0815028462-1">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;2018-04-23T14:56:28+02:00&quot;</span><span class="w">
-</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">calendar</span><span class="p">:</span><span class="nf">system_time_to_rfc3339</span><span class="p" data-group-id="4835211753-3">(</span><span class="nc">erlang</span><span class="p">:</span><span class="nf">system_time</span><span class="p" data-group-id="4835211753-4">(</span><span class="ss">second</span><span class="p" data-group-id="4835211753-4">)</span><span class="p">,</span><span class="w">
-   </span><span class="p" data-group-id="4835211753-5">[</span><span class="p" data-group-id="4835211753-6">{</span><span class="ss">offset</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-02:00&quot;</span><span class="p" data-group-id="4835211753-6">}</span><span class="p" data-group-id="4835211753-5">]</span><span class="p" data-group-id="4835211753-3">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">calendar</span><span class="ss">:system_time_to_rfc3339</span><span class="p" data-group-id="0815028462-3">(</span><span class="n">erlang</span><span class="ss">:system_time</span><span class="p" data-group-id="0815028462-4">(</span><span class="n">second</span><span class="p" data-group-id="0815028462-4">)</span><span class="p">,</span><span class="w">
+   </span><span class="p" data-group-id="0815028462-5">[</span><span class="p" data-group-id="0815028462-6">{</span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-02:00&quot;</span><span class="p" data-group-id="0815028462-6">}</span><span class="p" data-group-id="0815028462-5">]</span><span class="p" data-group-id="0815028462-3">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;2018-04-23T10:56:52-02:00&quot;</span><span class="w">
-</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">calendar</span><span class="p">:</span><span class="nf">system_time_to_rfc3339</span><span class="p" data-group-id="4835211753-7">(</span><span class="nc">erlang</span><span class="p">:</span><span class="nf">system_time</span><span class="p" data-group-id="4835211753-8">(</span><span class="ss">second</span><span class="p" data-group-id="4835211753-8">)</span><span class="p">,</span><span class="w">
-   </span><span class="p" data-group-id="4835211753-9">[</span><span class="p" data-group-id="4835211753-10">{</span><span class="ss">offset</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">7200</span><span class="p" data-group-id="4835211753-10">}</span><span class="p" data-group-id="4835211753-9">]</span><span class="p" data-group-id="4835211753-7">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">calendar</span><span class="ss">:system_time_to_rfc3339</span><span class="p" data-group-id="0815028462-7">(</span><span class="n">erlang</span><span class="ss">:system_time</span><span class="p" data-group-id="0815028462-8">(</span><span class="n">second</span><span class="p" data-group-id="0815028462-8">)</span><span class="p">,</span><span class="w">
+   </span><span class="p" data-group-id="0815028462-9">[</span><span class="p" data-group-id="0815028462-10">{</span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">7200</span><span class="p" data-group-id="0815028462-10">}</span><span class="p" data-group-id="0815028462-9">]</span><span class="p" data-group-id="0815028462-7">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;2018-04-23T10:57:05-02:00&quot;</span><span class="w">
-</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">calendar</span><span class="p">:</span><span class="nf">system_time_to_rfc3339</span><span class="p" data-group-id="4835211753-11">(</span><span class="nc">erlang</span><span class="p">:</span><span class="nf">system_time</span><span class="p" data-group-id="4835211753-12">(</span><span class="ss">millisecond</span><span class="p" data-group-id="4835211753-12">)</span><span class="p">,</span><span class="w">
-   </span><span class="p" data-group-id="4835211753-13">[</span><span class="p" data-group-id="4835211753-14">{</span><span class="ss">unit</span><span class="p">,</span><span class="w"> </span><span class="ss">millisecond</span><span class="p" data-group-id="4835211753-14">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4835211753-15">{</span><span class="ss">time_designator</span><span class="p">,</span><span class="w"> </span><span class="sc">$\</span><span class="ss">s</span><span class="p" data-group-id="4835211753-15">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4835211753-16">{</span><span class="ss">offset</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Z&quot;</span><span class="p" data-group-id="4835211753-16">}</span><span class="p" data-group-id="4835211753-13">]</span><span class="p" data-group-id="4835211753-11">)</span><span class="p">.</span><span class="w">
+</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">calendar</span><span class="ss">:system_time_to_rfc3339</span><span class="p" data-group-id="0815028462-11">(</span><span class="n">erlang</span><span class="ss">:system_time</span><span class="p" data-group-id="0815028462-12">(</span><span class="n">millisecond</span><span class="p" data-group-id="0815028462-12">)</span><span class="p">,</span><span class="w">
+   </span><span class="p" data-group-id="0815028462-13">[</span><span class="p" data-group-id="0815028462-14">{</span><span class="n">unit</span><span class="p">,</span><span class="w"> </span><span class="n">millisecond</span><span class="p" data-group-id="0815028462-14">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0815028462-15">{</span><span class="n">time_designator</span><span class="p">,</span><span class="w"> </span><span class="err">$</span><span class="err">\</span><span class="n">s</span><span class="p" data-group-id="0815028462-15">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0815028462-16">{</span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Z&quot;</span><span class="p" data-group-id="0815028462-16">}</span><span class="p" data-group-id="0815028462-13">]</span><span class="p" data-group-id="0815028462-11">)</span><span class="o">.</span><span class="w">
 </span><span class="s">&quot;2018-04-23 12:57:20.482Z&quot;</span></code></pre>
   </section>
 </section>
@@ -587,8 +622,12 @@ when time: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">intege
     </a>
     <h1 class="signature">system_time_to_universal_time/2</h1>
       <div class="specs">
-          <pre>system_time_to_universal_time(time, timeUnit) :: datetime()
-when time: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), timeUnit: <a href="http://www.erlang.org/doc/man/erlang.html#type-time_unit">:erlang.time_unit</a>()</pre>
+          <pre>system_time_to_universal_time(Time, TimeUnit) -> datetime()
+                                 when
+                                     Time :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+                                     TimeUnit ::
+                                         erlang:time_unit().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -603,8 +642,13 @@ when time: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">intege
     </a>
     <h1 class="signature">time_difference/2</h1>
       <div class="specs">
-          <pre>time_difference(t1, t2) :: {days, time}
-when t1: datetime(), t2: datetime(), days: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), time: time()</pre>
+          <pre>time_difference(T1, T2) -> {Days, Time}
+                   when
+                       T1 :: datetime(),
+                       T2 :: datetime(),
+                       Days :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+                       Time :: time().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -620,7 +664,8 @@ when t1: datetime(), t2: datetime(), days: <a href="https://hexdocs.pm/elixir/ty
     </a>
     <h1 class="signature">time_to_seconds/1</h1>
       <div class="specs">
-          <pre>time_to_seconds(time) :: secs_per_day() when time: time()</pre>
+          <pre>time_to_seconds(Time) -> secs_per_day() when Time :: time().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -635,7 +680,8 @@ when t1: datetime(), t2: datetime(), days: <a href="https://hexdocs.pm/elixir/ty
     </a>
     <h1 class="signature">universal_time/0</h1>
       <div class="specs">
-          <pre>universal_time() :: datetime()</pre>
+          <pre>universal_time() -> datetime().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -650,8 +696,9 @@ when t1: datetime(), t2: datetime(), days: <a href="https://hexdocs.pm/elixir/ty
     </a>
     <h1 class="signature">universal_time_to_local_time/1</h1>
       <div class="specs">
-          <pre>universal_time_to_local_time(dateTime) :: datetime()
-when dateTime: datetime1970()</pre>
+          <pre>universal_time_to_local_time(DateTime) -> datetime()
+                                when DateTime :: datetime1970().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -684,18 +731,18 @@ when dateTime: datetime1970()</pre>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>

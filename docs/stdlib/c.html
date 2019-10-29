@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="stdlib v22.1.4">
     <title>c — stdlib v22.1.4</title>
-    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-    <script src="dist/sidebar_items-db767c5cd4.js"></script>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-fd3ce01463.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -248,7 +248,8 @@ Functions          </h1>
     </a>
     <h1 class="signature">bt/1</h1>
       <div class="specs">
-          <pre>bt(pid) :: :ok | :undefined when pid: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()</pre>
+          <pre>bt(Pid) -> ok | undefined when Pid :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -278,14 +279,15 @@ Functions          </h1>
     </a>
     <h1 class="signature">cd/1</h1>
       <div class="specs">
-          <pre>cd(dir) :: :ok when dir: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()</pre>
+          <pre>cd(Dir) -> ok when Dir :: file:name().
+</pre>
       </div>
   </div>
   <section class="docstring">
 <p> Changes working directory to <code class="inline">Dir</code>, which can be a relative name, and then prints the name of the new working directory.</p>
 <p> Example:</p>
-<pre><code class="nohighlight makeup erlang"><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">cd</span><span class="p" data-group-id="6462721816-1">(</span><span class="s">&quot;../erlang&quot;</span><span class="p" data-group-id="6462721816-1">)</span><span class="p">.</span><span class="w">
-</span><span class="o">/</span><span class="ss">home</span><span class="o">/</span><span class="ss">ron</span><span class="o">/</span><span class="ss">erlang</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cd</span><span class="p" data-group-id="2647555983-1">(</span><span class="s">&quot;../erlang&quot;</span><span class="p" data-group-id="2647555983-1">)</span><span class="o">.</span><span class="w">
+</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ron</span><span class="o">/</span><span class="n">erlang</span></code></pre>
   </section>
 </section>
 <section class="detail" id="erlangrc/1">
@@ -296,8 +298,9 @@ Functions          </h1>
     </a>
     <h1 class="signature">erlangrc/1</h1>
       <div class="specs">
-          <pre>erlangrc(pathList) :: {:ok, <a href="http://www.erlang.org/doc/man/file.html#type-filename">:file.filename</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
-when pathList: [dir :: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()]</pre>
+          <pre>erlangrc(PathList) -> {ok, file:filename()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+            when PathList :: [Dir :: file:name()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -312,7 +315,8 @@ when pathList: [dir :: <a href="http://www.erlang.org/doc/man/file.html#type-nam
     </a>
     <h1 class="signature">flush/0</h1>
       <div class="specs">
-          <pre>flush() :: :ok</pre>
+          <pre>flush() -> ok.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -327,7 +331,8 @@ when pathList: [dir :: <a href="http://www.erlang.org/doc/man/file.html#type-nam
     </a>
     <h1 class="signature">help/0</h1>
       <div class="specs">
-          <pre>help() :: :ok</pre>
+          <pre>help() -> ok.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -342,8 +347,12 @@ when pathList: [dir :: <a href="http://www.erlang.org/doc/man/file.html#type-nam
     </a>
     <h1 class="signature">i/3</h1>
       <div class="specs">
-          <pre>i(x, y, z) :: [{<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}]
-when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), y: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), z: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>i(X, Y, Z) -> [{<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}]
+     when
+         X :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+         Y :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+         Z :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -370,7 +379,8 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">l/1</h1>
       <div class="specs">
-          <pre>l(module) :: <a href="http://www.erlang.org/doc/man/code.html#type-load_ret">:code.load_ret</a>() when module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
+          <pre>l(Module) -> code:load_ret() when Module :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -386,7 +396,8 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">lm/0</h1>
       <div class="specs">
-          <pre>lm() :: [<a href="http://www.erlang.org/doc/man/code.html#type-load_ret">:code.load_ret</a>()]</pre>
+          <pre>lm() -> [code:load_ret()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -401,7 +412,8 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">ls/0</h1>
       <div class="specs">
-          <pre>ls() :: :ok</pre>
+          <pre>ls() -> ok.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -416,7 +428,8 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">ls/1</h1>
       <div class="specs">
-          <pre>ls(dir) :: :ok when dir: <a href="http://www.erlang.org/doc/man/file.html#type-name">:file.name</a>()</pre>
+          <pre>ls(Dir) -> ok when Dir :: file:name().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -431,7 +444,8 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">m/0</h1>
       <div class="specs">
-          <pre>m() :: :ok</pre>
+          <pre>m() -> ok.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -446,7 +460,8 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">m/1</h1>
       <div class="specs">
-          <pre>m(module) :: :ok when module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
+          <pre>m(Module) -> ok when Module :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -461,7 +476,9 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">memory/0</h1>
       <div class="specs">
-          <pre>memory() :: [{type, size}] when type: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), size: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>memory() -> [{Type, Size}]
+          when Type :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), Size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -488,7 +505,8 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">mm/0</h1>
       <div class="specs">
-          <pre>mm() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()]</pre>
+          <pre>mm() -> [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -505,7 +523,7 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
   </div>
   <section class="docstring">
 <p> Compiles and then loads the code for a file on all nodes. <code class="inline">Options</code> defaults to <code class="inline">[]</code>. Compilation is equivalent to:</p>
-<pre><code class="nohighlight makeup erlang"><span class="nc">compile</span><span class="p">:</span><span class="nf">file</span><span class="p" data-group-id="3474645594-1">(</span><span class="n">File</span><span class="p">,</span><span class="w"> </span><span class="n">Options</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p" data-group-id="3474645594-2">[</span><span class="ss">report_errors</span><span class="p">,</span><span class="w"> </span><span class="ss">report_warnings</span><span class="p" data-group-id="3474645594-2">]</span><span class="p" data-group-id="3474645594-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">compile</span><span class="ss">:file</span><span class="p" data-group-id="4609832685-1">(</span><span class="nc">File</span><span class="p">,</span><span class="w"> </span><span class="nc">Options</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="p" data-group-id="4609832685-2">[</span><span class="n">report_errors</span><span class="p">,</span><span class="w"> </span><span class="n">report_warnings</span><span class="p" data-group-id="4609832685-2">]</span><span class="p" data-group-id="4609832685-1">)</span></code></pre>
   </section>
 </section>
 <section class="detail" id="nl/1">
@@ -516,7 +534,8 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">nl/1</h1>
       <div class="specs">
-          <pre>nl(module) :: :abcast | :error when module: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
+          <pre>nl(Module) -> abcast | error when Module :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -531,8 +550,12 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">pid/3</h1>
       <div class="specs">
-          <pre>pid(x, y, z) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()
-when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), y: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), z: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+          <pre>pid(X, Y, Z) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()
+       when
+           X :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+           Y :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+           Z :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -547,7 +570,8 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">pwd/0</h1>
       <div class="specs">
-          <pre>pwd() :: :ok</pre>
+          <pre>pwd() -> ok.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -562,7 +586,8 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">q/0</h1>
       <div class="specs">
-          <pre>q() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+          <pre>q() -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -589,7 +614,8 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
     </a>
     <h1 class="signature">uptime/0</h1>
       <div class="specs">
-          <pre>uptime() :: :ok</pre>
+          <pre>uptime() -> ok.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -610,18 +636,18 @@ when x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_i
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>
