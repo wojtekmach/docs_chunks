@@ -38,23 +38,7 @@ main([<<"-project">>]) ->
     main(["-project"]);
 
 main(["-project"]) ->
-    {ok, Cwd} = file:get_cwd(),
-    Project = filename:basename(Cwd),
-    Segment =
-        case filelib:is_file("mix.exs") of
-            true ->
-                "dev";
-            false ->
-                case filelib:is_file("rebar.config") of
-                    true ->
-                        "default";
-                    false ->
-                        io:fwrite("cannot find mix.exs or rebar.config file"),
-                        erlang:halt(1)
-                end
-        end,
-    LibDir = filename:join(["_build", Segment, "lib", Project, "ebin"]),
-    [main(["-edoc", ErlPath, LibDir]) || ErlPath <- filelib:wildcard("src/*.erl")],
+    [main(["-edoc", ErlPath, lib_dir()]) || ErlPath <- filelib:wildcard("src/*.erl")],
     ok;
 
 main(Args) ->
@@ -71,3 +55,28 @@ main(Args) ->
 
 puts(Lines) ->
     io:fwrite(lists:flatten(lists:join("~n", Lines ++ [""]))).
+
+lib_dir() ->
+    {ok, Cwd} = file:get_cwd(),
+    Project = filename:basename(Cwd),
+
+    case os:getenv("REBAR_BUILD_DIR") of
+        Path when is_list(Path) ->
+            filename:join([Path, "lib", Project, "ebin"]);
+
+        false ->
+            Segment =
+                case filelib:is_file("mix.exs") of
+                    true ->
+                        "dev";
+                    false ->
+                        case filelib:is_file("rebar.config") of
+                            true ->
+                                "default";
+                            false ->
+                                io:fwrite("cannot find mix.exs or rebar.config file"),
+                                erlang:halt(1)
+                        end
+                end,
+            filename:join(["_build", Segment, "lib", Project, "ebin"])
+    end.
