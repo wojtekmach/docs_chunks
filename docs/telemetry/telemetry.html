@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="telemetry v0.4.0">
     <title>telemetry — telemetry v0.4.0</title>
-    <link rel="stylesheet" href="dist/html-5e18e17fac00a74942da.css" />
-    <script src="dist/sidebar_items-fb2681caef.js"></script>
+    <link rel="stylesheet" href="dist/html-39300ae0aa3ce5c08afa.css" />
+    <script src="dist/sidebar_items-c6073c9146.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-5e18e17fac00a74942da.js"></script>
+    <script async src="dist/html-39300ae0aa3ce5c08afa.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -198,7 +198,7 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-type event_measurements() :: map().</pre>
+          <pre>event_measurements() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().</pre>
       </div>
   </div>
   <section class="docstring">
@@ -216,7 +216,7 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-type event_metadata() :: map().</pre>
+          <pre>event_metadata() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().</pre>
       </div>
   </div>
   <section class="docstring">
@@ -234,7 +234,7 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-type event_name() :: [atom(), ...].</pre>
+          <pre>event_name() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), ...].</pre>
       </div>
   </div>
   <section class="docstring">
@@ -252,7 +252,7 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-type event_prefix() :: [atom()].</pre>
+          <pre>event_prefix() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()].</pre>
       </div>
   </div>
   <section class="docstring">
@@ -270,7 +270,7 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-type event_value() :: number().</pre>
+          <pre>event_value() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>().</pre>
       </div>
   </div>
   <section class="docstring">
@@ -288,10 +288,10 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-type handler() :: #{id := handler_id(),
-		     event_name := event_name(),
-		     function := handler_function(),
-		     config := handler_config()}.</pre>
+          <pre>handler() :: #{id := <a href="#t:handler_id/0">handler_id</a>(),
+               event_name := <a href="#t:event_name/0">event_name</a>(),
+               function := <a href="#t:handler_function/0">handler_function</a>(),
+               config := <a href="#t:handler_config/0">handler_config</a>()}.</pre>
       </div>
   </div>
   <section class="docstring">
@@ -309,7 +309,7 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-type handler_config() :: term().</pre>
+          <pre>handler_config() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().</pre>
       </div>
   </div>
   <section class="docstring">
@@ -327,9 +327,9 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-type handler_function() :: fun((event_name(),
-				 event_measurements(), event_metadata(),
-				 handler_config()) -> any()).</pre>
+          <pre>handler_function() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>((<a href="#t:event_name/0">event_name</a>(),
+                           <a href="#t:event_measurements/0">event_measurements</a>(), <a href="#t:event_metadata/0">event_metadata</a>(),
+                           <a href="#t:handler_config/0">handler_config</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()).</pre>
       </div>
   </div>
   <section class="docstring">
@@ -347,7 +347,7 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-type handler_id() :: term().</pre>
+          <pre>handler_id() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().</pre>
       </div>
   </div>
   <section class="docstring">
@@ -375,13 +375,13 @@ Functions          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-spec attach(HandlerId, EventName, Function,
-	     Config) -> ok |
-			{error, already_exists} when HandlerId :: handler_id(),
-						     EventName :: event_name(),
-						     Function ::
-							 handler_function(),
-						     Config :: handler_config().</pre>
+          <pre>attach(HandlerId, EventName, Function,
+       Config) -> ok |
+                  {error, already_exists} when HandlerId :: <a href="#t:handler_id/0">handler_id</a>(),
+                                               EventName :: <a href="#t:event_name/0">event_name</a>(),
+                                               Function ::
+                                                   <a href="#t:handler_function/0">handler_function</a>(),
+                                               Config :: <a href="#t:handler_config/0">handler_config</a>().</pre>
       </div>
   </div>
   <section class="docstring">
@@ -404,16 +404,16 @@ Functions          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-spec attach_many(HandlerId, [EventName], Function,
-		  Config) -> ok |
-			     {error, already_exists} when HandlerId ::
-							      handler_id(),
-							  EventName ::
-							      event_name(),
-							  Function ::
-							      handler_function(),
-							  Config ::
-							      handler_config().</pre>
+          <pre>attach_many(HandlerId, [EventName], Function,
+            Config) -> ok |
+                       {error, already_exists} when HandlerId ::
+                                                        <a href="#t:handler_id/0">handler_id</a>(),
+                                                    EventName ::
+                                                        <a href="#t:event_name/0">event_name</a>(),
+                                                    Function ::
+                                                        <a href="#t:handler_function/0">handler_function</a>(),
+                                                    Config ::
+                                                        <a href="#t:handler_config/0">handler_config</a>().</pre>
       </div>
   </div>
   <section class="docstring">
@@ -435,7 +435,7 @@ Functions          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-spec detach(handler_id()) -> ok | {error, not_found}.</pre>
+          <pre>detach(<a href="#t:handler_id/0">handler_id</a>()) -> ok | {error, not_found}.</pre>
       </div>
   </div>
   <section class="docstring">
@@ -455,10 +455,10 @@ Functions          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-spec execute(EventName,
-	      Measurements) -> ok when EventName :: event_name(),
-				       Measurements :: event_measurements() |
-						       event_value().</pre>
+          <pre>execute(EventName,
+        Measurements) -> ok when EventName :: <a href="#t:event_name/0">event_name</a>(),
+                                 Measurements :: <a href="#t:event_measurements/0">event_measurements</a>() |
+                                                 <a href="#t:event_value/0">event_value</a>().</pre>
       </div>
   </div>
   <section class="docstring">
@@ -477,11 +477,11 @@ Functions          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-spec execute(EventName, Measurements,
-	      Metadata) -> ok when EventName :: event_name(),
-				   Measurements :: event_measurements() |
-						   event_value(),
-				   Metadata :: event_metadata().</pre>
+          <pre>execute(EventName, Measurements,
+        Metadata) -> ok when EventName :: <a href="#t:event_name/0">event_name</a>(),
+                             Measurements :: <a href="#t:event_measurements/0">event_measurements</a>() |
+                                             <a href="#t:event_value/0">event_value</a>(),
+                             Metadata :: <a href="#t:event_metadata/0">event_metadata</a>().</pre>
       </div>
   </div>
   <section class="docstring">
@@ -501,7 +501,7 @@ Functions          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>-spec list_handlers(event_prefix()) -> [handler()].</pre>
+          <pre>list_handlers(<a href="#t:event_prefix/0">event_prefix</a>()) -> [<a href="#t:handler/0">handler</a>()].</pre>
       </div>
   </div>
   <section class="docstring">
@@ -523,18 +523,18 @@ Functions          </h1>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
           </button>
           <button class="line footer-button tooltips-toggle">
             <span class="tooltips-option-disable">Disable tooltips</span>
             <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
           </button>
         </p>
       </footer>
