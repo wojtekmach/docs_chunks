@@ -12,8 +12,9 @@ defmodule DocsChunksTest do
     assert metadata == %{since: "0.1.0"}
 
     entry1 = List.keyfind(entries, {:type, :docs_v1, 0}, 0)
-    {_, _anno, signature, _, metadata} = entry1
+    {_, _anno, signature, doc, metadata} = entry1
     assert signature == ["docs_v1/0"]
+    assert doc == :none
     assert metadata == %{}
 
     entry2 = List.keyfind(entries, {:function, :edoc_to_chunk, 1}, 0)
