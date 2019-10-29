@@ -44,7 +44,7 @@ defmodule DocsChunks.MixProject do
       ],
       telemetry_docs: [
         "telemetry_chunks",
-        "cmd ex_doc telemetry 0.4.0 ../telemetry/_build/default/lib/telemetry/ebin --main telemetry --output docs/telemetry -u https://github.com/beam-telemetry/telemetry --source-root ../telemetry"
+        "cmd ex_doc telemetry 0.4.0 ../telemetry/_build/default/lib/telemetry/ebin --main telemetry --output docs/telemetry -u https://github.com/beam-telemetry/telemetry --source-ref v0.4.0 --source-root ../telemetry"
       ],
       hex_core_chunks: [
         "escript.build",
