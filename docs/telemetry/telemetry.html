@@ -198,7 +198,8 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>event_measurements() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().</pre>
+          <pre>event_measurements() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -216,7 +217,8 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>event_metadata() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().</pre>
+          <pre>event_metadata() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -234,7 +236,8 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>event_name() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), ...].</pre>
+          <pre>event_name() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), ...].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -252,7 +255,8 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>event_prefix() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()].</pre>
+          <pre>event_prefix() :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()].
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -270,7 +274,8 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>event_value() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>().</pre>
+          <pre>event_value() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -288,10 +293,12 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>handler() :: #{id := <a href="#t:handler_id/0">handler_id</a>(),
-               event_name := <a href="#t:event_name/0">event_name</a>(),
-               function := <a href="#t:handler_function/0">handler_function</a>(),
-               config := <a href="#t:handler_config/0">handler_config</a>()}.</pre>
+          <pre>handler() ::
+    #{id := <a href="#t:handler_id/0">handler_id</a>(),
+      event_name := <a href="#t:event_name/0">event_name</a>(),
+      function := <a href="#t:handler_function/0">handler_function</a>(),
+      config := <a href="#t:handler_config/0">handler_config</a>()}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -309,7 +316,8 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>handler_config() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().</pre>
+          <pre>handler_config() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -327,9 +335,13 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>handler_function() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>((<a href="#t:event_name/0">event_name</a>(),
-                           <a href="#t:event_measurements/0">event_measurements</a>(), <a href="#t:event_metadata/0">event_metadata</a>(),
-                           <a href="#t:handler_config/0">handler_config</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()).</pre>
+          <pre>handler_function() ::
+    <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>((<a href="#t:event_name/0">event_name</a>(),
+         <a href="#t:event_measurements/0">event_measurements</a>(),
+         <a href="#t:event_metadata/0">event_metadata</a>(),
+         <a href="#t:handler_config/0">handler_config</a>()) ->
+            <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()).
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -347,7 +359,8 @@ Types          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>handler_id() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().</pre>
+          <pre>handler_id() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -375,13 +388,14 @@ Functions          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>attach(HandlerId, EventName, Function,
-       Config) -> ok |
-                  {error, already_exists} when HandlerId :: <a href="#t:handler_id/0">handler_id</a>(),
-                                               EventName :: <a href="#t:event_name/0">event_name</a>(),
-                                               Function ::
-                                                   <a href="#t:handler_function/0">handler_function</a>(),
-                                               Config :: <a href="#t:handler_config/0">handler_config</a>().</pre>
+          <pre>attach(HandlerId, EventName, Function, Config) ->
+          ok | {error, already_exists}
+          when
+              HandlerId :: <a href="#t:handler_id/0">handler_id</a>(),
+              EventName :: <a href="#t:event_name/0">event_name</a>(),
+              Function :: <a href="#t:handler_function/0">handler_function</a>(),
+              Config :: <a href="#t:handler_config/0">handler_config</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -404,16 +418,14 @@ Functions          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>attach_many(HandlerId, [EventName], Function,
-            Config) -> ok |
-                       {error, already_exists} when HandlerId ::
-                                                        <a href="#t:handler_id/0">handler_id</a>(),
-                                                    EventName ::
-                                                        <a href="#t:event_name/0">event_name</a>(),
-                                                    Function ::
-                                                        <a href="#t:handler_function/0">handler_function</a>(),
-                                                    Config ::
-                                                        <a href="#t:handler_config/0">handler_config</a>().</pre>
+          <pre>attach_many(HandlerId, [EventName], Function, Config) ->
+               ok | {error, already_exists}
+               when
+                   HandlerId :: <a href="#t:handler_id/0">handler_id</a>(),
+                   EventName :: <a href="#t:event_name/0">event_name</a>(),
+                   Function :: <a href="#t:handler_function/0">handler_function</a>(),
+                   Config :: <a href="#t:handler_config/0">handler_config</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -435,7 +447,8 @@ Functions          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>detach(<a href="#t:handler_id/0">handler_id</a>()) -> ok | {error, not_found}.</pre>
+          <pre>detach(<a href="#t:handler_id/0">handler_id</a>()) -> ok | {error, not_found}.
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -455,10 +468,12 @@ Functions          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>execute(EventName,
-        Measurements) -> ok when EventName :: <a href="#t:event_name/0">event_name</a>(),
-                                 Measurements :: <a href="#t:event_measurements/0">event_measurements</a>() |
-                                                 <a href="#t:event_value/0">event_value</a>().</pre>
+          <pre>execute(EventName, Measurements) -> ok
+           when
+               EventName :: <a href="#t:event_name/0">event_name</a>(),
+               Measurements ::
+                   <a href="#t:event_measurements/0">event_measurements</a>() | <a href="#t:event_value/0">event_value</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -477,11 +492,13 @@ Functions          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>execute(EventName, Measurements,
-        Metadata) -> ok when EventName :: <a href="#t:event_name/0">event_name</a>(),
-                             Measurements :: <a href="#t:event_measurements/0">event_measurements</a>() |
-                                             <a href="#t:event_value/0">event_value</a>(),
-                             Metadata :: <a href="#t:event_metadata/0">event_metadata</a>().</pre>
+          <pre>execute(EventName, Measurements, Metadata) -> ok
+           when
+               EventName :: <a href="#t:event_name/0">event_name</a>(),
+               Measurements ::
+                   <a href="#t:event_measurements/0">event_measurements</a>() | <a href="#t:event_value/0">event_value</a>(),
+               Metadata :: <a href="#t:event_metadata/0">event_metadata</a>().
+</pre>
       </div>
   </div>
   <section class="docstring">
@@ -501,7 +518,8 @@ Functions          </h1>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
-          <pre>list_handlers(<a href="#t:event_prefix/0">event_prefix</a>()) -> [<a href="#t:handler/0">handler</a>()].</pre>
+          <pre>list_handlers(<a href="#t:event_prefix/0">event_prefix</a>()) -> [<a href="#t:handler/0">handler</a>()].
+</pre>
       </div>
   </div>
   <section class="docstring">
