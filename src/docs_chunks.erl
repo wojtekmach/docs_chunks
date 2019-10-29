@@ -59,8 +59,6 @@
 %% %% docs_chunks:edoc_to_chunk("src/foo.erl").
 %% #=> {docs_v1, ..., erlang, <<"text/markdown">>", ..., ..., ..., ...}
 %% '''
-%%
-%% @equiv docs_chunks:edoc_to_chunk("foo")
 -spec edoc_to_chunk(string()) -> docs_v1().
 edoc_to_chunk(ErlPath) ->
     {_Module, Doc} = edoc:get_doc(ErlPath, [{preprocess, true}]),
