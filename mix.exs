@@ -57,23 +57,13 @@ defmodule DocsChunks.MixProject do
     ]
   end
 
-  defp telemetry_chunks(_) do
-    {_, 0} = System.cmd("rebar3", ~w(compile), cd: "../telemetry", into: IO.stream(:stdio, :line))
+  defp telemetry_chunks(_), do: docs_chunks("../telemetry")
 
-    {_, 0} =
-      System.cmd("../docs_chunks/docs_chunks", ~w(-project),
-        cd: "../telemetry",
-        into: IO.stream(:stdio, :line)
-      )
-  end
+  defp hex_core_chunks(_), do: docs_chunks("../hex_core")
 
-  defp hex_core_chunks(_) do
-    {_, 0} = System.cmd("rebar3", ~w(compile), cd: "../hex_core", into: IO.stream(:stdio, :line))
-
-    {_, 0} =
-      System.cmd("../docs_chunks/docs_chunks", ~w(-project),
-        cd: "../hex_core",
-        into: IO.stream(:stdio, :line)
-      )
+  defp docs_chunks(path) do
+    {_, 0} = System.cmd("rebar3", ~w(compile), cd: path, into: IO.stream(:stdio, :line))
+    bin = "../docs_chunks/docs_chunks"
+    {_, 0} = System.cmd(bin, ~w(-project), cd: path, into: IO.stream(:stdio, :line))
   end
 end
