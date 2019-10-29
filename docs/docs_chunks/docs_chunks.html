@@ -138,7 +138,7 @@ docs_chunks      </h1>
   <div class="summary-signature">
     <a href="#edoc_to_chunk/1">edoc_to_chunk/1</a>
   </div>
-    <div class="summary-synopsis"><p>Equivalent to <a href="%60docs_chunks:edoc_to_chunk/1%60"><code class="inline">docs_chunks:edoc_to_chunk(&quot;foo&quot;)</code></a>.</p></div>
+    <div class="summary-synopsis"><p>Fetch edoc docs from a given <code class="inline">ErlPath</code> and convert it to docs chunk.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -331,7 +331,11 @@ Functions          </h1>
       </div>
   </div>
   <section class="docstring">
-<p>Equivalent to <a href="%60docs_chunks:edoc_to_chunk/1%60"><code class="inline">docs_chunks:edoc_to_chunk(&quot;foo&quot;)</code></a>.</p>
+<p>Fetch edoc docs from a given <code class="inline">ErlPath</code> and convert it to docs chunk.</p>
+<p> <a href="http://erlang.org/eeps/eep-0048.html">http://erlang.org/eeps/eep-0048.html</a></p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup elixir"><span class="w">  </span><span class="p">%</span><span class="p">%</span><span class="w"> </span><span class="n">docs_chunks</span><span class="ss">:edoc_to_chunk</span><span class="p" data-group-id="9328051593-1">(</span><span class="s">&quot;src/foo.erl&quot;</span><span class="p" data-group-id="9328051593-1">)</span><span class="o">.</span><span class="w">
+  </span><span class="c1">#=&gt; {docs_v1, ..., erlang, &lt;&lt;&quot;text/markdown&quot;&gt;&gt;&quot;, ..., ..., ..., ...}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="otp_xml_to_chunk/2">
