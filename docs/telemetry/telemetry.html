@@ -65,7 +65,7 @@ telemetry      </a>
 
       <h1>
         <small class="app-vsn">telemetry v0.4.0</small>
-telemetry          <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L9" title="View Source" class="view-source" rel="help">
+telemetry          <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L9" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
             <span class="sr-only">View Source</span>
           </a>
@@ -161,7 +161,7 @@ telemetry          <a href="https://github.com/beam-telemetry/telemetry/blob/mas
   <div class="summary-signature">
     <a href="#execute/2">execute/2</a>
   </div>
-    <div class="summary-synopsis"><p>Equivalent to <a href="#execute/3"><code class="inline">execute(EventName, Measurements, #{})</code></a>.</p></div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="%60telemetry:execute/3%60"><code class="inline">telemetry:execute(EventName, Measurements, #{})</code></a>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -193,7 +193,7 @@ Types          </h1>
       <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature">event_measurements()</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L35" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L35" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -212,7 +212,7 @@ Types          </h1>
       <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature">event_metadata()</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L36" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L36" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -231,7 +231,7 @@ Types          </h1>
       <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature">event_name()</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L34" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L34" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -250,7 +250,7 @@ Types          </h1>
       <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature">event_prefix()</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L38" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L38" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -269,7 +269,7 @@ Types          </h1>
       <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature">event_value()</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L37" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L37" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -288,16 +288,16 @@ Types          </h1>
       <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature">handler()</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L41" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L43" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
       <div class="specs">
           <pre>handler() ::
-    #{id := <a href="#t:handler_id/0">handler_id</a>(),
-      event_name := <a href="#t:event_name/0">event_name</a>(),
-      function := <a href="#t:handler_function/0">handler_function</a>(),
-      config := <a href="#t:handler_config/0">handler_config</a>()}.
+    #{id => <a href="#t:handler_id/0">handler_id</a>(),
+      event_name => <a href="#t:event_name/0">event_name</a>(),
+      function => <a href="#t:handler_function/0">handler_function</a>(),
+      config => <a href="#t:handler_config/0">handler_config</a>()}.
 </pre>
       </div>
   </div>
@@ -311,7 +311,7 @@ Types          </h1>
       <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature">handler_config()</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L39" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L39" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -330,7 +330,7 @@ Types          </h1>
       <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature">handler_function()</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L40" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L40" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -354,7 +354,7 @@ Types          </h1>
       <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature">handler_id()</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L33" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L33" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -383,7 +383,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">attach/4</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L77" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L68" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -400,10 +400,7 @@ Functions          </h1>
   </div>
   <section class="docstring">
 <p>Attaches the handler to the event.</p>
-<p> <code class="inline">handler_id</code> must be unique, if another handler with the same ID already exists the <code class="inline">{error, already_exists}</code> tuple is returned.</p>
-<p> See <a href="#execute/3"><code class="inline">execute/3</code></a> to learn how the handlers are invoked.</p>
-<p> Note: due to how anonymous functions are implemented in the Erlang VM, it is best to use function captures (i.e. <code class="inline">fun mod:fun/4</code> in Erlang or <code class="inline">&amp;Mod.fun/4</code> in Elixir) as event handlers to achieve maximum performance. In other words, avoid using literal anonymous functions (<code class="inline">fun(...) -&gt; ... end</code> or <code class="inline">fn ... -&gt; ... end</code>) or local function captures (<code class="inline">fun handle_event/4</code> or <code class="inline">&amp;handle_event/4</code> ) as event handlers.</p>
-<p> All the handlers are executed by the process dispatching event. If the function fails (raises, exits or throws) then the handler is removed. Note that you should not rely on the order in which handlers are invoked.</p>
+<p> <code class="inline">handler_id</code> must be unique, if another handler with the same ID already exists the <code class="inline">{error, already_exists}</code> tuple is returned. See <a href="#execute/3"><code class="inline">execute/3</code></a> to learn how the handlers are invoked.</p>
   </section>
 </section>
 <section class="detail" id="attach_many/4">
@@ -413,7 +410,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">attach_many/4</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L100" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L81" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -431,8 +428,6 @@ Functions          </h1>
   <section class="docstring">
 <p>Attaches the handler to many events.</p>
 <p> The handler will be invoked whenever any of the events in the <code class="inline">event_names</code> list is emitted. Note that failure of the handler on any of these invokations will detach it from all the events in <code class="inline">event_name</code> (the same applies to manual detaching using <a href="#detach/1"><code class="inline">detach/1</code></a>).</p>
-<p> Note: due to how anonymous functions are implemented in the Erlang VM, it is best to use function captures (i.e. <code class="inline">fun mod:fun/4</code> in Erlang or <code class="inline">&amp;Mod.fun/4</code> in Elixir) as event handlers to achieve maximum performance. In other words, avoid using literal anonymous functions (<code class="inline">fun(...) -&gt; ... end</code> or <code class="inline">fn ... -&gt; ... end</code>) or local function captures (<code class="inline">fun handle_event/4</code> or <code class="inline">&amp;handle_event/4</code> ) as event handlers.</p>
-<p> All the handlers are executed by the process dispatching event. If the function fails (raises, exits or throws) then the handler is removed. Note that you should not rely on the order in which handlers are invoked.</p>
   </section>
 </section>
 <section class="detail" id="detach/1">
@@ -442,7 +437,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">detach/1</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L108" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L89" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -463,7 +458,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">execute/2</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L151" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L135" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -477,7 +472,7 @@ Functions          </h1>
       </div>
   </div>
   <section class="docstring">
-<p>Equivalent to <a href="#execute/3"><code class="inline">execute(EventName, Measurements, #{})</code></a>.</p>
+<p>Equivalent to <a href="%60telemetry:execute/3%60"><code class="inline">telemetry:execute(EventName, Measurements, #{})</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="execute/3">
@@ -487,7 +482,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">execute/3</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L125" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L109" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -503,7 +498,7 @@ Functions          </h1>
   </div>
   <section class="docstring">
 <p>Emits the event, invoking handlers attached to it.</p>
-<p> When the event is emitted, the handler function provided to <a href="#attach/4"><code class="inline">attach/4</code></a> is called with four arguments:  the event name the map of measurements the map of event metadata the handler configuration given to <a href="#attach/4"><code class="inline">attach/4</code></a> </p>
+<p> When the event is emitted, the handler function provided to <a href="#attach/4"><code class="inline">attach/4</code></a> is called with four arguments:  the event name the map of measurements the map of event metadata the handler configuration given to <a href="#attach/4"><code class="inline">attach/4</code></a>  All the handlers are executed by the process calling this function. If the function fails (raises, exits or throws) then the handler is removed. Note that you should not rely on the order in which handlers are invoked.</p>
   </section>
 </section>
 <section class="detail" id="list_handlers/1">
@@ -513,7 +508,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">list_handlers/1</h1>
-      <a href="https://github.com/beam-telemetry/telemetry/blob/master/src/telemetry.erl#L160" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/beam-telemetry/telemetry/blob/v0.4.0/src/telemetry.erl#L144" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
