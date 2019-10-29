@@ -58,8 +58,6 @@ main(["-project"]) ->
     ok;
 
 main(Args) ->
-    io:fwrite("debug: ~p~n", [Args]),
-
     puts([
         "Usage:",
         "",
@@ -68,6 +66,7 @@ main(Args) ->
         "  docs_chunks -otp-xml-stdlib OTP_ROOT_DIR",
         "  docs_chunks -project",
         ""]),
+    io:fwrite("debug: ~p~n", [Args]),
     erlang:halt(1).
 
 puts(Lines) ->
