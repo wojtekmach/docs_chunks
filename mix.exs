@@ -25,6 +25,9 @@ defmodule DocsChunks.MixProject do
 
   defp aliases() do
     [
+      all_docs: [
+        "docs", "telemetry_docs", "hex_core_docs", "brod_docs", "otp_docs"
+      ],
       docs: [
         "escript.build",
         "cmd ./docs_chunks -project",

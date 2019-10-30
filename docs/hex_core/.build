@@ -1,4 +1,4 @@
-dist/search_items-7395bff05d.js
+dist/search_items-6aa2ee15b1.js
 dist/app-a9f3287e74588dddabf3.js
 dist/elixir-6164d407479bd2888d0e.css
 dist/erlang-94f16191f0a724ab8055.css
@@ -6,10 +6,11 @@ dist/html/fonts/icomoon.eot
 dist/html/fonts/icomoon.svg
 dist/html/fonts/icomoon.ttf
 dist/html/fonts/icomoon.woff
-dist/sidebar_items-ccd1db27e2.js
+dist/sidebar_items-b12e500b28.js
 api-reference.html
 search.html
 404.html
+hex_api.html
 hex_api_key.html
 hex_api_package.html
 hex_api_package_owner.html
@@ -17,7 +18,13 @@ hex_api_release.html
 hex_api_user.html
 hex_core.html
 hex_http.html
+hex_http_httpc.html
+hex_pb_names.html
+hex_pb_package.html
+hex_pb_signed.html
+hex_pb_versions.html
 hex_registry.html
 hex_repo.html
 hex_tarball.html
+safe_erl_term.html
 index.html

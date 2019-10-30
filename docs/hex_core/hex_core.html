@@ -8,7 +8,7 @@
     <meta name="project" content="hex_core v0.6.1">
     <title>hex_core — hex_core v0.6.1</title>
     <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
-    <script src="dist/sidebar_items-ccd1db27e2.js"></script>
+    <script src="dist/sidebar_items-b12e500b28.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
@@ -70,39 +70,11 @@ hex_core      </h1>
 
         <section id="moduledoc">
 <p> hex_core entrypoint module.</p>
-<p> # Config</p>
+<p> ### Config</p>
 <p> Most functions in the hex_core API takes a configuration. The configuration sets things like HTTP client to use, and API and repository URL. Some of these configuration options will likely be static for your application and some may change depending on the function you call.</p>
-<p> ## Options</p>
+<p> ##### Options</p>
 <ul>
-<li><p><code class="inline">api_key</code> - Authentication key used when accessing the HTTP API.</p>
-</li>
-<li><p><code class="inline">api_organization</code> - Name of the organization endpoint in the API, this should for example be set when accessing key for a specific organization.</p>
-</li>
-<li><p><code class="inline">api_repository</code> - Name of the repository endpoint in the API, this should for example be set when accessing packages from a specific repository.</p>
-</li>
-<li><p><code class="inline">api_url</code> - URL to the HTTP API (default: <code class="inline">https://hex.pm/api</code>).</p>
-</li>
-<li><p><code class="inline">http_adapter</code> - Callback module used for HTTP requests, see <a href="hex_http.html"><code class="inline">hex_http</code></a> (default: <code class="inline">hex_http_httpc</code>).</p>
-</li>
-<li><p><code class="inline">http_etag</code> - Sets the <code class="inline">if-none-match</code> HTTP header with the given value to do a conditional HTTP request.</p>
-</li>
-<li><p><code class="inline">http_adapter_config</code> - Configuration to pass to the HTTP adapter.</p>
-</li>
-<li><p><code class="inline">http_user_agent_fragment</code> - Will be appended to the <code class="inline">user-agent</code> HTTP header (default: <code class="inline">(httpc)</code>).</p>
-</li>
-<li><p><code class="inline">repo_key</code> - Authentication key used when accessing the repository.</p>
-</li>
-<li><p><code class="inline">repo_name</code> - Name of the repository, used for verifying the repository signature authenticity (default: <code class="inline">hexpm</code>).</p>
-</li>
-<li><p><code class="inline">repo_public_key</code> - Public key used to verify the repository signature (defaults to hexpm public key <code class="inline">https://hex.pm/docs/public_keys</code>).</p>
-</li>
-<li><p><code class="inline">repo_url</code> - URL to the repository (default: <code class="inline">https://repo.hex.pm</code>).</p>
-</li>
-<li><p><code class="inline">repo_organization</code> - Name of the organization repository, appends <code class="inline">/repos/:name</code> to the repository URL and overrides the <code class="inline">repo_name</code> option.</p>
-</li>
-<li><p><code class="inline">repo_verify</code> - If <code class="inline">true</code> will verify the repository signature (default: <code class="inline">true</code>).</p>
-</li>
-<li><p><code class="inline">repo_verify_origin</code> - If <code class="inline">true</code> will verify the repository signature origin, requires protobuf messages as of hex_core v0.4.0 (default: <code class="inline">true</code>).</p>
+<li><code class="inline">api_key</code> - Authentication key used when accessing the HTTP API. <em> <code class="inline">api_organization</code> - Name of the organization endpoint in the API, this should for example be set when accessing key for a specific organization. </em> <code class="inline">api_repository</code> - Name of the repository endpoint in the API, this should for example be set when accessing packages from a specific repository. <em> <code class="inline">api_url</code> - URL to the HTTP API (default: <code class="inline">https://hex.pm/api</code>). </em> <code class="inline">http_adapter</code> - Callback module used for HTTP requests, see <a href="hex_http.html"><code class="inline">hex_http</code></a> (default: <code class="inline">hex_http_httpc</code>). <em> <code class="inline">http_etag</code> - Sets the <code class="inline">if-none-match</code> HTTP header with the given value to do a conditional HTTP request. </em> <code class="inline">http_adapter_config</code> - Configuration to pass to the HTTP adapter. <em> <code class="inline">http_user_agent_fragment</code> - Will be appended to the <code class="inline">user-agent</code> HTTP header (default: <code class="inline">(httpc)</code>). </em> <code class="inline">repo_key</code> - Authentication key used when accessing the repository. <em> <code class="inline">repo_name</code> - Name of the repository, used for verifying the repository signature authenticity (default: <code class="inline">hexpm</code>). </em> <code class="inline">repo_public_key</code> - Public key used to verify the repository signature (defaults to hexpm public key <code class="inline">https://hex.pm/docs/public_keys</code>). <em> <code class="inline">repo_url</code> - URL to the repository (default: <code class="inline">https://repo.hex.pm</code>). </em> <code class="inline">repo_organization</code> - Name of the organization repository, appends <code class="inline">/repos/:name</code> to the repository URL and overrides the <code class="inline">repo_name</code> option. <em> <code class="inline">repo_verify</code> - If <code class="inline">true</code> will verify the repository signature (default: <code class="inline">true</code>). </em> <code class="inline">repo_verify_origin</code> - If <code class="inline">true</code> will verify the repository signature origin, requires protobuf messages as of hex_core v0.4.0 (default: <code class="inline">true</code>).
 </li>
 </ul>
         </section>
@@ -133,7 +105,6 @@ hex_core      </h1>
   <div class="summary-signature">
     <a href="#default_config/0">default_config/0</a>
   </div>
-    <div class="summary-synopsis"><p>Return default configuration.</p></div>
 </div>
   </div>
         </section>
@@ -199,7 +170,6 @@ Functions          </h1>
       </div>
   </div>
   <section class="docstring">
-<p>Return default configuration.</p>
   </section>
 </section>
           </div>
