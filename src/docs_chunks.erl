@@ -113,7 +113,8 @@ edoc_extract_function(Doc) ->
             [Equiv] ->
                 Expr = xpath_to_binary("./expr", Equiv),
                 See = xpath_to_binary("./see", Equiv),
-                iolist_to_binary(["Equivalent to ", "[", Expr, "](`", See, "`)."]);
+                Binary = iolist_to_binary(["Equivalent to ", "[", Expr, "](`", See, "`)."]),
+                #{<<"en">> => Binary};
 
             [] ->
                 extract_doc_contents("./description/fullDescription", Doc)
