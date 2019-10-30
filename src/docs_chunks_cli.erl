@@ -1,3 +1,4 @@
+%% @private
 -module(docs_chunks_cli).
 -export([main/1]).
 
