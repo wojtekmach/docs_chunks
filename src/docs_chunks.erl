@@ -17,14 +17,13 @@
                         doc,
                         metadata}).
 
-
 -type docs_v1() :: #docs_v1{anno :: erl_anno:anno(),
                             beam_language :: beam_language(),
                             format :: mime_type(),
                             module_doc :: doc(),
                             metadata :: metadata(),
                             docs :: [docs_v1_entry()]}.
-%% The Docs v1 chunk per EEP 48.
+%% The Docs v1 chunk according to EEP 48.
 
 -type docs_v1_entry() :: #docs_v1_entry{kind_name_arity :: {atom(), atom(), arity()},
                                         anno :: erl_anno:anno(),
@@ -79,12 +78,13 @@ edoc_extract_docs(Doc) ->
     edoc_extract_types(Doc) ++ edoc_extract_functions(Doc).
 
 edoc_extract_types(Doc) ->
-    [edoc_extract_type(D) || D <- xmerl_xpath:string("//typedecls/typedecl/typedef", Doc)].
+    [edoc_extract_type(D) || D <- xmerl_xpath:string("//typedecls/typedecl", Doc)].
 
 edoc_extract_type(Doc) ->
-    Name = xpath_to_atom("./erlangName/@name", Doc),
-    [#xmlElement{content=[]}] = xmerl_xpath:string("./argtypes", Doc),
-    docs_v1_entry(type, Name, 0, #{}, <<"">>).
+    Name = xpath_to_atom("./typedef/erlangName/@name", Doc),
+    [#xmlElement{content=[]}] = xmerl_xpath:string("./typedef/argtypes", Doc),
+    DocString = xpath_to_binary("./description/fullDescription", Doc),
+    docs_v1_entry(type, Name, 0, #{}, DocString).
 
 edoc_extract_functions(Doc) ->
     [edoc_extract_function(Doc1) || Doc1 <- xmerl_xpath:string("//module/functions/function", Doc)].

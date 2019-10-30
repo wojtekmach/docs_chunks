@@ -14,7 +14,7 @@ defmodule DocsChunksTest do
     entry1 = List.keyfind(entries, {:type, :docs_v1, 0}, 0)
     {_, _anno, signature, doc, metadata} = entry1
     assert signature == ["docs_v1/0"]
-    assert doc == :none
+    assert doc == %{"en" => " The Docs v1 chunk according to EEP 48."}
     assert metadata == %{}
 
     entry2 = List.keyfind(entries, {:function, :edoc_to_chunk, 1}, 0)
@@ -26,8 +26,8 @@ defmodule DocsChunksTest do
     :ok = :docs_chunks.write_chunk(String.to_charlist(beam_path), chunk)
     assert {:docs_v1, _, :erlang, _, _, _, _} = Code.fetch_docs(beam_path)
 
-    require IEx.Helpers
-    IEx.Helpers.h(:docs_chunks.edoc_to_chunk())
+    # require IEx.Helpers
+    # IEx.Helpers.h(:docs_chunks.edoc_to_chunk())
   end
 
   @module :maps
