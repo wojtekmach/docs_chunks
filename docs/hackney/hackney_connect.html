@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="hackney v1.15.2">
+    <title>hackney_connect — hackney v1.15.2</title>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-cb891fcdcc.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="hackney.html" class="sidebar-projectName">
+hackney      </a>
+      <h2 class="sidebar-projectVersion">
+        v1.15.2
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">hackney v1.15.2</small>
+hackney_connect      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#check_or_close/1">check_or_close/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#close/1">close/1</a>
+  </div>
+    <div class="summary-synopsis"><p>close the client</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connect/3">connect/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connect/4">connect/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connect/5">connect/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_connection/4">create_connection/4</a>
+  </div>
+    <div class="summary-synopsis"><p>create a connection and return a client state</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_connection/5">create_connection/5</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_pool/1">is_pool/1</a>
+  </div>
+    <div class="summary-synopsis"><p>get current pool pid or name used by a client if needed</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#maybe_connect/1">maybe_connect/1</a>
+  </div>
+    <div class="summary-synopsis"><p>connect a socket and create a client state. </p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#partial_chain/1">partial_chain/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#peername/1">peername/1</a>
+  </div>
+    <div class="summary-synopsis"><p>get the address and port for the other end of current connection in the client</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reconnect/4">reconnect/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set_sockopts/2">set_sockopts/2</a>
+  </div>
+    <div class="summary-synopsis"><p>add set sockets options in the client</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sockname/1">sockname/1</a>
+  </div>
+    <div class="summary-synopsis"><p>the local address and port of current socket in the client</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ssl_opts/2">ssl_opts/2</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="check_or_close/1">
+  <div class="detail-header">
+    <a href="#check_or_close/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">check_or_close/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="close/1">
+  <div class="detail-header">
+    <a href="#close/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">close/1</h1>
+  </div>
+  <section class="docstring">
+<p>close the client</p>
+  </section>
+</section>
+<section class="detail" id="connect/3">
+  <div class="detail-header">
+    <a href="#connect/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">connect/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="connect/4">
+  <div class="detail-header">
+    <a href="#connect/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">connect/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="connect/5">
+  <div class="detail-header">
+    <a href="#connect/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">connect/5</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="create_connection/4">
+  <div class="detail-header">
+    <a href="#create_connection/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_connection/4</h1>
+  </div>
+  <section class="docstring">
+<p>create a connection and return a client state</p>
+  </section>
+</section>
+<section class="detail" id="create_connection/5">
+  <div class="detail-header">
+    <a href="#create_connection/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_connection/5</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="is_pool/1">
+  <div class="detail-header">
+    <a href="#is_pool/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">is_pool/1</h1>
+  </div>
+  <section class="docstring">
+<p>get current pool pid or name used by a client if needed</p>
+  </section>
+</section>
+<section class="detail" id="maybe_connect/1">
+  <div class="detail-header">
+    <a href="#maybe_connect/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">maybe_connect/1</h1>
+  </div>
+  <section class="docstring">
+<p>connect a socket and create a client state. </p>
+  </section>
+</section>
+<section class="detail" id="partial_chain/1">
+  <div class="detail-header">
+    <a href="#partial_chain/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">partial_chain/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="peername/1">
+  <div class="detail-header">
+    <a href="#peername/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">peername/1</h1>
+  </div>
+  <section class="docstring">
+<p>get the address and port for the other end of current connection in the client</p>
+  </section>
+</section>
+<section class="detail" id="reconnect/4">
+  <div class="detail-header">
+    <a href="#reconnect/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reconnect/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="set_sockopts/2">
+  <div class="detail-header">
+    <a href="#set_sockopts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">set_sockopts/2</h1>
+  </div>
+  <section class="docstring">
+<p>add set sockets options in the client</p>
+  </section>
+</section>
+<section class="detail" id="sockname/1">
+  <div class="detail-header">
+    <a href="#sockname/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sockname/1</h1>
+  </div>
+  <section class="docstring">
+<p>the local address and port of current socket in the client</p>
+  </section>
+</section>
+<section class="detail" id="ssl_opts/2">
+  <div class="detail-header">
+    <a href="#ssl_opts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">ssl_opts/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

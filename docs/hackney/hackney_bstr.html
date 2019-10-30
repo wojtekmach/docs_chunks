@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="hackney v1.15.2">
+    <title>hackney_bstr — hackney v1.15.2</title>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-cb891fcdcc.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="hackney.html" class="sidebar-projectName">
+hackney      </a>
+      <h2 class="sidebar-projectVersion">
+        v1.15.2
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">hackney v1.15.2</small>
+hackney_bstr      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:cp/0">cp()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:part/0">part()</a>
+  </div>
+    <div class="summary-synopsis"><p> END: Remove when OTP 17 not officially supported</p></div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#alpha/2">alpha/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse a list of case-insensitive alpha characters.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#char_to_lower/1">char_to_lower/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Convert [A-Z] characters to lowercase.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#char_to_upper/1">char_to_upper/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Convert [a-z] characters to uppercase.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#digits/1">digits/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse a list of digits as a non negative integer.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#digits/2">digits/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#digits/3">digits/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#join/2">join/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list/2">list/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse a list of the given type.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#nonempty_list/2">nonempty_list/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse a non-empty list of the given type.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parameterized_tokens/1">parameterized_tokens/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse a non empty list of tokens followed with optional parameters.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#params/2">params/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse a list of parameters (a=b;c=d).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#quoted_string/2">quoted_string/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#split/3">split/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_binary/1">to_binary/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_hex/1">to_hex/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_lower/1">to_lower/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Convert a binary string to lowercase.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_upper/1">to_upper/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#token/2">token/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse a token.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#token_ci/2">token_ci/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse a case-insensitive token.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#trim/1">trim/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#whitespace/2">whitespace/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Skip whitespace.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#word/2">word/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse either a token or a quoted string.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:cp/0">
+  <div class="detail-header">
+    <a href="#t:cp/0" class="detail-link" title="Link to this opaque">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this opaque</span>
+    </a>
+    <h1 class="signature">cp()</h1>
+      <span class="note">(opaque)</span>
+      <div class="specs">
+          <pre>-opaque <a href="#t:cp/0">cp</a>() :: {am | bm, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:part/0">
+  <div class="detail-header">
+    <a href="#t:part/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">part()</h1>
+      <div class="specs">
+          <pre>part() :: {Start :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), Length :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> END: Remove when OTP 17 not officially supported</p>
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="alpha/2">
+  <div class="detail-header">
+    <a href="#alpha/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">alpha/2</h1>
+      <div class="specs">
+          <pre>alpha(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parse a list of case-insensitive alpha characters.</p>
+<p> Changes all characters to lowercase.</p>
+  </section>
+</section>
+<section class="detail" id="char_to_lower/1">
+  <div class="detail-header">
+    <a href="#char_to_lower/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">char_to_lower/1</h1>
+      <div class="specs">
+          <pre>char_to_lower(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Convert [A-Z] characters to lowercase.</p>
+  </section>
+</section>
+<section class="detail" id="char_to_upper/1">
+  <div class="detail-header">
+    <a href="#char_to_upper/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">char_to_upper/1</h1>
+      <div class="specs">
+          <pre>char_to_upper(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">char</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Convert [a-z] characters to uppercase.</p>
+  </section>
+</section>
+<section class="detail" id="digits/1">
+  <div class="detail-header">
+    <a href="#digits/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">digits/1</h1>
+      <div class="specs">
+          <pre>digits(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() | {error, badarg}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parse a list of digits as a non negative integer.</p>
+  </section>
+</section>
+<section class="detail" id="digits/2">
+  <div class="detail-header">
+    <a href="#digits/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">digits/2</h1>
+      <div class="specs">
+          <pre>digits(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="digits/3">
+  <div class="detail-header">
+    <a href="#digits/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">digits/3</h1>
+      <div class="specs">
+          <pre>digits(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="join/2">
+  <div class="detail-header">
+    <a href="#join/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">join/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="list/2">
+  <div class="detail-header">
+    <a href="#list/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list/2</h1>
+      <div class="specs">
+          <pre>list(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>() | {error, badarg}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parse a list of the given type.</p>
+  </section>
+</section>
+<section class="detail" id="nonempty_list/2">
+  <div class="detail-header">
+    <a href="#nonempty_list/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">nonempty_list/2</h1>
+      <div class="specs">
+          <pre>nonempty_list(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>()) -> [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), ...] | {error, badarg}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parse a non-empty list of the given type.</p>
+  </section>
+</section>
+<section class="detail" id="parameterized_tokens/1">
+  <div class="detail-header">
+    <a href="#parameterized_tokens/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parameterized_tokens/1</h1>
+      <div class="specs">
+          <pre>parameterized_tokens(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parse a non empty list of tokens followed with optional parameters.</p>
+  </section>
+</section>
+<section class="detail" id="params/2">
+  <div class="detail-header">
+    <a href="#params/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">params/2</h1>
+      <div class="specs">
+          <pre>params(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parse a list of parameters (a=b;c=d).</p>
+  </section>
+</section>
+<section class="detail" id="quoted_string/2">
+  <div class="detail-header">
+    <a href="#quoted_string/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">quoted_string/2</h1>
+      <div class="specs">
+          <pre>quoted_string(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="split/3">
+  <div class="detail-header">
+    <a href="#split/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">split/3</h1>
+      <div class="specs">
+          <pre>split(Subject, Pattern, Options) -> Parts
+         when
+             Subject :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+             Pattern :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()] | <a href="#t:cp/0">cp</a>(),
+             Options :: [Option],
+             Option :: {scope, <a href="#t:part/0">part</a>()} | trim | global | trim_all,
+             Parts :: [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()].
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="to_binary/1">
+  <div class="detail-header">
+    <a href="#to_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_binary/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="to_hex/1">
+  <div class="detail-header">
+    <a href="#to_hex/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_hex/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="to_lower/1">
+  <div class="detail-header">
+    <a href="#to_lower/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_lower/1</h1>
+      <div class="specs">
+          <pre>to_lower(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Convert a binary string to lowercase.</p>
+  </section>
+</section>
+<section class="detail" id="to_upper/1">
+  <div class="detail-header">
+    <a href="#to_upper/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_upper/1</h1>
+      <div class="specs">
+          <pre>to_upper(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="token/2">
+  <div class="detail-header">
+    <a href="#token/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">token/2</h1>
+      <div class="specs">
+          <pre>token(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parse a token.</p>
+  </section>
+</section>
+<section class="detail" id="token_ci/2">
+  <div class="detail-header">
+    <a href="#token_ci/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">token_ci/2</h1>
+      <div class="specs">
+          <pre>token_ci(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parse a case-insensitive token.</p>
+<p> Changes all characters to lowercase.</p>
+  </section>
+</section>
+<section class="detail" id="trim/1">
+  <div class="detail-header">
+    <a href="#trim/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">trim/1</h1>
+      <div class="specs">
+          <pre>trim(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="whitespace/2">
+  <div class="detail-header">
+    <a href="#whitespace/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">whitespace/2</h1>
+      <div class="specs">
+          <pre>whitespace(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Skip whitespace.</p>
+  </section>
+</section>
+<section class="detail" id="word/2">
+  <div class="detail-header">
+    <a href="#word/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">word/2</h1>
+      <div class="specs">
+          <pre>word(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parse either a token or a quoted string.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

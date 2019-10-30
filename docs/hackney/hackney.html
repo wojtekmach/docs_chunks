@@ -1,0 +1,2564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="hackney v1.15.2">
+    <title>hackney — hackney v1.15.2</title>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-cb891fcdcc.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="hackney.html" class="sidebar-projectName">
+hackney      </a>
+      <h2 class="sidebar-projectVersion">
+        v1.15.2
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">hackney v1.15.2</small>
+hackney      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:client/0">client()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:client_ref/0">client_ref()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:url/0">url()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#body/1">body/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Return the full body sent with the response.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#body/2">body/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Return the full body sent with the response as long as the body length doesn&#39;t go over MaxLength.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cancel_request/1">cancel_request/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Extract raw informations from the client context This feature can be useful when you want to create a simple proxy, rerouting on the headers and the status line and continue to forward the connection for example.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#checkout/1">checkout/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#checkout/2">checkout/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#checkout/3">checkout/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#checkout/4">checkout/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#close/1">close/1</a>
+  </div>
+    <div class="summary-synopsis"><p>close the client</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connect/1">connect/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connect/2">connect/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connect/3">connect/3</a>
+  </div>
+    <div class="summary-synopsis"><p>connect a socket and create a client state.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connect/4">connect/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#controlling_process/2">controlling_process/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Assign a new controlling process Pid to Client.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cookies/1">cookies/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#copy/1">copy/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#copy/2">copy/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#copy/3">copy/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#copy/4">copy/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete/1">delete/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete/2">delete/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete/3">delete/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete/4">delete/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#finish_send_body/1">finish_send_body/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get/1">get/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get/2">get/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get/3">get/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get/4">get/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#head/1">head/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#head/2">head/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#head/3">head/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#head/4">head/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#location/1">location/1</a>
+  </div>
+    <div class="summary-synopsis"><p>return the requested location</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lock/1">lock/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lock/2">lock/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lock/3">lock/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#lock/4">lock/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#merge/1">merge/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#merge/2">merge/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#merge/3">merge/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#merge/4">merge/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mkactivity/1">mkactivity/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mkactivity/2">mkactivity/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mkactivity/3">mkactivity/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mkactivity/4">mkactivity/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mkcol/1">mkcol/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mkcol/2">mkcol/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mkcol/3">mkcol/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mkcol/4">mkcol/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#move/1">move/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#move/2">move/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#move/3">move/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#move/4">move/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#msearch/1">msearch/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#msearch/2">msearch/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#msearch/3">msearch/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#msearch/4">msearch/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#notify/1">notify/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#notify/2">notify/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#notify/3">notify/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#notify/4">notify/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#options/1">options/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#options/2">options/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#options/3">options/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#options/4">options/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#patch/1">patch/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#patch/2">patch/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#patch/3">patch/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#patch/4">patch/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pause_stream/1">pause_stream/1</a>
+  </div>
+    <div class="summary-synopsis"><p>pause a response stream, the stream process will hibernate and be woken later by the resume function</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#peername/1">peername/1</a>
+  </div>
+    <div class="summary-synopsis"><p>peername of the client</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#post/1">post/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#post/2">post/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#post/3">post/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#post/4">post/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#propfind/1">propfind/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#propfind/2">propfind/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#propfind/3">propfind/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#propfind/4">propfind/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#proppatch/1">proppatch/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#proppatch/2">proppatch/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#proppatch/3">proppatch/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#proppatch/4">proppatch/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#purge/1">purge/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#purge/2">purge/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#purge/3">purge/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#purge/4">purge/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#put/1">put/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#put/2">put/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#put/3">put/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#put/4">put/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#redirect_location/1">redirect_location/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#report/1">report/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#report/2">report/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#report/3">report/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#report/4">report/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#request/1">request/1</a>
+  </div>
+    <div class="summary-synopsis"><p>make a request</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#request/2">request/2</a>
+  </div>
+    <div class="summary-synopsis"><p>make a request</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#request/3">request/3</a>
+  </div>
+    <div class="summary-synopsis"><p>make a request</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#request/4">request/4</a>
+  </div>
+    <div class="summary-synopsis"><p>make a request</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#request/5">request/5</a>
+  </div>
+    <div class="summary-synopsis"><p>make a request</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#request_info/1">request_info/1</a>
+  </div>
+    <div class="summary-synopsis"><p>get request info</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resume_stream/1">resume_stream/1</a>
+  </div>
+    <div class="summary-synopsis"><p>resume a paused response stream, the stream process will be awoken</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#search/1">search/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#search/2">search/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#search/3">search/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#search/4">search/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_body/2">send_body/2</a>
+  </div>
+    <div class="summary-synopsis"><p>send the request body until eob. It&#39;s issued after sending a request using the <code class="inline">request</code> and <code class="inline">send_request</code> functions.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_multipart_body/2">send_multipart_body/2</a>
+  </div>
+    <div class="summary-synopsis"><p>send a multipart body until eof Possible value are :  <code class="inline">eof</code>: end the multipart request <code class="inline">{file, Path}</code>: to stream a file <code class="inline">{file, Path, ExtraHeaders}</code>: to stream a file <code class="inline">{data, Name, Content}</code>: to send a full part <code class="inline">{data, Name, Content, ExtraHeaders}</code>: to send a full part <code class="inline">{part, Name, Len}</code>: to start sending a part with a known length in a streaming fashion <code class="inline">{part, Name, Len, ExtraHeader}</code>: to start sending a part in a streaming fashion <code class="inline">{part, Name}</code>: to start sending a part without length in a streaming fashion <code class="inline">{part, Name, ExtraHeader}</code>: to start sending a part without lengthin a streaming fashion <code class="inline">{part_bin, Bin}</code>: To send part of part <code class="inline">{part, eof}</code>: To notify the end of the part  <code class="inline">{mp_mixed, Name, MixedBoundary}</code>: To notify we start a part with a a mixed multipart content <code class="inline">{mp_mixed_eof, MixedBoundary}</code>: To notify we end a part with a a mixed multipart content  Note: You can calculate the full length of a multipart stream using the function <code class="inline">hackney_multipart:len_mp_stream/2</code> .</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_request/2">send_request/2</a>
+  </div>
+    <div class="summary-synopsis"><p>send a request using the current client state</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send_request/3">send_request/3</a>
+  </div>
+    <div class="summary-synopsis"><p>send a request using the current client state and pass new options to it.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#setopts/2">setopts/2</a>
+  </div>
+    <div class="summary-synopsis"><p>set client options. Options are: - <code class="inline">async</code>: to fetch the response asynchronously - <code class="inline">{async, once}</code>: to receive the response asynchronously one time. To receive the next message use the function <code class="inline">hackney:stream_next/1</code>. - <code class="inline">{stream_to, pid()}</code>: to set the pid where the messages of an asynchronous response will be sent. - <code class="inline">{follow_redirect, bool()}</code> : if true a redirection will be followed when the response is received synchronously - <code class="inline">{force_redirect, bool()}</code> : if true a 301/302 redirection will be followed even on POST. - <code class="inline">{max_redirect, integer()}</code> the maximum number of redirections that will be followed</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#skip_body/1">skip_body/1</a>
+  </div>
+    <div class="summary-synopsis"><p>skip the full body. (read all the body if needed).</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#skip_multipart/1">skip_multipart/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Stream the response body.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sockname/1">sockname/1</a>
+  </div>
+    <div class="summary-synopsis"><p>sockname of the client</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_response/1">start_response/1</a>
+  </div>
+    <div class="summary-synopsis"><p>start a response. Useful if you stream the body by yourself. It will fetch the status and headers of the response. and return</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop_async/1">stop_async/1</a>
+  </div>
+    <div class="summary-synopsis"><p>stop to receive asynchronously.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_body/1">stream_body/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Stream the response body.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_multipart/1">stream_multipart/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Stream the response body.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stream_next/1">stream_next/1</a>
+  </div>
+    <div class="summary-synopsis"><p>continue to the next stream message. Only use it when <code class="inline">{async, once}</code> is set in the client options.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#subscribe/1">subscribe/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#subscribe/2">subscribe/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#subscribe/3">subscribe/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#subscribe/4">subscribe/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#trace/1">trace/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#trace/2">trace/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#trace/3">trace/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#trace/4">trace/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unlock/1">unlock/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unlock/2">unlock/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unlock/3">unlock/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unlock/4">unlock/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unsubscribe/1">unsubscribe/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unsubscribe/2">unsubscribe/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unsubscribe/3">unsubscribe/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unsubscribe/4">unsubscribe/4</a>
+  </div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:client/0">
+  <div class="detail-header">
+    <a href="#t:client/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">client()</h1>
+      <div class="specs">
+          <pre>client() :: #client{}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:client_ref/0">
+  <div class="detail-header">
+    <a href="#t:client_ref/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">client_ref()</h1>
+      <div class="specs">
+          <pre>client_ref() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:url/0">
+  <div class="detail-header">
+    <a href="#t:url/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">url()</h1>
+      <div class="specs">
+          <pre>url() :: #hackney_url{} | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="body/1">
+  <div class="detail-header">
+    <a href="#body/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">body/1</h1>
+      <div class="specs">
+          <pre>body(<a href="#t:client_ref/0">client_ref</a>()) ->
+        {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} |
+        {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()} |
+        {error, {closed, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Return the full body sent with the response.</p>
+  </section>
+</section>
+<section class="detail" id="body/2">
+  <div class="detail-header">
+    <a href="#body/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">body/2</h1>
+      <div class="specs">
+          <pre>body(<a href="#t:client_ref/0">client_ref</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>() | infinity) ->
+        {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} |
+        {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()} |
+        {error, {closed, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Return the full body sent with the response as long as the body length doesn&#39;t go over MaxLength.</p>
+  </section>
+</section>
+<section class="detail" id="cancel_request/1">
+  <div class="detail-header">
+    <a href="#cancel_request/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cancel_request/1</h1>
+      <div class="specs">
+          <pre>cancel_request(<a href="#t:client_ref/0">client_ref</a>()) ->
+                  {ok,
+                   {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+                    inet:socket(),
+                    <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+                    hackney_response:response_state()}} |
+                  {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Extract raw informations from the client context This feature can be useful when you want to create a simple proxy, rerouting on the headers and the status line and continue to forward the connection for example.</p>
+<p> return: <code class="inline">{ResponseState, Transport, Socket, Buffer} | {error, Reason}</code>  <code class="inline">Response</code>: waiting_response, on_status, on_headers, on_body <code class="inline">Transport</code>: The current transport module <code class="inline">Socket</code>: the current socket <code class="inline">Buffer</code>: Data fetched but not yet processed </p>
+  </section>
+</section>
+<section class="detail" id="checkout/1">
+  <div class="detail-header">
+    <a href="#checkout/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">checkout/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="checkout/2">
+  <div class="detail-header">
+    <a href="#checkout/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">checkout/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="checkout/3">
+  <div class="detail-header">
+    <a href="#checkout/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">checkout/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="checkout/4">
+  <div class="detail-header">
+    <a href="#checkout/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">checkout/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="close/1">
+  <div class="detail-header">
+    <a href="#close/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">close/1</h1>
+  </div>
+  <section class="docstring">
+<p>close the client</p>
+  </section>
+</section>
+<section class="detail" id="connect/1">
+  <div class="detail-header">
+    <a href="#connect/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">connect/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="connect/2">
+  <div class="detail-header">
+    <a href="#connect/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">connect/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="connect/3">
+  <div class="detail-header">
+    <a href="#connect/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">connect/3</h1>
+  </div>
+  <section class="docstring">
+<p>connect a socket and create a client state.</p>
+  </section>
+</section>
+<section class="detail" id="connect/4">
+  <div class="detail-header">
+    <a href="#connect/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">connect/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="controlling_process/2">
+  <div class="detail-header">
+    <a href="#controlling_process/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">controlling_process/2</h1>
+      <div class="specs">
+          <pre>controlling_process(<a href="#t:client_ref/0">client_ref</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()) ->
+                       ok | {error, closed | not_owner | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Assign a new controlling process Pid to Client.</p>
+  </section>
+</section>
+<section class="detail" id="cookies/1">
+  <div class="detail-header">
+    <a href="#cookies/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cookies/1</h1>
+      <div class="specs">
+          <pre>cookies(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="copy/1">
+  <div class="detail-header">
+    <a href="#copy/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">copy/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="copy/2">
+  <div class="detail-header">
+    <a href="#copy/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">copy/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="copy/3">
+  <div class="detail-header">
+    <a href="#copy/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">copy/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="copy/4">
+  <div class="detail-header">
+    <a href="#copy/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">copy/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="delete/1">
+  <div class="detail-header">
+    <a href="#delete/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="delete/2">
+  <div class="detail-header">
+    <a href="#delete/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="delete/3">
+  <div class="detail-header">
+    <a href="#delete/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="delete/4">
+  <div class="detail-header">
+    <a href="#delete/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="finish_send_body/1">
+  <div class="detail-header">
+    <a href="#finish_send_body/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">finish_send_body/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="get/1">
+  <div class="detail-header">
+    <a href="#get/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="get/2">
+  <div class="detail-header">
+    <a href="#get/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="get/3">
+  <div class="detail-header">
+    <a href="#get/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="get/4">
+  <div class="detail-header">
+    <a href="#get/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="head/1">
+  <div class="detail-header">
+    <a href="#head/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">head/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="head/2">
+  <div class="detail-header">
+    <a href="#head/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">head/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="head/3">
+  <div class="detail-header">
+    <a href="#head/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">head/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="head/4">
+  <div class="detail-header">
+    <a href="#head/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">head/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="location/1">
+  <div class="detail-header">
+    <a href="#location/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">location/1</h1>
+      <div class="specs">
+          <pre>location(<a href="#t:client_ref/0">client_ref</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>return the requested location</p>
+  </section>
+</section>
+<section class="detail" id="lock/1">
+  <div class="detail-header">
+    <a href="#lock/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lock/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="lock/2">
+  <div class="detail-header">
+    <a href="#lock/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lock/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="lock/3">
+  <div class="detail-header">
+    <a href="#lock/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lock/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="lock/4">
+  <div class="detail-header">
+    <a href="#lock/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">lock/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="merge/1">
+  <div class="detail-header">
+    <a href="#merge/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">merge/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="merge/2">
+  <div class="detail-header">
+    <a href="#merge/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">merge/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="merge/3">
+  <div class="detail-header">
+    <a href="#merge/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">merge/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="merge/4">
+  <div class="detail-header">
+    <a href="#merge/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">merge/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="mkactivity/1">
+  <div class="detail-header">
+    <a href="#mkactivity/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mkactivity/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="mkactivity/2">
+  <div class="detail-header">
+    <a href="#mkactivity/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mkactivity/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="mkactivity/3">
+  <div class="detail-header">
+    <a href="#mkactivity/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mkactivity/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="mkactivity/4">
+  <div class="detail-header">
+    <a href="#mkactivity/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mkactivity/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="mkcol/1">
+  <div class="detail-header">
+    <a href="#mkcol/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mkcol/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="mkcol/2">
+  <div class="detail-header">
+    <a href="#mkcol/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mkcol/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="mkcol/3">
+  <div class="detail-header">
+    <a href="#mkcol/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mkcol/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="mkcol/4">
+  <div class="detail-header">
+    <a href="#mkcol/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mkcol/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="move/1">
+  <div class="detail-header">
+    <a href="#move/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">move/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="move/2">
+  <div class="detail-header">
+    <a href="#move/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">move/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="move/3">
+  <div class="detail-header">
+    <a href="#move/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">move/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="move/4">
+  <div class="detail-header">
+    <a href="#move/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">move/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="msearch/1">
+  <div class="detail-header">
+    <a href="#msearch/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">msearch/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="msearch/2">
+  <div class="detail-header">
+    <a href="#msearch/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">msearch/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="msearch/3">
+  <div class="detail-header">
+    <a href="#msearch/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">msearch/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="msearch/4">
+  <div class="detail-header">
+    <a href="#msearch/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">msearch/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="notify/1">
+  <div class="detail-header">
+    <a href="#notify/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">notify/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="notify/2">
+  <div class="detail-header">
+    <a href="#notify/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">notify/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="notify/3">
+  <div class="detail-header">
+    <a href="#notify/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">notify/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="notify/4">
+  <div class="detail-header">
+    <a href="#notify/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">notify/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="options/1">
+  <div class="detail-header">
+    <a href="#options/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">options/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="options/2">
+  <div class="detail-header">
+    <a href="#options/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">options/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="options/3">
+  <div class="detail-header">
+    <a href="#options/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">options/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="options/4">
+  <div class="detail-header">
+    <a href="#options/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">options/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="patch/1">
+  <div class="detail-header">
+    <a href="#patch/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">patch/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="patch/2">
+  <div class="detail-header">
+    <a href="#patch/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">patch/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="patch/3">
+  <div class="detail-header">
+    <a href="#patch/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">patch/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="patch/4">
+  <div class="detail-header">
+    <a href="#patch/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">patch/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="pause_stream/1">
+  <div class="detail-header">
+    <a href="#pause_stream/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pause_stream/1</h1>
+      <div class="specs">
+          <pre>pause_stream(<a href="#t:client_ref/0">client_ref</a>()) -> ok | {error, req_not_found}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>pause a response stream, the stream process will hibernate and be woken later by the resume function</p>
+  </section>
+</section>
+<section class="detail" id="peername/1">
+  <div class="detail-header">
+    <a href="#peername/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">peername/1</h1>
+  </div>
+  <section class="docstring">
+<p>peername of the client</p>
+  </section>
+</section>
+<section class="detail" id="post/1">
+  <div class="detail-header">
+    <a href="#post/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">post/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="post/2">
+  <div class="detail-header">
+    <a href="#post/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">post/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="post/3">
+  <div class="detail-header">
+    <a href="#post/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">post/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="post/4">
+  <div class="detail-header">
+    <a href="#post/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">post/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="propfind/1">
+  <div class="detail-header">
+    <a href="#propfind/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">propfind/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="propfind/2">
+  <div class="detail-header">
+    <a href="#propfind/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">propfind/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="propfind/3">
+  <div class="detail-header">
+    <a href="#propfind/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">propfind/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="propfind/4">
+  <div class="detail-header">
+    <a href="#propfind/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">propfind/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="proppatch/1">
+  <div class="detail-header">
+    <a href="#proppatch/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">proppatch/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="proppatch/2">
+  <div class="detail-header">
+    <a href="#proppatch/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">proppatch/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="proppatch/3">
+  <div class="detail-header">
+    <a href="#proppatch/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">proppatch/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="proppatch/4">
+  <div class="detail-header">
+    <a href="#proppatch/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">proppatch/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="purge/1">
+  <div class="detail-header">
+    <a href="#purge/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">purge/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="purge/2">
+  <div class="detail-header">
+    <a href="#purge/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">purge/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="purge/3">
+  <div class="detail-header">
+    <a href="#purge/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">purge/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="purge/4">
+  <div class="detail-header">
+    <a href="#purge/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">purge/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="put/1">
+  <div class="detail-header">
+    <a href="#put/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">put/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="put/2">
+  <div class="detail-header">
+    <a href="#put/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">put/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="put/3">
+  <div class="detail-header">
+    <a href="#put/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">put/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="put/4">
+  <div class="detail-header">
+    <a href="#put/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">put/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="redirect_location/1">
+  <div class="detail-header">
+    <a href="#redirect_location/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">redirect_location/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="report/1">
+  <div class="detail-header">
+    <a href="#report/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">report/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="report/2">
+  <div class="detail-header">
+    <a href="#report/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">report/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="report/3">
+  <div class="detail-header">
+    <a href="#report/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">report/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="report/4">
+  <div class="detail-header">
+    <a href="#report/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">report/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="request/1">
+  <div class="detail-header">
+    <a href="#request/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">request/1</h1>
+      <div class="specs">
+          <pre>request(<a href="#t:url/0">url</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) ->
+           {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="#t:client_ref/0">client_ref</a>()} |
+           {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()} |
+           {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>make a request</p>
+  </section>
+</section>
+<section class="detail" id="request/2">
+  <div class="detail-header">
+    <a href="#request/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">request/2</h1>
+      <div class="specs">
+          <pre>request(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), <a href="#t:url/0">url</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) ->
+           {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="#t:client_ref/0">client_ref</a>()} |
+           {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()} |
+           {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>make a request</p>
+  </section>
+</section>
+<section class="detail" id="request/3">
+  <div class="detail-header">
+    <a href="#request/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">request/3</h1>
+      <div class="specs">
+          <pre>request(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), <a href="#t:url/0">url</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) ->
+           {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="#t:client_ref/0">client_ref</a>()} |
+           {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()} |
+           {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>make a request</p>
+  </section>
+</section>
+<section class="detail" id="request/4">
+  <div class="detail-header">
+    <a href="#request/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">request/4</h1>
+      <div class="specs">
+          <pre>request(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), <a href="#t:url/0">url</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) ->
+           {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="#t:client_ref/0">client_ref</a>()} |
+           {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()} |
+           {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>make a request</p>
+  </section>
+</section>
+<section class="detail" id="request/5">
+  <div class="detail-header">
+    <a href="#request/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">request/5</h1>
+      <div class="specs">
+          <pre>request(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), <a href="#t:url/0">url</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) ->
+           {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="#t:client_ref/0">client_ref</a>()} |
+           {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} |
+           {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()} |
+           {ok, <a href="#t:client_ref/0">client_ref</a>()} |
+           {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>make a request</p>
+<p> Args:  Method&gt;: method used for the request (get, post, ...) Url: full url of the request Headers Proplists  Body:  {form, [{K, V}, ...]}: send a form url encoded {multipart, [{K, V}, ...]}: send a form using multipart {file, &quot;/path/to/file&quot;}: to send a file Bin: binary or iolist   Options: <code class="inline">[{connect_options, connect_options(), {ssl_options, ssl_options()}, Others]</code> <code class="inline">connect_options()</code>: The default connect_options are <code class="inline">[binary, {active, false}, {packet, raw}])</code>. For valid options see the gen_tcp options. <code class="inline">ssl_options()</code>: See the ssl options from the ssl module. <code class="inline">with_body</code>: when this option is passed the body is returned directly. The response is <code class="inline">{ok, Status, Headers, Body}</code> <code class="inline">max_body</code>: sets maximum allowed size of the body if with_body is true <code class="inline">async</code>: receive the response asynchronously The function return {ok, StreamRef}. When {async, once} is used the response will be received only once. To receive the other messages use the function <code class="inline">hackney:stream_next/1</code>  <code class="inline">{path_encode_fun, fun()}</code>: function used to encode the path. if not set it will use <code class="inline">hackney_url:pathencode/1</code> the function takes the binary path as entry and return a new encoded path. <code class="inline">{stream_to, pid()}</code>: If async is true or once, the response messages will be sent to this PID. <code class="inline">{cookie, list() | binary()}</code> : to set a cookie or a list of cookies. Others options are:  <code class="inline">{follow_redirect, boolean}</code>: false by default, follow a redirection <code class="inline">{max_redirect, integer}</code>: 5 by default, the maximum of redirection for a request <code class="inline">{force_redirect, boolean}</code>: false by default, to force the redirection even on POST <code class="inline">{basic_auth, {binary, binary}}</code>: HTTP basic auth username and password.</li></p>
+<pre><code class="nohighlight makeup elixir"><span class="w">       </span><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="err">`</span><span class="p" data-group-id="1920584245-1">{</span><span class="n">proxy</span><span class="p">,</span><span class="w"> </span><span class="n">proxy_options</span><span class="p" data-group-id="1920584245-2">(</span><span class="p" data-group-id="1920584245-2">)</span><span class="p" data-group-id="1920584245-1">}</span><span class="err">`</span><span class="p">:</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">connect</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">proxy</span><span class="o">.</span><span class="w"> </span><span class="err">`</span><span class="n">insecure</span><span class="err">`</span><span class="p">:</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">perform</span><span class="w"> </span><span class="s">&quot;insecure&quot;</span><span class="w"> </span><span class="nc">SSL</span><span class="w"> </span><span class="n">connections</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">transfers</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="n">checking</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">certificate</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="1920584245-3">{</span><span class="n">checkout_timeout</span><span class="p">,</span><span class="w"> </span><span class="n">infinity</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">integer</span><span class="p" data-group-id="1920584245-4">(</span><span class="p" data-group-id="1920584245-4">)</span><span class="p" data-group-id="1920584245-3">}</span><span class="err">`</span><span class="p">:</span><span class="w"> </span><span class="n">timeout</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="ow">when</span><span class="w"> </span><span class="n">checking</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">socket</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">pool</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">milliseconds</span><span class="o">.</span><span class="w"> </span><span class="nc">By</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">equal</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">connect_timeout</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="1920584245-5">{</span><span class="n">connect_timeout</span><span class="p">,</span><span class="w"> </span><span class="n">infinity</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">integer</span><span class="p" data-group-id="1920584245-6">(</span><span class="p" data-group-id="1920584245-6">)</span><span class="p" data-group-id="1920584245-5">}</span><span class="err">`</span><span class="p">:</span><span class="w"> </span><span class="n">timeout</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="ow">when</span><span class="w"> </span><span class="n">establishing</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">connection</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">milliseconds</span><span class="o">.</span><span class="w"> </span><span class="nc">Default</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="mi">8000</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="1920584245-7">{</span><span class="n">recv_timeout</span><span class="p">,</span><span class="w"> </span><span class="n">infinity</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">integer</span><span class="p" data-group-id="1920584245-8">(</span><span class="p" data-group-id="1920584245-8">)</span><span class="p" data-group-id="1920584245-7">}</span><span class="err">`</span><span class="p">:</span><span class="w"> </span><span class="n">timeout</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="ow">when</span><span class="w"> </span><span class="n">receiving</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">connection</span><span class="o">.</span><span class="w"> </span><span class="nc">Default</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="mi">5000</span><span class="w">  </span><span class="ss">Note</span><span class="p">:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">async</span><span class="p">,</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="err">`</span><span class="n">follow_redirect</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">take</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">consideration</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">redirection</span><span class="o">.</span><span class="w"> </span><span class="nc">If</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="n">redirection</span><span class="w"> </span><span class="n">happen</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">receive</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="ss">messages</span><span class="p">:</span><span class="w">  </span><span class="err">`</span><span class="p" data-group-id="1920584245-9">{</span><span class="n">redirect</span><span class="p">,</span><span class="w"> </span><span class="nc">To</span><span class="p">,</span><span class="w"> </span><span class="nc">Headers</span><span class="err">`</span><span class="p" data-group-id="1920584245-9">}</span><span class="w"> </span><span class="err">`</span><span class="p" data-group-id="1920584245-10">{</span><span class="n">see_other</span><span class="p">,</span><span class="w"> </span><span class="nc">To</span><span class="p">,</span><span class="w"> </span><span class="nc">Headers</span><span class="p" data-group-id="1920584245-10">}</span><span class="err">`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="mi">303</span><span class="w"> </span><span class="nc">POST</span><span class="w"> </span><span class="n">requests</span><span class="o">.</span><span class="w">   </span><span class="err">`</span><span class="n">proxy_options</span><span class="p" data-group-id="1920584245-11">(</span><span class="p" data-group-id="1920584245-11">)</span><span class="err">`</span><span class="p">:</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">connect</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ss">proxy</span><span class="p">:</span><span class="w">  </span><span class="n">binary</span><span class="p" data-group-id="1920584245-12">(</span><span class="p" data-group-id="1920584245-12">)</span><span class="p">:</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="kn">use</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">proxy</span><span class="o">.</span><span class="w"> </span><span class="nc">Used</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">basic</span><span class="w"> </span><span class="nc">HTTP</span><span class="w"> </span><span class="n">proxy</span><span class="w"> </span><span class="p" data-group-id="1920584245-13">{</span><span class="nc">Host</span><span class="o">::</span><span class="n">binary</span><span class="p" data-group-id="1920584245-14">(</span><span class="p" data-group-id="1920584245-14">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Port</span><span class="o">::</span><span class="n">binary</span><span class="p" data-group-id="1920584245-13">}</span><span class="p">:</span><span class="w"> </span><span class="nc">Host</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">connect</span><span class="p">,</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nc">HTTP</span><span class="w"> </span><span class="n">proxy</span><span class="w"> </span><span class="p" data-group-id="1920584245-15">{</span><span class="n">socks5</span><span class="p">,</span><span class="w"> </span><span class="nc">Host</span><span class="o">::</span><span class="n">binary</span><span class="p" data-group-id="1920584245-16">(</span><span class="p" data-group-id="1920584245-16">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Port</span><span class="o">::</span><span class="n">binary</span><span class="p" data-group-id="1920584245-17">(</span><span class="p" data-group-id="1920584245-17">)</span><span class="p" data-group-id="1920584245-15">}</span><span class="p">:</span><span class="w"> </span><span class="nc">Host</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nc">Port</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">connect</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">socks5</span><span class="w"> </span><span class="n">proxy</span><span class="o">.</span><span class="w"> </span><span class="p" data-group-id="1920584245-18">{</span><span class="n">connect</span><span class="p">,</span><span class="w"> </span><span class="nc">Host</span><span class="o">::</span><span class="n">binary</span><span class="p" data-group-id="1920584245-19">(</span><span class="p" data-group-id="1920584245-19">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Port</span><span class="o">::</span><span class="n">binary</span><span class="p" data-group-id="1920584245-20">(</span><span class="p" data-group-id="1920584245-20">)</span><span class="p" data-group-id="1920584245-18">}</span><span class="p">:</span><span class="w"> </span><span class="nc">Host</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nc">Port</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">connect</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="nc">HTTP</span><span class="w"> </span><span class="n">tunnel</span><span class="o">.</span><span class="w"> </span></code></pre>
+<p>   Note: instead of doing <code class="inline">hackney:request(Method, ...)</code> you can also do <code class="inline">hackney:Method(...)</code> if you prefer to use the REST syntax. Return:  <code class="inline">{ok, ResponseStatus, ResponseHeaders}</code>: On HEAD request if the response succeeded. <code class="inline">{ok, ResponseStatus, ResponseHeaders, Ref}</code>: When the response succeeded. The request reference is used later to retrieve the body. <code class="inline">{ok, ResponseStatus, ResponseHeaders, Body}</code>: When the option <code class="inline">with_body</code> is set to true and the response succeeded. <code class="inline">{ok, Ref}</code> Return the request reference when you decide to stream the request. You can use the returned reference to stream the request body and continue to handle the response. <code class="inline">{error, {closed, PartialBody}}</code> A body was expected but instead the remote closed the response after sending the headers. Equivalent to the curl message <code class="inline">no chunk, no close, no size. Assume close to signal end</code>.  <code class="inline">{error, term()}</code> other errors. </p>
+  </section>
+</section>
+<section class="detail" id="request_info/1">
+  <div class="detail-header">
+    <a href="#request_info/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">request_info/1</h1>
+      <div class="specs">
+          <pre>request_info(<a href="#t:client_ref/0">client_ref</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>get request info</p>
+  </section>
+</section>
+<section class="detail" id="resume_stream/1">
+  <div class="detail-header">
+    <a href="#resume_stream/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resume_stream/1</h1>
+      <div class="specs">
+          <pre>resume_stream(<a href="#t:client_ref/0">client_ref</a>()) -> ok | {error, req_not_found}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>resume a paused response stream, the stream process will be awoken</p>
+  </section>
+</section>
+<section class="detail" id="search/1">
+  <div class="detail-header">
+    <a href="#search/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">search/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="search/2">
+  <div class="detail-header">
+    <a href="#search/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">search/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="search/3">
+  <div class="detail-header">
+    <a href="#search/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">search/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="search/4">
+  <div class="detail-header">
+    <a href="#search/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">search/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="send_body/2">
+  <div class="detail-header">
+    <a href="#send_body/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_body/2</h1>
+      <div class="specs">
+          <pre>send_body(<a href="#t:client_ref/0">client_ref</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>send the request body until eob. It&#39;s issued after sending a request using the <code class="inline">request</code> and <code class="inline">send_request</code> functions.</p>
+  </section>
+</section>
+<section class="detail" id="send_multipart_body/2">
+  <div class="detail-header">
+    <a href="#send_multipart_body/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_multipart_body/2</h1>
+      <div class="specs">
+          <pre>send_multipart_body(<a href="#t:client_ref/0">client_ref</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>send a multipart body until eof Possible value are :  <code class="inline">eof</code>: end the multipart request <code class="inline">{file, Path}</code>: to stream a file <code class="inline">{file, Path, ExtraHeaders}</code>: to stream a file <code class="inline">{data, Name, Content}</code>: to send a full part <code class="inline">{data, Name, Content, ExtraHeaders}</code>: to send a full part <code class="inline">{part, Name, Len}</code>: to start sending a part with a known length in a streaming fashion <code class="inline">{part, Name, Len, ExtraHeader}</code>: to start sending a part in a streaming fashion <code class="inline">{part, Name}</code>: to start sending a part without length in a streaming fashion <code class="inline">{part, Name, ExtraHeader}</code>: to start sending a part without lengthin a streaming fashion <code class="inline">{part_bin, Bin}</code>: To send part of part <code class="inline">{part, eof}</code>: To notify the end of the part  <code class="inline">{mp_mixed, Name, MixedBoundary}</code>: To notify we start a part with a a mixed multipart content <code class="inline">{mp_mixed_eof, MixedBoundary}</code>: To notify we end a part with a a mixed multipart content  Note: You can calculate the full length of a multipart stream using the function <code class="inline">hackney_multipart:len_mp_stream/2</code> .</p>
+  </section>
+</section>
+<section class="detail" id="send_request/2">
+  <div class="detail-header">
+    <a href="#send_request/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_request/2</h1>
+  </div>
+  <section class="docstring">
+<p>send a request using the current client state</p>
+  </section>
+</section>
+<section class="detail" id="send_request/3">
+  <div class="detail-header">
+    <a href="#send_request/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send_request/3</h1>
+  </div>
+  <section class="docstring">
+<p>send a request using the current client state and pass new options to it.</p>
+  </section>
+</section>
+<section class="detail" id="setopts/2">
+  <div class="detail-header">
+    <a href="#setopts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">setopts/2</h1>
+      <div class="specs">
+          <pre>setopts(<a href="#t:client_ref/0">client_ref</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) -> ok.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>set client options. Options are: - <code class="inline">async</code>: to fetch the response asynchronously - <code class="inline">{async, once}</code>: to receive the response asynchronously one time. To receive the next message use the function <code class="inline">hackney:stream_next/1</code>. - <code class="inline">{stream_to, pid()}</code>: to set the pid where the messages of an asynchronous response will be sent. - <code class="inline">{follow_redirect, bool()}</code> : if true a redirection will be followed when the response is received synchronously - <code class="inline">{force_redirect, bool()}</code> : if true a 301/302 redirection will be followed even on POST. - <code class="inline">{max_redirect, integer()}</code> the maximum number of redirections that will be followed</p>
+  </section>
+</section>
+<section class="detail" id="skip_body/1">
+  <div class="detail-header">
+    <a href="#skip_body/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">skip_body/1</h1>
+      <div class="specs">
+          <pre>skip_body(<a href="#t:client_ref/0">client_ref</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>skip the full body. (read all the body if needed).</p>
+  </section>
+</section>
+<section class="detail" id="skip_multipart/1">
+  <div class="detail-header">
+    <a href="#skip_multipart/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">skip_multipart/1</h1>
+      <div class="specs">
+          <pre>skip_multipart(<a href="#t:client_ref/0">client_ref</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Stream the response body.</p>
+  </section>
+</section>
+<section class="detail" id="sockname/1">
+  <div class="detail-header">
+    <a href="#sockname/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sockname/1</h1>
+  </div>
+  <section class="docstring">
+<p>sockname of the client</p>
+  </section>
+</section>
+<section class="detail" id="start_response/1">
+  <div class="detail-header">
+    <a href="#start_response/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_response/1</h1>
+      <div class="specs">
+          <pre>start_response(<a href="#t:client_ref/0">client_ref</a>()) ->
+                  {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), <a href="#t:client_ref/0">client_ref</a>()} |
+                  {ok, <a href="#t:client_ref/0">client_ref</a>()} |
+                  {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>start a response. Useful if you stream the body by yourself. It will fetch the status and headers of the response. and return</p>
+  </section>
+</section>
+<section class="detail" id="stop_async/1">
+  <div class="detail-header">
+    <a href="#stop_async/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop_async/1</h1>
+      <div class="specs">
+          <pre>stop_async(<a href="#t:client_ref/0">client_ref</a>()) ->
+              {ok, <a href="#t:client_ref/0">client_ref</a>()} |
+              {error, req_not_found} |
+              {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>stop to receive asynchronously.</p>
+  </section>
+</section>
+<section class="detail" id="stream_body/1">
+  <div class="detail-header">
+    <a href="#stream_body/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_body/1</h1>
+      <div class="specs">
+          <pre>stream_body(<a href="#t:client_ref/0">client_ref</a>()) ->
+               {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} | done | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Stream the response body.</p>
+  </section>
+</section>
+<section class="detail" id="stream_multipart/1">
+  <div class="detail-header">
+    <a href="#stream_multipart/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_multipart/1</h1>
+      <div class="specs">
+          <pre>stream_multipart(<a href="#t:client_ref/0">client_ref</a>()) ->
+                    {headers, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()} |
+                    {body, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} |
+                    eof | end_of_part |
+                    {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Stream the response body.</p>
+<p> Return:  <code class="inline">{headers, Headers}</code>: the part headers <code class="inline">{body, Bin}</code>: part of the content <code class="inline">end_of_part</code> : end of part <code class="inline">mp_mixed</code>: notify the beginning of a mixed multipart part <code class="inline">mp_mixed_eof</code>: notify the end of a mixed multipart part <code class="inline">eof</code>: notify the end of the multipart request </p>
+  </section>
+</section>
+<section class="detail" id="stream_next/1">
+  <div class="detail-header">
+    <a href="#stream_next/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stream_next/1</h1>
+      <div class="specs">
+          <pre>stream_next(<a href="#t:client_ref/0">client_ref</a>()) -> ok | {error, req_not_found}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>continue to the next stream message. Only use it when <code class="inline">{async, once}</code> is set in the client options.</p>
+  </section>
+</section>
+<section class="detail" id="subscribe/1">
+  <div class="detail-header">
+    <a href="#subscribe/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">subscribe/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="subscribe/2">
+  <div class="detail-header">
+    <a href="#subscribe/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">subscribe/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="subscribe/3">
+  <div class="detail-header">
+    <a href="#subscribe/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">subscribe/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="subscribe/4">
+  <div class="detail-header">
+    <a href="#subscribe/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">subscribe/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="trace/1">
+  <div class="detail-header">
+    <a href="#trace/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">trace/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="trace/2">
+  <div class="detail-header">
+    <a href="#trace/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">trace/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="trace/3">
+  <div class="detail-header">
+    <a href="#trace/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">trace/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="trace/4">
+  <div class="detail-header">
+    <a href="#trace/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">trace/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="unlock/1">
+  <div class="detail-header">
+    <a href="#unlock/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unlock/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="unlock/2">
+  <div class="detail-header">
+    <a href="#unlock/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unlock/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="unlock/3">
+  <div class="detail-header">
+    <a href="#unlock/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unlock/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="unlock/4">
+  <div class="detail-header">
+    <a href="#unlock/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unlock/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="unsubscribe/1">
+  <div class="detail-header">
+    <a href="#unsubscribe/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unsubscribe/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="unsubscribe/2">
+  <div class="detail-header">
+    <a href="#unsubscribe/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unsubscribe/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="unsubscribe/3">
+  <div class="detail-header">
+    <a href="#unsubscribe/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unsubscribe/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="unsubscribe/4">
+  <div class="detail-header">
+    <a href="#unsubscribe/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unsubscribe/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

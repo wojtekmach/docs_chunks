@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="hackney v1.15.2">
+    <title>hackney_http — hackney v1.15.2</title>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-cb891fcdcc.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="hackney.html" class="sidebar-projectName">
+hackney      </a>
+      <h2 class="sidebar-projectVersion">
+        v1.15.2
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">hackney v1.15.2</small>
+hackney_http      </h1>
+
+
+        <section id="moduledoc">
+<p>HTTP parser in pure Erlang This parser is able to parse HTTP responses and requests in a streaming fashion. If not set it will be autodetect the type of binary parsed, if it&#39;s a request or a response.</p>
+<p> Internally it is keeping a buffer for intermediary steps but don&#39;t keep any state in memory.</p>
+<p> The first time you initialise a parser using <code class="inline">hackney_http:parser/0</code> or <code class="inline">hackney_http:parser/1</code> you will receive an opaque record You can then process it using the function <code class="inline">hackney_http:execute/2</code>.</p>
+<p> Each steps will return the status, some data and the new parser that you can process later with <code class="inline">hackney_http:execute/2</code> when <code class="inline">{more, ...}</code> is returnned or <code class="inline">hackney_http:execute/1</code> in other cases:</p>
+<ul>
+<li><code class="inline">{response, http_version(), status(), http_reason(), parser()}</code>: when the first line of a response is parsed - <code class="inline">{request, http_version(), http_method(), uri(), parser()}</code>: when the first line of a request (on servers) is parsed - <code class="inline">{more, parser()}</code>: when the parser need more data. The new data should be passed to <code class="inline">hackney_http:execute/2</code> with the new parser() state received. - <code class="inline">{header, {Name :: binary(), Value :: binary()}, parser()}</code>: when an header has been parsed. To continue the parsing you must call the given <code class="inline">parser()</code> with <code class="inline">hackney_http:execute/1</code>. - <code class="inline">{headers_complete, parser()}</code> : when all headers have been parsed. To continue the parsing you must call the given <code class="inline">parser()</code> state with <code class="inline">hackney_http:execute/1</code>. - <code class="inline">{more, parser(), binary()}</code>: on body, when the parser need more data. The new data should be passed to <code class="inline">hackney_http:execute/2</code> (with <code class="inline">parser()</code> ) when received. The binary at the end of the tuple correspond to the actual buffer of the parser. It may be used for other purpose, like start to parse a new request on pipeline connections, for a proxy... - <code class="inline">{ok, binary(), parser()}</code>: on body, when a chunk has been parsed. To continue the parsing you must call <code class="inline">hackney_http:execute/1</code> with the given <code class="inline">parser()</code>. - <code class="inline">{done, binary()}</code>: when the parsing is done. The binary given correpond to the non parsed part of the internal buffer. - <code class="inline">{error, term{}}</code>: when an error happen
+</li>
+</ul>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:body_result/0">body_result()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:header_result/0">header_result()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:http_method/0">http_method()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:http_reason/0">http_reason()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:http_version/0">http_version()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:parser/0">parser()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:parser_option/0">parser_option()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:parser_options/0">parser_options()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:parser_result/0">parser_result()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:status/0">status()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:uri/0">uri()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#execute/1">execute/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Execute the parser with the current buffer.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#execute/2">execute/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Execute the parser with the new buffer</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get/2">get/2</a>
+  </div>
+    <div class="summary-synopsis"><p>retrieve a parser property. Properties are: - <code class="inline">buffer</code>: internal buffer of the parser (non parsed) - <code class="inline">state</code>: the current state (on_status, on_header, on_body, done) - <code class="inline">version</code>: HTTP version - <code class="inline">content_length</code>: content length header if any - <code class="inline">transfer_encoding</code>: transfer encoding header if any - <code class="inline">content_type</code>: content type header if any - <code class="inline">location</code>: location header if any - <code class="inline">connection</code>: connection header if any.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_response_version/2">parse_response_version/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parser/0">parser/0</a>
+  </div>
+    <div class="summary-synopsis"><p>Create a new HTTP parser. The parser will autodetect if the parded binary is a response or a request.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parser/1">parser/1</a>
+  </div>
+    <div class="summary-synopsis"><p>create a new HTTP parser with options. By default the type of parsed binary will be detected.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:body_result/0">
+  <div class="detail-header">
+    <a href="#t:body_result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">body_result()</h1>
+      <div class="specs">
+          <pre>body_result() ::
+    {more, <a href="#t:parser/0">parser</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} |
+    {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="#t:parser/0">parser</a>()} |
+    {done, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} |
+    done.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:header_result/0">
+  <div class="detail-header">
+    <a href="#t:header_result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">header_result()</h1>
+      <div class="specs">
+          <pre>header_result() ::
+    {headers_complete, <a href="#t:parser/0">parser</a>()} |
+    {header, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}, <a href="#t:parser/0">parser</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:http_method/0">
+  <div class="detail-header">
+    <a href="#t:http_method/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">http_method()</h1>
+      <div class="specs">
+          <pre>http_method() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:http_reason/0">
+  <div class="detail-header">
+    <a href="#t:http_reason/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">http_reason()</h1>
+      <div class="specs">
+          <pre>http_reason() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:http_version/0">
+  <div class="detail-header">
+    <a href="#t:http_version/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">http_version()</h1>
+      <div class="specs">
+          <pre>http_version() :: {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:parser/0">
+  <div class="detail-header">
+    <a href="#t:parser/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">parser()</h1>
+      <div class="specs">
+          <pre>parser() :: #hparser{}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:parser_option/0">
+  <div class="detail-header">
+    <a href="#t:parser_option/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">parser_option()</h1>
+      <div class="specs">
+          <pre>parser_option() ::
+    request | response | auto |
+    {max_empty_lines, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()} |
+    {max_line_length, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:parser_options/0">
+  <div class="detail-header">
+    <a href="#t:parser_options/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">parser_options()</h1>
+      <div class="specs">
+          <pre>parser_options() :: [<a href="#t:parser_option/0">parser_option</a>()].
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:parser_result/0">
+  <div class="detail-header">
+    <a href="#t:parser_result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">parser_result()</h1>
+      <div class="specs">
+          <pre>parser_result() ::
+    {response, <a href="#t:http_version/0">http_version</a>(), <a href="#t:status/0">status</a>(), <a href="#t:http_reason/0">http_reason</a>(), <a href="#t:parser/0">parser</a>()} |
+    {request, <a href="#t:http_method/0">http_method</a>(), <a href="#t:uri/0">uri</a>(), <a href="#t:http_version/0">http_version</a>(), <a href="#t:parser/0">parser</a>()} |
+    {more, <a href="#t:parser/0">parser</a>()} |
+    <a href="#t:header_result/0">header_result</a>() |
+    <a href="#t:body_result/0">body_result</a>() |
+    {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:status/0">
+  <div class="detail-header">
+    <a href="#t:status/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">status()</h1>
+      <div class="specs">
+          <pre>status() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:uri/0">
+  <div class="detail-header">
+    <a href="#t:uri/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">uri()</h1>
+      <div class="specs">
+          <pre>uri() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="execute/1">
+  <div class="detail-header">
+    <a href="#execute/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">execute/1</h1>
+      <div class="specs">
+          <pre>execute(#hparser{}) -> <a href="#t:parser_result/0">parser_result</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Execute the parser with the current buffer.</p>
+  </section>
+</section>
+<section class="detail" id="execute/2">
+  <div class="detail-header">
+    <a href="#execute/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">execute/2</h1>
+      <div class="specs">
+          <pre>execute(#hparser{}, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> <a href="#t:parser_result/0">parser_result</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Execute the parser with the new buffer</p>
+  </section>
+</section>
+<section class="detail" id="get/2">
+  <div class="detail-header">
+    <a href="#get/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get/2</h1>
+      <div class="specs">
+          <pre>get(<a href="#t:parser/0">parser</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()]) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>retrieve a parser property. Properties are: - <code class="inline">buffer</code>: internal buffer of the parser (non parsed) - <code class="inline">state</code>: the current state (on_status, on_header, on_body, done) - <code class="inline">version</code>: HTTP version - <code class="inline">content_length</code>: content length header if any - <code class="inline">transfer_encoding</code>: transfer encoding header if any - <code class="inline">content_type</code>: content type header if any - <code class="inline">location</code>: location header if any - <code class="inline">connection</code>: connection header if any.</p>
+  </section>
+</section>
+<section class="detail" id="parse_response_version/2">
+  <div class="detail-header">
+    <a href="#parse_response_version/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_response_version/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="parser/0">
+  <div class="detail-header">
+    <a href="#parser/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parser/0</h1>
+      <div class="specs">
+          <pre>parser() -> <a href="#t:parser/0">parser</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Create a new HTTP parser. The parser will autodetect if the parded binary is a response or a request.</p>
+  </section>
+</section>
+<section class="detail" id="parser/1">
+  <div class="detail-header">
+    <a href="#parser/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parser/1</h1>
+      <div class="specs">
+          <pre>parser(<a href="#t:parser_options/0">parser_options</a>()) -> <a href="#t:parser/0">parser</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>create a new HTTP parser with options. By default the type of parsed binary will be detected.</p>
+<p> Available options:  <code class="inline">auto</code> : autodetect if the binary parsed is a response or a request (default). <code class="inline">response</code>: set the parser to parse a response <code class="inline">request</code>: set the parser to parse a request (server) <code class="inline">{max_line_lenght, Max}</code>: set the maximum size of a line parsed before we give up. <code class="inline">{max_lines_empty, Max}</code>: the maximum number of empty line we accept before the first line happen </p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

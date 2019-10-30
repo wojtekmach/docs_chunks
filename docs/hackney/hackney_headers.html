@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="hackney v1.15.2">
+    <title>hackney_headers — hackney v1.15.2</title>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-cb891fcdcc.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="hackney.html" class="sidebar-projectName">
+hackney      </a>
+      <h2 class="sidebar-projectVersion">
+        v1.15.2
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">hackney v1.15.2</small>
+hackney_headers      </h1>
+
+
+        <section id="moduledoc">
+<p>module to manipulate HTTP headers</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:disposition/0">disposition()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:headers/0">headers()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#content_disposition/1">content_disposition/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse a content disposition.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#content_type/1">content_type/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse a content type.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete/2">delete/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Delete the header corresponding to key if it is present.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fold/3">fold/3</a>
+  </div>
+    <div class="summary-synopsis"><p>fold the list of headers</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_value/2">get_value/2</a>
+  </div>
+    <div class="summary-synopsis"><p>get the value of the header</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_value/3">get_value/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#header_value/2">header_value/2</a>
+  </div>
+    <div class="summary-synopsis"><p>join value and params in a binary</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#insert/3">insert/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Insert the pair into the headers, merging with any pre-existing key. A merge is done with Value = V0 ++ &quot;, &quot; ++ V1.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#insert/4">insert/4</a>
+  </div>
+    <div class="summary-synopsis"><p>same as <a href="#insert/3"><code class="inline">insert/3</code></a> but allows to add params to the header value.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_header/2">make_header/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Create a binary header</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_header/3">make_header/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/0">new/0</a>
+  </div>
+    <div class="summary-synopsis"><p>initialise an header dict</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new/1">new/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse/2">parse/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Semantically parse headers.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#store/3">store/3</a>
+  </div>
+    <div class="summary-synopsis"><p>store the pair into the headers, replacing any pre-existing key.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_binary/1">to_binary/1</a>
+  </div>
+    <div class="summary-synopsis"><p>return all the headers as a binary that can be sent over the wire.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_list/1">to_list/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update/2">update/2</a>
+  </div>
+    <div class="summary-synopsis"><p>extend the headers with a new list of <code class="inline">{Key, Value}</code> pair.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:disposition/0">
+  <div class="detail-header">
+    <a href="#t:disposition/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">disposition()</h1>
+      <div class="specs">
+          <pre>disposition() :: {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), [{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}]}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:headers/0">
+  <div class="detail-header">
+    <a href="#t:headers/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">headers()</h1>
+      <div class="specs">
+          <pre>headers() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="content_disposition/1">
+  <div class="detail-header">
+    <a href="#content_disposition/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">content_disposition/1</h1>
+      <div class="specs">
+          <pre>content_disposition(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> <a href="#t:disposition/0">disposition</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parse a content disposition.</p>
+  </section>
+</section>
+<section class="detail" id="content_type/1">
+  <div class="detail-header">
+    <a href="#content_type/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">content_type/1</h1>
+      <div class="specs">
+          <pre>content_type(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parse a content type.</p>
+<p> We lowercase the charset header as we know it&#39;s case insensitive.</p>
+  </section>
+</section>
+<section class="detail" id="delete/2">
+  <div class="detail-header">
+    <a href="#delete/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete/2</h1>
+  </div>
+  <section class="docstring">
+<p>Delete the header corresponding to key if it is present.</p>
+  </section>
+</section>
+<section class="detail" id="fold/3">
+  <div class="detail-header">
+    <a href="#fold/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fold/3</h1>
+  </div>
+  <section class="docstring">
+<p>fold the list of headers</p>
+  </section>
+</section>
+<section class="detail" id="get_value/2">
+  <div class="detail-header">
+    <a href="#get_value/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_value/2</h1>
+  </div>
+  <section class="docstring">
+<p>get the value of the header</p>
+  </section>
+</section>
+<section class="detail" id="get_value/3">
+  <div class="detail-header">
+    <a href="#get_value/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_value/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="header_value/2">
+  <div class="detail-header">
+    <a href="#header_value/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">header_value/2</h1>
+  </div>
+  <section class="docstring">
+<p>join value and params in a binary</p>
+  </section>
+</section>
+<section class="detail" id="insert/3">
+  <div class="detail-header">
+    <a href="#insert/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">insert/3</h1>
+  </div>
+  <section class="docstring">
+<p>Insert the pair into the headers, merging with any pre-existing key. A merge is done with Value = V0 ++ &quot;, &quot; ++ V1.</p>
+  </section>
+</section>
+<section class="detail" id="insert/4">
+  <div class="detail-header">
+    <a href="#insert/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">insert/4</h1>
+  </div>
+  <section class="docstring">
+<p>same as <a href="#insert/3"><code class="inline">insert/3</code></a> but allows to add params to the header value.</p>
+  </section>
+</section>
+<section class="detail" id="make_header/2">
+  <div class="detail-header">
+    <a href="#make_header/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_header/2</h1>
+  </div>
+  <section class="docstring">
+<p>Create a binary header</p>
+  </section>
+</section>
+<section class="detail" id="make_header/3">
+  <div class="detail-header">
+    <a href="#make_header/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_header/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="new/0">
+  <div class="detail-header">
+    <a href="#new/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new/0</h1>
+      <div class="specs">
+          <pre>new() -> <a href="#t:headers/0">headers</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>initialise an header dict</p>
+  </section>
+</section>
+<section class="detail" id="new/1">
+  <div class="detail-header">
+    <a href="#new/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new/1</h1>
+      <div class="specs">
+          <pre>new(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) -> <a href="#t:headers/0">headers</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="parse/2">
+  <div class="detail-header">
+    <a href="#parse/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse/2</h1>
+      <div class="specs">
+          <pre>parse(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>() | <a href="#t:headers/0">headers</a>()) ->
+         <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>() | undefined | {error, badarg}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Semantically parse headers.</p>
+<p> When the value isn&#39;t found, a proper default value for the type returned is used as a return value.</p>
+  </section>
+</section>
+<section class="detail" id="store/3">
+  <div class="detail-header">
+    <a href="#store/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">store/3</h1>
+  </div>
+  <section class="docstring">
+<p>store the pair into the headers, replacing any pre-existing key.</p>
+  </section>
+</section>
+<section class="detail" id="to_binary/1">
+  <div class="detail-header">
+    <a href="#to_binary/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_binary/1</h1>
+  </div>
+  <section class="docstring">
+<p>return all the headers as a binary that can be sent over the wire.</p>
+  </section>
+</section>
+<section class="detail" id="to_list/1">
+  <div class="detail-header">
+    <a href="#to_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_list/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="update/2">
+  <div class="detail-header">
+    <a href="#update/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update/2</h1>
+  </div>
+  <section class="docstring">
+<p>extend the headers with a new list of <code class="inline">{Key, Value}</code> pair.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

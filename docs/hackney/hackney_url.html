@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="hackney v1.15.2">
+    <title>hackney_url — hackney v1.15.2</title>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-cb891fcdcc.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="hackney.html" class="sidebar-projectName">
+hackney      </a>
+      <h2 class="sidebar-projectVersion">
+        v1.15.2
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">hackney v1.15.2</small>
+hackney_url      </h1>
+
+
+        <section id="moduledoc">
+<p>module to manage URLs.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:hackney_url/0">hackney_url()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:qs_opt/0">qs_opt()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:qs_vals/0">qs_vals()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fix_path/1">fix_path/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#idnconvert_hostname/1">idnconvert_hostname/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#make_url/3">make_url/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Construct an URL from a base URL, a path and a list of properties to give to the URL.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#normalize/1">normalize/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Normalizes the encoding of an URL. Use the <code class="inline">hackney_url:pathencode/1</code> to encode an URL.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#normalize/2">normalize/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Normalizes the encoding of an URL.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_qs/1">parse_qs/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_url/1">parse_url/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Parse an URL and return a #hackney_url record.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pathencode/1">pathencode/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#qs/1">qs/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Encode query properties to binary.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#qs/2">qs/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Encode query properties to binary. Opts are passed to <a href="#urlencode/2"><code class="inline">urlencode/2</code></a></p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#transport_scheme/1">transport_scheme/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unparse_url/1">unparse_url/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#urldecode/1">urldecode/1</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#urldecode/2">urldecode/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Decode an URL encoded binary. The second argument specifies how to handle percent characters that are not followed by two valid hex characters. Use <code class="inline">skip</code> to ignore such errors, if <code class="inline">crash</code> is used the function will fail with the reason <code class="inline">badarg</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#urlencode/1">urlencode/1</a>
+  </div>
+    <div class="summary-synopsis"><p>URL encode a string binary.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#urlencode/2">urlencode/2</a>
+  </div>
+    <div class="summary-synopsis"><p>URL encode a string binary. The <code class="inline">noplus</code> option disables the default behaviour of quoting space characters, <code class="inline">\s</code>, as <code class="inline">+</code>. The <code class="inline">upper</code> option overrides the default behaviour of writing hex numbers using lowecase letters to using uppercase letters instead.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:hackney_url/0">
+  <div class="detail-header">
+    <a href="#t:hackney_url/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">hackney_url()</h1>
+      <div class="specs">
+          <pre>hackney_url() :: #hackney_url{}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:qs_opt/0">
+  <div class="detail-header">
+    <a href="#t:qs_opt/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">qs_opt()</h1>
+      <div class="specs">
+          <pre>qs_opt() :: noplus | upper.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:qs_vals/0">
+  <div class="detail-header">
+    <a href="#t:qs_vals/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">qs_vals()</h1>
+      <div class="specs">
+          <pre>qs_vals() :: [{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | true}].
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="fix_path/1">
+  <div class="detail-header">
+    <a href="#fix_path/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fix_path/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="idnconvert_hostname/1">
+  <div class="detail-header">
+    <a href="#idnconvert_hostname/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">idnconvert_hostname/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="make_url/3">
+  <div class="detail-header">
+    <a href="#make_url/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">make_url/3</h1>
+      <div class="specs">
+          <pre>make_url(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="#t:qs_vals/0">qs_vals</a>()) ->
+            <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Construct an URL from a base URL, a path and a list of properties to give to the URL.</p>
+  </section>
+</section>
+<section class="detail" id="normalize/1">
+  <div class="detail-header">
+    <a href="#normalize/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">normalize/1</h1>
+      <div class="specs">
+          <pre>normalize(URL) -> NormalizedUrl
+             when
+                 URL :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>() | <a href="#t:hackney_url/0">hackney_url</a>(),
+                 NormalizedUrl :: <a href="#t:hackney_url/0">hackney_url</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Normalizes the encoding of an URL. Use the <code class="inline">hackney_url:pathencode/1</code> to encode an URL.</p>
+  </section>
+</section>
+<section class="detail" id="normalize/2">
+  <div class="detail-header">
+    <a href="#normalize/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">normalize/2</h1>
+      <div class="specs">
+          <pre>normalize(URL, Fun) -> NormalizedUrl
+             when
+                 URL :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>() | <a href="#t:hackney_url/0">hackney_url</a>(),
+                 Fun :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>(),
+                 NormalizedUrl :: <a href="#t:hackney_url/0">hackney_url</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Normalizes the encoding of an URL.</p>
+  </section>
+</section>
+<section class="detail" id="parse_qs/1">
+  <div class="detail-header">
+    <a href="#parse_qs/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_qs/1</h1>
+      <div class="specs">
+          <pre>parse_qs(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> <a href="#t:qs_vals/0">qs_vals</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="parse_url/1">
+  <div class="detail-header">
+    <a href="#parse_url/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">parse_url/1</h1>
+      <div class="specs">
+          <pre>parse_url(URL :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) -> <a href="#t:hackney_url/0">hackney_url</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Parse an URL and return a #hackney_url record.</p>
+  </section>
+</section>
+<section class="detail" id="pathencode/1">
+  <div class="detail-header">
+    <a href="#pathencode/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pathencode/1</h1>
+      <div class="specs">
+          <pre>pathencode(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="qs/1">
+  <div class="detail-header">
+    <a href="#qs/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">qs/1</h1>
+      <div class="specs">
+          <pre>qs(<a href="#t:qs_vals/0">qs_vals</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Encode query properties to binary.</p>
+  </section>
+</section>
+<section class="detail" id="qs/2">
+  <div class="detail-header">
+    <a href="#qs/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">qs/2</h1>
+      <div class="specs">
+          <pre>qs(<a href="#t:qs_vals/0">qs_vals</a>(), [<a href="#t:qs_opt/0">qs_opt</a>()]) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Encode query properties to binary. Opts are passed to <a href="#urlencode/2"><code class="inline">urlencode/2</code></a></p>
+  </section>
+</section>
+<section class="detail" id="transport_scheme/1">
+  <div class="detail-header">
+    <a href="#transport_scheme/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">transport_scheme/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="unparse_url/1">
+  <div class="detail-header">
+    <a href="#unparse_url/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unparse_url/1</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="urldecode/1">
+  <div class="detail-header">
+    <a href="#urldecode/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">urldecode/1</h1>
+      <div class="specs">
+          <pre>urldecode(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="urldecode/2">
+  <div class="detail-header">
+    <a href="#urldecode/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">urldecode/2</h1>
+      <div class="specs">
+          <pre>urldecode(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), crash | skip) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Decode an URL encoded binary. The second argument specifies how to handle percent characters that are not followed by two valid hex characters. Use <code class="inline">skip</code> to ignore such errors, if <code class="inline">crash</code> is used the function will fail with the reason <code class="inline">badarg</code>.</p>
+  </section>
+</section>
+<section class="detail" id="urlencode/1">
+  <div class="detail-header">
+    <a href="#urlencode/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">urlencode/1</h1>
+      <div class="specs">
+          <pre>urlencode(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | string()) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>URL encode a string binary.</p>
+  </section>
+</section>
+<section class="detail" id="urlencode/2">
+  <div class="detail-header">
+    <a href="#urlencode/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">urlencode/2</h1>
+      <div class="specs">
+          <pre>urlencode(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | string(), [<a href="#t:qs_opt/0">qs_opt</a>()]) -> <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>URL encode a string binary. The <code class="inline">noplus</code> option disables the default behaviour of quoting space characters, <code class="inline">\s</code>, as <code class="inline">+</code>. The <code class="inline">upper</code> option overrides the default behaviour of writing hex numbers using lowecase letters to using uppercase letters instead.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

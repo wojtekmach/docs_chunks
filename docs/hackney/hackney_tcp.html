@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="hackney v1.15.2">
+    <title>hackney_tcp — hackney v1.15.2</title>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-cb891fcdcc.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="hackney.html" class="sidebar-projectName">
+hackney      </a>
+      <h2 class="sidebar-projectVersion">
+        v1.15.2
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">hackney v1.15.2</small>
+hackney_tcp      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#close/1">close/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Close a TCP socket.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connect/3">connect/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connect/4">connect/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#controlling_process/2">controlling_process/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Assign a new controlling process Pid to Socket.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#messages/1">messages/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Atoms used to identify messages in {active, once | true} mode.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#peername/1">peername/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Return the address and port for the other end of a connection.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#recv/2">recv/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#recv/3">recv/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Receive a packet from a socket in passive mode.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#send/2">send/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Send a packet on a socket.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#setopts/2">setopts/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Set one or more options for a socket.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#shutdown/2">shutdown/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Immediately close a socket in one or two directions.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sockname/1">sockname/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Get the local address and port of a socket</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="close/1">
+  <div class="detail-header">
+    <a href="#close/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">close/1</h1>
+      <div class="specs">
+          <pre>close(inet:socket()) -> ok.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Close a TCP socket.</p>
+  </section>
+</section>
+<section class="detail" id="connect/3">
+  <div class="detail-header">
+    <a href="#connect/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">connect/3</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="connect/4">
+  <div class="detail-header">
+    <a href="#connect/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">connect/4</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="controlling_process/2">
+  <div class="detail-header">
+    <a href="#controlling_process/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">controlling_process/2</h1>
+      <div class="specs">
+          <pre>controlling_process(inet:socket(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()) ->
+                       ok | {error, closed | not_owner | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Assign a new controlling process Pid to Socket.</p>
+  </section>
+</section>
+<section class="detail" id="messages/1">
+  <div class="detail-header">
+    <a href="#messages/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">messages/1</h1>
+  </div>
+  <section class="docstring">
+<p>Atoms used to identify messages in {active, once | true} mode.</p>
+  </section>
+</section>
+<section class="detail" id="peername/1">
+  <div class="detail-header">
+    <a href="#peername/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">peername/1</h1>
+      <div class="specs">
+          <pre>peername(inet:socket()) ->
+            {ok, {inet:ip_address(), inet:port_number()}} |
+            {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Return the address and port for the other end of a connection.</p>
+  </section>
+</section>
+<section class="detail" id="recv/2">
+  <div class="detail-header">
+    <a href="#recv/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">recv/2</h1>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="recv/3">
+  <div class="detail-header">
+    <a href="#recv/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">recv/3</h1>
+      <div class="specs">
+          <pre>recv(inet:socket(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">timeout</a>()) ->
+        {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()} | {error, closed | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Receive a packet from a socket in passive mode.</p>
+  </section>
+</section>
+<section class="detail" id="send/2">
+  <div class="detail-header">
+    <a href="#send/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">send/2</h1>
+      <div class="specs">
+          <pre>send(inet:socket(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">iolist</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Send a packet on a socket.</p>
+  </section>
+</section>
+<section class="detail" id="setopts/2">
+  <div class="detail-header">
+    <a href="#setopts/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">setopts/2</h1>
+      <div class="specs">
+          <pre>setopts(inet:socket(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Set one or more options for a socket.</p>
+  </section>
+</section>
+<section class="detail" id="shutdown/2">
+  <div class="detail-header">
+    <a href="#shutdown/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">shutdown/2</h1>
+      <div class="specs">
+          <pre>shutdown(inet:socket(), read | write | read_write) -> ok.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Immediately close a socket in one or two directions.</p>
+  </section>
+</section>
+<section class="detail" id="sockname/1">
+  <div class="detail-header">
+    <a href="#sockname/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sockname/1</h1>
+      <div class="specs">
+          <pre>sockname(inet:socket()) ->
+            {ok, {inet:ip_address(), inet:port_number()}} |
+            {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Get the local address and port of a socket</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

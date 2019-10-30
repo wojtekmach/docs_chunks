@@ -26,7 +26,7 @@ defmodule DocsChunks.MixProject do
   defp aliases() do
     [
       all_docs: [
-        "docs", "telemetry_docs", "hex_core_docs", "brod_docs", "otp_docs"
+        "docs", "telemetry_docs", "hex_core_docs", "brod_docs", "hackney_docs", "otp_docs"
       ],
       docs: [
         "escript.build",
@@ -41,29 +41,25 @@ defmodule DocsChunks.MixProject do
         "otp",
         "cmd ex_doc stdlib 22.1.4 ~/.asdf/installs/erlang/22.1.4/lib/stdlib-3.10/ebin/ --main array --output docs/stdlib"
       ],
-      telemetry_chunks: [
-        "escript.build",
-        &telemetry_chunks/1
-      ],
+      telemetry_chunks: ["escript.build", &telemetry_chunks/1],
       telemetry_docs: [
         "telemetry_chunks",
         "cmd ex_doc telemetry 0.4.0 ../telemetry/_build/default/lib/telemetry/ebin --main telemetry --output docs/telemetry -u https://github.com/beam-telemetry/telemetry --source-ref v0.4.0 --source-root ../telemetry"
       ],
-      hex_core_chunks: [
-        "escript.build",
-        &hex_core_chunks/1
-      ],
+      hex_core_chunks: ["escript.build", &hex_core_chunks/1],
       hex_core_docs: [
         "hex_core_chunks",
         "cmd ex_doc hex_core 0.6.1 ../hex_core/_build/default/lib/hex_core/ebin --main hex_core --output docs/hex_core"
       ],
-      brod_chunks: [
-        "escript.build",
-        &brod_chunks/1
-      ],
+      brod_chunks: ["escript.build", &brod_chunks/1],
       brod_docs: [
         "brod_chunks",
         "cmd ex_doc brod master ../brod/_build/default/lib/brod/ebin --main brod --output docs/brod"
+      ],
+      hackney_chunks: ["escript.build", &hackney_chunks/1],
+      hackney_docs: [
+        "hackney_chunks",
+        "cmd ex_doc hackney 1.15.2 ../hackney/_build/default/lib/hackney/ebin --main hackney --output docs/hackney"
       ]
     ]
   end
@@ -73,6 +69,8 @@ defmodule DocsChunks.MixProject do
   defp hex_core_chunks(_), do: docs_chunks("../hex_core")
 
   defp brod_chunks(_), do: docs_chunks("../brod")
+
+  defp hackney_chunks(_), do: docs_chunks("../hackney")
 
   defp docs_chunks(path) do
     {_, 0} = System.cmd("rebar3", ~w(compile), cd: path, into: IO.stream(:stdio, :line))
