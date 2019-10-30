@@ -1,0 +1,2808 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="brod vmaster">
+    <title>brod — brod vmaster</title>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-9ec60c9b9c.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="brod.html" class="sidebar-projectName">
+brod      </a>
+      <h2 class="sidebar-projectVersion">
+        vmaster
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">brod vmaster</small>
+brod      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:batch_input/0">batch_input()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:bootstrap/0">bootstrap()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:call_ref/0">call_ref()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:cg/0">cg()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:cg_protocol_type/0">cg_protocol_type()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:client/0">client()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:client_config/0">client_config()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:client_id/0">client_id()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:compression/0">compression()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:conn_config/0">conn_config()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:connection/0">connection()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:consumer_config/0">consumer_config()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:consumer_option/0">consumer_option()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:consumer_options/0">consumer_options()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:endpoint/0">endpoint()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:error_code/0">error_code()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fetch_opts/0">fetch_opts()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fold_acc/0">fold_acc()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fold_fun/1">fold_fun(var)</a>
+  </div>
+    <div class="summary-synopsis"><p> fold always returns when reaches the high watermark offset fold also returns when any of the limits is hit</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fold_limits/0">fold_limits()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fold_result/0">fold_result()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:fold_stop_reason/0">fold_stop_reason()</a>
+  </div>
+    <div class="summary-synopsis"><p> OffsetToContinue: begin offset for the next fold call</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:group_config/0">group_config()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:group_generation_id/0">group_generation_id()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:group_id/0">group_id()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:group_member/0">group_member()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:group_member_id/0">group_member_id()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:hostname/0">hostname()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:key/0">key()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:message/0">message()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:message_set/0">message_set()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:msg_input/0">msg_input()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:msg_ts/0">msg_ts()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:offset/0">offset()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:offset_time/0">offset_time()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:partition/0">partition()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:partition_assignment/0">partition_assignment()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:partition_fun/0">partition_fun()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:partitioner/0">partitioner()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:portnum/0">portnum()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:produce_ack_cb/0">produce_ack_cb()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:produce_reply/0">produce_reply()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:produce_result/0">produce_result()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:producer_config/0">producer_config()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:received_assignments/0">received_assignments()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:topic/0">topic()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:topic_config/0">topic_config()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:topic_partition/0">topic_partition()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:value/0">value()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connect_group_coordinator/3">connect_group_coordinator/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Connect to consumer group coordinator broker. Done in steps: 1) connect to any of the given bootstrap ednpoints; 2) send group_coordinator_request to resolve group coordinator endpoint;; 3) connect to the resolved endpoint and return the connection pid</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#connect_leader/4">connect_leader/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Connect partition leader.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#consume_ack/2">consume_ack/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#consume_ack/4">consume_ack/4</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_topics/3">create_topics/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="#create_topics/4"><code class="inline">create_topics(Hosts, TopicsConfigs, RequestConfigs, [])</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_topics/4">create_topics/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Create topic(s) in kafka Return the message body of <code class="inline">create_topics</code>, response. See <code class="inline">kpro_schema.erl</code> for struct details</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_topics/3">delete_topics/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="#delete_topics/4"><code class="inline">delete_topics(Hosts, Topics, Timeout, [])</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_topics/4">delete_topics/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Delete topic(s) from kafka Return the message body of <code class="inline">delete_topics</code>, response. See <code class="inline">kpro_schema.erl</code> for struct details</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#describe_groups/3">describe_groups/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Describe consumer groups. The given consumer group IDs should be all managed by the coordinator-broker running at the given endpoint. Otherwise error codes will be returned in the result structs. Return <code class="inline">describe_groups</code> response body field named <code class="inline">groups</code>. See <code class="inline">kpro_schema.erl</code> for struct details</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fetch/4">fetch/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Fetch a single message set from the given topic-partition. The first arg can either be an already established connection to leader, or <code class="inline">{Endpoints, ConnConfig}</code> so to establish a new connection before fetch.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fetch/5">fetch/5</a>
+  </div>
+    <div class="summary-synopsis"><p>Fetch a single message set from the given topic-partition. The first arg can either be an already established connection to leader, or <code class="inline">{Endpoints, ConnConfig}</code> so to establish a new connection before fetch.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fetch/7">fetch/7</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fetch/8">fetch/8</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fetch_committed_offsets/2">fetch_committed_offsets/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Same as <a href="#fetch_committed_offsets/3"><code class="inline">fetch_committed_offsets/3</code></a>, but works with a started <code class="inline">brod_client</code></p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fetch_committed_offsets/3">fetch_committed_offsets/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Fetch committed offsets for ALL topics in the given consumer group. Return the <code class="inline">responses</code> field of the <code class="inline">offset_fetch</code> response. See <code class="inline">kpro_schema.erl</code> for struct details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fold/8">fold/8</a>
+  </div>
+    <div class="summary-synopsis"><p>Fold through messages in a partition. Works like <code class="inline">lists:foldl/2</code> but with below stop conditions: <em> Always return after reach high watermark offset </em> Return after the given message count limit is reached <em> Return after the given kafka offset is reached. </em> Return if the <code class="inline">FoldFun</code> returns an <code class="inline">{error, Reason}</code> tuple. NOTE: Exceptions from evaluating <code class="inline">FoldFun</code> are not caught.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_consumer/3">get_consumer/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_metadata/1">get_metadata/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Fetch broker metadata Return the message body of <code class="inline">metadata</code> response. See <code class="inline">kpro_schema.erl</code> for details</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_metadata/2">get_metadata/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Fetch broker/topic metadata Return the message body of <code class="inline">metadata</code> response. See <code class="inline">kpro_schema.erl</code> for struct details</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_metadata/3">get_metadata/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Fetch broker/topic metadata Return the message body of <code class="inline">metadata</code> response. See <code class="inline">kpro_schema.erl</code> for struct details</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_partitions_count/2">get_partitions_count/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Get number of partitions for a given topic. The higher level producers may need the partition numbers to find the partition producer pid --- if the number of partitions is not statically configured for them. It is up to the callers how they want to distribute their data (e.g. random, roundrobin or consistent-hashing) to the partitions.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_producer/3">get_producer/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="%60%60"><code class="inline">brod_client:get_producer / 3</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_all_groups/2">list_all_groups/2</a>
+  </div>
+    <div class="summary-synopsis"><p>List ALL consumer groups in the given kafka cluster. NOTE: Exception if failed to connect any of the coordinator brokers.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_groups/2">list_groups/2</a>
+  </div>
+    <div class="summary-synopsis"><p>List consumer groups in the given group coordinator broker.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#produce/2">produce/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <code class="inline">produce(Pid, 0, &lt;&lt;&gt;&gt;, Value)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#produce/3">produce/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Produce one message if Value is binary or iolist, Or send a batch if Value is a (nested) kv-list or a list of maps, in this case Key is discarded (only the keys in kv-list are sent to kafka). The pid should be a partition producer pid, NOT client pid. The return value is a call reference of type <code class="inline">call_ref()</code>, so the caller can used it to expect (match) a <code class="inline">#brod_produce_reply{result = brod_produce_req_acked}</code> message after the produce request has been acked by kafka.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#produce/5">produce/5</a>
+  </div>
+    <div class="summary-synopsis"><p>Produce one message if Value is binary or iolist, Or send a batch if Value is a (nested) kv-list or a list of maps, in this case Key is used only for partitioning, or discarded if the 3rd arg is a partition number instead of a partitioner callback. This function first lookup the producer pid, then call <a href="#produce/3"><code class="inline">produce/3</code></a> to do the real work. The return value is a call reference of type <code class="inline">call_ref()</code>, so the caller can used it to expect (match) a <code class="inline">#brod_produce_reply{result = brod_produce_req_acked}</code> message after the produce request has been acked by kafka.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#produce_cb/4">produce_cb/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Same as <a href="#produce/3"><code class="inline">produce/3</code></a> only the ack is not delivered as a message, instead, the callback is evaluated by producer worker when ack is received from kafka.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#produce_cb/6">produce_cb/6</a>
+  </div>
+    <div class="summary-synopsis"><p>Same as <a href="#produce/5"><code class="inline">produce/5</code></a> only the ack is not delivered as a message, instead, the callback is evaluated by producer worker when ack is received from kafka. Return the partition to caller as <code class="inline">{ok, Partition}</code> for caller to correlate the callback when the 3rd arg is not a partition number.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#produce_no_ack/5">produce_no_ack/5</a>
+  </div>
+    <div class="summary-synopsis"><p>Find the partition worker and send message without any ack. NOTE: This call has no back-pressure to the caller, excessive usage may cause beam to run out of memory.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#produce_sync/2">produce_sync/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <code class="inline">produce_sync(Pid, 0, &lt;&lt;&gt;&gt;, Value)</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#produce_sync/3">produce_sync/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Sync version of produce/3 This function will not return until a response is received from kafka, however if producer is started with required_acks set to 0, this function will return onece the messages is buffered in the producer process.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#produce_sync/5">produce_sync/5</a>
+  </div>
+    <div class="summary-synopsis"><p>Sync version of produce/5 This function will not return until a response is received from kafka, however if producer is started with required_acks set to 0, this function will return once the messages are buffered in the producer process.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#produce_sync_offset/5">produce_sync_offset/5</a>
+  </div>
+    <div class="summary-synopsis"><p>Version of produce_sync/5 that returns the offset assigned by Kafka If producer is started with required_acks set to 0, the offset will be <code class="inline">?BROD_PRODUCE_UNKNOWN_OFFSET</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resolve_offset/3">resolve_offset/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="#resolve_offset/5"><code class="inline">resolve_offset(Hosts, Topic, Partition, latest, 1)</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resolve_offset/4">resolve_offset/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolve semantic offset or timestamp to real offset.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#resolve_offset/5">resolve_offset/5</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolve semantic offset or timestamp to real offset.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/0">start/0</a>
+  </div>
+    <div class="summary-synopsis"><p>Start brod application.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start/2">start/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Application behaviour callback</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_client/1">start_client/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="#start_client/2"><code class="inline">start_client(BootstrapEndpoints, brod_default_client)</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_client/2">start_client/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="#start_client/3"><code class="inline">start_client(BootstrapEndpoints, ClientId, [])</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_client/3">start_client/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Start a client.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_consumer/3">start_consumer/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Dynamically start a topic consumer.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link_client/1">start_link_client/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="%60start_link_client/2%60"><code class="inline">start_link_client(BootstrapEndpoints, brod_default_client)</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link_client/2">start_link_client/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="#start_link_client/3"><code class="inline">start_link_client(BootstrapEndpoints, ClientId, [])</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link_client/3">start_link_client/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link_group_subscriber/7">start_link_group_subscriber/7</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="%60%60"><code class="inline">brod_group_subscriber:start_link / 7</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link_group_subscriber/8">start_link_group_subscriber/8</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="%60%60"><code class="inline">brod_group_subscriber:start_link / 8</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link_group_subscriber_v2/1">start_link_group_subscriber_v2/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Start group_subscriber_v2</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link_topic_subscriber/5">start_link_topic_subscriber/5</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="%60start_link_topic_subscriber/6%60"><code class="inline">start_link_topic_subscriber(Client, Topic, all, ConsumerConfig, CbModule, CbInitArg)</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link_topic_subscriber/6">start_link_topic_subscriber/6</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="%60start_link_topic_subscriber/7%60"><code class="inline">start_link_topic_subscriber(Client, Topic, Partitions, ConsumerConfig, message, CbModule, CbInitArg)</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link_topic_subscriber/7">start_link_topic_subscriber/7</a>
+  </div>
+    <div class="summary-synopsis"><p>Equivalent to <a href="%60%60"><code class="inline">brod_topic_subscriber:start_link / 7</code></a>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_producer/3">start_producer/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Dynamically start a per-topic producer.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/0">stop/0</a>
+  </div>
+    <div class="summary-synopsis"><p>Stop brod application.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/1">stop/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Application behaviour callback</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop_client/1">stop_client/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Stop a client.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#subscribe/3">subscribe/3</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#subscribe/5">subscribe/5</a>
+  </div>
+    <div class="summary-synopsis"><p>Subscribe data stream from the given topic-partition. If {error, Reason} is returned, the caller should perhaps retry later. {ok, ConsumerPid} is returned if success, the caller may want to monitor the consumer pid to trigger a re-subscribe in case it crashes.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sync_produce_request/1">sync_produce_request/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Block wait for sent produced request to be acked by kafka.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sync_produce_request/2">sync_produce_request/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sync_produce_request_offset/1">sync_produce_request_offset/1</a>
+  </div>
+    <div class="summary-synopsis"><p>As sync_produce_request_offset/1, but also returning assigned offset See produce_sync_offset/5.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sync_produce_request_offset/2">sync_produce_request_offset/2</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unsubscribe/1">unsubscribe/1</a>
+  </div>
+    <div class="summary-synopsis"><p>Unsubscribe the current subscriber. Assuming the subscriber is self().</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unsubscribe/2">unsubscribe/2</a>
+  </div>
+    <div class="summary-synopsis"><p>Unsubscribe the current subscriber.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unsubscribe/3">unsubscribe/3</a>
+  </div>
+    <div class="summary-synopsis"><p>Unsubscribe the current subscriber. Assuming the subscriber is self().</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unsubscribe/4">unsubscribe/4</a>
+  </div>
+    <div class="summary-synopsis"><p>Unsubscribe the current subscriber.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:batch_input/0">
+  <div class="detail-header">
+    <a href="#t:batch_input/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">batch_input()</h1>
+      <div class="specs">
+          <pre>batch_input() :: [<a href="#t:msg_input/0">msg_input</a>()].
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:bootstrap/0">
+  <div class="detail-header">
+    <a href="#t:bootstrap/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">bootstrap()</h1>
+      <div class="specs">
+          <pre>bootstrap() :: [<a href="#t:endpoint/0">endpoint</a>()] | {[<a href="#t:endpoint/0">endpoint</a>()], <a href="#t:client_config/0">client_config</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:call_ref/0">
+  <div class="detail-header">
+    <a href="#t:call_ref/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">call_ref()</h1>
+      <div class="specs">
+          <pre>call_ref() :: #brod_call_ref{}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:cg/0">
+  <div class="detail-header">
+    <a href="#t:cg/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">cg()</h1>
+      <div class="specs">
+          <pre>cg() :: #brod_cg{}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:cg_protocol_type/0">
+  <div class="detail-header">
+    <a href="#t:cg_protocol_type/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">cg_protocol_type()</h1>
+      <div class="specs">
+          <pre>cg_protocol_type() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:client/0">
+  <div class="detail-header">
+    <a href="#t:client/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">client()</h1>
+      <div class="specs">
+          <pre>client() :: <a href="#t:client_id/0">client_id</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:client_config/0">
+  <div class="detail-header">
+    <a href="#t:client_config/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">client_config()</h1>
+      <div class="specs">
+          <pre>client_config() :: brod_client:config().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:client_id/0">
+  <div class="detail-header">
+    <a href="#t:client_id/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">client_id()</h1>
+      <div class="specs">
+          <pre>client_id() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:compression/0">
+  <div class="detail-header">
+    <a href="#t:compression/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">compression()</h1>
+      <div class="specs">
+          <pre>compression() :: no_compression | gzip | snappy.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:conn_config/0">
+  <div class="detail-header">
+    <a href="#t:conn_config/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">conn_config()</h1>
+      <div class="specs">
+          <pre>conn_config() :: [{<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}] | kpro:<a href="#t:conn_config/0">conn_config</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:connection/0">
+  <div class="detail-header">
+    <a href="#t:connection/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">connection()</h1>
+      <div class="specs">
+          <pre>connection() :: kpro:<a href="#t:connection/0">connection</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:consumer_config/0">
+  <div class="detail-header">
+    <a href="#t:consumer_config/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">consumer_config()</h1>
+      <div class="specs">
+          <pre>consumer_config() :: brod_consumer:config().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:consumer_option/0">
+  <div class="detail-header">
+    <a href="#t:consumer_option/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">consumer_option()</h1>
+      <div class="specs">
+          <pre>consumer_option() ::
+    begin_offset | min_bytes | max_bytes | max_wait_time |
+    sleep_timeout | prefetch_count | prefetch_bytes |
+    offset_reset_policy | size_stat_window.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:consumer_options/0">
+  <div class="detail-header">
+    <a href="#t:consumer_options/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">consumer_options()</h1>
+      <div class="specs">
+          <pre>consumer_options() :: [{<a href="#t:consumer_option/0">consumer_option</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()}].
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:endpoint/0">
+  <div class="detail-header">
+    <a href="#t:endpoint/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">endpoint()</h1>
+      <div class="specs">
+          <pre>endpoint() :: {<a href="#t:hostname/0">hostname</a>(), <a href="#t:portnum/0">portnum</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:error_code/0">
+  <div class="detail-header">
+    <a href="#t:error_code/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">error_code()</h1>
+      <div class="specs">
+          <pre>error_code() :: kpro:<a href="#t:error_code/0">error_code</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:fetch_opts/0">
+  <div class="detail-header">
+    <a href="#t:fetch_opts/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">fetch_opts()</h1>
+      <div class="specs">
+          <pre>fetch_opts() :: kpro:<a href="#t:fetch_opts/0">fetch_opts</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:fold_acc/0">
+  <div class="detail-header">
+    <a href="#t:fold_acc/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">fold_acc()</h1>
+      <div class="specs">
+          <pre>fold_acc() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:fold_fun/1">
+  <div class="detail-header">
+    <a href="#t:fold_fun/1" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">fold_fun(var)</h1>
+      <div class="specs">
+          <pre>fold_fun(Acc) ::
+    fun((<a href="#t:message/0">message</a>(), Acc) -> {ok, Acc} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}).
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> fold always returns when reaches the high watermark offset fold also returns when any of the limits is hit</p>
+  </section>
+</section>
+<section class="detail" id="t:fold_limits/0">
+  <div class="detail-header">
+    <a href="#t:fold_limits/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">fold_limits()</h1>
+      <div class="specs">
+          <pre>fold_limits() ::
+    #{message_count => <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), reach_offset => <a href="#t:offset/0">offset</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:fold_result/0">
+  <div class="detail-header">
+    <a href="#t:fold_result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">fold_result()</h1>
+      <div class="specs">
+          <pre>fold_result() ::
+    {<a href="#t:fold_acc/0">fold_acc</a>(), OffsetToContinue :: <a href="#t:offset/0">offset</a>(), <a href="#t:fold_stop_reason/0">fold_stop_reason</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:fold_stop_reason/0">
+  <div class="detail-header">
+    <a href="#t:fold_stop_reason/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">fold_stop_reason()</h1>
+      <div class="specs">
+          <pre>fold_stop_reason() ::
+    reached_end_of_partition | reached_message_count_limit |
+    reached_target_offset |
+    {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> OffsetToContinue: begin offset for the next fold call</p>
+  </section>
+</section>
+<section class="detail" id="t:group_config/0">
+  <div class="detail-header">
+    <a href="#t:group_config/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">group_config()</h1>
+      <div class="specs">
+          <pre>group_config() :: proplists:proplist().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:group_generation_id/0">
+  <div class="detail-header">
+    <a href="#t:group_generation_id/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">group_generation_id()</h1>
+      <div class="specs">
+          <pre>group_generation_id() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:group_id/0">
+  <div class="detail-header">
+    <a href="#t:group_id/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">group_id()</h1>
+      <div class="specs">
+          <pre>group_id() :: kpro:<a href="#t:group_id/0">group_id</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:group_member/0">
+  <div class="detail-header">
+    <a href="#t:group_member/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">group_member()</h1>
+      <div class="specs">
+          <pre>group_member() ::
+    {<a href="#t:group_member_id/0">group_member_id</a>(), #kafka_group_member_metadata{}}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:group_member_id/0">
+  <div class="detail-header">
+    <a href="#t:group_member_id/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">group_member_id()</h1>
+      <div class="specs">
+          <pre>group_member_id() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:hostname/0">
+  <div class="detail-header">
+    <a href="#t:hostname/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">hostname()</h1>
+      <div class="specs">
+          <pre>hostname() :: kpro:<a href="#t:hostname/0">hostname</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:key/0">
+  <div class="detail-header">
+    <a href="#t:key/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">key()</h1>
+      <div class="specs">
+          <pre>key() :: undefined | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:message/0">
+  <div class="detail-header">
+    <a href="#t:message/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">message()</h1>
+      <div class="specs">
+          <pre>message() :: kpro:<a href="#t:message/0">message</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:message_set/0">
+  <div class="detail-header">
+    <a href="#t:message_set/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">message_set()</h1>
+      <div class="specs">
+          <pre>message_set() :: #kafka_message_set{}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:msg_input/0">
+  <div class="detail-header">
+    <a href="#t:msg_input/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">msg_input()</h1>
+      <div class="specs">
+          <pre>msg_input() :: kpro:<a href="#t:msg_input/0">msg_input</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:msg_ts/0">
+  <div class="detail-header">
+    <a href="#t:msg_ts/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">msg_ts()</h1>
+      <div class="specs">
+          <pre>msg_ts() :: kpro:<a href="#t:msg_ts/0">msg_ts</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:offset/0">
+  <div class="detail-header">
+    <a href="#t:offset/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">offset()</h1>
+      <div class="specs">
+          <pre>offset() :: kpro:<a href="#t:offset/0">offset</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:offset_time/0">
+  <div class="detail-header">
+    <a href="#t:offset_time/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">offset_time()</h1>
+      <div class="specs">
+          <pre>offset_time() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | earliest | latest.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:partition/0">
+  <div class="detail-header">
+    <a href="#t:partition/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">partition()</h1>
+      <div class="specs">
+          <pre>partition() :: kpro:<a href="#t:partition/0">partition</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:partition_assignment/0">
+  <div class="detail-header">
+    <a href="#t:partition_assignment/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">partition_assignment()</h1>
+      <div class="specs">
+          <pre>partition_assignment() :: {<a href="#t:topic/0">topic</a>(), [<a href="#t:partition/0">partition</a>()]}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:partition_fun/0">
+  <div class="detail-header">
+    <a href="#t:partition_fun/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">partition_fun()</h1>
+      <div class="specs">
+          <pre>partition_fun() ::
+    <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">fun</a>((<a href="#t:topic/0">topic</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), <a href="#t:key/0">key</a>(), <a href="#t:value/0">value</a>()) ->
+            {ok, <a href="#t:partition/0">partition</a>()}).
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:partitioner/0">
+  <div class="detail-header">
+    <a href="#t:partitioner/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">partitioner()</h1>
+      <div class="specs">
+          <pre>partitioner() :: <a href="#t:partition_fun/0">partition_fun</a>() | random | hash.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:portnum/0">
+  <div class="detail-header">
+    <a href="#t:portnum/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">portnum()</h1>
+      <div class="specs">
+          <pre>portnum() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:produce_ack_cb/0">
+  <div class="detail-header">
+    <a href="#t:produce_ack_cb/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">produce_ack_cb()</h1>
+      <div class="specs">
+          <pre>produce_ack_cb() :: fun((<a href="#t:partition/0">partition</a>(), <a href="#t:offset/0">offset</a>()) -> _).
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:produce_reply/0">
+  <div class="detail-header">
+    <a href="#t:produce_reply/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">produce_reply()</h1>
+      <div class="specs">
+          <pre>produce_reply() :: #brod_produce_reply{}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:produce_result/0">
+  <div class="detail-header">
+    <a href="#t:produce_result/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">produce_result()</h1>
+      <div class="specs">
+          <pre>produce_result() ::
+    brod_produce_req_buffered | brod_produce_req_acked.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:producer_config/0">
+  <div class="detail-header">
+    <a href="#t:producer_config/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">producer_config()</h1>
+      <div class="specs">
+          <pre>producer_config() :: brod_producer:config().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:received_assignments/0">
+  <div class="detail-header">
+    <a href="#t:received_assignments/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">received_assignments()</h1>
+      <div class="specs">
+          <pre>received_assignments() :: [#brod_received_assignment{}].
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:topic/0">
+  <div class="detail-header">
+    <a href="#t:topic/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">topic()</h1>
+      <div class="specs">
+          <pre>topic() :: kpro:<a href="#t:topic/0">topic</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:topic_config/0">
+  <div class="detail-header">
+    <a href="#t:topic_config/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">topic_config()</h1>
+      <div class="specs">
+          <pre>topic_config() :: kpro:<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:topic_partition/0">
+  <div class="detail-header">
+    <a href="#t:topic_partition/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">topic_partition()</h1>
+      <div class="specs">
+          <pre>topic_partition() :: {<a href="#t:topic/0">topic</a>(), <a href="#t:partition/0">partition</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:value/0">
+  <div class="detail-header">
+    <a href="#t:value/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">value()</h1>
+      <div class="specs">
+          <pre>value() ::
+    undefined |
+    <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">iodata</a>() |
+    {<a href="#t:msg_ts/0">msg_ts</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} |
+    [{<a href="#t:key/0">key</a>(), <a href="#t:value/0">value</a>()}] |
+    [{<a href="#t:msg_ts/0">msg_ts</a>(), <a href="#t:key/0">key</a>(), <a href="#t:value/0">value</a>()}] |
+    kpro:<a href="#t:msg_input/0">msg_input</a>() |
+    kpro:<a href="#t:batch_input/0">batch_input</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="connect_group_coordinator/3">
+  <div class="detail-header">
+    <a href="#connect_group_coordinator/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">connect_group_coordinator/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>connect_group_coordinator([<a href="#t:endpoint/0">endpoint</a>()], <a href="#t:conn_config/0">conn_config</a>(), <a href="#t:group_id/0">group_id</a>()) ->
+                             {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Connect to consumer group coordinator broker. Done in steps: 1) connect to any of the given bootstrap ednpoints; 2) send group_coordinator_request to resolve group coordinator endpoint;; 3) connect to the resolved endpoint and return the connection pid</p>
+  </section>
+</section>
+<section class="detail" id="connect_leader/4">
+  <div class="detail-header">
+    <a href="#connect_leader/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">connect_leader/4</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>connect_leader([<a href="#t:endpoint/0">endpoint</a>()], <a href="#t:topic/0">topic</a>(), <a href="#t:partition/0">partition</a>(), <a href="#t:conn_config/0">conn_config</a>()) ->
+                  {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Connect partition leader.</p>
+  </section>
+</section>
+<section class="detail" id="consume_ack/2">
+  <div class="detail-header">
+    <a href="#consume_ack/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">consume_ack/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>consume_ack(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(), <a href="#t:offset/0">offset</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="consume_ack/4">
+  <div class="detail-header">
+    <a href="#consume_ack/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">consume_ack/4</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>consume_ack(<a href="#t:client/0">client</a>(), <a href="#t:topic/0">topic</a>(), <a href="#t:partition/0">partition</a>(), <a href="#t:offset/0">offset</a>()) ->
+               ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="create_topics/3">
+  <div class="detail-header">
+    <a href="#create_topics/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_topics/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>create_topics([<a href="#t:endpoint/0">endpoint</a>()],
+              [<a href="#t:topic_config/0">topic_config</a>()],
+              #{timeout => kpro:int32(),
+                validate_only => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}) ->
+                 {ok, kpro:<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="#create_topics/4"><code class="inline">create_topics(Hosts, TopicsConfigs, RequestConfigs, [])</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="create_topics/4">
+  <div class="detail-header">
+    <a href="#create_topics/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_topics/4</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>create_topics([<a href="#t:endpoint/0">endpoint</a>()],
+              [<a href="#t:topic_config/0">topic_config</a>()],
+              #{timeout => kpro:int32(),
+                validate_only => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()},
+              <a href="#t:conn_config/0">conn_config</a>()) ->
+                 {ok, kpro:<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Create topic(s) in kafka Return the message body of <code class="inline">create_topics</code>, response. See <code class="inline">kpro_schema.erl</code> for struct details</p>
+  </section>
+</section>
+<section class="detail" id="delete_topics/3">
+  <div class="detail-header">
+    <a href="#delete_topics/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_topics/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>delete_topics([<a href="#t:endpoint/0">endpoint</a>()], [<a href="#t:topic/0">topic</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()) ->
+                 {ok, kpro:<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="#delete_topics/4"><code class="inline">delete_topics(Hosts, Topics, Timeout, [])</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="delete_topics/4">
+  <div class="detail-header">
+    <a href="#delete_topics/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_topics/4</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>delete_topics([<a href="#t:endpoint/0">endpoint</a>()],
+              [<a href="#t:topic/0">topic</a>()],
+              <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+              <a href="#t:conn_config/0">conn_config</a>()) ->
+                 {ok, kpro:<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Delete topic(s) from kafka Return the message body of <code class="inline">delete_topics</code>, response. See <code class="inline">kpro_schema.erl</code> for struct details</p>
+  </section>
+</section>
+<section class="detail" id="describe_groups/3">
+  <div class="detail-header">
+    <a href="#describe_groups/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">describe_groups/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>describe_groups(<a href="#t:endpoint/0">endpoint</a>(), <a href="#t:conn_config/0">conn_config</a>(), [<a href="#t:group_id/0">group_id</a>()]) ->
+                   {ok, [kpro:<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()]} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Describe consumer groups. The given consumer group IDs should be all managed by the coordinator-broker running at the given endpoint. Otherwise error codes will be returned in the result structs. Return <code class="inline">describe_groups</code> response body field named <code class="inline">groups</code>. See <code class="inline">kpro_schema.erl</code> for struct details</p>
+  </section>
+</section>
+<section class="detail" id="fetch/4">
+  <div class="detail-header">
+    <a href="#fetch/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fetch/4</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>fetch(<a href="#t:connection/0">connection</a>() | <a href="#t:client_id/0">client_id</a>() | <a href="#t:bootstrap/0">bootstrap</a>(),
+      <a href="#t:topic/0">topic</a>(),
+      <a href="#t:partition/0">partition</a>(),
+      <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) ->
+         {ok, {HwOffset :: <a href="#t:offset/0">offset</a>(), [<a href="#t:message/0">message</a>()]}} |
+         {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Fetch a single message set from the given topic-partition. The first arg can either be an already established connection to leader, or <code class="inline">{Endpoints, ConnConfig}</code> so to establish a new connection before fetch.</p>
+  </section>
+</section>
+<section class="detail" id="fetch/5">
+  <div class="detail-header">
+    <a href="#fetch/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fetch/5</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>fetch(<a href="#t:connection/0">connection</a>() | <a href="#t:client_id/0">client_id</a>() | <a href="#t:bootstrap/0">bootstrap</a>(),
+      <a href="#t:topic/0">topic</a>(),
+      <a href="#t:partition/0">partition</a>(),
+      <a href="#t:offset/0">offset</a>(),
+      <a href="#t:fetch_opts/0">fetch_opts</a>()) ->
+         {ok, {HwOffset :: <a href="#t:offset/0">offset</a>(), [<a href="#t:message/0">message</a>()]}} |
+         {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Fetch a single message set from the given topic-partition. The first arg can either be an already established connection to leader, or <code class="inline">{Endpoints, ConnConfig}</code> so to establish a new connection before fetch.</p>
+  </section>
+</section>
+<section class="detail" id="fetch/7">
+  <div class="detail-header">
+    <a href="#fetch/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fetch/7</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>fetch([<a href="#t:endpoint/0">endpoint</a>()],
+      <a href="#t:topic/0">topic</a>(),
+      <a href="#t:partition/0">partition</a>(),
+      <a href="#t:offset/0">offset</a>(),
+      <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+      <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+      <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()) ->
+         {ok, [<a href="#t:message/0">message</a>()]} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="fetch/8">
+  <div class="detail-header">
+    <a href="#fetch/8" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fetch/8</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>fetch([<a href="#t:endpoint/0">endpoint</a>()],
+      <a href="#t:topic/0">topic</a>(),
+      <a href="#t:partition/0">partition</a>(),
+      <a href="#t:offset/0">offset</a>(),
+      <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+      <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+      <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+      <a href="#t:conn_config/0">conn_config</a>()) ->
+         {ok, [<a href="#t:message/0">message</a>()]} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="fetch_committed_offsets/2">
+  <div class="detail-header">
+    <a href="#fetch_committed_offsets/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fetch_committed_offsets/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>fetch_committed_offsets(<a href="#t:client/0">client</a>(), <a href="#t:group_id/0">group_id</a>()) ->
+                           {ok, [kpro:<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()]} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Same as <a href="#fetch_committed_offsets/3"><code class="inline">fetch_committed_offsets/3</code></a>, but works with a started <code class="inline">brod_client</code></p>
+  </section>
+</section>
+<section class="detail" id="fetch_committed_offsets/3">
+  <div class="detail-header">
+    <a href="#fetch_committed_offsets/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fetch_committed_offsets/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>fetch_committed_offsets([<a href="#t:endpoint/0">endpoint</a>()], <a href="#t:conn_config/0">conn_config</a>(), <a href="#t:group_id/0">group_id</a>()) ->
+                           {ok, [kpro:<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()]} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Fetch committed offsets for ALL topics in the given consumer group. Return the <code class="inline">responses</code> field of the <code class="inline">offset_fetch</code> response. See <code class="inline">kpro_schema.erl</code> for struct details.</p>
+  </section>
+</section>
+<section class="detail" id="fold/8">
+  <div class="detail-header">
+    <a href="#fold/8" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">fold/8</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>fold(<a href="#t:connection/0">connection</a>() | <a href="#t:client_id/0">client_id</a>() | <a href="#t:bootstrap/0">bootstrap</a>(),
+     <a href="#t:topic/0">topic</a>(),
+     <a href="#t:partition/0">partition</a>(),
+     <a href="#t:offset/0">offset</a>(),
+     <a href="#t:fetch_opts/0">fetch_opts</a>(),
+     Acc,
+     <a href="#t:fold_fun/1">fold_fun</a>(Acc),
+     <a href="#t:fold_limits/0">fold_limits</a>()) ->
+        <a href="#t:fold_result/0">fold_result</a>()
+        when Acc :: <a href="#t:fold_acc/0">fold_acc</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Fold through messages in a partition. Works like <code class="inline">lists:foldl/2</code> but with below stop conditions: <em> Always return after reach high watermark offset </em> Return after the given message count limit is reached <em> Return after the given kafka offset is reached. </em> Return if the <code class="inline">FoldFun</code> returns an <code class="inline">{error, Reason}</code> tuple. NOTE: Exceptions from evaluating <code class="inline">FoldFun</code> are not caught.</p>
+  </section>
+</section>
+<section class="detail" id="get_consumer/3">
+  <div class="detail-header">
+    <a href="#get_consumer/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_consumer/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>get_consumer(<a href="#t:client/0">client</a>(), <a href="#t:topic/0">topic</a>(), <a href="#t:partition/0">partition</a>()) ->
+                {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, Reason}
+                when
+                    Reason ::
+                        client_down |
+                        {consumer_down, noproc} |
+                        {consumer_not_found, <a href="#t:topic/0">topic</a>()} |
+                        {consumer_not_found, <a href="#t:topic/0">topic</a>(), <a href="#t:partition/0">partition</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="get_metadata/1">
+  <div class="detail-header">
+    <a href="#get_metadata/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_metadata/1</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>get_metadata([<a href="#t:endpoint/0">endpoint</a>()]) -> {ok, kpro:<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Fetch broker metadata Return the message body of <code class="inline">metadata</code> response. See <code class="inline">kpro_schema.erl</code> for details</p>
+  </section>
+</section>
+<section class="detail" id="get_metadata/2">
+  <div class="detail-header">
+    <a href="#get_metadata/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_metadata/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>get_metadata([<a href="#t:endpoint/0">endpoint</a>()], all | [<a href="#t:topic/0">topic</a>()]) ->
+                {ok, kpro:<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Fetch broker/topic metadata Return the message body of <code class="inline">metadata</code> response. See <code class="inline">kpro_schema.erl</code> for struct details</p>
+  </section>
+</section>
+<section class="detail" id="get_metadata/3">
+  <div class="detail-header">
+    <a href="#get_metadata/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_metadata/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>get_metadata([<a href="#t:endpoint/0">endpoint</a>()], all | [<a href="#t:topic/0">topic</a>()], <a href="#t:conn_config/0">conn_config</a>()) ->
+                {ok, kpro:<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Fetch broker/topic metadata Return the message body of <code class="inline">metadata</code> response. See <code class="inline">kpro_schema.erl</code> for struct details</p>
+  </section>
+</section>
+<section class="detail" id="get_partitions_count/2">
+  <div class="detail-header">
+    <a href="#get_partitions_count/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_partitions_count/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>get_partitions_count(<a href="#t:client/0">client</a>(), <a href="#t:topic/0">topic</a>()) ->
+                        {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Get number of partitions for a given topic. The higher level producers may need the partition numbers to find the partition producer pid --- if the number of partitions is not statically configured for them. It is up to the callers how they want to distribute their data (e.g. random, roundrobin or consistent-hashing) to the partitions.</p>
+  </section>
+</section>
+<section class="detail" id="get_producer/3">
+  <div class="detail-header">
+    <a href="#get_producer/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_producer/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>get_producer(<a href="#t:client/0">client</a>(), <a href="#t:topic/0">topic</a>(), <a href="#t:partition/0">partition</a>()) ->
+                {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, Reason}
+                when
+                    Reason ::
+                        client_down |
+                        {producer_down, noproc} |
+                        {producer_not_found, <a href="#t:topic/0">topic</a>()} |
+                        {producer_not_found, <a href="#t:topic/0">topic</a>(), <a href="#t:partition/0">partition</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="%60%60"><code class="inline">brod_client:get_producer / 3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="list_all_groups/2">
+  <div class="detail-header">
+    <a href="#list_all_groups/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_all_groups/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>list_all_groups([<a href="#t:endpoint/0">endpoint</a>()], <a href="#t:conn_config/0">conn_config</a>()) ->
+                   [{<a href="#t:endpoint/0">endpoint</a>(), [<a href="#t:cg/0">cg</a>()] | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}}].
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>List ALL consumer groups in the given kafka cluster. NOTE: Exception if failed to connect any of the coordinator brokers.</p>
+  </section>
+</section>
+<section class="detail" id="list_groups/2">
+  <div class="detail-header">
+    <a href="#list_groups/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_groups/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>list_groups(<a href="#t:endpoint/0">endpoint</a>(), <a href="#t:conn_config/0">conn_config</a>()) ->
+               {ok, [<a href="#t:cg/0">cg</a>()]} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>List consumer groups in the given group coordinator broker.</p>
+  </section>
+</section>
+<section class="detail" id="produce/2">
+  <div class="detail-header">
+    <a href="#produce/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">produce/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>produce(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(), <a href="#t:value/0">value</a>()) -> {ok, <a href="#t:call_ref/0">call_ref</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <code class="inline">produce(Pid, 0, &lt;&lt;&gt;&gt;, Value)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="produce/3">
+  <div class="detail-header">
+    <a href="#produce/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">produce/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>produce(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(), <a href="#t:key/0">key</a>(), <a href="#t:value/0">value</a>()) ->
+           {ok, <a href="#t:call_ref/0">call_ref</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Produce one message if Value is binary or iolist, Or send a batch if Value is a (nested) kv-list or a list of maps, in this case Key is discarded (only the keys in kv-list are sent to kafka). The pid should be a partition producer pid, NOT client pid. The return value is a call reference of type <code class="inline">call_ref()</code>, so the caller can used it to expect (match) a <code class="inline">#brod_produce_reply{result = brod_produce_req_acked}</code> message after the produce request has been acked by kafka.</p>
+  </section>
+</section>
+<section class="detail" id="produce/5">
+  <div class="detail-header">
+    <a href="#produce/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">produce/5</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>produce(<a href="#t:client/0">client</a>(),
+        <a href="#t:topic/0">topic</a>(),
+        <a href="#t:partition/0">partition</a>() | <a href="#t:partitioner/0">partitioner</a>(),
+        <a href="#t:key/0">key</a>(),
+        <a href="#t:value/0">value</a>()) ->
+           {ok, <a href="#t:call_ref/0">call_ref</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Produce one message if Value is binary or iolist, Or send a batch if Value is a (nested) kv-list or a list of maps, in this case Key is used only for partitioning, or discarded if the 3rd arg is a partition number instead of a partitioner callback. This function first lookup the producer pid, then call <a href="#produce/3"><code class="inline">produce/3</code></a> to do the real work. The return value is a call reference of type <code class="inline">call_ref()</code>, so the caller can used it to expect (match) a <code class="inline">#brod_produce_reply{result = brod_produce_req_acked}</code> message after the produce request has been acked by kafka.</p>
+  </section>
+</section>
+<section class="detail" id="produce_cb/4">
+  <div class="detail-header">
+    <a href="#produce_cb/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">produce_cb/4</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>produce_cb(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(), <a href="#t:key/0">key</a>(), <a href="#t:value/0">value</a>(), <a href="#t:produce_ack_cb/0">produce_ack_cb</a>()) ->
+              ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Same as <a href="#produce/3"><code class="inline">produce/3</code></a> only the ack is not delivered as a message, instead, the callback is evaluated by producer worker when ack is received from kafka.</p>
+  </section>
+</section>
+<section class="detail" id="produce_cb/6">
+  <div class="detail-header">
+    <a href="#produce_cb/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">produce_cb/6</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>produce_cb(<a href="#t:client/0">client</a>(),
+           <a href="#t:topic/0">topic</a>(),
+           <a href="#t:partition/0">partition</a>() | <a href="#t:partitioner/0">partitioner</a>(),
+           <a href="#t:key/0">key</a>(),
+           <a href="#t:value/0">value</a>(),
+           <a href="#t:produce_ack_cb/0">produce_ack_cb</a>()) ->
+              ok | {ok, <a href="#t:partition/0">partition</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Same as <a href="#produce/5"><code class="inline">produce/5</code></a> only the ack is not delivered as a message, instead, the callback is evaluated by producer worker when ack is received from kafka. Return the partition to caller as <code class="inline">{ok, Partition}</code> for caller to correlate the callback when the 3rd arg is not a partition number.</p>
+  </section>
+</section>
+<section class="detail" id="produce_no_ack/5">
+  <div class="detail-header">
+    <a href="#produce_no_ack/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">produce_no_ack/5</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>produce_no_ack(<a href="#t:client/0">client</a>(),
+               <a href="#t:topic/0">topic</a>(),
+               <a href="#t:partition/0">partition</a>() | <a href="#t:partitioner/0">partitioner</a>(),
+               <a href="#t:key/0">key</a>(),
+               <a href="#t:value/0">value</a>()) ->
+                  ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Find the partition worker and send message without any ack. NOTE: This call has no back-pressure to the caller, excessive usage may cause beam to run out of memory.</p>
+  </section>
+</section>
+<section class="detail" id="produce_sync/2">
+  <div class="detail-header">
+    <a href="#produce_sync/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">produce_sync/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>produce_sync(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(), <a href="#t:value/0">value</a>()) -> ok.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <code class="inline">produce_sync(Pid, 0, &lt;&lt;&gt;&gt;, Value)</code>.</p>
+  </section>
+</section>
+<section class="detail" id="produce_sync/3">
+  <div class="detail-header">
+    <a href="#produce_sync/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">produce_sync/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>produce_sync(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(), <a href="#t:key/0">key</a>(), <a href="#t:value/0">value</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Sync version of produce/3 This function will not return until a response is received from kafka, however if producer is started with required_acks set to 0, this function will return onece the messages is buffered in the producer process.</p>
+  </section>
+</section>
+<section class="detail" id="produce_sync/5">
+  <div class="detail-header">
+    <a href="#produce_sync/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">produce_sync/5</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>produce_sync(<a href="#t:client/0">client</a>(),
+             <a href="#t:topic/0">topic</a>(),
+             <a href="#t:partition/0">partition</a>() | <a href="#t:partitioner/0">partitioner</a>(),
+             <a href="#t:key/0">key</a>(),
+             <a href="#t:value/0">value</a>()) ->
+                ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Sync version of produce/5 This function will not return until a response is received from kafka, however if producer is started with required_acks set to 0, this function will return once the messages are buffered in the producer process.</p>
+  </section>
+</section>
+<section class="detail" id="produce_sync_offset/5">
+  <div class="detail-header">
+    <a href="#produce_sync_offset/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">produce_sync_offset/5</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>produce_sync_offset(<a href="#t:client/0">client</a>(),
+                    <a href="#t:topic/0">topic</a>(),
+                    <a href="#t:partition/0">partition</a>() | <a href="#t:partitioner/0">partitioner</a>(),
+                    <a href="#t:key/0">key</a>(),
+                    <a href="#t:value/0">value</a>()) ->
+                       {ok, <a href="#t:offset/0">offset</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Version of produce_sync/5 that returns the offset assigned by Kafka If producer is started with required_acks set to 0, the offset will be <code class="inline">?BROD_PRODUCE_UNKNOWN_OFFSET</code>.</p>
+  </section>
+</section>
+<section class="detail" id="resolve_offset/3">
+  <div class="detail-header">
+    <a href="#resolve_offset/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resolve_offset/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>resolve_offset([<a href="#t:endpoint/0">endpoint</a>()], <a href="#t:topic/0">topic</a>(), <a href="#t:partition/0">partition</a>()) ->
+                  {ok, <a href="#t:offset/0">offset</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="#resolve_offset/5"><code class="inline">resolve_offset(Hosts, Topic, Partition, latest, 1)</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="resolve_offset/4">
+  <div class="detail-header">
+    <a href="#resolve_offset/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resolve_offset/4</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>resolve_offset([<a href="#t:endpoint/0">endpoint</a>()], <a href="#t:topic/0">topic</a>(), <a href="#t:partition/0">partition</a>(), <a href="#t:offset_time/0">offset_time</a>()) ->
+                  {ok, <a href="#t:offset/0">offset</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolve semantic offset or timestamp to real offset.</p>
+  </section>
+</section>
+<section class="detail" id="resolve_offset/5">
+  <div class="detail-header">
+    <a href="#resolve_offset/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">resolve_offset/5</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>resolve_offset([<a href="#t:endpoint/0">endpoint</a>()],
+               <a href="#t:topic/0">topic</a>(),
+               <a href="#t:partition/0">partition</a>(),
+               <a href="#t:offset_time/0">offset_time</a>(),
+               <a href="#t:conn_config/0">conn_config</a>()) ->
+                  {ok, <a href="#t:offset/0">offset</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolve semantic offset or timestamp to real offset.</p>
+  </section>
+</section>
+<section class="detail" id="start/0">
+  <div class="detail-header">
+    <a href="#start/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start/0</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start() -> ok | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Start brod application.</p>
+  </section>
+</section>
+<section class="detail" id="start/2">
+  <div class="detail-header">
+    <a href="#start/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start/2</h1>
+      <span class="note">(since )</span>
+  </div>
+  <section class="docstring">
+<p>Application behaviour callback</p>
+  </section>
+</section>
+<section class="detail" id="start_client/1">
+  <div class="detail-header">
+    <a href="#start_client/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_client/1</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_client([<a href="#t:endpoint/0">endpoint</a>()]) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="#start_client/2"><code class="inline">start_client(BootstrapEndpoints, brod_default_client)</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="start_client/2">
+  <div class="detail-header">
+    <a href="#start_client/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_client/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_client([<a href="#t:endpoint/0">endpoint</a>()], <a href="#t:client_id/0">client_id</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="#start_client/3"><code class="inline">start_client(BootstrapEndpoints, ClientId, [])</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="start_client/3">
+  <div class="detail-header">
+    <a href="#start_client/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_client/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_client([<a href="#t:endpoint/0">endpoint</a>()], <a href="#t:client_id/0">client_id</a>(), <a href="#t:client_config/0">client_config</a>()) ->
+                ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Start a client.</p>
+<p> BootstrapEndpoints: Kafka cluster endpoints, can be any of the brokers in the cluster which does not necessarily have to be a leader of any partition, e.g. a load-balanced entrypoint to the remote kakfa cluster.</p>
+<p> ClientId: Atom to identify the client process.</p>
+<p> Config is a proplist, possible values: restart_delay_seconds (optional, default=10) How much time to wait between attempts to restart brod_client process when it crashes</p>
+<p> get_metadata_timeout_seconds (optional, default=5) Return <code class="inline">{error, timeout}</code> from <code class="inline">brod_client:get_xxx</code> calls if responses for APIs such as <code class="inline">metadata</code>, <code class="inline">find_coordinator</code> is not received in time.</p>
+<p> reconnect_cool_down_seconds (optional, default=1) Delay this configured number of seconds before retrying to estabilish a new connection to the kafka partition leader.</p>
+<p> allow_topic_auto_creation (optional, default=true) By default, brod respects what is configured in broker about topic auto-creation. i.e. whatever <code class="inline">auto.create.topics.enable</code> is set in broker configuration. However if <code class="inline">allow_topic_auto_creation</code> is set to <code class="inline">false</code> in client config, brod will avoid sending metadata requests that may cause an auto-creation of the topic regardless of what broker config is.</p>
+<p> auto_start_producers (optional, default=false) If true, brod client will spawn a producer automatically when user is trying to call <code class="inline">produce</code> but did not call <code class="inline">brod:start_producer</code> explicitly. Can be useful for applications which don&#39;t know beforehand which topics they will be working with.</p>
+<p> default_producer_config (optional, default=[]) Producer configuration to use when auto_start_producers is true.</p>
+  </section>
+</section>
+<section class="detail" id="start_consumer/3">
+  <div class="detail-header">
+    <a href="#start_consumer/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_consumer/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_consumer(<a href="#t:client/0">client</a>(), <a href="#t:topic/0">topic</a>(), <a href="#t:consumer_config/0">consumer_config</a>()) ->
+                  ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Dynamically start a topic consumer.</p>
+  </section>
+</section>
+<section class="detail" id="start_link_client/1">
+  <div class="detail-header">
+    <a href="#start_link_client/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link_client/1</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_link_client([<a href="#t:endpoint/0">endpoint</a>()]) -> {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="%60start_link_client/2%60"><code class="inline">start_link_client(BootstrapEndpoints, brod_default_client)</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="start_link_client/2">
+  <div class="detail-header">
+    <a href="#start_link_client/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link_client/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_link_client([<a href="#t:endpoint/0">endpoint</a>()], <a href="#t:client_id/0">client_id</a>()) ->
+                     {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="#start_link_client/3"><code class="inline">start_link_client(BootstrapEndpoints, ClientId, [])</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="start_link_client/3">
+  <div class="detail-header">
+    <a href="#start_link_client/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link_client/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_link_client([<a href="#t:endpoint/0">endpoint</a>()], <a href="#t:client_id/0">client_id</a>(), <a href="#t:client_config/0">client_config</a>()) ->
+                     {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="start_link_group_subscriber/7">
+  <div class="detail-header">
+    <a href="#start_link_group_subscriber/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link_group_subscriber/7</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_link_group_subscriber(<a href="#t:client/0">client</a>(),
+                            <a href="#t:group_id/0">group_id</a>(),
+                            [<a href="#t:topic/0">topic</a>()],
+                            <a href="#t:group_config/0">group_config</a>(),
+                            <a href="#t:consumer_config/0">consumer_config</a>(),
+                            <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+                            <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) ->
+                               {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="%60%60"><code class="inline">brod_group_subscriber:start_link / 7</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="start_link_group_subscriber/8">
+  <div class="detail-header">
+    <a href="#start_link_group_subscriber/8" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link_group_subscriber/8</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_link_group_subscriber(<a href="#t:client/0">client</a>(),
+                            <a href="#t:group_id/0">group_id</a>(),
+                            [<a href="#t:topic/0">topic</a>()],
+                            <a href="#t:group_config/0">group_config</a>(),
+                            <a href="#t:consumer_config/0">consumer_config</a>(),
+                            message | message_set,
+                            <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+                            <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) ->
+                               {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="%60%60"><code class="inline">brod_group_subscriber:start_link / 8</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="start_link_group_subscriber_v2/1">
+  <div class="detail-header">
+    <a href="#start_link_group_subscriber_v2/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link_group_subscriber_v2/1</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_link_group_subscriber_v2(brod_group_subscriber_v2:subscriber_config()) ->
+                                  {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Start group_subscriber_v2</p>
+  </section>
+</section>
+<section class="detail" id="start_link_topic_subscriber/5">
+  <div class="detail-header">
+    <a href="#start_link_topic_subscriber/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link_topic_subscriber/5</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_link_topic_subscriber(<a href="#t:client/0">client</a>(),
+                            <a href="#t:topic/0">topic</a>(),
+                            <a href="#t:consumer_config/0">consumer_config</a>(),
+                            <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+                            <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) ->
+                               {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="%60start_link_topic_subscriber/6%60"><code class="inline">start_link_topic_subscriber(Client, Topic, all, ConsumerConfig, CbModule, CbInitArg)</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="start_link_topic_subscriber/6">
+  <div class="detail-header">
+    <a href="#start_link_topic_subscriber/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link_topic_subscriber/6</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_link_topic_subscriber(<a href="#t:client/0">client</a>(),
+                            <a href="#t:topic/0">topic</a>(),
+                            all | [<a href="#t:partition/0">partition</a>()],
+                            <a href="#t:consumer_config/0">consumer_config</a>(),
+                            <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+                            <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) ->
+                               {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="%60start_link_topic_subscriber/7%60"><code class="inline">start_link_topic_subscriber(Client, Topic, Partitions, ConsumerConfig, message, CbModule, CbInitArg)</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="start_link_topic_subscriber/7">
+  <div class="detail-header">
+    <a href="#start_link_topic_subscriber/7" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link_topic_subscriber/7</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_link_topic_subscriber(<a href="#t:client/0">client</a>(),
+                            <a href="#t:topic/0">topic</a>(),
+                            all | [<a href="#t:partition/0">partition</a>()],
+                            <a href="#t:consumer_config/0">consumer_config</a>(),
+                            message | message_set,
+                            <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(),
+                            <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) ->
+                               {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Equivalent to <a href="%60%60"><code class="inline">brod_topic_subscriber:start_link / 7</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="start_producer/3">
+  <div class="detail-header">
+    <a href="#start_producer/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_producer/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>start_producer(<a href="#t:client/0">client</a>(), <a href="#t:topic/0">topic</a>(), <a href="#t:producer_config/0">producer_config</a>()) ->
+                  ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Dynamically start a per-topic producer.</p>
+  </section>
+</section>
+<section class="detail" id="stop/0">
+  <div class="detail-header">
+    <a href="#stop/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/0</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>stop() -> ok.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Stop brod application.</p>
+  </section>
+</section>
+<section class="detail" id="stop/1">
+  <div class="detail-header">
+    <a href="#stop/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop/1</h1>
+      <span class="note">(since )</span>
+  </div>
+  <section class="docstring">
+<p>Application behaviour callback</p>
+  </section>
+</section>
+<section class="detail" id="stop_client/1">
+  <div class="detail-header">
+    <a href="#stop_client/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop_client/1</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>stop_client(<a href="#t:client/0">client</a>()) -> ok.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Stop a client.</p>
+  </section>
+</section>
+<section class="detail" id="subscribe/3">
+  <div class="detail-header">
+    <a href="#subscribe/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">subscribe/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>subscribe(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(), <a href="#t:consumer_options/0">consumer_options</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="subscribe/5">
+  <div class="detail-header">
+    <a href="#subscribe/5" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">subscribe/5</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>subscribe(<a href="#t:client/0">client</a>(),
+          <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(),
+          <a href="#t:topic/0">topic</a>(),
+          <a href="#t:partition/0">partition</a>(),
+          <a href="#t:consumer_options/0">consumer_options</a>()) ->
+             {ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()} | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Subscribe data stream from the given topic-partition. If {error, Reason} is returned, the caller should perhaps retry later. {ok, ConsumerPid} is returned if success, the caller may want to monitor the consumer pid to trigger a re-subscribe in case it crashes.</p>
+<p> If subscribed successfully, the subscriber process should expect messages of pattern: {ConsumerPid, #kafka_message_set{}} and {ConsumerPid, #kafka_fetch_error{}}, -include_lib(brod/include/brod.hrl) to access the records. In case #kafka_fetch_error{} is received the subscriber should re-subscribe itself to resume the data stream.</p>
+  </section>
+</section>
+<section class="detail" id="sync_produce_request/1">
+  <div class="detail-header">
+    <a href="#sync_produce_request/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sync_produce_request/1</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>sync_produce_request(<a href="#t:call_ref/0">call_ref</a>()) -> ok | {error, Reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Block wait for sent produced request to be acked by kafka.</p>
+  </section>
+</section>
+<section class="detail" id="sync_produce_request/2">
+  <div class="detail-header">
+    <a href="#sync_produce_request/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sync_produce_request/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>sync_produce_request(<a href="#t:call_ref/0">call_ref</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">timeout</a>()) ->
+                        ok | {error, Reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="sync_produce_request_offset/1">
+  <div class="detail-header">
+    <a href="#sync_produce_request_offset/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sync_produce_request_offset/1</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>sync_produce_request_offset(<a href="#t:call_ref/0">call_ref</a>()) ->
+                               {ok, <a href="#t:offset/0">offset</a>()} |
+                               {error, Reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>As sync_produce_request_offset/1, but also returning assigned offset See produce_sync_offset/5.</p>
+  </section>
+</section>
+<section class="detail" id="sync_produce_request_offset/2">
+  <div class="detail-header">
+    <a href="#sync_produce_request_offset/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">sync_produce_request_offset/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>sync_produce_request_offset(<a href="#t:call_ref/0">call_ref</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">timeout</a>()) ->
+                               {ok, <a href="#t:offset/0">offset</a>()} |
+                               {error, Reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="unsubscribe/1">
+  <div class="detail-header">
+    <a href="#unsubscribe/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unsubscribe/1</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>unsubscribe(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Unsubscribe the current subscriber. Assuming the subscriber is self().</p>
+  </section>
+</section>
+<section class="detail" id="unsubscribe/2">
+  <div class="detail-header">
+    <a href="#unsubscribe/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unsubscribe/2</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>unsubscribe(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Unsubscribe the current subscriber.</p>
+  </section>
+</section>
+<section class="detail" id="unsubscribe/3">
+  <div class="detail-header">
+    <a href="#unsubscribe/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unsubscribe/3</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>unsubscribe(<a href="#t:client/0">client</a>(), <a href="#t:topic/0">topic</a>(), <a href="#t:partition/0">partition</a>()) -> ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Unsubscribe the current subscriber. Assuming the subscriber is self().</p>
+  </section>
+</section>
+<section class="detail" id="unsubscribe/4">
+  <div class="detail-header">
+    <a href="#unsubscribe/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unsubscribe/4</h1>
+      <span class="note">(since )</span>
+      <div class="specs">
+          <pre>unsubscribe(<a href="#t:client/0">client</a>(), <a href="#t:topic/0">topic</a>(), <a href="#t:partition/0">partition</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>()) ->
+               ok | {error, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Unsubscribe the current subscriber.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

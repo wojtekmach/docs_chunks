@@ -51,8 +51,16 @@ defmodule DocsChunks.MixProject do
         &hex_core_chunks/1
       ],
       hex_core_docs: [
-        "telemetry_chunks",
+        "hex_core_chunks",
         "cmd ex_doc hex_core 0.6.1 ../hex_core/_build/default/lib/hex_core/ebin --main hex_core --output docs/hex_core"
+      ],
+      brod_chunks: [
+        "escript.build",
+        &brod_chunks/1
+      ],
+      brod_docs: [
+        "brod_chunks",
+        "cmd ex_doc brod master ../brod/_build/default/lib/brod/ebin --main brod --output docs/brod"
       ]
     ]
   end
@@ -61,9 +69,11 @@ defmodule DocsChunks.MixProject do
 
   defp hex_core_chunks(_), do: docs_chunks("../hex_core")
 
+  defp brod_chunks(_), do: docs_chunks("../brod")
+
   defp docs_chunks(path) do
     {_, 0} = System.cmd("rebar3", ~w(compile), cd: path, into: IO.stream(:stdio, :line))
     bin = "../docs_chunks/docs_chunks"
-    {_, 0} = System.cmd(bin, ~w(-project), cd: path, into: IO.stream(:stdio, :line))
+    {_, _} = System.cmd(bin, ~w(-project), cd: path, into: IO.stream(:stdio, :line))
   end
 end
