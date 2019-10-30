@@ -85,7 +85,7 @@ extract_doc_contents(XPath, Doc) ->
 
 edoc_extract_metadata(Doc) ->
     case xpath_to_binary("./since", Doc) of
-        "" -> #{};
+        <<"">> -> #{};
         Since -> #{since => Since}
     end.
 
