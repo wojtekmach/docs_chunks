@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="hex_core v0.6.1">
+    <title>hex_api_organization_member — hex_core v0.6.1</title>
+    <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
+    <script src="dist/sidebar_items-f2eea630bb.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="hex_core.html" class="sidebar-projectName">
+hex_core      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.6.1
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">hex_core v0.6.1</small>
+hex_api_organization_member      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:role/0">role()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#add/3">add/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Adds an organization member.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete/2">delete/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Deletes an organization member.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get/2">get/2</a>
+  </div>
+    <div class="summary-synopsis"><p> Gets an organization member.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list/1">list/1</a>
+  </div>
+    <div class="summary-synopsis"><p> Lists the organization&#39;s members.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update/3">update/3</a>
+  </div>
+    <div class="summary-synopsis"><p> Updates an organization member&#39;s role.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:role/0">
+  <div class="detail-header">
+    <a href="#t:role/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">role()</h1>
+      <div class="specs">
+          <pre>role() :: admin | write | read.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="add/3">
+  <div class="detail-header">
+    <a href="#add/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">add/3</h1>
+      <div class="specs">
+          <pre>add(hex_core:config(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="#t:role/0">role</a>()) -> hex_api:response().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Adds an organization member.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_organization_member</span><span class="p">:</span><span class="nf">add</span><span class="p" data-group-id="4524125704-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="4524125704-2">(</span><span class="p" data-group-id="4524125704-2">)</span><span class="p" data-group-id="4524125704-3">#{</span><span class="ss">api_organization</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;acme&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="4524125704-3">}</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">write</span><span class="p" data-group-id="4524125704-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="4524125704-4">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4524125704-5">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4524125704-6">#{</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;email&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user@example.com&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;role&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;write&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;https://hex.pm/api/users/user&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;username&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="w">
+       </span><span class="p" data-group-id="4524125704-6">}</span><span class="p" data-group-id="4524125704-5">}</span><span class="p" data-group-id="4524125704-4">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="delete/2">
+  <div class="detail-header">
+    <a href="#delete/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete/2</h1>
+      <div class="specs">
+          <pre>delete(hex_core:config(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> hex_api:response().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Deletes an organization member.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_organization_member</span><span class="p">:</span><span class="nf">delete</span><span class="p" data-group-id="1683115469-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="1683115469-2">(</span><span class="p" data-group-id="1683115469-2">)</span><span class="p" data-group-id="1683115469-3">#{</span><span class="ss">api_organization</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;acme&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="1683115469-3">}</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="1683115469-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="1683115469-4">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1683115469-5">{</span><span class="mi">204</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="ss">nil</span><span class="p" data-group-id="1683115469-5">}</span><span class="p" data-group-id="1683115469-4">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get/2">
+  <div class="detail-header">
+    <a href="#get/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get/2</h1>
+      <div class="specs">
+          <pre>get(hex_core:config(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> hex_api:response().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Gets an organization member.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_organization_member</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="1193049265-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="1193049265-2">(</span><span class="p" data-group-id="1193049265-2">)</span><span class="p" data-group-id="1193049265-3">#{</span><span class="ss">api_organization</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;acme&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="1193049265-3">}</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="1193049265-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="1193049265-4">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1193049265-5">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1193049265-6">#{</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;email&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user@example.com&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;role&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;admin&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;https://hex.pm/api/users/user&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;username&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="w">
+       </span><span class="p" data-group-id="1193049265-6">}</span><span class="p" data-group-id="1193049265-5">}</span><span class="p" data-group-id="1193049265-4">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="list/1">
+  <div class="detail-header">
+    <a href="#list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list/1</h1>
+      <div class="specs">
+          <pre>list(hex_core:config()) -> hex_api:response().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Lists the organization&#39;s members.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_organization_member</span><span class="p">:</span><span class="nf">list</span><span class="p" data-group-id="6748313622-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="6748313622-2">(</span><span class="p" data-group-id="6748313622-2">)</span><span class="p" data-group-id="6748313622-3">#{</span><span class="ss">api_organization</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;acme&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="6748313622-3">}</span><span class="p" data-group-id="6748313622-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="6748313622-4">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6748313622-5">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6748313622-6">[</span><span class="p" data-group-id="6748313622-7">#{</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;email&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user@example.com&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;role&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;admin&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;https://hex.pm/api/users/user&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;username&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="w">
+       </span><span class="p" data-group-id="6748313622-7">}</span><span class="p" data-group-id="6748313622-6">]</span><span class="p" data-group-id="6748313622-5">}</span><span class="p" data-group-id="6748313622-4">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="update/3">
+  <div class="detail-header">
+    <a href="#update/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update/3</h1>
+      <div class="specs">
+          <pre>update(hex_core:config(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="#t:role/0">role</a>()) -> hex_api:response().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p> Updates an organization member&#39;s role.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_organization_member</span><span class="p">:</span><span class="nf">update</span><span class="p" data-group-id="4460312931-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="4460312931-2">(</span><span class="p" data-group-id="4460312931-2">)</span><span class="p" data-group-id="4460312931-3">#{</span><span class="ss">api_organization</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;acme&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="4460312931-3">}</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">read</span><span class="p" data-group-id="4460312931-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="4460312931-4">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4460312931-5">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4460312931-6">#{</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;email&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user@example.com&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;role&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;read&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;https://hex.pm/api/users/user&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;username&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="w">
+       </span><span class="p" data-group-id="4460312931-6">}</span><span class="p" data-group-id="4460312931-5">}</span><span class="p" data-group-id="4460312931-4">}</span></code></pre>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

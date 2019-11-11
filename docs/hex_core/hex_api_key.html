@@ -8,7 +8,7 @@
     <meta name="project" content="hex_core v0.6.1">
     <title>hex_api_key — hex_core v0.6.1</title>
     <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
-    <script src="dist/sidebar_items-b12e500b28.js"></script>
+    <script src="dist/sidebar_items-f2eea630bb.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
@@ -77,6 +77,31 @@ hex_api_key      </h1>
             </a>
             Summary
           </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:api_permission/0">api_permission()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:permission/0">permission()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:repo_permission/0">repo_permission()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:repos_permission/0">repos_permission()</a>
+  </div>
+</div>
+  </div>
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
@@ -85,30 +110,106 @@ hex_api_key      </h1>
   <div class="summary-signature">
     <a href="#add/3">add/3</a>
   </div>
+    <div class="summary-synopsis"><p> Adds a new API or repository key.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#delete/2">delete/2</a>
   </div>
+    <div class="summary-synopsis"><p> Deletes an API or repository key.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#delete_all/1">delete_all/1</a>
   </div>
+    <div class="summary-synopsis"><p> Deletes all API and repository keys associated with the account.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#get/2">get/2</a>
   </div>
+    <div class="summary-synopsis"><p> Gets an API or repository key by name.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#list/1">list/1</a>
   </div>
+    <div class="summary-synopsis"><p> Lists the user&#39;s or organization&#39;s API and repository keys.</p></div>
 </div>
   </div>
         </section>
 
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:api_permission/0">
+  <div class="detail-header">
+    <a href="#t:api_permission/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">api_permission()</h1>
+      <div class="specs">
+          <pre>api_permission() :: #{domain => api, resource => read | write}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:permission/0">
+  <div class="detail-header">
+    <a href="#t:permission/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">permission()</h1>
+      <div class="specs">
+          <pre>permission() ::
+    <a href="#t:api_permission/0">api_permission</a>() | <a href="#t:repo_permission/0">repo_permission</a>() | <a href="#t:repos_permission/0">repos_permission</a>().
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:repo_permission/0">
+  <div class="detail-header">
+    <a href="#t:repo_permission/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">repo_permission()</h1>
+      <div class="specs">
+          <pre>repo_permission() :: #{domain => repository, resource => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:repos_permission/0">
+  <div class="detail-header">
+    <a href="#t:repos_permission/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">repos_permission()</h1>
+      <div class="specs">
+          <pre>repos_permission() :: #{domain => repositories}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
         <section id="functions" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#functions">
@@ -124,8 +225,29 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">add/3</h1>
+      <div class="specs">
+          <pre>add(hex_core:config(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), [<a href="#t:permission/0">permission</a>()]) ->
+       hex_api:response().
+</pre>
+      </div>
   </div>
   <section class="docstring">
+<p> Adds a new API or repository key.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_key</span><span class="p">:</span><span class="nf">add</span><span class="p" data-group-id="0608215319-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="0608215319-2">(</span><span class="p" data-group-id="0608215319-2">)</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;test&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0608215319-3">[</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="0608215319-3">]</span><span class="p" data-group-id="0608215319-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="0608215319-4">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0608215319-5">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0608215319-6">#{</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;authing_key&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;inserted_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T11:15:32Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;last_use&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w">
+          </span><span class="p" data-group-id="0608215319-7">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;ip&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;1.2.3.4&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+            </span><span class="p">&lt;&lt;</span><span class="s">&quot;used_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T14:38:54Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+            </span><span class="p">&lt;&lt;</span><span class="s">&quot;user_agent&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;hex_core/0.5.0 (httpc) (OTP/21) (erts/10.2)&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0608215319-7">}</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;name&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;hex_core&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;permissions&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="0608215319-8">[</span><span class="p" data-group-id="0608215319-9">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;domain&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;api&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;resource&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;read&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0608215319-9">}</span><span class="p" data-group-id="0608215319-8">]</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;revoked_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">nil</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;updated_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T14:38:54Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;https://hex.pm/api/keys/test&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0608215319-6">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="0608215319-5">}</span><span class="p" data-group-id="0608215319-4">}</span><span class="p">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="delete/2">
@@ -135,8 +257,28 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">delete/2</h1>
+      <div class="specs">
+          <pre>delete(hex_core:config(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> hex_api:response().
+</pre>
+      </div>
   </div>
   <section class="docstring">
+<p> Deletes an API or repository key.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_key</span><span class="p">:</span><span class="nf">delete</span><span class="p" data-group-id="9419356177-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="9419356177-2">(</span><span class="p" data-group-id="9419356177-2">)</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;test&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9419356177-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="9419356177-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9419356177-4">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9419356177-5">#{</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;authing_key&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;inserted_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T11:15:32Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;last_use&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w">
+          </span><span class="p" data-group-id="9419356177-6">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;ip&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;1.2.3.4&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+            </span><span class="p">&lt;&lt;</span><span class="s">&quot;used_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T14:38:54Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+            </span><span class="p">&lt;&lt;</span><span class="s">&quot;user_agent&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;hex_core/0.5.0 (httpc) (OTP/21) (erts/10.2)&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9419356177-6">}</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;name&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;hex_core&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;permissions&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="9419356177-7">[</span><span class="p" data-group-id="9419356177-8">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;domain&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;api&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;resource&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;read&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9419356177-8">}</span><span class="p" data-group-id="9419356177-7">]</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;revoked_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">nil</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;updated_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T14:38:54Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;https://hex.pm/api/keys/test&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="9419356177-5">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="9419356177-4">}</span><span class="p" data-group-id="9419356177-3">}</span><span class="p">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="delete_all/1">
@@ -146,8 +288,28 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">delete_all/1</h1>
+      <div class="specs">
+          <pre>delete_all(hex_core:config()) -> hex_api:response().
+</pre>
+      </div>
   </div>
   <section class="docstring">
+<p> Deletes all API and repository keys associated with the account.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_key</span><span class="p">:</span><span class="nf">delete_all</span><span class="p" data-group-id="5249246547-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="5249246547-2">(</span><span class="p" data-group-id="5249246547-2">)</span><span class="p" data-group-id="5249246547-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="5249246547-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5249246547-4">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5249246547-5">[</span><span class="p" data-group-id="5249246547-6">#{</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;authing_key&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;inserted_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T11:15:32Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;last_use&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w">
+          </span><span class="p" data-group-id="5249246547-7">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;ip&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;1.2.3.4&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+            </span><span class="p">&lt;&lt;</span><span class="s">&quot;used_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T14:38:54Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+            </span><span class="p">&lt;&lt;</span><span class="s">&quot;user_agent&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;hex_core/0.5.0 (httpc) (OTP/21) (erts/10.2)&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="5249246547-7">}</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;name&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;hex_core&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;permissions&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="5249246547-8">[</span><span class="p" data-group-id="5249246547-9">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;domain&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;api&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;resource&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;read&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="5249246547-9">}</span><span class="p" data-group-id="5249246547-8">]</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;revoked_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">nil</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;updated_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T14:38:54Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;https://hex.pm/api/keys/test&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="5249246547-6">}</span><span class="p">,</span><span class="w">
+      </span><span class="p">}</span><span class="p" data-group-id="5249246547-5">]</span><span class="p" data-group-id="5249246547-4">}</span><span class="p" data-group-id="5249246547-3">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="get/2">
@@ -157,8 +319,28 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">get/2</h1>
+      <div class="specs">
+          <pre>get(hex_core:config(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> hex_api:response().
+</pre>
+      </div>
   </div>
   <section class="docstring">
+<p> Gets an API or repository key by name.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_key</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="2388696169-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="2388696169-2">(</span><span class="p" data-group-id="2388696169-2">)</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;test&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="2388696169-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="2388696169-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2388696169-4">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2388696169-5">#{</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;authing_key&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;inserted_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T11:15:32Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;last_use&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w">
+          </span><span class="p" data-group-id="2388696169-6">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;ip&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;1.2.3.4&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+            </span><span class="p">&lt;&lt;</span><span class="s">&quot;used_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T14:38:54Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+            </span><span class="p">&lt;&lt;</span><span class="s">&quot;user_agent&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;hex_core/0.5.0 (httpc) (OTP/21) (erts/10.2)&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="2388696169-6">}</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;name&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;hex_core&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;permissions&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="2388696169-7">[</span><span class="p" data-group-id="2388696169-8">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;domain&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;api&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;resource&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;read&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="2388696169-8">}</span><span class="p" data-group-id="2388696169-7">]</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;revoked_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">nil</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;updated_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T14:38:54Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;https://hex.pm/api/keys/test&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="2388696169-5">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="2388696169-4">}</span><span class="p" data-group-id="2388696169-3">}</span><span class="p">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="list/1">
@@ -168,8 +350,28 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">list/1</h1>
+      <div class="specs">
+          <pre>list(hex_core:config()) -> hex_api:response().
+</pre>
+      </div>
   </div>
   <section class="docstring">
+<p> Lists the user&#39;s or organization&#39;s API and repository keys.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_key</span><span class="p">:</span><span class="nf">list</span><span class="p" data-group-id="3498979191-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="3498979191-2">(</span><span class="p" data-group-id="3498979191-2">)</span><span class="p" data-group-id="3498979191-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="3498979191-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3498979191-4">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3498979191-5">[</span><span class="p" data-group-id="3498979191-6">#{</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;authing_key&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">true</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;inserted_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T11:15:32Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;last_use&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w">
+          </span><span class="p" data-group-id="3498979191-7">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;ip&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;1.2.3.4&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+            </span><span class="p">&lt;&lt;</span><span class="s">&quot;used_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T14:38:54Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+            </span><span class="p">&lt;&lt;</span><span class="s">&quot;user_agent&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;hex_core/0.5.0 (httpc) (OTP/21) (erts/10.2)&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="3498979191-7">}</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;name&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;hex_core&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;permissions&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="3498979191-8">[</span><span class="p" data-group-id="3498979191-9">#{</span><span class="p">&lt;&lt;</span><span class="s">&quot;domain&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;api&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="p">&lt;&lt;</span><span class="s">&quot;resource&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;read&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="3498979191-9">}</span><span class="p" data-group-id="3498979191-8">]</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;revoked_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">nil</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;updated_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-02-27T14:38:54Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;https://hex.pm/api/keys/test&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="3498979191-6">}</span><span class="p">,</span><span class="w">
+      </span><span class="p">}</span><span class="p" data-group-id="3498979191-5">]</span><span class="p" data-group-id="3498979191-4">}</span><span class="p" data-group-id="3498979191-3">}</span></code></pre>
   </section>
 </section>
           </div>

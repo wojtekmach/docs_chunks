@@ -8,7 +8,7 @@
     <meta name="project" content="hex_core v0.6.1">
     <title>hex_api — hex_core v0.6.1</title>
     <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
-    <script src="dist/sidebar_items-b12e500b28.js"></script>
+    <script src="dist/sidebar_items-f2eea630bb.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
@@ -77,6 +77,21 @@ hex_api      </h1>
             </a>
             Summary
           </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:body/0">body()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:response/0">response()</a>
+  </div>
+</div>
+  </div>
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
@@ -104,6 +119,48 @@ hex_api      </h1>
   </div>
         </section>
 
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:body/0">
+  <div class="detail-header">
+    <a href="#t:body/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">body()</h1>
+      <div class="specs">
+          <pre>body() :: [<a href="#t:body/0">body</a>()] | #{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() => <a href="#t:body/0">body</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="t:response/0">
+  <div class="detail-header">
+    <a href="#t:response/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">response()</h1>
+      <div class="specs">
+          <pre>response() ::
+    {ok, {hex_http:status(), hex_http:headers(), <a href="#t:body/0">body</a>() | nil}} |
+    {error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}.
+</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
         <section id="functions" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#functions">

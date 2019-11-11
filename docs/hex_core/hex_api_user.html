@@ -8,7 +8,7 @@
     <meta name="project" content="hex_core v0.6.1">
     <title>hex_api_user — hex_core v0.6.1</title>
     <link rel="stylesheet" href="dist/erlang-94f16191f0a724ab8055.css" />
-    <script src="dist/sidebar_items-b12e500b28.js"></script>
+    <script src="dist/sidebar_items-f2eea630bb.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a9f3287e74588dddabf3.js"></script>
   </head>
@@ -85,22 +85,25 @@ hex_api_user      </h1>
   <div class="summary-signature">
     <a href="#create/4">create/4</a>
   </div>
+    <div class="summary-synopsis"><p> Creates a new user account.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#get/2">get/2</a>
   </div>
-    <div class="summary-synopsis"><p> Gets user.</p></div>
+    <div class="summary-synopsis"><p> Gets a user.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#me/1">me/1</a>
   </div>
+    <div class="summary-synopsis"><p> Gets the authenticated user.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#reset_password/2">reset_password/2</a>
   </div>
+    <div class="summary-synopsis"><p> Resets the user&#39;s password.</p></div>
 </div>
   </div>
         </section>
@@ -120,8 +123,26 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">create/4</h1>
+      <div class="specs">
+          <pre>create(hex_core:config(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) ->
+          hex_api:response().
+</pre>
+      </div>
   </div>
   <section class="docstring">
+<p> Creates a new user account.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_user</span><span class="p">:</span><span class="nf">create</span><span class="p" data-group-id="8500560771-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="8500560771-2">(</span><span class="p" data-group-id="8500560771-2">)</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;hunter42&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user@example.com&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="8500560771-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="8500560771-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8500560771-4">{</span><span class="mi">201</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8500560771-5">#{</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;email&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user@example.com&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;full_name&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;John Doe&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;handles&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="8500560771-6">#{</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="8500560771-6">}</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;inserted_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2014-04-21T17:20:12Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;level&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;full&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;updated_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-08-04T19:28:05Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;https://hex.pm/api/users/user&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;username&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="w">
+       </span><span class="p" data-group-id="8500560771-5">}</span><span class="p" data-group-id="8500560771-4">}</span><span class="p" data-group-id="8500560771-3">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="get/2">
@@ -131,22 +152,25 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">get/2</h1>
+      <div class="specs">
+          <pre>get(hex_core:config(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> hex_api:response().
+</pre>
+      </div>
   </div>
   <section class="docstring">
-<p> Gets user.</p>
+<p> Gets a user.</p>
 <p> Examples:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="n">hex_api_user</span><span class="ss">:get</span><span class="p" data-group-id="9608203410-1">(</span><span class="p" data-group-id="9608203410-2">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p" data-group-id="9608203410-2">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">hex_core</span><span class="ss">:default_config</span><span class="p" data-group-id="9608203410-3">(</span><span class="p" data-group-id="9608203410-3">)</span><span class="p" data-group-id="9608203410-1">)</span><span class="o">.</span><span class="w">
-  </span><span class="p" data-group-id="9608203410-4">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9608203410-5">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">,</span><span class="w"> </span><span class="c1">#{</span><span class="w">
-       </span><span class="p" data-group-id="9608203410-6">&lt;&lt;</span><span class="s">&quot;username&quot;</span><span class="p" data-group-id="9608203410-6">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="9608203410-7">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p" data-group-id="9608203410-7">&gt;&gt;</span><span class="p">,</span><span class="w">
-       </span><span class="p" data-group-id="9608203410-8">&lt;&lt;</span><span class="s">&quot;packages&quot;</span><span class="p" data-group-id="9608203410-8">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="p" data-group-id="9608203410-9">[</span><span class="w">
-           </span><span class="c1">#{</span><span class="w">
-               </span><span class="p" data-group-id="9608203410-10">&lt;&lt;</span><span class="s">&quot;name&quot;</span><span class="p" data-group-id="9608203410-10">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="n">...</span><span class="p">,</span><span class="w">
-               </span><span class="p" data-group-id="9608203410-11">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p" data-group-id="9608203410-11">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="o">&gt;</span><span class="w"> </span><span class="n">...</span><span class="p">,</span><span class="w">
-               </span><span class="n">...</span><span class="w">
-           </span><span class="p">}</span><span class="p">,</span><span class="w">
-           </span><span class="n">...</span><span class="w">
-       </span><span class="p" data-group-id="9608203410-9">]</span><span class="p">,</span><span class="w">
-       </span><span class="n">...</span><span class="p" data-group-id="9608203410-5">}</span><span class="err">}</span><span class="err">}</span></code></pre>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_user</span><span class="p">:</span><span class="nf">get</span><span class="p" data-group-id="8559432964-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="8559432964-2">(</span><span class="p" data-group-id="8559432964-2">)</span><span class="p" data-group-id="8559432964-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="8559432964-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8559432964-4">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8559432964-5">#{</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;email&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user@example.com&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;full_name&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;John Doe&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;handles&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="8559432964-6">#{</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="8559432964-6">}</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;inserted_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2014-04-21T17:20:12Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;level&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;full&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;updated_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-08-04T19:28:05Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;https://hex.pm/api/users/user&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;username&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="w">
+       </span><span class="p" data-group-id="8559432964-5">}</span><span class="p" data-group-id="8559432964-4">}</span><span class="p" data-group-id="8559432964-3">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="me/1">
@@ -156,8 +180,25 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">me/1</h1>
+      <div class="specs">
+          <pre>me(hex_core:config()) -> hex_api:response().
+</pre>
+      </div>
   </div>
   <section class="docstring">
+<p> Gets the authenticated user.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_user</span><span class="p">:</span><span class="nf">me</span><span class="p" data-group-id="5198413258-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="5198413258-2">(</span><span class="p" data-group-id="5198413258-2">)</span><span class="p" data-group-id="5198413258-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="5198413258-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5198413258-4">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5198413258-5">#{</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;email&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user@example.com&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;full_name&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;John Doe&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;handles&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="5198413258-6">#{</span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p" data-group-id="5198413258-6">}</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;inserted_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2014-04-21T17:20:12Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;level&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;full&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;updated_at&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;2019-08-04T19:28:05Z&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;url&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;https://hex.pm/api/users/user&quot;</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w">
+       </span><span class="p">&lt;&lt;</span><span class="s">&quot;username&quot;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="w">
+       </span><span class="p" data-group-id="5198413258-5">}</span><span class="p" data-group-id="5198413258-4">}</span><span class="p" data-group-id="5198413258-3">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="reset_password/2">
@@ -167,8 +208,16 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">reset_password/2</h1>
+      <div class="specs">
+          <pre>reset_password(hex_core:config(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) -> hex_api:response().
+</pre>
+      </div>
   </div>
   <section class="docstring">
+<p> Resets the user&#39;s password.</p>
+<p> Examples:</p>
+<pre><code class="nohighlight makeup erlang"><span class="w">  </span><span class="o">&gt;</span><span class="w"> </span><span class="nc">hex_api_user</span><span class="p">:</span><span class="nf">reset_password</span><span class="p" data-group-id="0052501868-1">(</span><span class="nc">hex_core</span><span class="p">:</span><span class="nf">default_config</span><span class="p" data-group-id="0052501868-2">(</span><span class="p" data-group-id="0052501868-2">)</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="s">&quot;user&quot;</span><span class="p">&gt;&gt;</span><span class="p" data-group-id="0052501868-1">)</span><span class="p">.</span><span class="w">
+  </span><span class="p" data-group-id="0052501868-3">{</span><span class="ss">ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0052501868-4">{</span><span class="mi">204</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="p">.</span><span class="p">.</span><span class="p">,</span><span class="w"> </span><span class="ss">nil</span><span class="p" data-group-id="0052501868-4">}</span><span class="p" data-group-id="0052501868-3">}</span></code></pre>
   </section>
 </section>
           </div>
